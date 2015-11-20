@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7E697586-1F11-4FFA-BDA2-7AC67FB75FCB}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>LrpCoreCpp</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>SoftFX.Lrp.x86</TargetName>
+    <IntDir>$(Configuration).x86\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>SoftFX.Lrp.x64</TargetName>
+    <OutDir>$(SolutionDir)\$(Configuration)\</OutDir>
+    <IntDir>$(Configuration).x64\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>SoftFX.Lrp.x86</TargetName>
+    <IntDir>$(Configuration).x86\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>SoftFX.Lrp.x64</TargetName>
+    <OutDir>$(SolutionDir)\$(Configuration)\</OutDir>
+    <IntDir>$(Configuration).x64\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;LRPCORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Ws2_32.lib;MSCorEE.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>Lrp.Core.def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>if not exist ..\dll\ (md ..\dll\)
+if not exist ..\lib\ (md ..\lib\)
+if not exist ..\include\ (md ..\\include\)
+
+xcopy /Y "$(TargetPath)" ..\dll\
+xcopy /Y "$(TargetDir)$(TargetName).pdb" ..\dll\
+xcopy /Y "$(TargetDir)$(TargetName).map" ..\dll\
+xcopy /Y "$(TargetDir)$(TargetName).lib" ..\lib\
+xcopy /Y "$(ProjectDir)MemoryBuffer.h" ..\include\
+xcopy /Y "$(ProjectDir)BitReader.h" ..\include\
+xcopy /Y "$(ProjectDir)BitWriter.h" ..\include\
+xcopy /Y "$(ProjectDir)Nullable.h" ..\include\
+xcopy /Y "$(ProjectDir)DateTime.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpMtServer.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpStClient.h" ..\include\
+xcopy /Y "$(ProjectDir)ILrpChannel.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpStServer.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpLocalClient.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpTextStream.h" ..\include\
+xcopy /Y "$(ProjectDir)ILrpEventHandler.h" ..\include\
+xcopy /Y "$(ProjectDir)Lrp.Core.h" ..\include\
+xcopy /Y "$(ProjectDir)decimal8.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpStd.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpStdVector.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpStdVector.hpp" ..\include\</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;LRPCORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreAllDefaultLibraries>
+      </IgnoreAllDefaultLibraries>
+      <AdditionalDependencies>Ws2_32.lib;MSCorEE.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>Lrp.Core.def</ModuleDefinitionFile>
+      <GenerateMapFile>true</GenerateMapFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>if not exist ..\dll\ (md ..\dll\)
+if not exist ..\lib\ (md ..\lib\)
+if not exist ..\include\ (md ..\\include\)
+
+xcopy /Y "$(TargetPath)" ..\dll\
+xcopy /Y "$(TargetDir)$(TargetName).pdb" ..\dll\
+xcopy /Y "$(TargetDir)$(TargetName).map" ..\dll\
+xcopy /Y "$(TargetDir)$(TargetName).lib" ..\lib\
+xcopy /Y "$(ProjectDir)MemoryBuffer.h" ..\include\
+xcopy /Y "$(ProjectDir)BitReader.h" ..\include\
+xcopy /Y "$(ProjectDir)BitWriter.h" ..\include\
+xcopy /Y "$(ProjectDir)Nullable.h" ..\include\
+xcopy /Y "$(ProjectDir)DateTime.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpMtServer.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpStClient.h" ..\include\
+xcopy /Y "$(ProjectDir)ILrpChannel.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpStServer.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpLocalClient.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpTextStream.h" ..\include\
+xcopy /Y "$(ProjectDir)ILrpEventHandler.h" ..\include\
+xcopy /Y "$(ProjectDir)Lrp.Core.h" ..\include\
+xcopy /Y "$(ProjectDir)decimal8.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpStd.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpStdVector.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpStdVector.hpp" ..\include\</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;LRPCORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>Ws2_32.lib;MSCorEE.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>Lrp.Core.def</ModuleDefinitionFile>
+      <GenerateMapFile>true</GenerateMapFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>if not exist ..\dll\ (md ..\dll\)
+if not exist ..\lib\ (md ..\lib\)
+if not exist ..\include\ (md ..\\include\)
+
+xcopy /Y "$(TargetPath)" ..\dll\
+xcopy /Y "$(TargetDir)$(TargetName).pdb" ..\dll\
+xcopy /Y "$(TargetDir)$(TargetName).map" ..\dll\
+xcopy /Y "$(TargetDir)$(TargetName).lib" ..\lib\
+xcopy /Y "$(ProjectDir)MemoryBuffer.h" ..\include\
+xcopy /Y "$(ProjectDir)BitReader.h" ..\include\
+xcopy /Y "$(ProjectDir)BitWriter.h" ..\include\
+xcopy /Y "$(ProjectDir)Nullable.h" ..\include\
+xcopy /Y "$(ProjectDir)DateTime.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpMtServer.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpStClient.h" ..\include\
+xcopy /Y "$(ProjectDir)ILrpChannel.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpStServer.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpLocalClient.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpTextStream.h" ..\include\
+xcopy /Y "$(ProjectDir)ILrpEventHandler.h" ..\include\
+xcopy /Y "$(ProjectDir)Lrp.Core.h" ..\include\
+xcopy /Y "$(ProjectDir)decimal8.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpStd.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpStdVector.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpStdVector.hpp" ..\include\</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;LRPCORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <IgnoreAllDefaultLibraries>
+      </IgnoreAllDefaultLibraries>
+      <AdditionalDependencies>Ws2_32.lib;MSCorEE.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>Lrp.Core.def</ModuleDefinitionFile>
+      <GenerateMapFile>true</GenerateMapFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>if not exist ..\dll\ (md ..\dll\)
+if not exist ..\lib\ (md ..\lib\)
+if not exist ..\include\ (md ..\\include\)
+
+xcopy /Y "$(TargetPath)" ..\dll\
+xcopy /Y "$(TargetDir)$(TargetName).pdb" ..\dll\
+xcopy /Y "$(TargetDir)$(TargetName).map" ..\dll\
+xcopy /Y "$(TargetDir)$(TargetName).lib" ..\lib\
+xcopy /Y "$(ProjectDir)MemoryBuffer.h" ..\include\
+xcopy /Y "$(ProjectDir)BitReader.h" ..\include\
+xcopy /Y "$(ProjectDir)BitWriter.h" ..\include\
+xcopy /Y "$(ProjectDir)Nullable.h" ..\include\
+xcopy /Y "$(ProjectDir)DateTime.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpMtServer.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpStClient.h" ..\include\
+xcopy /Y "$(ProjectDir)ILrpChannel.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpStServer.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpLocalClient.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpTextStream.h" ..\include\
+xcopy /Y "$(ProjectDir)ILrpEventHandler.h" ..\include\
+xcopy /Y "$(ProjectDir)Lrp.Core.h" ..\include\
+xcopy /Y "$(ProjectDir)decimal8.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpStd.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpStdVector.h" ..\include\
+xcopy /Y "$(ProjectDir)LrpStdVector.hpp" ..\include\</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Acceptor.h" />
+    <ClInclude Include="BitReader.h" />
+    <ClInclude Include="BitWriter.h" />
+    <ClInclude Include="DateTime.h" />
+    <ClInclude Include="decimal8.h" />
+    <ClInclude Include="DotNetBridge.h" />
+    <ClInclude Include="Formatting.h" />
+    <ClInclude Include="Functions.h" />
+    <ClInclude Include="ILrpChannel.h" />
+    <ClInclude Include="ILrpClient.h" />
+    <ClInclude Include="LrpLocalClient.h" />
+    <ClInclude Include="LrpClient.h" />
+    <ClInclude Include="LrpClientImpl.h" />
+    <ClInclude Include="Logger.h" />
+    <ClInclude Include="LrpLocalClientImpl.h" />
+    <ClInclude Include="LrpStClient.h" />
+    <ClInclude Include="LrpStClientImpl.h" />
+    <ClInclude Include="LrpStd.h" />
+    <ClInclude Include="LrpStdVector.h" />
+    <ClInclude Include="LrpStdVector.hpp" />
+    <ClInclude Include="LrpStServer.h" />
+    <ClInclude Include="LrpTextStream.h" />
+    <ClInclude Include="Nullable.h" />
+    <ClInclude Include="Socket.h" />
+    <ClInclude Include="SocketGuad.h" />
+    <ClInclude Include="StChannelImpl.h" />
+    <ClInclude Include="StServerImpl.h" />
+    <ClInclude Include="Ref.h" />
+    <ClInclude Include="Lrp.Core.h" />
+    <ClInclude Include="MtChannelImpl.h" />
+    <ClInclude Include="LrpMtServer.h" />
+    <ClInclude Include="MtServerImpl.h" />
+    <ClInclude Include="LrpThreadPool.h" />
+    <ClInclude Include="MemoryBuffer.h" />
+    <ClInclude Include="MemoryPool.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="Timeout.h" />
+    <ClInclude Include="Translator.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Acceptor.cpp" />
+    <ClCompile Include="BitReader.cpp" />
+    <ClCompile Include="BitWriter.cpp" />
+    <ClCompile Include="decimal8.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="DotNetBridge.cpp" />
+    <ClCompile Include="Formatting.cpp" />
+    <ClCompile Include="Functions.cpp" />
+    <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="Lrp.Core.cpp" />
+    <ClCompile Include="LrpLocalClient.cpp" />
+    <ClCompile Include="LrpLocalClientImpl.cpp" />
+    <ClCompile Include="LrpStClientImpl.cpp" />
+    <ClCompile Include="MtChannelImpl.cpp" />
+    <ClCompile Include="LrpClient.cpp" />
+    <ClCompile Include="LrpClientImpl.cpp" />
+    <ClCompile Include="LrpMtServer.cpp" />
+    <ClCompile Include="MtServerImpl.cpp" />
+    <ClCompile Include="LrpStClient.cpp" />
+    <ClCompile Include="LrpStServer.cpp" />
+    <ClCompile Include="Socket.cpp" />
+    <ClCompile Include="StChannelImpl.cpp" />
+    <ClCompile Include="StServerImpl.cpp" />
+    <ClCompile Include="LrpThreadPool.cpp" />
+    <ClCompile Include="MemoryBuffer.cpp" />
+    <ClCompile Include="MemoryPool.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Timeout.cpp" />
+    <ClCompile Include="Translator.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="decimal.asm">
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </MASM>
+    <None Include="Lrp.Core.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
+  </ImportGroup>
+</Project>

@@ -1,0 +1,6 @@
+LIBRARY
+	EXPORTS
+		LrpInvoke
+		LrpSignature
+		MarketBuy
+		SpeedTest
