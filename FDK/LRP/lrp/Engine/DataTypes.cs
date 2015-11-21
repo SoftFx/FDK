@@ -202,7 +202,7 @@
         {
             var key = this.ToCppFullName(this[type.Key]);
             var value = this.ToCppFullName(this[type.Value]);
-            var result = string.Format("stdext::hash_map<{0}, {1}>", key, value);
+            var result = string.Format("std::unordered_map<{0}, {1}>", key, value);
             return result;
         }
 

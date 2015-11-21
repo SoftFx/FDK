@@ -9,7 +9,7 @@ namespace
 
 namespace
 {
-	struct __declspec(align(1)) CResultSize
+	struct __declspec(align(4)) CResultSize
 	{
 	public:
 		int Result;
@@ -19,7 +19,7 @@ namespace
 		{
 		}
 	};
-	struct __declspec(align(1)) CComponentMethodSize
+	struct __declspec(align(4)) CComponentMethodSize
 	{
 	public:
 		unsigned short ComponentId;

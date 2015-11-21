@@ -14,8 +14,8 @@ namespace
 	CReturnType ReadReturnType(MemoryBuffer& buffer);
 	void WritePositionReports(const std::map<std::string, double>& arg, MemoryBuffer& buffer);
 	std::map<std::string, double> ReadPositionReports(MemoryBuffer& buffer);
-	void WritePositionReports2(const stdext::hash_map<std::string, double>& arg, MemoryBuffer& buffer);
-	stdext::hash_map<std::string, double> ReadPositionReports2(MemoryBuffer& buffer);
+	void WritePositionReports2(const std::unordered_map<std::string, double>& arg, MemoryBuffer& buffer);
+	std::unordered_map<std::string, double> ReadPositionReports2(MemoryBuffer& buffer);
 }
 
 namespace
@@ -101,7 +101,7 @@ namespace
 		}
 		return result;
 	}
-	void WritePositionReports2(const stdext::hash_map<std::string, double>& arg, MemoryBuffer& buffer)
+	void WritePositionReports2(const std::unordered_map<std::string, double>& arg, MemoryBuffer& buffer)
 	{
 		WriteUInt32((unsigned __int32)arg.size(), buffer);
 		for each(const auto element in arg)
@@ -110,10 +110,10 @@ namespace
 			WriteDouble(element.second, buffer);
 		}
 	}
-	stdext::hash_map<std::string, double> ReadPositionReports2(MemoryBuffer& buffer)
+	std::unordered_map<std::string, double> ReadPositionReports2(MemoryBuffer& buffer)
 	{
 		const size_t count = buffer.ReadCount();
-		stdext::hash_map<std::string, double> result;
+		std::unordered_map<std::string, double> result;
 		for(size_t index = 0; index < count; ++index)
 		{
 			auto key = ReadAString(buffer);

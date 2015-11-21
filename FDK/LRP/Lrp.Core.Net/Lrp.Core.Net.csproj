@@ -37,13 +37,14 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseLib|AnyCPU'">
     <OutputPath>bin\ReleaseLib\</OutputPath>
+    <DocumentationFile>..\Release\SoftFX.Lrp.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugLib|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\DebugLib\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DocumentationFile>..\Debug\Lrp.Core.xml</DocumentationFile>
+    <DocumentationFile>..\Debug\SoftFX.Lrp.xml</DocumentationFile>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <CodeAnalysisLogFile>..\Debug\Lrp.Core.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>

@@ -61,7 +61,7 @@ public:
 	{
 		return m_channel->IsSupported(1, 2);
 	}
-	void Update(std::map<std::string, double>& reports, stdext::hash_map<std::string, double>& reports2)
+	void Update(std::map<std::string, double>& reports, std::unordered_map<std::string, double>& reports2)
 	{
 		MemoryBuffer buffer;
 		m_channel->Initialize(buffer);

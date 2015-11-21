@@ -10,5 +10,5 @@ class CExtended
 public:
 	CReturnType Do(CInType inArg, CInOutType& inOutArg, COutType& outArg);
 	int MarketBuy(const string& symbol, double price, double& volume, double& amount);
-	void Update(map<string, double>& reports, hash_map<string, double>& reports2);
+	void Update(map<string, double>& reports, unordered_map<string, double>& reports2);
 };

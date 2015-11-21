@@ -21,7 +21,7 @@ int CExtended::MarketBuy(const string& symbol, double price, double& volume, dou
 	volume = 0;
 	return 0;
 }
-void CExtended::Update(map<string, double>& reports, hash_map<string, double>& reports2)
+void CExtended::Update(map<string, double>& reports, unordered_map<string, double>& reports2)
 {
 	reports[string("XAUUSD")] = 1;
 	reports2[string("XAGUSD")] = 1;
