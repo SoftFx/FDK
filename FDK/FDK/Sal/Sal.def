@@ -1,0 +1,23 @@
+LIBRARY
+	EXPORTS
+		FxAccept
+		FxPhysicalAccept
+		FxLogicalAccept
+		FxBind
+		FxCloseSocket
+		FxConnect
+		FxGetPeerName
+		FxGetSockName
+		FxGetSockOpt
+		FxListen
+		FxRecv
+		FxRecvFrom
+		FxSelect
+		FxSend
+		FxSendTo
+		FxSetSockOpt
+		FxShutdown
+		FxSocket
+		FxGetTickCount
+		FxGetSocketActivity
+		FxIoctlsocket

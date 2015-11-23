@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>3.5</ProductVersion>
+    <ProjectGuid>{3c7d9181-5cc6-4880-b28e-9fc06590633c}</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputName>FDK</OutputName>
+    <OutputType>Package</OutputType>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <!--  <SccProjectName>Svn</SccProjectName>
+    <SccProvider>SubversionScc</SccProvider>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccLocalPath>Svn</SccLocalPath>-->
+    <DefineSolutionProperties>false</DefineSolutionProperties>
+    <Name>FDK</Name>
+    <SccProjectName>Svn</SccProjectName>
+    <SccProvider>SubversionScc</SccProvider>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccLocalPath>Svn</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <OutputPath>..\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <DefineConstants>Debug</DefineConstants>
+    <SuppressSpecificWarnings>1076</SuppressSpecificWarnings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>..\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <SuppressSpecificWarnings>1076</SuppressSpecificWarnings>
+    <DefineConstants>SourceDir=..\..\Examples</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Examples.wxs" />
+    <Compile Include="FDK.wxs" />
+    <Compile Include="Gui\InstallDirDlgEx.wxs" />
+    <Compile Include="Gui\OlderVersionDlg.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configuration.wxi" />
+    <Content Include="Documentation.wxi" />
+    <Content Include="Examples.wxi" />
+    <Content Include="External\External.wxi" />
+    <Content Include="External\Microsoft.wxi" />
+    <Content Include="External\SSL.wxi" />
+    <Content Include="FileSystem.wxi" />
+    <Content Include="FRE.Cpp.wxi" />
+    <Content Include="FRE.wxi" />
+    <Content Include="Gui\Dialogs.wxi" />
+    <Content Include="Gui\Gui.wxi" />
+    <Content Include="Gui\Resources.wxi" />
+    <Content Include="Tools.wxi" />
+    <Content Include="Uninstall.wxi" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="External" />
+    <Folder Include="Gui" />
+  </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="WixUIExtension">
+      <HintPath>$(WixExtDir)\WixUIExtension.dll</HintPath>
+      <Name>WixUIExtension</Name>
+    </WixExtension>
+  </ItemGroup>
+  <Import Project="$(WixTargetsPath)" />
+  <PropertyGroup>
+    <PreBuildEvent>echo %25cd%25
+cd ..\..\Examples\CSharp
+if exist Debug (rd /S /Q Debug)
+if exist Release (rd /S /Q Release)
+del /Q /S /A:H %2a.suo
+del /Q /S %2a.user
+for /d %25%25X in (.\%2a) do (
+	cd %25%25X
+	if exist bin (rd /S /Q bin)
+	if exist obj (rd /S /Q obj)
+	cd ..
+)
+cd ..\..\FDK\FDK
+heat dir ..\..\Examples -ag -cg Examples -dr APPLICATIONFOLDER -sfrag -fragment -out ..\$(ProjectName)\Examples.wxs -var var.SourceDir</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DefineConstants>Debug</DefineConstants>
+    <SuppressSpecificWarnings>1076</SuppressSpecificWarnings>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <SuppressSpecificWarnings>1076</SuppressSpecificWarnings>
+    <DefineConstants>SourceDir=..\..\Examples</DefineConstants>
+    <OutputPath>..\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <!--
+	To modify your build process, add your task inside one of the targets below and uncomment it.
+	Other similar extension points exist, see Wix.targets.
+	<Target Name="BeforeBuild">
+	</Target>
+	<Target Name="AfterBuild">
+	</Target>
+	-->
+</Project>

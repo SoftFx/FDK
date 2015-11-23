@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="_Headers">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="_Sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Logging">
+      <UniqueIdentifier>{88ff75a9-8af0-455a-8cca-2b595a43740b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logging\Headers">
+      <UniqueIdentifier>{fb39627f-616a-41e0-aa11-8dedefe32645}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logging\Sources">
+      <UniqueIdentifier>{c5541434-2c33-41fa-a4c2-5465a7a1eb57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logging\Generated">
+      <UniqueIdentifier>{c1d4ebfd-af43-4755-af86-ecc38f087506}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Codecs">
+      <UniqueIdentifier>{f7646e6c-31df-4a76-b51d-50fa5a1b90f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Codecs\Headers">
+      <UniqueIdentifier>{6ecff103-0b6e-43a5-93eb-6e227b054433}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Codecs\Sources">
+      <UniqueIdentifier>{db5e70bf-1d2d-4c29-ae25-983984f6e426}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Translator.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Translators.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpCommon.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Acceptor.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Functions.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Timeout.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Message.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageData.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Heap.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Referenceable.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Client_Logging.h">
+      <Filter>Logging\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="Client_Logging.hpp">
+      <Filter>Logging\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="Client_Server.hpp">
+      <Filter>Logging\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="Client_TypesSerializer.hpp">
+      <Filter>Logging\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="Server_Logging.h">
+      <Filter>Logging\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="Server_Logging.hpp">
+      <Filter>Logging\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="Server_Server.hpp">
+      <Filter>Logging\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="Server_TypesSerializer.hpp">
+      <Filter>Logging\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpTextStream.h">
+      <Filter>Logging\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpServerLogger.h">
+      <Filter>Logging\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpClientLogger.h">
+      <Filter>Logging\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpLogEntry.h">
+      <Filter>Logging\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpLogEntryData.h">
+      <Filter>Logging\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpLogEntryType.h">
+      <Filter>Logging\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpLogger.h">
+      <Filter>Logging\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleEncoder.h">
+      <Filter>Codecs\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleDecoder.h">
+      <Filter>Codecs\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleEncoder2.h">
+      <Filter>Codecs\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleEntry.h">
+      <Filter>Codecs\Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Translator.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Translators.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Acceptor.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Functions.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Timeout.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Message.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MessageData.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Heap.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Referenceable.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LrpServerLogger.cpp">
+      <Filter>Logging\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LrpClientLogger.cpp">
+      <Filter>Logging\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LrpLogEntry.cpp">
+      <Filter>Logging\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LrpLogEntryData.cpp">
+      <Filter>Logging\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LrpLogEntryType.cpp">
+      <Filter>Logging\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LrpLogger.cpp">
+      <Filter>Logging\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleEncoder.cpp">
+      <Filter>Codecs\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleDecoder.cpp">
+      <Filter>Codecs\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleEncoder2.cpp">
+      <Filter>Codecs\Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

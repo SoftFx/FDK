@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="_Headers">
+      <UniqueIdentifier>{a0ffa0c0-b91d-4608-bfc4-c4f9a384ca9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Sources">
+      <UniqueIdentifier>{64539504-c612-4acb-b397-a2442cdabc77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Resources">
+      <UniqueIdentifier>{a83a53f7-b79d-444f-9013-89e7faebc932}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LRP">
+      <UniqueIdentifier>{8d1a9aef-b756-4337-a1b9-d50c67cbc1f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LRP\Generated">
+      <UniqueIdentifier>{fa9e72c7-d369-4ce4-8bd0-ad49ef69d711}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LRP\Headers">
+      <UniqueIdentifier>{f7609c9b-2a25-4b0b-b6fc-d6d9c819614b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LRP\Sources">
+      <UniqueIdentifier>{5e82166e-9edf-4f03-89e1-282257e932c9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="AccountEntry.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FinancialCalculator.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Functions.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LlCommon.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PriceEntries.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PriceEntry.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SymbolEntries.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SymbolEntry.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TradeEntry.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TradeEntryStatus.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TradeSide.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TradeType.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TagEntry.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TradeEntries.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="AccountEntries.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="AccountType.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="AccountEntryStatus.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MarginMode.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Rates.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CurrencyEntries.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Formating.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Table.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Server.hpp">
+      <Filter>LRP\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="TypesSerializer.hpp">
+      <Filter>LRP\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="Server.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Channel.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TradeData.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PriceData.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SymbolData.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CalculatorData.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="AccountData.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Serializer.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FinCalcImpl.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="RateEntry.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MarginCalcMode.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FinancialCalculator.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Functions.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LlCommon.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="PriceEntries.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SymbolEntries.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SymbolEntry.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TradeEntry.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="AccountEntries.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="AccountEntry.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TradeEntries.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Rates.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CurrencyEntries.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Formating.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Constants.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="PriceEntry.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Server.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Channel.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TradeData.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="PriceData.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SymbolData.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CalculatorData.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="AccountData.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Serializer.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FinCalcImpl.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LlCommon.def">
+      <Filter>_Resources</Filter>
+    </None>
+  </ItemGroup>
+</Project>

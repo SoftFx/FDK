@@ -1,0 +1,25 @@
+<Protocol>
+	<Types>
+		<Type name="FTradeCommand" CSharpFullName="" CppFullName="TradeCommand" kind="enum32" />
+		<Type name="FTradeSide" CsharpFullName="" CppFullName="TradeSide" kind="enum32" />
+	</Types>
+	<Components>
+		<Component name="FTrade">
+			<Method name="Initialize">
+				<Param name="bankCode" type="int32" direction="in" />
+				<Param name="metaAccount" type="int32" direction="in" />
+				<Param name="password" type="astring" direction="in" />
+				<Return type="int32" />
+			</Method>
+			<Method name="ExecuteIOC">
+				<Param name="side" type="FTradeSide" direction="in" />
+				<Param name="symbol" type="astring" direction="in" />
+				<Param name="priceThreshold" type="double" direction="in" />
+				<Param name="requestedVolume" type="double" direction="in" />
+				<Param name="executedPrice" type="double" direction="out" />
+				<Param name="executedVolume" type="double" direction="out" />
+				<Return type="int32" />
+			</Method>
+		</Component>
+	</Components>
+</Protocol>

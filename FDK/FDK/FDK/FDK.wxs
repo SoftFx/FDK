@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:DIFxApp="http://schemas.microsoft.com/wix/DifxAppExtension">
+  <?include Configuration.wxi?>
+
+
+  <Product Id="$(var.FDK_ID)" Name="$(var.FriendlyName)" Language="1033" Version="$(var.Version)"
+       Manufacturer="SoftFX" UpgradeCode ="$(var.FDK_UPGRADE_ID)">
+    <Package InstallerVersion="300" Compressed="yes" />
+    <Property Id="ARPPRODUCTICON" Value="main.ico" />
+    <Property Id="INSTALLDESKTOPSHORTCUT" Value="1" />
+    <Property Id="REGISTER_FILE_EXTENSION" Value="1" />
+    <Property Id="REINSTALLMODE" Value="amus" />
+    <Media Id="1" Cabinet="FDK.cab" EmbedCab="yes" />
+
+
+    <Upgrade Id='$(var.FDK_UPGRADE_ID)'>
+      <UpgradeVersion OnlyDetect="yes" Property="GUI_PREVIOUSFOUND" Minimum="1.0.0.0" IncludeMinimum="yes" Maximum="$(var.Version)" IncludeMaximum="no" />
+      <UpgradeVersion OnlyDetect="no" Property="PREVIOUSFOUND" Minimum="1.0.0.0" IncludeMinimum="yes" Maximum="$(var.Version)" IncludeMaximum="no" />
+    </Upgrade>
+
+
+    <InstallExecuteSequence>
+      <RemoveExistingProducts After="InstallInitialize" />
+    </InstallExecuteSequence>
+
+    <?include FileSystem.wxi ?>
+    <?include FRE.wxi ?>
+    <?include Tools.wxi ?>
+    <?if $(var.EnableCpp) = yes ?>
+    <?include FRE.Cpp.wxi ?>
+    <?endif?>
+    <?include Documentation.wxi ?>
+    <!-- including examples -->
+    <?include Examples.wxi ?>
+    <!-- including external libraries -->
+    <?include External\External.wxi ?>
+    <!-- including user interface -->
+    <?include Gui\Gui.wxi ?>
+    <?include Uninstall.wxi ?>
+
+  </Product>
+</Wix>

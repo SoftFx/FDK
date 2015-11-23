@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="_Headers">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="_Resources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="_Sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="_Generated">
+      <UniqueIdentifier>{8ab1efcf-1b84-424b-bd4c-ea267b45163f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Generated\Other">
+      <UniqueIdentifier>{ac804a9e-4924-4436-91a1-ac29d70da1ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LocalCpp">
+      <UniqueIdentifier>{b8710677-5ab7-4de5-8168-0f0716caa4c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LocalCpp\Generated">
+      <UniqueIdentifier>{5199bcab-10c9-489f-99d6-83fca089d545}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LocalCpp\Headers">
+      <UniqueIdentifier>{1ca891fe-889c-4ccf-aaf3-b4dd34d0f758}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LocalCpp\Sources">
+      <UniqueIdentifier>{c3248cf3-c194-49f3-9064-19496071115a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LocalCSharp">
+      <UniqueIdentifier>{a8d3de27-4717-4377-94f1-c10f66eb1ddb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LocalCSharp\Generated">
+      <UniqueIdentifier>{8b92e806-4ef8-4867-b612-c6a6acbf1eaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LocalCSharp\Headers">
+      <UniqueIdentifier>{04b7ba7b-533d-4f35-a9b2-49b91744cec1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LocalCSharp\Sources">
+      <UniqueIdentifier>{80a7ddc3-6356-4940-9074-4adf858d1b06}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpServer.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Server.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Channel.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ChannelsPool.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Parameters.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ChannelSharedAccessor.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ChannelEntry.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ChannelExclusiveAccessor.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Incomming.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Outgoing.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Client.hpp">
+      <Filter>_Generated\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Client_Signature.hpp">
+      <Filter>_Generated\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Client_TypesSerializer.hpp">
+      <Filter>_Generated\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Server_Server.hpp">
+      <Filter>_Generated\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Server_TypesSerializer.hpp">
+      <Filter>_Generated\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="LocalCpp_Server.hpp">
+      <Filter>LocalCpp\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="LocalCpp_TypesSerializer.hpp">
+      <Filter>LocalCpp\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="LocalCppChannel.h">
+      <Filter>LocalCpp\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LocalCppServer.h">
+      <Filter>LocalCpp\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LocalCSharp_Signature.hpp">
+      <Filter>LocalCSharp\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="LocalCSharp_TypesSerializer.hpp">
+      <Filter>LocalCSharp\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="LocalServerHandler.hpp">
+      <Filter>LocalCSharp\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="LocalServerHandlerProxy.h">
+      <Filter>LocalCSharp\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LocalCppLibrary.h">
+      <Filter>LocalCpp\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Transport.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ChannelState.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IBehaviour.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="HandShakeBehaviour.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseBehaviour.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ConnectedBehaviour.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SymbolToKey.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LocalChannelsPool.h">
+      <Filter>LocalCpp\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="QuotesSender.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LrpServer.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Server.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Channel.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ChannelsPool.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Parameters.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ChannelSharedAccessor.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ChannelEntry.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ChannelExclusiveAccessor.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Messages.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Incomming.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Outgoing.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LocalCpp.cpp">
+      <Filter>LocalCpp\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LocalCppChannel.cpp">
+      <Filter>LocalCpp\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LocalCppServer.cpp">
+      <Filter>LocalCpp\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LocalServerHandlerProxy.cpp">
+      <Filter>LocalCSharp\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LocalCppLibrary.cpp">
+      <Filter>LocalCpp\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Transport.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ChannelState.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="HandShakeBehaviour.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseBehaviour.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ConnectedBehaviour.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SymbolToKey.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LocalChannelsPool.cpp">
+      <Filter>LocalCpp\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="QuotesSender.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LrpServer.def">
+      <Filter>_Resources</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="LrpServer.xml">
+      <Filter>_Resources</Filter>
+    </Xml>
+  </ItemGroup>
+</Project>

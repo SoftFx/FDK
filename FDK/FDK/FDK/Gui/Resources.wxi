@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <Icon Id="main.ico" SourceFile="Resources\main.ico"/>
+</Include>

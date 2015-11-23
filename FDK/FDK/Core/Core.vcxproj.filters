@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="_Headers">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="_Sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="_Resources">
+      <UniqueIdentifier>{8bd1eac1-6cff-4e88-b047-07fcd7e29fd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Messages">
+      <UniqueIdentifier>{1bc270e3-f095-4e90-9312-b563038fcba6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Messages\Headers">
+      <UniqueIdentifier>{f840bb43-a855-4a93-a33e-f9d7b2d90cc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Messages\Sources">
+      <UniqueIdentifier>{08613a1a-14c1-457e-afef-8cb681a7c83a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Types">
+      <UniqueIdentifier>{3c010545-b457-4556-ab56-d270342a55d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Types\Headers">
+      <UniqueIdentifier>{a208f93d-2102-43ff-958e-50dafb44404e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Types\Sources">
+      <UniqueIdentifier>{495ffad4-1199-47a1-b6ff-69daab223ce2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Errors">
+      <UniqueIdentifier>{1802cb62-f06e-4022-88b6-a73dc5d9a4b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Errors\Headers">
+      <UniqueIdentifier>{80281a01-c3c7-4cba-a542-29844926e3dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Errors\Sources">
+      <UniqueIdentifier>{54a05ab5-c22b-40bb-bde3-8f6549ed5866}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="StartupInitializer.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IConnection.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IReceiver.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ISender.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="RuntimeError.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxMsgLogout.h">
+      <Filter>Messages\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxMessage.h">
+      <Filter>Messages\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxMsgData.h">
+      <Filter>Messages\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="AskComparator.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BidComparator.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Ref.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxHandle.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxRef.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxAccountInfo.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxTradeHistoryResponse.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxBar.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxClosePositionsResponse.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxDataHistoryRequest.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxDataHistoryResponse.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxEventInfo.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxExecutionReport.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxFileChunk.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxOrder.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxParams.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxQuote.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxQuoteEntry.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxSessionInfo.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxSymbolInfo.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxTradeHistoryReport.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxTradeTransactionReport.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxIterator.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="HandlesPool.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxClosePositionResult.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxPositionReport.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="InvalidHandleException.h">
+      <Filter>Errors\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ArgumentNullException.h">
+      <Filter>Errors\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ArgumentException.h">
+      <Filter>Errors\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Notification.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DataHistoryInfo.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeoutException.h">
+      <Filter>Errors\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SendException.h">
+      <Filter>Errors\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="RejectException.h">
+      <Filter>Errors\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="NotImplementedException.h">
+      <Filter>Errors\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Core.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetInfo.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Types.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxCurrencyInfo.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LogoutException.h">
+      <Filter>Errors\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="UnsupportedFeatureException.h">
+      <Filter>Errors\Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="RuntimeError.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxMessage.cpp">
+      <Filter>Messages\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxMsgLogout.cpp">
+      <Filter>Messages\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxAccountInfo.cpp">
+      <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxBar.cpp">
+      <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxClosePositionsResponse.cpp">
+      <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxDataHistoryRequest.cpp">
+      <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxDataHistoryResponse.cpp">
+      <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxEventInfo.cpp">
+      <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxExecutionReport.cpp">
+      <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxFileChunk.cpp">
+      <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxHandle.cpp">
+      <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxOrder.cpp">
+      <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxParams.cpp">
+      <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxQuote.cpp">
+      <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxQuoteEntry.cpp">
+      <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxSessionInfo.cpp">
+      <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxSymbolInfo.cpp">
+      <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxTradeHistoryReport.cpp">
+      <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxTradeHistoryResponse.cpp">
+      <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxTradeTransactionReport.cpp">
+      <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="HandlesPool.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxPositionReport.cpp">
+      <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="InvalidHandleException.cpp">
+      <Filter>Errors\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ArgumentNullException.cpp">
+      <Filter>Errors\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ArgumentException.cpp">
+      <Filter>Errors\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Notification.cpp">
+      <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SendException.cpp">
+      <Filter>Errors\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeoutException.cpp">
+      <Filter>Errors\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="RejectException.cpp">
+      <Filter>Errors\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="NotImplementedException.cpp">
+      <Filter>Errors\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Core.cpp">
+      <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxCurrencyInfo.cpp">
+      <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LogoutException.cpp">
+      <Filter>Errors\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="UnsupportedFeatureException.cpp">
+      <Filter>Errors\Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="makefile">
+      <Filter>_Resources</Filter>
+    </None>
+    <None Include="Core.def">
+      <Filter>_Resources</Filter>
+    </None>
+  </ItemGroup>
+</Project>

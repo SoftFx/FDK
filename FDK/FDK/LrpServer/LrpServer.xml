@@ -1,0 +1,78 @@
+<Protocol>
+	<Types>
+		<Type name="DataHistoryRequest" CSharpFullName="LrpServer.Net.LrpDataHistoryRequest" CppFullName="CFxDataHistoryRequest" kind="class">
+			<Member name="Symbol" type="astring" />
+			<Member name="Time" type="time" />
+			<Member name="BarsNumber" type="int32" />
+			<Member name="PriceType" type="int32" />
+			<Member name="GraphPeriod" type="astring" />
+			<Member name="ReportType" type="int32" />
+			<Member name="GraphType" type="int32" />
+		</Type>
+		<Type name="AStringArray" kind="array">
+			<Value name="astring" />
+		</Type>
+	</Types>
+	<Components>
+		<Component name="Server">
+			<Method name="OnHeartBeatRequest">
+				<Return type="void" />
+			</Method>
+			<Method name="OnHeartBeatResponse">
+				<Return type="void" />
+			</Method>
+      <Method name="OnCurrenciesInfoRequest">
+        <Param name="id" type="astring" direction="in"/>
+        <Return type="void" />
+      </Method>
+      <Method name="OnSymbolsInfoRequest">
+				<Param name="id" type="astring" direction="in"/>
+				<Return type="void" />
+			</Method>
+			<Method name="OnSessionInfoRequest">
+				<Param name="id" type="astring" direction="in"/>
+				<Return type="void" />
+			</Method>
+			<Method name="OnSubscribeToQuotesRequest">
+				<Param name="id" type="astring" direction="in"/>
+				<Param name="symbols" type="AStringArray" direction="in" />
+				<Param name="marketDepth" type="int32" direction="in" />
+				<Return type="void" />
+			</Method>
+			<Method name="OnUnsubscribeQuotesRequest">
+				<Param name="id" type="astring" direction="in"/>
+				<Param name="symbols" type="AStringArray" direction="in" />
+				<Return type="void" />
+			</Method>
+			<Method name="OnComponentsInfoRequest">
+				<Param name="id" type="astring" direction="in"/>
+				<Param name="clientVersion" type="int32" direction="in" />
+				<Return type="void" />
+			</Method>
+			<Method name="OnDataHistoryRequest">
+				<Param name="id" type="astring" direction="in"/>
+				<Param name="request" type="DataHistoryRequest" direction="in"/>
+				<Return type="void" />
+			</Method>
+			<Method name="OnFileChunkRequest">
+				<Param name="id" type="astring" direction="in"/>
+				<Param name="fieldId" type="astring" direction="in" />
+				<Param name="chunkId" type="uint32" direction="in" />
+				<Return type="void" />
+			</Method>
+			<Method name="OnBarsHistoryMetaInfoFileRequest">
+				<Param name="id" type="astring" direction="in"/>
+				<Param name="symbol" type="astring" direction="in" />
+				<Param name="priceType" type="int32" direction="in" />
+				<Param name="period" type="astring" direction="in" />
+				<Return type="void" />
+			</Method>
+			<Method name="OnQuotesHistoryMetaInfoFileRequest">
+				<Param name="id" type="astring" direction="in"/>
+				<Param name="symbol" type="astring" direction="in" />
+				<Param name="includeLevel2" type="bool" direction="in" />
+				<Return type="void" />
+			</Method>
+		</Component>
+	</Components>
+</Protocol>

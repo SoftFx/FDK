@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{855BD9F0-BC08-4E8A-A2C1-2EA082C230D7}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>QuickFix</RootNamespace>
+    <SccProjectName>
+    </SccProjectName>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IntDir>$(Configuration).$(PlatformTarget)\</IntDir>
+    <TargetName>$(ProjectName).$(PlatformTarget)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IntDir>$(Configuration).$(PlatformTarget)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetName>$(ProjectName).$(PlatformTarget)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>$(ProjectName).$(PlatformTarget)</TargetName>
+    <IntDir>$(Configuration).$(PlatformTarget)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <TargetName>$(ProjectName).$(PlatformTarget)</TargetName>
+    <IntDir>$(Configuration).$(PlatformTarget)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINSOCK_DEPRECATED_NO_WARNINGS;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Cpp0xSupport>true</Cpp0xSupport>
+      <DisableSpecificWarnings>4302;4309;4311</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINSOCK_DEPRECATED_NO_WARNINGS;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4302;4309;4311</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>_WINSOCK_DEPRECATED_NO_WARNINGS;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4302;4309;4311</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>_WINSOCK_DEPRECATED_NO_WARNINGS;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4302;4309;4311</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Application.h" />
+    <ClInclude Include="DataDictionary.h" />
+    <ClInclude Include="DataDictionaryProvider.h" />
+    <ClInclude Include="DictionariesManager.h" />
+    <ClInclude Include="Dictionary.h" />
+    <ClInclude Include="DOMDocument.h" />
+    <ClInclude Include="Exceptions.h" />
+    <ClInclude Include="Field.h" />
+    <ClInclude Include="FieldConvertors.h" />
+    <ClInclude Include="FieldMap.h" />
+    <ClInclude Include="FieldNumbers.h" />
+    <ClInclude Include="Fields.h" />
+    <ClInclude Include="FieldTypes.h" />
+    <ClInclude Include="FileLog.h" />
+    <ClInclude Include="FileStore.h" />
+    <ClInclude Include="fix44\AccountInfo.h" />
+    <ClInclude Include="fix44\AccountInfoRequest.h" />
+    <ClInclude Include="fix44\Advertisement.h" />
+    <ClInclude Include="fix44\AllocationInstruction.h" />
+    <ClInclude Include="fix44\AllocationInstructionAck.h" />
+    <ClInclude Include="fix44\AllocationReport.h" />
+    <ClInclude Include="fix44\AllocationReportAck.h" />
+    <ClInclude Include="fix44\AssignmentReport.h" />
+    <ClInclude Include="fix44\BidRequest.h" />
+    <ClInclude Include="fix44\BidResponse.h" />
+    <ClInclude Include="fix44\BusinessMessageReject.h" />
+    <ClInclude Include="fix44\ClosePositionRequest.h" />
+    <ClInclude Include="fix44\ClosePositionRequestAck.h" />
+    <ClInclude Include="fix44\CollateralAssignment.h" />
+    <ClInclude Include="fix44\CollateralInquiry.h" />
+    <ClInclude Include="fix44\CollateralInquiryAck.h" />
+    <ClInclude Include="fix44\CollateralReport.h" />
+    <ClInclude Include="fix44\CollateralRequest.h" />
+    <ClInclude Include="fix44\CollateralResponse.h" />
+    <ClInclude Include="fix44\Confirmation.h" />
+    <ClInclude Include="fix44\ConfirmationAck.h" />
+    <ClInclude Include="fix44\ConfirmationRequest.h" />
+    <ClInclude Include="fix44\CrossOrderCancelReplaceRequest.h" />
+    <ClInclude Include="fix44\CrossOrderCancelRequest.h" />
+    <ClInclude Include="fix44\CurrencyList.h" />
+    <ClInclude Include="fix44\CurrencyListRequest.h" />
+    <ClInclude Include="fix44\DerivativeSecurityList.h" />
+    <ClInclude Include="fix44\DerivativeSecurityListRequest.h" />
+    <ClInclude Include="fix44\DontKnowTrade.h" />
+    <ClInclude Include="fix44\Email.h" />
+    <ClInclude Include="fix44\ExecutionReport.h" />
+    <ClInclude Include="fix44\FileChunk.h" />
+    <ClInclude Include="fix44\FileChunkReq.h" />
+    <ClInclude Include="fix44\FileChunkReqReject.h" />
+    <ClInclude Include="fix44\Heartbeat.h" />
+    <ClInclude Include="fix44\IOI.h" />
+    <ClInclude Include="fix44\ListCancelRequest.h" />
+    <ClInclude Include="fix44\ListExecute.h" />
+    <ClInclude Include="fix44\ListStatus.h" />
+    <ClInclude Include="fix44\ListStatusRequest.h" />
+    <ClInclude Include="fix44\ListStrikePrice.h" />
+    <ClInclude Include="fix44\Logon.h" />
+    <ClInclude Include="fix44\Logout.h" />
+    <ClInclude Include="fix44\MarketDataHistory.h" />
+    <ClInclude Include="fix44\MarketDataHistoryMetadataReport.h" />
+    <ClInclude Include="fix44\MarketDataHistoryMetadataRequest.h" />
+    <ClInclude Include="fix44\MarketDataHistoryRequest.h" />
+    <ClInclude Include="fix44\MarketDataHistoryRequestReject.h" />
+    <ClInclude Include="fix44\MarketDataIncrementalRefresh.h" />
+    <ClInclude Include="fix44\MarketDataRequest.h" />
+    <ClInclude Include="fix44\MarketDataRequestAck.h" />
+    <ClInclude Include="fix44\MarketDataRequestReject.h" />
+    <ClInclude Include="fix44\MarketDataSnapshotFullRefresh.h" />
+    <ClInclude Include="fix44\MassQuote.h" />
+    <ClInclude Include="fix44\MassQuoteAcknowledgement.h" />
+    <ClInclude Include="fix44\Message.h" />
+    <ClInclude Include="fix44\MessageCracker.h" />
+    <ClInclude Include="fix44\MultilegOrderCancelReplace.h" />
+    <ClInclude Include="fix44\NetworkCounterpartySystemStatusRequest.h" />
+    <ClInclude Include="fix44\NetworkCounterpartySystemStatusResponse.h" />
+    <ClInclude Include="fix44\NewOrderCross.h" />
+    <ClInclude Include="fix44\NewOrderList.h" />
+    <ClInclude Include="fix44\NewOrderMultileg.h" />
+    <ClInclude Include="fix44\NewOrderSingle.h" />
+    <ClInclude Include="fix44\News.h" />
+    <ClInclude Include="fix44\OrderCancelReject.h" />
+    <ClInclude Include="fix44\OrderCancelReplaceRequest.h" />
+    <ClInclude Include="fix44\OrderCancelRequest.h" />
+    <ClInclude Include="fix44\OrderMassCancelReport.h" />
+    <ClInclude Include="fix44\OrderMassCancelRequest.h" />
+    <ClInclude Include="fix44\OrderMassStatusRequest.h" />
+    <ClInclude Include="fix44\OrderStatusRequest.h" />
+    <ClInclude Include="fix44\PositionMaintenanceReport.h" />
+    <ClInclude Include="fix44\PositionMaintenanceRequest.h" />
+    <ClInclude Include="fix44\PositionReport.h" />
+    <ClInclude Include="fix44\Quote.h" />
+    <ClInclude Include="fix44\QuoteCancel.h" />
+    <ClInclude Include="fix44\QuoteRequest.h" />
+    <ClInclude Include="fix44\QuoteRequestReject.h" />
+    <ClInclude Include="fix44\QuoteResponse.h" />
+    <ClInclude Include="fix44\QuoteStatusReport.h" />
+    <ClInclude Include="fix44\QuoteStatusRequest.h" />
+    <ClInclude Include="fix44\RegistrationInstructions.h" />
+    <ClInclude Include="fix44\RegistrationInstructionsResponse.h" />
+    <ClInclude Include="fix44\Reject.h" />
+    <ClInclude Include="fix44\RequestForPositions.h" />
+    <ClInclude Include="fix44\RequestForPositionsAck.h" />
+    <ClInclude Include="fix44\ResendRequest.h" />
+    <ClInclude Include="fix44\RFQRequest.h" />
+    <ClInclude Include="fix44\SecurityDefinition.h" />
+    <ClInclude Include="fix44\SecurityDefinitionRequest.h" />
+    <ClInclude Include="fix44\SecurityList.h" />
+    <ClInclude Include="fix44\SecurityListRequest.h" />
+    <ClInclude Include="fix44\SecurityStatus.h" />
+    <ClInclude Include="fix44\SecurityStatusRequest.h" />
+    <ClInclude Include="fix44\SecurityTypeRequest.h" />
+    <ClInclude Include="fix44\SecurityTypes.h" />
+    <ClInclude Include="fix44\SequenceReset.h" />
+    <ClInclude Include="fix44\SettlementInstructionRequest.h" />
+    <ClInclude Include="fix44\SettlementInstructions.h" />
+    <ClInclude Include="fix44\TestRequest.h" />
+    <ClInclude Include="fix44\TradeCaptureReport.h" />
+    <ClInclude Include="fix44\TradeCaptureReportAck.h" />
+    <ClInclude Include="fix44\TradeCaptureReportRequest.h" />
+    <ClInclude Include="fix44\TradeCaptureReportRequestAck.h" />
+    <ClInclude Include="fix44\TradeTransactionReport.h" />
+    <ClInclude Include="fix44\TradeTransactionReportRequest.h" />
+    <ClInclude Include="fix44\TradeTransactionReportRequestAck.h" />
+    <ClInclude Include="fix44\TradingSessionStatus.h" />
+    <ClInclude Include="fix44\TradingSessionStatusRequest.h" />
+    <ClInclude Include="fix44\UserRequest.h" />
+    <ClInclude Include="fix44\UserResponse.h" />
+    <ClInclude Include="FixFieldNumbers.h" />
+    <ClInclude Include="FixFields.h" />
+    <ClInclude Include="FixFieldFormatter.h" />
+    <ClInclude Include="FixValues.h" />
+    <ClInclude Include="Group.h" />
+    <ClInclude Include="Initiator.h" />
+    <ClInclude Include="LIBXML_DOMDocument.h" />
+    <ClInclude Include="Log.h" />
+    <ClInclude Include="FixMessage.h" />
+    <ClInclude Include="Message.h" />
+    <ClInclude Include="MessageSorters.h" />
+    <ClInclude Include="MessageStore.h" />
+    <ClInclude Include="MSXML_DOMDocument.h" />
+    <ClInclude Include="Mutex.h" />
+    <ClInclude Include="Parser.h" />
+    <ClInclude Include="Responder.h" />
+    <ClInclude Include="Session.h" />
+    <ClInclude Include="SessionFactory.h" />
+    <ClInclude Include="SessionID.h" />
+    <ClInclude Include="SessionSettings.h" />
+    <ClInclude Include="SessionState.h" />
+    <ClInclude Include="Settings.h" />
+    <ClInclude Include="SocketConnection.h" />
+    <ClInclude Include="SocketConnector.h" />
+    <ClInclude Include="SocketInitiator.h" />
+    <ClInclude Include="SocketMonitor.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="TimeRange.h" />
+    <ClInclude Include="Utility.h" />
+    <ClInclude Include="Values.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DataDictionary.cpp" />
+    <ClCompile Include="DataDictionaryProvider.cpp" />
+    <ClCompile Include="DictionariesManager.cpp" />
+    <ClCompile Include="Dictionary.cpp" />
+    <ClCompile Include="FieldMap.cpp" />
+    <ClCompile Include="FieldTypes.cpp" />
+    <ClCompile Include="FileLog.cpp" />
+    <ClCompile Include="FileStore.cpp" />
+    <ClCompile Include="FixFieldFormatter.cpp" />
+    <ClCompile Include="Group.cpp" />
+    <ClCompile Include="Initiator.cpp" />
+    <ClCompile Include="LIBXML_DOMDocument.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Log.cpp" />
+    <ClCompile Include="FixMessage.cpp" />
+    <ClCompile Include="Message.cpp" />
+    <ClCompile Include="MessageSorters.cpp" />
+    <ClCompile Include="MessageStore.cpp" />
+    <ClCompile Include="MSXML_DOMDocument.cpp" />
+    <ClCompile Include="Parser.cpp" />
+    <ClCompile Include="Session.cpp" />
+    <ClCompile Include="SessionFactory.cpp" />
+    <ClCompile Include="SessionSettings.cpp" />
+    <ClCompile Include="Settings.cpp" />
+    <ClCompile Include="SocketConnection.cpp" />
+    <ClCompile Include="SocketConnector.cpp" />
+    <ClCompile Include="SocketInitiator.cpp" />
+    <ClCompile Include="SocketMonitor.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="TimeRange.cpp" />
+    <ClCompile Include="Utility.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="makefile" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

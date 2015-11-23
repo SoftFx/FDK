@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <!-- including dialogs -->
+  <?include Dialogs.wxi?>
+  <!-- including resources -->
+  <?include Resources.wxi?>
+</Include>

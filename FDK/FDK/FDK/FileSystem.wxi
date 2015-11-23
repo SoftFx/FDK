@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <Directory Id="TARGETDIR" Name="SourceDir">
+    <Directory Id="DesktopFolder" Name="Desktop"/>
+    <Directory Id="ProgramMenuFolder">
+      <Directory Id="SoftFX" Name="SoftFX">
+        <Component Id='PM_SoftFX' Guid='*'>
+          <RemoveFolder Id='PM_SoftFX' On='uninstall'/>
+          <RegistryKey Root="HKCU" Key="Software\SoftFX\FDK\$(var.FullVersion)" Action="createAndRemoveOnUninstall">
+            <RegistryValue Name="PM_SoftFX" Value="1" Type="integer" KeyPath="yes"/>
+          </RegistryKey>
+        </Component>
+        <Directory Id="ApplicationProgramsFolder" Name="FDK $(var.FullVersion)">
+          <Directory Id="PM_Tools" Name="Tools">
+            <Component Id="PM_Tools" Guid="*">
+              <RemoveFolder Id='PM_Tools' On='uninstall'/>
+              <RegistryKey Root="HKCU" Key="Software\SoftFX\FDK\$(var.FullVersion)" Action="createAndRemoveOnUninstall">
+                <RegistryValue Name="PM_Tools" Value="1" Type="integer" KeyPath="yes"/>
+              </RegistryKey>
+            </Component>
+          </Directory>
+          <Directory Id="PM_Documentation" Name="Documentation">
+            <Component Id="PM_Documentation" Guid="*">
+              <RemoveFolder Id='PM_Documentation' On='uninstall'/>
+              <RegistryKey Root="HKCU" Key="Software\SoftFX\FDK\$(var.FullVersion)" Action="createAndRemoveOnUninstall">
+                <RegistryValue Name="PM_Documentation" Value="1" Type="integer" KeyPath="yes"/>
+              </RegistryKey>
+            </Component>
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+    <Directory Id="ProgramFilesFolder">
+      <Directory Id="Company" Name="SoftFX">
+        <Directory Id="APPLICATIONFOLDER" Name="FDK">
+          <Directory Id="PF_FRE" Name="FRE">
+            <Directory Id="PF_FRE_Include" Name="Include" />
+          </Directory>
+          <Directory Id="PF_Documentation" Name="Documentation"/>
+        </Directory>
+      </Directory>
+    </Directory>
+  </Directory>
+</Include>
