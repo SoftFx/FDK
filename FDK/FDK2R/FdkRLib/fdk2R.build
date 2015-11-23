@@ -1,0 +1,114 @@
+<project name="Fdk2R" default="build">
+	<target name="Defaults">
+		<property name="FrameworkDir"				value="C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\"		unless="${property::exists('FrameworkDir')}" />
+		<property name="NSISDir"					value="C:\Program Files (x86)\NSIS\"						unless="${property::exists('NSISDir')}" />
+		<tstamp property="Date"					pattern="yyyy-MM-dd"										unless="${property::exists('Date')}" />
+		<property name="Build"					value="NO_VERSION"											unless="${property::exists('Build')}" />
+		<property name="Configuration"			value="Release"												unless="${property::exists('Configuration')}" />
+		<property name="Platform"					value="Any CPU"												unless="${property::exists('Platform')}" />
+		<property name="SourcesDir"				value=".\"													unless="${property::exists('SourcesDir')}" />
+		<property name="SolutionFile"				value="BuildMachineFtpClient.sln"	unless="${property::exists('SolutionFile')}" />
+		<property name="VS2012Dir"				value="C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\IDE" />
+		<property name="R_Exe" value="D:\apps\R\R-3.2.2\bin\R.exe" />
+		
+	</target>
+	<target name="ProjectDefaults" >
+		<property name="MSBuild.SourcesDir" value=".\" />
+		<property name="SrcDir" value=".\" />
+	</target>
+	<target name="RunMSBuild">
+		<exec program="${FrameworkDir}msbuild.exe" basedir="${MSBuild.SourcesDir}" >
+			<arg value="/target:${MSBuild.Target}" />
+			<arg value="/maxcpucount" />
+			<arg value="/fl" />
+			<arg value="/flp:Verbosity=Normal;LogFile=${MSBuild.Output}" />
+			<arg value="/clp:NoItemAndPropertyList" />
+			<arg value="/verbosity:n" />
+			<arg value="/nologo" />
+			<arg value="/p:Configuration=${MSBuild.Configuration}" />
+			<arg value="/p:Platform=${MSBuild.Platform}" />
+			<arg value="${MSBuild.SolutionFile}" />
+		</exec>
+	</target>
+	<target name="build_package">
+		<call target="Defaults" />
+		
+		<exec program="${R_Exe}" >
+			<arg value="CMD" />
+			<arg value="BATCH" />		
+			<arg value="build_r.r" />
+		</exec>
+
+	</target>
+	
+	<target name="build_fdk">
+		<call target="Defaults" />
+		<call target="ProjectDefaults" />
+
+    <!-- nant target="BuildSolution">
+			<buildfiles>
+				<include name="${SrcDir}\..\..\..\..\FDK.build" />
+			</buildfiles>
+		</nant -->
+
+    <property name="MSBuild.Configuration" value="Release" />
+    <property name="MSBuild.Platform" value="x86" />
+    <property name="MSBuild.Target" value="Rebuild"/>
+    
+    <property name="MSBuild.SourcesDir" value="${SrcDir}..\..\..\Fdk\" />
+    <property name="MSBuild.SolutionFile" value="${SrcDir}..\..\..\Fdk\Fdk.sln"/>
+    
+    <echo message="${MSBuild.SourcesDir}" />
+    <echo message="${MSBuild.SolutionFile}" />
+	
+    <property name="MSBuild.Output" value=".\Fdk2R.build-${MSBuild.Configuration}-${MSBuild.Platform}.log"/>
+    <call target="RunMSBuild" />
+
+
+    <property name="MSBuild.Configuration" value="Release" />
+    <property name="MSBuild.Platform" value="x64" />
+    <property name="MSBuild.Target" value="Rebuild"/>
+
+    <property name="MSBuild.Output" value=".\Fdk2R.build-${MSBuild.Configuration}-${MSBuild.Platform}.log"/>
+    <call target="RunMSBuild" />
+
+    <delete 
+		file="${SrcDir}\Lib\Fdk\SoftFX.Extended.Net.dll" />
+    <copy 
+		file="${SrcDir}..\..\..\FRE\SoftFX.Extended.Net.dll" 
+		todir="${SrcDir}\Lib\Fdk" 
+		overwrite="true"
+		/>
+
+
+  </target>
+  
+	<target name="build_all">
+		<call target="Defaults" />
+		
+		<call target="build_fdk" />
+		
+		<call target="build" />
+	</target>
+  
+	<target name="build">
+		<call target="Defaults" />
+		<call target="ProjectDefaults" />
+
+		<property name="MSBuild.Configuration" value="Debug" />
+		<property name="MSBuild.Platform" value="Any CPU" />
+		<property name="MSBuild.Target" value="Rebuild"/>
+
+		<property name="Fdk2RVersion" value="1.0.20150817" />
+		
+		<property name="MSBuild.SolutionFile" value="${SrcDir}\Fdk2R\RFdk.sln"/>
+		<property name="MSBuild.Output" value=".\OrdersCleaner.build-${MSBuild.Configuration}-${MSBuild.Platform}.log"/>
+		<call target="RunMSBuild" />
+    
+    <call target="build_package" />
+		
+		<move file="rFdk_${Fdk2RVersion}.zip" todir="./dist"/>
+		<delete file="build_r.r.Rout" />
+
+	</target>
+</project>

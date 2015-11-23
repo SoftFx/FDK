@@ -1,0 +1,12 @@
+Package: rFdk
+Type: Package
+Title: Soft FX integration of R with FDK
+Version: 1.0.20150817
+Date: 2015-08-17
+Author: Ciprian Khlud (of SoftFX)
+Maintainer: Ciprian Khlud <ciprian.khlud@soft-fx.lv>
+Description: It exposes TickTrader's FDK API to R
+Depends:
+    R (>= 3.0)
+License: MIT
+Imports: rClr, data.table
