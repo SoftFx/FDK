@@ -303,6 +303,7 @@
   <ItemGroup>
     <Content Include="Doxygen\History.html" />
     <Content Include="Doxygen\Introduction.html" />
+    <None Include="Resources\version.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Implementation\Resources.resx">
@@ -312,7 +313,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\EmbeddedModules.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
       <LastGenOutput>EmbeddedModules.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>

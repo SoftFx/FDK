@@ -223,31 +223,6 @@
   <data name="log4net" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\..\External\Assembly\log4net.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-
-  <!--
-  <data name="TickTrader_Server_QuoteHistory_Store_Bdb" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\..\External\Assembly\TickTrader.Server.QuoteHistory.Store.Bdb.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="libdb__dotnet61_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\..\External\Assembly\libdb_dotnet61.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="libdb__csharp61_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\..\External\Assembly\x64\libdb_csharp61.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="libdb61_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\..\External\Assembly\x64\libdb61.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="libdb__dotnet61_86" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\..\External\Assembly\libdb_dotnet61.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="libdb__csharp61_86" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\..\External\Assembly\x86\libdb_csharp61.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="libdb61_86" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\..\External\Assembly\x86\libdb61.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  -->
-  
   <data name="TickTrader_Server_QuoteHistory_Store_SQLite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\..\External\Assembly\TickTrader.Server.QuoteHistory.Store.SQLite.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
