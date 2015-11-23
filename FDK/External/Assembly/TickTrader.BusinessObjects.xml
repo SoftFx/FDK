@@ -9,6 +9,46 @@
             Accounting types
             </summary>
         </member>
+        <member name="P:TickTrader.BusinessObjects.DealerResponse.DealerIpAddress">
+            <summary>
+            Dealer Ip Address is automatically filled by TradeHost
+            </summary>
+        </member>
+        <member name="T:TickTrader.BusinessObjects.OverallTradeReport">
+            <summary>
+            Represents an overall trade report
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.OverallTradeReport.Login">
+            <summary>
+            Account Login.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.OverallTradeReport.Name">
+            <summary>
+            Account Name.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.OverallTradeReport.Group">
+            <summary>
+            Account Group.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.OverallTradeReport.AccountType">
+            <summary>
+            Account Type.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.OverallTradeReport.MarginCurrency">
+            <summary>
+            Symbol margin currency .
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.OverallTradeReport.ProfitCurrency">
+            <summary>
+            Symbol profit currency .
+            </summary>
+        </member>
         <member name="T:TickTrader.BusinessObjects.SystemPerformanceCounterTypes">
             <summary>
             Contains enums used in Monitoring as System Performance Counters
@@ -108,6 +148,96 @@
             <param name="AccountId">Account Id</param>
             <param name="CloseOrders">Close market orders and cancel pending orders (otherwise orders will be deleted)</param>
             <returns>Delete account request</returns>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.Requests.ActivatorModifyRequest.Create(System.Int16,System.Int32,System.Nullable{System.Guid},System.Nullable{System.Int32},System.String,System.Nullable{System.Int32},System.Nullable{System.Single})">
+            <summary>
+            Create new AutomaticDealer request with required parameters.
+            </summary>
+            <param name="id">Dealer ID</param>
+            /// <param name="configVersion">Configuration version</param>
+            <param name="moduleId">ID of referenced module</param>
+            <param name="login">Dealer login</param>
+            <param name="password">Dealer password</param>
+            <param name="threads">Dealer password</param>
+            <param name="partial">Dealer reject rate</param>
+            <returns>New AutomaticDealer request</returns>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.Requests.ActivatorNewRequest.Create(System.Int32,System.Guid,System.Int32,System.String,System.Int32,System.Single)">
+            <summary>
+            Create new AutomaticDealer request with required parameters.
+            </summary>
+            /// <param name="configVersion">Configuration version</param>
+            <param name="login">Dealer login</param>
+            <param name="password">Dealer password</param>
+            <param name="threads">Dealer password</param>
+            <param name="partial">Dealer partial rate</param>
+            <param name="moduleId">ID of referenced module</param>
+            <returns>New AutomaticDealer request</returns>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.Requests.AutomaticDealerModifyRequest.Create(System.Int32,System.String,System.String,System.Guid,System.Guid)">
+            <summary>
+            Create new AutomaticDealer request with required parameters.
+            </summary>
+            /// /// <param name="configVersion">Configuration version</param>
+            <param name="name">Name of AutomaticDealer automatic</param>
+            <param name="address">Address of AutomaticDealer</param>
+            <param name="moduleId">Id of referenced module</param>
+            <param name="newModuleId">New Id of referenced module</param>
+            <returns>Modify AutomaticDealer request</returns>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.Requests.AutomaticDealerNewRequest.Create(System.Int32,System.String,System.String,System.Guid)">
+            <summary>
+            Create new AutomaticDealer request with required parameters.
+            </summary>
+            /// <param name="configVersion">Configuration version</param>
+            <param name="name">Name of AutomaticDealer automatic</param>
+            <param name="address">Address of AutomaticDealer</param>
+            <param name="moduleId">ID of referenced module</param>
+            <returns>New AutomaticDealer request</returns>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.Requests.DealerModifyRequest.Create(System.Int16,System.Int32,System.Nullable{System.Guid},System.Nullable{System.Int32},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Single})">
+            <summary>
+            Create new AutomaticDealer request with required parameters.
+            </summary>
+            <param name="id">Dealer ID</param>
+            /// <param name="configVersion">Configuration version</param>
+            <param name="moduleId">ID of referenced module</param>
+            <param name="login">Dealer login</param>
+            <param name="password">Dealer password</param>
+            <param name="threads">Dealer password</param>
+            <param name="delay">Dealer delay</param>
+            <param name="reject">Dealer reject rate</param>
+            <returns>New AutomaticDealer request</returns>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.Requests.DealerNewRequest.Create(System.Int32,System.Guid,System.Int32,System.String,System.Int32,System.Int32,System.Single)">
+            <summary>
+            Create new AutomaticDealer request with required parameters.
+            </summary>
+            /// <param name="configVersion">Configuration version</param>
+            <param name="login">Dealer login</param>
+            <param name="password">Dealer password</param>
+            <param name="threads">Dealer password</param>
+            <param name="delay">Dealer delay</param>
+            <param name="reject">Dealer reject rate</param>
+            <param name="moduleId">ID of referenced module</param>
+            <returns>New AutomaticDealer request</returns>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.Requests.DomainModifyRequest.Create(System.Int32,System.String,System.String)">
+            <summary>
+            Create modify domain request with required parameters.
+            </summary>
+            <param name="ConfigVersion">Configuration version</param>
+            <param name="DomainName">Name of the modifired domain</param>
+            <param name="NewDomainName">New name of the modifired domain (null if you want to keep previous value)</param>
+            <returns>Modify domain request</returns>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.Requests.DomainNewRequest.Create(System.Int32,System.String)">
+            <summary>
+            Create new domain request with required parameters.
+            </summary>
+            <param name="ConfigVersion">Configuration version</param>
+            <param name="DomainName">Desired domain name</param>
+            <returns>New domain request</returns>
         </member>
         <member name="M:TickTrader.BusinessObjects.Requests.LoginModifyRequest.Create(System.String,System.String,System.Nullable{TickTrader.BusinessObjects.LoginRights})">
             <summary>
@@ -226,60 +356,6 @@
             <param name="rights">Desired login rights</param>
             <returns>New Web API token request</returns>
         </member>
-        <member name="T:TickTrader.Common.Business.FxPriceType">
-            <summary>
-            Price type
-            </summary>
-        </member>
-        <member name="M:TickTrader.Common.Business.HistoryBar.#ctor(TickTrader.BusinessObjects.Periodicity,TickTrader.Common.Business.HistoryBar,System.Double)">
-            <summary>
-            Create Copy of source bar with custoim bar's period
-            </summary>
-            <param name="barPeriod">period for time justification</param>
-            <param name="sourceBar">initial bar </param>
-            <param name="volume">optional initial override volume </param>
-        </member>
-        <member name="M:TickTrader.Common.Business.HistoryBar.#ctor(TickTrader.BusinessObjects.Periodicity,TickTrader.Common.Business.HistoryBar)">
-            <summary>
-            Create Copy of source bar with custoim bar's period
-            </summary>
-            <param name="barPeriod">period for time justification</param>
-            <param name="sourceBar">initial bar </param>
-        </member>
-        <member name="M:TickTrader.BusinessObjects.Level2Collection.#ctor(System.Collections.Generic.List{TickTrader.BusinessObjects.Level2Value},System.Int32,System.Byte,System.Byte)">
-            <summary>
-            Warning should be sorted in collection and proper offset set
-            </summary>
-            <param name="level2Container">asb/bid list sorted</param>
-            <param name="offset">ask start</param>
-            <param name="bidCount">bid count</param>
-            <param name="askCount">ask count</param>
-        </member>
-        <member name="M:TickTrader.BusinessObjects.ManagerRightsGroup.Clone">
-            <summary>
-            Creates a new object that is a copy of the current instance.
-            </summary>
-            <returns>
-            A new object that is a copy of this instance.
-            </returns>
-        </member>
-        <member name="M:TickTrader.BusinessObjects.ManagerRightsSecurity.Clone">
-            <summary>
-            Creates a new object that is a copy of the current instance.
-            </summary>
-            <returns>
-            A new object that is a copy of this instance.
-            </returns>
-            <filterpriority>2</filterpriority>
-        </member>
-        <member name="M:TickTrader.BusinessObjects.ManagerRights.Clone">
-            <summary>
-            Creates a new object that is a copy of the current instance.
-            </summary>
-            <returns>
-            A new object that is a copy of this instance.
-            </returns>
-        </member>
         <member name="M:TickTrader.BusinessObjects.Requests.AccountBalanceRequest.Create(System.Int64,System.Decimal,System.String)">
             <summary>
             Create modify account balance request with required parameters.
@@ -348,8 +424,8 @@
             <summary>
             Create cancel order request with required parameters.
             </summary>
-            <param name="OrderId">Order Id</param>
-            <param name="StopoutFlag">Stop out flag</param>
+            <param name="orderId">Order Id</param>
+            <param name="stopoutFlag">Stop out flag</param>
             <returns>Cancel order request</returns>
         </member>
         <member name="M:TickTrader.BusinessObjects.Requests.CancelOrderRequest.CreateClient(System.Int64)">
@@ -727,37 +803,6 @@
             <param name="Expiration">Order expiration date (null if you want to keep previous value)</param>
             <returns>Order replace request</returns>
         </member>
-        <member name="T:TickTrader.BusinessObjects.OrderTypes">
-            <summary>
-            Order types
-            </summary>
-        </member>
-        <member name="T:TickTrader.BusinessObjects.OrderSides">
-            <summary>
-            Order sides
-            </summary>
-        </member>
-        <member name="T:TickTrader.BusinessObjects.OrderStatuses">
-            <summary>
-            Order statuses
-            </summary>    
-        </member>
-        <member name="T:TickTrader.BusinessObjects.OrderExecutionOptions">
-            <summary>
-            Order execution options
-            </summary>    
-        </member>
-        <member name="F:TickTrader.BusinessObjects.MarketDataUpdateType.FullSnapshot">
-            <summary>
-            Each update has full snapshot of market data.
-            </summary>
-        </member>
-        <member name="F:TickTrader.BusinessObjects.MarketDataUpdateType.Incremental">
-            <summary>
-            The first update has full data snaphot. All subsequent updates 
-            contains only changed rows.
-            </summary>
-        </member>
         <member name="M:TickTrader.BusinessObjects.Requests.RolloverRequest.CreateForAccount(System.Int64)">
             <summary>
             Create rollover request for the given account.
@@ -855,6 +900,384 @@
         <member name="F:TickTrader.BusinessObjects.Requests.TradingSessionStatus.Opened">
             <summary>Trading session is opened</summary>
         </member>
+        <member name="M:TickTrader.BusinessObjects.Level2Collection.#ctor(System.Collections.Generic.List{TickTrader.BusinessObjects.Level2Value},System.Int32,System.Byte,System.Byte)">
+            <summary>
+            Warning should be sorted in collection and proper offset set
+            </summary>
+            <param name="level2Container">asb/bid list sorted</param>
+            <param name="offset">ask start</param>
+            <param name="bidCount">bid count</param>
+            <param name="askCount">ask count</param>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.ManagerRightsGroup.Clone">
+            <summary>
+            Creates a new object that is a copy of the current instance.
+            </summary>
+            <returns>
+            A new object that is a copy of this instance.
+            </returns>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.ManagerRightsSecurity.Clone">
+            <summary>
+            Creates a new object that is a copy of the current instance.
+            </summary>
+            <returns>
+            A new object that is a copy of this instance.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.ManagerRights.Clone">
+            <summary>
+            Creates a new object that is a copy of the current instance.
+            </summary>
+            <returns>
+            A new object that is a copy of this instance.
+            </returns>
+        </member>
+        <member name="T:TickTrader.BusinessObjects.OrderTypes">
+            <summary>
+            Order types
+            </summary>
+        </member>
+        <member name="T:TickTrader.BusinessObjects.OrderSides">
+            <summary>
+            Order sides
+            </summary>
+        </member>
+        <member name="T:TickTrader.BusinessObjects.OrderStatuses">
+            <summary>
+            Order statuses
+            </summary>    
+        </member>
+        <member name="T:TickTrader.BusinessObjects.OrderExecutionOptions">
+            <summary>
+            Order execution options
+            </summary>    
+        </member>
+        <member name="T:TickTrader.BusinessObjects.Order">
+            <summary>
+            TODO Order
+            </summary>
+        </member>
+        <member name="F:TickTrader.BusinessObjects.Order.IdLogFormat">
+            <summary>
+            Order Id format for logging
+            </summary>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.Order.#ctor">
+            <summary>
+            Create new instance of the class
+            </summary>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.Order.#ctor(TickTrader.BusinessObjects.IOrder)">
+            <summary>
+            Create a copy of existing order
+            </summary>
+            <param name="order"></param>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.RangeId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.AccountId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.Symbol">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.SymbolAlias">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.SymbolAliasOrName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.OrderId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.ClientOrderId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.ParentOrderId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.Price">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.StopPrice">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.Side">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.Type">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.InitialType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.Status">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.Amount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.RemainingAmount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.AggrFillPrice">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.AverageFillPrice">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.Created">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.Modified">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.Filled">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.PositionCreated">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.StopLoss">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.TakeProfit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.Profit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.Margin">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.UserComment">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.ManagerComment">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.UserTag">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.ManagerTag">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.Magic">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.Commission">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.AgentCommision">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.Expired">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.ClosePrice">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.MarginRateInitial">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.MarginRateCurrent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.OpenConversionRate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.CloseConversionRate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.Version">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.Options">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.Properties">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.Order.Clone">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.FilledAmount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.TotalCommission">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.Activation">
+            <summary>
+            Pumping activation flag. Used only in client manager model.
+            </summary>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.Order.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.IsPending">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.Order.IsOptionSet(TickTrader.BusinessObjects.OrderExecutionOptions)">
+            <summary>
+            
+            </summary>
+            <param name="option"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.Order.IsSameOrder(TickTrader.BusinessObjects.IOrder)">
+            <summary>
+            Check if there are major changes of the order
+            </summary>
+            <param name="order">New order with the same OrderId</param>
+            <returns>Returns true if it has any major changes</returns>
+        </member>
+        <member name="T:TickTrader.BusinessObjects.OrderExtension">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TickTrader.BusinessObjects.MarketDataUpdateType.FullSnapshot">
+            <summary>
+            Each update has full snapshot of market data.
+            </summary>
+        </member>
+        <member name="F:TickTrader.BusinessObjects.MarketDataUpdateType.Incremental">
+            <summary>
+            The first update has full data snaphot. All subsequent updates 
+            contains only changed rows.
+            </summary>
+        </member>
+        <member name="T:TickTrader.BusinessObjects.SymbolSecurity">
+            <summary>
+            Represents a security of a symbol
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolSecurity.Id">
+            <summary>
+            Gets or sets the Id of security.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolSecurity.Name">
+            <summary>
+            Gets or sets the name of security.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolSecurity.Description">
+            <summary>
+            Gets or sets the description of security.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolSecurity.SortOrder">
+            <summary>
+            Gets or sets the priority of security.
+            </summary>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.SymbolSecurity.Clone">
+            <summary>
+            Creates new reference of the instance.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:TickTrader.BusinessObjects.ManagerInfo.Clone">
             <summary>
             Creates a new object that is a copy of the current instance.
@@ -877,6 +1300,343 @@
             <summary>
             Profit calculation modes
             </summary>
+        </member>
+        <member name="T:TickTrader.BusinessObjects.QuotesWriteModes">
+            <summary>
+            Quotes write modes
+            </summary>
+        </member>
+        <member name="T:TickTrader.BusinessObjects.SymbolInfo">
+            <summary>
+            Represents a symbol
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.Id">
+            <summary>
+            Gets or sets a unique ID for this SymbolInfo instance.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.Symbol">
+            <summary>
+            Gets or sets the name of the symbol.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.Security">
+            <summary>
+            Gets or sets the name of security of the symbol.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.Precision">
+            <summary>
+            Gets or sets the precision of the symbol.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.TradeIsAllowed">
+            <summary>
+            Gets or sets whether trade is allowed for the symbol or not.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.MarginMode">
+            <summary>
+            Gets or sets the mode of margin calculation.
+            Supported values:
+              Forex
+              CFD
+              Futures
+              CFD_Index
+              CFD_Leverage
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.ProfitMode">
+            <summary>
+            Gets or sets the mode of profit calculation.
+            Supported values:
+              Forex
+              CFD
+              Futures
+              CFD_Index
+              CFD_Leverage
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.QuotesWriteMode">
+            <summary>
+            Gets or sets the mode of writing quotes.
+            Supported values:
+              None = 0x00
+              Bars = 0x01
+              Ticks = 0x02
+              TicksLevel2 = 0x04
+              BarsAndTicks = Bars|Ticks
+              All = TicksLevel2|BarsAndTicks
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.ContractSize">
+            <summary>
+            Gets or sets the size of contract.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.ContractSizeFractional">
+            <summary>
+            Gets or sets the size of contract fractional.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.MarginHedged">
+            <summary>
+            Gets or sets the margin ratio, which is taken for hedged positions.
+            Supported values: [0.0, 1.0].
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.MarginFactor">
+            <summary>
+            Gets or sets the margin ratio in percent. Now it is obsolete and deprecated.
+            Supported values: [0, 100].
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.MarginFactorFractional">
+            <summary>
+            Gets or sets the margin ratio fractional.
+            Supported values: [0.0, 1.0].
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.MarginStrongMode">
+            <summary>
+            Gets or sets whether margin is calculated in static mode or in dynamic mode.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.MarginCurrency">
+            <summary>
+            Gets or sets the margin currency.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.MarginCurrencyId">
+            <summary>
+            Gets or sets the margin currency ID.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.MarginCurrencyPrecision">
+            <summary>
+            Gets or sets the precision of margin currency.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.MarginCurrencySortOrder">
+            <summary>
+            Gets or sets the priority of margin currency.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.ProfitCurrency">
+            <summary>
+            Gets or sets the profit currency.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.ProfitCurrencyId">
+            <summary>
+            Gets or sets the profit currency ID.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.ProfitCurrencyPrecision">
+            <summary>
+            Gets or sets the precision of profit currency.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.ProfitCurrencySortOrder">
+            <summary>
+            Gets or sets the priority of profit currency.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.ColorRef">
+            <summary>
+            Gets or sets the color of the symbol.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.Description">
+            <summary>
+            Gets or sets the description of the symbol.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.SwapEnabled">
+            <summary>
+            Gets or sets whether swaps is enabled for the symbol.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.SwapSizeShort">
+            <summary>
+            Gets or sets the size of swap for short positions.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.SwapSizeLong">
+            <summary>
+            Gets or sets the size of swap for long positions.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.IsPrimary">
+            <summary>
+            Gets or sets whether the symbol is primary or not.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.SortOrder">
+            <summary>
+            Gets or sets the priority of the symbol.
+            </summary>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.SymbolInfo.Clone">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:TickTrader.BusinessObjects.GroupSymbolInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.GroupSymbolInfo.#ctor">
+            <summary>
+            Initializes a new instance of GroupSymbolInfo class.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.GroupSymbolInfo.MaxTradeAmount">
+            <summary>
+            Gets or sets the maximum trade amount in lots.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.GroupSymbolInfo.MinTradeAmount">
+            <summary>
+            Gets or sets the TODO
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.GroupSymbolInfo.TradeAmountStep">
+            <summary>
+            Gets or sets the TODO
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.GroupSymbolInfo.IsTradeAllowed">
+            <summary>
+            Gets or sets the TODO
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.GroupSymbolInfo.CommissionType">
+            <summary>
+            Gets or sets the TODO
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.GroupSymbolInfo.CommissionChargeType">
+            <summary>
+            Gets or sets the TODO
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.GroupSymbolInfo.CommissionChargeMethod">
+            <summary>
+            Gets or sets the TODO
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.GroupSymbolInfo.LimitsCommission">
+            <summary>
+            Gets or sets the TODO
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.GroupSymbolInfo.Commission">
+            <summary>
+            Gets or sets the TODO
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.GroupSymbolInfo.GroupSortOrder">
+            <summary>
+            Gets or sets the TODO
+            </summary>
+        </member>
+        <member name="T:TickTrader.BusinessObjects.ServerSymbolInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.ServerSymbolInfo.SymbolOriginal">
+            <summary>
+            Gets or sets the TODO
+            </summary>
+        </member>
+        <member name="T:TickTrader.BusinessObjects.SymbolTick">
+            <summary>
+            Represents a tick of a symbol
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolTick.Symbol">
+            <summary>
+            Gets or sets the name of symbol.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolTick.Time">
+            <summary>
+            Gets or sets the time of tick.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolTick.Bid">
+            <summary>
+            Gets or sets the bid price.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolTick.Ask">
+            <summary>
+            Gets or sets the ask price.
+            </summary>
+        </member>
+        <member name="F:TickTrader.BusinessObjects.SymbolTick.Level2">
+            <summary>
+            Level 2 records
+            </summary>
+        </member>
+        <member name="F:TickTrader.BusinessObjects.SymbolTick.LastProcessedTime">
+            <summary>
+            The last time at which a tick has been processed.
+            </summary>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.SymbolTick.Clone">
+            <summary>
+            Creates a new reference of the instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.SymbolTick.Convert(TickTrader.Common.Business.FeedTick)">
+            <summary>
+            Converts a feed tick to a symbol tick
+            </summary>
+            <param name="tick">Feed tick</param>
+            <returns>Symbol tick</returns>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.SymbolTick.Convert(TickTrader.Common.Business.FeedTick,System.Int32)">
+            <summary>
+            Converts feed tick to a symbol tick with specified depth of Level2.
+            </summary>
+            <param name="tick">Feed tick</param>
+            <param name="depth">Depth of Level2</param>
+            <returns></returns>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.SymbolTick.Convert(TickTrader.BusinessObjects.SymbolTick)">
+            <summary>
+            Converts a symbol tick to a feed tick
+            </summary>
+            <param name="tick">Symbol tick</param>
+            <returns>Feed tick</returns>
+        </member>
+        <member name="T:TickTrader.BusinessObjects.TradeReport">
+            <summary>
+            Represents a trade report
+            </summary>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.TradeReport.#cctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.TradeReport.#ctor">
+            <summary>
+            Initializes a new instance of the TradeReport class
+            </summary>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.TradeReport.#ctor(TickTrader.BusinessObjects.ITradeReport)">
+            <summary>
+            Initializes a new instance of the TradeReport class to the specified trade report.
+            </summary>
+            <param name="original"></param>
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.Id">
             <summary>
@@ -978,6 +1738,11 @@
             Null in case of Balance and Credit transactions.
             </summary>
         </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.SymbolAliasOrName">
+            <summary>
+            Gets SymbolAlias if it is not null, otherwise Symbol
+            </summary>
+        </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.OrderAmount">
             <summary>
             The amount of described order specified (requested) on order opening.
@@ -1060,6 +1825,12 @@
             3) Fill order #101 for 0.5L. Order #101 transforms into position #101 with amount 0.5L.
             4) Close position #102. Report #102/1 is created with OrderId=#101 and PosId=#102
             5) Close position #101. Report #101/1 is created with OrderId=#101 and PosId=#101
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.PosById">
+            <summary>
+            Unique identifier of a position was used to close by.
+            Valid only for PositionClosed (Gross) reports. Null in all other cases
             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.PosAmount">
@@ -1250,6 +2021,35 @@
             Null in case of Balance and Credit transactions.
             </summary>
         </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.ProfitToUsdConversionRate">
+            <summary>
+            Conversion rate to convert profit to USD
+            Null if no conversion cannot be performed
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.UsdToProfitConversionRate">
+            <summary>
+            Conversion rate to convert USD to profit currency
+            Null if no conversion cannot be performed
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.BalanceToUsdConversionRate">
+            <summary>
+            Conversion rate to convert balance currency to USD
+            Null if no conversion cannot be performed
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.UsdToBalanceConversionRate">
+            <summary>
+            Conversion rate to convert USD to balance currency
+            Null if no conversion cannot be performed
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.SideString">
+            <summary>
+            Gets value of Side as string. It is used only by Web site.
+            </summary>
+        </member>
         <member name="T:TickTrader.BusinessObjects.TradeTransTypes">
             <summary>
             Trade transaction types
@@ -1259,6 +2059,174 @@
             <summary>
             Trade transaction reasons
             </summary>
+        </member>
+        <member name="T:TickTrader.Common.Business.FeedTick">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TickTrader.Common.Business.FeedTick.#ctor(System.String,System.DateTime,System.Decimal,System.Double,System.Decimal,System.Double)">
+            <summary>
+            
+            </summary>
+            <param name="symbol"></param>
+            <param name="time"></param>
+            <param name="bid"></param>
+            <param name="bidVolume"></param>
+            <param name="ask"></param>
+            <param name="askVolume"></param>
+        </member>
+        <member name="M:TickTrader.Common.Business.FeedTick.#ctor(System.String,System.DateTime,TickTrader.Common.Business.FxPriceType,System.Decimal,System.Double)">
+            <summary>
+            
+            </summary>
+            <param name="symbol"></param>
+            <param name="time"></param>
+            <param name="tyickType"></param>
+            <param name="price"></param>
+            <param name="volume"></param>
+        </member>
+        <member name="M:TickTrader.Common.Business.FeedTick.#ctor(TickTrader.Common.Business.FeedTick,System.DateTime)">
+            <summary>
+            
+            </summary>
+            <param name="tick"></param>
+            <param name="time"></param>
+        </member>
+        <member name="M:TickTrader.Common.Business.FeedTick.#ctor(System.String,System.DateTime,System.Collections.Generic.IEnumerable{TickTrader.Common.Business.FeedLevel2Record})">
+            <summary>
+            
+            </summary>
+            <param name="symbol"></param>
+            <param name="time"></param>
+            <param name="level2"></param>
+        </member>
+        <member name="M:TickTrader.Common.Business.FeedTick.#ctor(System.String,System.DateTime,System.Byte,System.Collections.Generic.IEnumerable{TickTrader.Common.Business.FeedLevel2Record})">
+            <summary>
+            
+            </summary>
+            <param name="symbol"></param>
+            <param name="time"></param>
+            <param name="timeIndex"></param>
+            <param name="level2"></param>
+        </member>
+        <member name="M:TickTrader.Common.Business.FeedTick.#ctor(System.String,TickTrader.BusinessObjects.FeedTickId,System.Collections.Generic.IEnumerable{TickTrader.Common.Business.FeedLevel2Record})">
+            <summary>
+            
+            </summary>
+            <param name="symbol"></param>
+            <param name="id"></param>
+            <param name="level2"></param>
+        </member>
+        <member name="M:TickTrader.Common.Business.FeedTick.ConstructFormPreparedData(System.String,TickTrader.BusinessObjects.FeedTickId,System.Collections.Generic.IEnumerable{TickTrader.Common.Business.FeedLevel2Record},System.Nullable{TickTrader.Common.Business.FeedLevel2Record},System.Nullable{TickTrader.Common.Business.FeedLevel2Record})">
+            <summary>
+            
+            </summary>
+            <param name="symbol"></param>
+            <param name="id"></param>
+            <param name="level2"></param>
+            <param name="bestBid"></param>
+            <param name="bestAsk"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TickTrader.Common.Business.FeedTick.RoundPrice(System.Decimal,System.Int32,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="price"></param>
+            <param name="precision"></param>
+            <param name="ceiling"></param>
+            <returns></returns>
+        </member>
+        <member name="P:TickTrader.Common.Business.FeedTick.Symbol">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.Common.Business.FeedTick.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.Common.Business.FeedTick.Time">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.Common.Business.FeedTick.LastProcessedTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.Common.Business.FeedTick.BestAsk">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.Common.Business.FeedTick.BestBid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.Common.Business.FeedTick.Level2">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TickTrader.Common.Business.FeedTick.GetRecord(TickTrader.Common.Business.FxPriceType)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TickTrader.Common.Business.FeedTick.GetValue(System.Boolean)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.Common.Business.FeedTick.AskPresent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.Common.Business.FeedTick.BidPresent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TickTrader.Common.Business.FeedTick.Equals(System.Object)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TickTrader.Common.Business.FeedTick.Equals(TickTrader.Common.Business.FeedTick)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TickTrader.Common.Business.FeedTick.EqualsByContent(TickTrader.Common.Business.FeedTick)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:TickTrader.Common.Business.FxPriceType">
+            <summary>
+            Price type
+            </summary>
+        </member>
+        <member name="M:TickTrader.Common.Business.HistoryBar.#ctor(TickTrader.BusinessObjects.Periodicity,TickTrader.Common.Business.HistoryBar,System.Double)">
+            <summary>
+            Create Copy of source bar with custoim bar's period
+            </summary>
+            <param name="barPeriod">period for time justification</param>
+            <param name="sourceBar">initial bar </param>
+            <param name="volume">optional initial override volume </param>
+        </member>
+        <member name="M:TickTrader.Common.Business.HistoryBar.#ctor(TickTrader.BusinessObjects.Periodicity,TickTrader.Common.Business.HistoryBar)">
+            <summary>
+            Create Copy of source bar with custoim bar's period
+            </summary>
+            <param name="barPeriod">period for time justification</param>
+            <param name="sourceBar">initial bar </param>
         </member>
     </members>
 </doc>
