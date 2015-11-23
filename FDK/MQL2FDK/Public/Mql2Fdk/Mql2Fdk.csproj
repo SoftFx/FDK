@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BFA54886-6E55-4575-9190-6F4F484DD411}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mql2Fdk</RootNamespace>
+    <AssemblyName>Mql2Fdk</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SoftFX.Extended.Net">
+      <HintPath>..\External\SoftFX.Extended.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="SoftFX.Net">
+      <HintPath>..\External\SoftFX.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Adapter\MqlAdapter.Constants.cs" />
+    <Compile Include="Adapter\MqlAdapter.Conversion.cs" />
+    <Compile Include="Adapter\MqlAdapter.Indicators.cs" />
+    <Compile Include="Adapter\MqlAdapter.DateTime.cs" />
+    <Compile Include="Adapter\MqlAdapter.MarketInfo.cs" />
+    <Compile Include="Adapter\MqlAdapter.Timeseries.cs" />
+    <Compile Include="Adapter\MqlAdapter.Account.cs" />
+    <Compile Include="Adapter\MqlAdapter.Trading.cs" />
+    <Compile Include="Adapter\MqlAdapter.Adviser.cs" />
+    <Compile Include="Attributes\copyrightAttribute.cs" />
+    <Compile Include="Attributes\indicator_buffersAttribute.cs" />
+    <Compile Include="Attributes\indicator_chart_windowAttribute.cs" />
+    <Compile Include="Attributes\indicator_color1Attribute.cs" />
+    <Compile Include="Attributes\indicator_levelstyleAttribute.cs" />
+    <Compile Include="Attributes\indicator_levelwidthAttribute.cs" />
+    <Compile Include="Attributes\indicator_maximumAttribute.cs" />
+    <Compile Include="Attributes\indicator_minimumAttribute.cs" />
+    <Compile Include="Attributes\indicator_separate_windowAttribute.cs" />
+    <Compile Include="Attributes\indicator_width1Attribute.cs" />
+    <Compile Include="Attributes\linkAttribute.cs" />
+    <Compile Include="Attributes\show_confirmAttribute.cs" />
+    <Compile Include="Attributes\show_inputsAttribute.cs" />
+    <Compile Include="Attributes\stacksizeAttribute.cs" />
+    <Compile Include="Collections\BarPrices.cs" />
+    <Compile Include="Collections\BarPriceType.cs" />
+    <Compile Include="Collections\BarValues.cs" />
+    <Compile Include="Collections\BarVolumes.cs" />
+    <Compile Include="CastUtils.cs" />
+    <Compile Include="ConnectionStrings.cs" />
+    <Compile Include="FixConnectionStrings.cs" />
+    <Compile Include="Adapter\MqlAdapter.cs" />
+    <Compile Include="IStrategyLog.cs" />
+    <Compile Include="StrategyLauncher.cs" />
+    <Compile Include="Strategy.cs" />
+    <Compile Include="Types\color.cs" />
+    <Compile Include="Types\datetime.cs" />
+    <Compile Include="Adapter\MqlAdapter.Math.cs" />
+    <Compile Include="Adapter\MqlAdapter.Common.cs" />
+    <Compile Include="Adapter\MqlAdapter.Arrays.cs" />
+    <Compile Include="Adapter\MqlAdapter.Strings.cs" />
+    <Compile Include="MqlLauncher.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

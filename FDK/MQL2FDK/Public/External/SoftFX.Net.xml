@@ -1,0 +1,211 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SoftFX.Net</name>
+    </assembly>
+    <members>
+        <member name="T:SoftFX.Basic.ErrorEventArgs">
+            <summary>
+            Contains information about exception.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Basic.ErrorEventArgs.#ctor(System.Exception)">
+            <summary>
+            Creates a new instance of ErrorEventArgs.
+            </summary>
+            <param name="ex">an exception instance; can be null</param>
+        </member>
+        <member name="P:SoftFX.Basic.ErrorEventArgs.Exception">
+            <summary>
+            Gets a caught exception.
+            </summary>
+        </member>
+        <member name="T:SoftFX.Basic.ErrorHandler">
+            <summary>
+            Represents the method that will handle an error.
+            </summary>
+            <param name="sender">the source of the event</param>
+            <param name="e">an ErrorEventArgs that contains no event data</param>
+        </member>
+        <member name="T:SoftFX.Basic.ErrorMode">
+            <summary>
+            Describes possible cases of exceptions processing, which have been thrown within user event handlers.
+            </summary>
+        </member>
+        <member name="F:SoftFX.Basic.ErrorMode.Default">
+            <summary>
+            Throw mode if debugger is attached, otherwise Silent mode.
+            </summary>
+        </member>
+        <member name="F:SoftFX.Basic.ErrorMode.Throw">
+            <summary>
+            Manager class doesn't catch exception within user event handlers. In this case program will crash, if an exception is encountered
+            </summary>
+        </member>
+        <member name="F:SoftFX.Basic.ErrorMode.Silent">
+            <summary>
+            Manager class catches any exception within user event handlers and raises a special Error event.
+            </summary>
+        </member>
+        <member name="T:SoftFX.Basic.Manager">
+            <summary>
+            Contains feed/trade methods.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Basic.Manager.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Creates a new instance of Manager class by two connection strings.
+            </summary>
+            <param name="feedConnectionString">a feed connection string</param>
+            <param name="tradeConnectionString">a trade connection string</param>
+            <param name="location">a relative or absolute path location for history</param>
+            <exception cref="T:System.ArgumentNullException">if feedConnectionString or tradeConnectionString are null</exception>
+        </member>
+        <member name="M:SoftFX.Basic.Manager.Start">
+            <summary>
+            Starts the manager instance.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Basic.Manager.Stop">
+            <summary>
+            Stops the manager instance.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Basic.Manager.RefreshSnapshot">
+            <summary>
+            The method recalculates snapshot fully.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Basic.Manager.TakeSnapshot(System.String,SoftFX.Extended.PriceType,SoftFX.Extended.BarPeriod)">
+            <summary>
+            The method takes the full snapshot of the manager state.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SoftFX.Basic.Manager.Dispose">
+            <summary>
+            Closes all connections, flushes all data.
+            </summary>
+        </member>
+        <member name="E:SoftFX.Basic.Manager.Error">
+            <summary>
+            Allows to catch and log exception in silent mode.
+            </summary>
+        </member>
+        <member name="E:SoftFX.Basic.Manager.Updated">
+            <summary>
+            Raises when any data have been updated.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Basic.Manager.Trader">
+            <summary>
+            Provides direct access to data trade.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Basic.Manager.Feeder">
+            <summary>
+            Provides direct access to data feed.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Basic.Manager.ErrorMode">
+            <summary>
+            Gets or sets error mode of the manager.
+            </summary>
+        </member>
+        <member name="T:SoftFX.Basic.Snapshot">
+            <summary>
+            Provides atomic access to manager data.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Basic.Snapshot.#ctor(SoftFX.Basic.Snapshot,SoftFX.Extended.Storage.DataFeedStorage,System.String,SoftFX.Extended.BarPeriod,SoftFX.Extended.PriceType)">
+            <summary>
+            The constructor takes snapshot from manager.
+            </summary>
+            <param name="snapshot">a snapshot instance</param>
+            <param name="storage"></param>
+            <param name="symbol"></param>
+            <param name="periodicity"></param>
+            <param name="priceType"></param>
+            <exception cref="T:System.ArgumentNullException">if snapshot is null</exception>
+        </member>
+        <member name="M:SoftFX.Basic.Snapshot.GetBars(System.String,SoftFX.Extended.BarPeriod)">
+            <summary>
+            Returns history bars for a specified symbol
+            </summary>
+            <param name="symbol">a requested symbol</param>
+            <param name="period">a requested period</param>
+            <returns></returns>
+        </member>
+        <member name="P:SoftFX.Basic.Snapshot.IsFeedLoggedOn">
+            <summary>
+            Retruns true, if feed connection is logged on.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Basic.Snapshot.IsTradeLoggedOn">
+            <summary>
+            Returns true, if trade connection is logged on.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Basic.Snapshot.AccountInfo">
+            <summary>
+            Returns account information.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Basic.Snapshot.FeedSessionInfo">
+            <summary>
+            Returns information about feed session.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Basic.Snapshot.TradeSessionInfo">
+            <summary>
+            Returns trade information about trade session.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Basic.Snapshot.TradeRecords">
+            <summary>
+            Returns list of trade records.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Basic.Snapshot.Positions">
+            <summary>
+            Returns list of opened positions (for NET accounts only)
+            </summary>
+        </member>
+        <member name="P:SoftFX.Basic.Snapshot.Quotes">
+            <summary>
+            Returns list of the latest know quotes.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Basic.Snapshot.Symbols">
+            <summary>
+            Returns information about symbols.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Basic.Snapshot.Bars">
+            <summary>
+            Returns known bars for the current symbol
+            </summary>
+        </member>
+        <member name="P:SoftFX.Basic.Snapshot.ServerDateTime">
+            <summary>
+            Returns the last known server time.
+            </summary>
+        </member>
+        <member name="T:SoftFX.Basic.SnapshotReader">
+            <summary>
+            Provides atomic access to manager data.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Basic.SnapshotReader.#ctor(SoftFX.Basic.Manager)">
+            <summary>
+            Creates a new instance of Snapshot and locks manager instance to take snapshot data.
+            </summary>
+            <param name="manager"></param>
+        </member>
+        <member name="M:SoftFX.Basic.SnapshotReader.Dispose">
+            <summary>
+            Unlocks manager.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,94 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:v="clr-namespace:Mql2Fdk.Launcher.ViewModels">
+    
+    <Style x:Key="FieldLabel"
+           TargetType="{x:Type Label}"
+           BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center" />
+        <Setter Property="FontWeight"
+                Value="SemiBold" />
+               
+    </Style>
+    
+    <DataTemplate DataType="{x:Type v:LauncherViewModel}">
+        <DockPanel Margin="4">
+            <Button DockPanel.Dock="Bottom"
+                    Content="_Launch..."
+                    Command="{Binding LaunchCommand}"
+                    Height="32" />
+            <StackPanel>
+                <Label Content="_Address"
+                       Style="{StaticResource FieldLabel}"
+                       Target="{Binding ElementName=Address}" />
+                <TextBox x:Name="Address"
+                         Text="{Binding Address, ValidatesOnDataErrors=True}" />
+
+                <Label Content="_Username"
+                       Style="{StaticResource FieldLabel}"
+                       Target="{Binding ElementName=Username}"/>
+                <TextBox x:Name="Username"
+                         Text="{Binding Username, ValidatesOnDataErrors=True}" />
+
+                <Label Content="_Password"
+                       Style="{StaticResource FieldLabel}"
+                       Target="{Binding ElementName=Password}"/>
+                <TextBox x:Name="Password"
+                         Text="{Binding Password, ValidatesOnDataErrors=True}" />
+
+                <Label Content="Logs and Storage L_ocation"
+                       Style="{StaticResource FieldLabel}"
+                       Target="{Binding ElementName=Location}"/>
+                <TextBox x:Name="Location"
+                         Text="{Binding Location}" />
+
+                <Label Content="_Symbol"
+                       Style="{StaticResource FieldLabel}"
+                       Target="{Binding ElementName=Symbol}"/>
+                <TextBox x:Name="Symbol"
+                         Text="{Binding Symbol, ValidatesOnDataErrors=True}" />
+
+                <Label Content="Price _Type"
+                       Style="{StaticResource FieldLabel}"
+                       Target="{Binding ElementName=PriceType}" />
+                <ComboBox x:Name="PriceType"
+                          ItemsSource="{Binding PriceTypes}"
+                          DisplayMemberPath="Description"
+                          SelectedItem="{Binding PriceType}" />
+
+                <Label Content="P_eriodicity"
+                       Style="{StaticResource FieldLabel}"
+                       Target="{Binding ElementName=Periodicity}" />
+                <ComboBox x:Name="Periodicity"
+                          ItemsSource="{Binding Periodicities}"
+                          DisplayMemberPath="Description"
+                          SelectedItem="{Binding Periodicity}" />
+
+                <Label Content="St_rategy"
+                       Style="{StaticResource FieldLabel}"
+                       Target="{Binding ElementName=Strategy}"/>
+                <ComboBox x:Name="Strategy"
+                          ItemsSource="{Binding Strategies}"
+                          DisplayMemberPath="Name"
+                          SelectedItem="{Binding Strategy}" />
+            </StackPanel>
+        </DockPanel>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type v:StrategyViewModel}">
+        <DockPanel Margin="4">
+            <Button DockPanel.Dock="Bottom"
+                    Content="Close"
+                    Command="{Binding CloseCommand}" />
+            <TextBlock DockPanel.Dock="Top" 
+                       Text="Log" />
+            <TextBox Margin="0, 2, 0, 2"
+                     IsReadOnly="True"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"
+                     VerticalScrollBarVisibility="Auto"
+                     Text="{Binding LogText, Mode=OneWay}" />
+        </DockPanel>
+    </DataTemplate>
+</ResourceDictionary>

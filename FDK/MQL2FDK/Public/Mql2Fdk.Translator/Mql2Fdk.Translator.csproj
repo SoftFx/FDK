@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CD86548D-97BA-4757-9C09-864D8EA9EF5F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mql2Fdk.Translator</RootNamespace>
+    <AssemblyName>Mql2Fdk.Translator</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.NRefactory">
+      <HintPath>..\External\ICSharpCode.NRefactory.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.NRefactory.CSharp">
+      <HintPath>..\External\ICSharpCode.NRefactory.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CodeGenerator\CodeWriters\BlockWriter.cs" />
+    <Compile Include="CodeGenerator\CodeWriters\DefineDeclarationWriter.cs" />
+    <Compile Include="CodeGenerator\CodeWriters\ExternWriter.cs" />
+    <Compile Include="CodeGenerator\CodeWriters\ImportFunctionDeclarationWriter.cs" />
+    <Compile Include="CodeGenerator\Common\CodeGenForNode.cs" />
+    <Compile Include="CodeGenerator\Common\CodeGenForT.cs" />
+    <Compile Include="CodeGenerator\Common\CodeGenForTokenKind.cs" />
+    <Compile Include="CodeGenerator\Common\CodeGenForTokenKindEmtpy.cs" />
+    <Compile Include="CodeGenerator\Common\CodeGenForTokenKindWrite.cs" />
+    <Compile Include="CodeGenerator\Common\CommentTokenKindCodeGen.cs" />
+    <Compile Include="CodeGenerator\Common\EmtpyCodeGenForT.cs" />
+    <Compile Include="CodeGenerator\Common\NewLineCodeGenForTokenKind.cs" />
+    <Compile Include="CodeGenerator\Common\NotSupportedFinder.cs" />
+    <Compile Include="CodeGenerator\CsCodeGenerator.cs" />
+    <Compile Include="CodeGenerator\Formatter\CsSourceCodeFormatter.cs" />
+    <Compile Include="Common\ParseNode.cs" />
+    <Compile Include="Common\RuleKind.cs" />
+    <Compile Include="Common\TokenKind.cs" />
+    <Compile Include="ExtensionUtils.cs" />
+    <Compile Include="Lexer\HexMatcher.cs" />
+    <Compile Include="Lexer\IMatcher.cs" />
+    <Compile Include="Lexer\LexDefinition.cs" />
+    <Compile Include="Lexer\Lexer.cs" />
+    <Compile Include="Lexer\LexerDefinitions.cs" />
+    <Compile Include="Lexer\MatchChar.cs" />
+    <Compile Include="Lexer\MatchExactText.cs" />
+    <Compile Include="Lexer\MatchExactTextInList.cs" />
+    <Compile Include="Lexer\MatchMultiLineCommentText.cs" />
+    <Compile Include="Lexer\MatchQuotedString.cs" />
+    <Compile Include="Lexer\MatchStartText.cs" />
+    <Compile Include="Lexer\Mq4Lexer.cs" />
+    <Compile Include="Lexer\Mq4ReservedWords.cs" />
+    <Compile Include="Lexer\Preprocessor\FileIncludeLogic.cs" />
+    <Compile Include="Lexer\Preprocessor\IncludePaths.cs" />
+    <Compile Include="Lexer\Preprocessor\SearchPathsIncluder.cs" />
+    <Compile Include="Lexer\RegexMatcher.cs" />
+    <Compile Include="Lexer\TokenData.cs" />
+    <Compile Include="Lexer\TypeNames.cs" />
+    <Compile Include="Lexer\UnicodeIdentifierMatcher.cs" />
+    <Compile Include="Parser\Comon\AstNodeUtils.cs" />
+    <Compile Include="Parser\Comon\AstTokenVisitor.cs" />
+    <Compile Include="Parser\Comon\AstTreeVisitor.cs" />
+    <Compile Include="Parser\Comon\AstTreeVisitorAllNodes.cs" />
+    <Compile Include="Parser\Comon\AstTreeVisitorRule.cs" />
+    <Compile Include="Parser\Comon\CleanAstNodesShifts.cs" />
+    <Compile Include="Parser\Comon\CleanupAstNodeStates.cs" />
+    <Compile Include="Parser\HighLevelParsing\HighLevelParser.cs" />
+    <Compile Include="Parser\Mq4Parser.cs" />
+    <Compile Include="Parser\MultiPassParsing\BlockCodeParser.cs" />
+    <Compile Include="Parser\MultiPassParsing\BreakBlockParser.cs" />
+    <Compile Include="Parser\MultiPassParsing\ElseBlockParser.cs" />
+    <Compile Include="Parser\MultiPassParsing\ForBlockParser.cs" />
+    <Compile Include="Parser\MultiPassParsing\FunctionBodyParser.cs" />
+    <Compile Include="Parser\MultiPassParsing\IfBlockParser.cs" />
+    <Compile Include="Parser\MultiPassParsing\MultiPassParser.cs" />
+    <Compile Include="Parser\MultiPassParsing\MultiPassParserByRule.cs" />
+    <Compile Include="Parser\MultiPassParsing\MultiPassParserByToken.cs" />
+    <Compile Include="Parser\MultiPassParsing\ReturnBlockParser.cs" />
+    <Compile Include="Parser\MultiPassParsing\WhileBlockParser.cs" />
+    <Compile Include="Parser\ParserTree.cs" />
+    <Compile Include="Parser\ParseRules\DefineDeclaration.cs" />
+    <Compile Include="Parser\ParseRules\SharpPropertyRule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Semantic\Common\SemanticAnalysisFixBase.cs" />
+    <Compile Include="Semantic\Common\SemanticFixForRule.cs" />
+    <Compile Include="Semantic\Common\SemanticFixForToken.cs" />
+    <Compile Include="Semantic\Fixes\FixDeclaredArrayArgument.cs" />
+    <Compile Include="Semantic\Fixes\FixDeclaredRefArgument.cs" />
+    <Compile Include="Semantic\Fixes\FixInvalidIdentifiers.cs" />
+    <Compile Include="Semantic\Fixes\FixProperties.cs" />
+    <Compile Include="Semantic\Fixes\PropertyDictionary.cs" />
+    <Compile Include="Semantic\Fixes\ReferenceParameterTracking\FixFunctionReferenceParamCall.cs" />
+    <Compile Include="Semantic\Fixes\ReferenceParameterTracking\FunctionExtractingReferenceDataInFunctions.cs" />
+    <Compile Include="Semantic\Fixes\ReferenceParameterTracking\FunctionExtractingReferenceInImportedFunctions.cs" />
+    <Compile Include="Semantic\Fixes\ReferenceParameterTracking\FunctionExtractingRefsInSoftFxApis.cs" />
+    <Compile Include="Semantic\Fixes\ReferenceParameterTracking\FunctionReferenceData.cs" />
+    <Compile Include="Semantic\Fixes\ReferenceParameterTracking\ParameterKind.cs" />
+    <Compile Include="Semantic\Fixes\ReferenceParameterTracking\ReferenceParamaterTable.cs" />
+    <Compile Include="Semantic\Fixes\RenameTable.cs" />
+    <Compile Include="Semantic\Fixes\SemanticAnalysisFixConflictFunctionVariableNames.cs" />
+    <Compile Include="Semantic\Fixes\SemanticAnalysisFixDefines.cs" />
+    <Compile Include="Semantic\Fixes\SemanticAnalysisFixFunctionSignature.cs" />
+    <Compile Include="Semantic\Fixes\SemanticAnalysisFixNullName.cs" />
+    <Compile Include="Semantic\Fixes\SemanticAnalysisUtils.cs" />
+    <Compile Include="Semantic\Fixes\SemanticStaticVariableDeclaration.cs" />
+    <Compile Include="Semantic\Fixes\TypeTracking\ExtractLogicCommon.cs" />
+    <Compile Include="Semantic\Fixes\TypeTracking\ExtractTypeDataInGlobalVariables.cs" />
+    <Compile Include="Semantic\Fixes\TypeTracking\ExtractTypeDataInImportedFunctions.cs" />
+    <Compile Include="Semantic\Fixes\TypeTracking\ExtractTypeDataInInDefinedVariables.cs" />
+    <Compile Include="Semantic\Fixes\TypeTracking\ExtractTypeDataInInFunctions.cs" />
+    <Compile Include="Semantic\Fixes\TypeTracking\ExtractTypesInSoftFxApis.cs" />
+    <Compile Include="Semantic\Fixes\TypeTracking\FixAssignmentInFunction.cs" />
+    <Compile Include="Semantic\Fixes\TypeTracking\FixAssignmentWithArraysFunction.cs" />
+    <Compile Include="Semantic\Fixes\TypeTracking\FixAssignmentWithConstants.cs" />
+    <Compile Include="Semantic\Fixes\TypeTracking\FixEmptyReturnForNonVoidMethod.cs" />
+    <Compile Include="Semantic\Fixes\TypeTracking\FixIncompatibleAssignments.cs" />
+    <Compile Include="Semantic\Fixes\TypeTracking\FixIncompatibleAssignmentsInGlobalSpace.cs" />
+    <Compile Include="Semantic\Fixes\TypeTracking\FixParametersByCasting.cs" />
+    <Compile Include="Semantic\Fixes\TypeTracking\FixParametersWithConstants.cs" />
+    <Compile Include="Semantic\Fixes\TypeTracking\FixReturnWithParamsForVoidFunctions.cs" />
+    <Compile Include="Semantic\Fixes\TypeTracking\Parameters\FixIncompatibleParameters.cs" />
+    <Compile Include="Semantic\Fixes\TypeTracking\FixIncompatibleReturns.cs" />
+    <Compile Include="Semantic\Fixes\TypeTracking\FixNoReturnEndingNonVoid.cs" />
+    <Compile Include="Semantic\Fixes\TypeTracking\FunctionTypeData.cs" />
+    <Compile Include="Semantic\Fixes\TypeTracking\Parameters\ParameterFunctionFix.cs" />
+    <Compile Include="Semantic\Fixes\TypeTracking\TypeData.cs" />
+    <Compile Include="Semantic\Fixes\TypeTracking\TypeParameterTable.cs" />
+    <Compile Include="Semantic\Fixes\VariableDeclarations\FixArrayInFunctionParameters.cs" />
+    <Compile Include="Semantic\Fixes\VariableDeclarations\FixCloseOpenSquareAsComma.cs" />
+    <Compile Include="Semantic\Fixes\VariableDeclarations\FixDeclaredArray.cs" />
+    <Compile Include="Semantic\Fixes\VariableDeclarations\FixMultipleVarsWithArray.cs" />
+    <Compile Include="Semantic\Fixes\VariableDeclarations\FixUninitializedVariableDeclarationsInInnerBlocks.cs" />
+    <Compile Include="Semantic\Fixes\VariableDeclarations\FixVariableDeclarationsInInnerBlocks.cs" />
+    <Compile Include="Semantic\Fixes\VariableDeclarations\ValidateDeclarationRules.cs" />
+    <Compile Include="Semantic\SemanticAnalysis.cs" />
+    <Compile Include="Translator\Mq4Translator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mql2Fdk\Mql2Fdk.csproj">
+      <Project>{BFA54886-6E55-4575-9190-6F4F484DD411}</Project>
+      <Name>Mql2Fdk</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
