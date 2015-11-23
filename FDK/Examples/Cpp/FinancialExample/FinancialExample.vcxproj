@@ -105,11 +105,11 @@
       <AdditionalDependencies>SoftFX.LlCommon.x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>copy /Y ..\..\..\FRE\SoftFX.LlCommon.x86.dll "$(OutDir)"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>copy /Y ..\..\..\FRE\SoftFX.LlCommon.x86.dll "$(OutDir)"</Command>
+      <Command>xcopy /Y "$(TargetPath)" "..\..\..\FRE\FinancialExample.exe*"
+xcopy /Y "$(OutDir)$(TargetName).pdb" "..\..\..\FRE\FinancialExample.pdb*"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -127,11 +127,11 @@
       <AdditionalDependencies>SoftFX.LlCommon.x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>copy /Y ..\..\..\FRE\SoftFX.LlCommon.x64.dll "$(OutDir)"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>copy /Y ..\..\..\FRE\SoftFX.LlCommon.x64.dll "$(OutDir)"</Command>
+      <Command>xcopy /Y "$(TargetPath)" "..\..\..\FRE\FinancialExample.exe*"
+xcopy /Y "$(OutDir)$(TargetName).pdb" "..\..\..\FRE\FinancialExample.pdb*"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -153,11 +153,11 @@
       <AdditionalDependencies>SoftFX.LlCommon.x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>copy /Y ..\..\..\FRE\SoftFX.LlCommon.x86.dll "$(OutDir)"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>copy /Y ..\..\..\FRE\SoftFX.LlCommon.x86.dll "$(OutDir)"</Command>
+      <Command>xcopy /Y "$(TargetPath)" "..\..\..\FRE\FinancialExample.exe*"
+xcopy /Y "$(OutDir)$(TargetName).pdb" "..\..\..\FRE\FinancialExample.pdb*"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -179,11 +179,11 @@
       <AdditionalDependencies>SoftFX.LlCommon.x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>copy /Y ..\..\..\FRE\SoftFX.LlCommon.x64.dll "$(OutDir)"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>copy /Y ..\..\..\FRE\SoftFX.LlCommon.x64.dll "$(OutDir)"</Command>
+      <Command>xcopy /Y "$(TargetPath)" "..\..\..\FRE\FinancialExample.exe*"
+xcopy /Y "$(OutDir)$(TargetName).pdb" "..\..\..\FRE\FinancialExample.pdb*"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
