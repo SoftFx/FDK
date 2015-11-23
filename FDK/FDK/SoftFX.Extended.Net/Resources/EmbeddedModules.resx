@@ -214,6 +214,15 @@
   <data name="System_Reactive" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\..\External\Assembly\System.Reactive.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="ParallelExtensionsExtras" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\External\Assembly\ParallelExtensionsExtras.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="protobuf_net" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\External\Assembly\protobuf-net.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="log4net" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\..\External\Assembly\log4net.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 
   <!--
   <data name="TickTrader_Server_QuoteHistory_Store_Bdb" type="System.Resources.ResXFileRef, System.Windows.Forms">
