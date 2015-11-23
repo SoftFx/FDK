@@ -19,32 +19,6 @@
                             </Directory>
                         </Directory>
                     </Directory>
-                    <Directory Id="dirF9CF8E0783045EDC36F4ABB4F70AB898" Name="Debug">
-                        <Component Id="cmp9949010144724DF1F6AEB451C65E4A16" Guid="*">
-                            <File Id="fil441EA9C66BBA85298FC2E643635DD21F" KeyPath="yes" Source="$(var.SourceDir)\Cpp\Debug\FinancialExample.x64.exe" />
-                        </Component>
-                        <Component Id="cmp8CC909C7C62C18FACE197FFECE8045ED" Guid="*">
-                            <File Id="filABF16132DE661D93CE0D39FF8CE6008B" KeyPath="yes" Source="$(var.SourceDir)\Cpp\Debug\FinancialExample.x64.ilk" />
-                        </Component>
-                        <Component Id="cmpD052A7F443197F2195E875EDE9EA35A7" Guid="*">
-                            <File Id="fil45781D22B4C18A25BC15E0685EF6538B" KeyPath="yes" Source="$(var.SourceDir)\Cpp\Debug\FinancialExample.x64.pdb" />
-                        </Component>
-                        <Component Id="cmpF2EBF2D72BBA71189BF9431381F1B004" Guid="*">
-                            <File Id="fil4068D42B64F7FBC8497928B4531FAA91" KeyPath="yes" Source="$(var.SourceDir)\Cpp\Debug\FinancialExample.x86.exe" />
-                        </Component>
-                        <Component Id="cmp342C39B0074631CD8115D3E1919ACA83" Guid="*">
-                            <File Id="fil9BF1B40096F994A7EE23EF7557C9DB86" KeyPath="yes" Source="$(var.SourceDir)\Cpp\Debug\FinancialExample.x86.ilk" />
-                        </Component>
-                        <Component Id="cmp444EFA5EEED1D04CA4BA6AAFF19DFEBD" Guid="*">
-                            <File Id="fil332FCDD1A560A48FC240314EB7C8832F" KeyPath="yes" Source="$(var.SourceDir)\Cpp\Debug\FinancialExample.x86.pdb" />
-                        </Component>
-                        <Component Id="cmp50DADAD803F48C750AD748C8F0F8E360" Guid="*">
-                            <File Id="fil7AAE50BCADC62FE9B6BD966364538BA3" KeyPath="yes" Source="$(var.SourceDir)\Cpp\Debug\SoftFX.LlCommon.x64.dll" />
-                        </Component>
-                        <Component Id="cmp985FE373953F02A8239229AA5CC2BC19" Guid="*">
-                            <File Id="fil559AB848C063D87E33E6F512DBEBC3CD" KeyPath="yes" Source="$(var.SourceDir)\Cpp\Debug\SoftFX.LlCommon.x86.dll" />
-                        </Component>
-                    </Directory>
                     <Directory Id="dir901A0D0BD9F303BF56AB0FCFF3476200" Name="FinancialExample">
                         <Component Id="cmp39B9A4E282537E8311D853CED247C04C" Guid="*">
                             <File Id="fil4C1A1C5BEA76AF46691CAADAA6A93863" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\app.ico" />
@@ -82,125 +56,6 @@
                         <Component Id="cmpC992411468E97182DF87357AA4F122F5" Guid="*">
                             <File Id="filCE2B4F2A5FC18145D1F59CD3CF61BA19" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\targetver.h" />
                         </Component>
-                        <Directory Id="dir6EC45A0861CFCC512AC8C9C5DD8AEBBC" Name="Debug.x64">
-                            <Component Id="cmp4337AB1DF918D9DB9AA76C9C1FBF0C2E" Guid="*">
-                                <File Id="filC71506D1EB777354F0FD531C3D2A55F6" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x64\app.res" />
-                            </Component>
-                            <Component Id="cmpC2521463694573F8630166FE0EE0ED08" Guid="*">
-                                <File Id="filEB613416D6C09B9BC2BB9067469D3EA6" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x64\FinancialExample.log" />
-                            </Component>
-                            <Component Id="cmp3B6E8D008E65AF0E3EC860E9713285F0" Guid="*">
-                                <File Id="fil07F5E0CF55C3525371C3D46E44E081B5" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x64\FinancialExample.obj" />
-                            </Component>
-                            <Component Id="cmpC7085DE33BB2D033D2771420423D06C8" Guid="*">
-                                <File Id="fil3D4B02A102FF457CE37A63BFB879C7EF" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x64\FinancialExample.x64.pch" />
-                            </Component>
-                            <Component Id="cmpAAC7F00C87322BC5AE1595777CCE32E2" Guid="*">
-                                <File Id="fil9A27F8397B04EE97043701FA7E534C58" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x64\QuotesResolver.obj" />
-                            </Component>
-                            <Component Id="cmp1C950022872E144D7C553257A1866782" Guid="*">
-                                <File Id="filBBA222155AFE28E301EF82BF7D4B405E" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x64\stdafx.obj" />
-                            </Component>
-                            <Component Id="cmpF17FAC3A5BF779395DCD703D77E8049C" Guid="*">
-                                <File Id="fil70525849BE69B13A85494550C5D8985E" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x64\vc140.idb" />
-                            </Component>
-                            <Component Id="cmp02AD6030035E2F022B03F6E11B5EFAAC" Guid="*">
-                                <File Id="fil0AAAD52B05F45F2EABA1DA5A1664BD45" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x64\vc140.pdb" />
-                            </Component>
-                            <Directory Id="dir575EA69894B8DB7DE91DBB05177DC185" Name="FinancialExample.tlog">
-                                <Component Id="cmp675F5E1264F3A1F87529AF21C412770D" Guid="*">
-                                    <File Id="fil78E657988ABC136970078D5C9A4AFD2D" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x64\FinancialExample.tlog\CL.command.1.tlog" />
-                                </Component>
-                                <Component Id="cmp8300C5BDE04AC65B871A9DD6F4F88BD1" Guid="*">
-                                    <File Id="fil7B2220200ED6B947A8C133239F51E877" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x64\FinancialExample.tlog\CL.read.1.tlog" />
-                                </Component>
-                                <Component Id="cmp598BBD85A343A49D9D1677E3E7F0DC54" Guid="*">
-                                    <File Id="fil586A5399205ACC1C8A79B4CCAB567906" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x64\FinancialExample.tlog\CL.write.1.tlog" />
-                                </Component>
-                                <Component Id="cmp3DBDEFBF1C2752F0F1EC377F7B548268" Guid="*">
-                                    <File Id="fil32613CA5347F728834AF49D4A2C4C607" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x64\FinancialExample.tlog\FinancialExample.lastbuildstate" />
-                                </Component>
-                                <Component Id="cmpCB6983A36071EBBA47E1CCF009A22A4A" Guid="*">
-                                    <File Id="fil49CC47C1498B422B8F4BC70B2D07994D" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x64\FinancialExample.tlog\link.command.1.tlog" />
-                                </Component>
-                                <Component Id="cmp9E3E9A3BC5971E580CA829F8489252F7" Guid="*">
-                                    <File Id="fil3858509E19FB5D29642F8A5CFCA3E7BC" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x64\FinancialExample.tlog\link.read.1.tlog" />
-                                </Component>
-                                <Component Id="cmp334988CADC0263F064BC0106556035AD" Guid="*">
-                                    <File Id="filDCD96F3E0A0798C6F6142D30DB4DD050" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x64\FinancialExample.tlog\link.write.1.tlog" />
-                                </Component>
-                                <Component Id="cmpF682C79A9261E539A3B02C96DF77E9E8" Guid="*">
-                                    <File Id="filA136F26282E0CEC024AC7DEF19B8E89B" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x64\FinancialExample.tlog\rc.command.1.tlog" />
-                                </Component>
-                                <Component Id="cmp9C3C59A1FA0AF26D93E574C5E416FDC0" Guid="*">
-                                    <File Id="fil5FA17773FD4B1ED330D35CD48A1104B2" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x64\FinancialExample.tlog\rc.read.1.tlog" />
-                                </Component>
-                                <Component Id="cmp85C267364FFA5973B95E2919642A71F5" Guid="*">
-                                    <File Id="fil665E8700BE4E609684BD0520D88A8852" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x64\FinancialExample.tlog\rc.write.1.tlog" />
-                                </Component>
-                            </Directory>
-                        </Directory>
-                        <Directory Id="dirE83F6BABEDD54C7936D82BF86F52BB84" Name="Debug.x86">
-                            <Component Id="cmp803E1562DCBD7C07741A74543AA6AF39" Guid="*">
-                                <File Id="filEE3A35EE576602E7702ED00F6BF68B99" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x86\app.res" />
-                            </Component>
-                            <Component Id="cmp04928CFF8FD6996000FB03B219670241" Guid="*">
-                                <File Id="filCA0886D5EA30305919395EEE3E4DE796" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x86\FinancialExample.log" />
-                            </Component>
-                            <Component Id="cmp89BD5B55DBBF3CC8219A500A1BB89DF8" Guid="*">
-                                <File Id="fil4CDE370D2C0F436D68A54F3093602C98" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x86\FinancialExample.obj" />
-                            </Component>
-                            <Component Id="cmpA80DBA2785F54222156F90075CFED1B9" Guid="*">
-                                <File Id="fil512C2B659CBB13E052BC32912AE65F08" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x86\FinancialExample.x86.Build.CppClean.log" />
-                            </Component>
-                            <Component Id="cmpDE4BFD939B068934F940554143055EBA" Guid="*">
-                                <File Id="filA7FAF9714F186EE0E174FDDCDA41584D" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x86\FinancialExample.x86.pch" />
-                            </Component>
-                            <Component Id="cmp0325EF91E555D92A7E5C16B0CF70DBE5" Guid="*">
-                                <File Id="fil94681072CDE8562408638665B6A2DCC6" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x86\QuotesResolver.obj" />
-                            </Component>
-                            <Component Id="cmpC63F6DC01ACB614222CA2814FFF7F59C" Guid="*">
-                                <File Id="fil558A2E898393C58489EFEEC047B66A25" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x86\stdafx.obj" />
-                            </Component>
-                            <Component Id="cmp92EB4EE9E9B658F96B245041BC85DE4C" Guid="*">
-                                <File Id="filEA8364B2681A8B1B47202FF83DE000AC" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x86\vc140.idb" />
-                            </Component>
-                            <Component Id="cmp864C76609907C6FB5CB33B689AECDC8F" Guid="*">
-                                <File Id="filCB68FAD3FC0D85D69670897509B1C510" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x86\vc140.pdb" />
-                            </Component>
-                            <Directory Id="dir942D80CFB43E2B41CDA9A047EF455485" Name="FinancialExample.tlog">
-                                <Component Id="cmp5902842B497B6A8C5881C42E68342F27" Guid="*">
-                                    <File Id="fil7621AACCB2BC03A709967878AF21CFCB" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x86\FinancialExample.tlog\CL.command.1.tlog" />
-                                </Component>
-                                <Component Id="cmp5DAD5129DE92682EF601AD64C6C6054E" Guid="*">
-                                    <File Id="filC8617AD188BB9EE812CB1B30E2913E86" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x86\FinancialExample.tlog\CL.read.1.tlog" />
-                                </Component>
-                                <Component Id="cmpCA9443340F736474FA66611E3CDC05D6" Guid="*">
-                                    <File Id="fil569A78147FF598D494ADDC9A13917A6F" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x86\FinancialExample.tlog\CL.write.1.tlog" />
-                                </Component>
-                                <Component Id="cmp0AD9538E94669B83842A3CF75E382826" Guid="*">
-                                    <File Id="fil7C5760363ACBCCEDFE36BDE34A5BFA41" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x86\FinancialExample.tlog\FinancialExample.lastbuildstate" />
-                                </Component>
-                                <Component Id="cmpF892576218D0E410235DCB3E68170127" Guid="*">
-                                    <File Id="fil2EDD6D2171AAA0B744A3492554E41D1D" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x86\FinancialExample.tlog\link.command.1.tlog" />
-                                </Component>
-                                <Component Id="cmp7A938F6367C1456B91315DFABB5B7D99" Guid="*">
-                                    <File Id="filFE348266C8251BD75CCC61EEC5B32BE5" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x86\FinancialExample.tlog\link.read.1.tlog" />
-                                </Component>
-                                <Component Id="cmp981056FBDD6EF3DDA953ACF16F64CBDD" Guid="*">
-                                    <File Id="filE1E1DA8DF5943FA728C62132693E47DB" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x86\FinancialExample.tlog\link.write.1.tlog" />
-                                </Component>
-                                <Component Id="cmp9AAEA980FC34E2DF8D4206095FD5D3D5" Guid="*">
-                                    <File Id="filBF13C266E2E3C714E7C219BCD561A16A" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x86\FinancialExample.tlog\rc.command.1.tlog" />
-                                </Component>
-                                <Component Id="cmp2AF2BC15FFCC7D6B8A38846637B28153" Guid="*">
-                                    <File Id="fil37765154E81EC6732EC148521A2989A9" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x86\FinancialExample.tlog\rc.read.1.tlog" />
-                                </Component>
-                                <Component Id="cmp47152F65B28D3CB386EAF7CD77CBCFC1" Guid="*">
-                                    <File Id="filE3C7710D2BF86899C069D8B38CF24DC6" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x86\FinancialExample.tlog\rc.write.1.tlog" />
-                                </Component>
-                            </Directory>
-                        </Directory>
                         <Directory Id="dir64D8D8CAF7E6056C78998F0C455D366A" Name="Release.x64">
                             <Component Id="cmp7768BC99E0E6B83677E6912437B0A328" Guid="*">
                                 <File Id="filE164B0AF73F86D19FE7B61E04830DAD8" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x64\app.res" />
@@ -256,23 +111,61 @@
                                 </Component>
                             </Directory>
                         </Directory>
-                    </Directory>
-                    <Directory Id="dir3F82F483F807870319DAC9C1704A7176" Name="Release">
-                        <Component Id="cmp0A01F4FEFC98817F5AAF67DD17BA2B91" Guid="*">
-                            <File Id="filA8B79076BDCAB3B3E958EB9A3161E0EF" KeyPath="yes" Source="$(var.SourceDir)\Cpp\Release\FinancialExample.x64.exe" />
-                        </Component>
-                        <Component Id="cmpC1C2E8FCAA629284C6660FBAB5DC094D" Guid="*">
-                            <File Id="filD922B7F6B695CA273B166CEBB9106397" KeyPath="yes" Source="$(var.SourceDir)\Cpp\Release\FinancialExample.x64.iobj" />
-                        </Component>
-                        <Component Id="cmp45FE68ED62D63BC42EED25B1B4B13802" Guid="*">
-                            <File Id="fil8C49C9547F8021A1CD85BBF000E85DE6" KeyPath="yes" Source="$(var.SourceDir)\Cpp\Release\FinancialExample.x64.ipdb" />
-                        </Component>
-                        <Component Id="cmp16638F1CFFE5542CF236AFD18749F2E4" Guid="*">
-                            <File Id="fil2CB86BE65DFD424AF13DE80AF5D2A8DF" KeyPath="yes" Source="$(var.SourceDir)\Cpp\Release\FinancialExample.x64.pdb" />
-                        </Component>
-                        <Component Id="cmp740ED77F36A5BED1477A7AFCA5E3FC99" Guid="*">
-                            <File Id="fil9C9B5596AFEB703B9BA26F665E0B7F6E" KeyPath="yes" Source="$(var.SourceDir)\Cpp\Release\SoftFX.LlCommon.x64.dll" />
-                        </Component>
+                        <Directory Id="dirA8EE890B09C844F9B315F44066FBF411" Name="Release.x86">
+                            <Component Id="cmpEAECC7AD15C85FED00FA60C2B5728F97" Guid="*">
+                                <File Id="fil21E4D9864CB7729F776FF4B58EDDDF77" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x86\app.res" />
+                            </Component>
+                            <Component Id="cmp07D67CA591DA2320419B1EA4C4A67EAD" Guid="*">
+                                <File Id="filC65FABAEB67FF7AE53B8F39180A1687A" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x86\FinancialExample.log" />
+                            </Component>
+                            <Component Id="cmp52F77C1F94263689F00764A717308E12" Guid="*">
+                                <File Id="fil3ECA1F216625F33504B48DC1F0C2A595" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x86\FinancialExample.obj" />
+                            </Component>
+                            <Component Id="cmp5B2F450C9BD868DD4556B116D2D969DB" Guid="*">
+                                <File Id="fil0FC54FAF324058658F8F998A8ABFC4BB" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x86\FinancialExample.x86.pch" />
+                            </Component>
+                            <Component Id="cmpF8FC8222F7ACD21B58F47F62568A586C" Guid="*">
+                                <File Id="filD07BD1BC8EF939FBC977B29188A4DCEB" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x86\QuotesResolver.obj" />
+                            </Component>
+                            <Component Id="cmp302F973C2A87D07F82FDC5CA3CB5BF77" Guid="*">
+                                <File Id="filE0757C04A121EAE14B54F343FB020EC3" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x86\stdafx.obj" />
+                            </Component>
+                            <Component Id="cmp5FFB2F0589F931BD81C14CDE914CF4E1" Guid="*">
+                                <File Id="fil8DA6E202490A5EE7826EB0240074570F" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x86\vc140.pdb" />
+                            </Component>
+                            <Directory Id="dir3DFE02BA99194D40CE090E7E028ECCF3" Name="FinancialExample.tlog">
+                                <Component Id="cmp46206D78C33E869490FD6C6E4986ACBE" Guid="*">
+                                    <File Id="filD822C6A2BF4A98BBAED96E4F65131E82" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x86\FinancialExample.tlog\CL.command.1.tlog" />
+                                </Component>
+                                <Component Id="cmp31547DBD1EDAD2334B55F2EEFA4DC223" Guid="*">
+                                    <File Id="filF8F382C280750694911E83E93CED37E1" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x86\FinancialExample.tlog\CL.read.1.tlog" />
+                                </Component>
+                                <Component Id="cmp56EF1B5EA4DCB118D066A711527E5F31" Guid="*">
+                                    <File Id="filC45C1F73F33145A088BD322BEF069D01" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x86\FinancialExample.tlog\CL.write.1.tlog" />
+                                </Component>
+                                <Component Id="cmp4B5DFE905818D591BC2782CF5CA7184B" Guid="*">
+                                    <File Id="fil9CDFF3E1EC7AEC2B9D184C4AC4ADC243" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x86\FinancialExample.tlog\FinancialExample.lastbuildstate" />
+                                </Component>
+                                <Component Id="cmpA229CC4E4AC902D7CCBA0EF81CFD2F07" Guid="*">
+                                    <File Id="fil6F65AC884C0417799FB95FA0B02ED23C" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x86\FinancialExample.tlog\link.command.1.tlog" />
+                                </Component>
+                                <Component Id="cmp11FFD5653DC440E58845F1DBEE0CB2FD" Guid="*">
+                                    <File Id="fil2022E8E41434E64E8E3E02EACF5EFE64" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x86\FinancialExample.tlog\link.read.1.tlog" />
+                                </Component>
+                                <Component Id="cmp193C44DBD4C5AC1CDB740A7A64B58253" Guid="*">
+                                    <File Id="fil2A7655DCA8253AD11C0649B2BC511B06" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x86\FinancialExample.tlog\link.write.1.tlog" />
+                                </Component>
+                                <Component Id="cmp2A223E0A54CBD083D60FEF51B28084C8" Guid="*">
+                                    <File Id="fil337835587175B87C404D526C59D1E196" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x86\FinancialExample.tlog\rc.command.1.tlog" />
+                                </Component>
+                                <Component Id="cmpC0F7A10191A29B6F36C1554E1FD59091" Guid="*">
+                                    <File Id="fil93203FCDA7D71845843F8DF7C4DB1D66" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x86\FinancialExample.tlog\rc.read.1.tlog" />
+                                </Component>
+                                <Component Id="cmp9A7A1EB6822399EBF746C4800F808184" Guid="*">
+                                    <File Id="fil99D74B2705E10CE428C86C9F49D9FC84" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x86\FinancialExample.tlog\rc.write.1.tlog" />
+                                </Component>
+                            </Directory>
+                        </Directory>
                     </Directory>
                 </Directory>
                 <Directory Id="dir156A144A68526A9C49B4F13B532B477C" Name="CSharp">
@@ -666,14 +559,6 @@
             <ComponentRef Id="cmp12F6E98FD9294B72F103C9F0A770C9DA" />
             <ComponentRef Id="cmpFCE110786ED1024DFB53E52756C8E956" />
             <ComponentRef Id="cmp251F428271CCC9E12F54299CFA965275" />
-            <ComponentRef Id="cmp9949010144724DF1F6AEB451C65E4A16" />
-            <ComponentRef Id="cmp8CC909C7C62C18FACE197FFECE8045ED" />
-            <ComponentRef Id="cmpD052A7F443197F2195E875EDE9EA35A7" />
-            <ComponentRef Id="cmpF2EBF2D72BBA71189BF9431381F1B004" />
-            <ComponentRef Id="cmp342C39B0074631CD8115D3E1919ACA83" />
-            <ComponentRef Id="cmp444EFA5EEED1D04CA4BA6AAFF19DFEBD" />
-            <ComponentRef Id="cmp50DADAD803F48C750AD748C8F0F8E360" />
-            <ComponentRef Id="cmp985FE373953F02A8239229AA5CC2BC19" />
             <ComponentRef Id="cmp39B9A4E282537E8311D853CED247C04C" />
             <ComponentRef Id="cmp4747704F8E7CF25566DD0034AACE7623" />
             <ComponentRef Id="cmp0E597A51D29374D20D08C312D22BF601" />
@@ -686,43 +571,6 @@
             <ComponentRef Id="cmp941D3E0AC0A23A12B5EA8124B755F7EE" />
             <ComponentRef Id="cmp824BCBB03AA8F12DFE0E438640F15AA1" />
             <ComponentRef Id="cmpC992411468E97182DF87357AA4F122F5" />
-            <ComponentRef Id="cmp4337AB1DF918D9DB9AA76C9C1FBF0C2E" />
-            <ComponentRef Id="cmpC2521463694573F8630166FE0EE0ED08" />
-            <ComponentRef Id="cmp3B6E8D008E65AF0E3EC860E9713285F0" />
-            <ComponentRef Id="cmpC7085DE33BB2D033D2771420423D06C8" />
-            <ComponentRef Id="cmpAAC7F00C87322BC5AE1595777CCE32E2" />
-            <ComponentRef Id="cmp1C950022872E144D7C553257A1866782" />
-            <ComponentRef Id="cmpF17FAC3A5BF779395DCD703D77E8049C" />
-            <ComponentRef Id="cmp02AD6030035E2F022B03F6E11B5EFAAC" />
-            <ComponentRef Id="cmp675F5E1264F3A1F87529AF21C412770D" />
-            <ComponentRef Id="cmp8300C5BDE04AC65B871A9DD6F4F88BD1" />
-            <ComponentRef Id="cmp598BBD85A343A49D9D1677E3E7F0DC54" />
-            <ComponentRef Id="cmp3DBDEFBF1C2752F0F1EC377F7B548268" />
-            <ComponentRef Id="cmpCB6983A36071EBBA47E1CCF009A22A4A" />
-            <ComponentRef Id="cmp9E3E9A3BC5971E580CA829F8489252F7" />
-            <ComponentRef Id="cmp334988CADC0263F064BC0106556035AD" />
-            <ComponentRef Id="cmpF682C79A9261E539A3B02C96DF77E9E8" />
-            <ComponentRef Id="cmp9C3C59A1FA0AF26D93E574C5E416FDC0" />
-            <ComponentRef Id="cmp85C267364FFA5973B95E2919642A71F5" />
-            <ComponentRef Id="cmp803E1562DCBD7C07741A74543AA6AF39" />
-            <ComponentRef Id="cmp04928CFF8FD6996000FB03B219670241" />
-            <ComponentRef Id="cmp89BD5B55DBBF3CC8219A500A1BB89DF8" />
-            <ComponentRef Id="cmpA80DBA2785F54222156F90075CFED1B9" />
-            <ComponentRef Id="cmpDE4BFD939B068934F940554143055EBA" />
-            <ComponentRef Id="cmp0325EF91E555D92A7E5C16B0CF70DBE5" />
-            <ComponentRef Id="cmpC63F6DC01ACB614222CA2814FFF7F59C" />
-            <ComponentRef Id="cmp92EB4EE9E9B658F96B245041BC85DE4C" />
-            <ComponentRef Id="cmp864C76609907C6FB5CB33B689AECDC8F" />
-            <ComponentRef Id="cmp5902842B497B6A8C5881C42E68342F27" />
-            <ComponentRef Id="cmp5DAD5129DE92682EF601AD64C6C6054E" />
-            <ComponentRef Id="cmpCA9443340F736474FA66611E3CDC05D6" />
-            <ComponentRef Id="cmp0AD9538E94669B83842A3CF75E382826" />
-            <ComponentRef Id="cmpF892576218D0E410235DCB3E68170127" />
-            <ComponentRef Id="cmp7A938F6367C1456B91315DFABB5B7D99" />
-            <ComponentRef Id="cmp981056FBDD6EF3DDA953ACF16F64CBDD" />
-            <ComponentRef Id="cmp9AAEA980FC34E2DF8D4206095FD5D3D5" />
-            <ComponentRef Id="cmp2AF2BC15FFCC7D6B8A38846637B28153" />
-            <ComponentRef Id="cmp47152F65B28D3CB386EAF7CD77CBCFC1" />
             <ComponentRef Id="cmp7768BC99E0E6B83677E6912437B0A328" />
             <ComponentRef Id="cmpF1C84F846E565AF9D35BC22F57946FD6" />
             <ComponentRef Id="cmp82F63482305B05C9D0AEDBE1AB2E8786" />
@@ -740,11 +588,23 @@
             <ComponentRef Id="cmpF50BF710B4C8D951ABFAE469E3D42B4F" />
             <ComponentRef Id="cmpCF53339F8C157EC658E21006B46A8B6D" />
             <ComponentRef Id="cmp584F9B8C5828C4B7E59447C578D15CB6" />
-            <ComponentRef Id="cmp0A01F4FEFC98817F5AAF67DD17BA2B91" />
-            <ComponentRef Id="cmpC1C2E8FCAA629284C6660FBAB5DC094D" />
-            <ComponentRef Id="cmp45FE68ED62D63BC42EED25B1B4B13802" />
-            <ComponentRef Id="cmp16638F1CFFE5542CF236AFD18749F2E4" />
-            <ComponentRef Id="cmp740ED77F36A5BED1477A7AFCA5E3FC99" />
+            <ComponentRef Id="cmpEAECC7AD15C85FED00FA60C2B5728F97" />
+            <ComponentRef Id="cmp07D67CA591DA2320419B1EA4C4A67EAD" />
+            <ComponentRef Id="cmp52F77C1F94263689F00764A717308E12" />
+            <ComponentRef Id="cmp5B2F450C9BD868DD4556B116D2D969DB" />
+            <ComponentRef Id="cmpF8FC8222F7ACD21B58F47F62568A586C" />
+            <ComponentRef Id="cmp302F973C2A87D07F82FDC5CA3CB5BF77" />
+            <ComponentRef Id="cmp5FFB2F0589F931BD81C14CDE914CF4E1" />
+            <ComponentRef Id="cmp46206D78C33E869490FD6C6E4986ACBE" />
+            <ComponentRef Id="cmp31547DBD1EDAD2334B55F2EEFA4DC223" />
+            <ComponentRef Id="cmp56EF1B5EA4DCB118D066A711527E5F31" />
+            <ComponentRef Id="cmp4B5DFE905818D591BC2782CF5CA7184B" />
+            <ComponentRef Id="cmpA229CC4E4AC902D7CCBA0EF81CFD2F07" />
+            <ComponentRef Id="cmp11FFD5653DC440E58845F1DBEE0CB2FD" />
+            <ComponentRef Id="cmp193C44DBD4C5AC1CDB740A7A64B58253" />
+            <ComponentRef Id="cmp2A223E0A54CBD083D60FEF51B28084C8" />
+            <ComponentRef Id="cmpC0F7A10191A29B6F36C1554E1FD59091" />
+            <ComponentRef Id="cmp9A7A1EB6822399EBF746C4800F808184" />
             <ComponentRef Id="cmpC51598DD54122CBE7EE13F8586B216E7" />
             <ComponentRef Id="cmpC9AEB2375BF2806C353FFE1C9E45FC0D" />
             <ComponentRef Id="cmp5DCE5F350F2CD9B498DB8E2436D45771" />

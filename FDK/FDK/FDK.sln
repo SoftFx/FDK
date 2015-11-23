@@ -90,12 +90,24 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSharp", "CSharp", "{E0918FD6-28F3-432A-87FA-8C5A38210F35}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FinancialExample", "..\Examples\Cpp\FinancialExample\FinancialExample.vcxproj", "{74B40AB0-6301-4F8E-A177-D0F599D13473}"
+	ProjectSection(ProjectDependencies) = postProject
+		{819EF2CA-E990-4879-B37C-F44E7AA58F22} = {819EF2CA-E990-4879-B37C-F44E7AA58F22}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuotesDownloader", "..\Examples\CSharp\QuotesDownloader\QuotesDownloader.csproj", "{0486509B-FE6E-411B-919D-76BB270BC613}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D15BBA76-552E-4C6D-AE64-FD6F30CCF770} = {D15BBA76-552E-4C6D-AE64-FD6F30CCF770}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuotesExporter", "..\Examples\CSharp\QuotesExporter\QuotesExporter.csproj", "{66D3223D-A5C7-476B-A55E-531F35CB3B49}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D15BBA76-552E-4C6D-AE64-FD6F30CCF770} = {D15BBA76-552E-4C6D-AE64-FD6F30CCF770}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealTimeLevel2", "..\Examples\CSharp\RealTimeLevel2\RealTimeLevel2.csproj", "{1BDCB9E5-646D-4D6B-93FD-9F15DBA8BCD9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D15BBA76-552E-4C6D-AE64-FD6F30CCF770} = {D15BBA76-552E-4C6D-AE64-FD6F30CCF770}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
