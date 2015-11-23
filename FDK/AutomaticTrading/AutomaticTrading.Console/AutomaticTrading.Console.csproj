@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{14E593FA-9019-4970-B963-D31B881AC048}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AutomaticTrading.Console</RootNamespace>
+    <AssemblyName>AutomaticTrading.Console</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>AutomaticTrading.Console.HeatingStrategyTest</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Reactive.Core, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rx-Core.2.2.5\lib\net45\System.Reactive.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rx-Interfaces.2.2.5\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Linq, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rx-Linq.2.2.5\lib\net45\System.Reactive.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rx-PlatformServices.2.2.5\lib\net45\System.Reactive.PlatformServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HeatingStrategyTest.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strategies\HeatingStrategy.cs" />
+    <Compile Include="Strategies\TemperatureEvent.cs" />
+    <Compile Include="Weather\FakeWeatherService.cs" />
+    <Compile Include="Weather\HeatingController.cs" />
+    <Compile Include="Weather\IWeatherService.cs" />
+    <Compile Include="Weather\RestWeatherService.cs" />
+    <Compile Include="Weather\TemperatureReportEventArgs.cs" />
+    <Compile Include="Weather\Termometer.cs" />
+    <Compile Include="Weather\WeatherDataSource.cs" />
+    <Compile Include="Weather\WeatherDataSourceProvider.cs" />
+    <Compile Include="Weather\WeatherUndergroundService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutomaticTrading.Sources\AutomaticTrading.Sources.csproj">
+      <Project>{3f11ae24-cf4b-41e3-a9d6-e369ea0e12ee}</Project>
+      <Name>AutomaticTrading.Sources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SoftFX.AutomaticTrading.Core\SoftFX.AutomaticTrading.Core.csproj">
+      <Project>{e61217ee-7de7-4ef8-a105-82d327bc80df}</Project>
+      <Name>SoftFX.AutomaticTrading.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SoftFX.AutomaticTrading.Hosting.Infrastructure\SoftFX.AutomaticTrading.Hosting.Infrastructure.csproj">
+      <Project>{6ca3abd4-6067-42a1-8083-ced48790f791}</Project>
+      <Name>SoftFX.AutomaticTrading.Hosting.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SoftFX.AutomaticTrading.Hosting\SoftFX.AutomaticTrading.Hosting.csproj">
+      <Project>{d008c1b5-adeb-45d3-81d7-be305b079bca}</Project>
+      <Name>SoftFX.AutomaticTrading.Hosting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SoftFX.AutomaticTrading\SoftFX.AutomaticTrading.csproj">
+      <Project>{b724ff40-8380-4c2f-b097-d5e5bae61203}</Project>
+      <Name>SoftFX.AutomaticTrading</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

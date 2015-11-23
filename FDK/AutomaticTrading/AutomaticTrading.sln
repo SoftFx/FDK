@@ -1,0 +1,84 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomaticTrading.Console", "AutomaticTrading.Console\AutomaticTrading.Console.csproj", "{14E593FA-9019-4970-B963-D31B881AC048}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomaticTrading.Ui", "AutomaticTrading.Ui\AutomaticTrading.Ui.csproj", "{E93A5BAA-BE53-4F04-BF2C-05140A09B85E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftFX.AutomaticTrading", "SoftFX.AutomaticTrading\SoftFX.AutomaticTrading.csproj", "{B724FF40-8380-4C2F-B097-D5E5BAE61203}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftFX.AutomaticTrading.Core", "SoftFX.AutomaticTrading.Core\SoftFX.AutomaticTrading.Core.csproj", "{E61217EE-7DE7-4EF8-A105-82D327BC80DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftFX.AutomaticTrading.Hosting", "SoftFX.AutomaticTrading.Hosting\SoftFX.AutomaticTrading.Hosting.csproj", "{D008C1B5-ADEB-45D3-81D7-BE305B079BCA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Core", "1. Core", "{4AB20DBD-CDB0-425B-BFBF-4053977810A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Hosting", "3. Hosting", "{C1B2E51C-600D-420B-A8BF-43004F011680}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Miscellaneous", "4. Miscellaneous", "{A326E652-1F75-4055-B811-A4F4DA3D6E3D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Trading", "2. Trading", "{D3E310B9-B526-4694-860C-F31458E1AE46}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Tests", "5. Tests", "{9118796A-6FB6-4C57-9F5B-76E5FFDB2099}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftFX.AutomaticTrading.Hosting.Infrastructure", "SoftFX.AutomaticTrading.Hosting.Infrastructure\SoftFX.AutomaticTrading.Hosting.Infrastructure.csproj", "{6CA3ABD4-6067-42A1-8083-CED48790F791}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomaticTrading.Interop", "AutomaticTrading.Interop\AutomaticTrading.Interop.csproj", "{F173A71A-A601-4E1A-B84D-FCC5E3231121}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomaticTrading.Sources", "AutomaticTrading.Sources\AutomaticTrading.Sources.csproj", "{3F11AE24-CF4B-41E3-A9D6-E369EA0E12EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14E593FA-9019-4970-B963-D31B881AC048}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14E593FA-9019-4970-B963-D31B881AC048}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14E593FA-9019-4970-B963-D31B881AC048}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14E593FA-9019-4970-B963-D31B881AC048}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E93A5BAA-BE53-4F04-BF2C-05140A09B85E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E93A5BAA-BE53-4F04-BF2C-05140A09B85E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E93A5BAA-BE53-4F04-BF2C-05140A09B85E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E93A5BAA-BE53-4F04-BF2C-05140A09B85E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B724FF40-8380-4C2F-B097-D5E5BAE61203}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B724FF40-8380-4C2F-B097-D5E5BAE61203}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B724FF40-8380-4C2F-B097-D5E5BAE61203}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B724FF40-8380-4C2F-B097-D5E5BAE61203}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E61217EE-7DE7-4EF8-A105-82D327BC80DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E61217EE-7DE7-4EF8-A105-82D327BC80DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E61217EE-7DE7-4EF8-A105-82D327BC80DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E61217EE-7DE7-4EF8-A105-82D327BC80DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D008C1B5-ADEB-45D3-81D7-BE305B079BCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D008C1B5-ADEB-45D3-81D7-BE305B079BCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D008C1B5-ADEB-45D3-81D7-BE305B079BCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D008C1B5-ADEB-45D3-81D7-BE305B079BCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CA3ABD4-6067-42A1-8083-CED48790F791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CA3ABD4-6067-42A1-8083-CED48790F791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CA3ABD4-6067-42A1-8083-CED48790F791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CA3ABD4-6067-42A1-8083-CED48790F791}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F173A71A-A601-4E1A-B84D-FCC5E3231121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F173A71A-A601-4E1A-B84D-FCC5E3231121}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F173A71A-A601-4E1A-B84D-FCC5E3231121}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F173A71A-A601-4E1A-B84D-FCC5E3231121}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F11AE24-CF4B-41E3-A9D6-E369EA0E12EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F11AE24-CF4B-41E3-A9D6-E369EA0E12EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F11AE24-CF4B-41E3-A9D6-E369EA0E12EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F11AE24-CF4B-41E3-A9D6-E369EA0E12EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{14E593FA-9019-4970-B963-D31B881AC048} = {9118796A-6FB6-4C57-9F5B-76E5FFDB2099}
+		{E93A5BAA-BE53-4F04-BF2C-05140A09B85E} = {A326E652-1F75-4055-B811-A4F4DA3D6E3D}
+		{B724FF40-8380-4C2F-B097-D5E5BAE61203} = {D3E310B9-B526-4694-860C-F31458E1AE46}
+		{E61217EE-7DE7-4EF8-A105-82D327BC80DF} = {4AB20DBD-CDB0-425B-BFBF-4053977810A8}
+		{D008C1B5-ADEB-45D3-81D7-BE305B079BCA} = {C1B2E51C-600D-420B-A8BF-43004F011680}
+		{6CA3ABD4-6067-42A1-8083-CED48790F791} = {C1B2E51C-600D-420B-A8BF-43004F011680}
+		{F173A71A-A601-4E1A-B84D-FCC5E3231121} = {A326E652-1F75-4055-B811-A4F4DA3D6E3D}
+		{3F11AE24-CF4B-41E3-A9D6-E369EA0E12EE} = {A326E652-1F75-4055-B811-A4F4DA3D6E3D}
+	EndGlobalSection
+EndGlobal
