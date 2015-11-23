@@ -1,0 +1,18 @@
+\section{Quickfix issues}
+
+\underline{Secure wrapper over OpenSSL library issues}:
+\begin{itemize}[noitemsep, nolistsep]
+  \item if you use closed socket then you can get access violation exception;
+  \item if you use closed socket then you can send a data to a random client, this is true for WinAPI also;
+  \item double closing of a socket can close another socket/connection, this is true for WinAPI also;
+  \item secure socket is not safe in multi-threading environment.
+\end{itemize}
+
+\underline{Quickfix library known issues}:
+
+\begin{itemize}[noitemsep, nolistsep]
+  \item FIX::Session::sendToTarget function can use closed socket;
+  \item quickfix doesn't check length of input message;
+  \item dynamic session supporting can be cause of access violation exception;
+  \item all parsing functions should be checked for a buffer overflow.
+\end{itemize}
