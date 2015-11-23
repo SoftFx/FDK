@@ -138,6 +138,9 @@
     <ClInclude Include="MarginCalcMode.h">
       <Filter>_Headers</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FinancialCalculator.cpp">
@@ -220,5 +223,15 @@
     <None Include="LlCommon.def">
       <Filter>_Resources</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico">
+      <Filter>_Resources</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc">
+      <Filter>_Resources</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

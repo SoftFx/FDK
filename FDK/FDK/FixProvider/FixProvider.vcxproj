@@ -298,6 +298,12 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
   <ItemGroup>
     <Xml Include="FixProvider.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

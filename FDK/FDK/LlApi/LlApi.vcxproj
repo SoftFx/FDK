@@ -244,6 +244,7 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
     <ClInclude Include="ProtocolVersion.h" />
     <ClInclude Include="Receiver.h" />
     <ClInclude Include="Server.hpp" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="SynchInvoker.h" />
     <ClInclude Include="targetver.h" />
@@ -306,6 +307,12 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
   <ItemGroup>
     <None Include="LlApi.def" />
     <None Include="makefile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

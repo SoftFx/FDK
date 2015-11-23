@@ -42,8 +42,8 @@ namespace
 					break;
 				}
 			}
-			const string st = stream.str();
-			items.push_back(st);
+			const string s = stream.str();
+			items.push_back(s);
 		}
 	}
 	template<typename T> T ConvertFromString(const string& st)

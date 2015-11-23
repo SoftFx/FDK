@@ -238,6 +238,7 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
     <ClInclude Include="Server_Server.hpp" />
     <ClInclude Include="Server_TypesSerializer.hpp" />
     <ClInclude Include="Channel.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Server.h" />
     <ClInclude Include="SymbolToKey.h" />
@@ -294,6 +295,12 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
     <Xml Include="LrpServer.xml">
       <SubType>Designer</SubType>
     </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -125,6 +125,9 @@ copy /Y ..\..\External\Dll\*.pdb ..\..\FRE\
 copy /Y ..\..\External\Dll\SoftFX.Lrp.x86.dll "$(TargetDir)"
 copy /Y ..\..\External\Dll\SoftFX.Lrp.x86.pdb "$(TargetDir)"</Command>
     </PostBuildEvent>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_MSC_VER;WIN32;SAL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -154,6 +157,9 @@ copy /Y ..\..\External\Dll\*.pdb ..\..\FRE\
 copy /Y ..\..\External\Dll\SoftFX.Lrp.x64.dll "$(TargetDir)"
 copy /Y ..\..\External\Dll\SoftFX.Lrp.x64.pdb "$(TargetDir)"</Command>
     </PostBuildEvent>
+    <ResourceCompile>
+      <PreprocessorDefinitions>SAL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -187,6 +193,9 @@ copy /Y ..\..\External\Dll\*.pdb ..\..\FRE\
 copy /Y ..\..\External\Dll\SoftFX.Lrp.x86.dll "$(TargetDir)"
 copy /Y ..\..\External\Dll\SoftFX.Lrp.x86.pdb "$(TargetDir)"</Command>
     </PostBuildEvent>
+    <ResourceCompile>
+      <PreprocessorDefinitions>SAL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -220,6 +229,9 @@ copy /Y ..\..\External\Dll\*.pdb ..\..\FRE\
 copy /Y ..\..\External\Dll\SoftFX.Lrp.x64.dll "$(TargetDir)"
 copy /Y ..\..\External\Dll\SoftFX.Lrp.x64.pdb "$(TargetDir)"</Command>
     </PostBuildEvent>
+    <ResourceCompile>
+      <PreprocessorDefinitions>SAL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CallsWaiter.h" />

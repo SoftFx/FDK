@@ -223,6 +223,7 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
     <ClInclude Include="Server_TypesSerializer.hpp" />
     <ClInclude Include="SimpleCodec.h" />
     <ClInclude Include="Socket.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -253,6 +254,12 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
       <SubType>Designer</SubType>
     </Xml>
     <Xml Include="LrpProvider.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.vcxproj">

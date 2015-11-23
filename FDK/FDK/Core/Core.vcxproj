@@ -299,6 +299,7 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
     <ClInclude Include="RuntimeError.h" />
     <ClInclude Include="SendException.h" />
     <ClInclude Include="StartupInitializer.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TimeoutException.h" />
@@ -351,6 +352,12 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sal\Sal.vcxproj">

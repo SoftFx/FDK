@@ -161,6 +161,9 @@
     <ClInclude Include="ZipHandle.h">
       <Filter>Compression\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -249,5 +252,15 @@
     <None Include="Delegate.bat">
       <Filter>Threading\Generated</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc">
+      <Filter>_Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico">
+      <Filter>_Resources</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -313,6 +313,7 @@
     <ClInclude Include="SocketConnector.h" />
     <ClInclude Include="SocketInitiator.h" />
     <ClInclude Include="SocketMonitor.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TimeRange.h" />
@@ -360,6 +361,12 @@
     </ClCompile>
     <ClCompile Include="TimeRange.cpp" />
     <ClCompile Include="Utility.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="makefile" />

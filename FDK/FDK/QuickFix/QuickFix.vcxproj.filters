@@ -518,6 +518,9 @@
     <ClInclude Include="fix44\CurrencyListRequest.h">
       <Filter>FIX44</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -615,5 +618,15 @@
     <None Include="makefile">
       <Filter>_Resources</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc">
+      <Filter>_Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico">
+      <Filter>_Resources</Filter>
+    </Image>
   </ItemGroup>
 </Project>

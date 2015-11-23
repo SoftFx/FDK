@@ -30,6 +30,9 @@
     <Filter Include="Codecs\Sources">
       <UniqueIdentifier>{db5e70bf-1d2d-4c29-ae25-983984f6e426}</UniqueIdentifier>
     </Filter>
+    <Filter Include="_Resources">
+      <UniqueIdentifier>{b59911eb-4398-42be-b986-6199d1897ac1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -125,6 +128,9 @@
     <ClInclude Include="SimpleEntry.h">
       <Filter>Codecs\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -184,5 +190,15 @@
     <ClCompile Include="SimpleEncoder2.cpp">
       <Filter>Codecs\Sources</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc">
+      <Filter>_Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico">
+      <Filter>_Resources</Filter>
+    </Image>
   </ItemGroup>
 </Project>
