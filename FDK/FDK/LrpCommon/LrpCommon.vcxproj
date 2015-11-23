@@ -104,6 +104,9 @@
 ..\..\External\bin\lrp.exe ..\LrpProvider\LrpClient.xml  Client_Logging  /language:C++ /side:writer
 ..\..\External\bin\lrp.exe ..\LrpServer\LrpServer.xml  Server_Logging  /language:C++ /side:writer</Command>
     </PreBuildEvent>
+    <Lib>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -146,6 +149,9 @@
 ..\..\External\bin\lrp.exe ..\LrpProvider\LrpClient.xml  Client_Logging  /language:C++ /side:writer
 ..\..\External\bin\lrp.exe ..\LrpServer\LrpServer.xml  Server_Logging  /language:C++ /side:writer</Command>
     </PreBuildEvent>
+    <Lib>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>

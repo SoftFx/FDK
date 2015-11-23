@@ -7563,6 +7563,8 @@
   <field number='10090' name='PosLeavesQty' type='QTY' />
   <field number='10091' name='PosCloseReqPrice' type='PRICE' />
   <field number='10092' name='LogoutReason' type='INT'>
+    <value enum='-2' description='TIMEOUT' />
+    <value enum='-1' description='NETWORK_ERROR' />
     <value enum='0' description='CLIENT_LOGOUT' />
     <value enum='1' description='INVALID_CREDS' />
     <value enum='2' description='BLOCKED_LOGIN' />

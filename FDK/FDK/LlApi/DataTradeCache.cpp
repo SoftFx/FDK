@@ -97,7 +97,7 @@ void CDataTradeCache::DoUpdateAssets(const string& currency, const double balanc
 
     bool updated = false;
     
-    for (int n = 0; n < m_accountInfo.Assets.size(); n++)
+    for (int n = 0; n < (int)m_accountInfo.Assets.size(); n++)
     {
         auto& entry = m_accountInfo.Assets[n];
 
@@ -179,7 +179,7 @@ void CDataTradeCache::DoUpdateOrders(const CFxExecutionReport& report)
 
     if (!m_isOrdersInitialized)
     {
-        if (report.ReportsNumber == 0 || ++m_reportsNumber == report.ReportsNumber)
+        if (report.ReportsNumber == 0 || (int32)(++m_reportsNumber) == report.ReportsNumber)
         {
             m_isOrdersInitialized = true;
             Update();
