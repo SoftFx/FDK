@@ -68,6 +68,8 @@ namespace FIX44
     FIELD_SET_EX(FIX::UtcTimeStamp, OrdModified);
     FIELD_SET(*this, FIX::PosID);
     FIELD_SET_EX(std::string, PosID);
+    FIELD_SET(*this, FIX::PosByID);
+    FIELD_SET_EX(std::string, PosByID);
     FIELD_SET(*this, FIX::PosOpened);
     FIELD_SET_EX(FIX::UtcTimeStamp, PosOpened);
     FIELD_SET(*this, FIX::PosOpenReqPrice);

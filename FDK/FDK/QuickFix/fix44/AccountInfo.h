@@ -48,8 +48,6 @@ namespace FIX44
     FIELD_SET_EX(std::string, Account);
     FIELD_SET(*this, FIX::AccountingType);
     FIELD_SET_EX(char, AccountingType);
-    FIELD_SET(*this, FIX::AccountingSystemType);
-    FIELD_SET_EX(char, AccountingSystemType);
     FIELD_SET(*this, FIX::AccMarginCallLevel);
     FIELD_SET_EX(double, AccMarginCallLevel);
     FIELD_SET(*this, FIX::AccStopOutLevel);
@@ -62,6 +60,14 @@ namespace FIX44
     FIELD_SET_EX(bool, InvestorLoginFlag);
     FIELD_SET(*this, FIX::AccountName);
     FIELD_SET_EX(std::string, AccountName);
+    FIELD_SET(*this, FIX::RegistEmail);
+    FIELD_SET_EX(std::string, RegistEmail);
+    FIELD_SET(*this, FIX::RegistDate);
+    FIELD_SET_EX(FIX::UtcTimeStamp, RegistDate);
+    FIELD_SET(*this, FIX::EncodedCommentLen);
+    FIELD_SET_EX(int, EncodedCommentLen);
+    FIELD_SET(*this, FIX::EncodedComment);
+    FIELD_SET_EX(std::string, EncodedComment);
     FIELD_SET(*this, FIX::NoAssets);
     FIELD_SET_EX(int, NoAssets);
     class NoAssets: public FIX::Group
