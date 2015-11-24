@@ -100,7 +100,8 @@
 "$(SolutionDir)\..\External\bin\lrp.exe" "$(SolutionDir)\LocalCSharp.xml" "$(ProjectDir)\LocalCSharp"  /language:C# /side:server /mode:local /namespace:LrpServer.Net.LocalCSharp</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(TargetPath)" "$(SolutionDir)\..\FRE\"
+    <PostBuildEvent>if not exist "$(SolutionDir)\..\FRE" (md "$(SolutionDir)\..\FRE")
+copy /Y "$(TargetPath)" "$(SolutionDir)\..\FRE\"
 REM copy /Y "$(TargetDir)$(TargetName).xml" "$(SolutionDir)\..\FRE\"
 copy /Y "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)\..\FRE\"</PostBuildEvent>
   </PropertyGroup>
