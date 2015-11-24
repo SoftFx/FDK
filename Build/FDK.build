@@ -119,14 +119,14 @@
       <arg value="/clp:NoItemAndPropertyList" />
       <arg value="/verbosity:n" />
       <arg value="/nologo" />
-      <arg value="/p:Configuration=${Configuration_Release}" />
+      <arg value="/p:Configuration=${Configuration}" />
       <arg value="/p:Platform=${Platform64}" />
     </exec>
 -->	
     <exec program="${MSBuildDir}msbuild.exe">
       <arg value="${LRPDir}\LRP.sln" />
       <arg value="/target:Rebuild" />
-      <arg value="/p:Configuration=${Configuration_Release}" />
+      <arg value="/p:Configuration=${Configuration}" />
       <arg value="/p:Platform=${Platform64}" />
     </exec>
 	
