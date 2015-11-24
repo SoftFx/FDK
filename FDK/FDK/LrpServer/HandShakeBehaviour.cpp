@@ -7,7 +7,7 @@
 namespace
 {
 	const int cInitialVersion = 0;
-	const string cProtocolVersion = "ext.1.27";
+	const string cProtocolVersion = "ext.1.31";
 }
 
 namespace
