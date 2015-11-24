@@ -71,19 +71,20 @@
             var result = new FixConnectionStringBuilder
             {
                 FixVersion = "FIX.4.4",
-                Address = "fxopentrader.staging.fxopen.org",
+              //  Address = "tp.st.soft-fx.eu",
+                Address = "ttdemo.fxopen.com",
                 TargetCompId = "EXECUTOR"
             };
 
             if (type == AccountType.Gross)
             {
-                result.Username = "26";
-                result.Password = "26";
+                result.Username = "999999";
+                result.Password = "e2pllch2";
             }
             else if (type == AccountType.Net)
             {
-                result.Username = "27";
-                result.Password = "27";
+                result.Username = "26";
+                result.Password = "37kw22bNkBcy";
             }
             
             result.ProtocolVersion = protocolVersion.ToString();
