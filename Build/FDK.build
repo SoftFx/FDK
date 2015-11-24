@@ -142,27 +142,27 @@
 
   <target name="CopyFDKBuild" >
     <call target="GetVersion" />
-    <mkdir dir="${ArtifactsDir}\FDK ${Version}" />
-    <copy file="${SourcesDir}\Release\FDK.msi" tofile="${ArtifactsDir}\FDK ${Version}\${SetupFileBaseName}.msi" />
-    <mkdir dir="${ArtifactsDir}\FDK ${Version}\fdk" />
+    <mkdir dir="${ArtifactsDir}\FDK ${Build}" />
+    <copy file="${SourcesDir}\Release\FDK.msi" tofile="${ArtifactsDir}\FDK ${Build}\${SetupFileBaseName}.msi" />
+    <mkdir dir="${ArtifactsDir}\FDK ${Build}\fdk" />
     <delete>
       <fileset>
-        <include name="${ArtifactsDir}\FDK ${Version}\fdk\*.*" />
+        <include name="${ArtifactsDir}\FDK ${Build}\fdk\*.*" />
       </fileset>
     </delete>
-    <copy todir="${ArtifactsDir}\FDK ${Version}\fdk" >
+    <copy todir="${ArtifactsDir}\FDK ${Build}\fdk" >
       <fileset basedir="${SourcesDir}\SandCastle\Help\" >
         <exclude name="FDK Documentation.chm" />
         <include name="**\*" />
       </fileset>
     </copy>
-    <zip zipfile="${ArtifactsDir}\FDK ${Version}\Help.zip">
+    <zip zipfile="${ArtifactsDir}\FDK ${Build}\Help.zip">
       <fileset basedir="${SourcesDir}\SandCastle\Help\">
         <exclude name="FDK Documentation.chm" />
         <include name="**\*" />
       </fileset>
     </zip>
-    <copy file="${SourcesDir}\SandCastle\Help\FDK Documentation.chm" tofile="${ArtifactsDir}\FDK ${Version}\FDK Documentation.chm" />
+    <copy file="${SourcesDir}\SandCastle\Help\FDK Documentation.chm" tofile="${ArtifactsDir}\FDK ${Build}\FDK Documentation.chm" />
   </target>
 
   <target name="GetVersion">
@@ -185,7 +185,7 @@
       </code>
     </script>
     <property name="Version" value="${nant::Load_Version()}" />
-    <echo message="Version = ${Version}" />
+    <echo message="Version = ${Build}" />
   </target>
 
   <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -193,13 +193,13 @@
   <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
   <target name="CopyToFTP">
     <call target="GetVersion" />
-    <property name="FTP.SourceFile" value="${ArtifactsDir}\FDK ${Version}\${SetupFileBaseName}.msi" />
+    <property name="FTP.SourceFile" value="${ArtifactsDir}\FDK ${Build}\${SetupFileBaseName}.msi" />
     <property name="FTP.File"       value="${SetupFileBaseName}.msi" />
     <call target="CopyFileToFTP" />
-    <property name="FTP.SourceFile" value="${ArtifactsDir}\FDK ${Version}\FDK Documentation.chm" />
+    <property name="FTP.SourceFile" value="${ArtifactsDir}\FDK ${Build}\FDK Documentation.chm" />
     <property name="FTP.File" 		  value="FDK Documentation.chm" />
     <call target="CopyFileToFTP" />
-    <property name="FTP.SourceFile" value="${ArtifactsDir}\FDK ${Version}\Help.zip" />
+    <property name="FTP.SourceFile" value="${ArtifactsDir}\FDK ${Build}\Help.zip" />
     <property name="FTP.File" 		  value="Help.zip" />
     <call target="CopyFileToFTP" />
   </target>
@@ -207,10 +207,10 @@
   <target name="CopyFileToFTP">
     <choose>
       <when test="${string::contains(IsRelease, 'yes')}">
-        <property name="FTP.DestinationFile"    value="${FTPReleaseFolder}\FDK ${Version}\${FTP.File}" />
+        <property name="FTP.DestinationFile"    value="${FTPReleaseFolder}\FDK ${Build}\${FTP.File}" />
       </when>
       <otherwise>
-        <property name="FTP.DestinationFile"    value="${FTPBuildFolder}\FDK ${Version}\${FTP.File}" />
+        <property name="FTP.DestinationFile"    value="${FTPBuildFolder}\FDK ${Build}\${FTP.File}" />
       </otherwise>
     </choose>
     <choose>
