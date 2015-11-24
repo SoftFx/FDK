@@ -2,6 +2,16 @@
 
   <include buildfile="./FDK.properties" />
 
+  <target name="CleanAll">
+    <echo message = "Cleaning '${ArtifactsDir}'"/>
+    <mkdir dir="${ArtifactsDir}" />
+    <delete>
+      <fileset basedir="${ArtifactsDir}">
+        <include name="**/*"/>
+      </fileset>
+    </delete>
+  </target>
+
   <target name="BuildSolution" >
     <echo message="BuildSolution for ${SolutionFile} (${Target} ${Configuration}|${Platform86}) started at: ${datetime::now()}" />
     <exec program="${MSBuildDir}msbuild.exe">
@@ -44,48 +54,6 @@
     <exec program="${SourcesDir}\SandCastle\FDK_Documetation.bat" >
       <arg line="${SourcesDir}\SandCastle\FDK_Documetation.shfbproj" />
     </exec>
-    <call target="CopyFDKBuild" />
-  </target>
-
-  <target name="CleanAll">
-    <echo message = "Cleaning '${ArtifactsDir}'"/>
-    <mkdir dir="${ArtifactsDir}" />
-    <delete>
-      <fileset basedir="${ArtifactsDir}">
-        <include name="**/*"/>
-      </fileset>
-    </delete>
-  </target>
-
-  <target name="SVNIndex" >
-    <property name="Source" value="${CheckoutDir}" />
-    <property name="Rev"    value="${Revision}" />
-    <echo message="SVNIndex is starded at: ${datetime::now()}" />
-    <echo message="Source: ${Source}" />
-    <echo message="Revision: ${Revision}" />
-    <exec program="${WinDbgDir}srcsrv\${svnindex.cmd}">
-      <arg line="-Ini=${Source}\srcsrv.ini" />
-      <arg line="-Source=${Source}" />
-      <arg line="-rev=${Rev}" />
-      <arg line="/debug" />
-    </exec>
-  </target>
-
-  <!--symstore add /r /f ${Source}\Release\*.* /s D:\TC\symbols /v ' + $Version + ' /t "FDK"-->
-  <target name="AddToStore" >
-    <property name="Source"     value="${SourcesDir}\Release\*.*" />
-    <property name="Rev"        value="${Revision}" />
-    <echo message="AddToStore is starded at: ${datetime::now()}" />
-    <echo message="Source: ${Source}\Release\*.*" />
-    <echo message="Revision: ${Revision}" />
-    <exec program="${WinDbgDir}\${Symstore.exe}">
-      <arg line="add" />
-      <arg line="/r" />
-      <arg line="/f ${Source}" />
-      <arg line="/s ${SymbolsDir}" />
-      <arg line="/v ${Rev}" />
-      <arg line="/t FDK" />
-    </exec>
   </target>
 
   <target name="BuildTools" >
@@ -106,20 +74,6 @@
 
   <target name="BuildLRP" >
     <echo message="BuildLRP started at: ${datetime::now()}" />
-<!--
-    <exec program="${MSBuildDir}msbuild.exe">
-      <arg value="${LRPDir}\LRP.sln" />
-      <arg value="/target:${Target}" />
-      <arg value="/maxcpucount" />
-      <arg value="/fl" />
-      <arg value="/flp:Verbosity=Normal;LogFile=LRP.build-Release-x64.log" />
-      <arg value="/clp:NoItemAndPropertyList" />
-      <arg value="/verbosity:n" />
-      <arg value="/nologo" />
-      <arg value="/p:Configuration=${Configuration}" />
-      <arg value="/p:Platform=${Platform64}" />
-    </exec>
--->	
     <exec program="${MSBuildDir}msbuild.exe">
       <arg value="${LRPDir}\LRP.sln" />
       <arg value="/target:${Target}" />
@@ -152,6 +106,37 @@
       <arg value="/target:${Target}" />
       <arg value="/p:Configuration=Install" />
       <arg value="/p:Platform=${Platform64}" />
+    </exec>
+  </target>
+
+  <target name="SVNIndex" >
+    <property name="Source" value="${CheckoutDir}" />
+    <property name="Rev"    value="${Revision}" />
+    <echo message="SVNIndex is starded at: ${datetime::now()}" />
+    <echo message="Source: ${Source}" />
+    <echo message="Revision: ${Revision}" />
+    <exec program="${WinDbgDir}srcsrv\${svnindex.cmd}">
+      <arg line="-Ini=${Source}\srcsrv.ini" />
+      <arg line="-Source=${Source}" />
+      <arg line="-rev=${Rev}" />
+      <arg line="/debug" />
+    </exec>
+  </target>
+
+  <!--symstore add /r /f ${Source}\Release\*.* /s D:\TC\symbols /v ' + $Version + ' /t "FDK"-->
+  <target name="AddToStore" >
+    <property name="Source"     value="${SourcesDir}\Release\*.*" />
+    <property name="Rev"        value="${Revision}" />
+    <echo message="AddToStore is starded at: ${datetime::now()}" />
+    <echo message="Source: ${Source}\Release\*.*" />
+    <echo message="Revision: ${Revision}" />
+    <exec program="${WinDbgDir}\${Symstore.exe}">
+      <arg line="add" />
+      <arg line="/r" />
+      <arg line="/f ${Source}" />
+      <arg line="/s ${SymbolsDir}" />
+      <arg line="/v ${Rev}" />
+      <arg line="/t FDK" />
     </exec>
   </target>
 
