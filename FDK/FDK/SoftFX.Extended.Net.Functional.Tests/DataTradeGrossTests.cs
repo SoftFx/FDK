@@ -89,7 +89,7 @@
             TestHelpers.Execute(this.SendMarketOrder, Configuration.DataTradeGrossConnectionBuilders);
         }
 
-        private void SendMarketOrder(ConnectionStringBuilder builder)
+        void SendMarketOrder(ConnectionStringBuilder builder)
         {
             var connectionString = builder.ToString();
             this.dataTrade = new DataTrade(connectionString);
@@ -288,13 +288,13 @@
             this.dataTrade.Logon += OnLogon;
             this.dataTrade.Start();
 
-            var status = this.logonEvent.WaitOne(LogonWaitingTimeout);
+            var status = this.logonEvent.WaitOne(10000*LogonWaitingTimeout);
             Assert.IsTrue(status, "Timeout of logon event");
 
             var start = DateTime.UtcNow;
-            var order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 0, 10000, 0, 0, null, "comment", 1000000);
-            var end = DateTime.UtcNow;
-            var interval = (end - start);
+            TradeRecord order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 0, 10000, null, null, null, "comment", 1000000);
+            DateTime end = DateTime.UtcNow;
+            TimeSpan interval = (end - start);
             Console.WriteLine("Interval = {0}", interval);
 
             var modified = order.Modify(null, 1.0, null, null);
