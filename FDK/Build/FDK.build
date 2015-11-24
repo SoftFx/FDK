@@ -7,8 +7,10 @@
     <call target="CleanAll" />
     <echo message="BuildSolution for ${SolutionFile} (Rebuild ${Configuration}|${Platform64}) started at: ${datetime::now()}" />
     <exec program="${MSBuildDir}msbuild.exe">
-      <arg line="${SourcesDir}\${SolutionFile}" />
-      <arg line="/target:Rebuild ${Configuration}|${Platform64}" />
+      <arg value="${SourcesDir}\${SolutionFile}" />
+      <arg value="/target:Rebuild" />
+      <arg value="/p:Configuration=${Configuration}" />
+      <arg value="/p:Platform=${Platform64}" />
     </exec>
 
     <echo message="BuildSolution for ${SourcesDirExamples}\${ExamplesSolutionFile} (${MSBuild.Configuration}|${MSBuild.Platform}) started at: ${datetime::now()}" />
@@ -34,8 +36,10 @@
 
     <echo message="BuildSolution for ${SolutionFile} (Rebuild ${Configuration}|${Platform86}) started at: ${datetime::now()}" />
     <exec program="${MSBuildDir}msbuild.exe">
-      <arg line="${SourcesDir}\${SolutionFile}" />
-      <arg line="/target:Rebuild ${Configuration}|${Platform86}" />
+      <arg value="${SourcesDir}\${SolutionFile}" />
+      <arg value="/target:Rebuild" />
+      <arg value="/p:Configuration=${Configuration}" />
+      <arg value="/p:Platform=${Platform86}" />
     </exec>
 
     <echo message="BuildSolution for FDK_Documetation.bat (SandCastle) started at: ${datetime::now()}" />
@@ -119,8 +123,10 @@
     </exec>
 -->	
     <exec program="${MSBuildDir}msbuild.exe">
-      <arg line="${LRPDir}\LRP.sln" />
-      <arg line="/target:Rebuild ${Configuration_Release}|${Platform64}" />
+      <arg value="${LRPDir}\LRP.sln" />
+      <arg value="/target:Rebuild" />
+      <arg value="/p:Configuration=${Configuration_Release}" />
+      <arg value="/p:Platform=${Platform64}" />
     </exec>
 	
   </target>
