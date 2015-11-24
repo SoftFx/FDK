@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{640801C0-58BC-4138-967E-BD1BC2D82EA3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Model</RootNamespace>
+    <AssemblyName>Model</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BO\Arbitrage.cs" />
+    <Compile Include="Migrations\201301211609428_InitialCreate.cs" />
+    <Compile Include="Migrations\201301211609428_InitialCreate.Designer.cs">
+      <DependentUpon>201301211609428_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201301221439547_1.cs" />
+    <Compile Include="Migrations\201301221439547_1.Designer.cs">
+      <DependentUpon>201301221439547_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201301221628404_2.cs" />
+    <Compile Include="Migrations\201301221628404_2.Designer.cs">
+      <DependentUpon>201301221628404_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201301241020102_5.cs" />
+    <Compile Include="Migrations\201301241020102_5.Designer.cs">
+      <DependentUpon>201301241020102_5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201302051607045_6.cs" />
+    <Compile Include="Migrations\201302051607045_6.Designer.cs">
+      <DependentUpon>201302051607045_6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201302061018097_7.cs" />
+    <Compile Include="Migrations\201302061018097_7.Designer.cs">
+      <DependentUpon>201302061018097_7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201302111301013_8.cs" />
+    <Compile Include="Migrations\201302111301013_8.Designer.cs">
+      <DependentUpon>201302111301013_8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201301211609428_InitialCreate.resx">
+      <DependentUpon>201301211609428_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201301221439547_1.resx">
+      <DependentUpon>201301221439547_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201301221628404_2.resx">
+      <DependentUpon>201301221628404_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201301241020102_5.resx">
+      <DependentUpon>201301241020102_5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201302051607045_6.resx">
+      <DependentUpon>201302051607045_6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201302061018097_7.resx">
+      <DependentUpon>201302061018097_7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201302111301013_8.resx">
+      <DependentUpon>201302111301013_8.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

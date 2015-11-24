@@ -1,0 +1,45 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ArbitrageAggregator" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="FeederPort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">22060</Value>
+    </Setting>
+    <Setting Name="FeederUsername" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">98B4</Value>
+    </Setting>
+    <Setting Name="FeederPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">083EA274</Value>
+    </Setting>
+    <Setting Name="BridgeAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
+    <Setting Name="BridgePort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">22090</Value>
+    </Setting>
+    <Setting Name="BridgeUsername" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">username</Value>
+    </Setting>
+    <Setting Name="BridgePassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">password</Value>
+    </Setting>
+    <Setting Name="LogPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">output.log</Value>
+    </Setting>
+    <Setting Name="Securities" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">EUR/USD;EUR/JPY;</Value>
+    </Setting>
+    <Setting Name="FeederAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">50.22.218.205</Value>
+    </Setting>
+    <Setting Name="BankCodes" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">8;11</Value>
+    </Setting>
+    <Setting Name="MetaAccount" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Setting" Type="System.String" Scope="User">
+      <Value Profile="(Default)">s</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

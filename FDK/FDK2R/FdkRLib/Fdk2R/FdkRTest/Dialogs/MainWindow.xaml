@@ -1,0 +1,38 @@
+﻿<Window x:Class="FdkRTest.Dialogs.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dialogs="clr-namespace:FdkRTest.Dialogs"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <dialogs:MainViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <UniformGrid HorizontalAlignment="Left" Rows="1">
+            <Button Margin="4" Click="OnBarsCall">Bars</Button>
+            <Button Margin="4" Click="OnScriptTick">Script 4 Tick</Button>
+        </UniformGrid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Script to run" VerticalAlignment="Center" />
+            <TextBox Grid.Column="1" Margin="4" Text="{Binding ScriptToRun}"></TextBox>
+        </Grid>
+        
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <TextBlock Margin="4" Text="Result: "></TextBlock>
+
+            <TextBlock Margin="4" Text="{Binding ResultScript}"></TextBlock>
+        </StackPanel>
+        
+    </Grid>
+</Window>

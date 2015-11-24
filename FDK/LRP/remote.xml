@@ -1,0 +1,65 @@
+<Protocol>
+	<Types>
+		<Type name="UsedType" CSharpFullName="RemoteCSharpClient.UsedType" CppFullName="CUsedType" kind="class">
+			<Member name="Code" type="int32" />
+			<Member name="Description" type="astring" />
+		</Type>
+		<Type name="InType" CSharpFullName="RemoteCSharpClient.InType" CppFullName="CInType" kind="class">
+			<Member name="Used" type="UsedType" />
+			<Member name="Value" type="double" />
+		</Type>
+		<Type name="InOutType" CSharpFullName="RemoteCSharpClient.InOutType" CppFullName="CInOutType" kind="class">
+			<Member name="Used" type="UsedType" />
+			<Member name="Value2" type="double" />
+		</Type>
+		<Type name="OutType" CSharpFullName="RemoteCSharpClient.OutType" CppFullName="COutType" kind="class">
+			<Member name="Used" type="UsedType" />
+			<Member name="Value3" type="double" />
+		</Type>
+		<Type name="ReturnType" CSharpFullName="RemoteCSharpClient.ReturnType" CppFullName="CReturnType" kind="class">
+			<Member name="Used" type="UsedType" />
+			<Member name="Value4" type="double" />
+		</Type>
+		<Type name="PositionReports" kind="smap">
+			<Key name="astring" />
+			<Value name="double" />
+		</Type>
+		<Type name="PositionReports2" kind="hmap">
+			<Key name="astring" />
+			<Value name="double" />
+		</Type>
+	</Types>
+	<Components>
+		<Component name="Simple">
+			<Method name="Inverse">
+				<Param name="text" type="astring" direction="in"/>
+				<Return type="astring" />
+			</Method>
+			<Method name="Factorial">
+				<Param name="value" type="int32" direction="in"/>
+				<Param name="result" type="int32" direction="out"/>
+				<Return type="bool" />
+			</Method>
+		</Component>
+		<Component name="Extended">
+			<Method name ="Do">
+				<Param name="inArg" type="InType" direction="in" />
+				<Param name="inOutArg" type="InOutType" direction="in-out" />
+				<Param name="outArg" type="OutType" direction="out" />
+				<Return type="ReturnType" />
+			</Method>
+			<Method name="MarketBuy">
+				<Param name="symbol" type="astring" direction="in" />
+				<Param name="price" type="double" direction="in" />
+				<Param name="volume" type="double" direction="in-out" />
+				<Param name="amount" type="double" direction="out" />
+				<Return type="int32" />
+			</Method>
+			<Method name="Update">
+				<Param name="reports" type="PositionReports" direction="in-out" />
+				<Param name="reports2" type="PositionReports2" direction="in-out" />
+				<Return type="void" />
+			</Method>
+		</Component>
+	</Components>
+</Protocol>

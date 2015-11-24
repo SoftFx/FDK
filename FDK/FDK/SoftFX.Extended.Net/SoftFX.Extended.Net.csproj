@@ -1,0 +1,356 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D15BBA76-552E-4C6D-AE64-FD6F30CCF770}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SoftFX.Extended</RootNamespace>
+    <AssemblyName>SoftFX.Extended.Net</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <!-- <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>-->
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;_DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>..\Debug\SoftFX.Extended.Net.xml</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>..\Release\SoftFX.Extended.Net.xml</DocumentationFile>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Resources\FDK.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SoftFX.Lrp">
+      <HintPath>..\..\External\Dll\SoftFX.Lrp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TickTrader.BusinessLogic, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\External\Assembly\TickTrader.BusinessLogic.dll</HintPath>
+    </Reference>
+    <Reference Include="TickTrader.BusinessObjects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\External\Assembly\TickTrader.BusinessObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="TickTrader.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\External\Assembly\TickTrader.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="TickTrader.Server.Monitoring, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\External\Assembly\TickTrader.Server.Monitoring.dll</HintPath>
+    </Reference>
+    <Reference Include="TickTrader.Server.QuoteHistory, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\External\Assembly\TickTrader.Server.QuoteHistory.dll</HintPath>
+    </Reference>
+    <Reference Include="TickTrader.Server.QuoteHistory.Store.Bdb">
+      <HintPath>..\..\External\Assembly\TickTrader.Server.QuoteHistory.Store.Bdb.dll</HintPath>
+    </Reference>
+    <Reference Include="TickTrader.Server.QuoteHistory.Store.Ntfs">
+      <HintPath>..\..\External\Assembly\TickTrader.Server.QuoteHistory.Store.Ntfs.dll</HintPath>
+    </Reference>
+    <Reference Include="TickTrader.Server.QuoteHistory.Store.SQLite">
+      <HintPath>..\..\External\Assembly\TickTrader.Server.QuoteHistory.Store.SQLite.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\AssetInfo.cs" />
+    <Compile Include="Entities\CurrencyInfo.cs" />
+    <Compile Include="Enums\CommissionChargeMethod.cs" />
+    <Compile Include="Enums\CommissionChargeType.cs" />
+    <Compile Include="Enums\CommissionType.cs" />
+    <Compile Include="Events\CurrencyInfoEventArgs.cs" />
+    <Compile Include="Financial\Rounding\CurrencyPrecisionProvider.cs" />
+    <Compile Include="Financial\Rounding\DefaultPrecision.cs" />
+    <Compile Include="Financial\Rounding\FinancialRounding.cs" />
+    <Compile Include="Financial\Rounding\IAccountRoundingService.cs" />
+    <Compile Include="Financial\Rounding\IPrecisionProvider.cs" />
+    <Compile Include="Financial\Rounding\IRounding.cs" />
+    <Compile Include="Financial\Rounding\IRoundingService.cs" />
+    <Compile Include="Financial\Rounding\AccountRoundingService.cs" />
+    <Compile Include="Financial\State\Processor.cs" />
+    <Compile Include="Financial\State\UpdateHandler.cs" />
+    <Compile Include="Resources\EmbeddedModules.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmbeddedModules.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ModulesProvider.cs" />
+    <Compile Include="Resources\IModuleSource.cs" />
+    <Compile Include="Resources\StaticPropertyInfoModuleSource.cs" />
+    <Compile Include="Storage\HistoryNotFoundException.cs" />
+    <Compile Include="Events\ExceptionEventArgs.cs" />
+    <Compile Include="Extensions\FinancialCalculatorExtensions.cs" />
+    <Compile Include="Extensions\SymbolInfoExtensions.cs" />
+    <Compile Include="Financial\Adapter\CalculatorAsset.cs" />
+    <Compile Include="Financial\Adapter\CalculatorConvert.cs" />
+    <Compile Include="Financial\Adapter\CalculatorOrder.cs" />
+    <Compile Include="Financial\Adapter\CashAccountInfo.cs" />
+    <Compile Include="Financial\Adapter\MarginAccountInfo.cs" />
+    <Compile Include="Financial\Adapter\SymbolRate.cs" />
+    <Compile Include="Financial\State\CashAssets.cs" />
+    <Compile Include="Financial\Enums\AccountEntryStatus.cs" />
+    <Compile Include="Financial\Collections\CurrencyEntries.cs" />
+    <Compile Include="Financial\Generated\FinCalc.cs" />
+    <Compile Include="Financial\Generated\Serializer.cs" />
+    <Compile Include="Financial\ResolvePriceHandler.cs" />
+    <Compile Include="Financial\Serialization\AccountData.cs" />
+    <Compile Include="Financial\Serialization\CalculatorData.cs" />
+    <Compile Include="Financial\Serialization\PriceData.cs" />
+    <Compile Include="Financial\Serialization\SymbolData.cs" />
+    <Compile Include="Financial\Serialization\TradeData.cs" />
+    <Compile Include="Financial\State\StateCalculator.cs" />
+    <Compile Include="Financial\State\StateInfo.cs" />
+    <Compile Include="Financial\State\StateInfoEventArgs.cs" />
+    <Compile Include="Financial\Enums\TradeEntryStatus.cs" />
+    <Compile Include="Financial\Enums\MarginMode.cs" />
+    <Compile Include="Financial\Collections\FinancialEntries.cs" />
+    <Compile Include="Financial\Entries\FinancialEntry.cs" />
+    <Compile Include="Financial\Generated\Signature.cs" />
+    <Compile Include="Financial\Generated\TypesSerializer.cs" />
+    <Compile Include="Financial\Entries\PriceEntry.cs" />
+    <Compile Include="Financial\FinancialCalculator.cs" />
+    <Compile Include="Financial\Entries\AccountEntry.cs" />
+    <Compile Include="Financial\Collections\PriceEntries.cs" />
+    <Compile Include="Financial\Collections\SymbolEntries.cs" />
+    <Compile Include="Financial\Entries\SymbolEntry.cs" />
+    <Compile Include="Financial\Entries\TradeEntry.cs" />
+    <Compile Include="Generated\Library.cs" />
+    <Compile Include="Storage\Bars\BarsEnumeratorBase.cs" />
+    <Compile Include="Library\ConnectionTester.cs" />
+    <Compile Include="Storage\Bars\DirectionalBarsEnumerator.cs" />
+    <Compile Include="Implementation\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Library\LrpConnectionStringBuilder.cs" />
+    <Compile Include="Entities\PairBar.cs" />
+    <Compile Include="Storage\Bars\PairBars.cs" />
+    <Compile Include="Storage\Bars\ICloneableEnumerator.cs" />
+    <Compile Include="Enums\AccountType.cs" />
+    <Compile Include="Entities\BalanceOperation.cs" />
+    <Compile Include="Entities\Bar.cs" />
+    <Compile Include="Entities\BarPeriod.cs" />
+    <Compile Include="Storage\Quotes\Range.cs" />
+    <Compile Include="Entities\DataHistoryInfo.cs" />
+    <Compile Include="Core\Types\FxNotification.cs" />
+    <Compile Include="Events\NotificationEventArgs.cs" />
+    <Compile Include="Financial\Entries\Asset.cs" />
+    <Compile Include="Entities\ClosePositionResult.cs" />
+    <Compile Include="Events\PositionReportEventArgs.cs" />
+    <Compile Include="Generated\ClientCache.cs" />
+    <Compile Include="Generated\ClientServer.cs" />
+    <Compile Include="Generated\Converter.cs" />
+    <Compile Include="Generated\FeedCache.cs" />
+    <Compile Include="Generated\FeedServer.cs" />
+    <Compile Include="Generated\Handle.cs" />
+    <Compile Include="Generated\Iterator.cs" />
+    <Compile Include="Generated\Params.cs" />
+    <Compile Include="Generated\Signature.cs" />
+    <Compile Include="Generated\TradeCache.cs" />
+    <Compile Include="Generated\TradeServer.cs" />
+    <Compile Include="Generated\TypesSerializer.cs" />
+    <Compile Include="Storage\Bars\PairBarsEnumerator.cs" />
+    <Compile Include="Network\NetworkActivity.cs" />
+    <Compile Include="Exceptions\InvalidHandleException.cs" />
+    <Compile Include="Events\TradeTransactionReportEventArgs.cs" />
+    <Compile Include="Network\Network.cs" />
+    <Compile Include="Enums\NotificationType.cs" />
+    <Compile Include="Enums\OrderStatus.cs" />
+    <Compile Include="Entities\Position.cs" />
+    <Compile Include="Enums\RejectReason.cs" />
+    <Compile Include="Resources\Module.cs" />
+    <Compile Include="Resources\ModuleType.cs" />
+    <Compile Include="Resources\ModulesManager.cs" />
+    <Compile Include="Reports\TradeTransactionReason.cs" />
+    <Compile Include="Reports\TradeTransactionReportType.cs" />
+    <Compile Include="Enums\OrderType.cs" />
+    <Compile Include="Enums\Severity.cs" />
+    <Compile Include="Storage\HistoryManagerAdapter.cs" />
+    <Compile Include="Storage\DataFeedHistorySource.cs" />
+    <Compile Include="Storage\DataFeedStorage.cs" />
+    <Compile Include="Storage\HistoryInfo.cs" />
+    <Compile Include="Storage\IStorage.cs" />
+    <Compile Include="Storage\SmartStorage.cs" />
+    <Compile Include="Storage\Quotes\QuotesRangeSingleEnumerator.cs" />
+    <Compile Include="Storage\Quotes\QuotesRangeSingleIterator.cs" />
+    <Compile Include="Storage\Quotes\QuotesRangeSingleSequence.cs" />
+    <Compile Include="Storage\Quotes\QuotesSingleEnumerator.cs" />
+    <Compile Include="Storage\Quotes\QuotesSingleIterator.cs" />
+    <Compile Include="Storage\Quotes\QuotesSingleSequence.cs" />
+    <Compile Include="Storage\StorageProvider.cs" />
+    <Compile Include="Storage\StorageConvert.cs" />
+    <Compile Include="Stream\StreamIterator.cs" />
+    <Compile Include="Enums\TimeDirection.cs" />
+    <Compile Include="Exceptions\LogoutException.cs" />
+    <Compile Include="Storage\Bars\BarsCountEnumerator.cs" />
+    <Compile Include="Storage\Bars\BarsTimeIntervalEnumerator.cs" />
+    <Compile Include="Storage\Bars\Bars.cs" />
+    <Compile Include="Library\ConnectionStringBuilder.cs" />
+    <Compile Include="Core\Proxies\FxDataClient.cs" />
+    <Compile Include="Core\Proxies\FxDataFeed.cs" />
+    <Compile Include="Core\Proxies\FxDataTrade.cs" />
+    <Compile Include="Core\Proxies\FxHandle.cs" />
+    <Compile Include="Core\Proxies\FxParams.cs" />
+    <Compile Include="Core\Proxies\FxQueue.cs" />
+    <Compile Include="Core\HResults.cs" />
+    <Compile Include="Core\Types\FxMessage.cs" />
+    <Compile Include="Core\Native.cs" />
+    <Compile Include="Client\DataCache.cs" />
+    <Compile Include="Client\DataClient.cs" />
+    <Compile Include="Client\DataFeed.cs" />
+    <Compile Include="Client\DataFeedCache.cs" />
+    <Compile Include="Client\DataFeedServer.cs" />
+    <Compile Include="Client\DataServer.cs" />
+    <Compile Include="Stream\DataStream.cs" />
+    <Compile Include="Client\DataTrade.cs" />
+    <Compile Include="Client\DataTradeCache.cs" />
+    <Compile Include="Client\DataTradeServer.cs" />
+    <Compile Include="Entities\AccountInfo.cs" />
+    <Compile Include="Core\Types\FxOrder.cs" />
+    <Compile Include="Doxygen\Doxygen.cs" />
+    <Compile Include="Events\AccountInfoEventArgs.cs" />
+    <Compile Include="Events\CacheEventArgs.cs" />
+    <Compile Include="Events\DataEventArgs.cs" />
+    <Compile Include="Events\SessionInfoEventArgs.cs" />
+    <Compile Include="Events\ExecutionReportEventArgs.cs" />
+    <Compile Include="Events\SymbolInfoEventArgs.cs" />
+    <Compile Include="Entities\ExecutionReport.cs" />
+    <Compile Include="Enums\ExecutionStatus.cs" />
+    <Compile Include="Enums\ExecutionType.cs" />
+    <Compile Include="Features\Core\FeaturesInfo.cs" />
+    <Compile Include="Features\SymbolInfoFeaturesProvider.cs" />
+    <Compile Include="Core\Types\FxFileChunk.cs" />
+    <Compile Include="Library\FixConnectionStringBuilder.cs" />
+    <Compile Include="Exceptions\RejectException.cs" />
+    <Compile Include="Exceptions\SendException.cs" />
+    <Compile Include="Exceptions\TimeoutException.cs" />
+    <Compile Include="Features\Core\IFeaturesInfoProvider.cs" />
+    <Compile Include="Library\Library.cs" />
+    <Compile Include="Enums\LogoutReason.cs" />
+    <Compile Include="Enums\MarginCalcMode.cs" />
+    <Compile Include="Reports\TradeTransactionReportsIterator.cs" />
+    <Compile Include="Reports\TradeTransactionReport.cs" />
+    <Compile Include="Enums\TradeCommand.cs" />
+    <Compile Include="Entities\TradeRecord.cs" />
+    <Compile Include="Enums\TradeRecordSide.cs" />
+    <Compile Include="Enums\TradeRecordType.cs" />
+    <Compile Include="Enums\PriceType.cs" />
+    <Compile Include="Enums\ProfitCalcMode.cs" />
+    <Compile Include="Entities\QuoteEntry.cs" />
+    <Compile Include="Entities\SymbolInfo.cs" />
+    <Compile Include="Events\LogonEventArgs.cs" />
+    <Compile Include="Events\LogoutEventArgs.cs" />
+    <Compile Include="Events\TickEventArgs.cs" />
+    <Compile Include="Exceptions\RuntimeException.cs" />
+    <Compile Include="Events\Handlers.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Entities\Quote.cs" />
+    <Compile Include="Features\SymbolInfoFeatures.cs" />
+    <Compile Include="Enums\SessionStatus.cs" />
+    <Compile Include="Entities\SessionInfo.cs" />
+    <Compile Include="Library\FixProtocolVersion.cs" />
+    <Compile Include="Exceptions\UnsupportedFeatureException.cs" />
+    <Compile Include="Enums\TradeType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Doxygen\History.html" />
+    <Content Include="Doxygen\Introduction.html" />
+    <None Include="Resources\version.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Implementation\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\EmbeddedModules.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EmbeddedModules.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FDK.snk" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>"$(SolutionDir)\..\External\bin\lrp.exe" "$(SolutionDir)\FDK.xml" "$(ProjectDir)\Generated"  /language:C# /side:client /mode:local /namespace:SoftFX.Extended.Generated
+"$(SolutionDir)\..\External\bin\lrp.exe" "$(SolutionDir)\LlCommon.xml" "$(ProjectDir)\Financial\Generated"  /language:C# /side:client /mode:local /namespace:SoftFX.Extended.Financial.Generated
+
+if not exist "$(SolutionDir)..\FRE\SoftFX.Sal.x64.dll"  (copy NUL "$(SolutionDir)..\FRE\SoftFX.Sal.x64.dll")
+if not exist "$(SolutionDir)..\FRE\SoftFX.Core.x64.dll" (copy NUL "$(SolutionDir)..\FRE\SoftFX.Core.x64.dll")
+if not exist "$(SolutionDir)..\FRE\SoftFX.FixProvider.x64.dll"  (copy NUL "$(SolutionDir)..\FRE\SoftFX.FixProvider.x64.dll")
+if not exist "$(SolutionDir)..\FRE\SoftFX.LrpProvider.x64.dll"  (copy NUL "$(SolutionDir)..\FRE\SoftFX.LrpProvider.x64.dll")
+if not exist "$(SolutionDir)..\FRE\SoftFX.LlAPi.x64.dll"  (copy NUL "$(SolutionDir)..\FRE\SoftFX.LlApi.x64.dll")
+if not exist "$(SolutionDir)..\FRE\SoftFX.LlCommon.x64.dll"  (copy NUL "$(SolutionDir)..\FRE\SoftFX.LlCommon.x64.dll")
+
+if not exist "$(SolutionDir)..\FRE\SoftFX.Sal.x86.dll"  (copy NUL "$(SolutionDir)..\FRE\SoftFX.Sal.x86.dll")
+if not exist "$(SolutionDir)..\FRE\SoftFX.Core.x86.dll" (copy NUL "$(SolutionDir)..\FRE\SoftFX.Core.x86.dll")
+if not exist "$(SolutionDir)..\FRE\SoftFX.FixProvider.x86.dll"  (copy NUL "$(SolutionDir)..\FRE\SoftFX.FixProvider.x86.dll")
+if not exist "$(SolutionDir)..\FRE\SoftFX.LrpProvider.x86.dll"  (copy NUL "$(SolutionDir)..\FRE\SoftFX.LrpProvider.x86.dll")
+if not exist "$(SolutionDir)..\FRE\SoftFX.LlApi.x86.dll"  (copy NUL "$(SolutionDir)..\FRE\SoftFX.LlApi.x86.dll")
+if not exist "$(SolutionDir)..\FRE\SoftFX.LlCommon.x86.dll"  (copy NUL "$(SolutionDir)..\FRE\SoftFX.LlCommon.x86.dll")
+</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>copy /Y "$(TargetPath)" "$(SolutionDir)\..\FRE\"
+copy /Y "$(TargetDir)$(TargetName).xml" "$(SolutionDir)\..\FRE\"
+copy /Y "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)\..\FRE\"
+xcopy /Y /S "$(SolutionDir)\..\External\Assembly\*" "$(SolutionDir)\..\FRE\"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

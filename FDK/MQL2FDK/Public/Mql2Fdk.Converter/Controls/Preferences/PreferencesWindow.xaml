@@ -1,0 +1,34 @@
+﻿<Window x:Class="Mql2Fdk.Converter.Controls.Preferences.PreferencesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Preferences="clr-namespace:Mql2Fdk.Converter.Controls.Preferences" Title="Preferences Window" 
+        WindowStartupLocation="CenterScreen"
+        Icon="/Mql2Fdk.CommonViews;component/Icons/Medium/preferences-system.png"
+        Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TabControl>
+            <TabItem  Header="Include directories">
+                <Preferences:IncludeDirPicker x:Name="IncludeDirPicker" />
+            </TabItem> 
+            <TabItem  Header="Blacklist files">
+                <Preferences:BlackListChooser x:Name="BlackListChooser" />
+            </TabItem>
+        </TabControl>
+        <Grid Grid.Row="1" Background="DarkGray">
+            <Button Margin="2" 
+                    HorizontalAlignment="Right"
+                    Click="OnClose">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Mql2Fdk.CommonViews;component/Icons/Medium/preferences-system.png" Height="16" />
+                    <TextBlock VerticalAlignment="Center">Close</TextBlock>
+                </StackPanel>
+            </Button>
+            <UniformGrid HorizontalAlignment="Right" Rows="1" Columns="2">
+            </UniformGrid>
+        </Grid>
+    </Grid>
+</Window>

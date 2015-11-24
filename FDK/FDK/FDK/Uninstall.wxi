@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <DirectoryRef Id="ApplicationProgramsFolder">
+    <Component Id="UninstallProduct" Guid="*">
+      <Shortcut Id="UninstallProduct" Name="Uninstall $(var.FriendlyName)" Description="Uninstalls FDK"
+        Target="[System64Folder]msiexec.exe" Arguments="/x $(var.FDK_ID)"/>
+      <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+      <RegistryValue Root="HKCU" Key="Software\SoftFX\FDK\$(var.FullVersion)" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+    </Component>
+  </DirectoryRef>
+
+  <Feature Id="Uninstall" Level="1" Display="hidden" Absent="disallow" AllowAdvertise="no">
+    <ComponentRef Id="UninstallProduct" />
+  </Feature>
+</Include>

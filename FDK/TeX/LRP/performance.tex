@@ -1,0 +1,49 @@
+\section{Performance}
+
+
+Speed of sending request (512 bytes) and waiting for response (512 bytes) by network without serialization for localhost.
+\begin{eqnarray}
+  speed &=& \left\{28627, 29565, 29395, 29400, 28774, 32115, 29231, 28234, 28410, 30036\right\} \nonumber \\
+  \overline{speed}&\approx& 29400  \nonumber \\
+  \sigma_{speed} &\approx& 1100 \nonumber
+\end{eqnarray}
+
+
+
+Protocol speed is calculated for the following method signature:
+
+HRESULT MarketButy(const string\& symbol, double price, double\& volume, double\& amount),
+where symbol [in] = "EUR/USD", price [in] = 1.3, volume [in-out] = 100000, amount [out] = 0.
+
+In-process performance, invoking C++ method from C\#.
+\begin{eqnarray}
+  speed &=& \left\{4319k, 4314k, 3960k, 3875k, 4284k, 3982k, 4394k, 4252k, 3968k, 3640k\right\} \nonumber \\
+  \overline{speed}&\approx& 4100k  \nonumber \\
+  \sigma_{speed} &\approx& 250k \nonumber
+\end{eqnarray}
+
+
+
+
+P/Invoke performance, invoking C++ method from C\#.
+\begin{eqnarray}
+  speed &=& \left\{7140k, 7231k, 7255k, 7134k, 7317k, 7354k, 7249k, 7070k, 7237k, 7336k\right\} \nonumber \\
+  \overline{speed}&\approx& 7230k, \nonumber \\
+  \sigma_{speed} &\approx& 90k \nonumber
+\end{eqnarray}
+
+
+Network performance, invoking C++ method from C\#.
+\begin{eqnarray}
+  speed &=& \left\{25732, 26388, 26186, 26446, 26375, 26732, 26626, 26698, 26396, 26153\right\} \nonumber \\
+  \overline{speed}&\approx& 26400  \nonumber \\
+  \sigma_{speed} &\approx& 300 \nonumber
+\end{eqnarray}
+
+
+Pipe performance, invoking C++ method from C\#.
+\begin{eqnarray}
+  speed &=& \left\{93.5, 90.7, 89.8, 90.3, 87.0, 86.9, 91.1, 95.0, 93.2, 89.2\right\} \nonumber \\
+  \overline{speed}&\approx& 90.7  \nonumber \\
+  \sigma_{speed} &\approx& 2.7 \nonumber
+\end{eqnarray}

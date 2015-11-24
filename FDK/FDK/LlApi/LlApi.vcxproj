@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2AEC504A-E6B6-4B0E-B294-5CA04664E046}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>LlApi</RootNamespace>
+    <SccProjectName>
+    </SccProjectName>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccProvider>
+    </SccProvider>
+    <ProjectName>LlApi</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>SoftFX.$(ProjectName).$(PlatformTarget)</TargetName>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration).$(PlatformTarget)\</IntDir>
+    <TargetExt>.dll</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration).$(PlatformTarget)\</IntDir>
+    <TargetName>SoftFX.$(ProjectName).$(PlatformTarget)</TargetName>
+    <TargetExt>.dll</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>SoftFX.$(ProjectName).$(PlatformTarget)</TargetName>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration).$(PlatformTarget)\</IntDir>
+    <TargetExt>.dll</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration).$(PlatformTarget)\</IntDir>
+    <TargetName>SoftFX.$(ProjectName).$(PlatformTarget)</TargetName>
+    <TargetExt>.dll</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(Configuration)\</OutDir>
+    <IntDir>$(Configuration).x86\</IntDir>
+    <TargetName>$(ProjectName).x86</TargetName>
+    <TargetExt>.dll</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;LLAPI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4702</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>LlApi.def</ModuleDefinitionFile>
+      <AdditionalDependencies>Ws2_32.lib;SoftFX.Lrp.x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <Profile>false</Profile>
+      <AdditionalLibraryDirectories>..\..\External\Lib</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>if not exist ..\..\FRE (md ..\..\FRE)
+copy /Y "$(TargetPath)" ..\..\FRE\
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>..\..\External\bin\lrp.exe ..\FDK.xml  .  /language:C++ /side:server /mode:local</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;LLAPI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4702</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>LlApi.def</ModuleDefinitionFile>
+      <AdditionalDependencies>Ws2_32.lib;SoftFX.Lrp.x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <Profile>false</Profile>
+      <AdditionalLibraryDirectories>..\..\External\Lib</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>if not exist ..\..\FRE (md ..\..\FRE)
+copy /Y "$(TargetPath)" ..\..\FRE\
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>..\..\External\bin\lrp.exe ..\FDK.xml  .  /language:C++ /side:server /mode:local</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;LLAPI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4702</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>LlApi.def</ModuleDefinitionFile>
+      <AdditionalDependencies>Ws2_32.lib;SoftFX.Lrp.x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <Profile>false</Profile>
+      <AdditionalLibraryDirectories>..\..\External\Lib</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>if not exist ..\..\FRE (md ..\..\FRE)
+copy /Y "$(TargetPath)" ..\..\FRE\
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>..\..\External\bin\lrp.exe ..\FDK.xml  .  /language:C++ /side:server /mode:local</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;LLAPI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4702</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>LlApi.def</ModuleDefinitionFile>
+      <AdditionalDependencies>Ws2_32.lib;SoftFX.Lrp.x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <Profile>false</Profile>
+      <AdditionalLibraryDirectories>..\..\External\Lib</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>if not exist ..\..\FRE (md ..\..\FRE)
+copy /Y "$(TargetPath)" ..\..\FRE\
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>..\..\External\bin\lrp.exe ..\FDK.xml  .  /language:C++ /side:server /mode:local</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Channel.h" />
+    <ClInclude Include="ClientCacheImpl.h" />
+    <ClInclude Include="ClientImpl.h" />
+    <ClInclude Include="ClientState.h" />
+    <ClInclude Include="ConnectionBuilder.h" />
+    <ClInclude Include="ConverterImpl.h" />
+    <ClInclude Include="DataCache.h" />
+    <ClInclude Include="DataFeed.h" />
+    <ClInclude Include="DataFeedCache.h" />
+    <ClInclude Include="DataTrade.h" />
+    <ClInclude Include="DataTradeCache.h" />
+    <ClInclude Include="DllLibrary.h" />
+    <ClInclude Include="DllMain.h" />
+    <ClInclude Include="FeedCacheImpl.h" />
+    <ClInclude Include="FeedImpl.h" />
+    <ClInclude Include="LibraryImpl.h" />
+    <ClInclude Include="LlApi.h" />
+    <ClInclude Include="Client.h" />
+    <ClInclude Include="FxQueue.h" />
+    <ClInclude Include="FxTradeTransactionReportIterator.h" />
+    <ClInclude Include="HandleImpl.h" />
+    <ClInclude Include="IdGenerator.h" />
+    <ClInclude Include="IteratorImpl.h" />
+    <ClInclude Include="IWaiter.h" />
+    <ClInclude Include="ParamsImpl.h" />
+    <ClInclude Include="LimitedQueue.h" />
+    <ClInclude Include="ProtocolVersion.h" />
+    <ClInclude Include="Receiver.h" />
+    <ClInclude Include="Server.hpp" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="SynchInvoker.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="Timeout.h" />
+    <ClInclude Include="TradeCacheImpl.h" />
+    <ClInclude Include="TradeImpl.h" />
+    <ClInclude Include="TypesSerializer.hpp" />
+    <ClInclude Include="Waiter.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Channel.cpp" />
+    <ClCompile Include="Client.cpp" />
+    <ClCompile Include="ClientCacheImpl.cpp" />
+    <ClCompile Include="ClientImpl.cpp" />
+    <ClCompile Include="ConnectionBuilder.cpp" />
+    <ClCompile Include="ConverterImpl.cpp" />
+    <ClCompile Include="DataCache.cpp" />
+    <ClCompile Include="DataFeed.cpp" />
+    <ClCompile Include="DataFeedCache.cpp" />
+    <ClCompile Include="DataTrade.cpp" />
+    <ClCompile Include="DataTradeCache.cpp" />
+    <ClCompile Include="DllLibrary.cpp" />
+    <ClCompile Include="DllMain.cpp" />
+    <ClCompile Include="FeedCacheImpl.cpp" />
+    <ClCompile Include="FeedImpl.cpp" />
+    <ClCompile Include="LibraryImpl.cpp" />
+    <ClCompile Include="LlApi.cpp" />
+    <ClCompile Include="FxQueue.cpp" />
+    <ClCompile Include="FxTradeTransactionReportIterator.cpp" />
+    <ClCompile Include="HandleImpl.cpp" />
+    <ClCompile Include="IdGenerator.cpp" />
+    <ClCompile Include="IteratorImpl.cpp" />
+    <ClCompile Include="LocalServer.cpp" />
+    <ClCompile Include="ParamsImpl.cpp" />
+    <ClCompile Include="ProtocolVersion.cpp" />
+    <ClCompile Include="Receiver.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="SynchInvoker.cpp" />
+    <ClCompile Include="Timeout.cpp" />
+    <ClCompile Include="TradeCacheImpl.cpp" />
+    <ClCompile Include="TradeImpl.cpp" />
+    <ClCompile Include="Waiter.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.vcxproj">
+      <Project>{8b29a897-6528-4d86-bf8b-4e19328f3174}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\LrpCommon\LrpCommon.vcxproj">
+      <Project>{ffec3ea6-1fee-4e10-8395-22c0cf9ca604}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Sal\Sal.vcxproj">
+      <Project>{4e42e097-ec94-44eb-a93a-ca58783e4b85}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LlApi.def" />
+    <None Include="makefile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <DirectoryRef Id="PF_Documentation">
+    <Component Id="SoftFX.Extended.Net.chm" Guid="*">
+      <File Id="SoftFX.Extended.Net.chm" Source="..\..\Documentation\SoftFX.Extended.Net.chm" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="SoftFX.Net.chm" Guid="*">
+      <File Id="SoftFX.chm" Source="..\..\Documentation\SoftFX.Net.chm" KeyPath="yes" Checksum="yes"/>
+    </Component>
+  </DirectoryRef>
+  <!-- examples shortcut creating -->
+  <DirectoryRef Id="PM_Documentation">
+    <Component Id="CSharpDocumentationShortcut" Guid="*">
+      <RegistryKey Root="HKCU" Key="Software\SoftFX\FDK\$(var.FullVersion)" Action="createAndRemoveOnUninstall">
+        <RegistryValue Name="CSharpDocumentationShortcut" Value="1" Type="integer" KeyPath="yes"/>
+      </RegistryKey>
+      <Shortcut Id="CSharpDocumentationShortcut" Name="SoftFX.Net.chm" Target="[APPLICATIONFOLDER]Documentation\SoftFX.Net.chm"/>
+      <RemoveFolder Id="PF_Documentation" On="uninstall"/>
+    </Component>
+    <Component Id="CSharpExtendedDocumentationShortcut" Guid="*">
+      <RegistryKey Root="HKCU" Key="Software\SoftFX\FDK\$(var.FullVersion)" Action="createAndRemoveOnUninstall">
+        <RegistryValue Name="CSharpExtendedDocumentationShortcut" Value="1" Type="integer" KeyPath="yes"/>
+      </RegistryKey>
+      <Shortcut Id="CSharpExtendedDocumentationShortcut" Name="SoftFX.Extended.Net.chm" Target="[APPLICATIONFOLDER]Documentation\SoftFX.Extended.Net.chm"/>
+    </Component>
+  </DirectoryRef>
+  <Feature Id="Documentation" Title="Documentation" Level="1" Display="expand" AllowAdvertise="no" Description="Install documentation">
+    <ComponentRef Id="PM_Documentation" />
+    <ComponentRef Id="SoftFX.Net.chm" />
+    <ComponentRef Id="SoftFX.Extended.Net.chm" />
+    <ComponentRef Id="CSharpDocumentationShortcut" />
+    <ComponentRef Id="CSharpExtendedDocumentationShortcut" />
+  </Feature>
+</Include>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <WixVariable Id="WixUIDialogBmp" Value="Resources\dlgbmp.bmp"/>
+  <WixVariable Id="WixUIBannerBmp" Value="Resources\bannrbmp.bmp"/>
+  <!--<CustomAction Id="LaunchApplication" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes" />-->
+  <UI Id="Emca_Dialogs">
+    <TextStyle Id="WixUI_Font_Normal" FaceName="Tahoma" Size="8" />
+    <TextStyle Id="WixUI_Font_Bigger" FaceName="Tahoma" Size="12" />
+    <TextStyle Id="WixUI_Font_Title" FaceName="Tahoma" Size="9" Bold="yes" />
+
+    <Property Id="DefaultUIFont" Value="WixUI_Font_Normal"/>
+    <Property Id="WixUI_Mode" Value="InstallDir"/>
+
+    <DialogRef Id="BrowseDlg"/>
+    <DialogRef Id="DiskCostDlg"/>
+    <DialogRef Id="ErrorDlg"/>
+    <DialogRef Id="FatalError"/>
+    <DialogRef Id="FilesInUse"/>
+    <DialogRef Id="MsiRMFilesInUse"/>
+    <DialogRef Id="PrepareDlg"/>
+    <DialogRef Id="ProgressDlg"/>
+    <DialogRef Id="ResumeDlg"/>
+    <DialogRef Id="UserExit"/>
+
+
+    <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999">1</Publish>
+    <!-- welcome diaglog -->
+    <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlgEx">NOT GUI_PREVIOUSFOUND</Publish>
+    <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="OlderVersionDlg">GUI_PREVIOUSFOUND</Publish>
+
+    <!--older version dialog-->
+    <Publish Dialog="OlderVersionDlg" Control="Next" Event="NewDialog" Value="InstallDirDlgEx">1</Publish>
+    <Publish Dialog="OlderVersionDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg">1</Publish>
+
+    <!-- select target path directory -->
+    <Publish Dialog="InstallDirDlgEx" Control="Back" Event="NewDialog" Value="WelcomeDlg">NOT GUI_PREVIOUSFOUND</Publish>
+    <Publish Dialog="InstallDirDlgEx" Control="Back" Event="NewDialog" Value="OlderVersionDlg">GUI_PREVIOUSFOUND</Publish>
+    <Publish Dialog="InstallDirDlgEx" Control="Next" Event="SetTargetPath" Value="[WIXUI_INSTALLDIR]" Order="1">1</Publish>
+    <Publish Dialog="InstallDirDlgEx" Control="Next" Event="NewDialog" Value="FeaturesDlg" Order="2">1</Publish>
+    <Publish Dialog="InstallDirDlgEx" Control="ChangeFolder" Property="_BrowseProperty" Value="[WIXUI_INSTALLDIR]" Order="1">1</Publish>
+    <Publish Dialog="InstallDirDlgEx" Control="ChangeFolder" Event="SpawnDialog" Value="BrowseDlg" Order="2">1</Publish>
+
+    <!-- features dialog -->
+    <Publish Dialog="FeaturesDlg" Control="Back" Event="NewDialog" Value="InstallDirDlgEx">NOT Installed</Publish>
+    <Publish Dialog="FeaturesDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg">Installed</Publish>
+
+    <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg" Order="1">NOT Installed</Publish>
+    <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg" Order="2">Installed</Publish>
+
+
+    <Publish Dialog="MaintenanceWelcomeDlg" Control="Next" Event="NewDialog" Value="MaintenanceTypeDlg">1</Publish>
+
+    <Publish Dialog="MaintenanceTypeDlg" Control="RepairButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+    <Publish Dialog="MaintenanceTypeDlg" Control="RemoveButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+    <Publish Dialog="MaintenanceTypeDlg" Control="ChangeButton" Event="NewDialog" Value="FeaturesDlg">1</Publish>
+    <Publish Dialog="MaintenanceTypeDlg" Control="Back" Event="NewDialog" Value="MaintenanceWelcomeDlg">1</Publish>
+  </UI>
+
+
+  <Property Id="WIXUI_INSTALLDIR" Value="APPLICATIONFOLDER"/>
+  <UIRef Id="WixUI_Common"/>
+</Include>

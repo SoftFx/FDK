@@ -1,0 +1,36 @@
+---
+title: "Configuration rFdk"
+output:
+  html_document:
+    theme: united
+    toc: yes
+---
+
+Sections:
+
+* 1. Connection
+
+* 2. Configuration (symbols, currencies, accounts)
+
+
+#1. Connection
+Connect to TT Demo server:
+ttConnect()
+
+```{r}
+options(warn=-1)
+require(rClr)
+require(rFdk)
+
+ttConnect("", "", "")
+
+```
+
+#2. Configuration
+
+Get symbol and currency data
+```{r}
+ttGetSymbolData()
+
+ttGetCurrencyData()
+```

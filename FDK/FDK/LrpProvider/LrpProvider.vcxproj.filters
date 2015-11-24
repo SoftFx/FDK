@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="_Sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="_Resources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="_Headers">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="_Generated">
+      <UniqueIdentifier>{76b2677b-d321-4b7c-a081-4c6549164001}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logging">
+      <UniqueIdentifier>{67c3bf44-0e67-4fe4-962c-b0fcdd262fdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logging\Generated">
+      <UniqueIdentifier>{a8a5d81a-6be6-4c9e-83d2-da05e469a51f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Local">
+      <UniqueIdentifier>{eb4e4c81-9d2b-42f2-86c3-a4547514dd3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Local\Generated">
+      <UniqueIdentifier>{5aa68723-dff8-435a-a127-733bf5e068a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Local\Headers">
+      <UniqueIdentifier>{f14e1979-b9a9-4ca2-9a81-6d8f73e0a513}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Local\Sources">
+      <UniqueIdentifier>{c2b4fd97-763e-40ab-b209-969f24862675}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpProvider.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpConnection.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpSender.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Client_Server.hpp">
+      <Filter>_Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="Client_TypesSerializer.hpp">
+      <Filter>_Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="Server_Signature.hpp">
+      <Filter>_Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="Server_TypesSerializer.hpp">
+      <Filter>_Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="Server.hpp">
+      <Filter>_Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="Client.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpReceiver.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Server_Logging.h">
+      <Filter>Logging\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="Server_Logging.hpp">
+      <Filter>Logging\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleCodec.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Socket.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Local_Server.hpp">
+      <Filter>Local\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="Local_TypesSerializer.hpp">
+      <Filter>Local\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpCodec.h">
+      <Filter>Local\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpCodecImpl.h">
+      <Filter>Local\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Local_Channel.h">
+      <Filter>Local\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Local_Server.h">
+      <Filter>Local\Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LrpProvider.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LrpConnection.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LrpSender.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Client.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LrpReceiver.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleCodec.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Socket.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LrpCodec.cpp">
+      <Filter>Local\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LrpCodecImpl.cpp">
+      <Filter>Local\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Local_Channel.cpp">
+      <Filter>Local\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Local_Server.cpp">
+      <Filter>Local\Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LrpProvider.def">
+      <Filter>_Resources</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="LrpClient.xml">
+      <Filter>_Resources</Filter>
+    </Xml>
+    <Xml Include="LrpProvider.xml">
+      <Filter>_Resources</Filter>
+    </Xml>
+  </ItemGroup>
+</Project>

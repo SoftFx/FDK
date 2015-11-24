@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <DirectoryRef Id="PF_FRE">
+    <Component Id="ssleay32.dll" Guid="*">
+      <File Id="ssleay32.dll" Source="..\..\External\Dll\ssleay32.dll" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="libeay32.dll" Guid="*">
+      <File Id="libeay32.dll" Source="..\..\External\Dll\libeay32.dll" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="ssleay64.dll" Guid="*">
+      <File Id="ssleay64.dll" Source="..\..\External\Dll\ssleay64.dll" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="libeay64.dll" Guid="*">
+      <File Id="libeay64.dll" Source="..\..\External\Dll\libeay64.dll" KeyPath="yes" Checksum="yes"/>
+    </Component>
+  </DirectoryRef>
+</Include>

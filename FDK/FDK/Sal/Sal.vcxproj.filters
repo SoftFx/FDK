@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="_Headers">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="_Sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Networking">
+      <UniqueIdentifier>{39a1fcb6-8f1a-4bc7-88b9-731ca36b35ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Networking\Headers">
+      <UniqueIdentifier>{612e9f32-9712-4d8b-af27-f6c33a8e0ffe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Networking\Sources">
+      <UniqueIdentifier>{ef6678ef-57bd-427f-a85c-f04d89c55e36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Resources">
+      <UniqueIdentifier>{7273561b-296b-4560-abf9-7128300efdbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Threading">
+      <UniqueIdentifier>{e7ce3f82-66c7-4ca0-ac79-2363567f1b62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Threading\Generated">
+      <UniqueIdentifier>{ba5be0b1-1ff7-427b-96f1-5c29c52e8518}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Threading\Headers">
+      <UniqueIdentifier>{35b98f46-a4ff-4276-8699-0961132d1ad2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Threading\Sources">
+      <UniqueIdentifier>{7044c36c-80b2-450c-a8a0-c7aef1a8fa90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Compression">
+      <UniqueIdentifier>{655603d9-82fe-4838-bbc6-b597939e2211}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Compression\Headers">
+      <UniqueIdentifier>{59f34ed3-7d46-4a83-b2e1-525e244f8d40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Compression\Sources">
+      <UniqueIdentifier>{40168df2-aa7c-404d-8f71-82f3cbad1f68}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Sal.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Types.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Semaphore.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CriticalSection.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Lock.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Sal.Windows.hpp">
+      <Filter>_Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="Sal.Linux.hpp">
+      <Filter>_Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedExclusiveLock.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DateTime.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TlsValue.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Sal.Linux.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Sal.Windows.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Networking.h">
+      <Filter>Networking\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SecureSocket.h">
+      <Filter>Networking\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleSocket.h">
+      <Filter>Networking\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Socket.h">
+      <Filter>Networking\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SocketActivity.h">
+      <Filter>Networking\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Delegate.hpp">
+      <Filter>Threading\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="CallsWaiter.h">
+      <Filter>Threading\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Delegate.h">
+      <Filter>Threading\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Job.h">
+      <Filter>Threading\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadPool.h">
+      <Filter>Threading\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Threading.h">
+      <Filter>Threading\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>Threading\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.hpp">
+      <Filter>Threading\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="EventImpl.h">
+      <Filter>Threading\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DelegateEvent.h">
+      <Filter>Threading\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DelegateEvent.hpp">
+      <Filter>Threading\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="Referenceable.h">
+      <Filter>Threading\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryStream.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LogStream.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SocketState.h">
+      <Filter>Networking\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="unzip.h">
+      <Filter>Compression\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="zip.h">
+      <Filter>Compression\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Compression.h">
+      <Filter>Compression\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ZipHandle.h">
+      <Filter>Compression\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sal.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Semaphore.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CriticalSection.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SharedExclusiveLock.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DateTime.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SecureSocket.cpp">
+      <Filter>Networking\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Socket.cpp">
+      <Filter>Networking\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleSocket.cpp">
+      <Filter>Networking\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Networking.cpp">
+      <Filter>Networking\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SocketActivity.cpp">
+      <Filter>Networking\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CallsWaiter.cpp">
+      <Filter>Threading\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Job.cpp">
+      <Filter>Threading\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadPool.cpp">
+      <Filter>Threading\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Event.cpp">
+      <Filter>Threading\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="EventImpl.cpp">
+      <Filter>Threading\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryStream.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LogStream.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="unzip.cpp">
+      <Filter>Compression\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="zip.cpp">
+      <Filter>Compression\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Compression.cpp">
+      <Filter>Compression\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ZipHandle.cpp">
+      <Filter>Compression\Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="makefile">
+      <Filter>_Resources</Filter>
+    </None>
+    <None Include="Sal.def">
+      <Filter>_Resources</Filter>
+    </None>
+    <None Include="Delegate.bat">
+      <Filter>Threading\Generated</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc">
+      <Filter>_Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico">
+      <Filter>_Resources</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

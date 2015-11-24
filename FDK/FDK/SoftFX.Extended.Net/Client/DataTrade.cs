@@ -1,0 +1,256 @@
+﻿namespace SoftFX.Extended
+{
+    using System;
+    using SoftFX.Extended.Core;
+    using SoftFX.Extended.Events;
+
+    /// <summary>
+    /// This class connects to trading platform and provides trading functionality.
+    /// </summary>
+    public class DataTrade : DataClient
+    {
+        #region Fields
+
+        FxDataTrade handle;
+
+        #endregion
+
+        #region Construction
+
+        /// <summary>
+        /// Creates a new data trade instance.
+        /// </summary>
+        public DataTrade()
+        {
+            this.Server = new DataTradeServer(this);
+            this.Cache = new DataTradeCache(this);
+        }
+
+        /// <summary>
+        /// Creates and initializes a new data trade instance.
+        /// </summary>
+        /// <exception cref="System.ArgumentNullException">If connectionString is null.</exception>
+        public DataTrade(string connectionString)
+            : this()
+        {
+            this.Initialize(connectionString);
+        }
+
+        internal override FxDataClient CreateFxDataClient(string connectionString)
+        {
+            this.handle.Handle.Delete();
+            this.handle = new FxDataTrade();
+            this.handle = FxDataTrade.Create(connectionString);
+
+            return this.handle.DataClient;
+        }
+
+        /// <summary>
+        /// This method is called when DataTrade object is constructed.
+        /// </summary>
+        protected sealed override void OnInitialized()
+        {
+            this.Server = new DataTradeServer(this);
+            this.Cache = new DataTradeCache(this);
+        }
+
+        #endregion
+
+        #region Events
+
+        /// <summary>
+        /// Occurs when account information is changed.
+        /// </summary>
+        public event AccountInfoHandler AccountInfo;
+
+        /// <summary>
+        /// Occurs when a trade operation is executing.
+        /// </summary>
+        public event ExecutionReportHandler ExecutionReport;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public event TradeTransactionReportHandler TradeTransactionReport;
+
+        /// <summary>
+        /// The event is supported by Net account only.
+        /// </summary>
+        public event PositionReportHandler PositionReport;
+
+        /// <summary>
+        /// Occurs when a notification is received.
+        /// </summary>
+        public event NotifyHandler Notify;
+
+        /// <summary>
+        /// Occurs when a notification of balance operation is received.
+        /// </summary>
+        public event NotifyHandler<BalanceOperation> BalanceOperation;
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets object, which encapsulates server side methods.
+        /// </summary>
+        public DataTradeServer Server { get; private set; }
+
+        /// <summary>
+        /// Gets object, which encapsulates client cache methods.
+        /// </summary>
+        public DataTradeCache Cache { get; private set; }
+
+        #endregion
+
+        #region Methods
+
+        internal override DataServer DataServer
+        {
+            get
+            {
+                return this.Server;
+            }
+        }
+
+        internal override bool ProcessMessage(FxMessage message)
+        {
+            if (base.ProcessMessage(message))
+                return true;
+
+            if (message.Type == Native.FX_MSG_ACCOUNT_INFO)
+                this.RaiseAccountInfo(message);
+            else if (message.Type == Native.FX_MSG_EXECUTION_REPORT)
+                this.RaiseExecutionReport(message);
+            else if (message.Type == Native.FX_MSG_TRADE_TRANSACTION_REPORT)
+                this.RaiseTradeTransactionReport(message);
+            else if (message.Type == Native.FX_MSG_POSITION_REPORT)
+                this.RaisePositionReport(message);
+            else if (message.Type == Native.FX_MSG_NOTIFICATION)
+                this.RaiseNotification(message);
+            else
+                return false;
+
+            return true;
+        }
+
+        void RaiseAccountInfo(FxMessage message)
+        {
+            var eh = this.AccountInfo;
+            if (eh != null)
+            {
+                var e = new AccountInfoEventArgs(message);
+                eh(this, e);
+            }
+        }
+
+        void RaiseExecutionReport(FxMessage message)
+        {
+            var eh = this.ExecutionReport;
+            if (eh != null)
+            {
+                var e = new ExecutionReportEventArgs (message);
+                eh(this, e);
+            }
+        }
+
+        void RaiseTradeTransactionReport(FxMessage message)
+        {
+            var eh = this.TradeTransactionReport;
+            if (eh != null)
+            {
+                var e = new TradeTransactionReportEventArgs(message);
+                eh(this, e);
+            }
+        }
+
+        void RaisePositionReport(FxMessage message)
+        {
+            var eh = this.PositionReport;
+            if (eh != null)
+            {
+                var e = new PositionReportEventArgs(message);
+                eh(this, e);
+            }
+        }
+
+        unsafe void RaiseNotification(FxMessage message)
+        {
+            var notification = message.Notification();
+
+            if (notification.Type == NotificationType.Balance)
+            {
+                var e = new NotificationEventArgs<BalanceOperation>(notification)
+                {
+                    Data = new BalanceOperation(notification)
+                };
+
+                this.RaiseBalanceOperationNotification(e);
+            }
+            else
+            {
+                var e = new NotificationEventArgs(notification);
+                this.RaiseNotification(e);
+            }
+        }
+
+        void RaiseNotification(NotificationEventArgs e)
+        {
+            var eh = this.Notify;
+            if (eh != null)
+            {
+                eh(this, e);
+            }
+        }
+
+        void RaiseBalanceOperationNotification(NotificationEventArgs<BalanceOperation> e)
+        {
+            this.RaiseNotification(e);
+            var eh = this.BalanceOperation;
+            if (eh != null)
+            {
+                eh(this, e);
+            }
+        }
+
+        #endregion
+
+        #region Disposing
+
+        /// <summary>
+        /// Releases all unmanaged resources.
+        /// </summary>
+        public override void Dispose()
+        {
+            if (this.IsStarted)
+                this.Stop();
+
+            this.handle.Handle.Delete();
+            this.handle = new FxDataTrade();
+        }
+
+        /// <summary>
+        /// Releases all unmanaged resources.
+        /// </summary>
+        ~DataTrade()
+        {
+            if (!Environment.HasShutdownStarted)
+                this.Dispose();
+        }
+
+        #endregion
+
+        #region Properties
+
+        internal FxDataTrade DataTradeHandle
+        {
+            get
+            {
+                return this.handle;
+            }
+        }
+
+        #endregion
+    }
+}

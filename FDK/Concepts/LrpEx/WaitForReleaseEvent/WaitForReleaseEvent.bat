@@ -1,0 +1,3 @@
+WaitForReleaseEvent.x86 16
+WaitForReleaseEvent.x64 16
+pause

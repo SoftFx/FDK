@@ -1,0 +1,234 @@
+<project name="FDK" default="help">
+
+  <include buildfile="./FDK.properties" />
+
+  <target name="BuildSolution" >
+    <echo message="CleanAll starded at: ${datetime::now()}" />
+    <call target="CleanAll" />
+    <echo message="BuildSolution for ${SolutionFile} (Rebuild ${Configuration}|${Platform64}) started at: ${datetime::now()}" />
+    <exec program="${VS2013Dir}\devenv.com">
+      <arg line="${SourcesDir}\${SolutionFile}" />
+      <arg line="/Rebuild ${Configuration}|${Platform64}" />
+    </exec>
+
+    <echo message="BuildSolution for ${SourcesDirExamples}\${ExamplesSolutionFile} (${MSBuild.Configuration}|${MSBuild.Platform}) started at: ${datetime::now()}" />
+    <exec program="${FrameworkDir}\msbuild.exe">
+      <arg value="${SourcesDirExamples}\${ExamplesSolutionFile}" />
+      <arg value="/target:Rebuild" />
+      <arg value="/maxcpucount" />
+      <arg value="/fl" />
+      <arg value="/flp:Verbosity=Normal;LogFile=Examples.build-${MSBuild.Configuration}-${MSBuild.Platform}.log" />
+      <arg value="/clp:NoItemAndPropertyList" />
+      <arg value="/verbosity:n" />
+      <arg value="/nologo" />
+      <arg value="/p:Configuration=${MSBuild.Configuration}" />
+      <arg value="/p:Platform=${MSBuild.Platform}" />
+    </exec>
+
+    <copy file="${SourcesDirExamples}\Release\QuotesDownloader.exe.config"  tofile="..\FRE\QuotesDownloader.exe.config" />
+    <copy file="${SourcesDirExamples}\Release\QuotesDownloader.exe"         tofile="..\FRE\QuotesDownloader.exe" />
+    <copy file="${SourcesDirExamples}\Release\RealTimeLevel2.exe"           tofile="..\FRE\RealTimeLevel2.exe" />
+    <copy file="${SourcesDirExamples}\Release\RealTimeLevel2.exe.config"    tofile="..\FRE\RealTimeLevel2.exe.config" />
+    <copy file="${SourcesDirExamples}\Release\QuotesExporter.exe"           tofile="..\FRE\QuotesExporter.exe" />
+    <copy file="${SourcesDirExamples}\Release\FinancialExample.exe"         tofile="..\FRE\FinancialExample.exe" />
+
+    <echo message="BuildSolution for ${SolutionFile} (Rebuild ${Configuration}|${Platform86}) started at: ${datetime::now()}" />
+    <exec program="${VS2013Dir}\devenv.com">
+      <arg line="${SourcesDir}\${SolutionFile}" />
+      <arg line="/Rebuild ${Configuration}|${Platform86}" />
+    </exec>
+
+    <echo message="BuildSolution for FDK_Documetation.bat (SandCastle) started at: ${datetime::now()}" />
+    <exec program="${SourcesDir}\SandCastle\FDK_Documetation.bat" >
+      <arg line="${SourcesDir}\SandCastle\FDK_Documetation.shfbproj" />
+    </exec>
+    <call target="CopyFDKBuild" />
+  </target>
+
+  <target name="CleanAll">
+    <echo message = "Cleaning '${ArtifactsDir}'"/>
+    <mkdir dir="${ArtifactsDir}" />
+    <delete>
+      <fileset basedir="${ArtifactsDir}">
+        <include name="**/*"/>
+      </fileset>
+    </delete>
+  </target>
+
+  <target name="SVNIndex" >
+    <property name="Source" value="${CheckoutDir}" />
+    <property name="Rev"    value="${Revision}" />
+    <echo message="SVNIndex is starded at: ${datetime::now()}" />
+    <echo message="Source: ${Source}" />
+    <echo message="Revision: ${Revision}" />
+    <exec program="${WinDbgDir}srcsrv\${svnindex.cmd}">
+      <arg line="-Ini=${Source}\srcsrv.ini" />
+      <arg line="-Source=${Source}" />
+      <arg line="-rev=${Rev}" />
+      <arg line="/debug" />
+    </exec>
+  </target>
+
+  <!--symstore add /r /f ${Source}\Release\*.* /s D:\TC\symbols /v ' + $Version + ' /t "FDK"-->
+  <target name="AddToStore" >
+    <property name="Source"     value="${SourcesDir}\Release\*.*" />
+    <property name="Rev"        value="${Revision}" />
+    <echo message="AddToStore is starded at: ${datetime::now()}" />
+    <echo message="Source: ${Source}\Release\*.*" />
+    <echo message="Revision: ${Revision}" />
+    <exec program="${WinDbgDir}\${Symstore.exe}">
+      <arg line="add" />
+      <arg line="/r" />
+      <arg line="/f ${Source}" />
+      <arg line="/s ${SymbolsDir}" />
+      <arg line="/v ${Rev}" />
+      <arg line="/t FDK" />
+    </exec>
+  </target>
+
+  <target name="BuildTools" >
+    <echo message="build starded at: ${datetime::now()}" />
+    <exec program="${FrameworkDir}\msbuild.exe">
+      <arg value="${ToolsDir}\Advisers\Advisers.sln" />
+      <arg value="/target:Rebuild" />
+      <arg value="/maxcpucount" />
+      <arg value="/fl" />
+      <arg value="/flp:Verbosity=Normal;LogFile=Examples.build-Release-Mixed Platforms.log" />
+      <arg value="/clp:NoItemAndPropertyList" />
+      <arg value="/verbosity:n" />
+      <arg value="/nologo" />
+      <arg value="/p:Configuration=Release" />
+      <arg value="/p:Platform=Mixed Platforms" />
+    </exec>
+  </target>
+
+  <target name="BuildLRP" >
+    <echo message="BuildLRP started at: ${datetime::now()}" />
+<!--
+    <exec program="${FrameworkDir}\msbuild.exe">
+      <arg value="${LRPDir}\LRP.sln" />
+      <arg value="/target:Rebuild" />
+      <arg value="/maxcpucount" />
+      <arg value="/fl" />
+      <arg value="/flp:Verbosity=Normal;LogFile=LRP.build-Release-x64.log" />
+      <arg value="/clp:NoItemAndPropertyList" />
+      <arg value="/verbosity:n" />
+      <arg value="/nologo" />
+      <arg value="/p:Configuration=${Configuration_Release}" />
+      <arg value="/p:Platform=${Platform64}" />
+    </exec>
+-->	
+    <exec program="${VS2013Dir}\devenv.com">
+      <arg line="${LRPDir}\LRP.sln" />
+      <arg line="/Rebuild ${Configuration_Release}|${Platform64}" />
+    </exec>
+	
+  </target>
+
+  <target name="BuildExamples" >
+    <echo message="build starded at: ${datetime::now()}" />
+    <exec program="${FrameworkDir}\msbuild.exe">
+      <arg value="${ExamplesDir}\CSharp\CSharp.sln" />
+      <arg value="/target:Rebuild" />
+      <arg value="/maxcpucount" />
+      <arg value="/fl" />
+      <arg value="/flp:Verbosity=Normal;LogFile=Examples.build-Release-Any CPU.log" />
+      <arg value="/clp:NoItemAndPropertyList" />
+      <arg value="/verbosity:n" />
+      <arg value="/nologo" />
+      <arg value="/p:Configuration=Release" />
+      <arg value="/p:Platform=Any CPU" />
+    </exec>
+  </target>
+
+  <target name="CopyFDKBuild" >
+    <call target="GetVersion" />
+    <mkdir dir="${ArtifactsDir}\FDK ${Version}" />
+    <copy file="${SourcesDir}\Release\FDK.msi" tofile="${ArtifactsDir}\FDK ${Version}\${SetupFileBaseName}.msi" />
+    <mkdir dir="${ArtifactsDir}\FDK ${Version}\fdk" />
+    <delete>
+      <fileset>
+        <include name="${ArtifactsDir}\FDK ${Version}\fdk\*.*" />
+      </fileset>
+    </delete>
+    <copy todir="${ArtifactsDir}\FDK ${Version}\fdk" >
+      <fileset basedir="${SourcesDir}\SandCastle\Help\" >
+        <exclude name="FDK Documentation.chm" />
+        <include name="**\*" />
+      </fileset>
+    </copy>
+    <zip zipfile="${ArtifactsDir}\FDK ${Version}\Help.zip">
+      <fileset basedir="${SourcesDir}\SandCastle\Help\">
+        <exclude name="FDK Documentation.chm" />
+        <include name="**\*" />
+      </fileset>
+    </zip>
+    <copy file="${SourcesDir}\SandCastle\Help\FDK Documentation.chm" tofile="${ArtifactsDir}\FDK ${Version}\FDK Documentation.chm" />
+  </target>
+
+  <target name="GetVersion">
+    <script language="C#" prefix="nant" >
+      <references>
+        <include name="..\FRE\SoftFX.Extended.Net.dll" />
+      </references>
+      <imports>
+        <import namespace="SoftFX.Extended" />
+      </imports>
+      <code>
+        <![CDATA[
+              [Function("Load_Version")]
+
+              public static string LoadVersion()
+              {
+                return Library.Version;
+              }
+              ]]>
+      </code>
+    </script>
+    <property name="Version" value="${nant::Load_Version()}" />
+    <echo message="Version = ${Version}" />
+  </target>
+
+  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- COPY TO FTP                                                                                                                                 -->
+  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <target name="CopyToFTP">
+    <call target="GetVersion" />
+    <property name="FTP.SourceFile" value="${ArtifactsDir}\FDK ${Version}\${SetupFileBaseName}.msi" />
+    <property name="FTP.File"       value="${SetupFileBaseName}.msi" />
+    <call target="CopyFileToFTP" />
+    <property name="FTP.SourceFile" value="${ArtifactsDir}\FDK ${Version}\FDK Documentation.chm" />
+    <property name="FTP.File" 		  value="FDK Documentation.chm" />
+    <call target="CopyFileToFTP" />
+    <property name="FTP.SourceFile" value="${ArtifactsDir}\FDK ${Version}\Help.zip" />
+    <property name="FTP.File" 		  value="Help.zip" />
+    <call target="CopyFileToFTP" />
+  </target>
+  
+  <target name="CopyFileToFTP">
+    <choose>
+      <when test="${string::contains(IsRelease, 'yes')}">
+        <property name="FTP.DestinationFile"    value="${FTPReleaseFolder}\FDK ${Version}\${FTP.File}" />
+      </when>
+      <otherwise>
+        <property name="FTP.DestinationFile"    value="${FTPBuildFolder}\FDK ${Version}\${FTP.File}" />
+      </otherwise>
+    </choose>
+    <choose>
+      <when test="${string::contains(CopyBuildToFTP, 'yes')}">
+        <echo message = "Copying '${FTP.SourceFile}' to '${FTP.DestinationFile}' on FTP"/>
+        <exec program="${FTPClientEXE}">
+          <arg value="-fp" />
+          <arg value="${FTP.SourceFile}" />
+          <arg value="-dp" />
+          <arg value="${FTP.DestinationFile}" />
+          <arg value="--rewrite" />
+        </exec>
+      </when>
+      <otherwise>
+        <echo message="Parameter 'CopyBuildToFTP' is set to 'no'. If you want to copy the files to FTP set the parameter up to 'yes'" />
+      </otherwise>
+    </choose>
+  </target>
+  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+</project>

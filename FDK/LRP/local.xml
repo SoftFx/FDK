@@ -1,0 +1,69 @@
+<Protocol>
+	<Types>
+		<Type name="UsedType" CSharpFullName="LocalCSharp.UsedType" CppFullName="CUsedType" kind="class">
+			<Member name="Code" type="int32" />
+			<Member name="Description" type="astring" />
+		</Type>
+		<Type name="InType" CSharpFullName="LocalCSharp.InType" CppFullName="CInType" kind="class">
+			<Member name="Used" type="UsedType" />
+			<Member name="Value" type="double" />
+		</Type>
+		<!--sfsaf-->
+		<Type name="InOutType" CSharpFullName="LocalCSharp.InOutType" CppFullName="CInOutType" kind="class">
+			<Member name="Used" type="UsedType" />
+			<Member name="Value2" type="double" />
+		</Type>
+		<Type name="OutType" CSharpFullName="LocalCSharp.OutType" CppFullName="COutType" kind="class">
+			<Member name="Used" type="UsedType" />
+			<Member name="Value3" type="double" />
+		</Type>
+		<Type name="ReturnType" CSharpFullName="LocalCSharp.ReturnType" CppFullName="CReturnType" kind="class">
+			<Member name="Used" type="UsedType" />
+			<Member name="Value4" type="double" />
+		</Type>
+		<Type name="QuoteEntry" CSharpFullName="LocalCSharp.QuoteEntry" CppFullName="CQuoteEntry" kind="class">
+			<Member name="Price" type="double" />
+			<Member name="Volume" type="double" />
+		</Type>
+		<Type name="QuoteEntryArray" kind="array">
+			<Value name="QuoteEntry" />
+		</Type>
+		<Type name="Level2" CSharpFullName="LocalCSharp.Level2" CppFullName="CLevel2" kind="class">
+			<Member name="CreatingTime" type="time" />
+			<Member name="Bids" type="QuoteEntryArray" />
+			<Member name="Asks" type="QuoteEntryArray" />
+			<Member name="Symbol" type="astring" />
+		</Type>
+	</Types>
+	<Components>
+		<Component name="Simple">
+			<Method name="Constructor">
+				<Return type="lptr" />
+			</Method>
+			<Method name="Inverse">
+				<Param name="text" type="astring" direction="in"/>
+				<Return type="astring" />
+			</Method>
+			<Method name="Factorial">
+				<Param name="value" type="int32" direction="in"/>
+				<Param name="result" type="int32" direction="out"/>
+				<Return type="bool" />
+			</Method>
+		</Component>
+		<Component name="Extended">
+			<Method name ="Do">
+				<Param name="inArg" type="InType" direction="in" />
+				<Param name="inOutArg" type="InOutType" direction="in-out" />
+				<Param name="outArg" type="OutType" direction="out" />
+				<Return type="ReturnType" />
+			</Method>
+			<Method name="MarketBuy">
+				<Param name="symbol" type="astring" direction="in" />
+				<Param name="price" type="double" direction="in" />
+				<Param name="volume" type="double" direction="in-out" />
+				<Param name="amount" type="double" direction="out" />
+				<Return type="int32" />
+			</Method>
+		</Component>
+	</Components>
+</Protocol>

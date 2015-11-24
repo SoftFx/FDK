@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Protocol>
+	<Types>
+		<Type name="MarginMode" CSharpFullName="SoftFX.Extended.Financial.MarginMode" CppFullName="FDK::MarginMode" kind="enum32" />
+		<Type name="TradeType" CSharpFullName="SoftFX.Extended.TradeType" CppFullName="FDK::TradeType" kind="enum32" />
+		<Type name="TradeSide" CSharpFullName="SoftFX.Extended.TradeRecordSide" CppFullName="FDK::TradeSide" kind="enum32" />
+		<Type name="TradeEntryStatus" CSharpFullName="SoftFX.Extended.Financial.TradeEntryStatus" CppFullName="FDK::TradeEntryStatus" kind="enum32" />
+		<Type name="AccountEntryStatus" CSharpFullName="SoftFX.Extended.Financial.AccountEntryStatus" CppFullName="FDK::AccountEntryStatus" kind="enum32" />
+		<Type name="AccountType" CSharpFullName="SoftFX.Extended.AccountType" CppFullName="FDK::AccountType" kind="enum32" />
+		<Type name="AStringVector" kind="vector">
+			<Value name="astring" />
+		</Type>
+		<Type name="PriceData" CSharpFullName="SoftFX.Extended.Financial.Serialization.PriceData" CppFullName="FDK::CPriceData" kind="class">
+			<Member name="Symbol" type="astring" />
+			<Member name="Bid" type="double" />
+			<Member name="Ask" type="double" />
+		</Type>
+		<Type name="PriceDataVector" kind="vector">
+			<Value name="PriceData" />
+		</Type>
+		<Type name="SymbolData" CSharpFullName="SoftFX.Extended.Financial.Serialization.SymbolData" CppFullName="FDK::CSymbolData" kind="class">
+			<Member name="Tag" type="astring" />
+			<Member name="Symbol" type="astring" />
+			<Member name="From" type="astring" />
+			<Member name="To" type="astring" />
+      <Member name="ContractSize" type="double" />      
+			<Member name="Hedging" type="double" />
+			<Member name="MarginFactorOfPositions" type="double" />
+			<Member name="MarginFactorOfLimitOrders" type="double" />
+			<Member name="MarginFactorOfStopOrders" type="double" />
+		</Type>
+		<Type name="SymbolDataVector" kind="vector">
+			<Value name="SymbolData" />
+		</Type>
+		<Type name="TradeData" CSharpFullName="SoftFX.Extended.Financial.Serialization.TradeData" CppFullName="FDK::CTradeData" kind="class">
+			<Member name="Tag" type="astring" />
+			<Member name="Type" type="TradeType" />
+			<Member name="Side" type="TradeSide" />
+			<Member name="Symbol" type="astring" />
+			<Member name="Price" type="double" />
+			<Member name="Volume" type="double" />
+      <Member name="Commission" type="double" />
+      <Member name="AgentCommission" type="double" />
+      <Member name="Swap" type="double" />
+      <Member name="Rate" type="double?" />
+      <Member name="Profit" type="double?" />
+      <Member name="ProfitStatus" type="TradeEntryStatus" />
+      <Member name="Margin" type="double?" />
+      <Member name="MarginStatus" type="TradeEntryStatus" />
+		</Type>
+		<Type name="TradeDataVector" kind="vector">
+			<Value name="TradeData" />
+		</Type>
+		<Type name="AccountData" CSharpFullName="SoftFX.Extended.Financial.Serialization.AccountData" CppFullName="FDK::CAccountData" kind="class">
+			<Member name="Tag" type="astring" />
+			<Member name="Type" type="AccountType" />
+			<Member name="Leverage" type="double" />
+			<Member name="Balance" type="double" />
+			<Member name="Currency" type="astring" />
+			<Member name="Profit" type="double?" />
+			<Member name="ProfitStatus" type="AccountEntryStatus" />
+			<Member name="Margin" type="double?" />
+			<Member name="MarginStatus" type="AccountEntryStatus" />
+			<Member name="Trades" type="TradeDataVector" />
+		</Type>
+		<Type name="AccountDataVector" kind="vector">
+			<Value name="AccountData" />
+		</Type>
+		<Type name="CalculatorData" CSharpFullName="SoftFX.Extended.Financial.Serialization.CalculatorData" CppFullName="FDK::CCalculatorData" kind="class">
+			<Member name="MarginMode" type="MarginMode" />
+			<Member name="Prices" type="PriceDataVector" />
+			<Member name="Symbols" type="SymbolDataVector" />
+			<Member name="Accounts" type="AccountDataVector" />
+			<Member name="Currencies" type="AStringVector" />
+		</Type>
+	</Types>
+	<Components>
+		<Component name="Serializer">
+			<Method name="Serialize">
+				<Param name="calc" type="CalculatorData" direction="in" />
+				<Return type="astring" />
+			</Method>
+			<Method name="Deserialize">
+				<Param name="text" type="astring" direction="in" />
+				<Return type="CalculatorData" />
+			</Method>
+		</Component>
+		<Component name="FinCalc" proxy="true">
+			<Method name="Constructor">
+				<Param name="text" type="astring" direction="in"/>
+				<Return type="lptr"/>
+			</Method>
+			<Method name="Destructor">
+				<Param name="handle" type="lptr" direction="in"/>
+				<Return type="void" />
+			</Method>
+			<Method name="Calculate">
+				<Param name="handle" type="lptr" direction="in"/>
+				<Return type="void" />
+			</Method>
+			<Method name="Clear">
+				<Param name="handle" type="lptr" direction="in"/>
+				<Return type="void" />
+			</Method>
+			<Method name="Format">
+				<Param name="handle" type="lptr" direction="in"/>
+				<Return type="astring" />
+			</Method>
+		</Component>
+	</Components>
+</Protocol>

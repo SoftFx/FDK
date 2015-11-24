@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4E42E097-EC94-44EB-A93A-CA58783E4B85}</ProjectGuid>
+    <SccProjectName>
+    </SccProjectName>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccProvider>
+    </SccProvider>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Sal</RootNamespace>
+    <ProjectName>Sal</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IntDir>$(Configuration).$(PlatformTarget)\</IntDir>
+    <TargetName>SoftFX.$(ProjectName).$(PlatformTarget)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration).$(PlatformTarget)\</IntDir>
+    <TargetName>SoftFX.$(ProjectName).$(PlatformTarget)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IntDir>$(Configuration).$(PlatformTarget)\</IntDir>
+    <TargetName>SoftFX.$(ProjectName).$(PlatformTarget)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration).$(PlatformTarget)\</IntDir>
+    <TargetName>SoftFX.$(ProjectName).$(PlatformTarget)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;SAL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>..\..\External\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4302;4311</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Ws2_32.lib;ssleay32.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\External\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>Sal.def</ModuleDefinitionFile>
+      <Profile>false</Profile>
+      <StripPrivateSymbols>$(TargetDir)$(TargetName).(stripped).pdb</StripPrivateSymbols>
+    </Link>
+    <PostBuildEvent>
+      <Command>if not exist ..\..\FRE (md ..\..\FRE)
+copy /Y "$(TargetPath)" ..\..\FRE\
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
+copy /Y ..\..\External\Dll\*.dll ..\..\FRE\
+copy /Y ..\..\External\Dll\*.pdb ..\..\FRE\
+copy /Y ..\..\External\Dll\SoftFX.Lrp.x86.dll "$(TargetDir)"
+copy /Y ..\..\External\Dll\SoftFX.Lrp.x86.pdb "$(TargetDir)"</Command>
+    </PostBuildEvent>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_MSC_VER;WIN32;SAL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;SAL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>..\..\External\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4302;4311</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Ws2_32.lib;ssleay64.lib;libeay64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\External\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>Sal.def</ModuleDefinitionFile>
+      <Profile>false</Profile>
+      <StripPrivateSymbols>$(TargetDir)$(TargetName).(stripped).pdb</StripPrivateSymbols>
+    </Link>
+    <PostBuildEvent>
+      <Command>if not exist ..\..\FRE (md ..\..\FRE)
+copy /Y "$(TargetPath)" ..\..\FRE\
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
+copy /Y ..\..\External\Dll\*.dll ..\..\FRE\
+copy /Y ..\..\External\Dll\*.pdb ..\..\FRE\
+copy /Y ..\..\External\Dll\SoftFX.Lrp.x64.dll "$(TargetDir)"
+copy /Y ..\..\External\Dll\SoftFX.Lrp.x64.pdb "$(TargetDir)"</Command>
+    </PostBuildEvent>
+    <ResourceCompile>
+      <PreprocessorDefinitions>SAL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SAL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>..\..\External\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4302;4311</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>Ws2_32.lib;ssleay32.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\External\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>Sal.def</ModuleDefinitionFile>
+      <Profile>false</Profile>
+      <StripPrivateSymbols>$(TargetDir)$(TargetName).(stripped).pdb</StripPrivateSymbols>
+    </Link>
+    <PostBuildEvent>
+      <Command>if not exist ..\..\FRE (md ..\..\FRE)
+copy /Y "$(TargetPath)" ..\..\FRE\
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
+copy /Y ..\..\External\Dll\*.dll ..\..\FRE\
+copy /Y ..\..\External\Dll\*.pdb ..\..\FRE\
+copy /Y ..\..\External\Dll\SoftFX.Lrp.x86.dll "$(TargetDir)"
+copy /Y ..\..\External\Dll\SoftFX.Lrp.x86.pdb "$(TargetDir)"</Command>
+    </PostBuildEvent>
+    <ResourceCompile>
+      <PreprocessorDefinitions>SAL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SAL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>..\..\External\include</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4302;4311</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>Ws2_32.lib;ssleay64.lib;libeay64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\External\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>Sal.def</ModuleDefinitionFile>
+      <Profile>false</Profile>
+      <StripPrivateSymbols>$(TargetDir)$(TargetName).(stripped).pdb</StripPrivateSymbols>
+    </Link>
+    <PostBuildEvent>
+      <Command>if not exist ..\..\FRE (md ..\..\FRE)
+copy /Y "$(TargetPath)" ..\..\FRE\
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
+copy /Y ..\..\External\Dll\*.dll ..\..\FRE\
+copy /Y ..\..\External\Dll\*.pdb ..\..\FRE\
+copy /Y ..\..\External\Dll\SoftFX.Lrp.x64.dll "$(TargetDir)"
+copy /Y ..\..\External\Dll\SoftFX.Lrp.x64.pdb "$(TargetDir)"</Command>
+    </PostBuildEvent>
+    <ResourceCompile>
+      <PreprocessorDefinitions>SAL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="CallsWaiter.h" />
+    <ClInclude Include="Compression.h" />
+    <ClInclude Include="CriticalSection.h" />
+    <ClInclude Include="DateTime.h" />
+    <ClInclude Include="Delegate.h" />
+    <ClInclude Include="Delegate.hpp" />
+    <ClInclude Include="DelegateEvent.h" />
+    <ClInclude Include="DelegateEvent.hpp" />
+    <ClInclude Include="Event.h" />
+    <ClInclude Include="Event.hpp" />
+    <ClInclude Include="EventImpl.h" />
+    <ClInclude Include="LogStream.h" />
+    <ClInclude Include="Logger.h" />
+    <ClInclude Include="MemoryStream.h" />
+    <ClInclude Include="Sal.h" />
+    <ClInclude Include="Sal.Linux.h" />
+    <ClInclude Include="Sal.Linux.hpp" />
+    <ClInclude Include="Sal.Windows.h" />
+    <ClInclude Include="Sal.Windows.hpp" />
+    <ClInclude Include="Job.h" />
+    <ClInclude Include="Lock.h" />
+    <ClInclude Include="Networking.h" />
+    <ClInclude Include="Referenceable.h" />
+    <ClInclude Include="SecureSocket.h" />
+    <ClInclude Include="Semaphore.h" />
+    <ClInclude Include="SharedExclusiveLock.h" />
+    <ClInclude Include="SimpleSocket.h" />
+    <ClInclude Include="Socket.h" />
+    <ClInclude Include="SocketActivity.h" />
+    <ClInclude Include="SocketState.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="Threading.h" />
+    <ClInclude Include="ThreadPool.h" />
+    <ClInclude Include="TlsValue.h" />
+    <ClInclude Include="Types.h" />
+    <ClInclude Include="unzip.h" />
+    <ClInclude Include="zip.h" />
+    <ClInclude Include="ZipHandle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CallsWaiter.cpp" />
+    <ClCompile Include="Compression.cpp" />
+    <ClCompile Include="CriticalSection.cpp" />
+    <ClCompile Include="DateTime.cpp" />
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Event.cpp" />
+    <ClCompile Include="EventImpl.cpp" />
+    <ClCompile Include="LogStream.cpp" />
+    <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="MemoryStream.cpp" />
+    <ClCompile Include="Sal.cpp" />
+    <ClCompile Include="Job.cpp" />
+    <ClCompile Include="Networking.cpp" />
+    <ClCompile Include="SecureSocket.cpp" />
+    <ClCompile Include="Semaphore.cpp" />
+    <ClCompile Include="SharedExclusiveLock.cpp" />
+    <ClCompile Include="SimpleSocket.cpp" />
+    <ClCompile Include="Socket.cpp" />
+    <ClCompile Include="SocketActivity.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="ThreadPool.cpp" />
+    <ClCompile Include="unzip.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="zip.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="ZipHandle.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Delegate.bat" />
+    <None Include="Sal.def" />
+    <None Include="makefile" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,425 @@
+<Protocol>
+    <Types>
+	    <Type name="LogoutReason" CSharpFullName="SoftFX.Extended.LogoutReason" CppFullName="FxLogoutReason" kind="enum32" />
+	    <Type name="SessionStatus" CSharpFullName="LrpServer.Net.LrpSessionStatus" CppFullName="SessionStatus" kind="enum32" />
+	    <Type name="ProfitCalcMode" CSharpFullName="SoftFX.Extended.ProfitCalcMode" CppFullName="ProfitCalcMode" kind="enum32" />
+	    <Type name="MarginCalcMode" CSharpFullName="SoftFX.Extended.MarginCalcMode" CppFullName="MarginCalcMode" kind="enum32" />
+	    <Type name="CommissionType" CSharpFullName="SoftFX.Extended.CommissionType" CppFullName="FxCommissionType" kind="enum32" />
+	    <Type name="CommissionChargeType" CSharpFullName="SoftFX.Extended.CommissionChargeType" CppFullName="FxCommissionChargeType" kind="enum32" />
+      <Type name="CommissionChargeMethod" CSharpFullName="SoftFX.Extended.CommissionChargeMethod" CppFullName="FxCommissionChargeMethod" kind="enum32" />
+      <Type name="NotificationType" CSharpFullName="SoftFX.Extended.NotificationType" CppFullName="NotificationType" kind="enum32" />
+	    <Type name="Severity" CSharpFullName="SoftFX.Extended.Severity" CppFullName="Severity" kind="enum32" />
+	    <Type name="LrpSessionInfo" CSharpFullName="LrpServer.Net.LrpSessionInfo" CppFullName="CFxSessionInfo" kind="class">
+	        <Member name="TradingSessionId" type="astring" />
+	        <Member name="Status" type="SessionStatus" />
+	        <Member name="ServerTimeZoneOffset" type="int32" />
+	        <Member name="StartTime" type="time" />
+	        <Member name="OpenTime" type="time" />
+	        <Member name="CloseTime" type="time" />
+	        <Member name="EndTime" type="time" />
+	    </Type>
+
+    	<Type name="LrpSessionInfo2" CSharpFullName="LrpServer.Net.LrpSessionInfo" CppFullName="CFxSessionInfo" kind="class">
+    	  <Member name="TradingSessionId" type="astring" />
+    	  <Member name="Status" type="SessionStatus" />
+    	  <Member name="ServerTimeZoneOffset" type="int32" />
+    	  <Member name="PlatformName" type="astring" />
+    	  <Member name="PlatformCompany" type="astring" />
+    	  <Member name="StartTime" type="time" />
+    	  <Member name="OpenTime" type="time" />
+    	  <Member name="CloseTime" type="time" />
+    	  <Member name="EndTime" type="time" />
+    	</Type>
+        <Type name="CurrencyInfo" CSharpFullName="SoftFX.Extended.CurrencyInfo" CppFullName="CFxCurrencyInfo" kind="class">
+    	  <Member name="Name" type="astring" />            
+          <Member name="Description" type="astring" />                    
+    	  <Member name="SortOrder" type="int32" />
+    	  <Member name="Precision" type="int32" />
+        </Type>
+    	<Type name="SymbolInfo" CSharpFullName="SoftFX.Extended.SymbolInfo" CppFullName="CFxSymbolInfo" kind="class">
+    	  <Member name="Name" type="astring" />
+    	  <Member name="Currency" type="astring" />
+    	  <Member name="SettlementCurrency" type="astring" />
+    	  <Member name="ContractMultiplier" type="double" />
+    	  <Member name="Precision" type="int32" />
+    	  <Member name="RoundLot" type="double" />
+    	  <Member name="MinTradeVolume" type="double" />
+    	  <Member name="MaxTradeVolume" type="double" />
+    	  <Member name="TradeVolumeStep" type="double" />
+    	  <Member name="ProfitCalcMode" type="ProfitCalcMode" />
+    	  <Member name="MarginCalcMode" type="MarginCalcMode" />
+    	  <Member name="MarginHedge" type="double" />
+    	  <Member name="MarginFactor" type="int32" />
+    	  <Member name="Color" type="int32" />
+    	</Type>
+    	<Type name="SymbolInfo2" CSharpFullName="SoftFX.Extended.SymbolInfo" CppFullName="CFxSymbolInfo" kind="class">
+    	  <Member name="Name" type="astring" />
+    	  <Member name="Currency" type="astring" />
+    	  <Member name="SettlementCurrency" type="astring" />
+    	  <Member name="ContractMultiplier" type="double" />
+    	  <Member name="Precision" type="int32" />
+    	  <Member name="RoundLot" type="double" />
+    	  <Member name="MinTradeVolume" type="double" />
+    	  <Member name="MaxTradeVolume" type="double" />
+    	  <Member name="TradeVolumeStep" type="double" />
+    	  <Member name="ProfitCalcMode" type="ProfitCalcMode" />
+    	  <Member name="MarginCalcMode" type="MarginCalcMode" />
+    	  <Member name="MarginHedge" type="double" />
+    	  <Member name="MarginFactor" type="int32" />
+    	  <Member name="Color" type="int32" />
+    	  <Member name="CommissionType" type="CommissionType" />
+    	  <Member name="CommissionChargeType" type="CommissionChargeType" />
+    	  <Member name="LimitsCommission" type="double" />
+    	  <Member name="Commission" type="double" />
+    	  <Member name="SwapSizeShort" type="double?" />
+    	  <Member name="SwapSizeLong" type="double?" />
+    	</Type>
+    
+    	<Type name="SymbolInfo3" CSharpFullName="SoftFX.Extended.SymbolInfo" CppFullName="CFxSymbolInfo" kind="class">
+    	  <Member name="Name" type="astring" />
+    	  <Member name="Currency" type="astring" />
+    	  <Member name="SettlementCurrency" type="astring" />
+    	  <Member name="ContractMultiplier" type="double" />
+    	  <Member name="Precision" type="int32" />
+    	  <Member name="RoundLot" type="double" />
+    	  <Member name="MinTradeVolume" type="double" />
+    	  <Member name="MaxTradeVolume" type="double" />
+    	  <Member name="TradeVolumeStep" type="double" />
+    	  <Member name="ProfitCalcMode" type="ProfitCalcMode" />
+    	  <Member name="MarginCalcMode" type="MarginCalcMode" />
+    	  <Member name="MarginHedge" type="double" />
+    	  <Member name="MarginFactor" type="int32" />
+    	  <Member name="Color" type="int32" />
+    	  <Member name="CommissionType" type="CommissionType" />
+    	  <Member name="CommissionChargeType" type="CommissionChargeType" />
+    	  <Member name="LimitsCommission" type="double" />
+    	  <Member name="Commission" type="double" />
+    	  <Member name="SwapSizeShort" type="double?" />
+    	  <Member name="SwapSizeLong" type="double?" />
+    	  <Member name="IsTradeEnabled" type="bool" />
+    	</Type>
+    
+    	<Type name="SymbolInfo4" CSharpFullName="SoftFX.Extended.SymbolInfo" CppFullName="CFxSymbolInfo" kind="class">
+    	  <Member name="Name" type="astring" />
+    	  <Member name="Currency" type="astring" />
+    	  <Member name="SettlementCurrency" type="astring" />
+    	  <Member name="ContractMultiplier" type="double" />
+    	  <Member name="Precision" type="int32" />
+    	  <Member name="RoundLot" type="double" />
+    	  <Member name="MinTradeVolume" type="double" />
+    	  <Member name="MaxTradeVolume" type="double" />
+    	  <Member name="TradeVolumeStep" type="double" />
+    	  <Member name="ProfitCalcMode" type="ProfitCalcMode" />
+    	  <Member name="MarginCalcMode" type="MarginCalcMode" />
+    	  <Member name="MarginHedge" type="double" />
+    	  <Member name="MarginFactor" type="int32" />
+    	  <Member name="Color" type="int32" />
+    	  <Member name="CommissionType" type="CommissionType" />
+    	  <Member name="CommissionChargeType" type="CommissionChargeType" />
+    	  <Member name="LimitsCommission" type="double" />
+    	  <Member name="Commission" type="double" />
+    	  <Member name="SwapSizeShort" type="double?" />
+    	  <Member name="SwapSizeLong" type="double?" />
+    	  <Member name="IsTradeEnabled" type="bool" />
+    	  <Member name="GroupSortOrder" type="int32" />
+    	  <Member name="SortOrder" type="int32" />
+    	</Type>
+    	<Type name="SymbolInfo5" CSharpFullName="SoftFX.Extended.SymbolInfo" CppFullName="CFxSymbolInfo" kind="class">
+    	  <Member name="Name" type="astring" />
+    	  <Member name="Currency" type="astring" />
+    	  <Member name="SettlementCurrency" type="astring" />
+    	  <Member name="ContractMultiplier" type="double" />
+    	  <Member name="Precision" type="int32" />
+    	  <Member name="RoundLot" type="double" />
+    	  <Member name="MinTradeVolume" type="double" />
+    	  <Member name="MaxTradeVolume" type="double" />
+    	  <Member name="TradeVolumeStep" type="double" />
+    	  <Member name="ProfitCalcMode" type="ProfitCalcMode" />
+    	  <Member name="MarginCalcMode" type="MarginCalcMode" />
+    	  <Member name="MarginHedge" type="double" />
+    	  <Member name="MarginFactor" type="int32" />
+    	  <Member name="MarginFactorFractional" type="double?" />
+    	  <Member name="Color" type="int32" />
+    	  <Member name="CommissionType" type="CommissionType" />
+    	  <Member name="CommissionChargeType" type="CommissionChargeType" />
+    	  <Member name="LimitsCommission" type="double" />
+    	  <Member name="Commission" type="double" />
+    	  <Member name="SwapSizeShort" type="double?" />
+    	  <Member name="SwapSizeLong" type="double?" />
+    	  <Member name="IsTradeEnabled" type="bool" />
+    	  <Member name="GroupSortOrder" type="int32" />
+    	  <Member name="SortOrder" type="int32" />
+    	  <Member name="CurrencySortOrder" type="int32" />
+    	  <Member name="SettlementCurrencySortOrder" type="int32" />
+    	</Type>
+    	<Type name="SymbolInfo6" CSharpFullName="SoftFX.Extended.SymbolInfo" CppFullName="CFxSymbolInfo" kind="class">
+    		  <Member name="Name" type="astring" />
+    		  <Member name="Currency" type="astring" />
+    		  <Member name="SettlementCurrency" type="astring" />
+    		  <Member name="ContractMultiplier" type="double" />
+    		  <Member name="Precision" type="int32" />
+    		  <Member name="RoundLot" type="double" />
+    		  <Member name="MinTradeVolume" type="double" />
+    		  <Member name="MaxTradeVolume" type="double" />
+    		  <Member name="TradeVolumeStep" type="double" />
+    		  <Member name="ProfitCalcMode" type="ProfitCalcMode" />
+    		  <Member name="MarginCalcMode" type="MarginCalcMode" />
+    		  <Member name="MarginHedge" type="double" />
+    		  <Member name="MarginFactor" type="int32" />
+    		  <Member name="MarginFactorFractional" type="double?" />
+    		  <Member name="Color" type="int32" />
+    		  <Member name="CommissionType" type="CommissionType" />
+    		  <Member name="CommissionChargeType" type="CommissionChargeType" />
+    		  <Member name="LimitsCommission" type="double" />
+    		  <Member name="Commission" type="double" />
+    		  <Member name="SwapSizeShort" type="double?" />
+    		  <Member name="SwapSizeLong" type="double?" />
+    		  <Member name="IsTradeEnabled" type="bool" />
+    		  <Member name="GroupSortOrder" type="int32" />
+    		  <Member name="SortOrder" type="int32" />
+    		  <Member name="CurrencySortOrder" type="int32" />
+    		  <Member name="SettlementCurrencySortOrder" type="int32" />
+    		  <Member name="CurrencyPrecision" type="int32" />
+    		  <Member name="SettlementCurrencyPrecision" type="int32" />
+    	  </Type>
+      <Type name="SymbolInfo7" CSharpFullName="SoftFX.Extended.SymbolInfo" CppFullName="CFxSymbolInfo" kind="class">
+        <Member name="Name" type="astring" />
+        <Member name="Currency" type="astring" />
+        <Member name="SettlementCurrency" type="astring" />
+        <Member name="ContractMultiplier" type="double" />
+        <Member name="Precision" type="int32" />
+        <Member name="RoundLot" type="double" />
+        <Member name="MinTradeVolume" type="double" />
+        <Member name="MaxTradeVolume" type="double" />
+        <Member name="TradeVolumeStep" type="double" />
+        <Member name="ProfitCalcMode" type="ProfitCalcMode" />
+        <Member name="MarginCalcMode" type="MarginCalcMode" />
+        <Member name="MarginHedge" type="double" />
+        <Member name="MarginFactor" type="int32" />
+        <Member name="MarginFactorFractional" type="double?" />
+        <Member name="Color" type="int32" />
+        <Member name="CommissionType" type="CommissionType" />
+        <Member name="CommissionChargeType" type="CommissionChargeType" />
+        <Member name="CommissionChargeMethod" type="CommissionChargeMethod" />
+        <Member name="LimitsCommission" type="double" />
+        <Member name="Commission" type="double" />
+        <Member name="SwapSizeShort" type="double?" />
+        <Member name="SwapSizeLong" type="double?" />
+        <Member name="IsTradeEnabled" type="bool" />
+        <Member name="GroupSortOrder" type="int32" />
+        <Member name="SortOrder" type="int32" />
+        <Member name="CurrencySortOrder" type="int32" />
+        <Member name="SettlementCurrencySortOrder" type="int32" />
+        <Member name="CurrencyPrecision" type="int32" />
+        <Member name="SettlementCurrencyPrecision" type="int32" />
+      </Type>
+
+      <Type name="AStringArray" kind="array">
+	  <Value name="astring" />
+	</Type>
+	    <Type name="UInt8Array" kind="array">
+	  <Value name="uint8" />
+	</Type>
+	    <Type name="SymbolInfoArray" kind="array">
+            <Value name="SymbolInfo" />
+	    </Type>
+	    <Type name="CurrencyInfoArray" kind="array">
+            <Value name="CurrencyInfo" />
+	    </Type>        
+	    <Type name="SymbolInfoArray2" kind="array">
+	  <Value name="SymbolInfo2" />
+	 </Type>
+	    <Type name="SymbolInfoArray3" kind="array">
+	  <Value name="SymbolInfo3" />
+	 </Type>
+	    <Type name="SymbolInfoArray4" kind="array">
+	  <Value name="SymbolInfo4" />
+	 </Type>
+	    <Type name="SymbolInfoArray5" kind="array">
+	  <Value name="SymbolInfo5" />
+	 </Type>
+   <Type name="SymbolInfoArray6" kind="array">
+		  <Value name="SymbolInfo6" />
+  </Type>
+      <Type name="SymbolInfoArray7" kind="array">
+        <Value name="SymbolInfo7" />
+      </Type>
+      <Type name="QuoteEntry" CSharpFullName="LrpServer.Net.LrpQuoteEntry" CppFullName="CFxQuoteEntry" kind="class">
+	  <Member name="Price" type="double" />
+	  <Member name="Volume" type="double" />
+	</Type>
+	    <Type name="QuoteEntryArray" kind="array">
+	  <Value name="QuoteEntry" />
+	</Type>
+	    <Type name="Quote" CSharpFullName="LrpServer.Net.LrpQuote" CppFullName="CFxQuote" kind="class">
+	  <Member name="Symbol" type="astring" />
+	  <Member name="CreatingTime" type="time" />
+	  <Member name="Bids" type="QuoteEntryArray" />
+	  <Member name="Asks" type="QuoteEntryArray" />
+	  <Member name="Id" type="astring" />
+	</Type>
+	    <Type name="QuoteArray" kind="array">
+	  <Value name="Quote" />
+	</Type>
+	    <Type name="Bar" CSharpFullName="LrpServer.Net.LrpBar" CppFullName="CFxBar" kind="class">
+	  <Member name="Open" type="double" />
+	  <Member name="Close" type="double" />
+	  <Member name="High" type="double" />
+	  <Member name="Low" type="double" />
+	  <Member name="Volume" type="double" />
+	  <Member name="From" type="time" />
+	</Type>
+	    <Type name="BarArray" kind="array">
+	  <Value name="Bar" />
+	</Type>
+	    <Type name="DataHistoryResponse" CSharpFullName="LrpServer.Net.LrpDataHistoryResponse" CppFullName="CFxDataHistoryResponse" kind="class">
+	  <Member name="FromAll" type="time" />
+	  <Member name="ToAll" type="time" />
+	  <Member name="From" type="time" />
+	  <Member name="To" type="time" />
+	  <Member name="LastTickId" type="astring" />
+	  <Member name="Bars" type="BarArray" />
+	  <Member name="Files" type="AStringArray" />
+	</Type>
+	    <Type name="FileChunk" CSharpFullName="LrpServer.Net.LrpFileChunk" CppFullName="CFxFileChunk" kind="class">
+	  <Member name="ChunksNumber" type="int32" />
+	  <Member name="FileSize" type="int32" />
+	  <Member name="FileName" type="astring" />
+	  <Member name="Data" type="UInt8Array" />
+	</Type>
+
+	    <Type name="Notification" CSharpFullName="LrpServer.Net.LrpNotification" CppFullName="CNotification" kind="class">
+	  <Member name="Severity" type="Severity" />
+	  <Member name="Type" type="NotificationType" />
+	  <Member name="Text" type="astring" />
+	  <Member name="Balance" type="double" />
+	  <Member name="TransactionAmount" type="double" />
+	  <Member name="TransactionCurrency" type="astring" />
+	</Type>
+    </Types>
+    <Components>
+	    <Component name="Client">
+	      <Method name="OnHeartBeatRequest">
+	    	<Return type="void" />
+	      </Method>
+	      <Method name="OnHeartBeatResponse">
+	    	<Return type="void" />
+	      </Method>
+	      <Method name="OnLogonMsg">
+	    	<Param name="protocolVersion" type="astring" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+	      <Method name="OnLogoutMsg">
+	    	<Param name="reason" type="LogoutReason" direction="in" />
+	    	<Param name="description" type="astring" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+	      <Method name="OnSessionInfoMsg">
+	    	<Param name="requestId" type="astring" direction="in" />
+	    	<Param name="sessionInfo" type="LrpSessionInfo" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+	      <Method name="OnSessionInfoMsg2">
+	    	<Param name="requestId" type="astring" direction="in" />
+	    	<Param name="sessionInfo" type="LrpSessionInfo2" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+	      <Method name="OnCurrenciesInfoMsg">
+	    	<Param name="requestId" type="astring" direction="in" />
+	    	<Param name="currencies" type="CurrencyInfoArray" direction="in" />
+	    	<Return type="void" />
+	      </Method>            
+	      <Method name="OnSymbolsInfoMsg">
+	    	<Param name="requestId" type="astring" direction="in" />
+	    	<Param name="symbols" type="SymbolInfoArray" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+	      <Method name="OnSymbolsInfoMsg2">
+	    	<Param name="requestId" type="astring" direction="in" />
+	    	<Param name="symbols" type="SymbolInfoArray2" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+	      <Method name="OnSymbolsInfoMsg3">
+	    	<Param name="requestId" type="astring" direction="in" />
+	    	<Param name="symbols" type="SymbolInfoArray3" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+	      <Method name="OnSymbolsInfoMsg4">
+	    	<Param name="requestId" type="astring" direction="in" />
+	    	<Param name="symbols" type="SymbolInfoArray4" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+	      <Method name="OnSymbolsInfoMsg5">
+	    	<Param name="requestId" type="astring" direction="in" />
+	    	<Param name="symbols" type="SymbolInfoArray5" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+            <Method name="OnSymbolsInfoMsg6">
+                <Param name="requestId" type="astring" direction="in" />
+                <Param name="symbols" type="SymbolInfoArray6" direction="in" />
+                <Return type="void" />
+            </Method>
+        <Method name="OnSymbolsInfoMsg7">
+          <Param name="requestId" type="astring" direction="in" />
+          <Param name="symbols" type="SymbolInfoArray7" direction="in" />
+          <Return type="void" />
+        </Method>
+        <Method name="OnComponentsInfoMsg">
+	    	<Param name="requestId" type="astring" direction="in" />
+	    	<Param name="quotesStorageVersion" type="int32" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+	      <Method name="OnQuotesSubscriptionMsg">
+	    	<Param name="requestId" type="astring" direction="in" />
+	    	<Param name="status" type="int32" direction="in" />
+	    	<Param name="message" type="astring" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+	      <Method name="OnFileChunkMsg">
+	    	<Param name="requestId" type="astring" direction="in" />
+	    	<Param name="chunk" type="FileChunk" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+	      <Method name="OnDataHistoryMsg">
+	    	<Param name="requestId" type="astring" direction="in" />
+	    	<Param name="response" type="DataHistoryResponse" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+	      <Method name="OnDataHistoryMetaInfoMsg">
+	    	<Param name="requestId" type="astring" direction="in" />
+	    	<Param name="status" type="int32" direction="in" />
+	    	<Param name="field" type="astring" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+	      <Method name="OnQuoteRawMsg">
+	    	<Param name="data" type="raw" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+	      <Method name="OnNotificationMsg">
+	    	<Param name="notification" type="Notification" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+	    </Component>
+	    <Component name="SimpleCodec">
+	      <Method name="OnSymbolIndexMsg">
+	    	<Param name="symbol" type="astring" direction="in" />
+	    	<Param name="index" type="uint32" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+	      <Method name="OnTimeSynchMsg">
+	    	<Param name="time" type="time" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+	      <Method name="OnSymbol8Time32Level2Msg">
+	    	<Param name="symbolIndex" type="uint8" direction="in" />
+	    	<Param name="timeOffset" type="int32" direction="in" />
+	    	<Param name="data" type="raw" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+	      <Method name="OnQuoteZipRawMsg">
+	    	<Param name="data" type="raw" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+	    </Component>
+    </Components>
+</Protocol>

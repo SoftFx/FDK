@@ -1,0 +1,68 @@
+﻿<Protocol>
+	<Types>
+		<Type name="FFixSessionId" CSharpFullName="SoftFX.Internal.FixSessionId" CppFullName="CFFixSessionId" kind="class">
+			<Member name="BeginString" type="astring" />
+			<Member name="SenderCompId" type="astring" />
+			<Member name="TargetCompId" type="astring" />
+		</Type>
+		<Type name="FFixSessionIdArray" kind="array">
+			<Value name="FFixSessionId" />
+		</Type>
+		<Type name="FQuoteEntry" CSharpFullName="SoftFX.Extended.QuoteEntry" CppFullName="CFQuoteEntry" kind="class">
+			<Member name="Price" type="double" />
+			<Member name="Volume" type="double" />
+		</Type>
+		<Type name="FQuoteEntryArray" kind="array">
+			<Value name="FQuoteEntry" />
+		</Type>
+		<Type name="AStringArray" kind="array">
+			<Value name="astring" />
+		</Type>
+		<Type name="FQuote" CSharpFullName="SoftFX.Extended.Quote" CppFullName="CFQuote" kind="class">
+			<Member name="Symbol" type="astring" />
+			<Member name="CreatingTime" type="time" />
+			<Member name="Bids" type="FQuoteEntryArray" />
+			<Member name="Asks" type="FQuoteEntryArray" />
+			<Member name="Id" type="astring" />
+		</Type>
+		<Type name="FFixParsingResult" CSharpFullName="SoftFX.Internal.FixParsingResult" CppFullName="CFFixParsingResult" kind="class">
+			<Member name="Status" type="bool" />
+			<Member name="IsTimeDeviationCalculated" type="bool" />
+			<Member name="TimeDeviation" type="int64" />
+			<Member name="SessionId" type="FFixSessionId" />
+			<Member name="Symbols" type="AStringArray" />
+		</Type>
+	</Types>
+	<Components>
+		<Component name="FixParser">
+			<Method name="Create">
+				<Param name="fixDictionaryPath" type="astring" direction="in" />
+				<Return type="lptr" />
+			</Method>
+			<Method name="Delete">
+				<Param name="handle" type="lptr" direction="in" />
+				<Return type="void" />
+			</Method>
+			<Method name="Parse">
+				<Param name="handle" type="lptr" direction="in" />
+				<Param name="message" type="astring" direction="in" />
+				<Return type="FFixParsingResult" />
+			</Method>
+			<Method name="GetSymbols">
+				<Param name="handle" type="lptr" direction="in" />
+				<Return type="AStringArray" />
+			</Method>
+			<Method name="GetSessions">
+				<Param name="handle" type="lptr" direction="in" />
+				<Return type="FFixSessionIdArray" />
+			</Method>
+			<Method name="TryGetQuote">
+				<Param name="handle" type="lptr" direction="in" />
+				<Param name="symbol" type="astring" direction="in" />
+				<Param name="sessionId" type="FFixSessionId" direction="in" />
+				<Param name="quote" type="FQuote" direction="out" />
+				<Return type="bool" />
+			</Method>
+		</Component>
+	</Components>
+</Protocol>

@@ -1,0 +1,301 @@
+﻿<head>
+    <style type="text/css">
+        .style1 {
+            border-collapse: collapse;
+            font-size: 11.0pt;
+            font-family: Calibri, sans-serif;
+            border: 1.0pt solid windowtext;
+        }
+    </style>
+</head>
+
+<p>
+    SoftFX extended .NET API uses native libraries in runtime, which 
+    depend on Windows platform:
+</p>
+
+<table style="width: auto;" border="1">
+    <tr>
+        <th>Name
+        </th>
+        <th>Platform
+        </th>
+    </tr>
+    <tr>
+        <td>SoftFX.Extended.dll
+        </td>
+        <td>Any CPU
+        </td>
+    </tr>
+    <tr>
+        <td>SoftFX.Api.Sal.x64.dll</td>
+        <td>x64</td>
+    </tr>
+    <tr>
+        <td>SoftFX.Sal.x86.dll</td>
+        <td>x86</td>
+    </tr>
+    <tr>
+        <td>SoftFX.Core.x64.dll</td>
+        <td>x64</td>
+    </tr>
+    <tr>
+        <td>SoftFX.Core.x86.dll</td>
+        <td>x86</td>
+    </tr>
+    <tr>
+        <td>SoftFX.FixProvider.x64.dll</td>
+        <td>x64</td>
+    </tr>
+    <tr>
+        <td>SoftFX.FixProvider.x86.dll</td>
+        <td>x86</td>
+    </tr>
+    <tr>
+        <td>SoftFX.Native.x64.dll</td>
+        <td>x64</td>
+    </tr>
+    <tr>
+        <td>SoftFX.Native.x86.dll</td>
+        <td>x86</td>
+    </tr>
+    <tr>
+        <td>libeay32.dll</td>
+        <td>x86</td>
+    </tr>
+    <tr>
+        <td>libeay64.dll</td>
+        <td>x64</td>
+    </tr>
+    <tr>
+        <td>ssleay32.dll</td>
+        <td>x86</td>
+    </tr>
+    <tr>
+        <td>ssleay64.dll</td>
+        <td>x64</td>
+    </tr>
+</table>
+
+<p>
+    When SoftFX API is used at the first time FRE looks for the native libraries. 
+    You can specify location of native libraries by Library class using.
+</p>
+
+<p>
+    &nbsp;In this case FRE tries to used native libraries from specified location only. If 
+    native libraries path was not specified then FDK looks for
+</p>
+
+<ol>
+    <li>working directory of the current process;</li>
+    <li>all directories of PATH environment variable;</li>
+    <li>directory of the current process executable file;</li>
+    <li>directory of the SoftFX.Extended.dll file.</li>
+</ol>
+
+<p>
+    If native libraries have not been found then FRE tries to load 
+    SoftFX.Extended.Native.Net.dll then extracts native libraries to 
+    %APPDATA%\SoftFX\FDK\&lt;Library.Id&gt;.
+</p>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<p>
+    <table border="1" cellpadding="0" cellspacing="0" class="style1"
+        style="mso-table-layout-alt: fixed; mso-border-alt: solid windowtext .5pt; mso-yfti-tbllook: 1184; mso-padding-alt: 0in 5.4pt 0in 5.4pt">
+        <tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes">
+            <td style="width: 45.9pt; border: solid windowtext 1.0pt; mso-border-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt"
+                valign="top" width="61">
+                <p class="MsoNormal">
+                    <b style="mso-bidi-font-weight: normal">Tag<o:p></o:p></b>
+                </p>
+            </td>
+            <td style="width: 99.0pt; border: solid windowtext 1.0pt; border-left: none; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt"
+                valign="top" width="132">
+                <p class="MsoNormal">
+                    <b style="mso-bidi-font-weight: normal">Tag Name<o:p></o:p></b>
+                </p>
+            </td>
+            <td style="width: 301.5pt; border: solid windowtext 1.0pt; border-left: none; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt"
+                valign="top" width="402">
+                <p class="MsoNormal">
+                    <b style="mso-bidi-font-weight: normal">Description<o:p></o:p></b>
+                </p>
+            </td>
+        </tr>
+        <tr style="mso-yfti-irow: 1">
+            <td style="width: 45.9pt; border: solid windowtext 1.0pt; border-top: none; mso-border-top-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt"
+                valign="top" width="61">
+                <p class="MsoNormal">
+                    35<o:p></o:p>
+                </p>
+            </td>
+            <td style="width: 99.0pt; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt"
+                valign="top" width="132">
+                <p class="MsoNormal">
+                    MsgType<o:p></o:p>
+                </p>
+            </td>
+            <td style="width: 301.5pt; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt"
+                valign="top" width="402">
+                <p class="MsoNormal">
+                    A<o:p></o:p>
+                </p>
+            </td>
+        </tr>
+        <tr style="mso-yfti-irow: 2">
+            <td style="width: 45.9pt; border: solid windowtext 1.0pt; border-top: none; mso-border-top-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt"
+                valign="top" width="61">
+                <p class="MsoNormal">
+                    108<o:p></o:p>
+                </p>
+            </td>
+            <td style="width: 99.0pt; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt"
+                valign="top" width="132">
+                <p class="MsoNormal">
+                    Heartbeat<o:p></o:p>
+                </p>
+            </td>
+            <td style="width: 301.5pt; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt"
+                valign="top" width="402">
+                <p class="MsoNormal">
+                    Heartbeat interval (seconds). Specifies the timeout interval for generating 
+                            heartbeats<o:p></o:p>
+                </p>
+            </td>
+        </tr>
+        <tr style="mso-yfti-irow: 3">
+            <td style="width: 45.9pt; border: solid windowtext 1.0pt; border-top: none; mso-border-top-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt"
+                valign="top" width="61">
+                <p class="MsoNormal">
+                    553<o:p></o:p>
+                </p>
+            </td>
+            <td style="width: 99.0pt; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt"
+                valign="top" width="132">
+                <p class="MsoNormal">
+                    Username<o:p></o:p>
+                </p>
+            </td>
+            <td style="width: 301.5pt; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt"
+                valign="top" width="402">
+                <p class="MsoNormal">
+                    Userid<o:p></o:p>
+                </p>
+            </td>
+        </tr>
+        <tr style="mso-yfti-irow: 4">
+            <td style="width: 45.9pt; border: solid windowtext 1.0pt; border-top: none; mso-border-top-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt"
+                valign="top" width="61">
+                <p class="MsoNormal">
+                    554<o:p></o:p>
+                </p>
+            </td>
+            <td style="width: 99.0pt; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt"
+                valign="top" width="132">
+                <p class="MsoNormal">
+                    Password<o:p></o:p>
+                </p>
+            </td>
+            <td style="width: 301.5pt; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt"
+                valign="top" width="402">
+                <p class="MsoNormal">
+                    Password<o:p></o:p>
+                </p>
+            </td>
+        </tr>
+        <tr style="mso-yfti-irow: 5">
+            <td style="width: 45.9pt; border: solid windowtext 1.0pt; border-top: none; mso-border-top-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt"
+                valign="top" width="61">
+                <p class="MsoNormal">
+                    141<o:p></o:p>
+                </p>
+            </td>
+            <td style="width: 99.0pt; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt"
+                valign="top" width="132">
+                <p class="MsoNormal">
+                    ResetSeqNumFlag<o:p></o:p>
+                </p>
+            </td>
+            <td style="width: 301.5pt; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt"
+                valign="top" width="402">
+                <p class="MsoNormal">
+                    Indicates that the both sides of the FIX session should reset sequence numbers.<o:p></o:p>
+                </p>
+                <p class="MsoNormal">
+                    <o:p>&nbsp;</o:p>
+                </p>
+                <p class="MsoNormal">
+                    Valid values:
+                    <o:p></o:p>
+                </p>
+                <p class="MsoNormal">
+                    <span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>&#39;Y&#39; -Yes, reset 
+                            sequence numbers<o:p></o:p>
+                </p>
+                <p class="MsoNormal">
+                    <span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>&#39;N&#39; -No<o:p></o:p>
+                </p>
+            </td>
+        </tr>
+        <tr style="mso-yfti-irow: 6; mso-yfti-lastrow: yes">
+            <td style="width: 45.9pt; border: solid windowtext 1.0pt; border-top: none; mso-border-top-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt"
+                valign="top" width="61">
+                <p class="MsoNormal">
+                    10064<o:p></o:p>
+                </p>
+            </td>
+            <td style="width: 99.0pt; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt"
+                valign="top" width="132">
+                <p class="MsoNormal">
+                    ProtocolSpec<o:p></o:p>
+                </p>
+            </td>
+            <td style="width: 301.5pt; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt"
+                valign="top" width="402">
+                <p class="MsoNormal">
+                    (Optional)&nbsp;
+                    <o:p></o:p>
+                </p>
+                <p class="MsoNormal">
+                    Format:<o:p></o:p>
+                </p>
+                <p class="MsoNormal">
+                    &lt;prefix&gt;.&lt;major&gt;.&lt;minor&gt;
+                    <o:p></o:p>
+                </p>
+                <p class="MsoNormal">
+                    <o:p>&nbsp;</o:p>
+                </p>
+                <p class="MsoNormal">
+                    &nbsp;Where<span style="mso-spacerun: yes">&nbsp;&nbsp; </span>&lt;prefix&gt; is a protocol 
+                    branch descriptor.<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>
+                    &lt;major&gt; &lt;minor&gt; are protocol version parts<o:p></o:p>
+                </p>
+                <p class="MsoNormal">
+                    <o:p>&nbsp;</o:p>
+                </p>
+                <p class="MsoNormal">
+                    Supported values of &lt;prefix&gt;:<o:p></o:p>
+                </p>
+                <p class="MsoNormal">
+                    <span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>‘std’<span
+                        style="mso-spacerun: yes">&nbsp; </span>- standard FIX dictionary<o:p></o:p>
+                </p>
+                <p class="MsoNormal">
+                    <span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>‘ext’ - extended 
+                    protocol<o:p></o:p>
+                </p>
+                <p class="MsoNormal">
+                    <o:p>&nbsp;</o:p>
+                </p>
+            </td>
+        </tr>
+    </table>
+</p>
+
