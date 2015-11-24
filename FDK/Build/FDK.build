@@ -6,13 +6,13 @@
     <echo message="CleanAll starded at: ${datetime::now()}" />
     <call target="CleanAll" />
     <echo message="BuildSolution for ${SolutionFile} (Rebuild ${Configuration}|${Platform64}) started at: ${datetime::now()}" />
-    <exec program="${VS2013Dir}\devenv.com">
+    <exec program="${MSBuildDir}msbuild.exe">
       <arg line="${SourcesDir}\${SolutionFile}" />
       <arg line="/Rebuild ${Configuration}|${Platform64}" />
     </exec>
 
     <echo message="BuildSolution for ${SourcesDirExamples}\${ExamplesSolutionFile} (${MSBuild.Configuration}|${MSBuild.Platform}) started at: ${datetime::now()}" />
-    <exec program="${FrameworkDir}\msbuild.exe">
+    <exec program="${MSBuildDir}msbuild.exe">
       <arg value="${SourcesDirExamples}\${ExamplesSolutionFile}" />
       <arg value="/target:Rebuild" />
       <arg value="/maxcpucount" />
@@ -33,7 +33,7 @@
     <copy file="${SourcesDirExamples}\Release\FinancialExample.exe"         tofile="..\FRE\FinancialExample.exe" />
 
     <echo message="BuildSolution for ${SolutionFile} (Rebuild ${Configuration}|${Platform86}) started at: ${datetime::now()}" />
-    <exec program="${VS2013Dir}\devenv.com">
+    <exec program="${MSBuildDir}msbuild.exe">
       <arg line="${SourcesDir}\${SolutionFile}" />
       <arg line="/Rebuild ${Configuration}|${Platform86}" />
     </exec>
@@ -88,7 +88,7 @@
 
   <target name="BuildTools" >
     <echo message="build starded at: ${datetime::now()}" />
-    <exec program="${FrameworkDir}\msbuild.exe">
+    <exec program="${MSBuildDir}msbuild.exe">
       <arg value="${ToolsDir}\Advisers\Advisers.sln" />
       <arg value="/target:Rebuild" />
       <arg value="/maxcpucount" />
@@ -105,7 +105,7 @@
   <target name="BuildLRP" >
     <echo message="BuildLRP started at: ${datetime::now()}" />
 <!--
-    <exec program="${FrameworkDir}\msbuild.exe">
+    <exec program="${MSBuildDir}msbuild.exe">
       <arg value="${LRPDir}\LRP.sln" />
       <arg value="/target:Rebuild" />
       <arg value="/maxcpucount" />
@@ -118,7 +118,7 @@
       <arg value="/p:Platform=${Platform64}" />
     </exec>
 -->	
-    <exec program="${VS2013Dir}\devenv.com">
+    <exec program="${MSBuildDir}msbuild.exe">
       <arg line="${LRPDir}\LRP.sln" />
       <arg line="/Rebuild ${Configuration_Release}|${Platform64}" />
     </exec>
@@ -127,7 +127,7 @@
 
   <target name="BuildExamples" >
     <echo message="build starded at: ${datetime::now()}" />
-    <exec program="${FrameworkDir}\msbuild.exe">
+    <exec program="${MSBuildDir}msbuild.exe">
       <arg value="${ExamplesDir}\CSharp\CSharp.sln" />
       <arg value="/target:Rebuild" />
       <arg value="/maxcpucount" />
