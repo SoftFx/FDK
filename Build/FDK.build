@@ -3,29 +3,34 @@
   <include buildfile="./FDK.properties" />
 
   <target name="BuildSolution" >
-    <echo message="CleanAll starded at: ${datetime::now()}" />
-    <call target="CleanAll" />
-
-    <echo message="BuildSolution for ${SolutionFile} (Rebuild ${Configuration}|${Platform86}) started at: ${datetime::now()}" />
+    <echo message="BuildSolution for ${SolutionFile} (${Target} ${Configuration}|${Platform86}) started at: ${datetime::now()}" />
     <exec program="${MSBuildDir}msbuild.exe">
       <arg value="${SourcesDir}\${SolutionFile}" />
-      <arg value="/target:Rebuild" />
+      <arg value="/target:${Target}" />
       <arg value="/p:Configuration=${Configuration}" />
       <arg value="/p:Platform=${Platform86}" />
     </exec>
 
-    <echo message="BuildSolution for ${SolutionFile} (Rebuild ${Configuration}|${Platform64}) started at: ${datetime::now()}" />
+    <echo message="BuildSolution for ${SolutionFile} (${Target} ${Configuration}|${Platform64}) started at: ${datetime::now()}" />
     <exec program="${MSBuildDir}msbuild.exe">
       <arg value="${SourcesDir}\${SolutionFile}" />
-      <arg value="/target:Rebuild" />
+      <arg value="/target:${Target}" />
       <arg value="/p:Configuration=${Configuration}" />
+      <arg value="/p:Platform=${Platform64}" />
+    </exec>
+
+    <echo message="BuildSolution for ${SolutionFile} (${Target} Install|${Platform64}) started at: ${datetime::now()}" />
+    <exec program="${MSBuildDir}msbuild.exe">
+      <arg value="${SourcesDir}\${SolutionFile}" />
+      <arg value="/target:${Target}" />
+      <arg value="/p:Configuration=Install" />
       <arg value="/p:Platform=${Platform64}" />
     </exec>
 
     <echo message="BuildSolution for ${SourcesDirExamples}\${ExamplesSolutionFile} (${MSBuild.Configuration}|${MSBuild.Platform}) started at: ${datetime::now()}" />
     <exec program="${MSBuildDir}msbuild.exe">
       <arg value="${SourcesDirExamples}\${ExamplesSolutionFile}" />
-      <arg value="/target:Rebuild" />
+      <arg value="/target:${Target}" />
       <arg value="/maxcpucount" />
       <arg value="/fl" />
       <arg value="/flp:Verbosity=Normal;LogFile=Examples.build-${MSBuild.Configuration}-${MSBuild.Platform}.log" />
@@ -92,10 +97,10 @@
   </target>
 
   <target name="BuildTools" >
-    <echo message="build starded at: ${datetime::now()}" />
+    <echo message="Build starded at: ${datetime::now()}" />
     <exec program="${MSBuildDir}msbuild.exe">
       <arg value="${ToolsDir}\Advisers\Advisers.sln" />
-      <arg value="/target:Rebuild" />
+      <arg value="/target:${Target}" />
       <arg value="/maxcpucount" />
       <arg value="/fl" />
       <arg value="/flp:Verbosity=Normal;LogFile=Examples.build-Release-Mixed Platforms.log" />
@@ -112,7 +117,7 @@
 <!--
     <exec program="${MSBuildDir}msbuild.exe">
       <arg value="${LRPDir}\LRP.sln" />
-      <arg value="/target:Rebuild" />
+      <arg value="/target:${Target}" />
       <arg value="/maxcpucount" />
       <arg value="/fl" />
       <arg value="/flp:Verbosity=Normal;LogFile=LRP.build-Release-x64.log" />
@@ -125,7 +130,7 @@
 -->	
     <exec program="${MSBuildDir}msbuild.exe">
       <arg value="${LRPDir}\LRP.sln" />
-      <arg value="/target:Rebuild" />
+      <arg value="/target:${Target}" />
       <arg value="/p:Configuration=${Configuration}" />
       <arg value="/p:Platform=${Platform64}" />
     </exec>
@@ -133,10 +138,10 @@
   </target>
 
   <target name="BuildExamples" >
-    <echo message="build starded at: ${datetime::now()}" />
+    <echo message="Build starded at: ${datetime::now()}" />
     <exec program="${MSBuildDir}msbuild.exe">
       <arg value="${ExamplesDir}\CSharp\CSharp.sln" />
-      <arg value="/target:Rebuild" />
+      <arg value="/target:${Target}" />
       <arg value="/maxcpucount" />
       <arg value="/fl" />
       <arg value="/flp:Verbosity=Normal;LogFile=Examples.build-Release-Any CPU.log" />
