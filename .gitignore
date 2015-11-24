@@ -27,6 +27,7 @@ bld/
 [Oo]bj/
 
 # LRP specific
+FRE/
 LRP/dll/
 LRP/lib/
 

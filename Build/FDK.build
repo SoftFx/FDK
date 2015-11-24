@@ -29,18 +29,18 @@
       <arg value="/p:Platform=${Platform64}" />
     </exec>
 
-    <echo message="BuildSolution for ${SourcesDirExamples}\${ExamplesSolutionFile} (${MSBuild.Configuration}|${MSBuild.Platform}) started at: ${datetime::now()}" />
+    <echo message="BuildSolution for ${SourcesDirExamples}\${ExamplesSolutionFile} (${Configuration}|${PlatformAll}) started at: ${datetime::now()}" />
     <exec program="${MSBuildDir}msbuild.exe">
       <arg value="${SourcesDirExamples}\${ExamplesSolutionFile}" />
       <arg value="/target:${Target}" />
       <arg value="/maxcpucount" />
       <arg value="/fl" />
-      <arg value="/flp:Verbosity=Normal;LogFile=Examples.build-${MSBuild.Configuration}-${MSBuild.Platform}.log" />
+      <arg value="/flp:Verbosity=Normal;LogFile=Examples.build-${Configuration}-${PlatformAll}.log" />
       <arg value="/clp:NoItemAndPropertyList" />
       <arg value="/verbosity:n" />
       <arg value="/nologo" />
-      <arg value="/p:Configuration=${MSBuild.Configuration}" />
-      <arg value="/p:Platform=${MSBuild.Platform}" />
+      <arg value="/p:Configuration=${Configuration}" />
+      <arg value="/p:Platform=${PlatformAll}" />
     </exec>
 
     <copy file="${SourcesDirExamples}\Release\QuotesDownloader.exe.config"  tofile="..\FRE\QuotesDownloader.exe.config" />
@@ -100,12 +100,12 @@
   </target>
 
   <target name="BuildInstall" >
-    <echo message="Build Install for ${SolutionFile} (${Target} Install|${Platform64}) started at: ${datetime::now()}" />
+    <echo message="Build Install for ${SolutionFile} (${Target} Install|${PlatformAll}) started at: ${datetime::now()}" />
     <exec program="${MSBuildDir}msbuild.exe">
       <arg value="${SourcesDir}\${SolutionFile}" />
       <arg value="/target:${Target}" />
       <arg value="/p:Configuration=Install" />
-      <arg value="/p:Platform=${Platform64}" />
+      <arg value="/p:Platform=${PlatformAll}" />
     </exec>
   </target>
 
