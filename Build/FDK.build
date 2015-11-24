@@ -19,14 +19,6 @@
       <arg value="/p:Platform=${Platform64}" />
     </exec>
 
-    <echo message="BuildSolution for ${SolutionFile} (${Target} Install|${Platform64}) started at: ${datetime::now()}" />
-    <exec program="${MSBuildDir}msbuild.exe">
-      <arg value="${SourcesDir}\${SolutionFile}" />
-      <arg value="/target:${Target}" />
-      <arg value="/p:Configuration=Install" />
-      <arg value="/p:Platform=${Platform64}" />
-    </exec>
-
     <echo message="BuildSolution for ${SourcesDirExamples}\${ExamplesSolutionFile} (${MSBuild.Configuration}|${MSBuild.Platform}) started at: ${datetime::now()}" />
     <exec program="${MSBuildDir}msbuild.exe">
       <arg value="${SourcesDirExamples}\${ExamplesSolutionFile}" />
@@ -150,6 +142,16 @@
       <arg value="/nologo" />
       <arg value="/p:Configuration=Release" />
       <arg value="/p:Platform=Any CPU" />
+    </exec>
+  </target>
+
+  <target name="BuildInstall" >
+    <echo message="Build Install for ${SolutionFile} (${Target} Install|${Platform64}) started at: ${datetime::now()}" />
+    <exec program="${MSBuildDir}msbuild.exe">
+      <arg value="${SourcesDir}\${SolutionFile}" />
+      <arg value="/target:${Target}" />
+      <arg value="/p:Configuration=Install" />
+      <arg value="/p:Platform=${Platform64}" />
     </exec>
   </target>
 
