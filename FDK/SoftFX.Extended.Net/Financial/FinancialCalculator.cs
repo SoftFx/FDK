@@ -101,9 +101,7 @@
 
 		static CalculatorData DoLoadAsTxt(string text)
 		{
-			var serializer = new Generated.Serializer(Native.LrpLlCommonClient);
-			var result = serializer.Deserialize(text);
-			return result;
+			return Native.Serializer.Deserialize(text);
 		}
 
 		/// <summary>
@@ -125,8 +123,7 @@
 		public void Save(Stream stream)
 		{
 			var data = new CalculatorData(this);
-			var serializer = new Generated.Serializer(Native.LrpLlCommonClient);
-			var text = serializer.Serialize(data);
+			var text = Native.Serializer.Serialize(data);
 			var writer = new StreamWriter(stream);
 			writer.Write(text);
 			writer.Flush();

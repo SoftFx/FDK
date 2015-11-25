@@ -267,7 +267,7 @@ bool SecureSocket::DoReinitialize()
 	}
 
 	#ifdef _MSC_VER
-	SSL_METHOD* method = SSLv23_method();
+	const SSL_METHOD* method = SSLv23_method();
 	#else
 	const SSL_METHOD* method = SSLv23_method();
 	#endif

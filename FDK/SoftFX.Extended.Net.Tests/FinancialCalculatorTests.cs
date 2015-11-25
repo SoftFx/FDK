@@ -53,7 +53,7 @@
 
             foreach (var source in cases)
             {
-                using (var calc = new FinCalcProxy(Native.LrpLlCommonClient, source.Text))
+                using (var calc = Native.CreateFinCalcProxy(source.Text))
                 {
                     var current = calc.Format();
                     if (source.Text != current)

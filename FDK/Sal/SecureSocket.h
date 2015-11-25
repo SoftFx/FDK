@@ -31,7 +31,7 @@ private:
 	int m_protocol;
 private:
 	#ifdef _MSC_VER
-	SSL_METHOD* m_method;
+	const SSL_METHOD* m_method;
 	#else
 	const SSL_METHOD* m_method;
 	#endif
