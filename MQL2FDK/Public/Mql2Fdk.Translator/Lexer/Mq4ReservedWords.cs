@@ -75,6 +75,8 @@ namespace Mql2Fdk.Translator.Lexer
             AddReservedWord("continue", TokenKind.Continue);
             AddReservedWord("switch", TokenKind.Switch);
             AddReservedWord("case", TokenKind.Case);
+            AddReservedWord("input", TokenKind.Input);
+            
             AddReservedWord("default", TokenKind.Default);
 
             AddReservedWord("ref", TokenKind.Ref);

@@ -74,6 +74,9 @@ namespace Mql2Fdk.Translator.Parser.HighLevelParsing
 
                         break;
 
+                    case TokenKind.Input:
+                        cleanStates.ShiftInputs(advancePosition);
+                        break;
                     default:
                         throw new InvalidDataException("Input type not handled");
                 }

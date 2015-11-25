@@ -337,6 +337,12 @@ namespace Mql2Fdk.Translator.Parser.Comon
             cleanStates.Remap();
         }
 
+        public static void ShiftInputs(this CleanupAstNodeStates cleanStates, int advancePosition)
+        {
+            var rightColon = cleanStates.GeNextTokenKind(TokenKind.SemiColon, advancePosition);
+
+            cleanStates.ReduceRangeOfTokensAsParent(advancePosition, rightColon, RuleKind.Input);
+        }
         static void ReduceImportRange(int pos, int endImport, string libraryToImport,
                                               CleanupAstNodeStates cleanStates)
         {

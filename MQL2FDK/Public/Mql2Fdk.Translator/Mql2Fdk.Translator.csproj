@@ -51,6 +51,7 @@
     <Compile Include="CodeGenerator\Common\CodeGenForTokenKindWrite.cs" />
     <Compile Include="CodeGenerator\Common\CommentTokenKindCodeGen.cs" />
     <Compile Include="CodeGenerator\Common\EmtpyCodeGenForT.cs" />
+    <Compile Include="CodeGenerator\Common\InputTokenKindCodeGen.cs" />
     <Compile Include="CodeGenerator\Common\NewLineCodeGenForTokenKind.cs" />
     <Compile Include="CodeGenerator\Common\NotSupportedFinder.cs" />
     <Compile Include="CodeGenerator\CsCodeGenerator.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Parser\MultiPassParsing\ForBlockParser.cs" />
     <Compile Include="Parser\MultiPassParsing\FunctionBodyParser.cs" />
     <Compile Include="Parser\MultiPassParsing\IfBlockParser.cs" />
+    <Compile Include="Parser\MultiPassParsing\InputBlockParser.cs" />
     <Compile Include="Parser\MultiPassParsing\MultiPassParser.cs" />
     <Compile Include="Parser\MultiPassParsing\MultiPassParserByRule.cs" />
     <Compile Include="Parser\MultiPassParsing\MultiPassParserByToken.cs" />
