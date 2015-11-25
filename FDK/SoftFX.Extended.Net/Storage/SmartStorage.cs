@@ -16,7 +16,7 @@
         public SmartStorage(DataFeedStorage storage, IHistorySource source = null)
         {
             if (storage == null)
-                throw new ArgumentNullException("storage");
+                throw new ArgumentNullException(nameof(storage));
 
             this.storage = storage;
             this.source = source;

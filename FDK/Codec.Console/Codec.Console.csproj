@@ -56,7 +56,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SoftFX.Lrp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4233fb54369c191f, processorArchitecture=MSIL">
+    <Reference Include="SoftFX.Lrp">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\External\Dll\SoftFX.Lrp.dll</HintPath>
     </Reference>
@@ -65,7 +65,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="TickTrader.BusinessLogic, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="TickTrader.BusinessLogic">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\External\Assembly\TickTrader.BusinessLogic.dll</HintPath>
     </Reference>

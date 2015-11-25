@@ -38,12 +38,12 @@
 		public DataFeedStorage(string location, Type storageProviderType, int storageVersion, DataFeed dataFeed, bool flushOnDispose, bool saveTickLevel2History)
 		{
 			if (location == null)
-				throw new ArgumentNullException("location", "Location argument can not be null.");
+				throw new ArgumentNullException(nameof(location), "Location argument can not be null.");
 
 			if (location.Length == 0)
-				throw new ArgumentException("Location argument can not be empty string", "location");
+				throw new ArgumentException("Location argument can not be empty string", nameof(location));
 
-            if (location[location.Length - 1] == Path.DirectorySeparatorChar)
+			if (location[location.Length - 1] == Path.DirectorySeparatorChar)
 				location = location.Substring(0, location.Length - 1);
 
 			this.saveTickLevel2History = saveTickLevel2History;

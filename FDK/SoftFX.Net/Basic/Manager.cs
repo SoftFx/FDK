@@ -27,13 +27,13 @@
         public Manager(string tradeConnectionString, string feedConnectionString, string location)
         {
             if (tradeConnectionString == null)
-                throw new ArgumentNullException("tradeConnectionString");
+                throw new ArgumentNullException(nameof(tradeConnectionString));
 
             if (feedConnectionString == null)
-                throw new ArgumentNullException("feedConnectionString");
+                throw new ArgumentNullException(nameof(feedConnectionString));
 
             if (location == null)
-                throw new ArgumentNullException("location");
+                throw new ArgumentNullException(nameof(location));
 
             try
             {
@@ -68,8 +68,14 @@
 
                 this.feed.Server.SubscribeToQuotes(symbols, 1);
             }
-            catch
+            catch(Exception ex)
             {
+                var eh = this.Error;
+                if (eh != null)
+                {
+                    var errEventArgs = new ErrorEventArgs(ex);
+                    eh(this, errEventArgs);
+                }
             }
         }
 
@@ -267,7 +273,7 @@
             set
             {
                 if (value != ErrorMode.Default && value != ErrorMode.Throw && value != ErrorMode.Silent)
-                    throw new ArgumentOutOfRangeException("value", value, "Expected: Default, Throw or Silent");
+                    throw new ArgumentOutOfRangeException(nameof(value), value, "Expected: Default, Throw or Silent");
 
                 this.mode = value;
             }

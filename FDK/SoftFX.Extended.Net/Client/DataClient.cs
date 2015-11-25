@@ -13,7 +13,7 @@
     {
         #region Fields
 
-        readonly object synchronizer = new object();
+        readonly static object synchronizer = new object();
         FxDataClient handle;
         Thread thread;
 
@@ -41,9 +41,9 @@
         public void Initialize(string connectionString)
         {
             if (connectionString == null)
-                throw new ArgumentNullException("connectionString", "Connection string can not be null.");
+                throw new ArgumentNullException(nameof(connectionString), "Connection string can not be null.");
 
-            lock (this.synchronizer)
+            lock (synchronizer)
             {
                 if (this.IsStarted)
                     throw new InvalidOperationException("Can not initialize data trade/feed object, if it is running.");
@@ -101,7 +101,7 @@
         {
             get
             {
-                lock (this.synchronizer)
+                lock (synchronizer)
                 {
                     return this.thread != null;
                 }
@@ -115,7 +115,7 @@
         {
             get
             {
-                lock (this.synchronizer)
+                lock (synchronizer)
                 {
                     return this.thread == null;
                 }
@@ -156,11 +156,21 @@
         #region Methods
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="timeoutInMilliseconds"></param>
+        /// <returns></returns>
+        public bool WaitForLogon(int timeoutInMilliseconds)
+        {
+            return this.handle.WaitForLogon(timeoutInMilliseconds);
+        }
+
+        /// <summary>
         /// Starts data feed/trade instance.
         /// </summary>
         public void Start()
         {
-            lock (this.synchronizer)
+            lock (synchronizer)
             {
                 if (this.handle.Start())
                 {
@@ -187,7 +197,7 @@
         /// </summary>
         public void Stop()
         {
-            lock (this.synchronizer)
+            lock (synchronizer)
             {
                 if (this.handle.Shutdown())
                 {

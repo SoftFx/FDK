@@ -36,7 +36,7 @@
         protected FeaturesInfo(FixProtocolVersion protocolVersion)
         {
             if (protocolVersion == null)
-                throw new ArgumentNullException("protocolVersion", "Protocol version can not be null.");
+                throw new ArgumentNullException(nameof(protocolVersion), "Protocol version can not be null.");
 
             this.protocolVersion = protocolVersion;
         }
@@ -122,7 +122,7 @@
         protected void ThrowIfPropertyNotSupported<T>(Expression<Func<T>> propertyExpression)
         {
             if (propertyExpression == null)
-                throw new ArgumentNullException("propertyExpression");
+                throw new ArgumentNullException(nameof(propertyExpression));
 
             if (propertyExpression.Body.NodeType != ExpressionType.MemberAccess)
                 throw new ArgumentException("Expression type should be ExpressionType.MemberAccess");

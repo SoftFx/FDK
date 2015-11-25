@@ -17,7 +17,7 @@
         internal Codec(ICodecProxy proxy)
         {
             if (proxy == null)
-                throw new ArgumentNullException("proxy");
+                throw new ArgumentNullException(nameof(proxy));
 
             this.proxy = proxy;
         }

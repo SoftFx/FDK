@@ -3,6 +3,11 @@
     using System;
     using System.Text.RegularExpressions;
 
+    enum BarPeriodPrefix
+    {
+        S, M, H, D, W, MN
+    }
+
     /// <summary>
     /// Contains different bar period.
     /// </summary>
@@ -75,27 +80,32 @@
 
         internal BarPeriod(string prefix, int interval)
         {
-            this.prefix = prefix;
+            this.prefix = ParsePrefix(prefix);
             this.factor = interval;
+        }
+
+        static BarPeriodPrefix ParsePrefix(string prefix)
+        {
+            return (BarPeriodPrefix)Enum.Parse(typeof(BarPeriodPrefix), prefix);
         }
 
         /// <summary>
         /// Creates a new instance of BarPeriod class from string.
         /// </summary>
-        /// <param name="text">string repsentation of bar period</param>
+        /// <param name="text">string representation of bar period</param>
         public BarPeriod(string text)
         {
             if (text == null)
-                throw new ArgumentNullException("text");
+                throw new ArgumentNullException(nameof(text));
 
             var match = Regex.Match(text, @"([a-zA-Z]+)(\d+)");
             if (!match.Success)
             {
                 var message = string.Format("Incorrect bar periodicity = {0}", text);
-                throw new ArgumentException(message, "text");
+                throw new ArgumentException(message, nameof(text));
             }
 
-            this.prefix = match.Groups[1].Value;
+            this.prefix = ParsePrefix(match.Groups[1].Value);
             this.factor = Convert.ToInt32(match.Groups[2].Value);
         }
 
@@ -120,18 +130,17 @@
         {
             switch (period.prefix)
             {
-                case "S":
+                case BarPeriodPrefix.S:
                     return time.AddSeconds(period.factor);
-                case "M":
+                case BarPeriodPrefix.M:
                     return time.AddMinutes(period.factor);
-                case "H":
+                case BarPeriodPrefix.H:
                     return time.AddHours(period.factor);
-                case "D":
+                case BarPeriodPrefix.D:
                     return time.AddDays(period.factor);
-                case "W":
+                case BarPeriodPrefix.W:
                     return time.AddDays(DaysOfWeek * period.factor);
             }
-
             return time.AddMonths(period.factor);
         }
 
@@ -145,15 +154,15 @@
         {
             switch (period.prefix)
             {
-                case "S":
+                case BarPeriodPrefix.S:
                     return time.AddSeconds(-period.factor);
-                case "M":
+                case BarPeriodPrefix.M:
                     return time.AddMinutes(-period.factor);
-                case "H":
+                case BarPeriodPrefix.H:
                     return time.AddHours(-period.factor);
-                case "D":
+                case BarPeriodPrefix.D:
                     return time.AddDays(-period.factor);
-                case "W":
+                case BarPeriodPrefix.W:
                     return time.AddDays(-DaysOfWeek * period.factor);
             }
 
@@ -166,12 +175,12 @@
         /// <returns>Can not be null.</returns>
         public override string ToString()
         {
-            return string.Format("{0}{1}", this.prefix, this.factor);
+            return string.Format("{0}{1}", prefix, factor);
         }
 
         #region Members
 
-        readonly string prefix;
+        readonly BarPeriodPrefix prefix;
         readonly int factor;
 
         #endregion

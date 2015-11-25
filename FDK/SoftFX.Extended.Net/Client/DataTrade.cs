@@ -118,19 +118,26 @@
         {
             if (base.ProcessMessage(message))
                 return true;
-
-            if (message.Type == Native.FX_MSG_ACCOUNT_INFO)
-                this.RaiseAccountInfo(message);
-            else if (message.Type == Native.FX_MSG_EXECUTION_REPORT)
-                this.RaiseExecutionReport(message);
-            else if (message.Type == Native.FX_MSG_TRADE_TRANSACTION_REPORT)
-                this.RaiseTradeTransactionReport(message);
-            else if (message.Type == Native.FX_MSG_POSITION_REPORT)
-                this.RaisePositionReport(message);
-            else if (message.Type == Native.FX_MSG_NOTIFICATION)
-                this.RaiseNotification(message);
-            else
-                return false;
+            switch (message.Type)
+            {
+                case Native.FX_MSG_ACCOUNT_INFO:
+                    this.RaiseAccountInfo(message);
+                    break;
+                case Native.FX_MSG_EXECUTION_REPORT:
+                    this.RaiseExecutionReport(message);
+                    break;
+                case Native.FX_MSG_TRADE_TRANSACTION_REPORT:
+                    this.RaiseTradeTransactionReport(message);
+                    break;
+                case Native.FX_MSG_POSITION_REPORT:
+                    this.RaisePositionReport(message);
+                    break;
+                case Native.FX_MSG_NOTIFICATION:
+                    this.RaiseNotification(message);
+                    break;
+                default:
+                    return false;
+            }
 
             return true;
         }

@@ -85,7 +85,39 @@
                 this.AssetsStatus = AccountEntryStatus.UnknownAccountCurrency;
             }
         }
+        /// <summary>
+        ///  Calculates asset cross rate.
+        /// </summary>
+        /// <param name="calculator">Financial calculator.</param>
+        /// <param name="asset">Asset volume.</param>
+        /// <param name="assetCurrency">Asset currency.</param>
+        /// <param name="currency">Deposit currency.</param>
+        /// <returns>Rate or null if rate cannot be calculated.</returns>
+        
+        public static double? CalculateAssetRate(FinancialCalculator calculator, double asset, string assetCurrency, string currency)
+        {
+            if (calculator == null)
+                throw new ArgumentNullException(nameof(calculator));
+            if (assetCurrency == null)
+                throw new ArgumentNullException(nameof(assetCurrency));
+            if (currency == null)
+                throw new ArgumentNullException(nameof(currency));
 
+            if (calculator.MarketState == null)
+                calculator.Calculate();
+
+            try
+            {
+                if (asset >= 0)
+                    return (double)calculator.MarketState.ConversionMap.GetPositiveAssetConversion(assetCurrency, currency).Value;
+                else
+                    return (double)calculator.MarketState.ConversionMap.GetNegativeAssetConversion(assetCurrency, currency).Value;
+            }
+            catch (BusinessLogicException)
+            {
+                return null;
+            }
+        }
         void CalculateAssets(int zzz)
         {
             var converter = this.Owner.MarketState.ConversionMap;
@@ -127,12 +159,12 @@
             for (var index = 0; index < assets.Length; ++index)
             {
                 var asset = assets[index];
-                if (asset.Volume == 0)
+                if (asset.Volume == 0.0)
                     continue;
 
                 var currency = this.Owner.Symbols.GetCurrencyFromIndex(index);
 
-                var rate = this.Owner.CalculateAssetRate(asset.Volume, currency, accountCurrency);
+                var rate = CalculateAssetRate(Owner, asset.Volume, currency, accountCurrency);
                 if (rate.HasValue)
                 {
                     asset.Rate = rate.Value;
@@ -168,7 +200,7 @@
                 if (value != AccountType.Net && value != AccountType.Gross && value != AccountType.Cash)
                 {
                     var message = string.Format("Unsupported account type = {0}", value);
-                    throw new ArgumentException(message, "value");
+                    throw new ArgumentException(message, nameof(value));
                 }
 
                 this.type = value;
@@ -190,7 +222,7 @@
                 if (double.IsNaN(value) || double.IsInfinity(value) || value <= 0)
                 {
                     var message = string.Format("Leverage should be positive finite value");
-                    throw new ArgumentOutOfRangeException("value", value, message);
+                    throw new ArgumentOutOfRangeException(nameof(value), value, message);
                 }
                 this.leverage = value;
             }

@@ -19,10 +19,10 @@
         public SymbolInfoFeatures(FixProtocolVersion protocolVersion, SymbolInfoFeaturesProvider provider)
         {
             if (protocolVersion == null)
-                throw new ArgumentNullException("protocolVersion");
+                throw new ArgumentNullException(nameof(protocolVersion));
 
             if (provider == null)
-                throw new ArgumentNullException("provider");
+                throw new ArgumentNullException(nameof(provider));
 
             this.protocolVersion = protocolVersion;
             this.provider = provider;

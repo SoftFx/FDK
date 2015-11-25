@@ -13,7 +13,7 @@
         Module(ModuleType type, IModuleSource source)
         {
             if (source == null)
-                throw new ArgumentNullException("source");
+                throw new ArgumentNullException(nameof(source));
 
             this.ModuleType = type;
             this.source = source;
@@ -22,13 +22,18 @@
             name = name.Replace("__", "{**}");
             name = name.Replace('_', '.');
             name = name.Replace("{**}", "_");
-
-            if (type == ModuleType.x86)
-                name = name.Replace(".86", string.Empty);
-            else if (type == ModuleType.x64)
-                name = name.Replace(".64", string.Empty);
-            else if (type == ModuleType.Exe)
-                name = name.Replace(".exe", string.Empty);
+            switch (type)
+            {
+                case ModuleType.x86:
+                    name = name.Replace(".86", string.Empty);
+                    break;
+                case ModuleType.x64:
+                    name = name.Replace(".64", string.Empty);
+                    break;
+                case ModuleType.Exe:
+                    name = name.Replace(".exe", string.Empty);
+                    break;
+            }
 
             this.Name = name;
 

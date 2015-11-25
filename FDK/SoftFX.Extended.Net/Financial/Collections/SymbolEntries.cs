@@ -38,7 +38,7 @@
             if (this.Any(o => o.Symbol == symbol.Symbol))
             {
                 var message = string.Format("Duplicate symbol alias = {0}", symbol.Symbol);
-                throw new ArgumentException(message, "symbol");
+                throw new ArgumentException(message, nameof(symbol));
             }
 
             base.Add(symbol);

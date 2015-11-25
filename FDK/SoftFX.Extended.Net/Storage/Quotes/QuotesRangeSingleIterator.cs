@@ -19,7 +19,7 @@
 		public QuotesRangeSingleIterator(QuotesRangeSingleSequence sequence)
 		{
 			if (sequence == null)
-    			throw new ArgumentNullException("sequence", "Sequence parameter can not be null.");
+    			throw new ArgumentNullException(nameof(sequence), "Sequence parameter can not be null.");
 
 			this.Sequence = sequence;
 

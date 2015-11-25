@@ -17,10 +17,10 @@
         protected FinancialEntry(object owner)
         {
             if (owner == null)
-                throw new ArgumentNullException("owner");
+                throw new ArgumentNullException(nameof(owner));
 
             this.owner = owner;
-            this.ArrayIndex = -1;
+            ArrayIndex = -1;
         }
 
         #endregion

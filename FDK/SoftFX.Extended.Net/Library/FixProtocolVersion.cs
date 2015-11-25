@@ -63,13 +63,13 @@
         public FixProtocolVersion(string type, int majorVersion, int minorVersion)
         {
             if (type == null)
-                throw new ArgumentNullException("type", "Protocol type can not be null.");
+                throw new ArgumentNullException(nameof(type), "Protocol type can not be null.");
 
             if (majorVersion < 0)
-                throw new ArgumentOutOfRangeException("majorVersion", "Major version can not be negative.");
+                throw new ArgumentOutOfRangeException(nameof(majorVersion), "Major version can not be negative.");
 
             if (minorVersion < 0)
-                throw new ArgumentOutOfRangeException("minorVersion", "Minor version can not be negative.");
+                throw new ArgumentOutOfRangeException(nameof(minorVersion), "Minor version can not be negative.");
 
             this.Type = type;
             this.MajorVersion = majorVersion;
@@ -85,7 +85,7 @@
         public FixProtocolVersion(string text)
         {
             if (text == null)
-                throw new ArgumentNullException("text", "Protocol version string can not be null.");
+                throw new ArgumentNullException(nameof(text), "Protocol version string can not be null.");
 
             var pattern = new Regex(@"([a-zA-Z]+)\.(\d+)\.(\d+)");
             var match = pattern.Match(text);
@@ -185,7 +185,7 @@
         public int CompareTo(FixProtocolVersion other)
         {
             if (other == null)
-                throw new ArgumentNullException("other", "Protocol version can not be null.");
+                throw new ArgumentNullException(nameof(other), "Protocol version can not be null.");
 
             if (this.Type != other.Type)
                 throw new ArgumentException("Can not compare two protocol versions, which have different types.");
@@ -234,10 +234,10 @@
         public static bool operator < (FixProtocolVersion first, FixProtocolVersion second)
         {
             if (first == null)
-                throw new ArgumentNullException("first", "Protocol version can not be null.");
+                throw new ArgumentNullException(nameof(first), "Protocol version can not be null.");
 
             if (second == null)
-                throw new ArgumentNullException("second", "Protocol version can not be null.");
+                throw new ArgumentNullException(nameof(second), "Protocol version can not be null.");
 
             var status = first.CompareTo(second);
             return (status < 0);
@@ -253,10 +253,10 @@
         public static bool operator <= (FixProtocolVersion first, FixProtocolVersion second)
         {
             if (first == null)
-                throw new ArgumentNullException("first", "Protocol version can not be null.");
+                throw new ArgumentNullException(nameof(first), "Protocol version can not be null.");
 
             if (second == null)
-                throw new ArgumentNullException("second", "Protocol version can not be null.");
+                throw new ArgumentNullException(nameof(second), "Protocol version can not be null.");
 
             var status = first.CompareTo(second);
             return (status <= 0);
@@ -272,10 +272,10 @@
         public static bool operator > (FixProtocolVersion first, FixProtocolVersion second)
         {
             if (first == null)
-                throw new ArgumentNullException("first", "Protocol version can not be null.");
+                throw new ArgumentNullException(nameof(first), "Protocol version can not be null.");
 
             if (second == null)
-                throw new ArgumentNullException("second", "Protocol version can not be null.");
+                throw new ArgumentNullException(nameof(second), "Protocol version can not be null.");
 
             var status = first.CompareTo(second);
             return (status > 0);
@@ -291,10 +291,10 @@
         public static bool operator >= (FixProtocolVersion first, FixProtocolVersion second)
         {
             if (first == null)
-                throw new ArgumentNullException("first", "Protocol version can not be null.");
+                throw new ArgumentNullException(nameof(first), "Protocol version can not be null.");
 
             if (second == null)
-                throw new ArgumentNullException("second", "Protocol version can not be null.");
+                throw new ArgumentNullException(nameof(second), "Protocol version can not be null.");
 
             var status = first.CompareTo(second);
             return (status >= 0);
@@ -312,7 +312,7 @@
         public static string ToString(string type, int majorVersion, int minorVersion)
         {
             if (type == null)
-                throw new ArgumentNullException("type", "Protocol type can not be null.");
+                throw new ArgumentNullException(nameof(type), "Protocol type can not be null.");
 
             if (majorVersion < 0)
                 throw new ArgumentException("Major version can not be negative.");

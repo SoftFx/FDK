@@ -26,7 +26,7 @@
             : this()
         {
             if (calculator == null)
-                throw new ArgumentNullException("calculator");
+                throw new ArgumentNullException(nameof(calculator));
 
             //this.MarginMode = calculator.MarginMode;
 

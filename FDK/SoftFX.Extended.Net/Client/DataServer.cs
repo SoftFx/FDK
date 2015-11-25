@@ -16,7 +16,7 @@
         /// <param name="fileId">A requested file id; can not be null.</param>
         /// <param name="chunkId">A requested chunk id; can not be negative.</param>
         /// <returns>Returns data and information of downloaded chunk; can not be null</returns>
-        internal FxFileChunk GetFileChunk(string fileId, int chunkId)
+        public FxFileChunk GetFileChunk(string fileId, int chunkId)
         {
             return this.GetFileChunkEx(fileId, chunkId, this.Client.SynchOperationTimeout);
         }
@@ -28,7 +28,7 @@
         /// <param name="chunkId">A requested chunk id; can not be negative.</param>
         /// <param name="timeoutInMilliseconds">Timeout of the operation in milliseconds.</param>
         /// <returns>Returns data and information of downloaded chunk; can not be null</returns>
-        internal FxFileChunk GetFileChunkEx(string fileId, int chunkId, int timeoutInMilliseconds)
+        public FxFileChunk GetFileChunkEx(string fileId, int chunkId, int timeoutInMilliseconds)
         {
             return this.Client.Handle.GetFileChunk(fileId, chunkId, timeoutInMilliseconds);
         }

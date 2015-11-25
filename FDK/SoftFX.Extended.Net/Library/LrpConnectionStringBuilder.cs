@@ -128,7 +128,7 @@
         internal static void PrepareFeedConnectionTesters(string address, string username, string password, IEnumerable<int> ports, ICollection<ConnectionTester> testers)
         {
             if (address == null)
-                throw new ArgumentNullException("address");
+                throw new ArgumentNullException(nameof(address));
 
             if (ports == null)
                 ports = Ports;

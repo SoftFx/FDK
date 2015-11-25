@@ -20,7 +20,7 @@
         public FinancialEntries(object owner)
         {
             if (owner == null)
-                throw new ArgumentNullException("owner");
+                throw new ArgumentNullException(nameof(owner));
 
             this.owner = owner;
             this.entries = new List<TEntry>();
@@ -118,10 +118,10 @@
         void CheckNullAndOwner(TEntry entry)
         {
             if (entry == null)
-                throw new ArgumentNullException("entry");
+                throw new ArgumentNullException(nameof(entry));
 
             if (this.owner != entry.Owner)
-                throw new ArgumentException("Invalid owner");
+                throw new ArgumentException("Invalid owner", nameof(entry));
         }
 
         #endregion

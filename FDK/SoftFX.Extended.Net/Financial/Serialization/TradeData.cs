@@ -19,7 +19,7 @@
         internal TradeData(TradeEntry entry)
         {
             if (entry == null)
-                throw new ArgumentNullException("entry");
+                throw new ArgumentNullException(nameof(entry));
 
             this.Tag = entry.Tag != null ? entry.Tag.ToString() : string.Empty;
             this.Type = TradeTypeFromTradeRecordType(entry.Type);
@@ -158,7 +158,7 @@
             }
 
             var message = string.Format("Unsupporred trade type = {0}", type);
-            throw new ArgumentException(message, "type");
+            throw new ArgumentException(message, nameof(type));
         }
 
         static TradeType TradeTypeFromTradeRecordType(TradeRecordType type)
@@ -176,8 +176,8 @@
                 return TradeType.Stop;
             }
 
-            var message = string.Format("Unsupporred trade record type = {0}", type);
-            throw new ArgumentException(message, "type");
+            var message = string.Format("Unsupported trade record type = {0}", type);
+            throw new ArgumentException(message, nameof(type));
         }
 
         #endregion

@@ -56,6 +56,11 @@
         IncorrectQuantity = 13,
 
         /// <summary>
+        /// Trade Not Allowed.
+        /// </summary>
+        TradeNotAllowed = 14,
+
+        /// <summary>
         /// Unknown error.
         /// </summary>
         Other = 99

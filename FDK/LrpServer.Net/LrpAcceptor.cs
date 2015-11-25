@@ -35,7 +35,7 @@
         public LrpAcceptor(int port, string sertificateFilename, string sertificatePassword, ILrpServerHandler handler, LrpChannelsPool channels)
         {
             if (handler == null)
-                throw new ArgumentNullException("handler");
+                throw new ArgumentNullException(nameof(handler));
 
             if (sertificateFilename == null)
                 sertificateFilename = string.Empty;

@@ -9,7 +9,7 @@
             : this()
         {
             if (handle == LPtr.Zero)
-                throw new ArgumentNullException("handle", "Queue handle can not be null");
+                throw new ArgumentNullException(nameof(handle), "Queue handle can not be null");
 
             this.handle = handle;
         }

@@ -19,7 +19,7 @@
         internal SymbolData(SymbolEntry entry)
         {
             if (entry == null)
-                throw new ArgumentNullException("entry");
+                throw new ArgumentNullException(nameof(entry));
 
             this.Tag = entry.Tag != null ? entry.Tag.ToString() : string.Empty;
             this.Symbol = entry.Symbol;

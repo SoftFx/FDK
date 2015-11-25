@@ -18,7 +18,7 @@
             try
             {
                 if (symbolInfo == null)
-                    throw new ArgumentNullException("symbolInfo");
+                    throw new ArgumentNullException(nameof(symbolInfo));
 
                 return symbolInfo.SwapSizeShort.HasValue && symbolInfo.SwapSizeLong.HasValue;
             }
@@ -36,7 +36,7 @@
         public static double GetMarginFactor(this SymbolInfo symbolInfo)
         {
             if (symbolInfo == null)
-                throw new ArgumentNullException("symbolInfo");
+                throw new ArgumentNullException(nameof(symbolInfo));
 
             if (symbolInfo.Features.IsMarginFactorFractionalSupported && symbolInfo.MarginFactorFractional.HasValue)
                 return symbolInfo.MarginFactorFractional.Value;

@@ -22,7 +22,7 @@
             : this()
         {
             if (entry == null)
-                throw new ArgumentNullException("entry");
+                throw new ArgumentNullException(nameof(entry));
 
             this.Tag = entry.Tag != null ? entry.Tag.ToString() : string.Empty;
             this.Type = entry.Type;

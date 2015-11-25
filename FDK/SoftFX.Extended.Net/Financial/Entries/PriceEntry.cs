@@ -52,7 +52,7 @@
                 return this.Bid;
 
             var message = string.Format("Unknown side = {0}", side);
-            throw new ArgumentException(message, "side");
+            throw new ArgumentException(message, nameof(side));
         }
 
         /// <summary>
@@ -62,13 +62,16 @@
         /// <returns></returns>
         public double PriceFromOppositeSide(TradeRecordSide side)
         {
-            if (side == TradeRecordSide.Buy)
-                return this.Bid;
-            else if (side == TradeRecordSide.Sell)
-                return this.Ask;
+            switch (side)
+            {
+                case TradeRecordSide.Buy:
+                    return this.Bid;
+                case TradeRecordSide.Sell:
+                    return this.Ask;
+            }
 
             var message = string.Format("Unknown side = {0}", side);
-            throw new ArgumentException(message, "side");
+            throw new ArgumentException(message, nameof(side));
         }
 
         /// <summary>

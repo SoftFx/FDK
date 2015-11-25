@@ -26,13 +26,13 @@
 		public QuotesSingleSequence(IStorage storage, string symbol, DateTime startTime, DateTime endTime, int depth)
 		{
 			if (storage == null)
-				throw new ArgumentNullException("storage", "Storage can not be null.");
+				throw new ArgumentNullException(nameof(storage), "Storage can not be null.");
 
 			if (symbol == null)
-				throw new ArgumentNullException("symbol", "Symbol can not be null.");
+				throw new ArgumentNullException(nameof(symbol), "Symbol can not be null.");
 
-           if (depth <= 0)
-				throw new ArgumentOutOfRangeException("depth", depth, "Expected positive depth value.");
+			if (depth <= 0)
+				throw new ArgumentOutOfRangeException(nameof(depth), depth, "Expected positive depth value.");
 
 			this.Storage = storage;
 			this.Symbol = symbol;

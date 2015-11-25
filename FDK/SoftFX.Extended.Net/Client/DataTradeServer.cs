@@ -362,7 +362,7 @@
         public ClosePositionResult ClosePositionPartiallyEx(string orderId, double volume, string operationId, int timeoutInMilliseconds)
         {
             if (volume <= 0)
-                throw new ArgumentOutOfRangeException("volume", "Closing volume should be positive");
+                throw new ArgumentOutOfRangeException(nameof(volume), "Closing volume should be positive");
 
             return this.Client.DataTradeHandle.CloseOrder(operationId, orderId, volume, timeoutInMilliseconds);
         }

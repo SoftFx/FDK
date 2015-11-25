@@ -130,7 +130,7 @@
         /// <param name="priceType">Can be bid or ask.</param>
         /// <param name="period">Chart periodicity.</param>
         /// <returns>Can not be null.</returns>
-        internal DataHistoryInfo GetHistoryBars(string symbol, DateTime time, int barsNumber, PriceType priceType, BarPeriod period)
+        public DataHistoryInfo GetHistoryBars(string symbol, DateTime time, int barsNumber, PriceType priceType, BarPeriod period)
         {
             return this.GetHistoryBarsEx(symbol, time, barsNumber, priceType, period, this.Client.SynchOperationTimeout);
         }
@@ -146,7 +146,7 @@
         /// <param name="period">Chart periodicity.</param>
         /// <param name="timeoutInMilliseconds">timeout of the operation</param>
         /// <returns>Can not be null.</returns>
-        internal DataHistoryInfo GetHistoryBarsEx(string symbol, DateTime time, int barsNumber, PriceType priceType, BarPeriod period, int timeoutInMilliseconds)
+        public DataHistoryInfo GetHistoryBarsEx(string symbol, DateTime time, int barsNumber, PriceType priceType, BarPeriod period, int timeoutInMilliseconds)
         {
             return this.Client.DataFeedHandle.GetHistoryBars(symbol, time, barsNumber, priceType, period, timeoutInMilliseconds);
         }

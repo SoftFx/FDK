@@ -20,10 +20,10 @@
         public DataFeedHistorySource(DataFeed dataFeed, int attemptsNumber, int timeoutInMilliseconds)
         {
             if (dataFeed == null)
-                throw new ArgumentNullException("dataFeed", "Data feed can not be null");
+                throw new ArgumentNullException(nameof(dataFeed), "Data feed can not be null");
 
             if (attemptsNumber < 1)
-                throw new ArgumentOutOfRangeException("attemptsNumber", attemptsNumber, "Attempts number shuld be more than zero");
+                throw new ArgumentOutOfRangeException(nameof(attemptsNumber), attemptsNumber, "Attempts number shuld be more than zero");
 
             this.dataFeed = dataFeed;
             this.attemptsNumber = attemptsNumber;
@@ -56,7 +56,7 @@
         T Attempt<T>(Func<T> function)
         {
             if (function == null)
-                throw new ArgumentNullException("function");
+                throw new ArgumentNullException(nameof(function));
 
             for (var attempt = 1; attempt < this.attemptsNumber; ++attempt)
             {
@@ -76,7 +76,7 @@
 
         bool CheckAttemptState()
         {
-            return !this.dataFeed.IsStopped && this.dataFeed.DataFeedHandle.DataClient.WaitForLogon(this.dataFeed.SynchOperationTimeout);
+            return !this.dataFeed.IsStopped && this.dataFeed.WaitForLogon(this.dataFeed.SynchOperationTimeout);
         }
 
         #endregion

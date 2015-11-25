@@ -102,6 +102,7 @@
   <ItemGroup>
     <Compile Include="Entities\AssetInfo.cs" />
     <Compile Include="Entities\CurrencyInfo.cs" />
+    <Compile Include="Entities\FileChunk.cs" />
     <Compile Include="Enums\CommissionChargeMethod.cs" />
     <Compile Include="Enums\CommissionChargeType.cs" />
     <Compile Include="Enums\CommissionType.cs" />

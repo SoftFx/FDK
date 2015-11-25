@@ -13,16 +13,16 @@
         public UpdateHandler(DataTrade trade, DataFeed feed, Action<SymbolInfo[], AccountInfo, Quote> updateCallback, Processor processor)
         {
             if (trade == null)
-                throw new ArgumentNullException("trade");
+                throw new ArgumentNullException(nameof(trade));
 
             if (feed == null)
-                throw new ArgumentNullException("feed");
+                throw new ArgumentNullException(nameof(feed));
 
             if (updateCallback == null)
-                throw new ArgumentNullException("updateCallback");
+                throw new ArgumentNullException(nameof(updateCallback));
 
             if (processor == null)
-                throw new ArgumentNullException("processor");
+                throw new ArgumentNullException(nameof(processor));
 
             this.updateCallback = updateCallback;
             this.processor = processor;
