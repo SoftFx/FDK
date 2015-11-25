@@ -121,8 +121,8 @@
 
         #region LRP Properties
 
-        static LocalClient LrpClient { get; private set; }
-        static LocalClient LrpLlCommonClient { get; private set; }
+        public static LocalClient LrpClient { get; private set; }
+        public static LocalClient LrpLlCommonClient { get; private set; }
 
         public static Financial.Generated.Serializer Serializer { get; private set; }
 
