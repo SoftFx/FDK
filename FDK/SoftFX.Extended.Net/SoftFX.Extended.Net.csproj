@@ -125,6 +125,7 @@
     <Compile Include="Resources\ModulesProvider.cs" />
     <Compile Include="Resources\IModuleSource.cs" />
     <Compile Include="Resources\StaticPropertyInfoModuleSource.cs" />
+    <Compile Include="Resources\TraceUtils.cs" />
     <Compile Include="Storage\HistoryNotFoundException.cs" />
     <Compile Include="Events\ExceptionEventArgs.cs" />
     <Compile Include="Extensions\FinancialCalculatorExtensions.cs" />
