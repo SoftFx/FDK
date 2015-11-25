@@ -89,6 +89,11 @@ namespace Mql2Fdk.Translator.Semantic.Fixes
             var openParam = 1;
             if (states.Count == 2)
                 return;
+            if (states.Count == 3)
+            {
+                states.RemoveAt(1);
+                return;
+            }
             var pos = openParam;
             do
             {

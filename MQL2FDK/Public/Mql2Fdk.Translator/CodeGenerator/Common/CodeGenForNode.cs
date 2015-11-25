@@ -6,5 +6,6 @@ namespace Mql2Fdk.Translator.CodeGenerator.Common
     {
         public abstract bool Accept(ParseNode node);
         public abstract string DoWrite(ParseNode node);
+        public bool SkipChildrenNode { get; set; }
     }
 }

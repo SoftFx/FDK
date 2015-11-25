@@ -68,7 +68,7 @@
 
             {
                 var ex = new Win32Exception(error);
-                var message = string.Format("Can not load library = {0}", dllPath);
+                var message = string.Format("Can not load library = {0} Code={1}", dllPath, error);
                 throw new Exception(message, ex);
             }
         }

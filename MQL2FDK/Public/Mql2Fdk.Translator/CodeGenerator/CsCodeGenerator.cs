@@ -93,8 +93,10 @@ namespace Mql2Fdk.Translator.CodeGenerator
 
             AddEmtpyTokenWriter(TokenKind.SharpImport);
             AddEmtpyTokenWriter(TokenKind.SharpDefine);
+            AddEmtpyTokenWriter(TokenKind.Input);
 
             AddWriter<ExternWriter>();
+            AddWriter<InputTokenKindCodeGen>();
             AddWriter<BlockWriter>();
             AddWriter<DefineDeclarationWriter>();
 
@@ -116,6 +118,7 @@ namespace Mql2Fdk.Translator.CodeGenerator
             AddEmtpyWriter(RuleKind.Assignment);
             AddEmtpyWriter(RuleKind.Switch);
 
+            
             AddEmtpyWriter(RuleKind.Break);
             AddEmtpyWriter(RuleKind.Return);
             AddEmtpyWriter(RuleKind.Root);
@@ -166,8 +169,8 @@ namespace Mql2Fdk.Translator.CodeGenerator
 
         void Visit(ParseNode node, StringBuilder sb)
         {
-            WriteNode(sb, node);
-            if (node.Count == 0)
+            var skipChildren = WriteNode(sb, node);
+            if (node.Count == 0 || skipChildren)
                 return;
             foreach (var child in node.Children)
             {
@@ -175,11 +178,12 @@ namespace Mql2Fdk.Translator.CodeGenerator
             }
         }
 
-        void WriteNode(StringBuilder sb, ParseNode child)
+        bool WriteNode(StringBuilder sb, ParseNode child)
         {
             var acceptCodeGen = GetCodeGenerator(child);
-            if (acceptCodeGen == null) return;
+            if (acceptCodeGen == null) return false;
             sb.Append(acceptCodeGen.DoWrite(child));
+            return acceptCodeGen.SkipChildrenNode;
         }
 
         CodeGenForNode GetCodeGenerator(ParseNode child)

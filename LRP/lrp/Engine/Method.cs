@@ -37,12 +37,12 @@
         {
             if (node.Name == "Param")
             {
-                var parameter = new Parameter(this.Count, types, node);
-                this.Add(parameter);
+                var parameter = new Parameter(Count, types, node);
+                Add(parameter);
             }
             else if (node.Name == "Return")
             {
-                this.ProcessReturnValue(types, node);
+                ProcessReturnValue(types, node);
             }
             else
             {

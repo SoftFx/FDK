@@ -877,6 +877,9 @@ namespace SoftFX.Lrp
 			long ticks = ReadInt64();
 			ticks += cFxDateTimeStartTicks;
 			ticks *= 10000;
+			if (ticks < 0)
+				return new DateTime(1970,1,1);
+			
 			return DateTime.FromFileTimeUtc(ticks);
 		}
 		/// <summary>

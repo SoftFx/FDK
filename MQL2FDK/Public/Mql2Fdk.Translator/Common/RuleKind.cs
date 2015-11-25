@@ -27,6 +27,7 @@ namespace Mql2Fdk.Translator.Common
         FunctionForwardDeclaration,
         Case,
         CaseBlock,
-        DeclareConstant
+        DeclareConstant,
+        Input
     }
 }

@@ -52,6 +52,7 @@
         Var,
         Char,
         Question,
-        Throw
+        Throw,
+        Input
     }
 }

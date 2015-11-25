@@ -682,6 +682,8 @@
 
             ticks += FxDateTimeStartTicks;
             ticks *= 10000;
+            if (ticks < 0)
+                return new DateTime(1970, 1, 1);
             var result = DateTime.FromFileTimeUtc(ticks);
             return result;
         }
