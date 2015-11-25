@@ -118,7 +118,7 @@
             set
             {
                 if (value < 1)
-                    throw new ArgumentOutOfRangeException("value", value, "Quotes queue size must be positive");
+                    throw new ArgumentOutOfRangeException(nameof(value), value, "Quotes queue size must be positive");
 
                 this.handle.SetQueueThreshold(value);
             }
@@ -139,26 +139,30 @@
         {
             if (base.ProcessMessage(message))
                 return true;
-
-            if (message.Type == Native.FX_MSG_TICK)
-                this.RaiseTick(message);
-            else if (message.Type == Native.FX_MSG_SYMBOL_INFO)
-                this.RaiseSymbolInfo(message);
-            else if (message.Type == Native.FX_MSG_NOTIFICATION)
+            switch (message.Type)
             {
-                var notification = message.Notification();
-                if (notification.Type == NotificationType.ConfigUpdated)
-                {
-                    var e = new NotificationEventArgs(notification);
-                    this.RaiseNotification(e);
-                }
-                else
+                case Native.FX_MSG_TICK:
+                    this.RaiseTick(message);
+                    break;
+                case Native.FX_MSG_SYMBOL_INFO:
+                    this.RaiseSymbolInfo(message);
+                    break;
+                case Native.FX_MSG_NOTIFICATION:
+                    var notification = message.Notification();
+                    if (notification.Type == NotificationType.ConfigUpdated)
+                    {
+                        var e = new NotificationEventArgs(notification);
+                        this.RaiseNotification(e);
+                    }
+                    else
+                        return false;
+                    break;
+                case Native.FX_MSG_CURRENCY_INFO:
+                    this.RaiseCurrencyInfo(message);
+                    break;
+                default:
                     return false;
             }
-            else if (message.Type == Native.FX_MSG_CURRENCY_INFO)
-                this.RaiseCurrencyInfo(message);
-            else
-                return false;
 
             return true;
         }

@@ -15,10 +15,10 @@
         internal PairBars(IEnumerable<Bar> bids, IEnumerable<Bar> asks)
         {
             if (bids == null)
-                throw new ArgumentNullException("bids", "bids bar enumeration can not be null");
+                throw new ArgumentNullException(nameof(bids), "bids bar enumeration can not be null");
 
             if (asks == null)
-                throw new ArgumentNullException("asks", "asks bar enumeration can not be null");
+                throw new ArgumentNullException(nameof(asks), "asks bar enumeration can not be null");
 
             this.bids = bids;
             this.asks = asks;

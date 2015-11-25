@@ -45,16 +45,16 @@
         public StateCalculator(DataTrade trade, DataFeed feed)
         {
             if (trade == null)
-                throw new ArgumentNullException("trade", "Data trade argument can not be null");
+                throw new ArgumentNullException(nameof(trade), "Data trade argument can not be null");
 
             if (trade.IsStarted)
-                throw new ArgumentException("Started data trade can not be used for creating state calculator.", "trade");
+                throw new ArgumentException("Started data trade can not be used for creating state calculator.", nameof(trade));
 
             if (feed == null)
-                throw new ArgumentNullException("feed", "Data feed argument can not be null");
+                throw new ArgumentNullException(nameof(feed), "Data feed argument can not be null");
 
             if (feed.IsStarted)
-                throw new ArgumentException("Started data feed can not be used for creating state calculator.", "feed");
+                throw new ArgumentException("Started data feed can not be used for creating state calculator.", nameof(feed));
 
 
             this.quotes = new Dictionary<string, Quote>();
@@ -307,7 +307,7 @@
             add
             {
                 if (value == null)
-                    throw new ArgumentNullException("value", "StateInfoChanged can not be null");
+                    throw new ArgumentNullException(nameof(value), "StateInfoChanged can not be null");
 
                 lock (this.updateHandler.SyncRoot)
                 {
@@ -322,7 +322,7 @@
             remove
             {
                 if (value == null)
-                    throw new ArgumentNullException("value", "StateInfoChanged can not be null");
+                    throw new ArgumentNullException(nameof(value), "StateInfoChanged can not be null");
 
                 lock (this.updateHandler.SyncRoot)
                 {

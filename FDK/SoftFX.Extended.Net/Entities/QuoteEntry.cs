@@ -19,13 +19,13 @@
             if (double.IsNaN(price) || (price < 0))
             {
                 var message = string.Format("Invalid price = {0}", price);
-                throw new ArgumentOutOfRangeException("price", message);
+                throw new ArgumentOutOfRangeException(nameof(price), message);
             }
 
             if (double.IsNaN(volume) || (volume < 0))
             {
                 var message = string.Format("Invalid volume = {0}", volume);
-                throw new ArgumentOutOfRangeException("volume", message);
+                throw new ArgumentOutOfRangeException(nameof(volume), message);
             }
 
             this.Price = price;

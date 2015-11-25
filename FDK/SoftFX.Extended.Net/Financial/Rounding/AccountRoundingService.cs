@@ -11,13 +11,13 @@
         public AccountRoundingService(IRounding rounder, IPrecisionProvider precisionProvider, string currency)
         {
             if (rounder == null)
-                throw new ArgumentNullException("rounder");
+                throw new ArgumentNullException(nameof(rounder));
 
             if (precisionProvider == null)
-                throw new ArgumentNullException("precisionProvider");
+                throw new ArgumentNullException(nameof(precisionProvider));
 
             if (currency == null)
-                throw new ArgumentNullException("currency");
+                throw new ArgumentNullException(nameof(currency));
 
 
             this.rounder = rounder;

@@ -105,13 +105,13 @@
         internal static void CheckConnectionParameters(string address, string username, string password)
         {
             if (address == null)
-                throw new ArgumentNullException("address");
+                throw new ArgumentNullException(nameof(address));
 
             if (username == null)
-                throw new ArgumentNullException("username");
+                throw new ArgumentNullException(nameof(username));
 
             if (password == null)
-                throw new ArgumentNullException("password");
+                throw new ArgumentNullException(nameof(password));
         }
 
         internal static T[] TestConnections<T>(IEnumerable<ConnectionTester> testers, int timeoutInMs)

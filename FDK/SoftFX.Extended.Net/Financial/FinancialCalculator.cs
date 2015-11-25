@@ -37,7 +37,7 @@
             : this()
 		{
             if (handler == null)
-                throw new ArgumentNullException("handler");
+                throw new ArgumentNullException(nameof(handler));
 
 			this.handler = handler;
 		}
@@ -191,7 +191,7 @@
                 if (value != MarginMode.Dynamic && value != MarginMode.Static && value != MarginMode.StaticIfPossible)
 				{
 					var message = string.Format("Unsupported margin mode = {0}", value);
-					throw new ArgumentException(message, "value");
+					throw new ArgumentException(message, nameof(value));
 				}
 
 				this.marginMode = value;

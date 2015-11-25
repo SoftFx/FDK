@@ -26,13 +26,13 @@
         public Quote(string symbol, DateTime creatingTime, QuoteEntry[] bids, QuoteEntry[] asks)
         {
             if (symbol == null)
-                throw new ArgumentNullException("symbol", "Symbol can not be null.");
+                throw new ArgumentNullException(nameof(symbol), "Symbol can not be null.");
 
             if (bids == null)
-                throw new ArgumentNullException("bids", "Bids can not be null.");
+                throw new ArgumentNullException(nameof(bids), "Bids can not be null.");
 
             if (asks == null)
-                throw new ArgumentNullException("asks", "Asks can not be null.");
+                throw new ArgumentNullException(nameof(asks), "Asks can not be null.");
 
             this.Symbol = symbol;
             this.CreatingTime = creatingTime;
@@ -52,7 +52,7 @@
         public Quote(string symbol, DateTime creatingTime, double bid, double ask)
         {
             if (symbol == null)
-                throw new ArgumentNullException("symbol", "Symbol can not be null.");
+                throw new ArgumentNullException(nameof(symbol), "Symbol can not be null.");
 
             this.Symbol = symbol;
             this.CreatingTime = creatingTime;

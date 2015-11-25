@@ -18,7 +18,7 @@
         protected override void InsertItem(int index, string currency)
         {
             if (currency == null)
-                throw new ArgumentNullException("currency");
+                throw new ArgumentNullException(nameof(currency));
 
             this.VerifyAlredyExists(currency);
 
@@ -33,7 +33,7 @@
         protected override void SetItem(int index, string currency)
         {
             if (currency == null)
-                throw new ArgumentNullException("currency");
+                throw new ArgumentNullException(nameof(currency));
 
             if (this[index] == currency)
                 return;
@@ -48,7 +48,7 @@
             if (this.Contains(currency))
             {
                 var message = string.Format("The container is already contains currency = {0}.", currency);
-                throw new ArgumentException(message, "currency");
+                throw new ArgumentException(message, nameof(currency));
             }
         }
 

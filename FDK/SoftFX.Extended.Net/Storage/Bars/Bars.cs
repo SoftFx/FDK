@@ -131,28 +131,28 @@
         static void ValidateArguments(DataFeed datafeed, string symbol, BarPeriod period, int preferredBufferSize)
         {
             if (datafeed == null)
-                throw new ArgumentNullException("datafeed", "DataFeed instance can not be null.");
+                throw new ArgumentNullException(nameof(datafeed), "DataFeed instance can not be null.");
 
             if (symbol == null)
-                throw new ArgumentNullException("symbol", "Symbol can not be null.");
+                throw new ArgumentNullException(nameof(symbol), "Symbol can not be null.");
 
             if (period == null)
-                throw new ArgumentNullException("period", "Bar period instance can not be null.");
+                throw new ArgumentNullException(nameof(period), "Bar period instance can not be null.");
 
             if (preferredBufferSize <= 1)
-                throw new ArgumentOutOfRangeException("preferedBufferSize", preferredBufferSize, "Preferred buffer size should be more than 1.");
+                throw new ArgumentOutOfRangeException(nameof(preferredBufferSize), preferredBufferSize, "Preferred buffer size should be more than 1.");
         }
 
         static void ValidateArguments(IStorage storage, string symbol, BarPeriod period)
         {
             if (storage == null)
-                throw new ArgumentNullException("storage", "Storage provider instance can not be null.");
+                throw new ArgumentNullException(nameof(storage), "Storage provider instance can not be null.");
 
             if (symbol == null)
-                throw new ArgumentNullException("symbol", "Symbol can not be null.");
+                throw new ArgumentNullException(nameof(symbol), "Symbol can not be null.");
 
             if (period == null)
-                throw new ArgumentNullException("period", "Bar period instance can not be null.");
+                throw new ArgumentNullException(nameof(period), "Bar period instance can not be null.");
         }
 
         #endregion

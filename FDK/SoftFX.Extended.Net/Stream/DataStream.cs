@@ -31,10 +31,10 @@
         public DataStream(DataClient dataClient, string fileId, int timeoutInMilliseconds)
         {
             if (dataClient == null)
-                throw new ArgumentNullException("dataFeed", "Data feed can not be null.");
+                throw new ArgumentNullException(nameof(dataClient), "Data feed can not be null.");
 
             if (fileId == null)
-                throw new ArgumentNullException("fileId", "File ID can not be null.");
+                throw new ArgumentNullException(nameof(fileId), "File ID can not be null.");
 
             this.timeoutInMilliseconds = timeoutInMilliseconds;
             this.server = dataClient.DataServer;

@@ -49,10 +49,10 @@
         public Snapshot(Snapshot snapshot, DataFeedStorage storage, string symbol, BarPeriod periodicity, PriceType priceType)
         {
             if (snapshot == null)
-                throw new ArgumentNullException("snapshot");
+                throw new ArgumentNullException(nameof(snapshot));
 
             if (storage == null)
-                throw new ArgumentNullException("storage");
+                throw new ArgumentNullException(nameof(storage));
 
             this.IsFeedLoggedOn = snapshot.IsFeedLoggedOn;
             this.IsTradeLoggedOn = snapshot.IsTradeLoggedOn;
@@ -196,7 +196,7 @@
                     positions.Add(element.Symbol, element);
 
                     var volume = element.BuyAmount - element.SellAmount;
-                    if (volume != 0)
+                    if (volume != 0.0)
                     {
                         var record = new TradeRecord
                         {
@@ -277,7 +277,7 @@
         #region Internal Properties
 
         /// <summary>
-        /// Retruns true, if feed connection is logged on.
+        /// Returns true, if feed connection is logged on.
         /// </summary>
         public bool IsFeedLoggedOn { get; private set; }
 
@@ -339,7 +339,7 @@
 
             var priceType = PriceType.Bid;
 
-            if (symbol.EndsWith(AskSuffix))
+            if (symbol.EndsWith(AskSuffix, StringComparison.InvariantCulture))
             {
                 symbol = symbol.Substring(0, symbol.Length - AskSuffix.Length);
                 priceType = PriceType.Ask;

@@ -77,7 +77,7 @@
                 if (index < this.LowerBound || index >= this.UpperBound)
                 {
                     var message = string.Format("Expected valid range = [{0}, {1}).", this.LowerBound, this.UpperBound);
-                    throw new ArgumentOutOfRangeException("index", index, message);
+                    throw new ArgumentOutOfRangeException(nameof(index), index, message);
                 }
 
                 var position = this.PositionFromIndex(index);

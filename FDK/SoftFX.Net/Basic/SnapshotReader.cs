@@ -14,7 +14,7 @@
         public SnapshotReader(Manager manager)
         {
             if (manager == null)
-                throw new ArgumentNullException("manager");
+                throw new ArgumentNullException(nameof(manager));
 
             this.synchronizer = new object();
 

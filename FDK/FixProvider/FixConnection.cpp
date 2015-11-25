@@ -783,7 +783,7 @@ void CFixConnection::OnMarketTradeHistory(const FIX44::TradeCaptureReport& messa
 		}
 		else if (FIX::ExecType_CALCULATED == executionType)
 		{
-			report.ExecutionType = FxExecutionType_Canceled;
+			report.ExecutionType = FxExecutionType_Calculated;
 		}
 		else if (FIX::ExecType_CANCELED == executionType)
 		{

@@ -13,7 +13,7 @@
         internal StreamIterator(DataClient dataClient, LPtr handleIterator)
         {
             if (dataClient == null)
-                throw new ArgumentNullException("dataClient", "Data client can not be null.");
+                throw new ArgumentNullException(nameof(dataClient), "Data client can not be null.");
 
             this.dataClient = dataClient;
             this.handleIterator = handleIterator;

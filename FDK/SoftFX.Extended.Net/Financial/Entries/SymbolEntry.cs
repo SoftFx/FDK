@@ -22,7 +22,7 @@
             : base(owner)
         {
             if (symbol == null)
-                throw new ArgumentNullException("symbol");
+                throw new ArgumentNullException(nameof(symbol));
 
             var from = string.Empty;
             var to = string.Empty;
@@ -37,7 +37,7 @@
             if (index == -1 || from.Contains('/') || to.Contains('/'))
             {
                 var message = string.Format("Symbol = {0} should has XXX/YYY format", symbol);
-                throw new ArgumentException(message, "symbol");
+                throw new ArgumentException(message, nameof(symbol));
             }
 
             this.Symbol = symbol;
@@ -58,13 +58,13 @@
             : base(owner)
         {
             if (symbol == null)
-                throw new ArgumentNullException("symbol");
+                throw new ArgumentNullException(nameof(symbol));
 
             if (profitCurrency == null)
-                throw new ArgumentNullException("profitCurrency");
+                throw new ArgumentNullException(nameof(profitCurrency));
 
             if (marginCurrency == null)
-                throw new ArgumentNullException("marginCurrency");
+                throw new ArgumentNullException(nameof(marginCurrency));
 
             this.Symbol = symbol;
             this.From = profitCurrency;
@@ -129,7 +129,7 @@
                 if (double.IsNaN(value) || double.IsInfinity(value) || value <= 0)
                 {
                     var message = string.Format("Contract size should be positive");
-                    throw new ArgumentOutOfRangeException("value", value, message);
+                    throw new ArgumentOutOfRangeException(nameof(value), value, message);
                 }
                 this.contractSize = value;
             }
@@ -246,7 +246,7 @@
             if (double.IsNaN(value) || double.IsInfinity(value) || value < 0 || value > 1)
             {
                 var message = string.Format("{0} should be not less than zero and not more than 1", name);
-                throw new ArgumentOutOfRangeException("value", value, message);
+                throw new ArgumentOutOfRangeException(nameof(value), value, message);
             }
             return value;
         }
