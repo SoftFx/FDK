@@ -182,6 +182,11 @@
 
         static bool Equals(QuoteEntry[] first, QuoteEntry[] second)
         {
+            if(ReferenceEquals(first,second))
+            {
+                return true;
+            }
+
             var count = first.Length;
             if (count != second.Length)
                 return false;

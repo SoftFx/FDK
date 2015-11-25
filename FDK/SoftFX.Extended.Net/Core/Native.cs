@@ -6,6 +6,7 @@
     using SoftFX.Extended.Generated;
     using SoftFX.Lrp;
     using ManagedLibrary = SoftFX.Extended.Library;
+    using Resources;
 
     static class Native
     {
@@ -57,8 +58,10 @@
             ManagedLibrary.ModulesManager.Extract();
 #endif
             if (ManagedLibrary.ResolveDotNetAssemblies)
+            {
+                AppDomain.CurrentDomain.ReflectionOnlyAssemblyResolve += OnAssemblyResolve;
                 AppDomain.CurrentDomain.AssemblyResolve += OnAssemblyResolve;
-
+            }
             Construct();
         }
 
@@ -66,6 +69,8 @@
         {
             LrpClient = CreateLocalClient(Signature.Value, "SoftFX.LlApi.");
             LrpLlCommonClient = CreateLocalClient(Financial.Generated.Signature.Value, "SoftFX.LlCommon.");
+
+            Serializer = new Financial.Generated.Serializer(LrpLlCommonClient);
 
             Handle = new Handle(LrpClient);
             Params = new Params(LrpClient);
@@ -100,6 +105,8 @@
             if (length < 0)
                 return null;
 
+            TraceUtils.WriteLine("Resolving: '{0}'", args.Name);
+
             var name = args.Name.Substring(0, length);
             var result = ManagedLibrary.ModulesManager.LoadAssembly(name);
 
@@ -117,6 +124,8 @@
         public static LocalClient LrpClient { get; private set; }
         public static LocalClient LrpLlCommonClient { get; private set; }
 
+        public static Financial.Generated.Serializer Serializer { get; private set; }
+
         public static Handle Handle { get; private set; }
         public static Params Params { get; private set; }
         public static ClientServer Client { get; private set; }
@@ -128,6 +137,15 @@
         public static Converter Converter { get; private set; }
         public static Iterator Iterator { get; private set; }
         public static Library Library { get; private set; }
+
+        #endregion
+
+        #region Factory methods
+
+        public static Financial.Generated.FinCalcProxy CreateFinCalcProxy(string text)
+        {
+            return new Financial.Generated.FinCalcProxy(LrpLlCommonClient, text);
+        }
 
         #endregion
     }

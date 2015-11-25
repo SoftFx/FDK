@@ -269,7 +269,7 @@ bool SecureSocket::DoReinitialize()
 	#ifdef _MSC_VER
 	SSL_METHOD* method = SSLv23_method();
 	#else
-	const SSL_METHOD* method = SSLv23_method();
+	SSL_METHOD* method = SSLv23_method();
 	#endif
 
 	SSL_CTX* context = SSL_CTX_new(method);

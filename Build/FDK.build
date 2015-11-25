@@ -73,14 +73,20 @@
   </target>
 
   <target name="BuildLRP" >
-    <echo message="BuildLRP started at: ${datetime::now()}" />
+    <echo message="BuildLRP x86 started at: ${datetime::now()}" />
+    <exec program="${MSBuildDir}msbuild.exe">
+      <arg value="${LRPDir}\LRP.sln" />
+      <arg value="/target:${Target}" />
+      <arg value="/p:Configuration=${Configuration}" />
+      <arg value="/p:Platform=${Platform86}" />
+    </exec>
+    <echo message="BuildLRP x64 started at: ${datetime::now()}" />
     <exec program="${MSBuildDir}msbuild.exe">
       <arg value="${LRPDir}\LRP.sln" />
       <arg value="/target:${Target}" />
       <arg value="/p:Configuration=${Configuration}" />
       <arg value="/p:Platform=${Platform64}" />
     </exec>
-	
   </target>
 
   <target name="BuildExamples" >
