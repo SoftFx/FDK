@@ -207,8 +207,8 @@
         /// <returns>can not be null</returns>
         public override string ToString()
         {
-            var bid = this.HasBid ? this.Bid.ToString() : "None";
-            var ask = this.HasAsk ? this.Ask.ToString() : "None";
+            var bid = HasBid ? Bid.ToString() : "None";
+            var ask = HasAsk ? Ask.ToString() : "None";
 
             return string.Format("Symbol = {0}; Bid = {1}; Ask = {2}", this.Symbol, bid, ask);
         }

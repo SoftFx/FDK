@@ -85,9 +85,10 @@ namespace FDK
 			m_table[index] = m_data + index * size;
 		}
 
-		for each(const auto& element in symbols.GetEntris())
+		auto cReverseIterator = symbols.GetEntris().rbegin();
+		for (cReverseIterator; cReverseIterator != symbols.GetEntris().rend(); cReverseIterator++)
 		{
-			const CSymbolEntry& symbol = element.second;
+			const CSymbolEntry& symbol = cReverseIterator->second;
 			CRateEntry& entry = m_table[symbol.ToIndex][symbol.FromIndex];
 			entry.Price = prices.TryGetPriceEntry(symbol.GetSymbol());
 			if (!entry.Price.HasValue() && (nullptr != m_handler))
