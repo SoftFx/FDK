@@ -1,5 +1,7 @@
 ﻿namespace SoftFX.Extended
 {
+    using System;
+
     /// <summary>
     /// Contains account information.
     /// </summary>
