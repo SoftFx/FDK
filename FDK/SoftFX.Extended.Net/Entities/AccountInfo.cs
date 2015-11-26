@@ -20,17 +20,17 @@
         public AccountType Type { get; internal set; }
 
         /// <summary>
-        /// Gets account name. Supported since ext.1.11 fix version.
+        /// Gets account name.
         /// </summary>
         public string Name { get; internal set; }
 	
         /// <summary>
-        /// Gets account email. Supported since ext.1.29 fix version.
+        /// Gets account email.
         /// </summary>
-        public string Name { get; internal set; }
+        public string Email { get; internal set; }
 	
         /// <summary>
-        /// Gets account comment. Supported since ext.1.29 fix version.
+        /// Gets account comment.
         /// </summary>
         public string Comment { get; internal set; }
 	
