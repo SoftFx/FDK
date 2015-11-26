@@ -92,9 +92,14 @@
         <include name="**/*" />
       </fileset>
       <fileset basedir="${LRPDir}\dll" prefix="dll">
+        <exclude name="*.map" />
         <include name="**/*" />
       </fileset>
       <fileset basedir="${LRPDir}\lib" prefix="lib">
+        <include name="**/*" />
+      </fileset>
+      <fileset basedir="${LRPDir}\include" prefix="include/lrp">
+        <exclude name=".gitignore" />
         <include name="**/*" />
       </fileset>
     </zip>

@@ -9,43 +9,6 @@
             Contains command methods of all client types.
             </summary>
         </member>
-        <member name="T:SoftFX.Lrp.IClient">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:SoftFX.Lrp.IClient.Create">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:SoftFX.Lrp.IClient.Invoke(System.UInt16,System.UInt16,SoftFX.Lrp.MemoryBuffer)">
-            <summary>
-            A client implementation should pass the buffer to another environment and receive the answer.
-            </summary>
-            <param name="componentId"></param>
-            <param name="methodId"></param>
-            <param name="data">The parameter can not be null.</param>	
-            <returns></returns>
-        </member>
-        <member name="M:SoftFX.Lrp.IClient.IsSupported(System.UInt16,System.UInt16)">
-            <summary>
-            The method checks, if the corresponded component and method are supported by server.
-            You should not use the method directly.
-            </summary>
-            <param name="componentId">a component ID</param>
-            <param name="methodId">a method ID</param>
-            <returns>true, if the component and method are supported by server, otherwise false</returns>
-        </member>
-        <member name="M:SoftFX.Lrp.IClient.IsSupported(System.UInt16)">
-            <summary>
-            The method checks, if the corresponded component is supported by server.
-            You should not use the method directly.
-            </summary>
-            <param name="componentId">a component ID</param>
-            <returns>true, if the component is supported by server, otherwise false</returns>
-        </member>
         <member name="M:SoftFX.Lrp.BaseClient.Dispose">
             <summary>
             Has no implementation due to abstract class
@@ -88,17 +51,6 @@
             Implements IComponentReader interface, supports matching methods for different protocols.
             </summary>
         </member>
-        <member name="T:SoftFX.Lrp.IComponentReader">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:SoftFX.Lrp.IComponentReader.Parse(SoftFX.Lrp.TextStream)">
-            <summary>
-            
-            </summary>
-            <param name="stream"></param>
-        </member>
         <member name="M:SoftFX.Lrp.BaseComponentReader.Parse(SoftFX.Lrp.TextStream)">
             <summary>
             Parses a text stream.
@@ -116,17 +68,6 @@
             <summary>
             Implements IProtocolReader interface, supports matching components for different protocols.
             </summary>
-        </member>
-        <member name="T:SoftFX.Lrp.IProtocolReader">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:SoftFX.Lrp.IProtocolReader.Parse(SoftFX.Lrp.TextStream)">
-            <summary>
-            
-            </summary>
-            <param name="stream"></param>
         </member>
         <member name="M:SoftFX.Lrp.BaseProtocolReader.Parse(SoftFX.Lrp.TextStream)">
             <summary>
@@ -198,22 +139,6 @@
             
              </summary>
         </member>
-        <member name="T:SoftFX.Lrp.ProtocolException">
-            <summary>
-            All Local/Remote Protocol exceptions inherit the class.
-            </summary>
-        </member>
-        <member name="M:SoftFX.Lrp.ProtocolException.#ctor">
-            <summary>
-            Creates a new instance of ProtocolException.
-            </summary>
-        </member>
-        <member name="M:SoftFX.Lrp.ProtocolException.#ctor(System.String)">
-            <summary>
-            Creates a new instance of ProtocolException.
-            </summary>
-            <param name="message">the message that describes the error.</param>
-        </member>
         <member name="T:SoftFX.Lrp.DomainClient">
             <summary>
             
@@ -247,6 +172,68 @@
             
             </summary>
         </member>
+        <member name="T:SoftFX.Lrp.IClient">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.IClient.Create">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SoftFX.Lrp.IClient.Invoke(System.UInt16,System.UInt16,SoftFX.Lrp.MemoryBuffer)">
+            <summary>
+            A client implementation should pass the buffer to another environment and receive the answer.
+            </summary>
+            <param name="componentId"></param>
+            <param name="methodId"></param>
+            <param name="data">The parameter can not be null.</param>	
+            <returns></returns>
+        </member>
+        <member name="M:SoftFX.Lrp.IClient.IsSupported(System.UInt16,System.UInt16)">
+            <summary>
+            The method checks, if the corresponded component and method are supported by server.
+            You should not use the method directly.
+            </summary>
+            <param name="componentId">a component ID</param>
+            <param name="methodId">a method ID</param>
+            <returns>true, if the component and method are supported by server, otherwise false</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.IClient.IsSupported(System.UInt16)">
+            <summary>
+            The method checks, if the corresponded component is supported by server.
+            You should not use the method directly.
+            </summary>
+            <param name="componentId">a component ID</param>
+            <returns>true, if the component is supported by server, otherwise false</returns>
+        </member>
+        <member name="F:SoftFX.Lrp.Implementation.timeval.tv_sec">
+            <summary>
+            Time interval, in seconds.
+            </summary>
+        </member>
+        <member name="F:SoftFX.Lrp.Implementation.timeval.tv_usec">
+            <summary>
+            Time interval, in microseconds.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.Implementation.Translator.IsSupported(System.UInt16)">
+            <summary>
+            The method checks, if the corresponded component and method are supported by server.
+            You should not use the method directly.
+            </summary>
+            <param name="methodId">a method ID</param>
+            <returns>true, if the component and method are supported by server, otherwise false</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.Implementation.Translator.IsSupported">
+            <summary>
+            The method checks, if the corresponded component is supported by server.
+            You should not use the method directly.
+            </summary>
+            <returns>true, if the component is supported by server, otherwise false</returns>
+        </member>
         <member name="T:SoftFX.Lrp.InvalidComponentException">
             <summary>
             Local/Remote Protocol throws the exception, if an invalid component ID is detected.
@@ -259,12 +246,6 @@
             <param name="componentName">name of invalid component</param>
             <param name="componentId">an invalid component ID.</param>
         </member>
-        <member name="M:SoftFX.Lrp.InvalidComponentException.ToString">
-            <summary>
-            Returns formatted string for the class instance.
-            </summary>
-            <returns>Can not be null.</returns>
-        </member>
         <member name="P:SoftFX.Lrp.InvalidComponentException.ComponentName">
             <summary>
             Gets name of invalid component.
@@ -274,6 +255,12 @@
             <summary>
             Gets invalid component ID.
             </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.InvalidComponentException.ToString">
+            <summary>
+            Returns formatted string for the class instance.
+            </summary>
+            <returns>Can not be null.</returns>
         </member>
         <member name="T:SoftFX.Lrp.InvalidMethodException">
             <summary>
@@ -288,12 +275,6 @@
             <param name="methodName">name of invalid method</param>
             <param name="componentId">a component ID.</param>
             <param name="methodId">an invalid method ID.</param>
-        </member>
-        <member name="M:SoftFX.Lrp.InvalidMethodException.ToString">
-            <summary>
-            Returns formatted string for the class instance.
-            </summary>
-            <returns>Can not be null.</returns>
         </member>
         <member name="P:SoftFX.Lrp.InvalidMethodException.ComponentName">
             <summary>
@@ -314,6 +295,34 @@
             <summary>
             Gets an invalid method ID.
             </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.InvalidMethodException.ToString">
+            <summary>
+            Returns formatted string for the class instance.
+            </summary>
+            <returns>Can not be null.</returns>
+        </member>
+        <member name="T:SoftFX.Lrp.IProtocolReader">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.IProtocolReader.Parse(SoftFX.Lrp.TextStream)">
+            <summary>
+            
+            </summary>
+            <param name="stream"></param>
+        </member>
+        <member name="T:SoftFX.Lrp.IComponentReader">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.IComponentReader.Parse(SoftFX.Lrp.TextStream)">
+            <summary>
+            
+            </summary>
+            <param name="stream"></param>
         </member>
         <member name="T:SoftFX.Lrp.LocalClient">
             <summary>
@@ -400,6 +409,16 @@
             </summary>
             <param name="handle">a native pointer</param>
         </member>
+        <member name="P:SoftFX.Lrp.LPtr.IsZero">
+            <summary>
+            Returns true, if it's not null
+            </summary>
+        </member>
+        <member name="P:SoftFX.Lrp.LPtr.Zero">
+            <summary>
+            Gets zero local pointer.
+            </summary>
+        </member>
         <member name="M:SoftFX.Lrp.LPtr.ToInt32">
             <summary>
             Gets a wrapped pointer as 32-bit integer value.
@@ -450,16 +469,6 @@
             </summary>
             <param name="other"></param>
             <returns></returns>
-        </member>
-        <member name="P:SoftFX.Lrp.LPtr.IsZero">
-            <summary>
-            Returns true, if it's not null
-            </summary>
-        </member>
-        <member name="P:SoftFX.Lrp.LPtr.Zero">
-            <summary>
-            Gets zero local pointer.
-            </summary>
         </member>
         <member name="T:SoftFX.Lrp.MagicNumbers">
             <summary>
@@ -909,6 +918,22 @@
             
             </summary>
         </member>
+        <member name="T:SoftFX.Lrp.ProtocolException">
+            <summary>
+            All Local/Remote Protocol exceptions inherit the class.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.ProtocolException.#ctor">
+            <summary>
+            Creates a new instance of ProtocolException.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.ProtocolException.#ctor(System.String)">
+            <summary>
+            Creates a new instance of ProtocolException.
+            </summary>
+            <param name="message">the message that describes the error.</param>
+        </member>
         <member name="T:SoftFX.Lrp.Resources.Files">
             <summary>
               A strongly-typed resource class, for looking up localized strings, etc.
@@ -946,6 +971,21 @@
             </summary>
             <param name="handle">a remote native pointer.</param>
         </member>
+        <member name="P:SoftFX.Lrp.RPtr.IsZero">
+            <summary>
+            Returns true, if it's not zero
+            </summary>
+        </member>
+        <member name="P:SoftFX.Lrp.RPtr.Handle">
+            <summary>
+            Gets remote native pointer.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Lrp.RPtr.Zero">
+            <summary>
+            Gets zero native remote pointer.
+            </summary>
+        </member>
         <member name="M:SoftFX.Lrp.RPtr.Clear">
             <summary>
             Reset the remote pointer
@@ -979,21 +1019,6 @@
             </summary>
             <param name="obj"></param>
             <returns></returns>
-        </member>
-        <member name="P:SoftFX.Lrp.RPtr.IsZero">
-            <summary>
-            Returns true, if it's not zero
-            </summary>
-        </member>
-        <member name="P:SoftFX.Lrp.RPtr.Handle">
-            <summary>
-            Gets remote native pointer.
-            </summary>
-        </member>
-        <member name="P:SoftFX.Lrp.RPtr.Zero">
-            <summary>
-            Gets zero native remote pointer.
-            </summary>
         </member>
         <member name="T:SoftFX.Lrp.StClient">
             <summary>
@@ -1031,6 +1056,16 @@
             <param name="username">an username</param>
             <param name="password">a password</param>
             <param name="logPath">a relative or absolute path to log file</param>
+        </member>
+        <member name="P:SoftFX.Lrp.StClient.IsConnected">
+            <summary>
+            Returns true, if the client is connected.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Lrp.StClient.Timeout">
+            <summary>
+            
+            </summary>
         </member>
         <member name="M:SoftFX.Lrp.StClient.Connect(System.Int32)">
             <summary>
@@ -1070,16 +1105,6 @@
             
             </summary>
         </member>
-        <member name="P:SoftFX.Lrp.StClient.IsConnected">
-            <summary>
-            Returns true, if the client is connected.
-            </summary>
-        </member>
-        <member name="P:SoftFX.Lrp.StClient.Timeout">
-            <summary>
-            
-            </summary>
-        </member>
         <member name="T:SoftFX.Lrp.TextStream">
             <summary>
             The class provides methods for reading embedded types.
@@ -1090,6 +1115,11 @@
             
             </summary>
             <param name="text"></param>
+        </member>
+        <member name="P:SoftFX.Lrp.TextStream.EntryWasFound">
+            <summary>
+            
+            </summary>
         </member>
         <member name="M:SoftFX.Lrp.TextStream.ReadInt8(System.String)">
             <summary>
@@ -1322,11 +1352,6 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="P:SoftFX.Lrp.TextStream.EntryWasFound">
-            <summary>
-            
-            </summary>
-        </member>
         <member name="T:SoftFX.Lrp.TimeoutException">
             <summary>
             
@@ -1337,31 +1362,6 @@
             
             </summary>
             <param name="message"></param>
-        </member>
-        <member name="F:SoftFX.Lrp.Implementation.timeval.tv_sec">
-            <summary>
-            Time interval, in seconds.
-            </summary>
-        </member>
-        <member name="F:SoftFX.Lrp.Implementation.timeval.tv_usec">
-            <summary>
-            Time interval, in microseconds.
-            </summary>
-        </member>
-        <member name="M:SoftFX.Lrp.Implementation.Translator.IsSupported(System.UInt16)">
-            <summary>
-            The method checks, if the corresponded component and method are supported by server.
-            You should not use the method directly.
-            </summary>
-            <param name="methodId">a method ID</param>
-            <returns>true, if the component and method are supported by server, otherwise false</returns>
-        </member>
-        <member name="M:SoftFX.Lrp.Implementation.Translator.IsSupported">
-            <summary>
-            The method checks, if the corresponded component is supported by server.
-            You should not use the method directly.
-            </summary>
-            <returns>true, if the component is supported by server, otherwise false</returns>
         </member>
     </members>
 </doc>
