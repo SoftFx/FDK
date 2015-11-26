@@ -10,9 +10,39 @@
         }
 
         /// <summary>
+        /// Gets the the account id.
+        /// </summary>
+        public string AccountId { get; internal set; }
+
+        /// <summary>
+        /// Gets the accounting type.
+        /// </summary>
+        public AccountType Type { get; internal set; }
+
+        /// <summary>
         /// Gets account name. Supported since ext.1.11 fix version.
         /// </summary>
         public string Name { get; internal set; }
+	
+        /// <summary>
+        /// Gets account email. Supported since ext.1.29 fix version.
+        /// </summary>
+        public string Name { get; internal set; }
+	
+        /// <summary>
+        /// Gets account comment. Supported since ext.1.29 fix version.
+        /// </summary>
+        public string Comment { get; internal set; }
+	
+        /// <summary>
+        /// Gets the account balance currency.
+        /// </summary>
+        public string Currency { get; internal set; }
+	
+        /// <summary>
+        /// Gets the account registered date.
+        /// </summary>
+        public DateTime? RegistredDate { get; internal set; }
 
         /// <summary>
         /// Gets the account leverage.
@@ -33,21 +63,6 @@
         /// Gets the account equity.
         /// </summary>
         public double Equity { get; internal set; }
-
-        /// <summary>
-        /// Gets the account balance currency.
-        /// </summary>
-        public string Currency { get; internal set; }
-
-        /// <summary>
-        /// Gets the the account id.
-        /// </summary>
-        public string AccountId { get; internal set; }
-
-        /// <summary>
-        /// Gets the accounting type.
-        /// </summary>
-        public AccountType Type { get; internal set; }
 
         /// <summary>
         /// Gets margin call level.

@@ -112,14 +112,17 @@
       <Value name="AssetInfo" />
     </Type>
     <Type name="AccountInfo" CSharpFullName="SoftFX.Extended.AccountInfo" CppFullName="CFxAccountInfo" kind="class">
+      <Member name="AccountId" type="astring" />
+      <Member name="Type" type="AccountType" />
       <Member name="Name" type="astring" />
+      <Member name="Email" type="astring" />
+      <Member name="Comment" type="astring" />
+      <Member name="Currency" type="astring" />
+      <Member name="RegistredDate" type="time?" />
       <Member name="Leverage" type="int32" />
       <Member name="Balance" type="double" />
       <Member name="Margin" type="double" />
       <Member name="Equity" type="double" />
-      <Member name="Currency" type="astring" />
-      <Member name="AccountId" type="astring" />
-      <Member name="Type" type="AccountType" />
       <Member name="MarginCallLevel" type="double" />
       <Member name="StopOutLevel" type="double" />
       <Member name="IsValid" type="bool" />
@@ -227,6 +230,7 @@
       <Member name="OrderCreated" type="time" />
       <Member name="OrderModified" type="time" />
       <Member name="PositionId" type="astring" />
+      <Member name="PositionById" type="astring" />
       <Member name="PositionOpened" type="time" />
       <Member name="PosOpenReqPrice" type="double" />
       <Member name="PosOpenPrice" type="double" />
@@ -237,20 +241,21 @@
       <Member name="PositionClosePrice" type="double" />
       <Member name="PositionClosed" type="time" />
       <Member name="PositionModified" type="time" />
+      <Member name="PosRemainingSide" type="TradeRecordSide" />
+      <Member name="PosRemainingPrice" type="double?" />
       <Member name="Commission" type="double" />
       <Member name="AgentCommission" type="double" />
       <Member name="Swap" type="double" />
       <Member name="CommCurrency" type="astring" />
       <Member name="StopLoss" type="double" />
       <Member name="TakeProfit" type="double" />
+      <Member name="NextStreamPositionId" type="astring" />
       <Member name="TransactionTime" type="time" />
       <Member name="OrderFillPrice" type="double?" />
       <Member name="OrderLastFillAmount" type="double?" />
       <Member name="OpenConversionRate" type="double?" />
       <Member name="CloseConversionRate" type="double?" />
       <Member name="ActionId" type="int32" />
-      <Member name="PosRemainingSide" type="TradeRecordSide" />
-      <Member name="PosRemainingPrice" type="double?" />
     </Type>
     <Type name="ClosePositionResult" CSharpFullName="SoftFX.Extended.ClosePositionResult" CppFullName="CFxClosePositionResult" kind="class">
       <Member name="ExecutedVolume" type="double" />

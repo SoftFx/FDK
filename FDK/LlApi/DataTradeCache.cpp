@@ -97,7 +97,7 @@ void CDataTradeCache::DoUpdateAssets(const string& currency, const double balanc
 
     bool updated = false;
     
-    for (int n = 0; n < (int)m_accountInfo.Assets.size(); n++)
+    for (size_t n = 0; n < m_accountInfo.Assets.size(); n++)
     {
         auto& entry = m_accountInfo.Assets[n];
 

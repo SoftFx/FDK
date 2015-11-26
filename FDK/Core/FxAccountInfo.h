@@ -11,19 +11,22 @@ class CORE_API CFxAccountInfo
 public:
 	CFxAccountInfo();
 public:
+	string AccountId;
 	FxAccountType Type;
+	string Name;
+	string Email;
+	string Comment;
+	string Currency;
+	Nullable<CDateTime> RegistredDate;
 	int32 Leverage;
 	double Balance;
 	double Margin;
 	double Equity;
-	string Name;
-	string Currency;
-	string AccountId;
 	double MarginCallLevel;
 	double StopOutLevel;
 	bool IsValid;
 	bool IsReadOnly;
-    bool IsBlocked;
+	bool IsBlocked;
 public:
 	vector<CAssetInfo> Assets;
 };

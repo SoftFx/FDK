@@ -23,11 +23,12 @@ public:
 	FxOrderType TradeRecordType;
 	FxTradeRecordSide TradeRecordSide;
 	std::string Symbol;
+	std::string Comment;
 	CDateTime OrderCreated;
 	CDateTime OrderModified;
-	std::string PositionId;
-	std::string Comment;
 
+	std::string PositionId;
+	std::string PositionById;
 	CDateTime PositionOpened;
 	double PosOpenReqPrice;
 	double PosOpenPrice;
@@ -38,6 +39,8 @@ public:
 	double PositionClosePrice;
 	CDateTime PositionClosed;
 	CDateTime PositionModified;
+	FxTradeRecordSide PosRemainingSide;
+	Nullable<double>  PosRemainingPrice;
 
 	double Commission;
 	double AgentCommission;
@@ -45,17 +48,16 @@ public:
 	std::string CommCurrency;
 	double StopLoss;
 	double TakeProfit;
+
 	std::string NextStreamPositionId;
     
-    CDateTime TransactionTime;
-    Nullable<double> OrderFillPrice;
-    Nullable<double> OrderLastFillAmount;
-    Nullable<double> OpenConversionRate;
-    Nullable<double> CloseConversionRate;
+	CDateTime TransactionTime;
+	Nullable<double> OrderFillPrice;
+	Nullable<double> OrderLastFillAmount;
+	Nullable<double> OpenConversionRate;
+	Nullable<double> CloseConversionRate;
 
-    int ActionId;
-    FxTradeRecordSide PosRemainingSide;
-    Nullable<double>  PosRemainingPrice;
+	int ActionId;
 };
 
 #pragma warning (pop)
