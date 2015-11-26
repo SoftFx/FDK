@@ -559,7 +559,7 @@ void CFixConnection::OnExecution(const CFixExecutionReport& message)
 	report.StopPrice = message.GetFxStopPrice();
 	report.TakeProfit = message.GetFxTakeProfit();
 	report.StopLoss = message.GetFxStopLoss();
-    report.Balance = message.GetFxBalance();
+	report.Balance = message.GetFxBalance();
 
 	report.Expiration = message.GetFxExpiration();
 
@@ -645,8 +645,16 @@ void CFixConnection::OnAccountInfo(const FIX44::AccountInfo& message)
 	message.TryGetAccountName(accountInfo.Name);
 	message.TryGetAccountValidFlag(accountInfo.IsValid);
 	message.TryGetInvestorLoginFlag(accountInfo.IsReadOnly);
-    message.TryGetAccountBlockedFlag(accountInfo.IsBlocked);
+	message.TryGetAccountBlockedFlag(accountInfo.IsBlocked);
+	message.TryGetRegistEmail(accountInfo.Email);
 
+	FIX::UtcTimeStamp time(time_t(0));
+	if (message.TryGetRegistDate(time))
+		accountInfo.RegistredDate = time.toFileTime();
+
+	string comment;
+	message.TryGetEncodedComment(comment);
+	accountInfo.Comment = CA2W(comment.c_str(), CP_ACP);
 
 	auto count = 0;
 	if (message.TryGetNoAssets(count))
@@ -967,6 +975,18 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
 	{
 		report.TradeTransactionReason = FxTradeTransactionReason_DealerDecision;
 	}
+	else if (FIX::TradeTransReason_Rollover == reason)
+	{
+		report.TradeTransactionReason = FxTradeTransactionReason_Rollover;
+	}
+	else if (FIX::TradeTransReason_DeleteAccount == reason)
+	{
+		report.TradeTransactionReason = FxTradeTransactionReason_DeleteAccount;
+	}
+	else if (FIX::TradeTransReason_Expired == reason)
+	{
+		report.TradeTransactionReason = FxTradeTransactionReason_Expired;
+	}
 
 	message.TryGetAccBalance(report.AccountBalance);
 	message.TryGetAccTrAmount(report.TransactionAmount);
@@ -1021,6 +1041,7 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
 		report.OrderModified = time.toFileTime();
 	}
 	message.TryGetPosID(report.PositionId);
+	message.TryGetPosByID(report.PositionById);
 	if (message.TryGetPosOpened(time))
 	{
 		report.PositionOpened = time.toFileTime();
