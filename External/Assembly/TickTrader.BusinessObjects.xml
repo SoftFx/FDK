@@ -2045,6 +2045,12 @@
             Null if no conversion cannot be performed
             </summary>
         </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.Options">
+            <summary>
+            Order execution options
+            Indicates whether IoC
+            </summary>
+        </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.SideString">
             <summary>
             Gets value of Side as string. It is used only by Web site.
