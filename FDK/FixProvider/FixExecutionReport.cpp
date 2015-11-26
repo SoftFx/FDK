@@ -307,6 +307,10 @@ FxExecutionType CFixExecutionReport::GetFxExecutionType() const
 	{
 		return FxExecutionType_OrderStatus;
 	}
+	if (FIX::ExecType_PENDINGCLOSE == executionType)
+	{
+		return FxExecutionType_PendingClose;
+	}
 	throw CRuntimeError("CFixExecutionReport::GetFxExecutionType(): invalid execution type = ") + executionType;
 }
 
@@ -352,6 +356,10 @@ FxOrderStatus CFixExecutionReport::GetFxOrderStatus() const
 	if (FIX::OrdStatus_DONE == orderStatus)
 	{
 		return FxOrderStatus_Done;
+	}
+	if (FIX::OrdStatus_PENDINGCLOSE == orderStatus)
+	{
+		return FxOrderStatus_PendingClose;
 	}
 	throw CRuntimeError("CFixExecutionReport::GetFxOrderStatus(): invalid order status = ") + orderStatus;
 }

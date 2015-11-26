@@ -47,6 +47,7 @@ namespace AccountInfo
             if (args.Length != 3)
             {
                 Console.WriteLine("Usage: AccountInfo.exe address login password");
+                return;
             }
 
             try
