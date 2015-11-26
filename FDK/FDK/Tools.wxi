@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Include>
   <DirectoryRef Id="PF_FRE">
+    <Component Id="AccountInfo.exe" Guid="*">
+      <File Id="AccountInfo.exe" Source="..\..\FRE\AccountInfo.exe" KeyPath="yes" Checksum="yes"/>
+    </Component>
     <Component Id="QuotesDownloader.exe" Guid="*">
       <File Id="QuotesDownloader.exe" Source="..\..\FRE\QuotesDownloader.exe" KeyPath="yes" Checksum="yes"/>
     </Component>
@@ -21,6 +24,12 @@
     </Component>
   </DirectoryRef>
   <DirectoryRef Id="PM_Tools">
+    <Component Id="AccountInfoShortcut" Guid="*">
+      <RegistryKey Root="HKCU" Key="Software\SoftFX\FDK\$(var.FullVersion)" Action="createAndRemoveOnUninstall">
+        <RegistryValue Name="AccountInfoShortcut" Value="1" Type="integer" KeyPath="yes"/>
+      </RegistryKey>
+      <Shortcut Id="AccountInfoShortcut" Name="AccountInfo" Target="[APPLICATIONFOLDER]FRE\AccountInfo.exe"/>
+    </Component>
     <Component Id="QuotesDownloaderShortcut" Guid="*">
       <RegistryKey Root="HKCU" Key="Software\SoftFX\FDK\$(var.FullVersion)" Action="createAndRemoveOnUninstall">
         <RegistryValue Name="QuotesDownloaderShortcut" Value="1" Type="integer" KeyPath="yes"/>
@@ -42,6 +51,8 @@
   </DirectoryRef>
   <Feature Id="Tools" Title="Tools" Level="1" Display="expand" AllowAdvertise="no" Description="Install tools">
     <ComponentRef Id="PM_Tools" />
+    <ComponentRef Id="AccountInfoShortcut" />
+    <ComponentRef Id="AccountInfo.exe" />
     <ComponentRef Id="QuotesDownloaderShortcut" />
     <ComponentRef Id="QuotesDownloader.exe" />
     <ComponentRef Id="QuotesExporter.exe" />

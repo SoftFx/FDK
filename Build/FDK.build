@@ -43,6 +43,7 @@
       <arg value="/p:Platform=${PlatformAll}" />
     </exec>
 
+    <copy file="${SourcesDirExamples}\Release\AccountInfo.exe"              tofile="..\FRE\AccountInfo.exe" />
     <copy file="${SourcesDirExamples}\Release\QuotesDownloader.exe.config"  tofile="..\FRE\QuotesDownloader.exe.config" />
     <copy file="${SourcesDirExamples}\Release\QuotesDownloader.exe"         tofile="..\FRE\QuotesDownloader.exe" />
     <copy file="${SourcesDirExamples}\Release\RealTimeLevel2.exe"           tofile="..\FRE\RealTimeLevel2.exe" />

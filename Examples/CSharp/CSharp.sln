@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2010
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataFeedExamples", "DataFeedExamples\DataFeedExamples.csproj", "{088ADE6B-CE03-4804-B37A-DDDA86D05048}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTradeExamples", "DataTradeExamples\DataTradeExamples.csproj", "{AEBCFEF7-81B7-426C-A69F-019F09F5426C}"
@@ -18,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialExample", "FinancialExample\FinancialExample.csproj", "{ABBB2984-323B-48DB-A485-4B7EEFB329DC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataClientExamples", "DataClientExamples\DataClientExamples.csproj", "{4F1FE808-1F11-47E4-8179-6ACB018AFEC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountInfo", "AccountInfo\AccountInfo.csproj", "{D3C18002-2048-494B-B5CB-1AA9A07ADF25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +65,10 @@ Global
 		{4F1FE808-1F11-47E4-8179-6ACB018AFEC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F1FE808-1F11-47E4-8179-6ACB018AFEC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F1FE808-1F11-47E4-8179-6ACB018AFEC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3C18002-2048-494B-B5CB-1AA9A07ADF25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3C18002-2048-494B-B5CB-1AA9A07ADF25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3C18002-2048-494B-B5CB-1AA9A07ADF25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3C18002-2048-494B-B5CB-1AA9A07ADF25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
