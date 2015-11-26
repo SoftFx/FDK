@@ -38,6 +38,18 @@
         /// <summary>
         /// 
         /// </summary>
-        DealerDecision = 5
+        DealerDecision = 5,
+        /// <summary>
+        /// 
+        /// </summary>
+        Rollover = 6,
+        /// <summary>
+        /// 
+        /// </summary>
+        DeleteAccount = 7,
+        /// <summary>
+        /// 
+        /// </summary>
+        Expired = 8
     }
 }

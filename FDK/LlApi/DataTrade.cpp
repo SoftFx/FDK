@@ -145,6 +145,11 @@ CFxClosePositionResult CDataTrade::CloseOrder(const string& operationId, const s
 	{
 		throw CRejectException(report.Text, report.RejectReason);
 	}
+	report = reportWaiter.WaitForResponse(info);
+	if (report.IsReject())
+	{
+		throw CRejectException(report.Text, report.RejectReason);
+	}
 	result.Sucess = true;
 	result.ExecutedPrice = report.TradePrice;
 	result.ExecutedVolume = *report.TradeAmount;

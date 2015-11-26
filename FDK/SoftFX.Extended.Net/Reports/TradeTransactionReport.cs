@@ -82,6 +82,11 @@
         public string Symbol { get; internal set; }
 
         /// <summary>
+        /// Gets user-defined comment.
+        /// </summary>
+        public string Comment { get; internal set; }
+
+        /// <summary>
         /// 
         /// </summary>
         public DateTime OrderCreated { get; internal set; }
@@ -97,9 +102,9 @@
         public string PositionId { get; internal set; }
 
         /// <summary>
-        /// Gets user-defined comment.
+        /// 
         /// </summary>
-        public string Comment { get; internal set; }
+        public string PositionById { get; internal set; }
 
         /// <summary>
         /// Time of position opening (always indicated in UTC).
@@ -152,6 +157,16 @@
         public DateTime PositionModified { get; internal set; }
 
         /// <summary>
+        /// Position remaining amount side.
+        /// </summary>
+        public TradeRecordSide PosRemainingSide { get; internal set;}
+
+        /// <summary>
+        /// Position remaining amount price.
+        /// </summary>
+        public double? PosRemainingPrice { get; internal set; }
+
+        /// <summary>
         /// Commission.
         /// </summary>
         public double Commission { get; internal set; }
@@ -182,6 +197,11 @@
         public double TakeProfit { get; internal set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public string NextStreamPositionId { get; internal set; }
+
+        /// <summary>
         /// Transaction time.
         /// </summary>
         public DateTime TransactionTime { get; internal set; }
@@ -210,15 +230,5 @@
         /// Order action number.
         /// </summary>
         public int ActionId { get; internal set; }
-
-        /// <summary>
-        /// Position remaining amount side.
-        /// </summary>
-        public TradeRecordSide PosRemainingSide { get; internal set;}
-
-        /// <summary>
-        /// Position remaining amount price.
-        /// </summary>
-        public double? PosRemainingPrice { get; internal set; }
     }
 }
