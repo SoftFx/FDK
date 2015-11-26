@@ -88,13 +88,13 @@
       <arg value="/p:Platform=${Platform64}" />
     </exec>
     <zip zipfile="${ArtifactsDir}\LRP.${Build}.zip">
-      <fileset basedir="${LRPDir}\bin">
+      <fileset basedir="${LRPDir}\bin" prefix="bin/">
         <include name="*" />
       </fileset>
-      <fileset basedir="${LRPDir}\dll">
+      <fileset basedir="${LRPDir}\dll" prefix="dll/">
         <include name="*" />
       </fileset>
-      <fileset basedir="${LRPDir}\lib">
+      <fileset basedir="${LRPDir}\lib" prefix="lib/">
         <include name="*" />
       </fileset>
     </zip>
