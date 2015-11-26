@@ -1,31 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Include>
-  <!--    
   <DirectoryRef Id="TARGETDIR">
-    <Merge Id="VCRedist90" SourceFile="C:\Program Files (x86)\Common Files\Merge Modules\Microsoft_VC90_CRT_x86.msm" DiskId="1" Language="0"/>
+    <Merge Id="VCRedist140x86" SourceFile="C:\Program Files (x86)\Common Files\Merge Modules\Microsoft_VC140_CRT_x86.msm" DiskId="1" Language="0"/>
+    <Merge Id="VCRedist140x64" SourceFile="C:\Program Files (x86)\Common Files\Merge Modules\Microsoft_VC140_CRT_x64.msm" DiskId="1" Language="0"/>
   </DirectoryRef>
-  -->
-  <!--
-  <DirectoryRef Id="TARGETDIR">
-    <Merge Id="VCRedist110x86" SourceFile="C:\Program Files (x86)\Common Files\Merge Modules\Microsoft_VC110_CRT_x86.msm" DiskId="1" Language="0"/>
-    <Merge Id="VCRedist110x64" SourceFile="C:\Program Files (x86)\Common Files\Merge Modules\Microsoft_VC110_CRT_x64.msm" DiskId="1" Language="0"/>
-  </DirectoryRef>
-  -->
-  <DirectoryRef Id="TARGETDIR">
-    <Merge Id="VCRedist120x86" SourceFile="C:\Program Files (x86)\Common Files\Merge Modules\Microsoft_VC120_CRT_x86.msm" DiskId="1" Language="0"/>
-    <Merge Id="VCRedist120x64" SourceFile="C:\Program Files (x86)\Common Files\Merge Modules\Microsoft_VC120_CRT_x64.msm" DiskId="1" Language="0"/>
-  </DirectoryRef>
-
-
   <Feature Id="Microsoft" Title="C++ Runtime libraries" Level="1" AllowAdvertise="no" Description="Install C++ Runtime libraries">
-    <!--
-    <MergeRef Id="VCRedist90"/>
-    -->
-    <!--    
-    <MergeRef Id="VCRedist110x86"/>
-    <MergeRef Id="VCRedist110x64"/>
-    -->
-    <MergeRef Id="VCRedist120x86"/>
-    <MergeRef Id="VCRedist120x64"/>
+    <MergeRef Id="VCRedist140x86"/>
+    <MergeRef Id="VCRedist140x64"/>
   </Feature>
 </Include>

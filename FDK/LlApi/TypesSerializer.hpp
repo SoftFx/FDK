@@ -615,14 +615,17 @@ namespace
 	}
 	void WriteAccountInfo(const CFxAccountInfo& arg, MemoryBuffer& buffer)
 	{
+		WriteAString(arg.AccountId, buffer);
+		WriteAccountType(arg.Type, buffer);
 		WriteAString(arg.Name, buffer);
+		WriteAString(arg.Email, buffer);
+		WriteAString(arg.Comment, buffer);
+		WriteAString(arg.Currency, buffer);
+		WriteNullTime(arg.RegistredDate, buffer);
 		WriteInt32(arg.Leverage, buffer);
 		WriteDouble(arg.Balance, buffer);
 		WriteDouble(arg.Margin, buffer);
 		WriteDouble(arg.Equity, buffer);
-		WriteAString(arg.Currency, buffer);
-		WriteAString(arg.AccountId, buffer);
-		WriteAccountType(arg.Type, buffer);
 		WriteDouble(arg.MarginCallLevel, buffer);
 		WriteDouble(arg.StopOutLevel, buffer);
 		WriteBoolean(arg.IsValid, buffer);
@@ -633,14 +636,17 @@ namespace
 	CFxAccountInfo ReadAccountInfo(MemoryBuffer& buffer)
 	{
 		CFxAccountInfo result = CFxAccountInfo();
+		result.AccountId = ReadAString(buffer);
+		result.Type = ReadAccountType(buffer);
 		result.Name = ReadAString(buffer);
+		result.Email = ReadAString(buffer);
+		result.Comment = ReadAString(buffer);
+		result.Currency = ReadAString(buffer);
+		result.RegistredDate = ReadNullTime(buffer);
 		result.Leverage = ReadInt32(buffer);
 		result.Balance = ReadDouble(buffer);
 		result.Margin = ReadDouble(buffer);
 		result.Equity = ReadDouble(buffer);
-		result.Currency = ReadAString(buffer);
-		result.AccountId = ReadAString(buffer);
-		result.Type = ReadAccountType(buffer);
 		result.MarginCallLevel = ReadDouble(buffer);
 		result.StopOutLevel = ReadDouble(buffer);
 		result.IsValid = ReadBoolean(buffer);
@@ -938,6 +944,7 @@ namespace
 		WriteTime(arg.OrderCreated, buffer);
 		WriteTime(arg.OrderModified, buffer);
 		WriteAString(arg.PositionId, buffer);
+		WriteAString(arg.PositionById, buffer);
 		WriteTime(arg.PositionOpened, buffer);
 		WriteDouble(arg.PosOpenReqPrice, buffer);
 		WriteDouble(arg.PosOpenPrice, buffer);
@@ -948,20 +955,21 @@ namespace
 		WriteDouble(arg.PositionClosePrice, buffer);
 		WriteTime(arg.PositionClosed, buffer);
 		WriteTime(arg.PositionModified, buffer);
+		WriteTradeRecordSide(arg.PosRemainingSide, buffer);
+		WriteNullDouble(arg.PosRemainingPrice, buffer);
 		WriteDouble(arg.Commission, buffer);
 		WriteDouble(arg.AgentCommission, buffer);
 		WriteDouble(arg.Swap, buffer);
 		WriteAString(arg.CommCurrency, buffer);
 		WriteDouble(arg.StopLoss, buffer);
 		WriteDouble(arg.TakeProfit, buffer);
+		WriteAString(arg.NextStreamPositionId, buffer);
 		WriteTime(arg.TransactionTime, buffer);
 		WriteNullDouble(arg.OrderFillPrice, buffer);
 		WriteNullDouble(arg.OrderLastFillAmount, buffer);
 		WriteNullDouble(arg.OpenConversionRate, buffer);
 		WriteNullDouble(arg.CloseConversionRate, buffer);
 		WriteInt32(arg.ActionId, buffer);
-		WriteTradeRecordSide(arg.PosRemainingSide, buffer);
-		WriteNullDouble(arg.PosRemainingPrice, buffer);
 	}
 	CFxTradeTransactionReport ReadTradeTransactionReport(MemoryBuffer& buffer)
 	{
@@ -984,6 +992,7 @@ namespace
 		result.OrderCreated = ReadTime(buffer);
 		result.OrderModified = ReadTime(buffer);
 		result.PositionId = ReadAString(buffer);
+		result.PositionById = ReadAString(buffer);
 		result.PositionOpened = ReadTime(buffer);
 		result.PosOpenReqPrice = ReadDouble(buffer);
 		result.PosOpenPrice = ReadDouble(buffer);
@@ -994,20 +1003,21 @@ namespace
 		result.PositionClosePrice = ReadDouble(buffer);
 		result.PositionClosed = ReadTime(buffer);
 		result.PositionModified = ReadTime(buffer);
+		result.PosRemainingSide = ReadTradeRecordSide(buffer);
+		result.PosRemainingPrice = ReadNullDouble(buffer);
 		result.Commission = ReadDouble(buffer);
 		result.AgentCommission = ReadDouble(buffer);
 		result.Swap = ReadDouble(buffer);
 		result.CommCurrency = ReadAString(buffer);
 		result.StopLoss = ReadDouble(buffer);
 		result.TakeProfit = ReadDouble(buffer);
+		result.NextStreamPositionId = ReadAString(buffer);
 		result.TransactionTime = ReadTime(buffer);
 		result.OrderFillPrice = ReadNullDouble(buffer);
 		result.OrderLastFillAmount = ReadNullDouble(buffer);
 		result.OpenConversionRate = ReadNullDouble(buffer);
 		result.CloseConversionRate = ReadNullDouble(buffer);
 		result.ActionId = ReadInt32(buffer);
-		result.PosRemainingSide = ReadTradeRecordSide(buffer);
-		result.PosRemainingPrice = ReadNullDouble(buffer);
 		return result;
 	}
 	void WriteClosePositionResult(const CFxClosePositionResult& arg, MemoryBuffer& buffer)

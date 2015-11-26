@@ -458,14 +458,17 @@ namespace SoftFX.Extended.Generated
 		public static SoftFX.Extended.AccountInfo ReadAccountInfo(this MemoryBuffer buffer)
 		{
 			var result = new SoftFX.Extended.AccountInfo();
+			result.AccountId = buffer.ReadAString();
+			result.Type = buffer.ReadAccountType();
 			result.Name = buffer.ReadAString();
+			result.Email = buffer.ReadAString();
+			result.Comment = buffer.ReadAString();
+			result.Currency = buffer.ReadAString();
+			result.RegistredDate = buffer.ReadNullTime();
 			result.Leverage = buffer.ReadInt32();
 			result.Balance = buffer.ReadDouble();
 			result.Margin = buffer.ReadDouble();
 			result.Equity = buffer.ReadDouble();
-			result.Currency = buffer.ReadAString();
-			result.AccountId = buffer.ReadAString();
-			result.Type = buffer.ReadAccountType();
 			result.MarginCallLevel = buffer.ReadDouble();
 			result.StopOutLevel = buffer.ReadDouble();
 			result.IsValid = buffer.ReadBoolean();
@@ -476,14 +479,17 @@ namespace SoftFX.Extended.Generated
 		}
 		public static void WriteAccountInfo(this MemoryBuffer buffer, SoftFX.Extended.AccountInfo arg)
 		{
+			buffer.WriteAString(arg.AccountId);
+			buffer.WriteAccountType(arg.Type);
 			buffer.WriteAString(arg.Name);
+			buffer.WriteAString(arg.Email);
+			buffer.WriteAString(arg.Comment);
+			buffer.WriteAString(arg.Currency);
+			buffer.WriteNullTime(arg.RegistredDate);
 			buffer.WriteInt32(arg.Leverage);
 			buffer.WriteDouble(arg.Balance);
 			buffer.WriteDouble(arg.Margin);
 			buffer.WriteDouble(arg.Equity);
-			buffer.WriteAString(arg.Currency);
-			buffer.WriteAString(arg.AccountId);
-			buffer.WriteAccountType(arg.Type);
 			buffer.WriteDouble(arg.MarginCallLevel);
 			buffer.WriteDouble(arg.StopOutLevel);
 			buffer.WriteBoolean(arg.IsValid);
@@ -776,6 +782,7 @@ namespace SoftFX.Extended.Generated
 			result.OrderCreated = buffer.ReadTime();
 			result.OrderModified = buffer.ReadTime();
 			result.PositionId = buffer.ReadAString();
+			result.PositionById = buffer.ReadAString();
 			result.PositionOpened = buffer.ReadTime();
 			result.PosOpenReqPrice = buffer.ReadDouble();
 			result.PosOpenPrice = buffer.ReadDouble();
@@ -786,20 +793,21 @@ namespace SoftFX.Extended.Generated
 			result.PositionClosePrice = buffer.ReadDouble();
 			result.PositionClosed = buffer.ReadTime();
 			result.PositionModified = buffer.ReadTime();
+			result.PosRemainingSide = buffer.ReadTradeRecordSide();
+			result.PosRemainingPrice = buffer.ReadNullDouble();
 			result.Commission = buffer.ReadDouble();
 			result.AgentCommission = buffer.ReadDouble();
 			result.Swap = buffer.ReadDouble();
 			result.CommCurrency = buffer.ReadAString();
 			result.StopLoss = buffer.ReadDouble();
 			result.TakeProfit = buffer.ReadDouble();
+			result.NextStreamPositionId = buffer.ReadAString();
 			result.TransactionTime = buffer.ReadTime();
 			result.OrderFillPrice = buffer.ReadNullDouble();
 			result.OrderLastFillAmount = buffer.ReadNullDouble();
 			result.OpenConversionRate = buffer.ReadNullDouble();
 			result.CloseConversionRate = buffer.ReadNullDouble();
 			result.ActionId = buffer.ReadInt32();
-			result.PosRemainingSide = buffer.ReadTradeRecordSide();
-			result.PosRemainingPrice = buffer.ReadNullDouble();
 			return result;
 		}
 		public static void WriteTradeTransactionReport(this MemoryBuffer buffer, SoftFX.Extended.Reports.TradeTransactionReport arg)
@@ -822,6 +830,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteTime(arg.OrderCreated);
 			buffer.WriteTime(arg.OrderModified);
 			buffer.WriteAString(arg.PositionId);
+			buffer.WriteAString(arg.PositionById);
 			buffer.WriteTime(arg.PositionOpened);
 			buffer.WriteDouble(arg.PosOpenReqPrice);
 			buffer.WriteDouble(arg.PosOpenPrice);
@@ -832,20 +841,21 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteDouble(arg.PositionClosePrice);
 			buffer.WriteTime(arg.PositionClosed);
 			buffer.WriteTime(arg.PositionModified);
+			buffer.WriteTradeRecordSide(arg.PosRemainingSide);
+			buffer.WriteNullDouble(arg.PosRemainingPrice);
 			buffer.WriteDouble(arg.Commission);
 			buffer.WriteDouble(arg.AgentCommission);
 			buffer.WriteDouble(arg.Swap);
 			buffer.WriteAString(arg.CommCurrency);
 			buffer.WriteDouble(arg.StopLoss);
 			buffer.WriteDouble(arg.TakeProfit);
+			buffer.WriteAString(arg.NextStreamPositionId);
 			buffer.WriteTime(arg.TransactionTime);
 			buffer.WriteNullDouble(arg.OrderFillPrice);
 			buffer.WriteNullDouble(arg.OrderLastFillAmount);
 			buffer.WriteNullDouble(arg.OpenConversionRate);
 			buffer.WriteNullDouble(arg.CloseConversionRate);
 			buffer.WriteInt32(arg.ActionId);
-			buffer.WriteTradeRecordSide(arg.PosRemainingSide);
-			buffer.WriteNullDouble(arg.PosRemainingPrice);
 		}
 		public static SoftFX.Extended.ClosePositionResult ReadClosePositionResult(this MemoryBuffer buffer)
 		{
