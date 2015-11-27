@@ -54,9 +54,8 @@
         static Native()
         {
             ManagedLibrary.MarkAsReadOnly();
-#if !DEBUG
             ManagedLibrary.ModulesManager.Extract();
-#endif
+
             if (ManagedLibrary.ResolveDotNetAssemblies)
             {
                 AppDomain.CurrentDomain.ReflectionOnlyAssemblyResolve += OnAssemblyResolve;

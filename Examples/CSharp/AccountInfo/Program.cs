@@ -55,8 +55,6 @@ namespace AccountInfo
                 if (!Directory.Exists(LogPath))
                     Directory.CreateDirectory(LogPath);
 
-                Library.Path = "<FRE>";
-
                 string address = args[0];
                 string login = args[1];
                 string password = args[2];
