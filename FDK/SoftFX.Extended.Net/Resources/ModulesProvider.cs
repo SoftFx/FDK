@@ -10,7 +10,7 @@
 
         ModulesProvider()
         {
-            var properties = typeof(EmbeddedModules).GetProperties(BindingFlags.Static | BindingFlags.NonPublic);
+            var properties = typeof(EmbeddedModules).GetProperties(BindingFlags.Static | BindingFlags.Public);
             this.Modules = properties.Where(o => o.PropertyType == typeof(byte[]))
                                      .Select(o => new StaticPropertyInfoModuleSource(o))
                                      .ToArray();
