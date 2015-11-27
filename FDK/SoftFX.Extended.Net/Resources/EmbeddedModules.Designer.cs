@@ -79,7 +79,57 @@ namespace SoftFX.Extended.Resources {
                 return ((byte[])(obj));
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] libdb_dotnet61 {
+            get {
+                object obj = ResourceManager.GetObject("libdb_dotnet61", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] libdb61_x64 {
+            get {
+                object obj = ResourceManager.GetObject("libdb61_x64", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
         
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] libdb61_x86 {
+            get {
+                object obj = ResourceManager.GetObject("libdb61_x86", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] libdb_csharp61_x64 {
+            get {
+                object obj = ResourceManager.GetObject("libdb_csharp61_x64", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] libdb_csharp61_x86 {
+            get {
+                object obj = ResourceManager.GetObject("libdb_csharp61_x86", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+       
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -163,39 +213,9 @@ namespace SoftFX.Extended.Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] msvcp120_64 {
+        public static byte[] MongoDB_Bson {
             get {
-                object obj = ResourceManager.GetObject("msvcp120_64", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] msvcp120_86 {
-            get {
-                object obj = ResourceManager.GetObject("msvcp120_86", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] msvcr120_64 {
-            get {
-                object obj = ResourceManager.GetObject("msvcr120_64", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] msvcr120_86 {
-            get {
-                object obj = ResourceManager.GetObject("msvcr120_86", resourceCulture);
+                object obj = ResourceManager.GetObject("MongoDB_Bson", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -213,9 +233,9 @@ namespace SoftFX.Extended.Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] procdump_exe {
+        public static byte[] procdump {
             get {
-                object obj = ResourceManager.GetObject("procdump_exe", resourceCulture);
+                object obj = ResourceManager.GetObject("procdump", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -373,6 +393,26 @@ namespace SoftFX.Extended.Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        public static byte[] SQLite_Interop_x64 {
+            get {
+                object obj = ResourceManager.GetObject("SQLite_Interop_x64", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] SQLite_Interop_x86 {
+            get {
+                object obj = ResourceManager.GetObject("SQLite_Interop_x86", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         public static byte[] ssleay32 {
             get {
                 object obj = ResourceManager.GetObject("ssleay32", resourceCulture);
@@ -403,9 +443,9 @@ namespace SoftFX.Extended.Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] System_Data_SQLite_64 {
+        public static byte[] System_Data_SQLite_x64 {
             get {
-                object obj = ResourceManager.GetObject("System_Data_SQLite_64", resourceCulture);
+                object obj = ResourceManager.GetObject("System_Data_SQLite_x64", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -413,9 +453,9 @@ namespace SoftFX.Extended.Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] System_Data_SQLite_86 {
+        public static byte[] System_Data_SQLite_x86 {
             get {
-                object obj = ResourceManager.GetObject("System_Data_SQLite_86", resourceCulture);
+                object obj = ResourceManager.GetObject("System_Data_SQLite_x86", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -486,6 +526,16 @@ namespace SoftFX.Extended.Resources {
         public static byte[] TickTrader_Server_QuoteHistory {
             get {
                 object obj = ResourceManager.GetObject("TickTrader_Server_QuoteHistory", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] TickTrader_Server_QuoteHistory_Store_Bdb {
+            get {
+                object obj = ResourceManager.GetObject("TickTrader_Server_QuoteHistory_Store_Bdb", resourceCulture);
                 return ((byte[])(obj));
             }
         }
