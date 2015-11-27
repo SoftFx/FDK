@@ -179,10 +179,10 @@
             var status = this.logonEvent.WaitOne(LogonWaitingTimeout);
             Assert.IsTrue(status, "Timeout of logon event");
 
-            const double activationPrice = 1.1;
-            const double newActivationPrice = 1.0;
-            const double newStopLoss = 0.8;
-            const double newTakeProfit = 1.3;
+            //const double activationPrice = 1.1;
+            //const double newActivationPrice = 1.0;
+            //const double newStopLoss = 0.8;
+            //const double newTakeProfit = 1.3;
             var newExpirationTime = DateTime.UtcNow.AddHours(1);
 
             var order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Limit, TradeRecordSide.Buy, 1.1, 10000, null, null, null, "comment", 1000000);
@@ -372,8 +372,8 @@
                 iter.Next();
                 TradeTransactionReport tradeReport2 = iter.Item;
 
-                //Assert.IsTrue(tradeReport1.PosByID == order1.OrderId);
-                Assert.IsTrue(tradeReport2.PosByID == order2.OrderId);
+                //Assert.IsTrue(tradeReport1.PositionById == order1.OrderId);
+                Assert.IsTrue(tradeReport2.PositionById == order2.OrderId);
 
 
                 this.dataTrade.Logon -= this.OnLogon;
