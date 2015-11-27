@@ -647,14 +647,11 @@ void CFixConnection::OnAccountInfo(const FIX44::AccountInfo& message)
 	message.TryGetInvestorLoginFlag(accountInfo.IsReadOnly);
 	message.TryGetAccountBlockedFlag(accountInfo.IsBlocked);
 	message.TryGetRegistEmail(accountInfo.Email);
+	message.TryGetEncodedComment(accountInfo.Comment);
 
 	FIX::UtcTimeStamp time(time_t(0));
 	if (message.TryGetRegistDate(time))
 		accountInfo.RegistredDate = time.toFileTime();
-
-	string comment;
-	message.TryGetEncodedComment(comment);
-	accountInfo.Comment = CA2W(comment.c_str(), CP_ACP);
 
 	auto count = 0;
 	if (message.TryGetNoAssets(count))
