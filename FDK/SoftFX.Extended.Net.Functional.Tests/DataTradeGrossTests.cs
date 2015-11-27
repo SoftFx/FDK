@@ -5,6 +5,7 @@
     using System.Threading;
     using SoftFX.Extended;
     using SoftFX.Extended.Events;
+    using Reports;
 
     [TestClass]
     public class DataTradeGrossTests
@@ -12,6 +13,7 @@
         #region Members
 
         readonly AutoResetEvent logonEvent = new AutoResetEvent(false);
+        readonly AutoResetEvent accountInfoEvent = new AutoResetEvent(false);
         readonly AutoResetEvent tickEvent = new AutoResetEvent(false);
         readonly AutoResetEvent logoutEvent = new AutoResetEvent(false);
 
@@ -39,6 +41,11 @@
         {
             this.tickEvent.Set();
         }
+        void DataTrade_AccountInfo(object sender, AccountInfoEventArgs e)
+        {
+            this.accountInfoEvent.Set();
+        }
+
 
         #endregion
 
@@ -179,7 +186,7 @@
             var newExpirationTime = DateTime.UtcNow.AddHours(1);
 
             var order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Limit, TradeRecordSide.Buy, 1.1, 10000, null, null, null, "comment", 1000000);
-
+/*
             //this.ModifyLimitOrder(order, activationPrice, null, null, null, null);
             this.ModifyLimitOrder(order, activationPrice, null, null, null, newExpirationTime);
 
@@ -206,7 +213,7 @@
 
             //this.ModifyLimitOrder(order, activationPrice, newActivationPrice, newStopLoss, newTakeProfit, null);
             this.ModifyLimitOrder(order, activationPrice, newActivationPrice, newStopLoss, newTakeProfit, newExpirationTime);
-
+            */
             order.Delete();
 
             this.dataTrade.Logon -= this.OnLogon;
@@ -286,9 +293,12 @@
             this.dataTrade = new DataTrade(connectionString);
 
             this.dataTrade.Logon += OnLogon;
+            this.dataTrade.AccountInfo += DataTrade_AccountInfo;
             this.dataTrade.Start();
 
-            var status = this.logonEvent.WaitOne(10000*LogonWaitingTimeout);
+            bool status = this.logonEvent.WaitOne(LogonWaitingTimeout);
+            status &= this.accountInfoEvent.WaitOne(LogonWaitingTimeout);
+            
             Assert.IsTrue(status, "Timeout of logon event");
 
             var start = DateTime.UtcNow;
@@ -302,8 +312,74 @@
             order.Close();
 
             this.dataTrade.Logon -= this.OnLogon;
+            this.dataTrade.AccountInfo -= DataTrade_AccountInfo;
             this.dataTrade.Stop();
             this.dataTrade.Dispose();
+        }
+
+        [TestMethod]
+        public void TradeReports()
+        {
+            TestHelpers.Execute(this.TradeReports, Configuration.DataTradeGrossConnectionBuilders);
+        }
+
+        void TradeReports(ConnectionStringBuilder builder)
+        {
+            var connectionString = builder.ToString();
+            this.dataTrade = new DataTrade(connectionString);
+
+            this.dataTrade.Logon += this.OnLogon;
+            this.dataTrade.Start();
+
+            var status = this.logonEvent.WaitOne(LogonWaitingTimeout);
+            Assert.IsTrue(status, "Timeout of logon event");
+            const double price = 0.5;
+            var order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Limit, TradeRecordSide.Buy, price, 10000, null, null, DateTime.UtcNow.AddHours(-1), "comment", 1000000);
+            Assert.IsTrue(order.Price == price, "Invalid order price = {0}", order.Price);
+
+            Reports.TradeTransactionReport tradeReport = this.dataTrade.Server.GetTradeTransactionReports(TimeDirection.Backward, false, DateTime.UtcNow.AddMinutes(-5), DateTime.UtcNow.AddMinutes(5)).Item;
+            Assert.IsTrue(tradeReport.TradeTransactionReason == Reports.TradeTransactionReason.Expired);
+
+            this.dataTrade.Logon -= this.OnLogon;
+            this.dataTrade.Stop();
+            this.dataTrade.Dispose();
+        }
+        [TestMethod]
+        public void CloseBy()
+        {
+            TestHelpers.Execute(this.CloseBy, Configuration.DataTradeGrossConnectionBuilders);
+        }
+        void CloseBy(ConnectionStringBuilder builder)
+        {
+            var connectionString = builder.ToString();
+            using (this.dataTrade = new DataTrade(connectionString))
+            {
+
+                this.dataTrade.Logon += OnLogon;
+                this.dataTrade.AccountInfo += DataTrade_AccountInfo;
+                this.dataTrade.Start();
+
+                bool status = this.logonEvent.WaitOne(LogonWaitingTimeout);
+                status &= this.accountInfoEvent.WaitOne(LogonWaitingTimeout);
+                Assert.IsTrue(status, "Timeout of logon event");
+
+                TradeRecord order1 = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 0, 10000, null, null, null, "comment", 1000000);
+                TradeRecord order2 = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Market, TradeRecordSide.Sell, 0, 10000, null, null, null, "comment", 1000000);
+
+                Assert.IsTrue( dataTrade.Server.CloseByPositions(order1.OrderId, order2.OrderId) );
+                var iter = this.dataTrade.Server.GetTradeTransactionReports(TimeDirection.Backward, false, DateTime.UtcNow.AddMinutes(-5), DateTime.UtcNow.AddMinutes(5));
+                TradeTransactionReport tradeReport1 = iter.Item;
+                iter.Next();
+                TradeTransactionReport tradeReport2 = iter.Item;
+
+                //Assert.IsTrue(tradeReport1.PosByID == order1.OrderId);
+                Assert.IsTrue(tradeReport2.PosByID == order2.OrderId);
+
+
+                this.dataTrade.Logon -= this.OnLogon;
+                this.dataTrade.AccountInfo -= DataTrade_AccountInfo;
+                this.dataTrade.Stop();
+            }
         }
     }
 }
