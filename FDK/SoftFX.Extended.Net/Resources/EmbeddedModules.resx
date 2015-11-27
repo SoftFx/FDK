@@ -125,7 +125,7 @@
     <value>..\..\..\External\Assembly\ICSharpCode.SharpZipLib.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="libdb_dotnet61" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\..\External\Assembly\x64\libdb_dotnet61.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\..\..\External\Assembly\libdb_dotnet61.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="libdb61_x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\..\External\Assembly\x64\libdb61.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
