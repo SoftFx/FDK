@@ -28,12 +28,12 @@
 
             var infoPath = Path.Combine(outputDirectory, Info);
 
+            if (DirectoryExists(outputDirectory) && Directory.GetFiles(outputDirectory).Length > 0)
+                return;
+
             var mutexName = string.Format(@"Global\{0}-{1}", Id, Library.Id);
             var mutex = new Mutex(false, mutexName);
             mutex.WaitOne();
-
-            if (DirectoryExists(outputDirectory) && Directory.GetFiles(outputDirectory).Length>0)
-                return;
 
             try
             {
