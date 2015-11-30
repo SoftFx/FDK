@@ -146,9 +146,9 @@
     </exec>
     <exec program="${SourcesDir}\${ToolsDir}\NuGet\NuGet.exe">
       <arg value="push" />
-      <arg value="${SourcesDir}\${BuildDir}\NuGet\SoftFX.FDK.${Build}.nupkg" />
+      <arg value="${SourcesDir}\${BuildDir}\SoftFX.FDK.${Build}.nupkg" />
     </exec>
-    <copy file="${SourcesDir}\${BuildDir}\NuGet\SoftFX.FDK.${Build}.nupkg" tofile="${ArtifactsDir}\SoftFX.FDK.${Build}.nupkg" />
+    <copy file="${SourcesDir}\${BuildDir}\SoftFX.FDK.${Build}.nupkg" tofile="${ArtifactsDir}\SoftFX.FDK.${Build}.nupkg" />
   </target>
 
   <target name="SVNIndex" >
