@@ -144,7 +144,11 @@
       <arg value="-Version" />
       <arg value="${Build}" />
     </exec>
-    <copy file="${SourcesDir}\${ToolsDir}\NuGet\SoftFX.FDK.${Build}.nupkg" tofile="${ArtifactsDir}\SoftFX.FDK.${Build}.nupkg" />
+    <exec program="${SourcesDir}\${ToolsDir}\NuGet\NuGet.exe">
+      <arg value="push" />
+      <arg value="${SourcesDir}\${BuildDir}\NuGet\SoftFX.FDK.${Build}.nupkg" />
+    </exec>
+    <copy file="${SourcesDir}\${BuildDir}\NuGet\SoftFX.FDK.${Build}.nupkg" tofile="${ArtifactsDir}\SoftFX.FDK.${Build}.nupkg" />
   </target>
 
   <target name="SVNIndex" >

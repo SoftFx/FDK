@@ -47,6 +47,8 @@
                 {
                     Modules["x64_zip"].Extract(outputDirectory);
                 }
+
+                AssemblyDirectory = outputDirectory;
             }
             finally
             {
@@ -81,10 +83,9 @@
 
             try
             {
-                StaticPropertyInfoModuleSource module;
-                this.Modules.TryGetValue(assemblyName, out module);
-                if (module != null)
-                    assembly = module.LoadAssembly();
+                if (assemblyName.EndsWith(".resources"))
+                    assemblyName = assemblyName.Substring(0, assemblyName.LastIndexOf('.'));
+                assembly = Assembly.LoadFile(Path.Combine(AssemblyDirectory, assemblyName + ".dll"));
             }
             catch(Exception ex)
             {
@@ -113,6 +114,7 @@
 
         readonly Dictionary<string, StaticPropertyInfoModuleSource> Modules;
         readonly ModulesProvider provider;
+        private string AssemblyDirectory;
 
         #endregion
 
