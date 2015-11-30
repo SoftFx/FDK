@@ -134,14 +134,14 @@
 
   <target name="BuildNuget" >
     <echo message="Build and publish Nuget package for ${SolutionFile} started at: ${datetime::now()}" />
-    <exec program="${SourcesDir}\Tools\NuGet\NuGet.exe">
+    <exec program="${SourcesDir}\${ToolsDir}\NuGet\NuGet.exe">
       <arg value="setapikey 834d16fb-4069-41f6-83ae-c90572576442" />
     </exec>
-    <exec program="${SourcesDir}\Tools\NuGet\NuGet.exe">
+    <exec program="${SourcesDir}\${ToolsDir}\Tools\NuGet\NuGet.exe">
       <arg value="pack FDK.nuspec" />
       <arg value="-Version ${Build}" />
     </exec>
-    <copy file="${SourcesDir}\Tools\NuGet\SoftFX.FDK.${Build}.nupkg" tofile="${ArtifactsDir}\SoftFX.FDK.${Build}.nupkg" />
+    <copy file="${SourcesDir}\${ToolsDir}\NuGet\SoftFX.FDK.${Build}.nupkg" tofile="${ArtifactsDir}\SoftFX.FDK.${Build}.nupkg" />
   </target>
 
   <target name="SVNIndex" >
