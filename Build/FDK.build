@@ -141,6 +141,7 @@
       <arg value="pack FDK.nuspec" />
       <arg value="-Version ${Build}" />
     </exec>
+    <copy file="${SourcesDir}\Tools\NuGet\SoftFX.FDK.${Build}.nupkg" tofile="${ArtifactsDir}\SoftFX.FDK.${Build}.nupkg" />
   </target>
 
   <target name="SVNIndex" >
