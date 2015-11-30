@@ -1,4 +1,6 @@
-﻿namespace SoftFX.Extended.Resources
+﻿using SoftFX.Extended.Zip;
+
+namespace SoftFX.Extended.Resources
 {
     using System;
     using System.IO;
@@ -45,32 +47,7 @@
             var data = this.Data;
             using (var compressedFileStream = new MemoryStream(data))
             {
-                using (var zipArchive = new ZipArchive(compressedFileStream, ZipArchiveMode.Read))
-                {
-                    var entries = zipArchive.Entries.ToArray();
-                    foreach (var zipEntry in entries)
-                    {
-                        if (string.IsNullOrEmpty(zipEntry.Name))
-                        {
-                            var path = Path.Combine(fullPath, zipEntry.FullName);
-                            path = path.Replace('/', Path.DirectorySeparatorChar);
-                            if(!Directory.Exists(path))
-                                Directory.CreateDirectory(path);
-                            continue;
-                        }
-                        TraceUtils.WriteLine("Extract entry {0}", zipEntry.Name);
-                        using (var zipEntryStream = zipEntry.Open())
-                        {
-                            var path = Path.Combine(fullPath, zipEntry.FullName);
-                            path = path.Replace('/', Path.DirectorySeparatorChar);
-                            using (var fileStream = File.Create(path))
-                            {
-                                zipEntryStream.CopyTo(fileStream);
-                                zipEntryStream.Flush();
-                            }
-                        }
-                    }
-                }
+                ZipArchive.Extract(compressedFileStream, fullPath);
             }
         }
 

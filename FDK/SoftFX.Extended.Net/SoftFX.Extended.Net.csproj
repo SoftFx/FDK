@@ -67,7 +67,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
     <Reference Include="TickTrader.BusinessLogic">
@@ -302,6 +301,11 @@
     <Compile Include="Library\FixProtocolVersion.cs" />
     <Compile Include="Exceptions\UnsupportedFeatureException.cs" />
     <Compile Include="Enums\TradeType.cs" />
+    <Compile Include="Zip\Crc32.cs" />
+    <Compile Include="Zip\ZipArchive.cs" />
+    <Compile Include="Zip\ZipDirectoryEntry.cs" />
+    <Compile Include="Zip\ZipEntry.cs" />
+    <Compile Include="Zip\ZipFileEntry.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Doxygen\History.html" />
