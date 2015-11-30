@@ -16,13 +16,12 @@
 
             this.provider = provider;
 
-            var modules = provider.Modules.Select(Module.TryBind).Where(o => o != null);
-
-            Modules = modules.ToDictionary(k => k.Name);
+            Modules = provider.Modules.ToDictionary(k => k.Name);
         }
 
         public void Extract()
         {
+            TraceUtils.WriteLine("ModuleManager.Extract");
             var outputDirectory = Library.Path;
             if (string.IsNullOrEmpty(outputDirectory))
                 return;
@@ -33,17 +32,20 @@
             var mutex = new Mutex(false, mutexName);
             mutex.WaitOne();
 
+            if (DirectoryExists(outputDirectory) && Directory.GetFiles(outputDirectory).Length>0)
+                return;
+
             try
             {
-                if (!File.Exists(infoPath))
+                CreateDirectory(outputDirectory);
+                Modules["AnyCPU_zip"].Extract(outputDirectory);
+                if (!Environment.Is64BitProcess)
                 {
-                    CreateDirectory(outputDirectory);
-                    foreach (var module in this.Modules.Values)
-                    {
-                        module.Extract();
-                    }
-                    var stream = File.Create(infoPath);
-                    stream.Close();
+                    Modules["x32_zip"].Extract(outputDirectory);
+                }
+                else
+                {
+                    Modules["x64_zip"].Extract(outputDirectory);
                 }
             }
             finally
@@ -51,24 +53,6 @@
                 mutex.ReleaseMutex();
                 mutex.Dispose();
             }
-        }
-
-        public Assembly LoadAssembly(string assemblyName)
-        {
-            Assembly assembly = null;
-
-            try
-            {
-                Module module;
-                this.Modules.TryGetValue(assemblyName, out module);
-                if (module != null)
-                    assembly = module.LoadAssembly();
-            }
-            catch
-            {
-            }
-
-            return assembly;
         }
 
         public void ExtractUnderlyingFiles(string location)
@@ -79,24 +63,40 @@
             CreateDirectory(x86Path);
             CreateDirectory(x64Path);
 
-            foreach (var source in this.provider.Modules)
-            {
-                var module = Module.TryCreate(source, matchProccess: false);
-                if (module == null)
-                    continue;
+            Modules["AnyCPU_zip"].Extract(x86Path);
+            Modules["AnyCPU_zip"].Extract(x64Path);
+            Modules["x32_zip"].Extract(x86Path);
+            Modules["x64_zip"].Extract(x64Path);
+        }
 
-                var type = module.ModuleType;
-                if (type == ModuleType.x86)
-                    module.Extract(x86Path);
-                else if (type == ModuleType.x64)
-                    module.Extract(x64Path);
-                else
-                    module.Extract(location);
+        static bool DirectoryExists(string path)
+        {
+            var info = new DirectoryInfo(path);
+            return info.Exists;
+        }
+
+        public Assembly LoadAssembly(string assemblyName)
+        {
+            Assembly assembly = null;
+
+            try
+            {
+                StaticPropertyInfoModuleSource module;
+                this.Modules.TryGetValue(assemblyName, out module);
+                if (module != null)
+                    assembly = module.LoadAssembly();
             }
+            catch(Exception ex)
+            {
+                TraceUtils.WriteLine("Error loading: '{0}' with exception: {1}", assemblyName, ex);
+            }
+
+            return assembly;
         }
 
         static void CreateDirectory(string path)
         {
+            TraceUtils.WriteLine("Create directory: '{0}'", path);
             var items = path.Split(Path.DirectorySeparatorChar);
             path = items[0] + Path.DirectorySeparatorChar;
             var count = items.Length;
@@ -109,27 +109,9 @@
             }
         }
 
-        static bool HasCorrectPlatform(string name)
-        {
-            if (!Environment.Is64BitProcess)
-            {
-                if (name.Contains("86"))
-                    return true;
-                if (name.Contains("32"))
-                    return true;
-
-                return false;
-            }
-            else
-            {
-                var result = name.Contains("64");
-                return result;
-            }
-        }
-
         #region Members
 
-        readonly IDictionary<string, Module> Modules;
+        readonly Dictionary<string, StaticPropertyInfoModuleSource> Modules;
         readonly ModulesProvider provider;
 
         #endregion
