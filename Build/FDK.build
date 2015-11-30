@@ -140,7 +140,7 @@
     </exec>
     <exec program="${SourcesDir}\${ToolsDir}\NuGet\NuGet.exe">
       <arg value="pack" />
-      <arg value="FDK.nuspec" />
+      <arg value="${SourcesDir}\${BuildDir}\FDK.nuspec" />
       <arg value="-Version" />
       <arg value="${Build}" />
     </exec>
