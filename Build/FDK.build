@@ -134,10 +134,6 @@
 
   <target name="BuildNuget" >
     <echo message="Build and publish Nuget package for ${SolutionFile} started at: ${datetime::now()}" />
-    <exec program="${SourcesDir}\${ToolsDir}\NuGet\NuGet.exe" >
-      <arg value="setapikey" />
-      <arg value="834d16fb-4069-41f6-83ae-c90572576442" />
-    </exec>
     <exec program="${SourcesDir}\${ToolsDir}\NuGet\NuGet.exe">
       <arg value="pack" />
       <arg value="${SourcesDir}\${BuildDir}\FDK.nuspec" />
@@ -147,6 +143,8 @@
     <exec program="${SourcesDir}\${ToolsDir}\NuGet\NuGet.exe">
       <arg value="push" />
       <arg value="${SourcesDir}\${BuildDir}\SoftFX.FDK.${Build}.nupkg" />
+      <arg value="-ApiKey" />
+      <arg value="834d16fb-4069-41f6-83ae-c90572576442" />
       <arg value="-Timeout" />
       <arg value="1000" />
     </exec>
