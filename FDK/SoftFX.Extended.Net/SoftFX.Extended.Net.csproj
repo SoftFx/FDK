@@ -340,7 +340,48 @@ if not exist "$(SolutionDir)..\FRE\SoftFX.FixProvider.x86.dll"  (copy NUL "$(Sol
 if not exist "$(SolutionDir)..\FRE\SoftFX.LrpProvider.x86.dll"  (copy NUL "$(SolutionDir)..\FRE\SoftFX.LrpProvider.x86.dll")
 if not exist "$(SolutionDir)..\FRE\SoftFX.LlApi.x86.dll"  (copy NUL "$(SolutionDir)..\FRE\SoftFX.LlApi.x86.dll")
 if not exist "$(SolutionDir)..\FRE\SoftFX.LlCommon.x86.dll"  (copy NUL "$(SolutionDir)..\FRE\SoftFX.LlCommon.x86.dll")
-</PreBuildEvent>
+
+if not exist ..\..\External\Archives (md ..\..\External\Archives)
+if not exist ..\..\External\Archives\AnyCPU (md ..\..\External\Archives\AnyCPU)
+if not exist ..\..\External\Archives\AnyCPU\x86 (md ..\..\External\Archives\AnyCPU\x86)
+if not exist ..\..\External\Archives\AnyCPU\x64 (md ..\..\External\Archives\AnyCPU\x64)
+if not exist ..\..\External\Archives\x32 (md ..\..\External\Archives\x32)
+if not exist ..\..\External\Archives\x64 (md ..\..\External\Archives\x64)
+
+copy /Y "..\..\External\Assembly\*.dll" ..\..\External\Archives\AnyCPU\
+copy /Y "..\..\External\Assembly\x86\*.dll" ..\..\External\Archives\AnyCPU\x86\
+copy /Y "..\..\External\Assembly\x64\*.dll" ..\..\External\Archives\AnyCPU\x64\
+
+copy /Y "..\..\External\Dll\libeay32.dll" ..\..\External\Archives\x32\
+copy /Y "..\..\External\Dll\libeay64.dll" ..\..\External\Archives\x64\
+copy /Y "..\..\External\Dll\ssleay32.dll" ..\..\External\Archives\x32\
+copy /Y "..\..\External\Dll\ssleay64.dll" ..\..\External\Archives\x64\
+
+copy /Y "..\..\External\Dll\SoftFX.Lrp.dll" ..\..\External\Archives\AnyCPU\
+copy /Y "..\..\External\Dll\SoftFX.Lrp.x86.dll" ..\..\External\Archives\x32\
+copy /Y "..\..\External\Dll\SoftFX.Lrp.x64.dll" ..\..\External\Archives\x64\
+
+copy /Y "..\..\External\Dll\x86\*.dll" ..\..\External\Archives\x32\
+copy /Y "..\..\External\Dll\x64\*.dll" ..\..\External\Archives\x64\
+
+copy /Y "..\..\External\Exe\*.exe" ..\..\External\Archives\AnyCPU\
+
+copy /Y "..\..\FRE\SoftFX.Core.x86.dll" ..\..\External\Archives\x32\
+copy /Y "..\..\FRE\SoftFX.Core.x64.dll" ..\..\External\Archives\x64\
+copy /Y "..\..\FRE\SoftFX.LlApi.x86.dll" ..\..\External\Archives\x32\
+copy /Y "..\..\FRE\SoftFX.LlApi.x64.dll" ..\..\External\Archives\x64\
+copy /Y "..\..\FRE\SoftFX.LlCommon.x86.dll" ..\..\External\Archives\x32\
+copy /Y "..\..\FRE\SoftFX.LlCommon.x64.dll" ..\..\External\Archives\x64\
+copy /Y "..\..\FRE\SoftFX.FixProvider.x86.dll" ..\..\External\Archives\x32\
+copy /Y "..\..\FRE\SoftFX.FixProvider.x64.dll" ..\..\External\Archives\x64\
+copy /Y "..\..\FRE\SoftFX.LrpProvider.x86.dll" ..\..\External\Archives\x32\
+copy /Y "..\..\FRE\SoftFX.LrpProvider.x64.dll" ..\..\External\Archives\x64\
+copy /Y "..\..\FRE\SoftFX.Sal.x86.dll" ..\..\External\Archives\x32\
+copy /Y "..\..\FRE\SoftFX.Sal.x64.dll" ..\..\External\Archives\x64\
+
+..\..\Tools\7z\7z a ..\..\External\Archives\AnyCPU.zip ..\..\External\Archives\AnyCPU\*
+..\..\Tools\7z\7z a ..\..\External\Archives\x32.zip ..\..\External\Archives\x32\*
+..\..\Tools\7z\7z a ..\..\External\Archives\x64.zip ..\..\External\Archives\x64\*</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>copy /Y "$(TargetPath)" "$(SolutionDir)\..\FRE\"
