@@ -147,6 +147,8 @@
     <exec program="${SourcesDir}\${ToolsDir}\NuGet\NuGet.exe">
       <arg value="push" />
       <arg value="${SourcesDir}\${BuildDir}\SoftFX.FDK.${Build}.nupkg" />
+      <arg value="-Timeout" />
+      <arg value="1000" />
     </exec>
     <copy file="${SourcesDir}\${BuildDir}\SoftFX.FDK.${Build}.nupkg" tofile="${ArtifactsDir}\SoftFX.FDK.${Build}.nupkg" />
   </target>
