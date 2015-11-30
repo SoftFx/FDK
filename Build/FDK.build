@@ -135,11 +135,14 @@
   <target name="BuildNuget" >
     <echo message="Build and publish Nuget package for ${SolutionFile} started at: ${datetime::now()}" />
     <exec program="${SourcesDir}\${ToolsDir}\NuGet\NuGet.exe">
-      <arg value="setapikey 834d16fb-4069-41f6-83ae-c90572576442" />
+      <arg value="setapikey" />
+      <arg value="834d16fb-4069-41f6-83ae-c90572576442" />
     </exec>
     <exec program="${SourcesDir}\${ToolsDir}\Tools\NuGet\NuGet.exe">
-      <arg value="pack FDK.nuspec" />
-      <arg value="-Version ${Build}" />
+      <arg value="pack" />
+      <arg value="FDK.nuspec" />
+      <arg value="-Version" />
+      <arg value="${Build}" />
     </exec>
     <copy file="${SourcesDir}\${ToolsDir}\NuGet\SoftFX.FDK.${Build}.nupkg" tofile="${ArtifactsDir}\SoftFX.FDK.${Build}.nupkg" />
   </target>
