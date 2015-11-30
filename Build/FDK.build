@@ -134,7 +134,7 @@
 
   <target name="BuildNuget" >
     <echo message="Build and publish Nuget package for ${SolutionFile} started at: ${datetime::now()}" />
-    <exec program="${SourcesDir}\${ToolsDir}\NuGet\NuGet.exe">
+    <exec program="${SourcesDir}\${ToolsDir}\NuGet\NuGet.exe" failonerror="false" >
       <arg value="setapikey" />
       <arg value="834d16fb-4069-41f6-83ae-c90572576442" />
     </exec>
