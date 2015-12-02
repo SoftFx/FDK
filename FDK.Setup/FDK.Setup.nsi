@@ -13,6 +13,7 @@
 !include "TextFunc.nsh"
 !include "WordFunc.nsh"
 !include "Plugins\ExtendedFunc.nsh"
+!include "Plugins\DotNetChecker.nsh"
 ;!include "Plugins\x64.nsh"
 ;!include "Plugins\ToReplace.nsh"
 ;!include "Resources.en.nsi"
@@ -582,38 +583,9 @@ Function InternetConnection
     connected:
 FunctionEnd
 
-Function NET46
-
-	SetOutPath "$INSTDIR"
-	;------------Install .NetFramework 4.5----------------------------------------------
-	ReadRegStr $0 HKLM "SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full" "Release"
-
-	IntCmp $0 "393297" Installed46 0
-	
-	inetc::get "https://download.microsoft.com/download/C/3/A/C3A5200B-D33C-47E9-9D70-2F7C65DAAD94/NDP46-KB3045557-x86-x64-AllOS-ENU.exe" "$INSTDIR\${DotNet46}" /end
-    
-      Pop $3
-	
-      ${If} $3 != "OK"
-        Delete "$INSTDIR\${DotNet46}"
-		Abort ".Net Framework downloading failed."
-      ${EndIf}
-	  
-      ExecWait "$INSTDIR\${DotNet46} /norestart /passive" $4
-	  
-      ${If} $4 == "1602"
-        ;!insertmacro Uninstall
-      ${EndIf}
-	
-      Delete "$INSTDIR\${DotNet46}"
-	    
-      SetDetailsView show
-      Installed45:
-FunctionEnd
-
 Section "FRE" SecFre
 SectionIn RO
-	Call NET46
+	!insertmacro CheckNetFramework 46
 	!insertmacro FRE
 SectionEnd
 
