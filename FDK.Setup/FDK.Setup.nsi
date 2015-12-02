@@ -30,9 +30,7 @@
 !define EXAMPLES "..\Examples"
 !define TOOL "..\FRE"
 
-!define dotNetFrameworkPath "http://download.microsoft.com/download/1/B/E/1BE39E79-7E39-46A3-96FF-047F95396215/dotNetFx40_Full_setup.exe"
-
-!define DotNet45 "dotNetFx45_Full.exe"
+!define DotNet46 "dotNet46Setup.exe"
 
 ;--------------------------------
 ;Global Variables
@@ -158,10 +156,10 @@ Page custom ChangeDialogStart ChangeDialogStop
 	File "Resources\_SoftFX.ico"
 	
 	WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${PROD_NAME_VER}" "DisplayName" "${PROD_NAME_VER}"
-    WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${PROD_NAME_VER}" "UninstallString" "$INSTDIR\Uninstall ${PROD_NAME_VER}.exe"
-    WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${PROD_NAME_VER}" "DisplayIcon" "$INSTDIR\_SoftFX.ico"
-    WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${PROD_NAME_VER}" "Publisher" "${PUBLISHER}"
-    WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${PROD_NAME_VER}" "DisplayVersion" "${VERSION}"
+	WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${PROD_NAME_VER}" "UninstallString" "$INSTDIR\Uninstall ${PROD_NAME_VER}.exe"
+	WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${PROD_NAME_VER}" "DisplayIcon" "$INSTDIR\_SoftFX.ico"
+	WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${PROD_NAME_VER}" "Publisher" "${PUBLISHER}"
+	WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${PROD_NAME_VER}" "DisplayVersion" "${VERSION}"
 	WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${PROD_NAME_VER}" "InstDir" "$INSTDIR"
 	WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${PROD_NAME_VER}" "Install" "1"
 	
@@ -584,73 +582,38 @@ Function InternetConnection
     connected:
 FunctionEnd
 
-Function NET
- 
-	SetOutPath "$INSTDIR"
-	
-    ReadRegDWORD $0 HKLM "SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Client" Install
-    StrCmp $0 1 Installed NotInstalled
-
-    NotInstalled:
-	;MessageBox MB_OK "NotInstalled"
-	Call InternetConnection
-    inetc::get "${dotNetFrameworkPath}" "$INSTDIR\dotNetFx40_Full_x86_x64.exe" /end
-    
-      Pop $1                                                                           
-    
-      ${If} $1 != "OK"
-        Delete "$INSTDIR\dotNetFx40_Full_x86_x64.exe"
-      ${EndIf}
-      ExecWait "$INSTDIR\dotNetFx40_Full_x86_x64.exe /norestart /passive" $2
-      Delete "$INSTDIR\dotNetFx40_Full_x86_x64.exe"
-	  
-	  ${If} $2 == "3010"
-	  ${OrIf} $2 == "1641"
-        MessageBox MB_OK "You should restart your computer after installation."
-      ${EndIf}
-	  
-      SetDetailsView show
-
-    Installed:
-	;MessageBox MB_OK "Installed"
-FunctionEnd
-
-Function NET45
+Function NET46
 
 	SetOutPath "$INSTDIR"
 	;------------Install .NetFramework 4.5----------------------------------------------
-	ReadRegStr $0 HKLM "SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full" Version
+	ReadRegStr $0 HKLM "SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full" "Release"
 
-	StrCpy $0 $0 3
-
-	StrCmp $0 "4.5" Installed45 0
+	IntCmp $0 "393297" Installed46 0
 	
-	inetc::get "http://download.microsoft.com/download/B/A/4/BA4A7E71-2906-4B2D-A0E1-80CF16844F5F/dotNetFx45_Full_setup.exe" "$INSTDIR\${DotNet45}" /end
+	inetc::get "https://download.microsoft.com/download/C/3/A/C3A5200B-D33C-47E9-9D70-2F7C65DAAD94/NDP46-KB3045557-x86-x64-AllOS-ENU.exe" "$INSTDIR\${DotNet46}" /end
     
       Pop $3
 	
       ${If} $3 != "OK"
-        Delete "$INSTDIR\${DotNet45}"
+        Delete "$INSTDIR\${DotNet46}"
 		Abort ".Net Framework downloading failed."
       ${EndIf}
 	  
-      ExecWait "$INSTDIR\${DotNet45} /norestart /passive" $4
+      ExecWait "$INSTDIR\${DotNet46} /norestart /passive" $4
 	  
-	  ${If} $4 == "1602"
+      ${If} $4 == "1602"
         ;!insertmacro Uninstall
       ${EndIf}
 	
-	  Delete "$INSTDIR\${DotNet45}"
+      Delete "$INSTDIR\${DotNet46}"
 	    
       SetDetailsView show
-	  Installed45:
+      Installed45:
 FunctionEnd
 
 Section "FRE" SecFre
 SectionIn RO
-	
-	Call NET
-	Call NET45
+	Call NET46
 	!insertmacro FRE
 SectionEnd
 
