@@ -583,9 +583,15 @@ Function InternetConnection
     connected:
 FunctionEnd
 
+Section -Pre
+SectionIn 1 2
+
+	!insertmacro CheckNetFramework 46
+SectionEnd
+
 Section "FRE" SecFre
 SectionIn RO
-	!insertmacro CheckNetFramework 46
+
 	!insertmacro FRE
 SectionEnd
 
