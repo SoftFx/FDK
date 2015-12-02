@@ -54,6 +54,9 @@
                             <Component Id="cmp3B6E8D008E65AF0E3EC860E9713285F0" Guid="*">
                                 <File Id="fil07F5E0CF55C3525371C3D46E44E081B5" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x64\FinancialExample.obj" />
                             </Component>
+                            <Component Id="cmpF97A1FB65E5A04339D624D2E2A2267D9" Guid="*">
+                                <File Id="fil489774280BC13F32CB36F9B6C51B79C1" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x64\FinancialExample.x64.Build.CppClean.log" />
+                            </Component>
                             <Component Id="cmpC7085DE33BB2D033D2771420423D06C8" Guid="*">
                                 <File Id="fil3D4B02A102FF457CE37A63BFB879C7EF" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x64\FinancialExample.x64.pch" />
                             </Component>
@@ -111,6 +114,9 @@
                             </Component>
                             <Component Id="cmp89BD5B55DBBF3CC8219A500A1BB89DF8" Guid="*">
                                 <File Id="fil4CDE370D2C0F436D68A54F3093602C98" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x86\FinancialExample.obj" />
+                            </Component>
+                            <Component Id="cmpA80DBA2785F54222156F90075CFED1B9" Guid="*">
+                                <File Id="fil512C2B659CBB13E052BC32912AE65F08" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x86\FinancialExample.x86.Build.CppClean.log" />
                             </Component>
                             <Component Id="cmpDE4BFD939B068934F940554143055EBA" Guid="*">
                                 <File Id="filA7FAF9714F186EE0E174FDDCDA41584D" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Debug.x86\FinancialExample.x86.pch" />
@@ -170,6 +176,9 @@
                             <Component Id="cmp82F63482305B05C9D0AEDBE1AB2E8786" Guid="*">
                                 <File Id="fil05A3574BAB582AC2F00077703E45FAE6" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x64\FinancialExample.obj" />
                             </Component>
+                            <Component Id="cmpF4A0A5033B927E0E42468A2026B35B83" Guid="*">
+                                <File Id="filEC9EABB861E0151E6621BA235C358D80" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x64\FinancialExample.x64.Build.CppClean.log" />
+                            </Component>
                             <Component Id="cmpA66526692D848B8850062E0575F9969F" Guid="*">
                                 <File Id="filA77073A78C324E4187C7D60BE9F7793B" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x64\FinancialExample.x64.pch" />
                             </Component>
@@ -225,6 +234,9 @@
                             <Component Id="cmp52F77C1F94263689F00764A717308E12" Guid="*">
                                 <File Id="fil3ECA1F216625F33504B48DC1F0C2A595" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x86\FinancialExample.obj" />
                             </Component>
+                            <Component Id="cmp2AE837F03CC90157ABED4A329A9ADE97" Guid="*">
+                                <File Id="filE73DEECF01494217A297D990717052E0" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x86\FinancialExample.x86.Build.CppClean.log" />
+                            </Component>
                             <Component Id="cmp5B2F450C9BD868DD4556B116D2D969DB" Guid="*">
                                 <File Id="fil0FC54FAF324058658F8F998A8ABFC4BB" KeyPath="yes" Source="$(var.SourceDir)\Cpp\FinancialExample\Release.x86\FinancialExample.x86.pch" />
                             </Component>
@@ -276,6 +288,22 @@
                     <Component Id="cmpC51598DD54122CBE7EE13F8586B216E7" Guid="*">
                         <File Id="fil325E65E953A9C79116A84B8D0E18CA96" KeyPath="yes" Source="$(var.SourceDir)\CSharp\CSharp.sln" />
                     </Component>
+                    <Directory Id="dir304A1EC38534D00644DBE860B6E411BD" Name="AccountInfo">
+                        <Component Id="cmp5178F2521E06A0052F422BBBF44ACCAD" Guid="*">
+                            <File Id="filE80FC2BF89C557452D24F59FDF681C13" KeyPath="yes" Source="$(var.SourceDir)\CSharp\AccountInfo\AccountInfo.csproj" />
+                        </Component>
+                        <Component Id="cmpAF6D104B5814A93BEC9BCB15B84FF0EC" Guid="*">
+                            <File Id="fil243BBCA012462C481657569DA8138615" KeyPath="yes" Source="$(var.SourceDir)\CSharp\AccountInfo\App.config" />
+                        </Component>
+                        <Component Id="cmpDD1CDA22564DDA241293F8E7BB4A797E" Guid="*">
+                            <File Id="fil5C03F5035B32AA936A6E472A61DB20B6" KeyPath="yes" Source="$(var.SourceDir)\CSharp\AccountInfo\Program.cs" />
+                        </Component>
+                        <Directory Id="dirFA3A6DBCA407B54A919A2C8150123787" Name="Properties">
+                            <Component Id="cmpA482EF2F254DB87303001E15976DF9C0" Guid="*">
+                                <File Id="fil826CE2BDEE8342950FE3E749DED528D4" KeyPath="yes" Source="$(var.SourceDir)\CSharp\AccountInfo\Properties\AssemblyInfo.cs" />
+                            </Component>
+                        </Directory>
+                    </Directory>
                     <Directory Id="dir1C583329CF1FF205535D33D3907FCDBB" Name="DataClientExamples">
                         <Component Id="cmpC9AEB2375BF2806C353FFE1C9E45FC0D" Guid="*">
                             <File Id="filE7673022BD2E2B6C6008871DC77F06FD" KeyPath="yes" Source="$(var.SourceDir)\CSharp\DataClientExamples\DataClientExamples.csproj" />
@@ -676,6 +704,7 @@
             <ComponentRef Id="cmp4337AB1DF918D9DB9AA76C9C1FBF0C2E" />
             <ComponentRef Id="cmpC2521463694573F8630166FE0EE0ED08" />
             <ComponentRef Id="cmp3B6E8D008E65AF0E3EC860E9713285F0" />
+            <ComponentRef Id="cmpF97A1FB65E5A04339D624D2E2A2267D9" />
             <ComponentRef Id="cmpC7085DE33BB2D033D2771420423D06C8" />
             <ComponentRef Id="cmpAAC7F00C87322BC5AE1595777CCE32E2" />
             <ComponentRef Id="cmp1C950022872E144D7C553257A1866782" />
@@ -694,6 +723,7 @@
             <ComponentRef Id="cmp803E1562DCBD7C07741A74543AA6AF39" />
             <ComponentRef Id="cmp04928CFF8FD6996000FB03B219670241" />
             <ComponentRef Id="cmp89BD5B55DBBF3CC8219A500A1BB89DF8" />
+            <ComponentRef Id="cmpA80DBA2785F54222156F90075CFED1B9" />
             <ComponentRef Id="cmpDE4BFD939B068934F940554143055EBA" />
             <ComponentRef Id="cmp0325EF91E555D92A7E5C16B0CF70DBE5" />
             <ComponentRef Id="cmpC63F6DC01ACB614222CA2814FFF7F59C" />
@@ -712,6 +742,7 @@
             <ComponentRef Id="cmp7768BC99E0E6B83677E6912437B0A328" />
             <ComponentRef Id="cmpF1C84F846E565AF9D35BC22F57946FD6" />
             <ComponentRef Id="cmp82F63482305B05C9D0AEDBE1AB2E8786" />
+            <ComponentRef Id="cmpF4A0A5033B927E0E42468A2026B35B83" />
             <ComponentRef Id="cmpA66526692D848B8850062E0575F9969F" />
             <ComponentRef Id="cmpB2AB3B23EF3DA96FB5B5A07F2CC4AFDD" />
             <ComponentRef Id="cmp04F8B8C80F4768313BC9F08430A9C8CC" />
@@ -729,6 +760,7 @@
             <ComponentRef Id="cmpEAECC7AD15C85FED00FA60C2B5728F97" />
             <ComponentRef Id="cmp07D67CA591DA2320419B1EA4C4A67EAD" />
             <ComponentRef Id="cmp52F77C1F94263689F00764A717308E12" />
+            <ComponentRef Id="cmp2AE837F03CC90157ABED4A329A9ADE97" />
             <ComponentRef Id="cmp5B2F450C9BD868DD4556B116D2D969DB" />
             <ComponentRef Id="cmpF8FC8222F7ACD21B58F47F62568A586C" />
             <ComponentRef Id="cmp302F973C2A87D07F82FDC5CA3CB5BF77" />
@@ -744,6 +776,10 @@
             <ComponentRef Id="cmpC0F7A10191A29B6F36C1554E1FD59091" />
             <ComponentRef Id="cmp9A7A1EB6822399EBF746C4800F808184" />
             <ComponentRef Id="cmpC51598DD54122CBE7EE13F8586B216E7" />
+            <ComponentRef Id="cmp5178F2521E06A0052F422BBBF44ACCAD" />
+            <ComponentRef Id="cmpAF6D104B5814A93BEC9BCB15B84FF0EC" />
+            <ComponentRef Id="cmpDD1CDA22564DDA241293F8E7BB4A797E" />
+            <ComponentRef Id="cmpA482EF2F254DB87303001E15976DF9C0" />
             <ComponentRef Id="cmpC9AEB2375BF2806C353FFE1C9E45FC0D" />
             <ComponentRef Id="cmp5DCE5F350F2CD9B498DB8E2436D45771" />
             <ComponentRef Id="cmpC5282BC7971F003DAF7B42D42E9B2A51" />
