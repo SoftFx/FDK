@@ -22,13 +22,10 @@
         public void Extract()
         {
             TraceUtils.WriteLine("ModuleManager.Extract");
-            var outputDirectory = Library.Path;
-            if (string.IsNullOrEmpty(outputDirectory))
-                return;
 
-            var infoPath = Path.Combine(outputDirectory, Info);
+            AssemblyDirectory = Library.Path;
 
-            if (DirectoryExists(outputDirectory) && Directory.GetFiles(outputDirectory).Length > 0)
+            if (string.IsNullOrEmpty(AssemblyDirectory) || (DirectoryExists(AssemblyDirectory) && Directory.GetFiles(AssemblyDirectory).Length > 0))
                 return;
 
             var mutexName = string.Format(@"Global\{0}-{1}", Id, Library.Id);
@@ -37,18 +34,16 @@
 
             try
             {
-                CreateDirectory(outputDirectory);
-                Modules["AnyCPU_zip"].Extract(outputDirectory);
+                CreateDirectory(AssemblyDirectory);
+                Modules["AnyCPU_zip"].Extract(AssemblyDirectory);
                 if (!Environment.Is64BitProcess)
                 {
-                    Modules["x32_zip"].Extract(outputDirectory);
+                    Modules["x32_zip"].Extract(AssemblyDirectory);
                 }
                 else
                 {
-                    Modules["x64_zip"].Extract(outputDirectory);
+                    Modules["x64_zip"].Extract(AssemblyDirectory);
                 }
-
-                AssemblyDirectory = outputDirectory;
             }
             finally
             {
