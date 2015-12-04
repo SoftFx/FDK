@@ -8,7 +8,6 @@
     {
         static TestHelpers()
         {
-            Library.Path = "<FRE>";
         }
 
         public static void Execute(Action<ConnectionStringBuilder> handler, IEnumerable<ConnectionStringBuilder> builders)
@@ -16,6 +15,14 @@
             foreach (var element in builders)
             {
                 handler(element);
+            }
+        }
+        public static void Execute(Action<ConnectionStringBuilder, TestContext> handler, IEnumerable<ConnectionStringBuilder> builders,
+            TestContext testContext = null)
+        {
+            foreach (var element in builders)
+            {
+                handler(element, testContext);
             }
         }
     }

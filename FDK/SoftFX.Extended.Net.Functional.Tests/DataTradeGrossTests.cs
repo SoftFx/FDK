@@ -46,7 +46,6 @@
             this.accountInfoEvent.Set();
         }
 
-
         #endregion
 
         #endregion
@@ -320,10 +319,11 @@
         [TestMethod]
         public void TradeReports()
         {
-            TestHelpers.Execute(this.TradeReports, Configuration.DataTradeGrossConnectionBuilders);
+            TestHelpers.Execute(this.TradeReports, Configuration.DataTradeGrossConnectionBuilders, new TestContext(AccountType.Gross));
+            TestHelpers.Execute(this.TradeReports, Configuration.DataTradeNetConnectionBuilders, new TestContext(AccountType.Net));
         }
 
-        void TradeReports(ConnectionStringBuilder builder)
+        void TradeReports(ConnectionStringBuilder builder, TestContext testContext)
         {
             var connectionString = builder.ToString();
             this.dataTrade = new DataTrade(connectionString);
@@ -333,12 +333,25 @@
 
             var status = this.logonEvent.WaitOne(LogonWaitingTimeout);
             Assert.IsTrue(status, "Timeout of logon event");
-            const double price = 0.5;
-            var order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Limit, TradeRecordSide.Buy, price, 10000, null, null, DateTime.UtcNow.AddHours(-1), "comment", 1000000);
-            Assert.IsTrue(order.Price == price, "Invalid order price = {0}", order.Price);
+            
+            //Test Limit order
+            var order = this.dataTrade.Server.SendOrderEx(testContext.Symbol, TradeCommand.Limit, TradeRecordSide.Buy, testContext.VeryLowPrice, testContext.Volume, null, null, DateTime.UtcNow.AddHours(1), testContext.Comment, 1000000);
+            Assert.IsTrue(order.Price == testContext.VeryLowPrice, "Invalid order price = {0}", order.Price);
+            order.Delete();
 
             Reports.TradeTransactionReport tradeReport = this.dataTrade.Server.GetTradeTransactionReports(TimeDirection.Backward, false, DateTime.UtcNow.AddMinutes(-5), DateTime.UtcNow.AddMinutes(5)).Item;
-            Assert.IsTrue(tradeReport.TradeTransactionReason == Reports.TradeTransactionReason.Expired);
+            Assert.IsTrue(tradeReport.TradeRecordType == order.Type);
+            Assert.IsTrue(tradeReport.Price == order.Price);
+
+            //Test stop order
+            order = this.dataTrade.Server.SendOrderEx(testContext.Symbol, TradeCommand.Stop, TradeRecordSide.Buy, testContext.VeryHighPrice, testContext.Volume, null, null, DateTime.UtcNow.AddHours(1), testContext.Comment, 1000000);
+            Assert.IsTrue(order.Price == testContext.VeryHighPrice, "Invalid order price = {0}", order.Price);
+            order.Delete();
+
+            tradeReport = this.dataTrade.Server.GetTradeTransactionReports(TimeDirection.Backward, false, DateTime.UtcNow.AddMinutes(-5), DateTime.UtcNow.AddMinutes(5)).Item;
+            Assert.IsTrue(tradeReport.TradeRecordType == order.Type);
+            Assert.IsTrue(tradeReport.StopPrice == order.Price);
+
 
             this.dataTrade.Logon -= this.OnLogon;
             this.dataTrade.Stop();

@@ -83,8 +83,8 @@
             }
             else if (type == AccountType.Net)
             {
-                result.Username = "26";
-                result.Password = "37kw22bNkBcy";
+                result.Username = "100045";
+                result.Password = "e2pllch2";
             }
             
             result.ProtocolVersion = protocolVersion.ToString();
@@ -121,7 +121,7 @@
 
         static Configuration()
         {
-            Library.Path = "<FRE>";
+            //Library.Path = "<FRE>";
         }
     }
 }
