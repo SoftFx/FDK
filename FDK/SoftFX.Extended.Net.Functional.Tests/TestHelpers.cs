@@ -17,5 +17,13 @@
                 handler(element);
             }
         }
+        public static void Execute(Action<ConnectionStringBuilder, TestContext> handler, IEnumerable<ConnectionStringBuilder> builders,
+            TestContext testContext = null)
+        {
+            foreach (var element in builders)
+            {
+                handler(element, testContext);
+            }
+        }
     }
 }

@@ -152,7 +152,7 @@ namespace SoftFX.Extended
         {
             try
             {
-                RegistryKey runtime = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\DevDiv\vc\Servicing\14.0\RuntimeMinimum", true);
+                RegistryKey runtime = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\DevDiv\vc\Servicing\14.0\RuntimeMinimum");
                 if ((runtime == null) || (runtime.GetValue("Install") as int? != 1))
                     throw new Exception("Visual Studio 2015 x64 redistributable missing!");
             }
