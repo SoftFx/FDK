@@ -106,8 +106,6 @@
 
         public static void Main(string[] args)
         {
-            Library.Path = "<FRE>";
-
             string line = null;
             using (var stream = new StreamReader(@"E:\Output\codec0.txt"))
             {

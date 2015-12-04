@@ -8,7 +8,6 @@
     {
         static TestHelpers()
         {
-            Library.Path = "<FRE>";
         }
 
         public static void Execute(Action<ConnectionStringBuilder> handler, IEnumerable<ConnectionStringBuilder> builders)

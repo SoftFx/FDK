@@ -10,7 +10,6 @@
 
         static Configuration()
         {
-            Library.Path = "<FRE>";
         }
     }
 }

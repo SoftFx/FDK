@@ -12,7 +12,6 @@
         [STAThread]
         static void Main()
         {
-            Library.Path = "<FRE>";
             try
             {
                 Application.EnableVisualStyles();
