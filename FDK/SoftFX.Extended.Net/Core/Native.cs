@@ -53,6 +53,7 @@
 
         static Native()
         {
+            ManagedLibrary.CheckRedistPackages();
             ManagedLibrary.MarkAsReadOnly();
             ManagedLibrary.ModulesManager.Extract();
 

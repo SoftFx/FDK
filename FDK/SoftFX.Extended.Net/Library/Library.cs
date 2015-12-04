@@ -1,4 +1,7 @@
-﻿namespace SoftFX.Extended
+﻿using System.Windows.Forms;
+using Microsoft.Win32;
+
+namespace SoftFX.Extended
 {
     using System;
     using System.IO;
@@ -140,6 +143,25 @@
         public static void Initialize()
         {
             Native.Initialize();
+        }
+
+        /// <summary>
+        /// Check for VS redistributable packages
+        /// </summary>
+        public static void CheckRedistPackages()
+        {
+            try
+            {
+                RegistryKey runtime = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\DevDiv\vc\Servicing\14.0\RuntimeMinimum1", true);
+                if ((runtime == null) || (runtime.GetValue("Install") as int? != 1))
+                    throw new Exception("Visual Studio 2015 x64 redistributable missing!");
+            }
+            catch (Exception)
+            {
+                if (MessageBox.Show(@"Please install Visual Studio 2015 " + (Environment.Is64BitProcess ? "x64" : "x86") + @" redistributable package! Do you want to install them from Microsoft web site?", @"Visual Studio 2015 x64 redistributable missing!", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+                    System.Diagnostics.Process.Start("https://www.microsoft.com/en-us/download/details.aspx?id=48145");
+                System.Diagnostics.Process.GetCurrentProcess().Kill();
+            }
         }
 
         /// <summary>

@@ -12,7 +12,6 @@
         [STAThread]
         static void Main()
         {
-            //Library.Path = "<FRE>";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
