@@ -7,7 +7,6 @@
         public static void WriteLine(String format, params object[] args)
         {
             Trace.WriteLine(string.Format(format, args));
-            Console.WriteLine(string.Format(format, args));
         }
     }
 }
