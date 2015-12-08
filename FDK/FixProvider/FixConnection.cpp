@@ -482,14 +482,12 @@ void CFixConnection::OnTick(const FIX44::MarketDataSnapshotFullRefresh& message)
 	CFxEventInfo eventInfo;
 	const string symbol = message.GetSymbol();
 
-	FIX::UtcTimeStamp tickTime;
-	if (!message.TryGetOrigTime(tickTime))
-	{
-		tickTime = message.getHeader().GetSendingTime();
-	}
+	FIX::UtcTimeStamp creatingTickTime;
+	message.TryGetOrigTime(creatingTickTime);
+	eventInfo.SendingTime = message.getHeader().GetSendingTime().toFileTime();
 
 
-	CFxQuote quote(symbol, tickTime.toFileTime());
+	CFxQuote quote(symbol, creatingTickTime.toFileTime());
 	message.TryGetTickId(quote.Id);
 
 	const int32 count = message.GetNoMDEntries();
