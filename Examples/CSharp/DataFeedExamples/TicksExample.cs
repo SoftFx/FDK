@@ -32,7 +32,7 @@
 
         void OnTick(object sender, TickEventArgs e)
         {
-            Console.WriteLine("OnTick(): {0}", e);
+            Console.WriteLine("CreatingTime Time {3}. Sending Time {1}. OnTick(): {0}. Lag:{2}", e, e.SendingTime, e.ReceivingTime-e.SendingTime, e.Tick.CreatingTime);
         }
         
     }
