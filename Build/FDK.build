@@ -106,22 +106,6 @@
     </zip>
   </target>
 
-  <target name="BuildExamples" >
-    <echo message="Build starded at: ${datetime::now()}" />
-    <exec program="${MSBuildDir}msbuild.exe">
-      <arg value="${ExamplesDir}\CSharp\CSharp.sln" />
-      <arg value="/target:${Target}" />
-      <arg value="/maxcpucount" />
-      <arg value="/fl" />
-      <arg value="/flp:Verbosity=Normal;LogFile=Examples.build-Release-Any CPU.log" />
-      <arg value="/clp:NoItemAndPropertyList" />
-      <arg value="/verbosity:n" />
-      <arg value="/nologo" />
-      <arg value="/p:Configuration=Release" />
-      <arg value="/p:Platform=Any CPU" />
-    </exec>
-  </target>
-
   <target name="BuildInstall" >
     <echo message="Build Install for ${SolutionFile} (${Target} Install|${PlatformAll}) started at: ${datetime::now()}" />
     <exec program="${MSBuildDir}msbuild.exe">
