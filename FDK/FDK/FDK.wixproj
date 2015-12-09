@@ -51,7 +51,6 @@
     <SuppressIces>ICE80</SuppressIces>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Examples.wxs" />
     <Compile Include="FDK.wxs" />
     <Compile Include="Gui\InstallDirDlgEx.wxs" />
     <Compile Include="Gui\OlderVersionDlg.wxs" />
