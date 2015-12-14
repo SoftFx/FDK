@@ -10,7 +10,7 @@
         [TestMethod]
         public void CloseOrDeleteOrTradeRecords()
         {
-            TestHelpers.Execute(this.CloseOrDeleteOrTradeRecords, Configuration.DataTradeGrossConnectionBuilders);
+            TestHelpers.Execute(this.CloseOrDeleteOrTradeRecords, Configuration.ConnectionBuilders(AccountType.Gross, Configuration.ConnectionType.Trade));
         }
 
         void CloseOrDeleteOrTradeRecords(ConnectionStringBuilder builder)

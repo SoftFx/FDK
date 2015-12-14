@@ -197,7 +197,7 @@ bool CFxExecutionReport::CopyCreatedAndModifiedDateTime(CFxOrder& order) const
 
 bool CFxExecutionReport::TryGetClosedPosition(string& orderId, double& leavesVolume, double& commission, double& agentCommission, double& swap) const
 {
-	if ((FxOrderType_Position != OrderType) || (FxExecutionType_Trade != ExecutionType))
+	if ( !( (FxOrderType_Limit != OrderType || FxOrderType_Stop != OrderType) && (FxExecutionType_Trade == ExecutionType)) )
 	{
 		return false;
 	}

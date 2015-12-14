@@ -102,6 +102,9 @@
     <ClInclude Include="Local_Server.h">
       <Filter>Local\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -153,5 +156,15 @@
     <Xml Include="LrpProvider.xml">
       <Filter>_Resources</Filter>
     </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc">
+      <Filter>_Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico">
+      <Filter>_Resources</Filter>
+    </Image>
   </ItemGroup>
 </Project>

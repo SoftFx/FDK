@@ -107,7 +107,7 @@ void CDataTradeCache::DoUpdateAssets(const string& currency, const double balanc
         entry.Balance = balance;
         updated = true;
 
-        if (entry.Balance == 0)
+        if (abs(entry.Balance) < DBL_EPSILON)
         {
             m_accountInfo.Assets.erase(m_accountInfo.Assets.begin() + n);
         }

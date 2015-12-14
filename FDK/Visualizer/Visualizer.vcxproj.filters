@@ -85,10 +85,18 @@
     <ResourceCompile Include="Visualizer.rc">
       <Filter>Resources</Filter>
     </ResourceCompile>
+    <ResourceCompile Include="app.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="FixFields.xml">
       <Filter>Resources</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico">
+      <Filter>Resources</Filter>
+    </Image>
   </ItemGroup>
 </Project>

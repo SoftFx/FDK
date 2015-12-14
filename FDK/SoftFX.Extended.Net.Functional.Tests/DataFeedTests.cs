@@ -77,7 +77,7 @@
         [TestMethod]
         public void CreateAndDestroy()
         {
-            TestHelpers.Execute(this.CreateAndDestroy, Configuration.DataFeedConnectionBuilders);
+            TestHelpers.Execute(this.CreateAndDestroy, Configuration.ConnectionBuilders(AccountType.Gross, Configuration.ConnectionType.Feed));
         }
 
         void CreateAndDestroy(ConnectionStringBuilder builder)
@@ -106,7 +106,7 @@
         [TestMethod]
         public void Logon()
         {
-            TestHelpers.Execute(this.Logon, Configuration.DataFeedConnectionBuilders);
+            TestHelpers.Execute(this.Logon, Configuration.ConnectionBuilders(AccountType.Gross, Configuration.ConnectionType.Feed));
         }
 
         void Logon(ConnectionStringBuilder builder)
@@ -136,7 +136,7 @@
         [TestMethod]
         public void RegularLogout()
         {
-            TestHelpers.Execute(this.RegularLogout, Configuration.DataFeedConnectionBuilders);
+            TestHelpers.Execute(this.RegularLogout, Configuration.ConnectionBuilders(AccountType.Gross, Configuration.ConnectionType.Feed));
         }
 
         void RegularLogout(ConnectionStringBuilder builder)
@@ -163,7 +163,7 @@
         [TestMethod, Ignore]
         public void ConnectionErrorLogout()
         {
-            TestHelpers.Execute(this.ConnectionErrorLogout, Configuration.DataFeedConnectionBuilders);
+            TestHelpers.Execute(this.ConnectionErrorLogout, Configuration.ConnectionBuilders(AccountType.Gross, Configuration.ConnectionType.Feed));
         }
 
         void ConnectionErrorLogout(ConnectionStringBuilder builder)
@@ -193,7 +193,7 @@
         [TestMethod]
         public void NotValidUsernameAndPasswordLogout()
         {
-            TestHelpers.Execute(this.NotValidUsernameAndPasswordLogout, Configuration.DataFeedConnectionBuilders);
+            TestHelpers.Execute(this.NotValidUsernameAndPasswordLogout, Configuration.ConnectionBuilders(AccountType.Gross, Configuration.ConnectionType.Feed));
         }
 
         void NotValidUsernameAndPasswordLogout(ConnectionStringBuilder builder)
@@ -234,7 +234,7 @@
         [TestMethod]
         public void CorrectSubscribeToQuotes()
         {
-            TestHelpers.Execute(this.CorrectSubscribeToQuotes, Configuration.DataFeedConnectionBuilders);
+            TestHelpers.Execute(this.CorrectSubscribeToQuotes, Configuration.ConnectionBuilders(AccountType.Gross, Configuration.ConnectionType.Feed));
         }
 
         void CorrectSubscribeToQuotes(ConnectionStringBuilder builder)
@@ -257,7 +257,7 @@
         [TestMethod]
         public void IncorrectSubscribeToQuotes()
         {
-            TestHelpers.Execute(this.IncorrectSubscribeToQuotes, Configuration.DataFeedConnectionBuilders);
+            TestHelpers.Execute(this.IncorrectSubscribeToQuotes, Configuration.ConnectionBuilders(AccountType.Gross, Configuration.ConnectionType.Feed));
         }
 
         void IncorrectSubscribeToQuotes(ConnectionStringBuilder builder)
@@ -320,7 +320,7 @@
         [TestMethod]
         public void Tick()
         {
-            TestHelpers.Execute(this.Tick, Configuration.DataFeedConnectionBuilders);
+            TestHelpers.Execute(this.Tick, Configuration.ConnectionBuilders(AccountType.Gross, Configuration.ConnectionType.Feed));
         }
 
         public void Tick(ConnectionStringBuilder builder)
@@ -351,7 +351,7 @@
         //[TestMethod]
         //public void ForwardAndBackwardBarsRequestConsistency()
         //{
-        //    UnitEx.Execute(this.ForwardAndBackwardBarsRequestConsistency, Configuration.DataFeedConnectionBuilders);
+        //    UnitEx.Execute(this.ForwardAndBackwardBarsRequestConsistency, Configuration.ConnectionBuilders(AccountType.Gross, Configuration.ConnectionType.Feed));
         //}
 
         //private void ForwardAndBackwardBarsRequestConsistency(ConnectionStringBuilder builder)
@@ -390,7 +390,7 @@
         [TestMethod]
         public void ForwardBarsEnumeration()
         {
-            TestHelpers.Execute(this.ForwardBarsEnumeration, Configuration.DataFeedConnectionBuilders);
+            TestHelpers.Execute(this.ForwardBarsEnumeration, Configuration.ConnectionBuilders(AccountType.Gross, Configuration.ConnectionType.Feed));
         }
 
         void ForwardBarsEnumeration(ConnectionStringBuilder builder)
@@ -435,7 +435,7 @@
         [TestMethod]
         public void BackwardBarsEnumeration()
         {
-            TestHelpers.Execute(this.BackwardBarsEnumeration, Configuration.DataFeedConnectionBuilders);
+            TestHelpers.Execute(this.BackwardBarsEnumeration, Configuration.ConnectionBuilders(AccountType.Gross, Configuration.ConnectionType.Feed));
         }
 
         void BackwardBarsEnumeration(ConnectionStringBuilder builder)
@@ -476,7 +476,7 @@
         [TestMethod]
         public void ForwardAndBackwardBarsEnumerationConsistency()
         {
-            TestHelpers.Execute(this.ForwardAndBackwardBarsEnumerationConsistency, Configuration.DataFeedConnectionBuilders);
+            TestHelpers.Execute(this.ForwardAndBackwardBarsEnumerationConsistency, Configuration.ConnectionBuilders(AccountType.Gross, Configuration.ConnectionType.Feed));
         }
 
         void ForwardAndBackwardBarsEnumerationConsistency(ConnectionStringBuilder builder)
@@ -510,6 +510,7 @@
                 Assert.IsTrue(first.To == second.To);
             }
         }
+
 
         #endregion
     }

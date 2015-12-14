@@ -150,10 +150,18 @@
     <ResourceCompile Include="FixProvider.rc">
       <Filter>_Resources</Filter>
     </ResourceCompile>
+    <ResourceCompile Include="app.rc">
+      <Filter>_Resources</Filter>
+    </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="FixProvider.xml">
       <Filter>_Resources</Filter>
     </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico">
+      <Filter>_Resources</Filter>
+    </Image>
   </ItemGroup>
 </Project>

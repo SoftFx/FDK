@@ -79,7 +79,7 @@
         [TestMethod]
         public void CreateAndDestroy()
         {
-            TestHelpers.Execute(this.CreateAndDestroy, Configuration.DataTradeGrossConnectionBuilders);
+            TestHelpers.Execute(this.CreateAndDestroy, Configuration.ConnectionBuilders(AccountType.Gross, Configuration.ConnectionType.Trade));
         }
 
         void CreateAndDestroy(ConnectionStringBuilder builder)
@@ -92,7 +92,7 @@
         [TestMethod]
         public void SendMarketOrder()
         {
-            TestHelpers.Execute(this.SendMarketOrder, Configuration.DataTradeGrossConnectionBuilders);
+            TestHelpers.Execute(this.SendMarketOrder, Configuration.ConnectionBuilders(AccountType.Gross, Configuration.ConnectionType.Trade));
         }
 
         void SendMarketOrder(ConnectionStringBuilder builder)
@@ -115,7 +115,7 @@
         [TestMethod]
         public void SendLimitOrder()
         {
-            TestHelpers.Execute(this.SendLimitOrder, Configuration.DataTradeGrossConnectionBuilders);
+            TestHelpers.Execute(this.SendLimitOrder, Configuration.ConnectionBuilders(AccountType.Gross, Configuration.ConnectionType.Trade));
         }
 
         void SendLimitOrder(ConnectionStringBuilder builder)
@@ -140,7 +140,7 @@
         [TestMethod]
         public void SendStopOrder()
         {
-            TestHelpers.Execute(this.SendStopOrder, Configuration.DataTradeGrossConnectionBuilders);
+            TestHelpers.Execute(this.SendStopOrder, Configuration.ConnectionBuilders(AccountType.Gross, Configuration.ConnectionType.Trade));
         }
 
         void SendStopOrder(ConnectionStringBuilder builder)
@@ -164,7 +164,7 @@
         [TestMethod]
         public void ModifyLimitOrder()
         {
-            TestHelpers.Execute(this.ModifyLimitOrder, Configuration.DataTradeGrossConnectionBuilders);
+            TestHelpers.Execute(this.ModifyLimitOrder, Configuration.ConnectionBuilders(AccountType.Gross, Configuration.ConnectionType.Trade));
         }
 
         void ModifyLimitOrder(ConnectionStringBuilder builder)
@@ -283,7 +283,7 @@
         [TestMethod]
         public void ModifyPosition()
         {
-            TestHelpers.Execute(this.ModifyPosition, Configuration.DataTradeGrossConnectionBuilders);
+            TestHelpers.Execute(this.ModifyPosition, Configuration.ConnectionBuilders(AccountType.Gross, Configuration.ConnectionType.Trade));
         }
 
         void ModifyPosition(ConnectionStringBuilder builder)
@@ -319,8 +319,8 @@
         [TestMethod]
         public void TradeReports()
         {
-            TestHelpers.Execute(this.TradeReports, Configuration.DataTradeGrossConnectionBuilders, new TestContext(AccountType.Gross));
-            TestHelpers.Execute(this.TradeReports, Configuration.DataTradeNetConnectionBuilders, new TestContext(AccountType.Net));
+            TestHelpers.Execute(this.TradeReports, Configuration.ConnectionBuilders(AccountType.Gross, Configuration.ConnectionType.Trade), new TestContext(AccountType.Gross));
+            TestHelpers.Execute(this.TradeReports, Configuration.ConnectionBuilders(AccountType.Net, Configuration.ConnectionType.Trade), new TestContext(AccountType.Net));
         }
 
         void TradeReports(ConnectionStringBuilder builder, TestContext testContext)
@@ -360,7 +360,7 @@
         [TestMethod]
         public void CloseBy()
         {
-            TestHelpers.Execute(this.CloseBy, Configuration.DataTradeGrossConnectionBuilders);
+            TestHelpers.Execute(this.CloseBy, Configuration.ConnectionBuilders(AccountType.Gross, Configuration.ConnectionType.Trade));
         }
         void CloseBy(ConnectionStringBuilder builder)
         {
