@@ -100,7 +100,7 @@ for /d %25%25X in (.\%2a) do (
 	cd ..
 )
 cd ..\..\FDK\FDK
-heat dir ..\..\Examples -ag -cg Examples -dr APPLICATIONFOLDER -sfrag -fragment -out ..\$(ProjectName)\Examples.wxs -var var.SourceDir</PreBuildEvent>
+rem heat dir ..\..\Examples -ag -cg Examples -dr APPLICATIONFOLDER -sfrag -fragment -out ..\$(ProjectName)\Examples.wxs -var var.SourceDir</PreBuildEvent>
   </PropertyGroup>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.
