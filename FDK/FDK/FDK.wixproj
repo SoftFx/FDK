@@ -51,6 +51,7 @@
     <SuppressIces>ICE80</SuppressIces>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Examples.wxs" />
     <Compile Include="FDK.wxs" />
     <Compile Include="Gui\InstallDirDlgEx.wxs" />
     <Compile Include="Gui\OlderVersionDlg.wxs" />
@@ -100,7 +101,7 @@ for /d %25%25X in (.\%2a) do (
 	cd ..
 )
 cd ..\..\FDK\FDK
-rem heat dir ..\..\Examples -ag -cg Examples -dr APPLICATIONFOLDER -sfrag -fragment -out ..\$(ProjectName)\Examples.wxs -var var.SourceDir</PreBuildEvent>
+heat dir ..\..\Examples -ag -cg Examples -dr APPLICATIONFOLDER -sfrag -fragment -out ..\$(ProjectName)\Examples.wxs -var var.SourceDir</PreBuildEvent>
   </PropertyGroup>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.
