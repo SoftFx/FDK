@@ -199,6 +199,7 @@
     <zip zipfile="${ArtifactsDir}\FDK ${Build}\FDK.zip">
       <fileset basedir="${SourcesDir}\Release\">
         <include name="SoftFX.Extended.Net.*" />
+        <include name="SoftFX.Lrp.*" />
       </fileset>
     </zip>
     <zip zipfile="${ArtifactsDir}\FDK ${Build}\Help.zip">
