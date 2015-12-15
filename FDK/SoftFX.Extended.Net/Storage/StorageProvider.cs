@@ -38,8 +38,8 @@
 
 		static StorageProvider()
 		{
-			Native.Initialize();
-			Construct();
+            Bootstrapper.Initialize();
+            Construct();
 		}
 
 		static void Construct()

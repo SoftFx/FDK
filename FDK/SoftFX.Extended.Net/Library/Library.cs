@@ -142,7 +142,7 @@ namespace SoftFX.Extended
         /// </summary>
         public static void Initialize()
         {
-            Native.Initialize();
+            Bootstrapper.Initialize();
         }
 
         /// <summary>

@@ -64,7 +64,7 @@
 
         static DataClient()
         {
-            Native.Initialize();
+            Bootstrapper.Initialize();
         }
 
         #endregion

@@ -101,6 +101,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Bootstrapper.cs" />
     <Compile Include="Entities\AssetInfo.cs" />
     <Compile Include="Entities\CurrencyInfo.cs" />
     <Compile Include="Entities\FileChunk.cs" />
