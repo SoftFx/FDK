@@ -1,12 +1,16 @@
 ﻿namespace FeedRebuild
 {
     using System;
+    using SoftFX.Extended;
     using SoftFX.Extended.Storage;
 
 	class Program
 	{
 		static void Main(string[] args)
 		{
+            // Bootstrap FDK libraries
+            Bootstrapper.Initialize();
+
             if (args.Length == 4)
 			{
 				var location = args[0];

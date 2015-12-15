@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Reflection;
 
-namespace SoftFX.Extended.Core
+namespace SoftFX.Extended
 {
-    using ManagedLibrary = Library;
     using Resources;
 
     /// <summary>
@@ -23,11 +22,11 @@ namespace SoftFX.Extended.Core
             {
                 if (!_initialized)
                 {
-                    ManagedLibrary.CheckRedistPackages();
-                    ManagedLibrary.MarkAsReadOnly();
-                    ManagedLibrary.ModulesManager.Extract();
+                    Library.CheckRedistPackages();
+                    Library.MarkAsReadOnly();
+                    Library.ModulesManager.Extract();
 
-                    if (ManagedLibrary.ResolveDotNetAssemblies)
+                    if (Library.ResolveDotNetAssemblies)
                     {
                         AppDomain.CurrentDomain.ReflectionOnlyAssemblyResolve += OnAssemblyResolve;
                         AppDomain.CurrentDomain.AssemblyResolve += OnAssemblyResolve;
@@ -47,7 +46,7 @@ namespace SoftFX.Extended.Core
             TraceUtils.WriteLine("Resolving: '{0}'", args.Name);
 
             var name = args.Name.Substring(0, length);
-            var result = ManagedLibrary.ModulesManager.LoadAssembly(name);
+            var result = Library.ModulesManager.LoadAssembly(name);
 
             if (result == null)
                 return null;

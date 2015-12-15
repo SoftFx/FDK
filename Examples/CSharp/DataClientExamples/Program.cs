@@ -6,7 +6,9 @@
     {
         static void Main(string[] args)
         {
-            Library.Path = "<FRE>";
+            // Bootstrap FDK libraries
+            Bootstrapper.Initialize();
+
             //TestConnectionExample.Run();
             //TestFeedConnectionExample.Run();
             TestTradeConnectionExample.Run();

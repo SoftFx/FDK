@@ -12,7 +12,9 @@
         [STAThread]
         static void Main()
         {
-            Library.Path = "<FRE>";
+            // Bootstrap FDK libraries
+            Bootstrapper.Initialize();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());

@@ -1,10 +1,10 @@
-﻿using System;
-using System.IO;
-using SoftFX.Extended;
-using SoftFX.Extended.Events;
-
-namespace AccountInfo
+﻿namespace AccountInfo
 {
+    using System;
+    using System.IO;
+    using SoftFX.Extended;
+    using SoftFX.Extended.Events;
+
     class Program
     {
         public static string LogPath = "Logs";
@@ -44,6 +44,9 @@ namespace AccountInfo
 
         static void Main(string[] args)
         {
+            // Bootstrap FDK libraries
+            Bootstrapper.Initialize();
+
             if (args.Length != 3)
             {
                 Console.WriteLine("Usage: AccountInfo.exe address login password");
