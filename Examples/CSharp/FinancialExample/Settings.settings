@@ -1,0 +1,40 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FinancialExample" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Address" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Port" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SSL" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Username" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ConnectionStrings" Type="SoftFX.Extended.FixConnectionStringBuilder" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;FixConnectionStringBuilder xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;FixVersion&gt;FIX.4.4&lt;/FixVersion&gt;
+  &lt;Address /&gt;
+  &lt;Port&gt;5003&lt;/Port&gt;
+  &lt;SenderCompId /&gt;
+  &lt;TargetCompId&gt;EXECUTOR&lt;/TargetCompId&gt;
+  &lt;Username /&gt;
+  &lt;Password /&gt;
+  &lt;SecureConnection&gt;true&lt;/SecureConnection&gt;
+  &lt;FixLogDirectory /&gt;
+  &lt;FixEventsFileName /&gt;
+  &lt;FixMessagesFileName /&gt;
+  &lt;DecodeLogFixMessages&gt;true&lt;/DecodeLogFixMessages&gt;
+  &lt;ProtocolVersion&gt;ext.1.7&lt;/ProtocolVersion&gt;
+  &lt;ExcludeMessagesFromLogs&gt;W&lt;/ExcludeMessagesFromLogs&gt;
+&lt;/FixConnectionStringBuilder&gt;</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

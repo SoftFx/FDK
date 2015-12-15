@@ -31,7 +31,7 @@
     <?endif?>
     <?include Documentation.wxi ?>
     <!-- including examples -->
-    <!-- <?include Examples.wxi ?> -->
+    <?include Examples.wxi ?>
     <!-- including external libraries -->
     <?include External\External.wxi ?>
     <!-- including user interface -->

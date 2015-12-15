@@ -29,6 +29,28 @@
       <arg value="/p:Platform=${Platform64}" />
     </exec>
 
+    <echo message="BuildSolution for ${SourcesDirExamples}\${ExamplesSolutionFile} (${Configuration}|${PlatformAll}) started at: ${datetime::now()}" />
+    <exec program="${MSBuildDir}msbuild.exe">
+      <arg value="${SourcesDirExamples}\${ExamplesSolutionFile}" />
+      <arg value="/target:${Target}" />
+      <arg value="/maxcpucount" />
+      <arg value="/fl" />
+      <arg value="/flp:Verbosity=Normal;LogFile=Examples.build-${Configuration}-${PlatformAll}.log" />
+      <arg value="/clp:NoItemAndPropertyList" />
+      <arg value="/verbosity:n" />
+      <arg value="/nologo" />
+      <arg value="/p:Configuration=${Configuration}" />
+      <arg value="/p:Platform=${PlatformAll}" />
+    </exec>
+
+    <copy file="${SourcesDirExamples}\Release\AccountInfo.exe"              tofile="..\FRE\AccountInfo.exe" />
+    <copy file="${SourcesDirExamples}\Release\QuotesDownloader.exe.config"  tofile="..\FRE\QuotesDownloader.exe.config" />
+    <copy file="${SourcesDirExamples}\Release\QuotesDownloader.exe"         tofile="..\FRE\QuotesDownloader.exe" />
+    <copy file="${SourcesDirExamples}\Release\RealTimeLevel2.exe"           tofile="..\FRE\RealTimeLevel2.exe" />
+    <copy file="${SourcesDirExamples}\Release\RealTimeLevel2.exe.config"    tofile="..\FRE\RealTimeLevel2.exe.config" />
+    <copy file="${SourcesDirExamples}\Release\QuotesExporter.exe"           tofile="..\FRE\QuotesExporter.exe" />
+    <copy file="${SourcesDirExamples}\Release\FinancialExample.exe"         tofile="..\FRE\FinancialExample.exe" />
+
     <echo message="BuildSolution for FDK_Documetation.bat (SandCastle) started at: ${datetime::now()}" />
     <exec program="${SourcesDir}\SandCastle\FDK_Documetation.bat" >
       <arg line="${SourcesDir}\SandCastle\FDK_Documetation.shfbproj" />
@@ -82,6 +104,22 @@
         <include name="**/*" />
       </fileset>
     </zip>
+  </target>
+
+  <target name="BuildExamples" >
+    <echo message="Build starded at: ${datetime::now()}" />
+    <exec program="${MSBuildDir}msbuild.exe">
+      <arg value="${ExamplesDir}\CSharp\CSharp.sln" />
+      <arg value="/target:${Target}" />
+      <arg value="/maxcpucount" />
+      <arg value="/fl" />
+      <arg value="/flp:Verbosity=Normal;LogFile=Examples.build-Release-Any CPU.log" />
+      <arg value="/clp:NoItemAndPropertyList" />
+      <arg value="/verbosity:n" />
+      <arg value="/nologo" />
+      <arg value="/p:Configuration=Release" />
+      <arg value="/p:Platform=Any CPU" />
+    </exec>
   </target>
 
   <target name="BuildInstall" >
