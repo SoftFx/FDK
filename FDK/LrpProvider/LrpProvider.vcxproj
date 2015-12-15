@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B240E01F-EF53-4088-9782-42E2D412D363}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>LrpProvider</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration).$(PlatformTarget)\</IntDir>
+    <TargetName>SoftFX.$(ProjectName).$(PlatformTarget)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration).$(PlatformTarget)\</IntDir>
+    <TargetName>SoftFX.$(ProjectName).$(PlatformTarget)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration).$(PlatformTarget)\</IntDir>
+    <TargetName>SoftFX.$(ProjectName).$(PlatformTarget)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration).$(PlatformTarget)\</IntDir>
+    <TargetName>SoftFX.$(ProjectName).$(PlatformTarget)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;LRPPROVIDER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <BrowseInformation>true</BrowseInformation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>LrpProvider.def</ModuleDefinitionFile>
+      <AdditionalDependencies>Ws2_32.lib;SoftFX.Lrp.x86.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\External\Lib</AdditionalLibraryDirectories>
+    </Link>
+    <PreBuildEvent>
+      <Command>..\..\External\bin\lrp.exe LrpClient.xml  .  /language:C++ /side:server /mode:remote /prefix:Client_
+..\..\External\bin\lrp.exe ..\LrpServer\LrpServer.xml  .  /language:C++ /side:client /mode:remote /prefix:Server_
+..\..\External\bin\lrp.exe LrpProvider.xml  .  /language:C++ /side:server /mode:local /prefix:Local_</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>if not exist ..\..\FRE (md ..\..\FRE)
+copy /Y "$(TargetPath)" ..\..\FRE\
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
+    </PostBuildEvent>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;LRPPROVIDER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>LrpProvider.def</ModuleDefinitionFile>
+      <AdditionalDependencies>Ws2_32.lib;SoftFX.Lrp.x64.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\External\Lib</AdditionalLibraryDirectories>
+    </Link>
+    <PreBuildEvent>
+      <Command>..\..\External\bin\lrp.exe LrpClient.xml  .  /language:C++ /side:server /mode:remote /prefix:Client_
+..\..\External\bin\lrp.exe ..\LrpServer\LrpServer.xml  .  /language:C++ /side:client /mode:remote /prefix:Server_
+..\..\External\bin\lrp.exe LrpProvider.xml  .  /language:C++ /side:server /mode:local /prefix:Local_</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>if not exist ..\..\FRE (md ..\..\FRE)
+copy /Y "$(TargetPath)" ..\..\FRE\
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;LRPPROVIDER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>LrpProvider.def</ModuleDefinitionFile>
+      <AdditionalDependencies>Ws2_32.lib;SoftFX.Lrp.x86.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\External\Lib</AdditionalLibraryDirectories>
+    </Link>
+    <PreBuildEvent>
+      <Command>..\..\External\bin\lrp.exe LrpClient.xml  .  /language:C++ /side:server /mode:remote /prefix:Client_
+..\..\External\bin\lrp.exe ..\LrpServer\LrpServer.xml  .  /language:C++ /side:client /mode:remote /prefix:Server_
+..\..\External\bin\lrp.exe LrpProvider.xml  .  /language:C++ /side:server /mode:local /prefix:Local_</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>if not exist ..\..\FRE (md ..\..\FRE)
+copy /Y "$(TargetPath)" ..\..\FRE\
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;LRPPROVIDER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>LrpProvider.def</ModuleDefinitionFile>
+      <AdditionalDependencies>Ws2_32.lib;SoftFX.Lrp.x64.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\External\Lib</AdditionalLibraryDirectories>
+    </Link>
+    <PreBuildEvent>
+      <Command>..\..\External\bin\lrp.exe LrpClient.xml  .  /language:C++ /side:server /mode:remote /prefix:Client_
+..\..\External\bin\lrp.exe ..\LrpServer\LrpServer.xml  .  /language:C++ /side:client /mode:remote /prefix:Server_
+..\..\External\bin\lrp.exe LrpProvider.xml  .  /language:C++ /side:server /mode:local /prefix:Local_</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>if not exist ..\..\FRE (md ..\..\FRE)
+copy /Y "$(TargetPath)" ..\..\FRE\
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Local_Channel.h" />
+    <ClInclude Include="Client.h" />
+    <ClInclude Include="Client_Server.hpp" />
+    <ClInclude Include="Client_TypesSerializer.hpp" />
+    <ClInclude Include="Local_Server.h" />
+    <ClInclude Include="LrpCodec.h" />
+    <ClInclude Include="LrpCodecImpl.h" />
+    <ClInclude Include="Local_Server.hpp" />
+    <ClInclude Include="Local_TypesSerializer.hpp" />
+    <ClInclude Include="LrpConnection.h" />
+    <ClInclude Include="LrpProvider.h" />
+    <ClInclude Include="LrpReceiver.h" />
+    <ClInclude Include="LrpSender.h" />
+    <ClInclude Include="Server.hpp" />
+    <ClInclude Include="Server_Logging.h" />
+    <ClInclude Include="Server_Logging.hpp" />
+    <ClInclude Include="Server_Signature.hpp" />
+    <ClInclude Include="Server_TypesSerializer.hpp" />
+    <ClInclude Include="SimpleCodec.h" />
+    <ClInclude Include="Socket.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Local_Channel.cpp" />
+    <ClCompile Include="Client.cpp" />
+    <ClCompile Include="LrpCodec.cpp" />
+    <ClCompile Include="LrpCodecImpl.cpp" />
+    <ClCompile Include="LrpConnection.cpp" />
+    <ClCompile Include="LrpProvider.cpp" />
+    <ClCompile Include="LrpReceiver.cpp" />
+    <ClCompile Include="LrpSender.cpp" />
+    <ClCompile Include="Local_Server.cpp" />
+    <ClCompile Include="SimpleCodec.cpp" />
+    <ClCompile Include="Socket.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LrpProvider.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="LrpClient.xml">
+      <SubType>Designer</SubType>
+    </Xml>
+    <Xml Include="LrpProvider.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.vcxproj">
+      <Project>{8b29a897-6528-4d86-bf8b-4e19328f3174}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\LrpCommon\LrpCommon.vcxproj">
+      <Project>{ffec3ea6-1fee-4e10-8395-22c0cf9ca604}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Sal\Sal.vcxproj">
+      <Project>{4e42e097-ec94-44eb-a93a-ca58783e4b85}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

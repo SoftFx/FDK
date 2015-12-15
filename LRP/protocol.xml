@@ -1,0 +1,45 @@
+<Protocol>
+	<Types>
+		<Type name="UsedType" CSharpFullName="LocalCSharpClient.UsedType" CppFullName="CUsedType">
+			<Member name="Code" type="int32" />
+			<Member name="Description" type="astring" />
+		</Type>
+		<Type name="InType" CSharpFullName="LocalCSharpClient.InType" CppFullName="CInType">
+			<Member name="Used" type="UsedType" />
+			<Member name="Value" type="double" />
+		</Type>
+		<Type name="InOutType" CSharpFullName="LocalCSharpClient.InOutType" CppFullName="CInOutType">
+			<Member name="Used" type="UsedType" />
+			<Member name="Value2" type="double" />
+		</Type>
+		<Type name="OutType" CSharpFullName="LocalCSharpClient.OutType" CppFullName="COutType">
+			<Member name="Used" type="UsedType" />
+			<Member name="Value3" type="double" />
+		</Type>
+		<Type name="ReturnType" CSharpFullName="LocalCSharpClient.ReturnType" CppFullName="CReturnType">
+			<Member name="Used" type="UsedType" />
+			<Member name="Value4" type="double" />
+		</Type>
+	</Types>
+	<Components>
+		<Component name="Simple">
+			<Method name="Inverse">
+				<Param name="text" type="astring" direction="in"/>
+				<Return type="astring" />
+			</Method>
+			<Method name="Factorial">
+				<Param name="value" type="int32" direction="in"/>
+				<Param name="result" type="int32" direction="out"/>
+				<Return type="bool" />
+			</Method>
+		</Component>
+		<Component name="Extended">
+			<Method name ="Do">
+				<Param name="inArg" type="InType" direction="in" />
+				<Param name="inOutArg" type="InOutType" direction="in-out" />
+				<Param name="outArg" type="OutType" direction="out" />
+				<Return type="ReturnType" />
+			</Method>
+		</Component>
+	</Components>
+</Protocol>

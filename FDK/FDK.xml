@@ -1,0 +1,707 @@
+<Protocol>
+  <Types>
+    <Type name="ArgumentNullException" CSharpFullName="System.ArgumentNullException" CppFullName="CArgumentNullException" kind="exception"/>
+    <Type name="ArgumentException" CSharpFullName="System.ArgumentException" CppFullName="CArgumentException" kind="exception"/>
+    <Type name="InvalidHandleException" CSharpFullName="SoftFX.Extended.Errors.InvalidHandleException" CppFullName="CInvalidHandleException" kind="exception"/>
+    <Type name="RejectException" CSharpFullName="SoftFX.Extended.Errors.RejectException" CppFullName="CRejectException" kind="exception">
+      <Member name="Code" type="int32" />
+    </Type>
+    <Type name="TimeoutException" CSharpFullName="SoftFX.Extended.Errors.TimeoutException" CppFullName="CTimeoutException" kind="exception">
+      <Member name="WaitingInterval" type="int32" />
+      <Member name="OperationId" type="astring" />
+    </Type>
+    <Type name="SendException" CSharpFullName="SoftFX.Extended.Errors.SendException" CppFullName="CSendException" kind="exception"/>
+    <Type name="LogoutException" CSharpFullName="SoftFX.Extended.Errors.LogoutException" CppFullName="CLogoutException" kind="exception"/>
+    <Type name="UnsupportedFeatureException" CSharpFullName="SoftFX.Extended.Errors.UnsupportedFeatureException" CppFullName="CUnsupportedFeatureException" kind="exception">
+      <Member name="Feature" type="astring" />
+    </Type>
+    <Type name="RuntimeException" CSharpFullName="SoftFX.Extended.Errors.RuntimeException" CppFullName="std::runtime_error" kind="exception"/>
+    <Type name="AccountType" CSharpFullName="SoftFX.Extended.AccountType" CppFullName="FxAccountType" kind="enum32"/>
+    <Type name="Severity" CSharpFullName="SoftFX.Extended.Severity" CppFullName="Severity" kind="enum32"/>
+    <Type name="NotificationType" CSharpFullName="SoftFX.Extended.NotificationType" CppFullName="NotificationType" kind="enum32" />
+    <Type name="ProfitCalcMode" CSharpFullName="SoftFX.Extended.ProfitCalcMode" CppFullName="ProfitCalcMode" kind="enum32" />
+    <Type name="MarginCalcMode" CSharpFullName="SoftFX.Extended.MarginCalcMode" CppFullName="MarginCalcMode" kind="enum32" />
+    <Type name="SessionStatus" CSharpFullName="SoftFX.Extended.SessionStatus" CppFullName="SessionStatus" kind="enum32" />
+    <Type name="Side" CSharpFullName="SoftFX.Extended.TradeRecordSide" CppFullName="FxTradeRecordSide" kind="enum32" />
+    <Type name="PriceType" CSharpFullName="SoftFX.Extended.PriceType" CppFullName="FxPriceType" kind="enum32" />
+    <Type name="TradeRecordSide" CSharpFullName="SoftFX.Extended.TradeRecordSide" CppFullName="FxTradeRecordSide" kind="enum32" />
+    <Type name="TradeRecordType" CSharpFullName="SoftFX.Extended.TradeRecordType" CppFullName="FxOrderType" kind="enum32" />
+    <Type name="FxOrderType" CSharpFullName="System.Int32" CppFullName="FxTradeRecordType" kind="enum32" />
+    <Type name="OrderType" CSharpFullName="SoftFX.Extended.OrderType" CppFullName="FxOrderType" kind="enum32" />
+    <Type name="LogoutReason" CSharpFullName="SoftFX.Extended.LogoutReason" CppFullName="FxLogoutReason" kind="enum32" />
+    <Type name="OrderStatus" CSharpFullName="SoftFX.Extended.OrderStatus" CppFullName="FxOrderStatus" kind="enum32" />
+    <Type name="ExecutionType" CSharpFullName="SoftFX.Extended.ExecutionType" CppFullName="FxExecutionType" kind="enum32" />
+    <Type name="RejectReason" CSharpFullName="SoftFX.Extended.RejectReason" CppFullName="FxRejectReason" kind="enum32" />
+    <Type name="CommissionType" CSharpFullName="SoftFX.Extended.CommissionType" CppFullName="FxCommissionType" kind="enum32" />
+    <Type name="CommissionChargeType" CSharpFullName="SoftFX.Extended.CommissionChargeType" CppFullName="FxCommissionChargeType" kind="enum32" />
+    <Type name="CommissionChargeMethod" CSharpFullName="SoftFX.Extended.CommissionChargeMethod" CppFullName="FxCommissionChargeMethod" kind="enum32" />
+    <Type name="Notification" CSharpFullName="SoftFX.Extended.Data.Notification" CppFullName="CNotification" kind="class">
+      <Member name="Severity" type="Severity" />
+      <Member name="Type" type="NotificationType" />
+      <Member name="Text" type="astring" />
+      <Member name="Balance" type="double" />
+      <Member name="TransactionAmount" type="double" />
+      <Member name="TransactionCurrency" type="astring" />
+    </Type>
+    <Type name="DataHistoryInfo" CSharpFullName="SoftFX.Extended.DataHistoryInfo" CppFullName="CDataHistoryInfo" kind="class">
+      <Member name="FromAll" type="time" />
+      <Member name="ToAll" type="time" />
+      <Member name="From" type="time?" />
+      <Member name="To" type="time?" />
+      <Member name="LastTickId" type="astring" />
+      <Member name="Files" type="StringArray" />
+      <Member name="Bars" type="BarArray" />
+    </Type>
+    <Type name="SymbolInfo" CSharpFullName="SoftFX.Extended.SymbolInfo" CppFullName="CFxSymbolInfo" kind="class">
+      <Member name="Name" type="astring" />
+      <Member name="Currency" type="astring" />
+      <Member name="SettlementCurrency" type="astring" />
+      <Member name="ContractMultiplier" type="double" />
+      <Member name="Precision" type="int32" />
+      <Member name="RoundLot" type="double" />
+      <Member name="MinTradeVolume" type="double" />
+      <Member name="MaxTradeVolume" type="double" />
+      <Member name="TradeVolumeStep" type="double" />
+      <Member name="ProfitCalcMode" type="ProfitCalcMode" />
+      <Member name="MarginCalcMode" type="MarginCalcMode" />
+      <Member name="MarginHedge" type="double" />
+      <Member name="MarginFactor" type="int32" />
+      <Member name="MarginFactorFractional" type="double?" />
+      <Member name="Color" type="int32" />
+      <Member name="CommissionType" type="CommissionType" />
+      <Member name="CommissionChargeType" type="CommissionChargeType" />
+      <Member name="CommissionChargeMethod" type="CommissionChargeMethod" />
+      <Member name="LimitsCommission" type="double" />
+      <Member name="Commission" type="double" />
+      <Member name="SwapSizeShort" type="double?" />
+      <Member name="SwapSizeLong" type="double?" />
+      <Member name="IsTradeEnabled" type="bool" />
+      <Member name="GroupSortOrder" type="int32" />
+      <Member name="SortOrder" type="int32" />
+      <Member name="CurrencySortOrder" type="int32" />
+      <Member name="SettlementCurrencySortOrder" type="int32" />
+      <Member name="CurrencyPrecision" type="int32" />
+      <Member name="SettlementCurrencyPrecision" type="int32" />    
+    </Type>
+    <Type name="SessionInfo" CSharpFullName="SoftFX.Extended.SessionInfo" CppFullName="CFxSessionInfo" kind="class">
+      <Member name="TradingSessionId" type="astring" />
+      <Member name="Status" type="SessionStatus" />
+      <Member name="ServerTimeZoneOffset" type="int32" />
+      <Member name="StartTime" type="time" />
+      <Member name="OpenTime" type="time" />
+      <Member name="CloseTime" type="time" />
+      <Member name="EndTime" type="time" />
+      <Member name="PlatformName" type="astring" />
+      <Member name="PlatformCompany" type="astring" />
+    </Type>
+    <Type name="SymbolInfoArray" kind="array">
+      <Value name="SymbolInfo" />
+    </Type>
+    <Type name="StringArray" kind="array">
+      <Value name="astring" />
+    </Type>
+    <Type name="ByteArray" kind="array">
+      <Value name="uint8" />
+    </Type>
+    <Type name="AssetInfo" CSharpFullName="SoftFX.Extended.AssetInfo" CppFullName="CAssetInfo" kind="class">
+      <Member name="Currency" type="astring" />
+      <Member name="Balance" type="double" />
+      <Member name="TradeAmount" type="double" />
+    </Type>
+    <Type name="AssetInfoArray" kind="array">
+      <Value name="AssetInfo" />
+    </Type>
+    <Type name="AccountInfo" CSharpFullName="SoftFX.Extended.AccountInfo" CppFullName="CFxAccountInfo" kind="class">
+      <Member name="AccountId" type="astring" />
+      <Member name="Type" type="AccountType" />
+      <Member name="Name" type="astring" />
+      <Member name="Email" type="astring" />
+      <Member name="Comment" type="astring" />
+      <Member name="Currency" type="astring" />
+      <Member name="RegistredDate" type="time?" />
+      <Member name="Leverage" type="int32" />
+      <Member name="Balance" type="double" />
+      <Member name="Margin" type="double" />
+      <Member name="Equity" type="double" />
+      <Member name="MarginCallLevel" type="double" />
+      <Member name="StopOutLevel" type="double" />
+      <Member name="IsValid" type="bool" />
+      <Member name="IsReadOnly" type="bool" />
+      <Member name="IsBlocked" type="bool" />
+      <Member name="Assets" type="AssetInfoArray" />
+    </Type>
+    <Type name="FileChunk" CSharpFullName="SoftFX.Extended.FxFileChunk" CppFullName="CFxFileChunk" kind="class">
+      <Member name="FileName" type="astring" />
+      <Member name="ChunksNumber" type="int32" />
+      <Member name="FileSize" type="int32" />
+      <Member name="Data" type="ByteArray" />
+    </Type>
+    <Type name="FxOrder" CSharpFullName="SoftFX.Extended.Data.FxOrder" CppFullName="CFxOrder" kind="class">
+      <Member name="OrderId" type="astring" />
+      <Member name="ClientOrderId" type="astring" />
+      <Member name="Symbol" type="astring" />
+      <Member name="Price" type="double" />
+      <Member name="NewPrice" type="double?" />
+      <Member name="InitialVolume" type="double" />
+      <Member name="Volume" type="double" />
+      <Member name="TakeProfit" type="double?" />
+      <Member name="StopLoss" type="double?" />
+      <Member name="Commission" type="double" />
+      <Member name="AgentCommission" type="double" />
+      <Member name="Swap" type="double" />
+      <Member name="Profit" type="double?" />
+      <Member name="Type" type="FxOrderType" />
+      <Member name="Side" type="TradeRecordSide" />
+      <Member name="Expiration" type="time?" />
+      <Member name="Created" type="time?" />
+      <Member name="Modified" type="time?" />
+      <Member name="Comment" type="wstring" />
+    </Type>
+    <Type name="FxOrderArray" kind="array">
+      <Value name="FxOrder" />
+    </Type>
+    <Type name="Bar" CSharpFullName="SoftFX.Extended.Bar" CppFullName="CFxBar" kind="class">
+      <Member name="Open" type="double" />
+      <Member name="Close" type="double" />
+      <Member name="High" type="double" />
+      <Member name="Low" type="double" />
+      <Member name="Volume" type="double" />
+      <Member name="From" type="time" />
+    </Type>
+    <Type name="QuoteEntry" CSharpFullName="SoftFX.Extended.QuoteEntry" CppFullName="CFxQuoteEntry" kind="class">
+      <Member name="Price" type="double" />
+      <Member name="Volume" type="double" />
+    </Type>
+    <Type name="QuoteEntryArray" kind="array">
+      <Value name="QuoteEntry" />
+    </Type>
+    <Type name="Quote" CSharpFullName="SoftFX.Extended.Quote" CppFullName="CFxQuote" kind="class">
+      <Member name="Symbol" type="astring" />
+      <Member name="CreatingTime" type="time" />
+      <Member name="Bids" type="QuoteEntryArray" />
+      <Member name="Asks" type="QuoteEntryArray" />
+      <Member name="Id" type="astring" />
+    </Type>
+    <Type name="QuoteArray" kind="array">
+      <Value name="Quote" />
+    </Type>
+    <Type name="BarArray" kind="array">
+      <Value name="Bar" />
+    </Type>
+    <Type name="Message" CSharpFullName="SoftFX.Extended.Core.FxMessage" CppFullName="CFxMessage" kind="class">
+      <Member name="Type" type="int32" />
+      <Member name="SendingTime" type="time?" />
+      <Member name="ReceivingTime" type="time?" />
+      <Member name="Data" type="lptr" />
+    </Type>
+    <Type name="Position" CSharpFullName="SoftFX.Extended.Position" CppFullName="CFxPositionReport" kind="class">
+      <Member name="Symbol" type="astring" />
+      <Member name="SettlementPrice" type="double" />
+      <Member name="BuyAmount" type="double" />
+      <Member name="SellAmount" type="double" />
+      <Member name="Commission" type="double" />
+      <Member name="AgentCommission" type="double" />
+      <Member name="Swap" type="double" />
+      <Member name="Profit" type="double?" />
+      <Member name="BuyPrice" type="double?" />
+      <Member name="SellPrice" type="double?" />
+    </Type>
+    <Type name="PositionArray" kind="array">
+      <Value name="Position" />
+    </Type>
+    <Type name="TradeTransactionReportType" CSharpFullName="SoftFX.Extended.Reports.TradeTransactionReportType" CppFullName="FxTradeTransactionReportType" kind="enum32"/>
+    <Type name="TradeTransactionReason" CSharpFullName="SoftFX.Extended.Reports.TradeTransactionReason" CppFullName="FxTradeTransactionReason" kind="enum32" />
+    <Type name="TradeTransactionReport" CSharpFullName="SoftFX.Extended.Reports.TradeTransactionReport" CppFullName="CFxTradeTransactionReport" kind="class">
+      <Member name="TradeTransactionReportType" type="TradeTransactionReportType" />
+      <Member name="TradeTransactionReason" type="TradeTransactionReason" />
+      <Member name="AccountBalance" type="double" />
+      <Member name="TransactionAmount" type="double" />
+      <Member name="TransactionCurrency" type="astring" />
+      <Member name="Id" type="astring" />
+      <Member name="ClientId" type="astring" />
+      <Member name="Quantity" type="double" />
+      <Member name="LeavesQuantity" type="double" />
+      <Member name="Price" type="double" />
+      <Member name="StopPrice" type="double" />
+      <Member name="TradeRecordType" type="TradeRecordType" />
+      <Member name="TradeRecordSide" type="TradeRecordSide" />
+      <Member name="Symbol" type="astring" />
+      <Member name="Comment" type="astring" />
+      <Member name="OrderCreated" type="time" />
+      <Member name="OrderModified" type="time" />
+      <Member name="PositionId" type="astring" />
+      <Member name="PositionById" type="astring" />
+      <Member name="PositionOpened" type="time" />
+      <Member name="PosOpenReqPrice" type="double" />
+      <Member name="PosOpenPrice" type="double" />
+      <Member name="PositionQuantity" type="double" />
+      <Member name="PositionLastQuantity" type="double" />
+      <Member name="PositionLeavesQuantity" type="double" />
+      <Member name="PositionCloseRequestedPrice" type="double" />
+      <Member name="PositionClosePrice" type="double" />
+      <Member name="PositionClosed" type="time" />
+      <Member name="PositionModified" type="time" />
+      <Member name="PosRemainingSide" type="TradeRecordSide" />
+      <Member name="PosRemainingPrice" type="double?" />
+      <Member name="Commission" type="double" />
+      <Member name="AgentCommission" type="double" />
+      <Member name="Swap" type="double" />
+      <Member name="CommCurrency" type="astring" />
+      <Member name="StopLoss" type="double" />
+      <Member name="TakeProfit" type="double" />
+      <Member name="NextStreamPositionId" type="astring" />
+      <Member name="TransactionTime" type="time" />
+      <Member name="OrderFillPrice" type="double?" />
+      <Member name="OrderLastFillAmount" type="double?" />
+      <Member name="OpenConversionRate" type="double?" />
+      <Member name="CloseConversionRate" type="double?" />
+      <Member name="ActionId" type="int32" />
+    </Type>
+    <Type name="ClosePositionResult" CSharpFullName="SoftFX.Extended.ClosePositionResult" CppFullName="CFxClosePositionResult" kind="class">
+      <Member name="ExecutedVolume" type="double" />
+      <Member name="ExecutedPrice" type="double" />
+      <Member name="Sucess" type="bool" />
+    </Type>
+    <Type name="ExecutionReport" CSharpFullName="SoftFX.Extended.ExecutionReport" CppFullName="CFxExecutionReport" kind="class">
+      <Member name="OrderId" type="astring" />
+      <Member name="ClientOrderId" type="astring" />
+      <Member name="OrderStatus" type="OrderStatus" />
+      <Member name="ExecutionType" type="ExecutionType" />
+      <Member name="Symbol" type="astring" />
+      <Member name="ExecutedVolume" type="double" />
+      <Member name="InitialVolume" type="double?" />
+      <Member name="LeavesVolume" type="double" />
+      <Member name="TradeAmount" type="double?" />
+      <Member name="Commission" type="double" />
+      <Member name="AgentCommission" type="double" />
+      <Member name="Swap" type="double" />
+      <Member name="OrderType" type="TradeRecordType" />
+      <Member name="OrderSide" type="TradeRecordSide" />
+      <Member name="AveragePrice" type="double?" />
+      <Member name="Price" type="double?" />
+      <Member name="StopPrice" type="double?" />
+      <Member name="Expiration" type="time?" />
+      <Member name="Created" type="time?" />
+      <Member name="Modified" type="time?" />
+      <Member name="RejectReason" type="RejectReason" />
+      <Member name="TakeProfit" type="double?" />
+      <Member name="StopLoss" type="double?" />
+      <Member name="Text" type="astring" />
+      <Member name="Comment" type="wstring" />
+      <Member name="ClosePositionRequestId" type="astring" />
+      <Member name="Assets" type="AssetInfoArray" />
+      <Member name="Balance" type="double" />
+    </Type>
+    <Type name="CurrencyInfo" CSharpFullName="SoftFX.Extended.CurrencyInfo" CppFullName="CFxCurrencyInfo" kind="class">
+      <Member name="Name" type="astring" />
+      <Member name="Description" type="astring" />
+      <Member name="SortOrder" type="int32" />
+      <Member name="Precision" type="int32" />    
+    </Type>
+    <Type name="CurrencyInfoArray" kind="array">
+      <Value name="CurrencyInfo" />
+    </Type>  
+  </Types>
+  <Components>
+    <Component name="Handle">
+      <Method name="Delete">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="void" />
+      </Method>
+      <Method name="NotificationFromHandle">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="Notification" />
+      </Method>
+    </Component>
+    <Component name="Converter">
+        <Method name="CurrenciesFromHandle">
+            <Param name="handle" type="lptr" direction="in" />
+            <Return type="CurrencyInfoArray" />
+        </Method>
+        <Method name="SymbolsFromHandle">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="SymbolInfoArray" />
+      </Method>
+      <Method name="SessionInfoFromHandle">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="SessionInfo" />
+      </Method>
+      <Method name="NotificationFromHandle">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="Notification" />
+      </Method>
+      <Method name="QuoteFromHandle">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="Quote" />
+      </Method>
+      <Method name="ProtocolVersionFromHandle">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="astring" />
+      </Method>
+      <Method name="AccountInfoFromHandle">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="AccountInfo" />
+      </Method>
+      <Method name="PositionFromHandle">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="Position" />
+      </Method>
+      <Method name="TradeTransactionReportFromHandle">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="TradeTransactionReport" />
+      </Method>
+      <Method name="ExecutionReportFromHandle">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="ExecutionReport" />
+      </Method>
+      <Method name="GetLogoutInfoFromHandle">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="text" type="astring" direction="out" />
+        <Param name="reason" type="LogoutReason" direction="out" />
+        <Param name="code" type="int32" direction="out" />
+        <Return type="void" />
+      </Method>
+    </Component>
+    <Component name="Params">
+      <Method name="Create">
+        <Return type="lptr" />
+      </Method>
+      <Method name="SetInt32">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="key" type="astring" direction="in" />
+        <Param name="value" type="int32" direction="in" />
+        <Return type="void" />
+      </Method>
+      <Method name="SetDouble">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="key" type="astring" direction="in" />
+        <Param name="value" type="double" direction="in" />
+        <Return type="void" />
+      </Method>
+      <Method name="SetBoolean">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="key" type="astring" direction="in" />
+        <Param name="value" type="bool" direction="in" />
+        <Return type="void" />
+      </Method>
+      <Method name="SetString">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="key" type="astring" direction="in" />
+        <Param name="value" type="astring" direction="in" />
+        <Return type="void" />
+      </Method>
+      <Method name="ToText">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="astring" />
+      </Method>
+    </Component>
+    <Component name="ClientServer">
+      <Method name="Start">
+        <Param name="handle" type="lptr" direction="in"/>
+        <Return type="bool" />
+      </Method>
+      <Method name="WaitForLogon">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="bool" />
+      </Method>
+      <Method name="Shutdown">
+        <Param name="instance" type="lptr" direction="in"/>
+        <Return type="int32" />
+      </Method>
+      <Method name="Stop">
+        <Param name="instance" type="lptr" direction="in"/>
+        <Return type="int32" />
+      </Method>
+      <Method name="NextId">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="astring" />
+      </Method>
+      <Method name="GetProtocolVersion">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="astring"/>
+      </Method>
+      <Method name="GetNextMessage">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="meessage" type="Message" direction="out" />
+        <Return type="bool" />
+      </Method>
+      <Method name="DispatchMessage">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="message" type="Message" direction="in" />
+        <Return type="void" />
+      </Method>
+      <Method name="GetNetworkActivity">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="dataBytesSent" type="uint64" direction="out" />
+        <Param name="sslBytesSent" type="uint64" direction="out" />
+        <Param name="dataBytesReceived" type="uint64" direction="out" />
+        <Param name="sslBytesReceived" type="uint64" direction="out" />
+        <Return type="void" />
+      </Method>
+      <Method name="GetSessionInfo">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="SessionInfo" />
+      </Method>
+      <Method name="GetFileChunk">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="fileId" type="astring" direction="in" />
+        <Param name="chunkId" type="int32" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="FileChunk" />
+      </Method>
+    </Component>
+    <Component name="ClientCache">
+      <Method name="GetSessionInfo">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="SessionInfo" />
+      </Method>
+    </Component>
+    <Component name="FeedServer">
+      <Method name ="Create">
+        <Param name="connectionString" type="astring" direction="in" />
+        <Return type="lptr" />
+      </Method>
+      <Method name="GetQuoteHistoryFiles">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="symbol" type="astring" direction="in" />
+        <Param name="includeLevel2" type="bool" direction="in" />
+        <Param name="time" type="time" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="DataHistoryInfo" />
+      </Method>
+      <Method name="GetBarsHistoryFiles">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="symbol" type="astring" direction="in" />
+        <Param name="priceType" type="PriceType" direction="in" />
+        <Param name="period" type="astring" direction="in" />
+        <Param name="time" type="time" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="DataHistoryInfo" />
+      </Method>
+      <Method name="GetCurrencies">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="CurrencyInfoArray" />
+      </Method>        
+      <Method name="GetSymbols">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="SymbolInfoArray" />
+      </Method>
+      <Method name="SubscribeToQuotes">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="symbols" type="StringArray" direction="in" />
+        <Param name="depth" type="int32" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="void" />
+      </Method>
+      <Method name="UnsubscribeQuotes">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="symbols" type="StringArray" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="void" />
+      </Method>
+      <Method name="GetBarsHistoryMetaInfoFile">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="symbol" type="astring" direction="in" />
+        <Param name="priceType" type="PriceType" direction="in" />
+        <Param name="period" type="astring" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="astring" />
+      </Method>
+      <Method name="GetQuotesHistoryMetaInfoFile">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="symbol" type="astring" direction="in" />
+        <Param name="includeLevel2" type="bool" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="astring" />
+      </Method>
+      <Method name="GetHistoryBars">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="symbol" type="astring" direction="in" />
+        <Param name="time" type="time" direction="in" />
+        <Param name="barsNumber" type="int32" direction="in" />
+        <Param name="priceType" type="PriceType" direction="in" />
+        <Param name="period" type="astring" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="DataHistoryInfo" />
+      </Method>
+      <Method name="GetQueueThreshold">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="int32" />
+      </Method>
+      <Method name="SetQueueThreshold">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="newSize" type="int32" direction="in" />
+        <Return type="void" />
+      </Method>
+      <Method name="GetQuotesHistoryVersion">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="int32" />
+      </Method>
+    </Component>
+    <Component name="FeedCache">
+      <Method name="GetSymbols">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="SymbolInfoArray" />
+      </Method>
+      <Method name="TryGetBid">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="symbol" type="astring" direction="in" />
+        <Param name="price" type="double" direction="out" />
+        <Param name="volume" type="double" direction="out" />
+        <Param name="creationTime" type="time" direction="out" />
+        <Return type="bool" />
+      </Method>
+      <Method name="TryGetAsk">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="symbol" type="astring" direction="in" />
+        <Param name="price" type="double" direction="out" />
+        <Param name="volume" type="double" direction="out" />
+        <Param name="creationTime" type="time" direction="out" />
+        <Return type="bool" />
+      </Method>
+      <Method name="TryGetQuote">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="symbol" type="astring" direction="in" />
+        <Param name="quote" type="Quote" direction="out" />
+        <Return type="bool" />
+      </Method>
+      <Method name="GetCurrencies">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="CurrencyInfoArray" />
+      </Method>    
+    </Component>
+    <Component name="TradeServer">
+      <Method name ="Create">
+        <Param name="connectionString" type="astring" direction="in" />
+        <Return type="lptr" />
+      </Method>
+      <Method name="GetTradeTransactionReportsAndSubscribe">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="direction" type="int32" direction="in" />
+        <Param name="subscribe" type="bool" direction="in" />
+        <Param name="from" type="time?" direction="in" />
+        <Param name="to" type="time?" direction="in" />
+        <Param name="preferedBufferSize" type="uint32" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="lptr" />
+      </Method>
+      <Method name="GetTradeCaptureReports">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="from" type="time?" direction="in" />
+        <Param name="to" type="time?" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="lptr" />
+      </Method>
+      <Method name="UnsubscribeTradeTransactionReports">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="void" />
+      </Method>
+      <Method name="GetAccountInfo">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="AccountInfo" />
+      </Method>
+      <Method name="DeleteOrder">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="operationId" type="astring" direction="in" />
+        <Param name="orderId" type="astring" direction="in" />
+        <Param name="clientOrderId" type="astring" direction="in" />
+        <Param name="side" type="Side" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="void" />
+      </Method>
+      <Method name="CloseAllPositions">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="uint64" />
+      </Method>
+      <Method name="CloseByPositions">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="first" type="astring" direction="in" />
+        <Param name="second" type="astring" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="bool" />
+      </Method>
+      <Method name="GetRecords">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="FxOrderArray" />
+      </Method>
+      <Method name="OpenNewOrder">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="operationId" type="astring" direction="in" />
+        <Param name="order" type="FxOrder" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="FxOrder" />
+      </Method>
+      <Method name="ModifyOrder">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="operationId" type="astring" direction="in" />
+        <Param name="order" type="FxOrder" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="FxOrder" />
+      </Method>
+      <Method name="CloseOrder">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="operationId" type="astring" direction="in" />
+        <Param name="orderId" type="astring" direction="in" />
+        <Param name="closingVolume" type="double?" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="ClosePositionResult" />
+      </Method>
+    </Component>
+    <Component name="TradeCache">
+      <Method name="GetAccountInfo">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="AccountInfo" />
+      </Method>
+      <Method name="GetRecords">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="FxOrderArray" />
+      </Method>
+      <Method name="GetPositions">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="PositionArray" />
+      </Method>
+    </Component>
+    <Component name="Iterator">
+      <Method name="EndOfStream">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="bool" />
+      </Method>
+      <Method name="Next">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="void" />
+      </Method>
+      <Method name="GetTradeTransactionReport">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="TradeTransactionReport" />
+      </Method>
+    </Component>
+    <Component name="Library">
+      <Method name="WriteNormalDumpOnError">
+        <Param name="path" type="wstring" direction="in" />
+        <Return type="void" />
+      </Method>
+      <Method name="WriteFullDumpOnError">
+        <Param name="path" type="wstring" direction="in" />
+        <Return type="void" />
+      </Method>
+      <Method name="WriteNormalDump">
+        <Param name="path" type="wstring" direction="in" />
+        <Return type="void" />
+      </Method>
+      <Method name="WriteFullDump">
+        <Param name="path" type="wstring" direction="in" />
+        <Return type="void" />
+      </Method>
+    </Component>
+  </Components>
+</Protocol>

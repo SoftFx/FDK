@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="_Resources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="_Sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="_Headers">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Data">
+      <UniqueIdentifier>{ae890f8a-a5c1-4be6-a3a1-1248ebc8544f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Headers">
+      <UniqueIdentifier>{4922a548-fac0-4ffa-846e-f801727e6674}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Sources">
+      <UniqueIdentifier>{05f16239-a3c8-4ae8-8449-d4829117c0ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LRP">
+      <UniqueIdentifier>{369b5848-00b0-4cd4-bff8-22ecedbcc0c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LRP\Generated">
+      <UniqueIdentifier>{670becc8-5138-45c7-91ed-8f02b78a809a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LRP\Headers">
+      <UniqueIdentifier>{d081adca-7b05-43ab-afb6-23c3836b18b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LRP\Sources">
+      <UniqueIdentifier>{e776ef49-cd6e-4010-b914-2c5227b04da6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Client.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientState.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SynchInvoker.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxQueue.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Timeout.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IdGenerator.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Waiter.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IWaiter.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Receiver.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DataFeed.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DataTrade.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DataFeedCache.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DataCache.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DataTradeCache.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxTradeTransactionReportIterator.h">
+      <Filter>Data\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TypesSerializer.hpp">
+      <Filter>LRP\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientImpl.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FeedImpl.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TradeImpl.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="HandleImpl.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ParamsImpl.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FeedCacheImpl.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientCacheImpl.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TradeCacheImpl.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ConverterImpl.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IteratorImpl.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Server.hpp">
+      <Filter>LRP\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="ConnectionBuilder.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DllLibrary.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LlApi.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryImpl.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DllMain.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LimitedQueue.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Channel.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolVersion.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Client.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SynchInvoker.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxQueue.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Timeout.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="IdGenerator.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Waiter.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Receiver.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DataFeed.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DataTrade.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DataCache.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DataFeedCache.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DataTradeCache.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxTradeTransactionReportIterator.cpp">
+      <Filter>Data\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LocalServer.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientImpl.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FeedImpl.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TradeImpl.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="HandleImpl.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ParamsImpl.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Channel.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FeedCacheImpl.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientCacheImpl.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TradeCacheImpl.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ConverterImpl.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="IteratorImpl.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ConnectionBuilder.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DllLibrary.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LlApi.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LibraryImpl.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DllMain.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolVersion.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="makefile">
+      <Filter>_Resources</Filter>
+    </None>
+    <None Include="LlApi.def">
+      <Filter>_Resources</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc">
+      <Filter>_Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico">
+      <Filter>_Resources</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

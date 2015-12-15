@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Protocol>
+	<Types>
+		<Type name="AStringArray" kind="array">
+			<Value name="astring" />
+		</Type>
+		<Type name="DataHistoryRequest" CSharpFullName="LrpServer.Net.LrpDataHistoryRequest" CppFullName="CFxDataHistoryRequest" kind="class">
+			<Member name="Symbol" type="astring" />
+			<Member name="Time" type="time" />
+			<Member name="BarsNumber" type="int32" />
+			<Member name="PriceType" type="int32" />
+			<Member name="GraphPeriod" type="astring" />
+			<Member name="ReportType" type="int32" />
+			<Member name="GraphType" type="int32" />
+		</Type>
+		<Type name="Bar" CSharpFullName="LrpServer.Net.LrpBar" CppFullName="CFxBar" kind="class">
+			<Member name="Open" type="double" />
+			<Member name="Close" type="double" />
+			<Member name="High" type="double" />
+			<Member name="Low" type="double" />
+			<Member name="Volume" type="double" />
+			<Member name="From" type="time" />
+		</Type>
+		<Type name="BarArray" kind="array">
+			<Value name="Bar" />
+		</Type>
+		<Type name="DataHistoryResponse" CSharpFullName="LrpServer.Net.LrpDataHistoryResponse" CppFullName="CFxDataHistoryResponse" kind="class">
+			<Member name="FromAll" type="time" />
+			<Member name="ToAll" type="time" />
+			<Member name="From" type="time" />
+			<Member name="To" type="time" />
+			<Member name="LastTickId" type="astring" />
+			<Member name="Bars" type="BarArray" />
+			<Member name="Files" type="AStringArray" />
+		</Type>
+	</Types>
+	<Components>
+		<Component name="LocalServerHandler" proxy="true">
+			<Method name="BeginNewConnectionRequest">
+				<Param name="handle" type="lptr" direction="in" />
+				<Param name="id" type="int64" direction="in" />
+				<Param name="address" type="astring" direction="in" />
+				<Param name="port" type="int32" direction="in" />
+				<Return type="void" />
+			</Method>
+			<Method name="BeginShutdownConnectionNotification">
+				<Param name="handle" type="lptr" direction="in" />
+				<Param name="id" type="int64" direction="in" />
+				<Return type="void" />
+			</Method>
+			<Method name="BeginLogonRequest">
+				<Param name="handle" type="lptr" direction="in" />
+				<Param name="id" type="int64" direction="in" />
+				<Param name="address" type="astring" direction="in" />
+				<Param name="port" type="int32" direction="in" />
+				<Param name="username" type="astring" direction="in" />
+				<Param name="password" type="astring" direction="in" />
+				<Return type="void" />
+			</Method>
+			<Method name="BeginLogoutRequest">
+				<Param name="handle" type="lptr" direction="in" />
+				<Param name="id" type="int64" direction="in" />
+				<Return type="void" />
+			</Method>
+      <Method name="BeginCurrenciesInfoRequest">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="id" type="int64" direction="in" />
+        <Param name="requestId" type="astring" direction="in" />
+        <Return type="void" />
+      </Method>
+      <Method name="BeginSymbolsInfoRequest">
+				<Param name="handle" type="lptr" direction="in" />
+				<Param name="id" type="int64" direction="in" />
+				<Param name="requestId" type="astring" direction="in" />
+				<Return type="void" />
+			</Method>
+			<Method name="BeginSessionInfoRequest">
+				<Param name="handle" type="lptr" direction="in" />
+				<Param name="id" type="int64" direction="in" />
+				<Param name="requestId" type="astring" direction="in" />
+				<Return type="void" />
+			</Method>
+			<Method name="BeginSubscribeToQuotesRequest">
+				<Param name="handle" type="lptr" direction="in" />
+				<Param name="id" type="int64" direction="in" />
+				<Param name="requestId" type="astring" direction="in" />
+				<Param name="symbols" type="AStringArray" direction="in" />
+				<Param name="depth" type="int32" direction="in" />
+				<Return type="void" />
+			</Method>
+			<Method name="BeginUnsubscribeQuotesRequest">
+				<Param name="handle" type="lptr" direction="in" />
+				<Param name="id" type="int64" direction="in" />
+				<Param name="requestId" type="astring" direction="in" />
+				<Param name="symbols" type="AStringArray" direction="in" />
+				<Return type="void" />
+			</Method>
+			<Method name="BeginComponentsInfoRequest">
+				<Param name="handle" type="lptr" direction="in" />
+				<Param name="id" type="int64" direction="in" />
+				<Param name="requestId" type="astring" direction="in" />
+				<Param name="clientVersion" type="int32" direction="in" />
+				<Return type="void" />
+			</Method>
+			<Method name="BeginDataHistoryRequest">
+				<Param name="handle" type="lptr" direction="in" />
+				<Param name="id" type="int64" direction="in" />
+				<Param name="requestId" type="astring" direction="in"/>
+				<Param name="request" type="DataHistoryRequest" direction="in"/>
+				<Return type="void" />
+			</Method>
+			<Method name="BeginFileChunkRequest">
+				<Param name="handle" type="lptr" direction="in" />
+				<Param name="id" type="int64" direction="in" />
+				<Param name="requestId" type="astring" direction="in"/>
+				<Param name="fieldId" type="astring" direction="in" />
+				<Param name="chunkId" type="uint32" direction="in" />
+				<Return type="void" />
+			</Method>
+			<Method name="BeginBarsHistoryMetaInfoFileRequest">
+				<Param name="handle" type="lptr" direction="in" />
+				<Param name="id" type="int64" direction="in" />
+				<Param name="requestId" type="astring" direction="in"/>
+				<Param name="symbol" type="astring" direction="in" />
+				<Param name="priceType" type="int32" direction="in" />
+				<Param name="period" type="astring" direction="in" />
+				<Return type="void" />
+			</Method>
+			<Method name="BeginQuotesHistoryMetaInfoFileRequest">
+				<Param name="handle" type="lptr" direction="in" />
+				<Param name="id" type="int64" direction="in" />
+				<Param name="requestId" type="astring" direction="in"/>
+				<Param name="symbol" type="astring" direction="in" />
+				<Param name="includeLevel2" type="bool" direction="in" />
+				<Return type="void" />
+			</Method>
+		</Component>
+	</Components>
+</Protocol>

@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C7DB3847-921F-43F4-AE27-D9B5839CF112}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SoftFX.Internal</RootNamespace>
+    <AssemblyName>SoftFX.Internal.Net</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Resources\FDK.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SoftFX.Lrp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\External\Dll\SoftFX.Lrp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AggrConnectionStringBuilder.cs" />
+    <Compile Include="Codecs\Core\Codec.cs" />
+    <Compile Include="Codecs\Core\ICodecProxy.cs" />
+    <Compile Include="Codecs\Adapters\Adapters.cs" />
+    <Compile Include="Codecs\FixCodec.cs" />
+    <Compile Include="Codecs\LrpCodec.cs" />
+    <Compile Include="Generated\BridgeCommon\FixParser.cs" />
+    <Compile Include="Generated\BridgeCommon\Signature.cs" />
+    <Compile Include="Generated\BridgeCommon\TypesSerializer.cs" />
+    <Compile Include="Generated\FixProvider\FixCodec.cs" />
+    <Compile Include="Generated\FixProvider\Signature.cs" />
+    <Compile Include="Generated\FixProvider\TypesSerializer.cs" />
+    <Compile Include="FixParser.cs" />
+    <Compile Include="Generated\LrpProvider\LrpCodec.cs" />
+    <Compile Include="Generated\LrpProvider\Signature.cs" />
+    <Compile Include="Generated\LrpProvider\TypesSerializer.cs" />
+    <Compile Include="Native.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FixSessionId.cs" />
+    <Compile Include="FixParsingResult.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LrpServer.Net\LrpServer.Net.csproj">
+      <Project>{c184e33c-85c8-4214-ad22-10c40aba0212}</Project>
+      <Name>LrpServer.Net</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SoftFX.Extended.Net\SoftFX.Extended.Net.csproj">
+      <Project>{D15BBA76-552E-4C6D-AE64-FD6F30CCF770}</Project>
+      <Name>SoftFX.Extended.Net</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BridgeCommon.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FDK.snk" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>"$(SolutionDir)\..\External\bin\lrp.exe" "$(ProjectDir)\BridgeCommon.xml" "$(ProjectDir)\Generated\BridgeCommon"  /language:C# /side:client /mode:local /namespace:SoftFX.Internal.Generated.BridgeCommon
+"$(SolutionDir)\..\External\bin\lrp.exe" "$(SolutionDir)\FixProvider\FixProvider.xml" "$(ProjectDir)\Generated\FixProvider"  /language:C# /side:client /mode:local /namespace:SoftFX.Internal.Generated.FixProvider
+"$(SolutionDir)\..\External\bin\lrp.exe" "$(SolutionDir)\LrpProvider\LrpProvider.xml" "$(ProjectDir)\Generated\LrpProvider"  /language:C# /side:client /mode:local /namespace:SoftFX.Internal.Generated.LrpProvider</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>copy /Y "$(TargetDir)$(TargetName).xml" "$(SolutionDir)\..\FRE\"
+copy /Y "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)\..\FRE\"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <!--
+  <PackageGroupRef Id="NetFx46Web"/>
+  <DirectoryRef Id="TARGETDIR">
+    <Merge Id="VCRedist140x86" SourceFile="C:\Program Files (x86)\Common Files\Merge Modules\Microsoft_VC140_CRT_x86.msm" DiskId="1" Language="0"/>
+    <Merge Id="VCRedist140x64" SourceFile="C:\Program Files (x86)\Common Files\Merge Modules\Microsoft_VC140_CRT_x64.msm" DiskId="1" Language="0"/>
+  </DirectoryRef>
+  <Feature Id="Microsoft" Title="C++ Runtime libraries" Level="1" AllowAdvertise="no" Description="Install C++ Runtime libraries">
+    <MergeRef Id="VCRedist140x86"/>
+    <MergeRef Id="VCRedist140x64"/>
+  </Feature>
+  -->
+</Include>

@@ -1,0 +1,4 @@
+LIBRARY
+	EXPORTS
+		LrpSignature
+		LrpInvoke

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C184E33C-85C8-4214-AD22-10C40ABA0212}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LrpServer.Net</RootNamespace>
+    <AssemblyName>LrpServer.Net</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>FDK.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SoftFX.Lrp">
+      <HintPath>..\..\External\Dll\SoftFX.Lrp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ILrpServerHandler.cs" />
+    <Compile Include="LocalCpp\LocalChannelsPool.cs" />
+    <Compile Include="LrpChannelsPool.cs" />
+    <Compile Include="LrpCommissionChargeMethod.cs" />
+    <Compile Include="LrpCommissionChargeType.cs" />
+    <Compile Include="LrpCommissionType.cs" />
+    <Compile Include="LrpCurrencyInfo.cs" />
+    <Compile Include="LrpLibrary.cs" />
+    <Compile Include="LocalCpp\Library.cs" />
+    <Compile Include="LocalCpp\LocalServer.cs" />
+    <Compile Include="LocalCpp\Signature.cs" />
+    <Compile Include="LocalCpp\TypesSerializer.cs" />
+    <Compile Include="LocalCSharp\Channel.cs" />
+    <Compile Include="LocalCSharp\LocalServerHandler.cs" />
+    <Compile Include="LocalCSharp\Server.cs" />
+    <Compile Include="LocalCSharp\Signature.cs" />
+    <Compile Include="LocalCSharp\TypesSerializer.cs" />
+    <Compile Include="LrpBar.cs" />
+    <Compile Include="LrpDataHistoryResponse.cs" />
+    <Compile Include="LrpFileChunk.cs" />
+    <Compile Include="LrpMarginCalcMode.cs" />
+    <Compile Include="LrpDataHistoryRequest.cs" />
+    <Compile Include="LrpNotification.cs" />
+    <Compile Include="LrpNotificationType.cs" />
+    <Compile Include="LrpParams.cs" />
+    <Compile Include="LrpProfitCalcMode.cs" />
+    <Compile Include="LrpQuote.cs" />
+    <Compile Include="LrpQuoteEntry.cs" />
+    <Compile Include="LrpSessionStatus.cs" />
+    <Compile Include="LrpSeverity.cs" />
+    <Compile Include="LrpSymbolInfo.cs" />
+    <Compile Include="Native.cs" />
+    <Compile Include="LrpAcceptor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="LrpSessionInfo.cs" />
+    <Compile Include="Threading\TaskEx.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FDK.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>"$(SolutionDir)\..\External\bin\lrp.exe" "$(SolutionDir)\LocalCpp.xml" "$(ProjectDir)\LocalCpp"  /language:C# /side:client /mode:local /namespace:LrpServer.Net.LocalCpp
+"$(SolutionDir)\..\External\bin\lrp.exe" "$(SolutionDir)\LocalCSharp.xml" "$(ProjectDir)\LocalCSharp"  /language:C# /side:server /mode:local /namespace:LrpServer.Net.LocalCSharp</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>if not exist "$(SolutionDir)\..\FRE" (md "$(SolutionDir)\..\FRE")
+copy /Y "$(TargetPath)" "$(SolutionDir)\..\FRE\"
+REM copy /Y "$(TargetDir)$(TargetName).xml" "$(SolutionDir)\..\FRE\"
+copy /Y "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)\..\FRE\"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

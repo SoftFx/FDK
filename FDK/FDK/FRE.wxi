@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <DirectoryRef Id="PF_FRE">
+    <Component Id="SoftFX.Extended.Net.dll" Guid="*">
+      <File Id="SoftFX.Extended.Net.dll" Source="..\..\FRE\SoftFX.Extended.Net.dll" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="SoftFX.LlCommon.x64.dll" Guid="*">
+      <File Id="SoftFX.LlCommon.x64.dll" Source="..\..\FRE\SoftFX.LlCommon.x64.dll" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="SoftFX.LlCommon.x64.lib" Guid="*">
+      <File Id="SoftFX.LlCommon.x64.lib" Source="..\..\FRE\SoftFX.LlCommon.x64.lib" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="SoftFX.LlCommon.x86.dll" Guid="*">
+      <File Id="SoftFX.LlCommon.x86.dll" Source="..\..\FRE\SoftFX.LlCommon.x86.dll" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="SoftFX.LlCommon.x86.lib" Guid="*">
+      <File Id="SoftFX.LlCommon.x86.lib" Source="..\..\FRE\SoftFX.LlCommon.x86.lib" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="SoftFX.Net.dll" Guid="*">
+      <File Id="SoftFX.Net.dll" Source="..\..\FRE\SoftFX.Net.dll" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="SoftFX.Lrp.dll" Guid="*">
+      <File Id="SoftFX.Lrp.dll" Source="..\..\External\Dll\SoftFX.Lrp.dll" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="SoftFX.Extended.Net.xml" Guid="*">
+      <File Id="SoftFX.Extended.Net.xml" Source="..\..\FRE\SoftFX.Extended.Net.xml" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="SoftFX.Net.xml" Guid="*">
+      <File Id="SoftFX.Net.xml" Source="..\..\FRE\SoftFX.Net.xml" KeyPath="yes" Checksum="yes"/>
+    </Component>
+  </DirectoryRef>
+  <DirectoryRef Id="PF_FRE_Include">
+    <Component Id="AccountEntries.h" Guid="*">
+      <File Id="AccountEntries.h" Source="..\..\FRE\Include\AccountEntries.h" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="CurrencyEntries.h" Guid="*">
+      <File Id="CurrencyEntries.h" Source="..\..\FRE\Include\CurrencyEntries.h" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="AccountEntry.h" Guid="*">
+      <File Id="AccountEntry.h" Source="..\..\FRE\Include\AccountEntry.h" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="AccountEntryStatus.h" Guid="*">
+      <File Id="AccountEntryStatus.h" Source="..\..\FRE\Include\AccountEntryStatus.h" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="AccountType.h" Guid="*">
+      <File Id="AccountType.h" Source="..\..\FRE\Include\AccountType.h" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="FinancialCalculator.h" Guid="*">
+      <File Id="FinancialCalculator.h" Source="..\..\FRE\Include\FinancialCalculator.h" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="LlCommon.h" Guid="*">
+      <File Id="LlCommon.h" Source="..\..\FRE\Include\LlCommon.h" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="LrpStd.h" Guid="*">
+      <File Id="LrpStd.h" Source="..\..\FRE\Include\LrpStd.h" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="LrpStdVector.h" Guid="*">
+      <File Id="LrpStdVector.h" Source="..\..\FRE\Include\LrpStdVector.h" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="MarginMode.h" Guid="*">
+      <File Id="MarginMode.h" Source="..\..\FRE\Include\MarginMode.h" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="Nullable.h" Guid="*">
+      <File Id="Nullable.h" Source="..\..\FRE\Include\Nullable.h" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="PriceEntries.h" Guid="*">
+      <File Id="PriceEntries.h" Source="..\..\FRE\Include\PriceEntries.h" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="PriceEntry.h" Guid="*">
+      <File Id="PriceEntry.h" Source="..\..\FRE\Include\PriceEntry.h" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="Rates.h" Guid="*">
+      <File Id="Rates.h" Source="..\..\FRE\Include\Rates.h" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="SymbolEntries.h" Guid="*">
+      <File Id="SymbolEntries.h" Source="..\..\FRE\Include\SymbolEntries.h" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="SymbolEntry.h" Guid="*">
+      <File Id="SymbolEntry.h" Source="..\..\FRE\Include\SymbolEntry.h" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="TagEntry.h" Guid="*">
+      <File Id="TagEntry.h" Source="..\..\FRE\Include\TagEntry.h" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="TradeEntries.h" Guid="*">
+      <File Id="TradeEntries.h" Source="..\..\FRE\Include\TradeEntries.h" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="TradeEntry.h" Guid="*">
+      <File Id="TradeEntry.h" Source="..\..\FRE\Include\TradeEntry.h" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="TradeEntryStatus.h" Guid="*">
+      <File Id="TradeEntryStatus.h" Source="..\..\FRE\Include\TradeEntryStatus.h" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="TradeSide.h" Guid="*">
+      <File Id="TradeSide.h" Source="..\..\FRE\Include\TradeSide.h" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="TradeType.h" Guid="*">
+      <File Id="TradeType.h" Source="..\..\FRE\Include\TradeType.h" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="MarginCalcMode.h" Guid="*">
+      <File Id="MarginCalcMode.h" Source="..\..\FRE\Include\MarginCalcMode.h" KeyPath="yes" Checksum="yes"/>
+    </Component>
+  </DirectoryRef>
+  <!-- examples shortcut creating -->
+  <DirectoryRef Id="ApplicationProgramsFolder">
+    <Component Id="FreShortcut" Guid="*">
+      <RegistryKey Root="HKCU" Key="Software\SoftFX\FDK\$(var.FullVersion)" Action="createAndRemoveOnUninstall">
+        <RegistryValue Name="FreShortcut" Value="1" Type="integer" KeyPath="yes"/>
+      </RegistryKey>
+      <Shortcut Id="FreShortcut" Name="FRE" Target="[APPLICATIONFOLDER]FRE"/>
+      <RemoveFolder Id="PF_FRE" On="uninstall"/>
+    </Component>
+  </DirectoryRef>
+  <Feature Id="FDK" Title="FRE" Level="1" Display="expand" Absent="disallow" AllowAdvertise="no"
+   Description="Install Runtime Environment">
+    <ComponentRef Id="PM_SoftFX" />
+    <ComponentRef Id="FreShortcut" />
+    <ComponentRef Id="SoftFX.Extended.Net.dll" />
+    <ComponentRef Id="SoftFX.Extended.Net.xml" />
+    <ComponentRef Id="SoftFX.LlCommon.x64.dll" />
+    <ComponentRef Id="SoftFX.LlCommon.x64.lib" />
+    <ComponentRef Id="SoftFX.LlCommon.x86.dll" />
+    <ComponentRef Id="SoftFX.LlCommon.x86.lib" />
+    <ComponentRef Id="SoftFX.Net.dll" />
+    <ComponentRef Id="SoftFX.Net.xml" />
+    <ComponentRef Id="SoftFX.Lrp.dll" />
+
+    <ComponentRef Id="AccountEntries.h" />
+    <ComponentRef Id="CurrencyEntries.h" />
+    <ComponentRef Id="AccountEntry.h" />
+    <ComponentRef Id="AccountEntryStatus.h" />
+    <ComponentRef Id="AccountType.h" />
+    <ComponentRef Id="FinancialCalculator.h" />
+    <ComponentRef Id="LlCommon.h" />
+    <ComponentRef Id="LrpStd.h" />
+    <ComponentRef Id="LrpStdVector.h" />
+    <ComponentRef Id="MarginMode.h" />
+    <ComponentRef Id="Nullable.h" />
+    <ComponentRef Id="PriceEntries.h" />
+    <ComponentRef Id="PriceEntry.h" />
+    <ComponentRef Id="Rates.h" />
+    <ComponentRef Id="SymbolEntries.h" />
+    <ComponentRef Id="SymbolEntry.h" />
+    <ComponentRef Id="TagEntry.h" />
+    <ComponentRef Id="TradeEntries.h" />
+    <ComponentRef Id="TradeEntry.h" />
+    <ComponentRef Id="TradeEntryStatus.h" />
+    <ComponentRef Id="TradeSide.h" />
+    <ComponentRef Id="TradeType.h" />
+    <ComponentRef Id="MarginCalcMode.h" />
+  </Feature>
+</Include>
+

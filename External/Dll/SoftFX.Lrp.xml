@@ -1,0 +1,1367 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SoftFX.Lrp</name>
+    </assembly>
+    <members>
+        <member name="T:SoftFX.Lrp.BaseClient">
+            <summary>
+            Contains command methods of all client types.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.BaseClient.Dispose">
+            <summary>
+            Has no implementation due to abstract class
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.BaseClient.Create">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SoftFX.Lrp.BaseClient.Invoke(System.UInt16,System.UInt16,SoftFX.Lrp.MemoryBuffer)">
+            <summary>
+            
+            </summary>
+            <param name="componentId"></param>
+            <param name="methodId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SoftFX.Lrp.BaseClient.IsSupported(System.UInt16,System.UInt16)">
+            <summary>
+            The method checks, if the corresponded component and method are supported by server.
+            You should not use the method directly.
+            </summary>
+            <param name="componentId">a component ID</param>
+            <param name="methodId">a method ID</param>
+            <returns>true, if the component and method are supported by server, otherwise false</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.BaseClient.IsSupported(System.UInt16)">
+            <summary>
+            The method checks, if the corresponded component is supported by server.
+            You should not use the method directly.
+            </summary>
+            <param name="componentId">a component ID</param>
+            <returns>true, if the component is supported by server, otherwise false</returns>
+        </member>
+        <member name="T:SoftFX.Lrp.BaseComponentReader">
+            <summary>
+            Implements IComponentReader interface, supports matching methods for different protocols.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.BaseComponentReader.Parse(SoftFX.Lrp.TextStream)">
+            <summary>
+            Parses a text stream.
+            </summary>
+            <param name="stream">a text stream for parsing</param>
+        </member>
+        <member name="M:SoftFX.Lrp.BaseComponentReader.Add(System.String,System.Action{SoftFX.Lrp.TextStream})">
+            <summary>
+            The method adds a new method reader.
+            </summary>
+            <param name="name">the name of adding method</param>
+            <param name="method">an adding method</param>
+        </member>
+        <member name="T:SoftFX.Lrp.BaseProtocolReader">
+            <summary>
+            Implements IProtocolReader interface, supports matching components for different protocols.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.BaseProtocolReader.Parse(SoftFX.Lrp.TextStream)">
+            <summary>
+            Parses a text stream.
+            </summary>
+            <param name="stream">a text stream for parsing</param>
+        </member>
+        <member name="M:SoftFX.Lrp.BaseProtocolReader.Add(System.String,SoftFX.Lrp.IComponentReader)">
+            <summary>
+            The method adds a new component reader.
+            </summary>
+            <param name="name">the name of adding component</param>
+            <param name="component">an adding component</param>
+        </member>
+        <member name="T:SoftFX.Lrp.LogonHandler">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:SoftFX.Lrp.LogoutHandler">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:SoftFX.Lrp.LogHandler">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:SoftFX.Lrp.MethodHandler`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="Channel"></typeparam>
+            <param name="offset"></param>
+            <param name="buffer"></param>
+            <param name="channel"></param>
+        </member>
+        <member name="T:SoftFX.Lrp.ComponentHandler`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="Channel"></typeparam>
+            <param name="offset"></param>
+            <param name="methodId"></param>
+            <param name="buffer"></param>
+            <param name="channel"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SoftFX.Lrp.LocalServerInvokeHandler">
+            <summary>
+            
+            </summary>
+            <param name="componentId"></param>
+            <param name="methodId"></param>
+            <param name="heap"></param>
+            <param name="pSize"></param>
+            <param name="ppData"></param>
+            <param name="pCapacity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SoftFX.Lrp.DisconnectedException">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:SoftFX.Lrp.DomainClient">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.DomainClient.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Creates a new instance of LocalClient.
+            </summary>
+            <param name="path">An absolute or relative path to external .NET library.</param>
+            <param name="type">a full name of .NET type</param>
+            <param name="signature">A protocol signature.</param>
+        </member>
+        <member name="M:SoftFX.Lrp.DomainClient.Create">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SoftFX.Lrp.DomainClient.Invoke(System.UInt16,System.UInt16,SoftFX.Lrp.MemoryBuffer)">
+            <summary>
+            
+            </summary>
+            <param name="componentId"></param>
+            <param name="methodId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SoftFX.Lrp.DomainClient.Dispose">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SoftFX.Lrp.IClient">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.IClient.Create">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SoftFX.Lrp.IClient.Invoke(System.UInt16,System.UInt16,SoftFX.Lrp.MemoryBuffer)">
+            <summary>
+            A client implementation should pass the buffer to another environment and receive the answer.
+            </summary>
+            <param name="componentId"></param>
+            <param name="methodId"></param>
+            <param name="data">The parameter can not be null.</param>	
+            <returns></returns>
+        </member>
+        <member name="M:SoftFX.Lrp.IClient.IsSupported(System.UInt16,System.UInt16)">
+            <summary>
+            The method checks, if the corresponded component and method are supported by server.
+            You should not use the method directly.
+            </summary>
+            <param name="componentId">a component ID</param>
+            <param name="methodId">a method ID</param>
+            <returns>true, if the component and method are supported by server, otherwise false</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.IClient.IsSupported(System.UInt16)">
+            <summary>
+            The method checks, if the corresponded component is supported by server.
+            You should not use the method directly.
+            </summary>
+            <param name="componentId">a component ID</param>
+            <returns>true, if the component is supported by server, otherwise false</returns>
+        </member>
+        <member name="F:SoftFX.Lrp.Implementation.timeval.tv_sec">
+            <summary>
+            Time interval, in seconds.
+            </summary>
+        </member>
+        <member name="F:SoftFX.Lrp.Implementation.timeval.tv_usec">
+            <summary>
+            Time interval, in microseconds.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.Implementation.Translator.IsSupported(System.UInt16)">
+            <summary>
+            The method checks, if the corresponded component and method are supported by server.
+            You should not use the method directly.
+            </summary>
+            <param name="methodId">a method ID</param>
+            <returns>true, if the component and method are supported by server, otherwise false</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.Implementation.Translator.IsSupported">
+            <summary>
+            The method checks, if the corresponded component is supported by server.
+            You should not use the method directly.
+            </summary>
+            <returns>true, if the component is supported by server, otherwise false</returns>
+        </member>
+        <member name="T:SoftFX.Lrp.InvalidComponentException">
+            <summary>
+            Local/Remote Protocol throws the exception, if an invalid component ID is detected.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.InvalidComponentException.#ctor(System.String,System.Int32)">
+            <summary>
+            Creates a new instance of InvalidComponentException class.
+            </summary>
+            <param name="componentName">name of invalid component</param>
+            <param name="componentId">an invalid component ID.</param>
+        </member>
+        <member name="P:SoftFX.Lrp.InvalidComponentException.ComponentName">
+            <summary>
+            Gets name of invalid component.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Lrp.InvalidComponentException.ComponentId">
+            <summary>
+            Gets invalid component ID.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.InvalidComponentException.ToString">
+            <summary>
+            Returns formatted string for the class instance.
+            </summary>
+            <returns>Can not be null.</returns>
+        </member>
+        <member name="T:SoftFX.Lrp.InvalidMethodException">
+            <summary>
+            Local/Remote Protocol throws the exception, if an invalid method ID is detected.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.InvalidMethodException.#ctor(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Creates a new instance of InvalidComponentException class.
+            </summary>
+            <param name="componentName">name of component</param>
+            <param name="methodName">name of invalid method</param>
+            <param name="componentId">a component ID.</param>
+            <param name="methodId">an invalid method ID.</param>
+        </member>
+        <member name="P:SoftFX.Lrp.InvalidMethodException.ComponentName">
+            <summary>
+            Gets component name.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Lrp.InvalidMethodException.MethodName">
+            <summary>
+            Gets name of invalid com
+            </summary>
+        </member>
+        <member name="P:SoftFX.Lrp.InvalidMethodException.ComponentId">
+            <summary>
+            Gets component ID.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Lrp.InvalidMethodException.MethodId">
+            <summary>
+            Gets an invalid method ID.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.InvalidMethodException.ToString">
+            <summary>
+            Returns formatted string for the class instance.
+            </summary>
+            <returns>Can not be null.</returns>
+        </member>
+        <member name="T:SoftFX.Lrp.IProtocolReader">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.IProtocolReader.Parse(SoftFX.Lrp.TextStream)">
+            <summary>
+            
+            </summary>
+            <param name="stream"></param>
+        </member>
+        <member name="T:SoftFX.Lrp.IComponentReader">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.IComponentReader.Parse(SoftFX.Lrp.TextStream)">
+            <summary>
+            
+            </summary>
+            <param name="stream"></param>
+        </member>
+        <member name="T:SoftFX.Lrp.LocalClient">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.LocalClient.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new instance of LocalClient.
+            </summary>
+            <param name="path">An absolute or relative path to external native library.</param>
+            <param name="signature">A protocol signature.</param>
+        </member>
+        <member name="M:SoftFX.Lrp.LocalClient.#ctor(System.String,System.String,SoftFX.Lrp.Mode)">
+            <summary>
+            Creates a new instance of LocalClient.
+            </summary>
+            <param name="path">An absolute or relative path to external native library.</param>
+            <param name="signature">A protocol signature.</param>
+            <param name="mode">A mode of dll using.</param>
+        </member>
+        <member name="M:SoftFX.Lrp.LocalClient.#ctor(System.String,System.String,System.String,SoftFX.Lrp.Mode)">
+            <summary>
+            Creates a new instance of LocalClient.
+            </summary>
+            <param name="path">An absolute or relative path to external native library.</param>
+            <param name="signature">A protocol signature.</param>
+            <param name="currentDirectory">A directory, which should be used as current; it is used for out of process mode</param>
+            <param name="mode">A mode of dll using.</param>
+        </member>
+        <member name="M:SoftFX.Lrp.LocalClient.Create">
+            <summary>
+            Creates a new memory buffer. Don't use MemoryBuffer.CreateLocal() method directly, because it works incorrect for host processes.
+            </summary>
+            <returns>Can not be null.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.LocalClient.Dispose">
+            <summary>
+            Releases local/remote host.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.LocalClient.Invoke(System.UInt16,System.UInt16,SoftFX.Lrp.MemoryBuffer)">
+            <summary>
+            
+            </summary>
+            <param name="componentId"></param>
+            <param name="methodId"></param>
+            <param name="data"></param>
+        </member>
+        <member name="T:SoftFX.Lrp.LocalServer">
+            <summary>
+            The class is used by LRP core for C++ client initialization.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.LocalServer.Initialize(System.String,System.String,SoftFX.Lrp.LocalServerInvokeHandler)">
+            <summary>
+            
+            </summary>
+            <param name="argument"></param>
+            <param name="signature"></param>
+            <param name="handler"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SoftFX.Lrp.LPtr">
+            <summary>
+            Local pointer type.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.LPtr.#ctor(System.Int64)">
+            <summary>
+            Creates a new instance of local pointer type.
+            </summary>
+            <param name="handle">a 64-bit integer valuer</param>
+        </member>
+        <member name="M:SoftFX.Lrp.LPtr.#ctor(System.Int32)">
+            <summary>
+            Creates a new instance of local pointer type.
+            </summary>
+            <param name="handle">a 32-bit integer valuer</param>
+        </member>
+        <member name="M:SoftFX.Lrp.LPtr.#ctor(System.IntPtr)">
+            <summary>
+            Creates a new instance of local pointer type.
+            </summary>
+            <param name="handle">a native pointer</param>
+        </member>
+        <member name="P:SoftFX.Lrp.LPtr.IsZero">
+            <summary>
+            Returns true, if it's not null
+            </summary>
+        </member>
+        <member name="P:SoftFX.Lrp.LPtr.Zero">
+            <summary>
+            Gets zero local pointer.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.LPtr.ToInt32">
+            <summary>
+            Gets a wrapped pointer as 32-bit integer value.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.LPtr.ToInt64">
+            <summary>
+            Gets a wrapped pointer as 64-bit integer value.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.LPtr.Clear">
+            <summary>
+            Reset the local pointer
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.LPtr.op_Equality(SoftFX.Lrp.LPtr,SoftFX.Lrp.LPtr)">
+            <summary>
+            Determines whether two specified instances of RPtr are not equal.
+            </summary>
+            <param name="first">an LPtr instance</param>
+            <param name="second">an LPtr instance</param>
+            <returns>true if first does not equal second; otherwise, false.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.LPtr.op_Inequality(SoftFX.Lrp.LPtr,SoftFX.Lrp.LPtr)">
+            <summary>
+            Determines whether two specified instances of RPtr are equal.
+            </summary>
+            <param name="first">an LPtr instance</param>
+            <param name="second">an LPtr instance</param>
+            <returns>true if first equals second; otherwise, false.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.LPtr.Equals(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SoftFX.Lrp.LPtr.GetHashCode">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SoftFX.Lrp.LPtr.Equals(SoftFX.Lrp.LPtr)">
+            <summary>
+            
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SoftFX.Lrp.MagicNumbers">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SoftFX.Lrp.MagicNumbers.LRP_CODE_CUSTOMER">
+            <summary>
+            customer's bit
+            </summary>
+        </member>
+        <member name="F:SoftFX.Lrp.MagicNumbers.LRP_CODE_SUCCESS">
+            <summary>
+            customer's successful mask
+            </summary>
+        </member>
+        <member name="F:SoftFX.Lrp.MagicNumbers.LRP_CODE_INFORMATION">
+            <summary>
+            customer's information mask
+            </summary>
+        </member>
+        <member name="F:SoftFX.Lrp.MagicNumbers.LRP_CODE_WARNING">
+            <summary>
+            customer's warning mask
+            </summary>
+        </member>
+        <member name="F:SoftFX.Lrp.MagicNumbers.LRP_CODE_ERROR">
+            <summary>
+            customer's error mask
+            </summary>
+        </member>
+        <member name="F:SoftFX.Lrp.MagicNumbers.S_OK">
+            <summary>
+            successful operation
+            </summary>
+        </member>
+        <member name="F:SoftFX.Lrp.MagicNumbers.E_FAIL">
+            <summary>
+            common error
+            </summary>
+        </member>
+        <member name="F:SoftFX.Lrp.MagicNumbers.LRP_INVALID_COMPONENT_ID">
+            <summary>
+            Method of invalid unknown component has been called
+            </summary>
+        </member>
+        <member name="F:SoftFX.Lrp.MagicNumbers.LRP_INVALID_METHOD_ID">
+            <summary>
+            Unknown method has been called
+            </summary>
+        </member>
+        <member name="F:SoftFX.Lrp.MagicNumbers.LRP_EXCEPTION">
+            <summary>
+            Exception has been encountered
+            </summary>
+        </member>
+        <member name="T:SoftFX.Lrp.MemoryBuffer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.#ctor(System.Void*,System.Void*,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="heap"></param>
+            <param name="data"></param>
+            <param name="size"></param>
+            <param name="capacity"></param>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.CreateLocal">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.CreateLocal(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.CreateRemote(System.UInt16,System.UInt16)">
+            <summary>
+            
+            </summary>
+            <param name="componentId"></param>
+            <param name="methodId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.Dispose">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.Finalize">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.Reset(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="offset"></param>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ToArray">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ReadCount">
+            <summary>
+            Reads a value from memory buffer.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteData(System.Byte[])">
+            <summary>
+            Writes a raw data to memory buffer.
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteInt8(System.SByte)">
+            <summary>
+            Writes an input value to memory buffer.
+            </summary>
+            <param name="arg">any value.</param>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteInt16(System.Int16)">
+            <summary>
+            Writes an input value to memory buffer.
+            </summary>
+            <param name="arg">any value.</param>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteInt32(System.Int32)">
+            <summary>
+            Writes an input value to memory buffer.
+            </summary>
+            <param name="arg">any value.</param>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteInt64(System.Int64)">
+            <summary>
+            Writes an input value to memory buffer.
+            </summary>
+            <param name="arg">any value.</param>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteUInt8(System.Byte)">
+            <summary>
+            Writes an input value to memory buffer.
+            </summary>
+            <param name="arg">any value.</param>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteUInt16(System.UInt16)">
+            <summary>
+            Writes an input value to memory buffer.
+            </summary>
+            <param name="arg">any value.</param>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteUInt32(System.UInt32)">
+            <summary>
+            Writes an input value to memory buffer.
+            </summary>
+            <param name="arg">any value.</param>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteUInt64(System.UInt64)">
+            <summary>
+            Writes an input value to memory buffer.
+            </summary>
+            <param name="arg">any value.</param>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteBoolean(System.Boolean)">
+            <summary>
+            Writes an input value to memory buffer.
+            </summary>
+            <param name="arg">any value.</param>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteSingle(System.Single)">
+            <summary>
+            Writes an input value to memory buffer.
+            </summary>
+            <param name="arg">any value.</param>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteDouble(System.Double)">
+            <summary>
+            Writes an input value to memory buffer.
+            </summary>
+            <param name="arg">any value.</param>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteNullDouble(System.Nullable{System.Double})">
+            <summary>
+            Writes an input value to memory buffer.
+            </summary>
+            <param name="arg">any value.</param>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteAString(System.String)">
+            <summary>
+            Writes an input value to memory buffer.
+            </summary>
+            <param name="arg">any value.</param>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteWString(System.String)">
+            <summary>
+            Writes an input value to memory buffer.
+            </summary>
+            <param name="arg">any value.</param>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteAChar(System.Char)">
+            <summary>
+            Write an input value to memory buffer.
+            </summary>
+            <param name="arg">any value.</param>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteWChar(System.Char)">
+            <summary>
+            Write an input value to memory buffer.
+            </summary>
+            <param name="arg">any value.</param>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteLocalPointer(SoftFX.Lrp.LPtr)">
+            <summary>
+            Writes an input value to memory buffer.
+            </summary>
+            <param name="arg">any value.</param>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteRemotePointer(SoftFX.Lrp.RPtr)">
+            <summary>
+            Writes an input value to memory buffer.
+            </summary>
+            <param name="arg">any value.</param>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteTime(System.DateTime)">
+            <summary>
+            Writes an input value to memory buffer.
+            </summary>
+            <param name="arg">any value.</param>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteNullTime(System.Nullable{System.DateTime})">
+            <summary>
+            Writes an input value to memory buffer.
+            </summary>
+            <param name="arg">any value.</param>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteAStringsArray(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ReadInt8">
+            <summary>
+            Reads a value from memory buffer.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ReadInt16">
+            <summary>
+            Reads a value from memory buffer.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ReadInt32">
+            <summary>
+            Reads a value from memory buffer.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ReadInt64">
+            <summary>
+            Reads a value from memory buffer.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ReadUInt8">
+            <summary>
+            Reads a value from memory buffer.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ReadUInt16">
+            <summary>
+            Reads a value from memory buffer.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ReadUInt32">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ReadUInt64">
+            <summary>
+            Reads a value from memory buffer.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ReadBoolean">
+            <summary>
+            Reads a value from memory buffer.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ReadSingle">
+            <summary>
+            Reads a value from memory buffer.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ReadDouble">
+            <summary>
+            Reads a value from memory buffer.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ReadNullDouble">
+            <summary>
+            Reads a value from memory buffer.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ReadAString">
+            <summary>
+            Reads a value from memory buffer.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for a new string creation.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ReadWString">
+            <summary>
+            Reads a value from memory buffer.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for a new string creation.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ReadLocalPointer">
+            <summary>
+            Reads a value from memory buffer.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ReadRemotePointer">
+            <summary>
+            Reads a value from memory buffer.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ReadTime">
+            <summary>
+            Reads a datetime object from the stream.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ReadNullTime">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ReadRaw">
+            <summary>
+             Reads raw data.
+            </summary>
+            <returns>this</returns>
+        </member>
+        <member name="P:SoftFX.Lrp.MemoryBuffer.Capacity">
+            <summary>
+            Get size of allocated memory in bytes.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Lrp.MemoryBuffer.Position">
+            <summary>
+            Gets current buffer position.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Lrp.MemoryBuffer.Size">
+            <summary>
+            Gets size of the buffer in bytes.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Lrp.MemoryBuffer.Data">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SoftFX.Lrp.MemoryBuffer.Heap">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SoftFX.Lrp.Mode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SoftFX.Lrp.Mode.Auto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SoftFX.Lrp.Mode.InProcess">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SoftFX.Lrp.Mode.OutProcess">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SoftFX.Lrp.ProtocolException">
+            <summary>
+            All Local/Remote Protocol exceptions inherit the class.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.ProtocolException.#ctor">
+            <summary>
+            Creates a new instance of ProtocolException.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.ProtocolException.#ctor(System.String)">
+            <summary>
+            Creates a new instance of ProtocolException.
+            </summary>
+            <param name="message">the message that describes the error.</param>
+        </member>
+        <member name="T:SoftFX.Lrp.Resources.Files">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Lrp.Resources.Files.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Lrp.Resources.Files.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Lrp.Resources.Files.LrpHost_x64">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Lrp.Resources.Files.LrpHost_x86">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="T:SoftFX.Lrp.RPtr">
+            <summary>
+            Remote pointer type.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.RPtr.#ctor(System.Int64)">
+            <summary>
+            Creates a new instance of remote pointer type.
+            </summary>
+            <param name="handle">a remote native pointer.</param>
+        </member>
+        <member name="P:SoftFX.Lrp.RPtr.IsZero">
+            <summary>
+            Returns true, if it's not zero
+            </summary>
+        </member>
+        <member name="P:SoftFX.Lrp.RPtr.Handle">
+            <summary>
+            Gets remote native pointer.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Lrp.RPtr.Zero">
+            <summary>
+            Gets zero native remote pointer.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.RPtr.Clear">
+            <summary>
+            Reset the remote pointer
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.RPtr.GetHashCode">
+            <summary>
+            Returns hash code of this.Handle.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SoftFX.Lrp.RPtr.op_Equality(SoftFX.Lrp.RPtr,SoftFX.Lrp.RPtr)">
+            <summary>
+            Determines whether two specified instances of RPtr are not equal.
+            </summary>
+            <param name="first">an RPtr instance</param>
+            <param name="second">an RPtr instance</param>
+            <returns>true if first does not equal second; otherwise, false.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.RPtr.op_Inequality(SoftFX.Lrp.RPtr,SoftFX.Lrp.RPtr)">
+            <summary>
+            Determines whether two specified instances of RPtr are equal.
+            </summary>
+            <param name="first">an RPtr instance</param>
+            <param name="second">an RPtr instance</param>
+            <returns>true if first equals second; otherwise, false.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.RPtr.Equals(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SoftFX.Lrp.StClient">
+            <summary>
+            Single threaded client.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.StClient.#ctor(System.String,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            Creates a new single-threaded client.
+            </summary>
+            <param name="localSignature">should be Signature.Value, where Signature is class generated by LRP generator.</param>
+            <param name="address">address of remote LRP server.</param>
+            <param name="port">port of remote LRP server.</param>
+            <param name="username">an username</param>
+            <param name="password">a password</param>
+        </member>
+        <member name="M:SoftFX.Lrp.StClient.#ctor(System.String,System.String,System.Int32,System.String,System.String,SoftFX.Lrp.LogHandler)">
+            <summary>
+            Creates a new single-threaded client.
+            </summary>
+            <param name="localSignature">should be Signature.Value, where Signature is class generated by LRP generator.</param>
+            <param name="address">address of remote LRP server.</param>
+            <param name="port">port of remote LRP server.</param>
+            <param name="username">an username</param>
+            <param name="password">a password</param>
+            <param name="logHandler">a single-threaded log handler; can not be null</param>
+        </member>
+        <member name="M:SoftFX.Lrp.StClient.#ctor(System.String,System.String,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Creates a new single-threaded client.
+            </summary>
+            <param name="localSignature">should be Signature.Value, where Signature is class generated by LRP generator.</param>
+            <param name="address">address of remote LRP server.</param>
+            <param name="port">port of remote LRP server.</param>
+            <param name="username">an username</param>
+            <param name="password">a password</param>
+            <param name="logPath">a relative or absolute path to log file</param>
+        </member>
+        <member name="P:SoftFX.Lrp.StClient.IsConnected">
+            <summary>
+            Returns true, if the client is connected.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Lrp.StClient.Timeout">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.StClient.Connect(System.Int32)">
+            <summary>
+            Connecting the single-threaded client to a remote server.
+            </summary>
+            <param name="timeoutInMilliseconds">Timeout of logical connection.</param>
+            <returns>true, if connection has been established, otherwise false</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.StClient.Ping(System.Int32)">
+            <summary>
+            The methods tries to send an empty request and receive answer.
+            The method closes the connection, if ping operation is failed; in this case you should connect the client again.
+            </summary>
+            <param name="timeoutInMilliseconds">Timeout in milliseconds for sending request and receiving response</param>
+            <returns>
+            true, if request has been sent and response has been received.
+            false, if request has not been send or response has not been received or the client is disconnected.
+            </returns>
+        </member>
+        <member name="M:SoftFX.Lrp.StClient.Create">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SoftFX.Lrp.StClient.Invoke(System.UInt16,System.UInt16,SoftFX.Lrp.MemoryBuffer)">
+            <summary>
+            
+            </summary>
+            <param name="componentId"></param>
+            <param name="methodId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SoftFX.Lrp.StClient.Dispose">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SoftFX.Lrp.TextStream">
+            <summary>
+            The class provides methods for reading embedded types.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.Initialize(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="P:SoftFX.Lrp.TextStream.EntryWasFound">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadInt8(System.String)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">optioanal name of reading value</param>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadInt8(System.String,System.SByte)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">name of reading value</param>
+            <param name="defaultValue">default value of the value</param>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadInt16(System.String)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">optioanal name of reading value</param>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadInt16(System.String,System.Int16)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">name of reading value</param>
+            <param name="defaultValue">default value of the value</param>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadInt32(System.String)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">optioanal name of reading value</param>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadInt32(System.String,System.Int32)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">name of reading value</param>
+            <param name="defaultValue">default value of the value</param>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadInt64(System.String)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">optioanal name of reading value</param>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadInt64(System.String,System.Int64)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">name of reading value</param>
+            <param name="defaultValue">default value of the value</param>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadUInt8(System.String)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">optioanal name of reading value</param>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadUInt8(System.String,System.Byte)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">name of reading value</param>
+            <param name="defaultValue">default value of the value</param>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadUInt16(System.String)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">optioanal name of reading value</param>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadUInt16(System.String,System.UInt16)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">name of reading value</param>
+            <param name="defaultValue">default value of the value</param>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadUInt32(System.String)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">optioanal name of reading value</param>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadInt32(System.String,System.UInt32)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">name of reading value</param>
+            <param name="defaultValue">default value of the value</param>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadUInt64(System.String)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">optioanal name of reading value</param>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadUInt64(System.String,System.UInt64)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">name of reading value</param>
+            <param name="defaultValue">default value of the value</param>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadBoolean(System.String)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">optional name of reading value</param>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadBoolean(System.String,System.Boolean)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">name of reading value</param>
+            <param name="defaultValue">default value of the value</param>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadSingle(System.String)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">optional name of reading value</param>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadSingle(System.String,System.Single)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">name of reading value</param>
+            <param name="defaultValue">default value of the value</param>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadDouble(System.String)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">optional name of reading value</param>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadDouble(System.String,System.Double)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">name of reading value</param>
+            <param name="defaultValue">default value of the value</param>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadAString(System.String)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">optional name of reading value</param>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for a new string creation.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadAString(System.String,System.String)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">name of reading value</param>
+            <param name="defaultValue">default value of the value</param>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadTime(System.String)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">optional name of reading value</param>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadDouble(System.String,System.DateTime)">
+            <summary>
+            Read a value from text stream.
+            </summary>
+            <param name="name">name of reading value</param>
+            <param name="defaultValue">default value of the value</param>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ValidateVerbatimText(System.String)">
+            <summary>
+            Validate a text in stream.
+            </summary>
+            <param name="text">can not be null.</param>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ValidateVerbatimText(System.Char)">
+            <summary>
+            Validate a text in stream.
+            </summary>
+            <param name="text">can not be null.</param>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadForCharacter(System.Char)">
+            <summary>
+            Reads a text from the stream until ch is appeared.
+            </summary>
+            <param name="value">any character</param>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ReadAStringForCharacter(System.Char)">
+            <summary>
+            Reads a text from the stream until ch is appeared.
+            </summary>
+            <param name="value">any character</param>
+        </member>
+        <member name="M:SoftFX.Lrp.TextStream.ToString">
+            <summary>
+            Returns a text stream from current position to end.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SoftFX.Lrp.TimeoutException">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SoftFX.Lrp.TimeoutException.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+    </members>
+</doc>

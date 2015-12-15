@@ -1,0 +1,39 @@
+---
+title: "Trades rFdk"
+output:
+  html_document:
+    theme: united
+    toc: yes
+---
+
+Sections:
+
+* 1. Connection
+
+* 2. Feed history  (bars and quotes)
+
+
+
+#1. Connection
+Connect to TT Demo server:
+ttConnect()
+
+```{r}
+options(warn=-1)
+require(rFdk)
+
+```
+
+#2. Trades/Trade Reports
+
+Trades in account:
+```{r}
+# Commented as it takes to long
+ttConnect("tp.st.soft-fx.eu", "100066", "123qwe!")
+head(ttTrades())
+```
+All trades
+```{r}
+# Commented as it takes to long
+ttTradesHistory()
+```

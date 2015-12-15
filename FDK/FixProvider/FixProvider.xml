@@ -1,0 +1,57 @@
+<Protocol>
+	<Types>
+		<Type name="QuoteEntry" CSharpFullName="SoftFX.Extended.QuoteEntry" CppFullName="CFxQuoteEntry" kind="class">
+			<Member name="Price" type="double" />
+			<Member name="Volume" type="double" />
+		</Type>
+		<Type name="QuoteEntryArray" kind="array">
+			<Value name="QuoteEntry" />
+		</Type>
+		<Type name="Quote" CSharpFullName="SoftFX.Extended.Quote" CppFullName="CFxQuote" kind="class">
+			<Member name="Symbol" type="astring" />
+			<Member name="CreatingTime" type="time" />
+			<Member name="Bids" type="QuoteEntryArray" />
+			<Member name="Asks" type="QuoteEntryArray" />
+		</Type>
+		<Type name="QuoteArray" kind="array">
+			<Value name="Quote" />
+		</Type>
+	</Types>
+	<Components>
+		<Component name="FixCodec" proxy="true">
+			<Method name="Constructor">
+				<Return type="lptr" />
+			</Method>
+			<Method name="Destructor">
+				<Param name="handle" type="lptr" direction="in" />
+				<Return type="void" />
+			</Method>
+			<Method name="GetCount">
+				<Param name="handle" type="lptr" direction="in" />
+				<Return type="int64" />
+			</Method>
+			<Method name="GetSize">
+				<Param name="handle" type="lptr" direction="in" />
+				<Return type="int64" />
+			</Method>
+			<Method name="GetTime">
+				<Param name="handle" type="lptr" direction="in" />
+				<Return type="double" />
+			</Method>
+			<Method name="EncodeSlow">
+				<Param name="handle" type="lptr" direction="in" />
+				<Param name="quotes" type="QuoteArray" direction="in" />
+				<Return type="void" />
+			</Method>
+			<Method name="EncodeFast">
+				<Param name="handle" type="lptr" direction="in" />
+				<Param name="quotes" type="QuoteArray" direction="in" />
+				<Return type="void" />
+			</Method>
+			<Method name="Clear">
+				<Param name="handle" type="lptr" direction="in" />
+				<Return type="void" />
+			</Method>
+		</Component>
+	</Components>
+</Protocol>

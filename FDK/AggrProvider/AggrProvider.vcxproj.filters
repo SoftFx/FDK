@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="_Headers">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="_Resources">
+      <UniqueIdentifier>{efc8eb30-4984-4288-836f-d8995708bdbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Feeder">
+      <UniqueIdentifier>{ec5abaec-1886-48fa-b21d-88d2553b3981}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Feeder\Headers">
+      <UniqueIdentifier>{6829af4e-73c2-4f4e-9b23-6e30411e47c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Feeder\Sources">
+      <UniqueIdentifier>{bc46b000-1d77-477b-bd72-317a4d4ddb0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LRP">
+      <UniqueIdentifier>{f8c62e69-daf1-48d1-b3e2-dbe227610f44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LRP\Generated">
+      <UniqueIdentifier>{1835b40b-335d-499b-bbf2-20af18311d9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LRP\Headers">
+      <UniqueIdentifier>{40d2e427-dd81-4968-85b6-1580aefbca77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LRP\Sources">
+      <UniqueIdentifier>{51cf0c4b-0089-4af3-82d1-bc3deead456a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Trade">
+      <UniqueIdentifier>{2b862f95-59ba-400d-b1f8-d3a2d511f6c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Trade\Headers">
+      <UniqueIdentifier>{ca84b215-56fa-4d8e-8b3d-8c8953275a75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Trade\Sources">
+      <UniqueIdentifier>{d25980ee-b3d4-4ed3-ba96-5666890ecf91}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="AggrProvider.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="AggrConnection.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="AggrSender.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryReader.h">
+      <Filter>Feeder\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ConnectionParams.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FeederSources.h">
+      <Filter>Feeder\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FLevel2.h">
+      <Filter>Feeder\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FBank.h">
+      <Filter>Feeder\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FQuote.h">
+      <Filter>Feeder\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryReadHelpers.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryReadHelpers.hpp">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SocketHelper.h">
+      <Filter>Feeder\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FSessionInfo.h">
+      <Filter>Feeder\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FSymbolInfo.h">
+      <Filter>Feeder\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FeederSource.h">
+      <Filter>Feeder\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IFeederHandler.h">
+      <Filter>Feeder\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FeederEvents.h">
+      <Filter>Feeder\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FAccountInfo.h">
+      <Filter>Feeder\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FeederHandler.h">
+      <Filter>Feeder\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FTrade.hpp">
+      <Filter>LRP\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="TypesSerializer.hpp">
+      <Filter>LRP\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="BridgeClient.h">
+      <Filter>Trade\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Signature.hpp">
+      <Filter>LRP\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="Request.h">
+      <Filter>Trade\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TradeSide.h">
+      <Filter>Trade\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TradeCommand.h">
+      <Filter>Trade\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="AggrProvider.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="AggrConnection.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="AggrSender.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="AggrSenderNotSupported.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="AggrSenderTrivialImplementation.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryReader.cpp">
+      <Filter>Feeder\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ConnectionParams.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FeederSources.cpp">
+      <Filter>Feeder\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FLevel2.cpp">
+      <Filter>Feeder\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FBank.cpp">
+      <Filter>Feeder\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FQuote.cpp">
+      <Filter>Feeder\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryReadHelpers.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SocketHelper.cpp">
+      <Filter>Feeder\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FSessionInfo.cpp">
+      <Filter>Feeder\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FSymbolInfo.cpp">
+      <Filter>Feeder\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FeederSource.cpp">
+      <Filter>Feeder\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FeederEvents.cpp">
+      <Filter>Feeder\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FeederHandler.cpp">
+      <Filter>Feeder\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FAccountInfo.cpp">
+      <Filter>Feeder\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="BridgeClient.cpp">
+      <Filter>Trade\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Request.cpp">
+      <Filter>Trade\Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AggrProvider.def">
+      <Filter>_Resources</Filter>
+    </None>
+    <None Include="AdminEye.xml">
+      <Filter>LRP\Sources</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc">
+      <Filter>_Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico">
+      <Filter>_Resources</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

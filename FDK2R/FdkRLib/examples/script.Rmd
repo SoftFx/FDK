@@ -1,0 +1,89 @@
+---
+title: "Sample rFdk"
+output:
+  html_document:
+    theme: united
+    toc: yes
+---
+
+Sections:
+
+* 1. Connection
+
+* 2. Configuration (symbols, currencies, accounts)
+
+* 3. Feed history  (bars and quotes)
+
+* 4. Trades/Trade Reports
+
+
+#1. Connection
+Connect to TT Demo server:
+ttConnect()
+
+```{r}
+options(warn=-1)
+require(rClr)
+require(rFdk)
+
+ttConnect("", "", "")
+
+```
+
+#2. Configuration
+
+Get symbol and currency data
+```{r}
+ttGetSymbolData()
+
+ttGetCurrencyData()
+```
+
+#3. Feed history
+<p>Get 10000 bars of EURUSD symbol:</p>
+head(ttBarsHistory("EURUSD"))
+
+```{r}
+ttBarsHistory("EURUSD")
+```
+
+<p>Get 10000 bar quotes  of EURUSD symbol: </p>
+bars = ttBarsQuotesHistory("EURUSD")
+
+```{r}
+ttBarsQuotesHistory("EURUSD")
+```
+
+
+Get quotes
+```{r}
+
+now <-as.POSIXct(Sys.time())
+# 300 seconds from present
+prevNow <-as.POSIXct(now-(300))
+
+ttQuotesHistory("EURUSD", startTime = prevNow, endTime=now)
+```
+
+Get quotes L2
+```{r}
+now <-as.POSIXct(Sys.time())
+# 1000 seconds from present
+prevNow <-as.POSIXct(now-1000)
+
+ttQuotesLevel2History('EURUSD', prevNow, now, depth=1)
+```
+
+#4. Trades/Trade Reports
+
+Trades in account:
+```{r}
+# Commented as it takes to long
+ttConnect("tp.st.soft-fx.eu", "100066", "123qwe!")
+head(ttTrades())
+```
+All trades
+```{r}
+# Commented as it takes to long
+ttTradesHistory()
+```

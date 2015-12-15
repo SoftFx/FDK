@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x86">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8B29A897-6528-4D86-BF8B-4E19328F3174}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Core</RootNamespace>
+    <SccProjectName>
+    </SccProjectName>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccProvider>
+    </SccProvider>
+    <ProjectName>Core</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>SoftFX.$(ProjectName).$(PlatformTarget)</TargetName>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration).$(PlatformTarget)\</IntDir>
+    <TargetExt>.dll</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration).$(PlatformTarget)\</IntDir>
+    <TargetName>SoftFX.$(ProjectName).$(PlatformTarget)</TargetName>
+    <TargetExt>.dll</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>SoftFX.$(ProjectName).$(PlatformTarget)</TargetName>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration).$(PlatformTarget)\</IntDir>
+    <TargetExt>.dll</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName).x86</TargetName>
+    <OutDir>$(SolutionDir)\$(Configuration)\</OutDir>
+    <IntDir>$(Configuration).x86\</IntDir>
+    <TargetExt>.dll</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration).$(PlatformTarget)\</IntDir>
+    <TargetName>SoftFX.$(ProjectName).$(PlatformTarget)</TargetName>
+    <TargetExt>.dll</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;CORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BrowseInformation>true</BrowseInformation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>xmllite.lib;ssleay32.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>Core.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>..\..\External\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <Profile>false</Profile>
+      <StripPrivateSymbols>$(TargetDir)$(TargetName).(stripped).pdb</StripPrivateSymbols>
+    </Link>
+    <PostBuildEvent>
+      <Command>if not exist ..\..\FRE (md ..\..\FRE)
+copy /Y "$(TargetPath)" ..\..\FRE\
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
+    </PostBuildEvent>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;CORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>Core.def</ModuleDefinitionFile>
+      <AdditionalDependencies>xmllite.lib;ssleay64.lib;libeay64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\External\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <Profile>false</Profile>
+      <StripPrivateSymbols>$(TargetDir)$(TargetName).(stripped).pdb</StripPrivateSymbols>
+    </Link>
+    <PostBuildEvent>
+      <Command>if not exist ..\..\FRE (md ..\..\FRE)
+copy /Y "$(TargetPath)" ..\..\FRE\
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>xmllite.lib;ssleay32.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>Core.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>..\..\External\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <Profile>false</Profile>
+      <StripPrivateSymbols>$(TargetDir)$(TargetName).(stripped).pdb</StripPrivateSymbols>
+    </Link>
+    <PostBuildEvent>
+      <Command>if not exist ..\..\FRE (md ..\..\FRE)
+copy /Y "$(TargetPath)" ..\..\FRE\
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>xmllite.lib;ssleay32.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>Core.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>..\..\External\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <Profile>true</Profile>
+      <StripPrivateSymbols>$(TargetDir)$(TargetName).(stripped).pdb</StripPrivateSymbols>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+			if "$(BuildingInsideVisualStudio)"=="true" (
+				copy /Y "$(TargetPath)" ..\..\FRE\
+				copy /Y "$(OutDir)$(TargetName).(stripped).pdb" ..\..\FRE\$(TargetName).pdb
+			)
+			if "$(BuildingInsideVisualStudio)"=="false" (
+				@echo TFS build
+			)
+		</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>Core.def</ModuleDefinitionFile>
+      <AdditionalDependencies>xmllite.lib;ssleay64.lib;libeay64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\External\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <Profile>false</Profile>
+      <StripPrivateSymbols>$(TargetDir)$(TargetName).(stripped).pdb</StripPrivateSymbols>
+    </Link>
+    <PostBuildEvent>
+      <Command>if not exist ..\..\FRE (md ..\..\FRE)
+copy /Y "$(TargetPath)" ..\..\FRE\
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="ArgumentException.h" />
+    <ClInclude Include="ArgumentNullException.h" />
+    <ClInclude Include="AskComparator.h" />
+    <ClInclude Include="AssetInfo.h" />
+    <ClInclude Include="BidComparator.h" />
+    <ClInclude Include="Core.h" />
+    <ClInclude Include="FxCurrencyInfo.h" />
+    <ClInclude Include="FxAccountInfo.h" />
+    <ClInclude Include="FxBar.h" />
+    <ClInclude Include="FxClosePositionResult.h" />
+    <ClInclude Include="DataHistoryInfo.h" />
+    <ClInclude Include="FxDataHistoryResponse.h" />
+    <ClInclude Include="FxClosePositionsResponse.h" />
+    <ClInclude Include="FxEventInfo.h" />
+    <ClInclude Include="FxExecutionReport.h" />
+    <ClInclude Include="FxFileChunk.h" />
+    <ClInclude Include="FxHandle.h" />
+    <ClInclude Include="FxIterator.h" />
+    <ClInclude Include="FxMessage.h" />
+    <ClInclude Include="FxMsgLogout.h" />
+    <ClInclude Include="FxMsgData.h" />
+    <ClInclude Include="LogoutException.h" />
+    <ClInclude Include="Notification.h" />
+    <ClInclude Include="FxOrder.h" />
+    <ClInclude Include="FxPositionReport.h" />
+    <ClInclude Include="FxQuote.h" />
+    <ClInclude Include="FxQuoteEntry.h" />
+    <ClInclude Include="FxDataHistoryRequest.h" />
+    <ClInclude Include="FxRef.h" />
+    <ClInclude Include="FxSessionInfo.h" />
+    <ClInclude Include="FxSymbolInfo.h" />
+    <ClInclude Include="FxTradeHistoryReport.h" />
+    <ClInclude Include="FxTradeHistoryResponse.h" />
+    <ClInclude Include="FxTradeTransactionReport.h" />
+    <ClInclude Include="HandlesPool.h" />
+    <ClInclude Include="IConnection.h" />
+    <ClInclude Include="InvalidHandleException.h" />
+    <ClInclude Include="IReceiver.h" />
+    <ClInclude Include="ISender.h" />
+    <ClInclude Include="FxParams.h" />
+    <ClInclude Include="NotImplementedException.h" />
+    <ClInclude Include="Ref.h" />
+    <ClInclude Include="RejectException.h" />
+    <ClInclude Include="RuntimeError.h" />
+    <ClInclude Include="SendException.h" />
+    <ClInclude Include="StartupInitializer.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="TimeoutException.h" />
+    <ClInclude Include="Types.h" />
+    <ClInclude Include="UnsupportedFeatureException.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ArgumentException.cpp" />
+    <ClCompile Include="ArgumentNullException.cpp" />
+    <ClCompile Include="Core.cpp" />
+    <ClCompile Include="FxAccountInfo.cpp" />
+    <ClCompile Include="FxBar.cpp" />
+    <ClCompile Include="FxCurrencyInfo.cpp" />
+    <ClCompile Include="FxDataHistoryResponse.cpp" />
+    <ClCompile Include="FxClosePositionsResponse.cpp" />
+    <ClCompile Include="FxEventInfo.cpp" />
+    <ClCompile Include="FxExecutionReport.cpp" />
+    <ClCompile Include="FxFileChunk.cpp" />
+    <ClCompile Include="FxHandle.cpp" />
+    <ClCompile Include="FxMessage.cpp" />
+    <ClCompile Include="FxMsgLogout.cpp" />
+    <ClCompile Include="LogoutException.cpp" />
+    <ClCompile Include="Notification.cpp" />
+    <ClCompile Include="FxOrder.cpp" />
+    <ClCompile Include="FxPositionReport.cpp" />
+    <ClCompile Include="FxQuote.cpp" />
+    <ClCompile Include="FxQuoteEntry.cpp" />
+    <ClCompile Include="FxDataHistoryRequest.cpp" />
+    <ClCompile Include="FxSessionInfo.cpp" />
+    <ClCompile Include="FxSymbolInfo.cpp" />
+    <ClCompile Include="FxTradeHistoryReport.cpp" />
+    <ClCompile Include="FxTradeHistoryResponse.cpp" />
+    <ClCompile Include="HandlesPool.cpp" />
+    <ClCompile Include="NotImplementedException.cpp" />
+    <ClCompile Include="RejectException.cpp" />
+    <ClCompile Include="TimeoutException.cpp" />
+    <ClCompile Include="UnsupportedFeatureException.cpp" />
+    <None Include="Core.def" />
+    <None Include="makefile">
+      <FileType>Document</FileType>
+    </None>
+    <ClCompile Include="FxParams.cpp" />
+    <ClCompile Include="FxTradeTransactionReport.cpp" />
+    <ClCompile Include="InvalidHandleException.cpp" />
+    <ClCompile Include="RuntimeError.cpp" />
+    <ClCompile Include="SendException.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sal\Sal.vcxproj">
+      <Project>{4e42e097-ec94-44eb-a93a-ca58783e4b85}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

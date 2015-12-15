@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="FixAdapter">
+      <UniqueIdentifier>{ca38bf90-09b4-4eac-a579-7fcd58dcf297}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FixAdapter\Headers">
+      <UniqueIdentifier>{dc4d46f0-bb9d-4368-8ca4-d6aa6c8582ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FixAdapter\Sources">
+      <UniqueIdentifier>{28ec44e8-e459-463e-952b-263f0700e8ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Headers">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="_Resources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="_Sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="LRP">
+      <UniqueIdentifier>{24fd544a-9941-4ec0-a5fb-0ff840328b16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LRP\Generated">
+      <UniqueIdentifier>{0a67d62b-817c-4d77-a14e-268f6f8d340a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LRP\Headers">
+      <UniqueIdentifier>{b406311b-c1c2-4ff8-a985-45d14007df05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LRP\Sources">
+      <UniqueIdentifier>{8826219e-9da4-43cb-8cbc-605888e484d0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FixProvider.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FixConnection.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FixSender.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="NullLogFactory.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FixDialect.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Conversion.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FixExecutionReport.h">
+      <Filter>FixAdapter\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FixVersion.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Server.hpp">
+      <Filter>LRP\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="TypesSerializer.hpp">
+      <Filter>LRP\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="Channel.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FixCodecImpl.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FixCodec.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FixLevel2.h">
+      <Filter>LRP\Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FixProvider.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FixConnection.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FixSender.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="NullLogFactory.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FixDialect.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Conversion.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FixExecutionReport.cpp">
+      <Filter>FixAdapter\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FixVersion.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Channel.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Server.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FixCodecImpl.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FixCodec.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FixLevel2.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FixProvider.def">
+      <Filter>_Resources</Filter>
+    </None>
+    <None Include="FIX44.xml">
+      <Filter>_Resources</Filter>
+    </None>
+    <None Include="makefile">
+      <Filter>_Resources</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="FixProvider.rc">
+      <Filter>_Resources</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="app.rc">
+      <Filter>_Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="FixProvider.xml">
+      <Filter>_Resources</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico">
+      <Filter>_Resources</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AutomaticTrading.Sources.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DataSources_FDK_StorageLocation" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Temp\Quotes\</Value>
+    </Setting>
+    <Setting Name="DataSources_FDK_Server" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">10.2.7.19</Value>
+    </Setting>
+    <Setting Name="DataSources_FDK_Username" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">67547786</Value>
+    </Setting>
+    <Setting Name="DataSources_FDK_Password" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">temp_pass</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Internal">
+      <UniqueIdentifier>{31a90a3b-a296-414d-bba7-231802ab449b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public">
+      <UniqueIdentifier>{937e268d-895b-4712-b0d1-4c8635fd2662}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\Headers">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Public\Resources">
+      <UniqueIdentifier>{c8d2c384-b43d-4f8f-bc77-d3c0ca89b312}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\Sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Internal\Headers">
+      <UniqueIdentifier>{2f73436a-fede-4e94-bf20-acf168f7cfb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Internal\Sources">
+      <UniqueIdentifier>{bdb064bc-15a8-4faa-803e-5ec5392e7910}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Lrp.Core.h">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpThreadPool.h">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryBuffer.h">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryPool.h">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Ref.h">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ILrpClient.h">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpClient.h">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpStClient.h">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpStServer.h">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="StServerImpl.h">
+      <Filter>Internal\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="StChannelImpl.h">
+      <Filter>Internal\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpClientImpl.h">
+      <Filter>Internal\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Functions.h">
+      <Filter>Internal\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpMtServer.h">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MtServerImpl.h">
+      <Filter>Internal\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MtChannelImpl.h">
+      <Filter>Internal\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpTextStream.h">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DateTime.h">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Nullable.h">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Timeout.h">
+      <Filter>Internal\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ILrpChannel.h">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpStClientImpl.h">
+      <Filter>Internal\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Translator.h">
+      <Filter>Internal\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>Internal\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Formatting.h">
+      <Filter>Internal\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Acceptor.h">
+      <Filter>Internal\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpLocalClient.h">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpLocalClientImpl.h">
+      <Filter>Internal\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DotNetBridge.h">
+      <Filter>Internal\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="decimal8.h">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Socket.h">
+      <Filter>Internal\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpStd.h">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpStdVector.h">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LrpStdVector.hpp">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SocketGuad.h">
+      <Filter>Internal\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BitReader.h">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BitWriter.h">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Public\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Public\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Lrp.Core.cpp">
+      <Filter>Public\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryBuffer.cpp">
+      <Filter>Public\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryPool.cpp">
+      <Filter>Public\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LrpThreadPool.cpp">
+      <Filter>Public\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LrpClient.cpp">
+      <Filter>Public\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LrpStClient.cpp">
+      <Filter>Public\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LrpStServer.cpp">
+      <Filter>Public\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="StServerImpl.cpp">
+      <Filter>Internal\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="StChannelImpl.cpp">
+      <Filter>Internal\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LrpClientImpl.cpp">
+      <Filter>Internal\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Functions.cpp">
+      <Filter>Internal\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LrpMtServer.cpp">
+      <Filter>Public\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MtServerImpl.cpp">
+      <Filter>Internal\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MtChannelImpl.cpp">
+      <Filter>Internal\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Timeout.cpp">
+      <Filter>Internal\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LrpStClientImpl.cpp">
+      <Filter>Internal\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Translator.cpp">
+      <Filter>Internal\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger.cpp">
+      <Filter>Internal\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Formatting.cpp">
+      <Filter>Internal\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Acceptor.cpp">
+      <Filter>Internal\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LrpLocalClient.cpp">
+      <Filter>Public\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LrpLocalClientImpl.cpp">
+      <Filter>Internal\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DotNetBridge.cpp">
+      <Filter>Internal\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="decimal8.cpp">
+      <Filter>Public\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Socket.cpp">
+      <Filter>Internal\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="BitReader.cpp">
+      <Filter>Public\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="BitWriter.cpp">
+      <Filter>Public\Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Lrp.Core.def">
+      <Filter>Public\Resources</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="decimal.asm">
+      <Filter>Public\Sources</Filter>
+    </MASM>
+  </ItemGroup>
+</Project>

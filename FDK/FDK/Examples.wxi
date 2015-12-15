@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <!-- examples shortcut creating -->
+  <DirectoryRef Id="ApplicationProgramsFolder">
+    <Component Id="ExamplesFolderShortcut" Guid="*">
+      <RegistryKey Root="HKCU" Key="Software\SoftFX\FDK\$(var.FullVersion)" Action="createAndRemoveOnUninstall">
+        <RegistryValue Name="ExamplesShortcut" Value="1" Type="integer" KeyPath="yes"/>
+      </RegistryKey>
+      <Shortcut Id="PF_ExamplesFolderShortcut" Name="Examples" Target="[APPLICATIONFOLDER]Examples"/>
+      <RemoveFolder Id="PF_ExamplesFolder" On="uninstall"/>
+    </Component>
+  </DirectoryRef>
+
+  <Feature Id="Examples" Title="Examples" Level="1" Display="expand" AllowAdvertise="no" Description="Install FDK Examples">
+    <ComponentGroupRef Id="Examples" />
+    <ComponentRef Id="ExamplesFolderShortcut" />
+  </Feature>
+</Include>

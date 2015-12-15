@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <DirectoryRef Id="PF_FRE">
+    <Component Id="SoftFX.Extended.Cpp.x86.dll" Guid="*">
+      <File Id="SoftFX.Extended.Cpp.x86.dll" Source="..\..\FRE\SoftFX.Extended.Cpp.x86.dll" KeyPath="yes" Checksum="yes"/>
+    </Component>
+    <Component Id="SoftFX.Extended.Cpp.x64.dll" Guid="*">
+      <File Id="SoftFX.Extended.Cpp.x64.dll" Source="..\..\FRE\SoftFX.Extended.Cpp.x64.dll" KeyPath="yes" Checksum="yes"/>
+    </Component>
+  </DirectoryRef>
+
+</Include>
+
+

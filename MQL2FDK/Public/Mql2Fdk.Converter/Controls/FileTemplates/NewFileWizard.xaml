@@ -1,0 +1,33 @@
+﻿<Window x:Class="Mql2Fdk.Converter.Controls.FileTemplates.NewFileWizard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="New File Wizard" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition  Height="auto" />
+            <RowDefinition  Height="auto" />
+        </Grid.RowDefinitions>
+        <GroupBox Header="Select project type">
+            <ListBox x:Name="projectTypeListBox">
+                <ListBoxItem Margin="4">Standard file</ListBoxItem>
+                <ListBoxItem Margin="4">Script</ListBoxItem>
+                <ListBoxItem Margin="4">Empty file</ListBoxItem>
+            </ListBox>
+        </GroupBox>
+        <GroupBox Grid.Row="1" Header="File name">
+            <TextBlock Text="newFile.mql" />
+        </GroupBox>
+        <Grid Grid.Row="2">
+            <UniformGrid HorizontalAlignment="Left" Rows="1"/>
+            <UniformGrid HorizontalAlignment="Right" Rows="1">
+                <Button Margin="2"
+                        Click="OnOk"
+                        >Ok</Button>
+                <Button Margin="2"
+                        Click="OnCancel"
+                        >Cancel</Button>
+            </UniformGrid>
+        </Grid>
+    </Grid>
+</Window>

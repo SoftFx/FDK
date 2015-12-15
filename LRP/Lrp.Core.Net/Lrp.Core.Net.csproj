@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1FC8EA20-3665-4E67-82F3-FE4FD3F37758}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SoftFX.Lrp</RootNamespace>
+    <AssemblyName>SoftFX.Lrp</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Debug\SoftFX.Lrp.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <DocumentationFile>..\Release\SoftFX.Lrp.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseLib|AnyCPU'">
+    <OutputPath>bin\ReleaseLib\</OutputPath>
+    <DocumentationFile>..\Release\SoftFX.Lrp.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugLib|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DebugLib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>..\Debug\SoftFX.Lrp.xml</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>..\Debug\Lrp.Core.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Resources\FDK.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseClient.cs" />
+    <Compile Include="BaseComponentReader.cs" />
+    <Compile Include="BaseProtocolReader.cs" />
+    <Compile Include="Delegates.cs" />
+    <Compile Include="DisconnectedException.cs" />
+    <Compile Include="DomainClient.cs" />
+    <Compile Include="IClient.cs" />
+    <Compile Include="Implementation\ComponentMethodSize.cs" />
+    <Compile Include="Implementation\DomainHost.cs" />
+    <Compile Include="Implementation\Entry.cs" />
+    <Compile Include="Implementation\fd_set.cs" />
+    <Compile Include="Implementation\Heap.cs" />
+    <Compile Include="Implementation\HResult.cs" />
+    <Compile Include="Implementation\IHost.cs" />
+    <Compile Include="Implementation\InProcessHost.cs" />
+    <Compile Include="Implementation\Matching.cs" />
+    <Compile Include="Implementation\OutProcessHost.cs" />
+    <Compile Include="Implementation\ResultSize.cs" />
+    <Compile Include="InvalidComponentException.cs" />
+    <Compile Include="InvalidMethodException.cs" />
+    <Compile Include="IProtocolReader.cs" />
+    <Compile Include="IRemoteClient.cs" />
+    <Compile Include="IComponentReader.cs" />
+    <Compile Include="LocalClient.cs" />
+    <Compile Include="Implementation\Logger.cs" />
+    <Compile Include="LocalServer.cs" />
+    <Compile Include="LPtr.cs" />
+    <Compile Include="Implementation\MachineType.cs" />
+    <Compile Include="MagicNumbers.cs" />
+    <Compile Include="MemoryBuffer.cs" />
+    <Compile Include="Mode.cs" />
+    <Compile Include="Implementation\Network.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProtocolException.cs" />
+    <Compile Include="Implementation\ProtocolVersion.cs" />
+    <Compile Include="Implementation\Transaction.cs" />
+    <Compile Include="Resources\FilesResolver.cs" />
+    <Compile Include="Resources\Files.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Files.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RPtr.cs" />
+    <Compile Include="StClient.cs" />
+    <Compile Include="Implementation\TcpKeepalive.cs" />
+    <Compile Include="TextStream.cs" />
+    <Compile Include="Implementation\Timeout.cs" />
+    <Compile Include="TimeoutException.cs" />
+    <Compile Include="Implementation\timeval.cs" />
+    <Compile Include="Implementation\Translator.cs" />
+    <Compile Include="Implementation\WinAPI.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Files.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Files.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FDK.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if not exist ..\dll\ (md ..\dll\)
+xcopy /Y "$(TargetPath)" ..\dll\
+if exist "$(TargetDir)$(TargetName).xml" (xcopy /Y "$(TargetDir)$(TargetName).xml" ..\dll\)
+if exist "$(TargetDir)$(TargetName).pdb" (xcopy /Y "$(TargetDir)$(TargetName).pdb" ..\dll\)</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>if not exist "$(SolutionDir)bin\LrpHost.x86.exe"  (copy NUL "$(SolutionDir)bin\LrpHost.x86.exe")
+if not exist "$(SolutionDir)bin\LrpHost.x64.exe"  (copy NUL "$(SolutionDir)bin\LrpHost.x64.exe")</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

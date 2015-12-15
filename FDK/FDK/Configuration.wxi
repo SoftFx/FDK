@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <!-- current version of API-->
+  <?define FDK_ID = "{C5E0CA48-93DD-47D6-BCEA-FD41A724496B}"?>
+  <?define FDK_UPGRADE_ID = "{9B40F93E-5D50-4D0A-ABFC-A23EB1A5A30B}"?> <!--DO NOT CHANGE IT!-->
+  <?define Version = '1.17.0'?>
+  <?define FullVersion = $(var.Version)?>
+  <?define FriendlyName=FDK $(var.Version) version?>
+  <?define EnableNet = 'yes'?>
+  <?define EnableCpp = 'no'?>
+  <?define EnableJava = 'no'?>
+</Include>

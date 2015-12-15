@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Protocol>
+    <Types>
+        <Type name="AStringArray" kind="array">
+            <Value name="astring" />
+        </Type>
+        <Type name="UInt8Array" kind="array">
+            <Value name="uint8" />
+        </Type>
+        <Type name="ProfitCalcMode" CSharpFullName="LrpServer.Net.LrpProfitCalcMode" CppFullName="ProfitCalcMode" kind="enum32" />
+        <Type name="MarginCalcMode" CSharpFullName="LrpServer.Net.LrpMarginCalcMode" CppFullName="MarginCalcMode" kind="enum32" />
+        <Type name="SessionStatus" CSharpFullName="LrpServer.Net.LrpSessionStatus" CppFullName="SessionStatus" kind="enum32" />
+        <Type name="CommissionType" CSharpFullName="LrpServer.Net.LrpCommissionType" CppFullName="FxCommissionType" kind="enum32" />
+        <Type name="CommissionChargeType" CSharpFullName="LrpServer.Net.LrpCommissionChargeType" CppFullName="FxCommissionChargeType" kind="enum32" />
+        <Type name="CommissionChargeMethod" CSharpFullName="LrpServer.Net.LrpCommissionChargeMethod" CppFullName="FxCommissionChargeMethod" kind="enum32" />
+        <Type name="NotificationType" CSharpFullName="LrpServer.Net.LrpNotificationType" CppFullName="NotificationType" kind="enum32" />
+        <Type name="Severity" CSharpFullName="LrpServer.Net.LrpSeverity" CppFullName="Severity" kind="enum32" />
+        <Type name="LrpSessionInfo" CSharpFullName="LrpServer.Net.LrpSessionInfo" CppFullName="CFxSessionInfo" kind="class">
+            <Member name="TradingSessionId" type="astring" />
+            <Member name="Status" type="SessionStatus" />
+            <Member name="ServerTimeZoneOffset" type="int32" />
+            <Member name="PlatformName" type="astring" />
+            <Member name="PlatformCompany" type="astring" />
+            <Member name="StartTime" type="time" />
+            <Member name="OpenTime" type="time" />
+            <Member name="CloseTime" type="time" />
+            <Member name="EndTime" type="time" />
+        </Type>
+        <Type name="SymbolInfo" CSharpFullName="LrpServer.Net.LrpSymbolInfo" CppFullName="CFxSymbolInfo" kind="class">
+            <Member name="Name" type="astring" />
+            <Member name="Currency" type="astring" />
+            <Member name="SettlementCurrency" type="astring" />
+            <Member name="ContractMultiplier" type="double" />
+            <Member name="Precision" type="int32" />
+            <Member name="RoundLot" type="double" />
+            <Member name="MinTradeVolume" type="double" />
+            <Member name="MaxTradeVolume" type="double" />
+            <Member name="TradeVolumeStep" type="double" />
+            <Member name="ProfitCalcMode" type="ProfitCalcMode" />
+            <Member name="MarginCalcMode" type="MarginCalcMode" />
+            <Member name="MarginHedge" type="double" />
+            <Member name="MarginFactor" type="int32" />
+            <Member name="MarginFactorFractional" type="double?" />
+            <Member name="Color" type="int32" />
+            <Member name="CommissionType" type="CommissionType" />
+            <Member name="CommissionChargeType" type="CommissionChargeType" />
+            <Member name="CommissionChargeMethod" type="CommissionChargeMethod" />
+            <Member name="LimitsCommission" type="double" />
+            <Member name="Commission" type="double" />
+            <Member name="SwapSizeShort" type="double?" />
+            <Member name="SwapSizeLong" type="double?" />
+            <Member name="IsTradeEnabled" type="bool" />
+            <Member name="GroupSortOrder" type="int32" />
+            <Member name="SortOrder" type="int32" />
+            <Member name="CurrencySortOrder" type="int32" />
+            <Member name="SettlementCurrencySortOrder" type="int32" />
+            <Member name="CurrencyPrecision" type="int32" />
+            <Member name="SettlementCurrencyPrecision" type="int32" />
+        </Type>
+        <Type name="SymbolInfoArray" kind="array">
+            <Value name="SymbolInfo" />
+        </Type>
+        <Type name="CurrencyInfo" CSharpFullName="LrpServer.Net.LrpCurrencyInfo" CppFullName="CFxCurrencyInfo" kind="class">
+            <Member name="Name" type="astring" />
+            <Member name="Description" type="astring" />
+            <Member name="SortOrder" type="int32" />
+            <Member name="Precision" type="int32" />
+        </Type>
+        <Type name="CurrencyInfoArray" kind="array">
+            <Value name="CurrencyInfo" />
+        </Type>
+        <Type name="QuoteEntry" CSharpFullName="LrpServer.Net.LrpQuoteEntry" CppFullName="CFxQuoteEntry" kind="class">
+            <Member name="Price" type="double" />
+            <Member name="Volume" type="double" />
+        </Type>
+        <Type name="QuoteEntryArray" kind="array">
+            <Value name="QuoteEntry" />
+        </Type>
+        <Type name="Quote" CSharpFullName="LrpServer.Net.LrpQuote" CppFullName="CFxQuote" kind="class">
+            <Member name="Symbol" type="astring" />
+            <Member name="CreatingTime" type="time" />
+            <Member name="Bids" type="QuoteEntryArray" />
+            <Member name="Asks" type="QuoteEntryArray" />
+            <Member name="Id" type="astring" />
+        </Type>
+        <Type name="QuoteArray" kind="array">
+            <Value name="Quote" />
+        </Type>
+        <Type name="Bar" CSharpFullName="LrpServer.Net.LrpBar" CppFullName="CFxBar" kind="class">
+            <Member name="Open" type="double" />
+            <Member name="Close" type="double" />
+            <Member name="High" type="double" />
+            <Member name="Low" type="double" />
+            <Member name="Volume" type="double" />
+            <Member name="From" type="time" />
+        </Type>
+        <Type name="BarArray" kind="array">
+            <Value name="Bar" />
+        </Type>
+        <Type name="DataHistoryResponse" CSharpFullName="LrpServer.Net.LrpDataHistoryResponse" CppFullName="CFxDataHistoryResponse" kind="class">
+            <Member name="FromAll" type="time" />
+            <Member name="ToAll" type="time" />
+            <Member name="From" type="time" />
+            <Member name="To" type="time" />
+            <Member name="LastTickId" type="astring" />
+            <Member name="Bars" type="BarArray" />
+            <Member name="Files" type="AStringArray" />
+        </Type>
+        <Type name="FileChunk" CSharpFullName="LrpServer.Net.LrpFileChunk" CppFullName="CFxFileChunk" kind="class">
+            <Member name="ChunksNumber" type="int32" />
+            <Member name="FileSize" type="int32" />
+            <Member name="FileName" type="astring" />
+            <Member name="Data" type="UInt8Array" />
+        </Type>
+        <Type name="LrpParams" CSharpFullName="LrpServer.Net.LrpParams" CppFullName="CParameters" kind="class">
+            <Member name="EnableCodec" type="bool" />
+            <Member name="ValidateCodec" type="bool" />
+            <Member name="ThreadsNumber" type="int32" />
+            <Member name="MessagesNumberLimit" type="int32" />
+            <Member name="MessagesSizeLimit" type="int32" />
+            <Member name="HandshakeTimeout" type="int32" />
+            <Member name="HeartbeatTimeout" type="int32" />
+            <Member name="LogPath" type="astring" />
+        </Type>
+        <Type name="Notification" CSharpFullName="LrpServer.Net.LrpNotification" CppFullName="CNotification" kind="class">
+            <Member name="Severity" type="Severity" />
+            <Member name="Type" type="NotificationType" />
+            <Member name="Text" type="astring" />
+            <Member name="Balance" type="double" />
+            <Member name="TransactionAmount" type="double" />
+            <Member name="TransactionCurrency" type="astring" />
+        </Type>
+    </Types>
+    <Components>
+        <Component name="Library">
+            <Method name="SetDotNetDllPath">
+                <Param name="path" type="astring" direction="in" />
+                <Return type="void" />
+            </Method>
+        </Component>
+        <Component name="LocalServer" proxy="true">
+            <Method name="Constructor">
+                <Param name="channels" type="lptr" direction="in" />
+                <Param name="port" type="int32" direction="in" />
+                <Param name="sertificateFilename" type="astring" direction="in" />
+                <Param name="sertificatePassword" type="astring" direction="in" />
+                <Param name="handler" type="lptr" direction="in" />
+                <Return type="lptr" />
+            </Method>
+            <Method name="Destructor">
+                <Param name="handle" type="lptr" direction="in" />
+                <Return type="void" />
+            </Method>
+            <Method name="Start">
+                <Param name="handle" type="lptr" direction="in" />
+                <Return type="void" />
+            </Method>
+            <Method name="Stop">
+                <Param name="handle" type="lptr" direction="in" />
+                <Return type="void" />
+            </Method>
+            <Method name="EndConnection">
+                <Param name="handle" type="lptr" direction="in" />
+                <Param name="id" type="int64" direction="in" />
+                <Param name="status" type="int32" direction="in" />
+                <Return type="void" />
+            </Method>
+            <Method name="EndLogon">
+                <Param name="handle" type="lptr" direction="in" />
+                <Param name="id" type="int64" direction="in" />
+                <Param name="status" type="int32" direction="in" />
+                <Param name="message" type="astring" direction="in" />
+                <Return type="void" />
+            </Method>
+            <Method name="SendSessionInfo">
+                <Param name="handle" type="lptr" direction="in" />
+                <Param name="id" type="int64" direction="in" />
+                <Param name="requestId" type="astring" direction="in" />
+                <Param name="sessionInfo" type="LrpSessionInfo" direction="in" />
+                <Return type="void" />
+            </Method>
+            <Method name="SendCurrenciesInfo">
+                <Param name="handle" type="lptr" direction="in" />
+                <Param name="id" type="int64" direction="in" />
+                <Param name="requestId" type="astring" direction="in" />
+                <Param name="currencies" type="CurrencyInfoArray" direction="in" />
+                <Return type="void" />
+            </Method>
+            <Method name="SendSymbolsInfo">
+                <Param name="handle" type="lptr" direction="in" />
+                <Param name="id" type="int64" direction="in" />
+                <Param name="requestId" type="astring" direction="in" />
+                <Param name="symbols" type="SymbolInfoArray" direction="in" />
+                <Return type="void" />
+            </Method>
+            <Method name="SendQuotesSubscriptionConfirm">
+                <Param name="handle" type="lptr" direction="in" />
+                <Param name="id" type="int64" direction="in" />
+                <Param name="requestId" type="astring" direction="in" />
+                <Return type="void" />
+            </Method>
+            <Method name="SendQuotesSubscriptionReject">
+                <Param name="handle" type="lptr" direction="in" />
+                <Param name="id" type="int64" direction="in" />
+                <Param name="requestId" type="astring" direction="in" />
+                <Param name="message" type="astring" direction="in" />
+                <Return type="void" />
+            </Method>
+            <Method name="SendQuotesHistoryVersion">
+                <Param name="handle" type="lptr" direction="in" />
+                <Param name="id" type="int64" direction="in" />
+                <Param name="requestId" type="astring" direction="in" />
+                <Param name="version" type="int32" direction="in" />
+                <Return type="void" />
+            </Method>
+            <Method name="SendQuote">
+                <Param name="handle" type="lptr" direction="in" />
+                <Param name="id" type="int64" direction="in" />
+                <Param name="quote" type="Quote" direction="in" />
+                <Return type="void" />
+            </Method>
+            <Method name="SendMarketHistoryMetadataReport">
+                <Param name="handle" type="lptr" direction="in" />
+                <Param name="id" type="int64" direction="in" />
+                <Param name="requestId" type="astring" direction="in" />
+                <Param name="status" type="int32" direction="in" />
+                <Param name="field" type="astring" direction="in" />
+                <Return type="void" />
+            </Method>
+            <Method name="SendDataHistoryResponse">
+                <Param name="handle" type="lptr" direction="in" />
+                <Param name="id" type="int64" direction="in" />
+                <Param name="requestId" type="astring" direction="in" />
+                <Param name="response" type="DataHistoryResponse" direction="in" />
+                <Return type="void" />
+            </Method>
+            <Method name="SendFileChunk">
+                <Param name="handle" type="lptr" direction="in" />
+                <Param name="id" type="int64" direction="in" />
+                <Param name="requestId" type="astring" direction="in" />
+                <Param name="chunk" type="FileChunk" direction="in" />
+                <Return type="void" />
+            </Method>
+            <Method name="SendNotification">
+              <Param name="handle" type="lptr" direction="in" />
+              <Param name="id" type="int64" direction="in" />
+              <Param name="notification" type="Notification" direction="in" />
+              <Return type="void" />
+            </Method>
+    </Component>
+        <Component name="LocalChannelsPool" proxy="true">
+            <Method name="Constructor">
+                <Param name="parameters" type="LrpParams" direction="in" />
+                <Return type="lptr" />
+            </Method>
+            <Method name="Destructor">
+                <Param name="handle" type="lptr" direction="in" />
+                <Return type="void" />
+            </Method>
+        </Component>
+    </Components>
+</Protocol>
