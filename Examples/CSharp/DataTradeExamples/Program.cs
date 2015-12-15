@@ -1,14 +1,9 @@
 ﻿namespace DataTradeExamples
 {
-    using SoftFX.Extended;
-
     class Program
     {
         static void Main()
         {
-            // Bootstrap FDK libraries
-            Bootstrapper.Initialize();
-
             string address = "tpdemo.fxopen.com";
             string username = "59932";
             string password = "8mEx7zZ2";
