@@ -223,7 +223,7 @@
 
 		static DataFeedStorage()
 		{
-            Bootstrapper.Initialize();
+            Native.Initialize();
 
             NullMonitoringService = new NullMonitoringService();
             NullMonitoringItem = new NullMonitoringService.NullComponentState();

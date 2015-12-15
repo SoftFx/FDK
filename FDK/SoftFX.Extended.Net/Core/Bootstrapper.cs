@@ -8,22 +8,28 @@ namespace SoftFX.Extended.Core
 
     static class Bootstrapper
     {
-        static Bootstrapper()
-        {
-            ManagedLibrary.CheckRedistPackages();
-            ManagedLibrary.MarkAsReadOnly();
-            ManagedLibrary.ModulesManager.Extract();
-
-            if (ManagedLibrary.ResolveDotNetAssemblies)
-            {
-                AppDomain.CurrentDomain.ReflectionOnlyAssemblyResolve += OnAssemblyResolve;
-                AppDomain.CurrentDomain.AssemblyResolve += OnAssemblyResolve;
-            }
-        }
+        private static readonly object _locker = new object();
+        private static bool _initialized;
 
         public static void Initialize()
         {
-            Native.Initialize();
+            lock (_locker)
+            {
+                if (!_initialized)
+                {
+                    ManagedLibrary.CheckRedistPackages();
+                    ManagedLibrary.MarkAsReadOnly();
+                    ManagedLibrary.ModulesManager.Extract();
+
+                    if (ManagedLibrary.ResolveDotNetAssemblies)
+                    {
+                        AppDomain.CurrentDomain.ReflectionOnlyAssemblyResolve += OnAssemblyResolve;
+                        AppDomain.CurrentDomain.AssemblyResolve += OnAssemblyResolve;
+                    }
+
+                    _initialized = true;
+                }
+            }
         }
 
         static Assembly OnAssemblyResolve(object sender, ResolveEventArgs args)

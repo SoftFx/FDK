@@ -50,6 +50,7 @@
 
         static Native()
         {
+            Bootstrapper.Initialize();
             Construct();
         }
 

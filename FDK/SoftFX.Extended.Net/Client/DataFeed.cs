@@ -56,7 +56,7 @@
 
         static DataFeed()
         {
-            Bootstrapper.Initialize();
+            Native.Initialize();
         }
 
         #endregion
