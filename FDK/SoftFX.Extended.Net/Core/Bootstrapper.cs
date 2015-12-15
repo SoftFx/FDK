@@ -6,11 +6,17 @@ namespace SoftFX.Extended.Core
     using ManagedLibrary = Library;
     using Resources;
 
-    static class Bootstrapper
+    /// <summary>
+    /// FDK Bootstrapper
+    /// </summary>
+    public static class Bootstrapper
     {
         private static readonly object _locker = new object();
         private static bool _initialized;
 
+        /// <summary>
+        /// Initialize FDK Bootstrapper
+        /// </summary>
         public static void Initialize()
         {
             lock (_locker)
