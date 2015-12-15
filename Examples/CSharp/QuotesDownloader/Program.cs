@@ -12,6 +12,9 @@
         [STAThread]
         static void Main()
         {
+            // Bootstrap FDK libraries
+            Bootstrapper.Initialize();
+
             try
             {
                 Application.EnableVisualStyles();

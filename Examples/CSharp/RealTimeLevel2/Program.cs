@@ -12,6 +12,9 @@
         [STAThread]
         static void Main()
         {
+            // Bootstrap FDK libraries
+            Bootstrapper.Initialize();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());

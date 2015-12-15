@@ -6,7 +6,8 @@
     {
         static void Main()
         {
-            Library.Path = "<FRE>";
+            // Bootstrap FDK libraries
+            Bootstrapper.Initialize();
 
             string address = "tpdemo.fxopen.com";
             string username = "59932";
