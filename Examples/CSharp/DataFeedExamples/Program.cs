@@ -1,15 +1,11 @@
 ﻿namespace DataFeedExamples
 {
     using System;
-    using SoftFX.Extended;
 
     class Program
     {
         static void Main()
         {
-            // Bootstrap FDK libraries
-            Bootstrapper.Initialize();
-
             var address = "tpdemo.fxopen.com";
             var username = "59932";
             var password = "8mEx7zZ2";

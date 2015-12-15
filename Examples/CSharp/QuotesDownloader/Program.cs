@@ -2,7 +2,6 @@
 {
     using System;
     using System.Windows.Forms;
-    using SoftFX.Extended;
 
     static class Program
     {
@@ -12,9 +11,6 @@
         [STAThread]
         static void Main()
         {
-            // Bootstrap FDK libraries
-            Bootstrapper.Initialize();
-
             try
             {
                 Application.EnableVisualStyles();
