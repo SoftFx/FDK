@@ -4,23 +4,8 @@
     <Component Id="AccountInfo.exe" Guid="*">
       <File Id="AccountInfo.exe" Source="..\..\FRE\AccountInfo.exe" KeyPath="yes" Checksum="yes"/>
     </Component>
-    <Component Id="QuotesDownloader.exe" Guid="*">
-      <File Id="QuotesDownloader.exe" Source="..\..\FRE\QuotesDownloader.exe" KeyPath="yes" Checksum="yes"/>
-    </Component>
     <Component Id="FinancialExample.exe" Guid="*">
       <File Id="FinancialExample.exe" Source="..\..\FRE\FinancialExample.exe" KeyPath="yes" Checksum="yes"/>
-    </Component>
-    <Component Id="QuotesExporter.exe" Guid="*">
-      <File Id="QuotesExporter.exe" Source="..\..\FRE\QuotesExporter.exe" KeyPath="yes" Checksum="yes"/>
-    </Component>
-    <Component Id="RealTimeLevel2.exe" Guid="*">
-      <File Id="RealTimeLevel2.exe" Source="..\..\FRE\RealTimeLevel2.exe" KeyPath="yes" Checksum="yes"/>
-    </Component>
-    <Component Id="RealTimeLevel2.exe.config" Guid="*">
-      <File Id="RealTimeLevel2.exe.config" Source="..\..\FRE\RealTimeLevel2.exe.config" KeyPath="yes" Checksum="yes"/>
-    </Component>
-    <Component Id="QuotesDownloader.exe.config" Guid="*">
-      <File Id="QuotesDownloader.exe.config" Source="..\..\FRE\QuotesDownloader.exe.config" KeyPath="yes" Checksum="yes"/>
     </Component>
   </DirectoryRef>
   <DirectoryRef Id="PM_Tools">
@@ -29,18 +14,6 @@
         <RegistryValue Name="AccountInfoShortcut" Value="1" Type="integer" KeyPath="yes"/>
       </RegistryKey>
       <Shortcut Id="AccountInfoShortcut" Name="AccountInfo" Target="[APPLICATIONFOLDER]FRE\AccountInfo.exe"/>
-    </Component>
-    <Component Id="QuotesDownloaderShortcut" Guid="*">
-      <RegistryKey Root="HKCU" Key="Software\SoftFX\FDK\$(var.FullVersion)" Action="createAndRemoveOnUninstall">
-        <RegistryValue Name="QuotesDownloaderShortcut" Value="1" Type="integer" KeyPath="yes"/>
-      </RegistryKey>
-      <Shortcut Id="QuotesDownloaderShortcut" Name="QuotesDownloader" Target="[APPLICATIONFOLDER]FRE\QuotesDownloader.exe"/>
-    </Component>
-    <Component Id="QuotesExporterShortcut" Guid="*">
-      <RegistryKey Root="HKCU" Key="Software\SoftFX\FDK\$(var.FullVersion)" Action="createAndRemoveOnUninstall">
-        <RegistryValue Name="QuotesExporterShortcut" Value="1" Type="integer" KeyPath="yes"/>
-      </RegistryKey>
-      <Shortcut Id="QuotesExporterShortcut" Name="QuotesExporter" Target="[APPLICATIONFOLDER]FRE\QuotesExporter.exe"/>
     </Component>
     <Component Id="FinancialExampleShortcut" Guid="*">
       <RegistryKey Root="HKCU" Key="Software\SoftFX\FDK\$(var.FullVersion)" Action="createAndRemoveOnUninstall">
@@ -53,14 +26,7 @@
     <ComponentRef Id="PM_Tools" />
     <ComponentRef Id="AccountInfoShortcut" />
     <ComponentRef Id="AccountInfo.exe" />
-    <ComponentRef Id="QuotesDownloaderShortcut" />
-    <ComponentRef Id="QuotesDownloader.exe" />
-    <ComponentRef Id="QuotesExporter.exe" />
     <ComponentRef Id="FinancialExample.exe" />
     <ComponentRef Id="FinancialExampleShortcut" />
-    <ComponentRef Id="RealTimeLevel2.exe" />
-    <ComponentRef Id="RealTimeLevel2.exe.config" />
-    <ComponentRef Id="QuotesExporterShortcut" />
-    <ComponentRef Id="QuotesDownloader.exe.config" />
   </Feature>
 </Include>
