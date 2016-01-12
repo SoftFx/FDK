@@ -34,6 +34,7 @@ SecureSocket::SecureSocket(SOCKET s, int af, int type, int protocol, bool enable
 {
 	m_method = SSLv23_method();
 	m_context = SSL_CTX_new(m_method);
+	SSL_CTX_set_options(m_context, SSL_OP_NO_SSLv3);
 	m_ssl = SSL_new(m_context);
 	m_bio = BIO_new_socket(static_cast<int>(m_socket), BIO_NOCLOSE);
 	SSL_set_bio(m_ssl, m_bio, m_bio);
@@ -45,6 +46,7 @@ bool SecureSocket::Initialize(SOCKET s, const char* ceritificateFileName, const 
 {
 	m_method = SSLv23_method();
 	m_context = SSL_CTX_new(m_method);
+	SSL_CTX_set_options(m_context, SSL_OP_NO_SSLv3);
 
 	int status = SSL_CTX_use_certificate_file(m_context, ceritificateFileName, SSL_FILETYPE_PEM);
 	if (!status)
@@ -266,13 +268,9 @@ bool SecureSocket::DoReinitialize()
 		return false;
 	}
 
-	#ifdef _MSC_VER
-	SSL_METHOD* method = SSLv23_method();
-	#else
-	SSL_METHOD* method = SSLv23_method();
-	#endif
-
+	const SSL_METHOD* method = SSLv23_method();
 	SSL_CTX* context = SSL_CTX_new(method);
+	SSL_CTX_set_options(m_context, SSL_OP_NO_SSLv3);
 	SSL* ssl = SSL_new(m_context);
 	BIO* bio = BIO_new_socket(static_cast<int>(newSocket), BIO_NOCLOSE);
 	SSL_set_bio(ssl, bio, bio);
@@ -281,7 +279,6 @@ bool SecureSocket::DoReinitialize()
 
 	SSL_free(m_ssl);
 	SSL_CTX_free(m_context);
-
 
 	m_method = method;
 	m_context = context;

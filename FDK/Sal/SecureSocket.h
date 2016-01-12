@@ -30,11 +30,7 @@ private:
 	int m_type;
 	int m_protocol;
 private:
-	#ifdef _MSC_VER
-	SSL_METHOD* m_method;
-	#else
-	SSL_METHOD* m_method;
-	#endif
+	const SSL_METHOD* m_method;
 	SSL_CTX* m_context;
 	SSL* m_ssl;
 	BIO* m_bio;
