@@ -34,6 +34,11 @@
             Account Group.
             </summary>
         </member>
+        <member name="P:TickTrader.BusinessObjects.OverallTradeReport.Domain">
+            <summary>
+            Account Domain.
+            </summary>
+        </member>
         <member name="P:TickTrader.BusinessObjects.OverallTradeReport.AccountType">
             <summary>
             Account Type.
@@ -337,6 +342,22 @@
             <param name="comment">Desired comment</param>
             <param name="isCritical">Is critical flag</param>
             <returns>New service type request</returns>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.Requests.SetTradeConfigurationRequest.Create(System.Int32,TickTrader.BusinessObjects.TradeConfiguration)">
+            <summary>
+            Create set server configuration request with required parameters.
+            </summary>
+            <param name="configVersion">Configuration version</param>
+            <param name="config">Server common configuration</param>        
+            <returns>Set server time request</returns>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.Requests.SetClusterConfigurationRequest.Create(System.Int32,TickTrader.BusinessObjects.ClusterConfiguration)">
+            <summary>
+            Create set server time request with required parameters.
+            </summary>
+            <param name="configVersion">Configuration version</param>
+            <param name="config">Server common configuration</param>        
+            <returns>Set server time request</returns>
         </member>
         <member name="M:TickTrader.BusinessObjects.Requests.WebApiTokenModifyRequest.Create(System.String,TickTrader.BusinessObjects.WebApiAuthenticationType,System.Nullable{TickTrader.BusinessObjects.WebApiRights})">
             <summary>
@@ -899,6 +920,11 @@
         </member>
         <member name="F:TickTrader.BusinessObjects.Requests.TradingSessionStatus.Opened">
             <summary>Trading session is opened</summary>
+        </member>
+        <member name="F:TickTrader.BusinessObjects.TradeConfiguration.RolloverTime">
+            <summary>
+            Rollover Time. The date will be ignored.
+            </summary>
         </member>
         <member name="M:TickTrader.BusinessObjects.Level2Collection.#ctor(System.Collections.Generic.List{TickTrader.BusinessObjects.Level2Value},System.Int32,System.Byte,System.Byte)">
             <summary>
@@ -2021,6 +2047,11 @@
             Null in case of Balance and Credit transactions.
             </summary>
         </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.PosModified">
+            <summary>
+            Time of described position modification.
+            </summary>
+        </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.ProfitToUsdConversionRate">
             <summary>
             Conversion rate to convert profit to USD
@@ -2049,6 +2080,12 @@
             <summary>
             Order execution options
             Indicates whether IoC
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.IsIoC">
+            <summary>
+            Is IoC flag
+            Determines whether order has IoC option
             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.SideString">
