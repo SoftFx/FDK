@@ -103,6 +103,7 @@ CFixConnection::CFixConnection(const string& connectionString)
 
 	sessionOptions.setString(FIX::SOCKET_CONNECT_HOST, address);
 	sessionOptions.setLong(FIX::SOCKET_CONNECT_PORT, port);
+        sessionOptions.setBool(FIX::SOCKET_NODELAY, true);
 
 	FIX::SessionID sessionID(fixVersion, senderCompId, targetCompId);
 	m_sessionID = sessionID;
