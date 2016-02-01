@@ -19,24 +19,9 @@
             Represents an overall trade report
             </summary>
         </member>
-        <member name="P:TickTrader.BusinessObjects.OverallTradeReport.Login">
-            <summary>
-            Account Login.
-            </summary>
-        </member>
         <member name="P:TickTrader.BusinessObjects.OverallTradeReport.Name">
             <summary>
             Account Name.
-            </summary>
-        </member>
-        <member name="P:TickTrader.BusinessObjects.OverallTradeReport.Group">
-            <summary>
-            Account Group.
-            </summary>
-        </member>
-        <member name="P:TickTrader.BusinessObjects.OverallTradeReport.Domain">
-            <summary>
-            Account Domain.
             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.OverallTradeReport.AccountType">
@@ -146,6 +131,23 @@
             An <see cref="T:System.Runtime.Serialization.ExtensionDataObject"/> that contains data that is not recognized as belonging to the data contract.
             </returns>
         </member>
+        <member name="M:TickTrader.BusinessObjects.Requests.AccessListModifyRequest.Create(System.Int32,System.String,TickTrader.BusinessObjects.Security.AccessListRecord)">
+            <summary>
+            Create modify access list record request with required parameters.
+            </summary>
+            <param name="ConfigVersion">Configuration version</param>
+            <param name="Name">Modifyied access list name</param>
+            <param name="Record">Access list record</param>
+            <returns>Modify access list record request</returns>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.Requests.AccessListNewRequest.Create(System.Int32,TickTrader.BusinessObjects.Security.AccessListRecord)">
+            <summary>
+            Create new access list record request with required parameters.
+            </summary>
+            <param name="ConfigVersion">Configuration version</param>
+            <param name="Record">Access list record</param>
+            <returns>New access list record request</returns>
+        </member>
         <member name="M:TickTrader.BusinessObjects.Requests.AccountDeleteRequest.Create(System.Int64,System.Boolean)">
             <summary>
             Delete account request with required parameters.
@@ -153,79 +155,6 @@
             <param name="AccountId">Account Id</param>
             <param name="CloseOrders">Close market orders and cancel pending orders (otherwise orders will be deleted)</param>
             <returns>Delete account request</returns>
-        </member>
-        <member name="M:TickTrader.BusinessObjects.Requests.ActivatorModifyRequest.Create(System.Int16,System.Int32,System.Nullable{System.Guid},System.Nullable{System.Int32},System.String,System.Nullable{System.Int32},System.Nullable{System.Single})">
-            <summary>
-            Create new AutomaticDealer request with required parameters.
-            </summary>
-            <param name="id">Dealer ID</param>
-            /// <param name="configVersion">Configuration version</param>
-            <param name="moduleId">ID of referenced module</param>
-            <param name="login">Dealer login</param>
-            <param name="password">Dealer password</param>
-            <param name="threads">Dealer password</param>
-            <param name="partial">Dealer reject rate</param>
-            <returns>New AutomaticDealer request</returns>
-        </member>
-        <member name="M:TickTrader.BusinessObjects.Requests.ActivatorNewRequest.Create(System.Int32,System.Guid,System.Int32,System.String,System.Int32,System.Single)">
-            <summary>
-            Create new AutomaticDealer request with required parameters.
-            </summary>
-            /// <param name="configVersion">Configuration version</param>
-            <param name="login">Dealer login</param>
-            <param name="password">Dealer password</param>
-            <param name="threads">Dealer password</param>
-            <param name="partial">Dealer partial rate</param>
-            <param name="moduleId">ID of referenced module</param>
-            <returns>New AutomaticDealer request</returns>
-        </member>
-        <member name="M:TickTrader.BusinessObjects.Requests.AutomaticDealerModifyRequest.Create(System.Int32,System.String,System.String,System.Guid,System.Guid)">
-            <summary>
-            Create new AutomaticDealer request with required parameters.
-            </summary>
-            /// /// <param name="configVersion">Configuration version</param>
-            <param name="name">Name of AutomaticDealer automatic</param>
-            <param name="address">Address of AutomaticDealer</param>
-            <param name="moduleId">Id of referenced module</param>
-            <param name="newModuleId">New Id of referenced module</param>
-            <returns>Modify AutomaticDealer request</returns>
-        </member>
-        <member name="M:TickTrader.BusinessObjects.Requests.AutomaticDealerNewRequest.Create(System.Int32,System.String,System.String,System.Guid)">
-            <summary>
-            Create new AutomaticDealer request with required parameters.
-            </summary>
-            /// <param name="configVersion">Configuration version</param>
-            <param name="name">Name of AutomaticDealer automatic</param>
-            <param name="address">Address of AutomaticDealer</param>
-            <param name="moduleId">ID of referenced module</param>
-            <returns>New AutomaticDealer request</returns>
-        </member>
-        <member name="M:TickTrader.BusinessObjects.Requests.DealerModifyRequest.Create(System.Int16,System.Int32,System.Nullable{System.Guid},System.Nullable{System.Int32},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Single})">
-            <summary>
-            Create new AutomaticDealer request with required parameters.
-            </summary>
-            <param name="id">Dealer ID</param>
-            /// <param name="configVersion">Configuration version</param>
-            <param name="moduleId">ID of referenced module</param>
-            <param name="login">Dealer login</param>
-            <param name="password">Dealer password</param>
-            <param name="threads">Dealer password</param>
-            <param name="delay">Dealer delay</param>
-            <param name="reject">Dealer reject rate</param>
-            <returns>New AutomaticDealer request</returns>
-        </member>
-        <member name="M:TickTrader.BusinessObjects.Requests.DealerNewRequest.Create(System.Int32,System.Guid,System.Int32,System.String,System.Int32,System.Int32,System.Single)">
-            <summary>
-            Create new AutomaticDealer request with required parameters.
-            </summary>
-            /// <param name="configVersion">Configuration version</param>
-            <param name="login">Dealer login</param>
-            <param name="password">Dealer password</param>
-            <param name="threads">Dealer password</param>
-            <param name="delay">Dealer delay</param>
-            <param name="reject">Dealer reject rate</param>
-            <param name="moduleId">ID of referenced module</param>
-            <returns>New AutomaticDealer request</returns>
         </member>
         <member name="M:TickTrader.BusinessObjects.Requests.DomainModifyRequest.Create(System.Int32,System.String,System.String)">
             <summary>
@@ -284,7 +213,7 @@
             <param name="address">Desired address</param>
             <returns>New machine request</returns>
         </member>
-        <member name="M:TickTrader.BusinessObjects.Requests.ModuleModifyRequest.Create(System.String,System.String,System.String,System.String,System.Nullable{System.Boolean},System.String,System.String,System.String,System.String,System.Int32)">
+        <member name="M:TickTrader.BusinessObjects.Requests.ModuleModifyRequest.Create(System.String,System.String,System.String,System.String,System.Nullable{System.Boolean},System.String,System.String,System.String,System.String,System.Int32,TickTrader.BusinessObjects.Configuration.ServerModuleConfig)">
             <summary>
             Create modify module request with required parameters.
             </summary>
@@ -299,8 +228,9 @@
             <param name="newVersion">New version of the modified description (null if you want to keep previous value)</param>
             <param name="logSeverity"></param>
             <returns>Modified module request</returns>
+            <param name="moduleConfig">New configuration of the modified module (null if you want to keep previous value)</param>
         </member>
-        <member name="M:TickTrader.BusinessObjects.Requests.ModuleNewRequest.Create(System.String,System.String,System.Boolean,System.String,System.String,System.String,System.String,System.Int32)">
+        <member name="M:TickTrader.BusinessObjects.Requests.ModuleNewRequest.Create(System.String,System.String,System.Boolean,System.String,System.String,System.String,System.String,System.Int32,TickTrader.BusinessObjects.Configuration.ServerModuleConfig)">
             <summary>
             Create new module request with required parameters.
             </summary>
@@ -312,6 +242,7 @@
             <param name="path">Desired path</param>
             <param name="version">Desired version</param>
             <param name="logSeverity"></param>
+            <param name="moduleConfig">Desired configuration of the modified module (null by default)</param>
             <returns>New module request</returns>
         </member>
         <member name="M:TickTrader.BusinessObjects.Requests.ServiceSoftModifyRequest.Create(System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.String)">
@@ -1504,6 +1435,11 @@
             Gets or sets the priority of the symbol.
             </summary>
         </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.IsQuotesFilteringDisabled">
+            <summary>
+            Gets or sets whether quotes filtering is disabled for the symbol or not.
+            </summary>
+        </member>
         <member name="M:TickTrader.BusinessObjects.SymbolInfo.Clone">
             <summary>
             
@@ -1670,6 +1606,16 @@
             Not user-friendly, must not be shown in user interface. Use combination of OrderId + OrderActionNo
             to show user-friendly unique identifier.
             Format of this identifier is subject to change. Must not be parsed.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.Domain">
+            <summary>
+            Account Domain.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.Group">
+            <summary>
+            Account Group.
             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.OrderId">
@@ -2207,6 +2153,11 @@
             </summary>
         </member>
         <member name="P:TickTrader.Common.Business.FeedTick.BestBid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.Common.Business.FeedTick.DisabledFiltration">
             <summary>
             
             </summary>
