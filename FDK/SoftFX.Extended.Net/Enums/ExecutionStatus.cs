@@ -54,5 +54,10 @@
         /// 
         /// </summary>
         PendingReplacement = 8,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        PendingClose = 9
     }
 }

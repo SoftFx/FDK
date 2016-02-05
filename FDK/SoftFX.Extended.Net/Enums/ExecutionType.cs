@@ -59,5 +59,10 @@
         /// 
         /// </summary>
         OrderStatus = 9,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        PendingClose = 10
     }
 }
