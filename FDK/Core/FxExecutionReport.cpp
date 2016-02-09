@@ -202,14 +202,20 @@ bool CFxExecutionReport::TryGetClosedPosition(string& orderId, double& leavesVol
 		return false;
 	}
 
-    commission = this->Commission;
-    agentCommission = this->AgentCommission;
-    swap = this->Swap;
+	commission = this->Commission;
+	agentCommission = this->AgentCommission;
+	swap = this->Swap;
 
-	if ((FxOrderStatus_Calculated == OrderStatus) || (FxOrderStatus_Filled == OrderStatus))
+	if ((FxOrderStatus_Calculated == OrderStatus) || (FxOrderStatus_PartiallyFilled == OrderStatus))
 	{
 		orderId = this->OrderId;
 		leavesVolume = this->LeavesVolume;
+		return true;
+	}
+	if (FxOrderStatus_Filled == OrderStatus)
+	{
+		orderId = this->OrderId;
+		leavesVolume = 0;
 		return true;
 	}
 	return false;
