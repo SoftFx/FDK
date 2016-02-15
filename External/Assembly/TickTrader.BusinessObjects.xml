@@ -1142,6 +1142,11 @@
             
             </summary>
         </member>
+        <member name="P:TickTrader.BusinessObjects.Order.Taxes">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:TickTrader.BusinessObjects.Order.Clone">
             <summary>
             
