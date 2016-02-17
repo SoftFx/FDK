@@ -12,6 +12,15 @@
 
     sealed class DataFeedHistorySource : IHistorySource
     {
+        private int ExchangeProtocolVersion = 1;
+
+        public DataFeedHistorySource(int protocolVersion, DataFeed dataFeed, int attemptsNumber)
+            : this(dataFeed, attemptsNumber, 0)
+        {
+            ExchangeProtocolVersion = protocolVersion;
+        }
+
+
         public DataFeedHistorySource(DataFeed dataFeed, int attemptsNumber)
             : this(dataFeed, attemptsNumber, 0)
         {
