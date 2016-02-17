@@ -30,12 +30,12 @@
 		/// </summary>
 		/// <param name="location">Specified location for data feed history local cache.</param>
 		/// <param name="storageProviderType">Type of storage provider.</param>
-		/// <param name="storageVersion">Storage version.</param>
+		/// <param name="protocolVersion">Exchange protocol version.</param>
 		/// <param name="dataFeed">Can be null, in this case you can use storage in offline mode only.</param>
 		/// <param name="flushOnDispose">If true, then quotes cache in memory will be flushed to hard drive.</param>
 		/// <param name="saveTickLevel2History">Save incomning ticks as level2 history or not</param>
 		/// <exception cref="System.ArgumentNullException">If location is null.</exception>
-		public DataFeedStorage(string location, Type storageProviderType, int storageVersion, DataFeed dataFeed, bool flushOnDispose, bool saveTickLevel2History)
+		public DataFeedStorage(string location, Type storageProviderType, int protocolVersion, DataFeed dataFeed, bool flushOnDispose, bool saveTickLevel2History)
 		{
 			if (location == null)
 				throw new ArgumentNullException(nameof(location), "Location argument can not be null.");
@@ -47,18 +47,25 @@
 				location = location.Substring(0, location.Length - 1);
 
 			this.saveTickLevel2History = saveTickLevel2History;
-			this.storageVersion = storageVersion;
+			this.storageVersion = HistoryStore.StorageSoftwareVersion;
 			this.historyFeed = dataFeed;
 			this.Location = location;
 			this.flushOnDispose = flushOnDispose;
 
 			this.store = StorageProvider.CreateStore(storageProviderType, location, NullMonitoringService);
 
-			var status = this.store.OpenOrCreate(storageVersion, forceCreateNewVersion: true);
+			var status = this.store.OpenOrCreate(forceCreateNewVersion: true);
 
             if (dataFeed != null)
-                this.source = new DataFeedHistorySource(dataFeed, attemptsNumber: 1);
+                if (protocolVersion >= 0)
+                {
+                    this.source = new DataFeedHistorySource(protocolVersion, dataFeed, attemptsNumber: 1);
+                }
+                else
+                {
+                    this.source = new DataFeedHistorySource(dataFeed, attemptsNumber: 1);
 
+                }
             this.Bind(dataFeed);
 
 			this.continueMonitoring = true;
@@ -75,7 +82,7 @@
 		/// </summary>
 		/// <param name="location">Specified location for data feed history local cache.</param>
 		/// <param name="storageProviderType">Type of storage provider.</param>
-	    /// <param name="storageVersion">Storage version.</param>
+		/// <param name="protocolVersion">Exchange protocol version.</param>
 		/// <param name="flushOnDispose">If true, then quotes cache in memory will be flushed to hard drive.</param>
 		/// <param name="saveTickLevel2History">Save incomning ticks as level2 history or not</param>
 		/// <exception cref="System.ArgumentNullException">If location is null.</exception>
@@ -89,12 +96,12 @@
 		/// </summary>
 		/// <param name="location">Specified location for data feed history local cache.</param>
 		/// <param name="storageProviderType">Type of storage provider.</param>
-		/// <param name="storageVersion">Storage version.</param>
+		/// <param name="protocolVersion">Exchange protocol version.</param>
 		/// <param name="dataFeed">Can be null, in this case you can use storage in offline mode only.</param>
 		/// <param name="flushOnDispose">If true, then quotes cache in memory will be flushed to hard drive.</param>
 		/// <exception cref="System.ArgumentNullException">If location is null.</exception>
-		public DataFeedStorage(string location, Type storageProviderType, int storageVersion, DataFeed dataFeed, bool flushOnDispose)
-            : this(location, storageProviderType, storageVersion, dataFeed, flushOnDispose, true)
+		public DataFeedStorage(string location, Type storageProviderType, int protocolVersion, DataFeed dataFeed, bool flushOnDispose)
+            : this(location, storageProviderType, protocolVersion, dataFeed, flushOnDispose, true)
 		{
 		}
 
@@ -103,11 +110,11 @@
         /// </summary>
         /// <param name="location">Specified location for data feed history local cache.</param>
         /// <param name="storageProviderType">Type of storage provider.</param>
-        /// <param name="storageVersion">Storage version.</param>
+        /// <param name="protocolVersion">Exchange protocol version.</param>
         /// <param name="flushOnDispose">If true, then quotes cache in memory will be flushed to hard drive.</param>
         /// <exception cref="System.ArgumentNullException">If location is null.</exception>
-        public DataFeedStorage(string location, Type storageProviderType, int storageVersion, bool flushOnDispose)
-            : this(location, storageProviderType, storageVersion, null, flushOnDispose)
+        public DataFeedStorage(string location, Type storageProviderType, int protocolVersion, bool flushOnDispose)
+            : this(location, storageProviderType, protocolVersion, null, flushOnDispose)
         {
         }
 
@@ -120,7 +127,7 @@
 		/// <param name="flushOnDispose">If true, then quotes cache in memory will be flushed to hard drive.</param>
 		/// <exception cref="System.ArgumentNullException">If location is null.</exception>
 		public DataFeedStorage(string location, Type storageProviderType, DataFeed dataFeed, bool flushOnDispose)
-            : this(location, storageProviderType, 1, dataFeed, flushOnDispose)
+            : this(location, storageProviderType, -1 , dataFeed, flushOnDispose)
 		{
 		}
 
@@ -233,6 +240,22 @@
         static readonly IMonitoringService NullMonitoringService;
         static readonly IMonitoringItem NullMonitoringItem;
 
+
+        static readonly Dictionary<Periodicity, TimeInterval> PeriodicityMappingVer2 = new Dictionary<Periodicity, TimeInterval>
+        {
+            { new Periodicity(TimeInterval.Second, 1),  TimeInterval.Hour   },
+            { new Periodicity(TimeInterval.Second, 10), TimeInterval.Day    },
+            { new Periodicity(TimeInterval.Minute, 1),  TimeInterval.Day    },
+            { new Periodicity(TimeInterval.Minute, 5),  TimeInterval.Month  },
+            { new Periodicity(TimeInterval.Minute, 15), TimeInterval.Month  },
+            { new Periodicity(TimeInterval.Minute, 30), TimeInterval.Month  },
+            { new Periodicity(TimeInterval.Hour, 1),    TimeInterval.Month   },
+            { new Periodicity(TimeInterval.Hour, 4),    TimeInterval.Month   },
+            { new Periodicity(TimeInterval.Day, 1),     TimeInterval.Month   },
+            { new Periodicity(TimeInterval.Week, 1),    TimeInterval.Month   },
+            { new Periodicity(TimeInterval.Month, 1),   TimeInterval.Month   },
+        };
+
         static readonly Dictionary<Periodicity, TimeInterval> PeriodicityMappingVer1 = new Dictionary<Periodicity, TimeInterval>
 	    {
 	        { new Periodicity(TimeInterval.Second, 1),  TimeInterval.Hour   },
@@ -263,6 +286,8 @@
 	        { new Periodicity(TimeInterval.Month, 1),   TimeInterval.Year   },
 	    };
 
+
+
     	/// <summary>
 		/// 
 		/// </summary>
@@ -276,6 +301,8 @@
 	                return PeriodicityMappingVer0;
                 case 1:
                     return PeriodicityMappingVer1;
+                case 2:
+                    return PeriodicityMappingVer2;
                 default:
                     goto case 0;
 	        }
