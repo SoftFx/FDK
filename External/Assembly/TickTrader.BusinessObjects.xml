@@ -1691,6 +1691,12 @@
             When such order is closed (PositionClosed) value of this field will be set to Position (not Limit).
             </summary>
         </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.ParentOrderType">
+            <summary>
+            Type of described order on the moment of order creation.
+            Null in case of Balance and Credit transactions.
+            </summary>
+        </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.OrderCreated">
             <summary>
             Time of order creation.
