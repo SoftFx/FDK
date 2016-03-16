@@ -1,4 +1,6 @@
-﻿namespace SoftFX.Extended.Storage
+﻿using TickTrader.Server.QuoteHistory.Engine.SymbolHistory;
+
+namespace SoftFX.Extended.Storage
 {
     using System;
     using System.Collections.Generic;
@@ -86,8 +88,8 @@
 		/// <param name="flushOnDispose">If true, then quotes cache in memory will be flushed to hard drive.</param>
 		/// <param name="saveTickLevel2History">Save incomning ticks as level2 history or not</param>
 		/// <exception cref="System.ArgumentNullException">If location is null.</exception>
-        public DataFeedStorage(string location, Type storageProviderType, int storageVersion, bool flushOnDispose, bool saveTickLevel2History)
-            : this(location, storageProviderType, storageVersion, null, flushOnDispose, saveTickLevel2History)
+        public DataFeedStorage(string location, Type storageProviderType, int protocolVersion, bool flushOnDispose, bool saveTickLevel2History)
+            : this(location, storageProviderType, protocolVersion, null, flushOnDispose, saveTickLevel2History)
         {
         }
 
@@ -599,11 +601,6 @@
 			{
 				if (!this.symbol2cache.TryGetValue(symbol, out result))
 				{
-                    var symbols = new HashSet<string>
-                    {
-                        symbol
-                    };
-
 					var storageVersion = this.storageVersion;
 
 					if (this.historyFeed != null)
@@ -612,7 +609,7 @@
 					var provider = HistoryManager.Create(
                         storageVersion,
                         this.store,
-                        symbols,
+                        null,
                         DataFeedStorage.GetSupportedPeriodicityToStoreLevel(this.storageVersion),
                         this.saveTickLevel2History,
                         Cache.ClientInstance(Guid.NewGuid().ToString()),
