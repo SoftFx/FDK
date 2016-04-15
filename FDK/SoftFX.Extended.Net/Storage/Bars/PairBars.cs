@@ -12,7 +12,7 @@
     {
         #region Construction
 
-        internal PairBars(IEnumerable<Bar> bids, IEnumerable<Bar> asks)
+        internal PairBars(IEnumerable<Bar> bids, IEnumerable<Bar> asks, bool positive)
         {
             if (bids == null)
                 throw new ArgumentNullException(nameof(bids), "bids bar enumeration can not be null");
@@ -22,6 +22,7 @@
 
             this.bids = bids;
             this.asks = asks;
+            this.positive = positive;
         }
 
         /// <summary>
@@ -39,6 +40,7 @@
         {
             this.bids = new Bars(datafeed, symbol, PriceType.Bid, period, startTime, endTime);
             this.asks = new Bars(datafeed, symbol, PriceType.Ask, period, startTime, endTime);
+            this.positive = DateTime.Compare(startTime, endTime) >= 0;
         }
 
         /// <summary>
@@ -56,6 +58,7 @@
         {
             this.bids = new Bars(storage, symbol, PriceType.Bid, period, startTime, endTime);
             this.asks = new Bars(storage, symbol, PriceType.Ask, period, startTime, endTime);
+            this.positive = DateTime.Compare(startTime, endTime) >= 0;
         }
 
         /// <summary>
@@ -75,6 +78,7 @@
         {
             this.bids = new Bars(datafeed, symbol, PriceType.Bid, period, startTime, endTime, preferredBufferSize);
             this.asks = new Bars(datafeed, symbol, PriceType.Ask, period, startTime, endTime, preferredBufferSize);
+            this.positive = DateTime.Compare(startTime, endTime) >= 0;
         }
 
         /// <summary>
@@ -94,6 +98,7 @@
         {
             this.bids = new Bars(datafeed, symbol, PriceType.Bid, period, startTime, barsNumber);
             this.asks = new Bars(datafeed, symbol, PriceType.Ask, period, startTime, barsNumber);
+            this.positive = (barsNumber >= 0);
         }
 
         /// <summary>
@@ -113,6 +118,7 @@
         {
             this.bids = new Bars(storage, symbol, PriceType.Bid, period, startTime, barsNumber);
             this.asks = new Bars(storage, symbol, PriceType.Ask, period, startTime, barsNumber);
+            this.positive = (barsNumber >= 0);
         }
 
         /// <summary>
@@ -134,6 +140,7 @@
         {
             this.bids = new Bars(datafeed, symbol, PriceType.Bid, period, startTime, barsNumber, preferredBufferSize);
             this.asks = new Bars(datafeed, symbol, PriceType.Ask, period, startTime, barsNumber, preferredBufferSize);
+            this.positive = (barsNumber >= 0);
         }
 
         #endregion
@@ -144,7 +151,7 @@
         /// <returns>Can not be null.</returns>
         public IEnumerator<PairBar> GetEnumerator()
         {
-            var result = new PairBarsEnumerator(this.bids, this.asks);
+            var result = new PairBarsEnumerator(this.bids, this.asks, this.positive);
             return result;
         }
 
@@ -154,7 +161,7 @@
         /// <returns>Can not be null.</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
-            var result = new PairBarsEnumerator(this.bids, this.asks);
+            var result = new PairBarsEnumerator(this.bids, this.asks, this.positive);
             return result;
         }
 
@@ -162,6 +169,7 @@
 
         readonly IEnumerable<Bar> bids;
         readonly IEnumerable<Bar> asks;
+        readonly bool positive;
 
         #endregion
     }
