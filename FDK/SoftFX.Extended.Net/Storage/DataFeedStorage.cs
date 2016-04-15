@@ -601,7 +601,12 @@ namespace SoftFX.Extended.Storage
 			{
 				if (!this.symbol2cache.TryGetValue(symbol, out result))
 				{
-					var storageVersion = this.storageVersion;
+                    var symbols = new HashSet<ISymbolProperties>
+                    {
+                        new SymbolProperties(symbol)
+                    };
+
+                    var storageVersion = this.storageVersion;
 
 					if (this.historyFeed != null)
 						storageVersion = this.historyFeed.Server.GetQuotesHistoryVersion();
@@ -609,7 +614,7 @@ namespace SoftFX.Extended.Storage
 					var provider = HistoryManager.Create(
                         storageVersion,
                         this.store,
-                        null,
+                        symbols,
                         DataFeedStorage.GetSupportedPeriodicityToStoreLevel(this.storageVersion),
                         this.saveTickLevel2History,
                         Cache.ClientInstance(Guid.NewGuid().ToString()),

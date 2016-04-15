@@ -6,10 +6,11 @@
 
     class PairBarsEnumerator : IEnumerator<PairBar>
     {
-        public PairBarsEnumerator(IEnumerable<Bar> bids, IEnumerable<Bar> asks)
+        public PairBarsEnumerator(IEnumerable<Bar> bids, IEnumerable<Bar> asks, bool positive)
         {
             this.bids = bids;
             this.asks = asks;
+            this.positive = positive;
             this.Reset();
         }
 
@@ -63,11 +64,11 @@
             else
             {
                 var status = DateTime.Compare(this.bid.From, this.ask.From);
-                if (status <= 0)
+                if ((this.positive && (status <= 0)) || (!this.positive && (status >= 0)))
                 {
                     this.bid = null;
                 }
-                if (status >= 0)
+                if ((this.positive && (status >= 0)) || (!this.positive && (status <= 0)))
                 {
                     this.ask = null;
                 }
@@ -99,11 +100,11 @@
             if (bid != null && ask != null)
             {
                 var status = DateTime.Compare(bid.From, ask.From);
-                if (status < 0)
+                if ((this.positive && (status < 0)) || (!this.positive && (status > 0)))
                 {
                     ask = null;
                 }
-                if (status > 0)
+                if ((this.positive && (status > 0)) || (!this.positive && (status < 0)))
                 {
                     bid = null;
                 }
@@ -118,6 +119,7 @@
 
         #region Members
 
+        readonly bool positive;
         readonly IEnumerable<Bar> bids;
         readonly IEnumerable<Bar> asks;
         IEnumerator<Bar> bidEnumerator;
