@@ -14,31 +14,6 @@
             Dealer Ip Address is automatically filled by TradeHost
             </summary>
         </member>
-        <member name="T:TickTrader.BusinessObjects.OverallTradeReport">
-            <summary>
-            Represents an overall trade report
-            </summary>
-        </member>
-        <member name="P:TickTrader.BusinessObjects.OverallTradeReport.Name">
-            <summary>
-            Account Name.
-            </summary>
-        </member>
-        <member name="P:TickTrader.BusinessObjects.OverallTradeReport.AccountType">
-            <summary>
-            Account Type.
-            </summary>
-        </member>
-        <member name="P:TickTrader.BusinessObjects.OverallTradeReport.MarginCurrency">
-            <summary>
-            Symbol margin currency .
-            </summary>
-        </member>
-        <member name="P:TickTrader.BusinessObjects.OverallTradeReport.ProfitCurrency">
-            <summary>
-            Symbol profit currency .
-            </summary>
-        </member>
         <member name="T:TickTrader.BusinessObjects.SystemPerformanceCounterTypes">
             <summary>
             Contains enums used in Monitoring as System Performance Counters
@@ -1147,6 +1122,16 @@
             
             </summary>
         </member>
+        <member name="P:TickTrader.BusinessObjects.Order.ReqOpenPrice">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.ReqOpenAmount">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:TickTrader.BusinessObjects.Order.Clone">
             <summary>
             
@@ -1590,9 +1575,9 @@
             </summary>
         </member>
         <member name="M:TickTrader.BusinessObjects.TradeReport.#cctor">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="M:TickTrader.BusinessObjects.TradeReport.#ctor">
             <summary>
@@ -1625,7 +1610,7 @@
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.OrderId">
             <summary>
-            Unique identifier of corresponding order. Every trade report matches an order. 
+            Unique identifier of corresponding order. Every trade report matches an order.
             A single order can match multiple trade reports.
             User-friendly, can be shown in user interface.
             </summary>
@@ -1683,13 +1668,13 @@
             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.OrderType">
-            <summary>
-            Type of described order on the moment of report creation.
-            Null in case of Balance and Credit transactions.
+             <summary>
+             Type of described order on the moment of report creation.
+             Null in case of Balance and Credit transactions.
             
-            Example for Gross account: limit order is fully filled and was transformed into order of type Position.
-            When such order is closed (PositionClosed) value of this field will be set to Position (not Limit).
-            </summary>
+             Example for Gross account: limit order is fully filled and was transformed into order of type Position.
+             When such order is closed (PositionClosed) value of this field will be set to Position (not Limit).
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.ParentOrderType">
             <summary>
@@ -1745,19 +1730,19 @@
             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.OrderPrice">
-            <summary>
-            The price of order on the moment of the order fill.
-            Mandatory for Limit orders.
-            Can be null for Market order if price was not specified in order request.
-            Null in case of Balance and Credit transactions.
+             <summary>
+             The price of order on the moment of the order fill.
+             Mandatory for Limit orders.
+             Can be null for Market order if price was not specified in order request.
+             Null in case of Balance and Credit transactions.
             
-            Example:
-            1) Open order #101 with amount 1L and price 1.45
-            2) Modify order #101: set price 1.44
-            3) Partially fill order #101 for 0.5L. Report #101/1 is created with OrderPrice=1.44
-            4) Modify order #101: set price 1.46
-            5) Fill order #101 for 0.5L. Report #101/2 is created woth OrderPrice=1.46
-            </summary>
+             Example:
+             1) Open order #101 with amount 1L and price 1.45
+             2) Modify order #101: set price 1.44
+             3) Partially fill order #101 for 0.5L. Report #101/1 is created with OrderPrice=1.44
+             4) Modify order #101: set price 1.46
+             5) Fill order #101 for 0.5L. Report #101/2 is created woth OrderPrice=1.46
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.OrderStopPrice">
             <summary>
@@ -1774,7 +1759,7 @@
             Null in case of OrderCanceled, OrderExpired, Balance and Credit transactions.
             </summary>
         </member>
-        <member name="P:TickTrader.BusinessObjects.TradeReport.RequestPrice">
+        <member name="P:TickTrader.BusinessObjects.TradeReport.ReqOpenPrice">
             <summary>
             The price specified on order opening.
             Not affected by consequent order modifications.
@@ -1782,11 +1767,25 @@
             Null in case of Balance and Credit transactions.
             </summary>
         </member>
-        <member name="P:TickTrader.BusinessObjects.TradeReport.RequestStopPrice">
+        <member name="P:TickTrader.BusinessObjects.TradeReport.ReqOpenAmount">
             <summary>
-            The price specified on order opening.
+            The amount specified on order opening.
             Not affected by consequent order modifications.
-            Null in case of Market and Limit orders.
+            Null in case of Balance and Credit transactions.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.ReqClosePrice">
+            <summary>
+            The price specified on order closing.
+            Not affected by consequent order modifications.
+            Can be null for Market order if price was not specified in order request.
+            Null in case of Balance and Credit transactions.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.ReqCloseAmount">
+            <summary>
+            The amount specified on order closing.
+            Not affected by consequent order modifications.
             Null in case of Balance and Credit transactions.
             </summary>
         </member>
@@ -1797,18 +1796,18 @@
             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.PosId">
-            <summary>
-            Unique identifier of corresponding position.
-            Valid only for PositionClosed (Gross) reports. Null in all other cases.
-            Can be equal OrderId in case of full order fill.
+             <summary>
+             Unique identifier of corresponding position.
+             Valid only for PositionClosed (Gross) reports. Null in all other cases.
+             Can be equal OrderId in case of full order fill.
             
-            Example for Gross account:
-            1) Open limit order #101 with amount 1L
-            2) Partially fill order #101 for 0.5L. Position #102 with amount 0.5L is created.
-            3) Fill order #101 for 0.5L. Order #101 transforms into position #101 with amount 0.5L.
-            4) Close position #102. Report #102/1 is created with OrderId=#101 and PosId=#102
-            5) Close position #101. Report #101/1 is created with OrderId=#101 and PosId=#101
-            </summary>
+             Example for Gross account:
+             1) Open limit order #101 with amount 1L
+             2) Partially fill order #101 for 0.5L. Position #102 with amount 0.5L is created.
+             3) Fill order #101 for 0.5L. Order #101 transforms into position #101 with amount 0.5L.
+             4) Close position #102. Report #102/1 is created with OrderId=#101 and PosId=#102
+             5) Close position #101. Report #101/1 is created with OrderId=#101 and PosId=#101
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.PosById">
             <summary>
@@ -1866,30 +1865,30 @@
             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.PosClosed">
-            <summary>
-            Time of position closing. 
-            Valid only for PositionClosed (Gross) reports. Null in all other cases.
+             <summary>
+             Time of position closing.
+             Valid only for PositionClosed (Gross) reports. Null in all other cases.
             
-            AH: This field seems superfluous because it is equal to TrTime in all cases.
-            </summary>
+             AH: This field seems superfluous because it is equal to TrTime in all cases.
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.Commission">
             <summary>
-            Amount of commission which was charged during described transaction. It means commision charged from account balance. Not the commision 
+            Amount of commission which was charged during described transaction. It means commision charged from account balance. Not the commision
             assigned to order entity.
             Valid only for PositionClosed (Gross) and OrderFilled (Net, Cash) reports. Null in all other cases.
             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.AgentCommission">
             <summary>
-            Amount of Agent Commission which was charged during described transaction. It means commision charged from account balance. Not the commision 
+            Amount of Agent Commission which was charged during described transaction. It means commision charged from account balance. Not the commision
             assigned to order entity.
             Valid only for PositionClosed (Gross) and OrderFilled (Net, Cash) reports. Null in all other cases.
             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.Swap">
             <summary>
-            Amount of Swap which was charged during described transaction. It means Swap charged from account balance. Not the Swap 
+            Amount of Swap which was charged during described transaction. It means Swap charged from account balance. Not the Swap
             assigned to order entity.
             Valid only for PositionClosed (Gross) and OrderFilled (Net) reports. Null in all other cases.
             </summary>
@@ -1959,13 +1958,13 @@
             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.MarginRateInitial">
-            <summary>
-            Value of margin as it was on order opening.
-            Null in case of Cash accounts.
-            Null in case of Balance and Credit transactions.
+             <summary>
+             Value of margin as it was on order opening.
+             Null in case of Cash accounts.
+             Null in case of Balance and Credit transactions.
             
-            AH: 'Rate' in name is misleading. Do not consider it as a conversion rate.
-            </summary>
+             AH: 'Rate' in name is misleading. Do not consider it as a conversion rate.
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.StopLoss">
             <summary>

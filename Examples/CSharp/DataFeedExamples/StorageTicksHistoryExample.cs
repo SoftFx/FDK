@@ -5,7 +5,12 @@
     class StorageTicksHistoryExample : Example
     {
         public StorageTicksHistoryExample(string address, string username, string password)
-            : base(address, username, password)
+            : base(address, username, password, true)
+        {
+        }
+
+        public StorageTicksHistoryExample(string address, string username, string password, bool useFixProtocol)
+            : base(address, username, password, useFixProtocol)
         {
         }
 

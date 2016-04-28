@@ -9,6 +9,11 @@
         {
         }
 
+        public SymbolInfoExample(string address, string username, string password, bool useFixProtocol)
+            : base(address, username, password, useFixProtocol)
+        {
+        }
+
         protected override void RunExample()
         {
             var symbols = this.Feed.Server.GetSymbols();
