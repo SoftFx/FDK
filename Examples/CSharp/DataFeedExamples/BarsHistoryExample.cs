@@ -7,7 +7,12 @@
     class BarsHistoryExample : Example
     {
         public BarsHistoryExample(string address, string username, string password)
-            : base(address, username, password)
+            : this(address, username, password, true)
+        {
+        }
+
+        public BarsHistoryExample(string address, string username, string password, bool useFixProtocol)
+            : base(address, username, password, useFixProtocol)
         {
         }
 
@@ -19,8 +24,8 @@
 
         void BarsEnumeration()
         {
-            var startTime = DateTime.Parse("2/1/2012 13:30:00", CultureInfo.InvariantCulture);
-            var endTime = DateTime.Parse("2/1/2012 14:00:00", CultureInfo.InvariantCulture);
+            var startTime = DateTime.Parse("3/3/2016 13:30:00", CultureInfo.InvariantCulture);
+            var endTime = DateTime.Parse("3/3/2016 14:00:00", CultureInfo.InvariantCulture);
 
             var bars = new Bars(this.Feed, "EURUSD", PriceType.Bid, BarPeriod.S1, startTime, endTime, 1024);
 
@@ -39,8 +44,8 @@
 
         void PairBarsEnumeration()
         {
-            var startTime = DateTime.Parse("2/1/2012 13:30:00", CultureInfo.InvariantCulture);
-            var endTime = DateTime.Parse("2/1/2012 14:00:00", CultureInfo.InvariantCulture);
+            var startTime = DateTime.Parse("3/3/2016 13:30:00", CultureInfo.InvariantCulture);
+            var endTime = DateTime.Parse("3/3/2016 14:00:00", CultureInfo.InvariantCulture);
 
             var bars = new PairBars(this.Feed, "EURUSD", BarPeriod.S1, startTime, endTime, 1024);
 

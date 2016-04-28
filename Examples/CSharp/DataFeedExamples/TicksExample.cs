@@ -6,7 +6,12 @@
     class TicksExample : Example
     {
         public TicksExample(string address, string username, string password)
-            : base(address, username, password)
+            : this(address, username, password, true)
+        {
+        }
+
+        public TicksExample(string address, string username, string password, bool useFixProtocol)
+            : base(address, username, password, useFixProtocol)
         {
             this.Feed.Logon += this.OnLogon;
             this.Feed.Tick += this.OnTick;
