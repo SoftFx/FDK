@@ -37,7 +37,7 @@ public:
     void SendDataHistoryReject(const string& requestId, FxMarketHistoryRejectType rejectType, const string& rejectReason);
     void SendFileChunk(const string& requestId, const CFxFileChunk& chunk);
     void SendNotification(const CNotification& notification);
-    void SendReject(const string& rejectReason, const string& rejectTag);
+    void SendBusinessReject(const string& rejectReason, const string& rejectTag);
 public:
     void SendSimpleCodec();
 private:

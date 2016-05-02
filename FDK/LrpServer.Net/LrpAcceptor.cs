@@ -303,9 +303,9 @@
         /// </summary>
         /// <param name="id"></param>
         /// <param name="notification"></param>
-        public void SendReject(long id, string rejectReason, string rejectTag)
+        public void SendBusinessReject(long id, string rejectReason, string rejectTag)
         {
-            this.proxy.SendReject(id, rejectReason, rejectTag);
+            this.proxy.SendBusinessReject(id, rejectReason, rejectTag);
         }
 
         #endregion

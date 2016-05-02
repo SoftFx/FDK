@@ -264,7 +264,7 @@
               <Param name="notification" type="Notification" direction="in" />
               <Return type="void" />
             </Method>
-            <Method name="SendReject">
+            <Method name="SendBusinessReject">
               <Param name="handle" type="lptr" direction="in" />
               <Param name="id" type="int64" direction="in" />
               <Param name="rejectReason" type="astring" direction="in" />

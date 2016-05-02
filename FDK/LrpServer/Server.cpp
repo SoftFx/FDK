@@ -317,13 +317,13 @@ void CServer::SendNotification(int64 id, const CNotification& notification)
     }
 }
 
-void CServer::SendReject(int64 id, const string& rejectReason, const string& rejectTag)
+void CServer::SendBusinessReject(int64 id, const string& rejectReason, const string& rejectTag)
 {
     CChannelSharedAccessor accessor(id, m_channels);
     CChannel* pChannel = accessor.GetChannel();
     if (nullptr != pChannel)
     {
-        pChannel->Outgoing().SendReject(rejectReason, rejectTag);
+        pChannel->Outgoing().SendBusinessReject(rejectReason, rejectTag);
     }
 }
 

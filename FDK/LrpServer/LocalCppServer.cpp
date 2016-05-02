@@ -120,8 +120,8 @@ void CLocalCppServer::SendNotification(void* handle, int64 id, const CNotificati
     pServer->SendNotification(id, notification);
 }
 
-void CLocalCppServer::SendReject(void* handle, int64 id, const string& rejectReason, const string& rejectTag)
+void CLocalCppServer::SendBusinessReject(void* handle, int64 id, const string& rejectReason, const string& rejectTag)
 {
     CServer* pServer = reinterpret_cast<CServer*>(handle);
-    pServer->SendReject(id, rejectReason, rejectTag);
+    pServer->SendBusinessReject(id, rejectReason, rejectTag);
 }

@@ -33,7 +33,7 @@ public:
     void SendDataHistoryReject(int64 id, const string& requestId, FxMarketHistoryRejectType rejectType, const string& rejectReason);
     void SendFileChunk(int64 id, const string& requestId, const CFxFileChunk& chunk);
     void SendNotification(int64 id, const CNotification& notification);
-    void SendReject(int64 id, const string& rejectReason, const string& rejectTag);
+    void SendBusinessReject(int64 id, const string& rejectReason, const string& rejectTag);
 public:
     CLocalServerHandlerProxy& GetProxy();
     CLrpLogger& GetLogger();

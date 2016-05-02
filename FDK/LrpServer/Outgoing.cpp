@@ -198,7 +198,7 @@ void COutgoing::SendNotification(const CNotification& notification)
         client.OnNotificationMsg(notification);
 }
 
-void COutgoing::SendReject(const string& rejectReason, const string& rejectTag)
+void COutgoing::SendBusinessReject(const string& rejectReason, const string& rejectTag)
 {
     Client client(*this);
 

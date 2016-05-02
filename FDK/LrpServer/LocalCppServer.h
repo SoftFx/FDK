@@ -24,5 +24,5 @@ public:
     static void SendDataHistoryReject(void* handle, int64 id, const string& requestId, FxMarketHistoryRejectType rejectType, const string& rejectReason);
     static void SendFileChunk(void* handle, int64 id, const string& requestId, const CFxFileChunk& chunk);
     static void SendNotification(void* handle, int64 id, const CNotification& notification);
-    static void SendReject(void* handle, int64 id, const string& rejectReason, const string& rejectTag);
+    static void SendBusinessReject(void* handle, int64 id, const string& rejectReason, const string& rejectTag);
 };
