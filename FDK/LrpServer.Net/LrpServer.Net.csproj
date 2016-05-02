@@ -76,6 +76,7 @@
     <Compile Include="LrpFileChunk.cs" />
     <Compile Include="LrpMarginCalcMode.cs" />
     <Compile Include="LrpDataHistoryRequest.cs" />
+    <Compile Include="LrpMarketHistoryRejectType.cs" />
     <Compile Include="LrpNotification.cs" />
     <Compile Include="LrpNotificationType.cs" />
     <Compile Include="LrpParams.cs" />

@@ -16,6 +16,8 @@ namespace
 	FxCommissionChargeType ReadCommissionChargeType(MemoryBuffer& buffer);
 	void WriteCommissionChargeMethod(const FxCommissionChargeMethod& arg, MemoryBuffer& buffer);
 	FxCommissionChargeMethod ReadCommissionChargeMethod(MemoryBuffer& buffer);
+	void WriteMarketHistoryRejectType(const FxMarketHistoryRejectType& arg, MemoryBuffer& buffer);
+	FxMarketHistoryRejectType ReadMarketHistoryRejectType(MemoryBuffer& buffer);
 	void WriteNotificationType(const NotificationType& arg, MemoryBuffer& buffer);
 	NotificationType ReadNotificationType(MemoryBuffer& buffer);
 	void WriteSeverity(const Severity& arg, MemoryBuffer& buffer);
@@ -143,6 +145,15 @@ namespace
 	FxCommissionChargeMethod ReadCommissionChargeMethod(MemoryBuffer& buffer)
 	{
 		auto result = (FxCommissionChargeMethod)ReadInt32(buffer);
+		return result;
+	}
+	void WriteMarketHistoryRejectType(const FxMarketHistoryRejectType& arg, MemoryBuffer& buffer)
+	{
+		WriteInt32((__int32)arg, buffer);
+	}
+	FxMarketHistoryRejectType ReadMarketHistoryRejectType(MemoryBuffer& buffer)
+	{
+		auto result = (FxMarketHistoryRejectType)ReadInt32(buffer);
 		return result;
 	}
 	void WriteNotificationType(const NotificationType& arg, MemoryBuffer& buffer)

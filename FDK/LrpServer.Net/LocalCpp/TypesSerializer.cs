@@ -96,6 +96,15 @@ namespace LrpServer.Net.LocalCpp
 		{
 			buffer.WriteInt32((int)arg);
 		}
+		public static LrpServer.Net.LrpMarketHistoryRejectType ReadMarketHistoryRejectType(this MemoryBuffer buffer)
+		{
+			var result = (LrpServer.Net.LrpMarketHistoryRejectType)buffer.ReadInt32();
+			return result;
+		}
+		public static void WriteMarketHistoryRejectType(this MemoryBuffer buffer, LrpServer.Net.LrpMarketHistoryRejectType arg)
+		{
+			buffer.WriteInt32((int)arg);
+		}
 		public static LrpServer.Net.LrpNotificationType ReadNotificationType(this MemoryBuffer buffer)
 		{
 			var result = (LrpServer.Net.LrpNotificationType)buffer.ReadInt32();

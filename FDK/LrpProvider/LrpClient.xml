@@ -6,8 +6,9 @@
 	    <Type name="MarginCalcMode" CSharpFullName="SoftFX.Extended.MarginCalcMode" CppFullName="MarginCalcMode" kind="enum32" />
 	    <Type name="CommissionType" CSharpFullName="SoftFX.Extended.CommissionType" CppFullName="FxCommissionType" kind="enum32" />
 	    <Type name="CommissionChargeType" CSharpFullName="SoftFX.Extended.CommissionChargeType" CppFullName="FxCommissionChargeType" kind="enum32" />
-      <Type name="CommissionChargeMethod" CSharpFullName="SoftFX.Extended.CommissionChargeMethod" CppFullName="FxCommissionChargeMethod" kind="enum32" />
-      <Type name="NotificationType" CSharpFullName="SoftFX.Extended.NotificationType" CppFullName="NotificationType" kind="enum32" />
+        <Type name="CommissionChargeMethod" CSharpFullName="SoftFX.Extended.CommissionChargeMethod" CppFullName="FxCommissionChargeMethod" kind="enum32" />
+        <Type name="MarketHistoryRejectType" CSharpFullName="LrpServer.Net.LrpMarketHistoryRejectType" CppFullName="FxMarketHistoryRejectType" kind="enum32" />
+        <Type name="NotificationType" CSharpFullName="SoftFX.Extended.NotificationType" CppFullName="NotificationType" kind="enum32" />
 	    <Type name="Severity" CSharpFullName="SoftFX.Extended.Severity" CppFullName="Severity" kind="enum32" />
 	    <Type name="LrpSessionInfo" CSharpFullName="LrpServer.Net.LrpSessionInfo" CppFullName="CFxSessionInfo" kind="class">
 	        <Member name="TradingSessionId" type="astring" />
@@ -31,8 +32,8 @@
     	  <Member name="EndTime" type="time" />
     	</Type>
         <Type name="CurrencyInfo" CSharpFullName="SoftFX.Extended.CurrencyInfo" CppFullName="CFxCurrencyInfo" kind="class">
-    	  <Member name="Name" type="astring" />            
-          <Member name="Description" type="astring" />                    
+    	  <Member name="Name" type="astring" />
+          <Member name="Description" type="astring" />
     	  <Member name="SortOrder" type="int32" />
     	  <Member name="Precision" type="int32" />
         </Type>
@@ -74,7 +75,7 @@
     	  <Member name="SwapSizeShort" type="double?" />
     	  <Member name="SwapSizeLong" type="double?" />
     	</Type>
-    
+
     	<Type name="SymbolInfo3" CSharpFullName="SoftFX.Extended.SymbolInfo" CppFullName="CFxSymbolInfo" kind="class">
     	  <Member name="Name" type="astring" />
     	  <Member name="Currency" type="astring" />
@@ -98,7 +99,7 @@
     	  <Member name="SwapSizeLong" type="double?" />
     	  <Member name="IsTradeEnabled" type="bool" />
     	</Type>
-    
+
     	<Type name="SymbolInfo4" CSharpFullName="SoftFX.Extended.SymbolInfo" CppFullName="CFxSymbolInfo" kind="class">
     	  <Member name="Name" type="astring" />
     	  <Member name="Currency" type="astring" />
@@ -225,7 +226,7 @@
 	    </Type>
 	    <Type name="CurrencyInfoArray" kind="array">
             <Value name="CurrencyInfo" />
-	    </Type>        
+	    </Type>
 	    <Type name="SymbolInfoArray2" kind="array">
 	  <Value name="SymbolInfo2" />
 	 </Type>
@@ -328,7 +329,7 @@
 	    	<Param name="requestId" type="astring" direction="in" />
 	    	<Param name="currencies" type="CurrencyInfoArray" direction="in" />
 	    	<Return type="void" />
-	      </Method>            
+	      </Method>
 	      <Method name="OnSymbolsInfoMsg">
 	    	<Param name="requestId" type="astring" direction="in" />
 	    	<Param name="symbols" type="SymbolInfoArray" direction="in" />
@@ -380,15 +381,27 @@
 	    	<Param name="chunk" type="FileChunk" direction="in" />
 	    	<Return type="void" />
 	      </Method>
-	      <Method name="OnDataHistoryMsg">
+	      <Method name="OnDataHistoryMetaInfoResponseMsg">
+	    	<Param name="requestId" type="astring" direction="in" />
+	    	<Param name="status" type="int32" direction="in" />
+	    	<Param name="field" type="astring" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+	      <Method name="OnDataHistoryMetaInfoRejectMsg">
+	    	<Param name="requestId" type="astring" direction="in" />
+	    	<Param name="status" type="int32" direction="in" />
+	    	<Param name="field" type="astring" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+	      <Method name="OnDataHistoryResponseMsg">
 	    	<Param name="requestId" type="astring" direction="in" />
 	    	<Param name="response" type="DataHistoryResponse" direction="in" />
 	    	<Return type="void" />
 	      </Method>
-	      <Method name="OnDataHistoryMetaInfoMsg">
+	      <Method name="OnDataHistoryRejectMsg">
 	    	<Param name="requestId" type="astring" direction="in" />
-	    	<Param name="status" type="int32" direction="in" />
-	    	<Param name="field" type="astring" direction="in" />
+            <Param name="rejectType" type="MarketHistoryRejectType" direction="in" />
+            <Param name="rejectReason" type="astring" direction="in" />
 	    	<Return type="void" />
 	      </Method>
 	      <Method name="OnQuoteRawMsg">
@@ -397,6 +410,11 @@
 	      </Method>
 	      <Method name="OnNotificationMsg">
 	    	<Param name="notification" type="Notification" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+	      <Method name="OnBusinessRejectMsg">
+            <Param name="rejectReason" type="astring" direction="in" />
+            <Param name="rejectTag" type="astring" direction="in" />
 	    	<Return type="void" />
 	      </Method>
 	    </Component>

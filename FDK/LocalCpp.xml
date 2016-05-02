@@ -13,6 +13,7 @@
         <Type name="CommissionType" CSharpFullName="LrpServer.Net.LrpCommissionType" CppFullName="FxCommissionType" kind="enum32" />
         <Type name="CommissionChargeType" CSharpFullName="LrpServer.Net.LrpCommissionChargeType" CppFullName="FxCommissionChargeType" kind="enum32" />
         <Type name="CommissionChargeMethod" CSharpFullName="LrpServer.Net.LrpCommissionChargeMethod" CppFullName="FxCommissionChargeMethod" kind="enum32" />
+        <Type name="MarketHistoryRejectType" CSharpFullName="LrpServer.Net.LrpMarketHistoryRejectType" CppFullName="FxMarketHistoryRejectType" kind="enum32" />
         <Type name="NotificationType" CSharpFullName="LrpServer.Net.LrpNotificationType" CppFullName="NotificationType" kind="enum32" />
         <Type name="Severity" CSharpFullName="LrpServer.Net.LrpSeverity" CppFullName="Severity" kind="enum32" />
         <Type name="LrpSessionInfo" CSharpFullName="LrpServer.Net.LrpSessionInfo" CppFullName="CFxSessionInfo" kind="class">
@@ -219,7 +220,15 @@
                 <Param name="quote" type="Quote" direction="in" />
                 <Return type="void" />
             </Method>
-            <Method name="SendMarketHistoryMetadataReport">
+            <Method name="SendMarketHistoryMetadataResponse">
+                <Param name="handle" type="lptr" direction="in" />
+                <Param name="id" type="int64" direction="in" />
+                <Param name="requestId" type="astring" direction="in" />
+                <Param name="status" type="int32" direction="in" />
+                <Param name="field" type="astring" direction="in" />
+                <Return type="void" />
+            </Method>
+            <Method name="SendMarketHistoryMetadataReject">
                 <Param name="handle" type="lptr" direction="in" />
                 <Param name="id" type="int64" direction="in" />
                 <Param name="requestId" type="astring" direction="in" />
@@ -234,6 +243,14 @@
                 <Param name="response" type="DataHistoryResponse" direction="in" />
                 <Return type="void" />
             </Method>
+            <Method name="SendDataHistoryReject">
+                <Param name="handle" type="lptr" direction="in" />
+                <Param name="id" type="int64" direction="in" />
+                <Param name="requestId" type="astring" direction="in" />
+                <Param name="rejectType" type="MarketHistoryRejectType" direction="in" />
+                <Param name="rejectReason" type="astring" direction="in" />
+                <Return type="void" />
+            </Method>
             <Method name="SendFileChunk">
                 <Param name="handle" type="lptr" direction="in" />
                 <Param name="id" type="int64" direction="in" />
@@ -245,6 +262,13 @@
               <Param name="handle" type="lptr" direction="in" />
               <Param name="id" type="int64" direction="in" />
               <Param name="notification" type="Notification" direction="in" />
+              <Return type="void" />
+            </Method>
+            <Method name="SendReject">
+              <Param name="handle" type="lptr" direction="in" />
+              <Param name="id" type="int64" direction="in" />
+              <Param name="rejectReason" type="astring" direction="in" />
+              <Param name="rejectTag" type="astring" direction="in" />
               <Return type="void" />
             </Method>
     </Component>

@@ -52,10 +52,13 @@ namespace
 	const unsigned short LrpMethod_LocalServer_SendQuotesSubscriptionReject_Id = 10;
 	const unsigned short LrpMethod_LocalServer_SendQuotesHistoryVersion_Id = 11;
 	const unsigned short LrpMethod_LocalServer_SendQuote_Id = 12;
-	const unsigned short LrpMethod_LocalServer_SendMarketHistoryMetadataReport_Id = 13;
-	const unsigned short LrpMethod_LocalServer_SendDataHistoryResponse_Id = 14;
-	const unsigned short LrpMethod_LocalServer_SendFileChunk_Id = 15;
-	const unsigned short LrpMethod_LocalServer_SendNotification_Id = 16;
+	const unsigned short LrpMethod_LocalServer_SendMarketHistoryMetadataResponse_Id = 13;
+	const unsigned short LrpMethod_LocalServer_SendMarketHistoryMetadataReject_Id = 14;
+	const unsigned short LrpMethod_LocalServer_SendDataHistoryResponse_Id = 15;
+	const unsigned short LrpMethod_LocalServer_SendDataHistoryReject_Id = 16;
+	const unsigned short LrpMethod_LocalServer_SendFileChunk_Id = 17;
+	const unsigned short LrpMethod_LocalServer_SendNotification_Id = 18;
+	const unsigned short LrpMethod_LocalServer_SendReject_Id = 19;
 
 	typedef void (*LrpInvoke_LocalServer_Method_Handler)(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel);
 	void LrpInvoke_LocalServer_Constructor(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
@@ -204,7 +207,7 @@ namespace
 		component.SendQuote(arg0, arg1, arg2);
 		buffer.Reset(offset);
 	}
-	void LrpInvoke_LocalServer_SendMarketHistoryMetadataReport(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	void LrpInvoke_LocalServer_SendMarketHistoryMetadataResponse(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
 		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
 		auto& component = pChannel->GetLocalServer();
@@ -214,7 +217,20 @@ namespace
 		auto arg2 = ReadAString(buffer);
 		auto arg3 = ReadInt32(buffer);
 		auto arg4 = ReadAString(buffer);
-		component.SendMarketHistoryMetadataReport(arg0, arg1, arg2, arg3, arg4);
+		component.SendMarketHistoryMetadataResponse(arg0, arg1, arg2, arg3, arg4);
+		buffer.Reset(offset);
+	}
+	void LrpInvoke_LocalServer_SendMarketHistoryMetadataReject(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	{
+		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
+		auto& component = pChannel->GetLocalServer();
+		component; // if all methods of component are static then the next line generates warning #4189
+		auto arg0 = ReadLocalPointer(buffer);
+		auto arg1 = ReadInt64(buffer);
+		auto arg2 = ReadAString(buffer);
+		auto arg3 = ReadInt32(buffer);
+		auto arg4 = ReadAString(buffer);
+		component.SendMarketHistoryMetadataReject(arg0, arg1, arg2, arg3, arg4);
 		buffer.Reset(offset);
 	}
 	void LrpInvoke_LocalServer_SendDataHistoryResponse(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
@@ -227,6 +243,19 @@ namespace
 		auto arg2 = ReadAString(buffer);
 		auto arg3 = ReadDataHistoryResponse(buffer);
 		component.SendDataHistoryResponse(arg0, arg1, arg2, arg3);
+		buffer.Reset(offset);
+	}
+	void LrpInvoke_LocalServer_SendDataHistoryReject(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	{
+		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
+		auto& component = pChannel->GetLocalServer();
+		component; // if all methods of component are static then the next line generates warning #4189
+		auto arg0 = ReadLocalPointer(buffer);
+		auto arg1 = ReadInt64(buffer);
+		auto arg2 = ReadAString(buffer);
+		auto arg3 = ReadMarketHistoryRejectType(buffer);
+		auto arg4 = ReadAString(buffer);
+		component.SendDataHistoryReject(arg0, arg1, arg2, arg3, arg4);
 		buffer.Reset(offset);
 	}
 	void LrpInvoke_LocalServer_SendFileChunk(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
@@ -252,6 +281,18 @@ namespace
 		component.SendNotification(arg0, arg1, arg2);
 		buffer.Reset(offset);
 	}
+	void LrpInvoke_LocalServer_SendReject(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	{
+		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
+		auto& component = pChannel->GetLocalServer();
+		component; // if all methods of component are static then the next line generates warning #4189
+		auto arg0 = ReadLocalPointer(buffer);
+		auto arg1 = ReadInt64(buffer);
+		auto arg2 = ReadAString(buffer);
+		auto arg3 = ReadAString(buffer);
+		component.SendReject(arg0, arg1, arg2, arg3);
+		buffer.Reset(offset);
+	}
 
 	LrpInvoke_LocalServer_Method_Handler gLocalServerHandlers[] = 
 	{
@@ -268,15 +309,18 @@ namespace
 		LrpInvoke_LocalServer_SendQuotesSubscriptionReject,
 		LrpInvoke_LocalServer_SendQuotesHistoryVersion,
 		LrpInvoke_LocalServer_SendQuote,
-		LrpInvoke_LocalServer_SendMarketHistoryMetadataReport,
+		LrpInvoke_LocalServer_SendMarketHistoryMetadataResponse,
+		LrpInvoke_LocalServer_SendMarketHistoryMetadataReject,
 		LrpInvoke_LocalServer_SendDataHistoryResponse,
+		LrpInvoke_LocalServer_SendDataHistoryReject,
 		LrpInvoke_LocalServer_SendFileChunk,
 		LrpInvoke_LocalServer_SendNotification,
+		LrpInvoke_LocalServer_SendReject,
 	};
 
 	HRESULT LrpInvoke_LocalServer(size_t offset, size_t methodId, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
-		if(methodId >= 17)
+		if(methodId >= 20)
 		{
 			return LRP_INVALID_METHOD_ID;
 		}
@@ -409,10 +453,13 @@ extern "C" const char* __stdcall LrpSignature()
 		"SendQuotesSubscriptionReject@0379040CD01D33FB84C8E175794A58FA;"
 		"SendQuotesHistoryVersion@8577FE2BF553EC46CC93BEADC7F05E1C;"
 		"SendQuote@9BBACA5E152556B34C53D9A444D73688;"
-		"SendMarketHistoryMetadataReport@2EDF810D688C772D91523BBAF031FD58;"
+		"SendMarketHistoryMetadataResponse@5D858818573BF0F768592D4DCE641131;"
+		"SendMarketHistoryMetadataReject@07DD3B711EBF3029E00D616D036669FA;"
 		"SendDataHistoryResponse@3245C6614A269E1DA4A6CCBC72CAF60A;"
+		"SendDataHistoryReject@92819AAAE469CDBC09E394584C7507F1;"
 		"SendFileChunk@0450959066E76C838A2BCD7B598E8DC5;"
 		"SendNotification@3A5516D3CE20D8D139D897401112591D;"
+		"SendReject@06E71F1E7D7455F58FC0A2A85947B097;"
 	"$LocalChannelsPool;"
 		"Constructor@62EA0A46CB237981503C99A221EE79E2;"
 		"Destructor@578A3F61986EADEE8A91305955BD65E4;"

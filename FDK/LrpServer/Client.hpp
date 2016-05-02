@@ -298,29 +298,30 @@ public:
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_OnDataHistoryMsg_Id = 17;
-	bool Is_OnDataHistoryMsg_Supported() const
+	const static unsigned short LrpMethod_OnDataHistoryMetaInfoResponseMsg_Id = 17;
+	bool Is_OnDataHistoryMetaInfoResponseMsg_Supported() const
 	{
 		return m_channel->IsSupported(0, 17);
 	}
-	void OnDataHistoryMsg(const std::string& requestId, const CFxDataHistoryResponse& response)
+	void OnDataHistoryMetaInfoResponseMsg(const std::string& requestId, const __int32& status, const std::string& field)
 	{
 		MemoryBuffer buffer;
 		m_channel->Initialize(buffer);
 
 		WriteAString(requestId, buffer);
-		WriteDataHistoryResponse(response, buffer);
+		WriteInt32(status, buffer);
+		WriteAString(field, buffer);
 
 		const HRESULT _status = m_channel->Invoke(0, 17, buffer);
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_OnDataHistoryMetaInfoMsg_Id = 18;
-	bool Is_OnDataHistoryMetaInfoMsg_Supported() const
+	const static unsigned short LrpMethod_OnDataHistoryMetaInfoRejectMsg_Id = 18;
+	bool Is_OnDataHistoryMetaInfoRejectMsg_Supported() const
 	{
 		return m_channel->IsSupported(0, 18);
 	}
-	void OnDataHistoryMetaInfoMsg(const std::string& requestId, const __int32& status, const std::string& field)
+	void OnDataHistoryMetaInfoRejectMsg(const std::string& requestId, const __int32& status, const std::string& field)
 	{
 		MemoryBuffer buffer;
 		m_channel->Initialize(buffer);
@@ -333,10 +334,45 @@ public:
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_OnQuoteRawMsg_Id = 19;
-	bool Is_OnQuoteRawMsg_Supported() const
+	const static unsigned short LrpMethod_OnDataHistoryResponseMsg_Id = 19;
+	bool Is_OnDataHistoryResponseMsg_Supported() const
 	{
 		return m_channel->IsSupported(0, 19);
+	}
+	void OnDataHistoryResponseMsg(const std::string& requestId, const CFxDataHistoryResponse& response)
+	{
+		MemoryBuffer buffer;
+		m_channel->Initialize(buffer);
+
+		WriteAString(requestId, buffer);
+		WriteDataHistoryResponse(response, buffer);
+
+		const HRESULT _status = m_channel->Invoke(0, 19, buffer);
+		Throw(_status, buffer);
+
+	}
+	const static unsigned short LrpMethod_OnDataHistoryRejectMsg_Id = 20;
+	bool Is_OnDataHistoryRejectMsg_Supported() const
+	{
+		return m_channel->IsSupported(0, 20);
+	}
+	void OnDataHistoryRejectMsg(const std::string& requestId, const FxMarketHistoryRejectType& rejectType, const std::string& rejectReason)
+	{
+		MemoryBuffer buffer;
+		m_channel->Initialize(buffer);
+
+		WriteAString(requestId, buffer);
+		WriteMarketHistoryRejectType(rejectType, buffer);
+		WriteAString(rejectReason, buffer);
+
+		const HRESULT _status = m_channel->Invoke(0, 20, buffer);
+		Throw(_status, buffer);
+
+	}
+	const static unsigned short LrpMethod_OnQuoteRawMsg_Id = 21;
+	bool Is_OnQuoteRawMsg_Supported() const
+	{
+		return m_channel->IsSupported(0, 21);
 	}
 	void OnQuoteRawMsg(const MemoryBuffer& data)
 	{
@@ -345,14 +381,14 @@ public:
 
 		WriteRaw(data, buffer);
 
-		const HRESULT _status = m_channel->Invoke(0, 19, buffer);
+		const HRESULT _status = m_channel->Invoke(0, 21, buffer);
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_OnNotificationMsg_Id = 20;
+	const static unsigned short LrpMethod_OnNotificationMsg_Id = 22;
 	bool Is_OnNotificationMsg_Supported() const
 	{
-		return m_channel->IsSupported(0, 20);
+		return m_channel->IsSupported(0, 22);
 	}
 	void OnNotificationMsg(const CNotification& notification)
 	{
@@ -361,7 +397,24 @@ public:
 
 		WriteNotification(notification, buffer);
 
-		const HRESULT _status = m_channel->Invoke(0, 20, buffer);
+		const HRESULT _status = m_channel->Invoke(0, 22, buffer);
+		Throw(_status, buffer);
+
+	}
+	const static unsigned short LrpMethod_OnBusinessRejectMsg_Id = 23;
+	bool Is_OnBusinessRejectMsg_Supported() const
+	{
+		return m_channel->IsSupported(0, 23);
+	}
+	void OnBusinessRejectMsg(const std::string& rejectReason, const std::string& rejectTag)
+	{
+		MemoryBuffer buffer;
+		m_channel->Initialize(buffer);
+
+		WriteAString(rejectReason, buffer);
+		WriteAString(rejectTag, buffer);
+
+		const HRESULT _status = m_channel->Invoke(0, 23, buffer);
 		Throw(_status, buffer);
 
 	}
