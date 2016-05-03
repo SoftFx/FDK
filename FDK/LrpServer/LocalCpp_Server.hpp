@@ -58,7 +58,7 @@ namespace
 	const unsigned short LrpMethod_LocalServer_SendDataHistoryReject_Id = 16;
 	const unsigned short LrpMethod_LocalServer_SendFileChunk_Id = 17;
 	const unsigned short LrpMethod_LocalServer_SendNotification_Id = 18;
-	const unsigned short LrpMethod_LocalServer_SendReject_Id = 19;
+	const unsigned short LrpMethod_LocalServer_SendBusinessReject_Id = 19;
 
 	typedef void (*LrpInvoke_LocalServer_Method_Handler)(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel);
 	void LrpInvoke_LocalServer_Constructor(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
@@ -281,7 +281,7 @@ namespace
 		component.SendNotification(arg0, arg1, arg2);
 		buffer.Reset(offset);
 	}
-	void LrpInvoke_LocalServer_SendReject(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	void LrpInvoke_LocalServer_SendBusinessReject(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
 		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
 		auto& component = pChannel->GetLocalServer();
@@ -290,7 +290,7 @@ namespace
 		auto arg1 = ReadInt64(buffer);
 		auto arg2 = ReadAString(buffer);
 		auto arg3 = ReadAString(buffer);
-		component.SendReject(arg0, arg1, arg2, arg3);
+		component.SendBusinessReject(arg0, arg1, arg2, arg3);
 		buffer.Reset(offset);
 	}
 
@@ -315,7 +315,7 @@ namespace
 		LrpInvoke_LocalServer_SendDataHistoryReject,
 		LrpInvoke_LocalServer_SendFileChunk,
 		LrpInvoke_LocalServer_SendNotification,
-		LrpInvoke_LocalServer_SendReject,
+		LrpInvoke_LocalServer_SendBusinessReject,
 	};
 
 	HRESULT LrpInvoke_LocalServer(size_t offset, size_t methodId, MemoryBuffer& buffer, LrpChannel* pChannel)
@@ -459,7 +459,7 @@ extern "C" const char* __stdcall LrpSignature()
 		"SendDataHistoryReject@92819AAAE469CDBC09E394584C7507F1;"
 		"SendFileChunk@0450959066E76C838A2BCD7B598E8DC5;"
 		"SendNotification@3A5516D3CE20D8D139D897401112591D;"
-		"SendReject@06E71F1E7D7455F58FC0A2A85947B097;"
+		"SendBusinessReject@B9D3D37AE4815C6AB97B10A9D3931531;"
 	"$LocalChannelsPool;"
 		"Constructor@62EA0A46CB237981503C99A221EE79E2;"
 		"Destructor@578A3F61986EADEE8A91305955BD65E4;"

@@ -22,10 +22,13 @@ namespace
 	const unsigned short LrpMethod_Client_OnComponentsInfoMsg_Id = 14;
 	const unsigned short LrpMethod_Client_OnQuotesSubscriptionMsg_Id = 15;
 	const unsigned short LrpMethod_Client_OnFileChunkMsg_Id = 16;
-	const unsigned short LrpMethod_Client_OnDataHistoryMsg_Id = 17;
-	const unsigned short LrpMethod_Client_OnDataHistoryMetaInfoMsg_Id = 18;
-	const unsigned short LrpMethod_Client_OnQuoteRawMsg_Id = 19;
-	const unsigned short LrpMethod_Client_OnNotificationMsg_Id = 20;
+	const unsigned short LrpMethod_Client_OnDataHistoryMetaInfoResponseMsg_Id = 17;
+	const unsigned short LrpMethod_Client_OnDataHistoryMetaInfoRejectMsg_Id = 18;
+	const unsigned short LrpMethod_Client_OnDataHistoryResponseMsg_Id = 19;
+	const unsigned short LrpMethod_Client_OnDataHistoryRejectMsg_Id = 20;
+	const unsigned short LrpMethod_Client_OnQuoteRawMsg_Id = 21;
+	const unsigned short LrpMethod_Client_OnNotificationMsg_Id = 22;
+	const unsigned short LrpMethod_Client_OnBusinessRejectMsg_Id = 23;
 
 	typedef void (*LrpInvoke_Client_Method_Handler)(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel);
 	void LrpInvoke_Client_OnHeartBeatRequest(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
@@ -194,17 +197,7 @@ namespace
 		component.OnFileChunkMsg(arg0, arg1);
 		buffer.Reset(offset);
 	}
-	void LrpInvoke_Client_OnDataHistoryMsg(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
-	{
-		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
-		auto& component = pChannel->GetClient();
-		component; // if all methods of component are static then the next line generates warning #4189
-		auto arg0 = ReadAString(buffer);
-		auto arg1 = ReadDataHistoryResponse(buffer);
-		component.OnDataHistoryMsg(arg0, arg1);
-		buffer.Reset(offset);
-	}
-	void LrpInvoke_Client_OnDataHistoryMetaInfoMsg(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	void LrpInvoke_Client_OnDataHistoryMetaInfoResponseMsg(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
 		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
 		auto& component = pChannel->GetClient();
@@ -212,7 +205,39 @@ namespace
 		auto arg0 = ReadAString(buffer);
 		auto arg1 = ReadInt32(buffer);
 		auto arg2 = ReadAString(buffer);
-		component.OnDataHistoryMetaInfoMsg(arg0, arg1, arg2);
+		component.OnDataHistoryMetaInfoResponseMsg(arg0, arg1, arg2);
+		buffer.Reset(offset);
+	}
+	void LrpInvoke_Client_OnDataHistoryMetaInfoRejectMsg(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	{
+		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
+		auto& component = pChannel->GetClient();
+		component; // if all methods of component are static then the next line generates warning #4189
+		auto arg0 = ReadAString(buffer);
+		auto arg1 = ReadInt32(buffer);
+		auto arg2 = ReadAString(buffer);
+		component.OnDataHistoryMetaInfoRejectMsg(arg0, arg1, arg2);
+		buffer.Reset(offset);
+	}
+	void LrpInvoke_Client_OnDataHistoryResponseMsg(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	{
+		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
+		auto& component = pChannel->GetClient();
+		component; // if all methods of component are static then the next line generates warning #4189
+		auto arg0 = ReadAString(buffer);
+		auto arg1 = ReadDataHistoryResponse(buffer);
+		component.OnDataHistoryResponseMsg(arg0, arg1);
+		buffer.Reset(offset);
+	}
+	void LrpInvoke_Client_OnDataHistoryRejectMsg(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	{
+		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
+		auto& component = pChannel->GetClient();
+		component; // if all methods of component are static then the next line generates warning #4189
+		auto arg0 = ReadAString(buffer);
+		auto arg1 = ReadMarketHistoryRejectType(buffer);
+		auto arg2 = ReadAString(buffer);
+		component.OnDataHistoryRejectMsg(arg0, arg1, arg2);
 		buffer.Reset(offset);
 	}
 	void LrpInvoke_Client_OnQuoteRawMsg(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
@@ -231,6 +256,16 @@ namespace
 		component; // if all methods of component are static then the next line generates warning #4189
 		auto arg0 = ReadNotification(buffer);
 		component.OnNotificationMsg(arg0);
+		buffer.Reset(offset);
+	}
+	void LrpInvoke_Client_OnBusinessRejectMsg(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	{
+		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
+		auto& component = pChannel->GetClient();
+		component; // if all methods of component are static then the next line generates warning #4189
+		auto arg0 = ReadAString(buffer);
+		auto arg1 = ReadAString(buffer);
+		component.OnBusinessRejectMsg(arg0, arg1);
 		buffer.Reset(offset);
 	}
 
@@ -253,15 +288,18 @@ namespace
 		LrpInvoke_Client_OnComponentsInfoMsg,
 		LrpInvoke_Client_OnQuotesSubscriptionMsg,
 		LrpInvoke_Client_OnFileChunkMsg,
-		LrpInvoke_Client_OnDataHistoryMsg,
-		LrpInvoke_Client_OnDataHistoryMetaInfoMsg,
+		LrpInvoke_Client_OnDataHistoryMetaInfoResponseMsg,
+		LrpInvoke_Client_OnDataHistoryMetaInfoRejectMsg,
+		LrpInvoke_Client_OnDataHistoryResponseMsg,
+		LrpInvoke_Client_OnDataHistoryRejectMsg,
 		LrpInvoke_Client_OnQuoteRawMsg,
 		LrpInvoke_Client_OnNotificationMsg,
+		LrpInvoke_Client_OnBusinessRejectMsg,
 	};
 
 	HRESULT LrpInvoke_Client(size_t offset, size_t methodId, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
-		if(methodId >= 21)
+		if(methodId >= 24)
 		{
 			return LRP_INVALID_METHOD_ID;
 		}
@@ -419,10 +457,13 @@ extern "C" const char* __stdcall LrpSignature()
 		"OnComponentsInfoMsg@45B9ED80F2ED2C785B1E07E1EB58C40B;"
 		"OnQuotesSubscriptionMsg@9DF528C6AAB1961D4198C68CB84FE088;"
 		"OnFileChunkMsg@9CFDE981EABB1BBF065B7234DE47A589;"
-		"OnDataHistoryMsg@9AD3FFC5B8173F6E9B60FDBBA2410013;"
-		"OnDataHistoryMetaInfoMsg@352DE7BFA75E3BAF70D675F4B032E4A7;"
+		"OnDataHistoryMetaInfoResponseMsg@9C22D7EB20BC03B2C5293A68406A0AEC;"
+		"OnDataHistoryMetaInfoRejectMsg@35C5612E4B1DCB29D7D54D98F588A588;"
+		"OnDataHistoryResponseMsg@CB965CDEB09B69B5148CF852BC67693D;"
+		"OnDataHistoryRejectMsg@3E6DF0C36CD841F613ED6505F2E5819B;"
 		"OnQuoteRawMsg@BA16C284C1106F73C5D011EEAD8CB4F7;"
 		"OnNotificationMsg@E63C9A7B67F2E06181E3EB2330AC8681;"
+		"OnBusinessRejectMsg@B306EB27B56F78F595D533865869108A;"
 	"$SimpleCodec;"
 		"OnSymbolIndexMsg@4C3B42F4CB0CEECC68AFD00D43791BC8;"
 		"OnTimeSynchMsg@8E26F4681DEB634E809CF722E94A058B;"

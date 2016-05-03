@@ -414,14 +414,14 @@ namespace LrpServer.Net.LocalCpp
 
 			}
 		}
-		public bool Is_SendReject_Supported
+		public bool Is_SendBusinessReject_Supported
 		{
 			get
 			{
 				return m_client.IsSupported(1, 19);
 			}
 		}
-		public void SendReject(SoftFX.Lrp.LPtr handle, long id, string rejectReason, string rejectTag)
+		public void SendBusinessReject(SoftFX.Lrp.LPtr handle, long id, string rejectReason, string rejectTag)
 		{
 			using(MemoryBuffer buffer = m_client.Create())
 			{
@@ -670,16 +670,16 @@ namespace LrpServer.Net.LocalCpp
 		{
 			this.Instance.SendNotification(this.Handle, id, notification);
 		}
-		public bool Is_SendReject_Supported
+		public bool Is_SendBusinessReject_Supported
 		{
 			get
 			{
-				return this.Instance.Is_SendReject_Supported;
+				return this.Instance.Is_SendBusinessReject_Supported;
 			}
 		}
-		public void SendReject(long id, string rejectReason, string rejectTag)
+		public void SendBusinessReject(long id, string rejectReason, string rejectTag)
 		{
-			this.Instance.SendReject(this.Handle, id, rejectReason, rejectTag);
+			this.Instance.SendBusinessReject(this.Handle, id, rejectReason, rejectTag);
 		}
 	}
 }

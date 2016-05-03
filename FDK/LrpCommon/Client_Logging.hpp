@@ -9,6 +9,7 @@ namespace
 	void LrpWriteCommissionType(const char* name, const FxCommissionType& arg, std::ostream& _stream);
 	void LrpWriteCommissionChargeType(const char* name, const FxCommissionChargeType& arg, std::ostream& _stream);
 	void LrpWriteCommissionChargeMethod(const char* name, const FxCommissionChargeMethod& arg, std::ostream& _stream);
+	void LrpWriteMarketHistoryRejectType(const char* name, const FxMarketHistoryRejectType& arg, std::ostream& _stream);
 	void LrpWriteNotificationType(const char* name, const NotificationType& arg, std::ostream& _stream);
 	void LrpWriteSeverity(const char* name, const Severity& arg, std::ostream& _stream);
 	void LrpWriteLrpSessionInfo(const char* name, const CFxSessionInfo& arg, std::ostream& _stream);
@@ -391,6 +392,14 @@ namespace
 		_stream<<static_cast<__int32>(arg);
 	}
 	void LrpWriteCommissionChargeMethod(const char* name, const FxCommissionChargeMethod& arg, std::ostream& _stream)
+	{
+		if (nullptr != name)
+		{
+			_stream << name << " = ";
+		}
+		_stream<<static_cast<__int32>(arg);
+	}
+	void LrpWriteMarketHistoryRejectType(const char* name, const FxMarketHistoryRejectType& arg, std::ostream& _stream)
 	{
 		if (nullptr != name)
 		{
@@ -1447,20 +1456,10 @@ void Client::OnFileChunkMsg(const std::string& requestId, const CFxFileChunk& ch
 	_stream << ");";
 	m_stream->Write(_stream.str());
 }
-void Client::OnDataHistoryMsg(const std::string& requestId, const CFxDataHistoryResponse& response)
+void Client::OnDataHistoryMetaInfoResponseMsg(const std::string& requestId, const __int32& status, const std::string& field)
 {
 	std::stringstream _stream;
-	_stream << "[0]Client[17]OnDataHistoryMsg(";
-	LrpWriteAString("requestId", requestId, _stream);
-	_stream<<", ";
-	LrpWriteDataHistoryResponse("response", response, _stream);
-	_stream << ");";
-	m_stream->Write(_stream.str());
-}
-void Client::OnDataHistoryMetaInfoMsg(const std::string& requestId, const __int32& status, const std::string& field)
-{
-	std::stringstream _stream;
-	_stream << "[0]Client[18]OnDataHistoryMetaInfoMsg(";
+	_stream << "[0]Client[17]OnDataHistoryMetaInfoResponseMsg(";
 	LrpWriteAString("requestId", requestId, _stream);
 	_stream<<", ";
 	LrpWriteInt32("status", status, _stream);
@@ -1469,10 +1468,44 @@ void Client::OnDataHistoryMetaInfoMsg(const std::string& requestId, const __int3
 	_stream << ");";
 	m_stream->Write(_stream.str());
 }
+void Client::OnDataHistoryMetaInfoRejectMsg(const std::string& requestId, const __int32& status, const std::string& field)
+{
+	std::stringstream _stream;
+	_stream << "[0]Client[18]OnDataHistoryMetaInfoRejectMsg(";
+	LrpWriteAString("requestId", requestId, _stream);
+	_stream<<", ";
+	LrpWriteInt32("status", status, _stream);
+	_stream<<", ";
+	LrpWriteAString("field", field, _stream);
+	_stream << ");";
+	m_stream->Write(_stream.str());
+}
+void Client::OnDataHistoryResponseMsg(const std::string& requestId, const CFxDataHistoryResponse& response)
+{
+	std::stringstream _stream;
+	_stream << "[0]Client[19]OnDataHistoryResponseMsg(";
+	LrpWriteAString("requestId", requestId, _stream);
+	_stream<<", ";
+	LrpWriteDataHistoryResponse("response", response, _stream);
+	_stream << ");";
+	m_stream->Write(_stream.str());
+}
+void Client::OnDataHistoryRejectMsg(const std::string& requestId, const FxMarketHistoryRejectType& rejectType, const std::string& rejectReason)
+{
+	std::stringstream _stream;
+	_stream << "[0]Client[20]OnDataHistoryRejectMsg(";
+	LrpWriteAString("requestId", requestId, _stream);
+	_stream<<", ";
+	LrpWriteMarketHistoryRejectType("rejectType", rejectType, _stream);
+	_stream<<", ";
+	LrpWriteAString("rejectReason", rejectReason, _stream);
+	_stream << ");";
+	m_stream->Write(_stream.str());
+}
 void Client::OnQuoteRawMsg(const MemoryBuffer& data)
 {
 	std::stringstream _stream;
-	_stream << "[0]Client[19]OnQuoteRawMsg(";
+	_stream << "[0]Client[21]OnQuoteRawMsg(";
 	LrpWriteRaw("data", data, _stream);
 	_stream << ");";
 	m_stream->Write(_stream.str());
@@ -1480,8 +1513,18 @@ void Client::OnQuoteRawMsg(const MemoryBuffer& data)
 void Client::OnNotificationMsg(const CNotification& notification)
 {
 	std::stringstream _stream;
-	_stream << "[0]Client[20]OnNotificationMsg(";
+	_stream << "[0]Client[22]OnNotificationMsg(";
 	LrpWriteNotification("notification", notification, _stream);
+	_stream << ");";
+	m_stream->Write(_stream.str());
+}
+void Client::OnBusinessRejectMsg(const std::string& rejectReason, const std::string& rejectTag)
+{
+	std::stringstream _stream;
+	_stream << "[0]Client[23]OnBusinessRejectMsg(";
+	LrpWriteAString("rejectReason", rejectReason, _stream);
+	_stream<<", ";
+	LrpWriteAString("rejectTag", rejectTag, _stream);
 	_stream << ");";
 	m_stream->Write(_stream.str());
 }
