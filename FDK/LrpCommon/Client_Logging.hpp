@@ -1257,11 +1257,13 @@ namespace
 			_stream << name << " = ";
 		}
 		_stream<<"{";
-		LrpWriteInt32("ChunksNumber", arg.ChunksNumber, _stream);
+		LrpWriteAString("FileId", arg.FileId, _stream);
+		_stream << ';';
+		LrpWriteInt32("ChunkId", arg.ChunkId, _stream);
+		_stream << ';';
+		LrpWriteInt32("TotalChunks", arg.TotalChunks, _stream);
 		_stream << ';';
 		LrpWriteInt32("FileSize", arg.FileSize, _stream);
-		_stream << ';';
-		LrpWriteAString("FileName", arg.FileName, _stream);
 		_stream << ';';
 		LrpWriteUInt8Array("Data", arg.Data, _stream);
 		_stream << ';';

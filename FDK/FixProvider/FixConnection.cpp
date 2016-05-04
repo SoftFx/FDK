@@ -810,15 +810,13 @@ void CFixConnection::OnFileChunk(const FIX44::FileChunk& message)
     CFxEventInfo eventInfo;
     eventInfo.ID = "ES" + message.GetFileId();
 
-
     CFxFileChunk fileChunk;
-    fileChunk.ChunksNumber = message.GetChunksNo();
+    fileChunk.FileId = message.GetFileName();
+    fileChunk.ChunkId = message.GetChunkId();
+    fileChunk.TotalChunks = message.GetChunksNo();
     fileChunk.FileSize = message.GetFileSize();
     string data = message.GetRawData();
-
     fileChunk.Data.insert(fileChunk.Data.end(), data.begin(), data.end());
-
-    message.TryGetFileName(fileChunk.FileName);
     m_receiver->VFileChunk(eventInfo, fileChunk);
 }
 

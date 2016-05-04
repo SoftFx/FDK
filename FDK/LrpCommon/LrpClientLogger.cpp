@@ -24,49 +24,49 @@ CLrpClientLogger::CLrpClientLogger(ostream& stream) : Logging::Client(&m_stream)
 }
 CLrpClientLogger& CLrpClientLogger::GetClient()
 {
-	return *this;
+    return *this;
 }
 CLrpClientLogger& CLrpClientLogger::GetSimpleCodec()
 {
-	return *this;
+    return *this;
 }
 void CLrpClientLogger::Format(const uint16 componentId, const uint16 methodId, MemoryBuffer& buffer)
 {
-	LrpInvokeEx(0, componentId, methodId, buffer, this);
+    LrpInvokeEx(0, componentId, methodId, buffer, this);
 }
 
 void CLrpClientLogger::OnFileChunkMsg(const std::string& requestId, const CFxFileChunk& chunk)
 {
-	CFxFileChunk _chunk;
-	_chunk.ChunksNumber = chunk.ChunksNumber;
-	_chunk.FileSize = chunk.FileSize;
-	_chunk.FileName = chunk.FileName;
-	__super::OnFileChunkMsg(requestId, _chunk);
+    CFxFileChunk _chunk;
+    _chunk.FileId = chunk.FileId;
+    _chunk.ChunkId = chunk.ChunkId;
+    _chunk.TotalChunks = chunk.TotalChunks;
+    _chunk.FileSize = chunk.FileSize;
+    __super::OnFileChunkMsg(requestId, _chunk);
 }
 void CLrpClientLogger::OnQuoteRawMsg(const MemoryBuffer& data)
 {
-	__super::OnQuoteRawMsg(data);
+    __super::OnQuoteRawMsg(data);
 
-	MemoryBuffer buffer(nullptr, data.GetData(), data.GetSize(), data.GetCapacity());
-	buffer.SetPosition(data.GetPosition());
+    MemoryBuffer buffer(nullptr, data.GetData(), data.GetSize(), data.GetCapacity());
+    buffer.SetPosition(data.GetPosition());
 
 
-	CDateTime sendingTime = ReadTime(buffer);
-	CFxQuote quote = ReadQuote(buffer);
+    CDateTime sendingTime = ReadTime(buffer);
+    CFxQuote quote = ReadQuote(buffer);
 
-	std::stringstream stream;
+    std::stringstream stream;
 
-	stream<<" ";
-	LrpWriteTime("sendingTime", sendingTime, stream);
+    stream<<" ";
+    LrpWriteTime("sendingTime", sendingTime, stream);
 
-	stream<<" ";
-	Logging::LrpWriteQuote("quote", quote, stream);
+    stream<<" ";
+    Logging::LrpWriteQuote("quote", quote, stream);
 
-	m_stream.Write(stream.str());
+    m_stream.Write(stream.str());
 }
 
 void FormatQuote(const CFxQuote& quote, ostream& stream)
 {
-	Logging::LrpWriteQuote("quote", quote, stream);
+    Logging::LrpWriteQuote("quote", quote, stream);
 }
-

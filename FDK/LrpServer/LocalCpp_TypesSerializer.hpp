@@ -454,17 +454,19 @@ namespace
 	}
 	void WriteFileChunk(const CFxFileChunk& arg, MemoryBuffer& buffer)
 	{
-		WriteInt32(arg.ChunksNumber, buffer);
+		WriteAString(arg.FileId, buffer);
+		WriteInt32(arg.ChunkId, buffer);
+		WriteInt32(arg.TotalChunks, buffer);
 		WriteInt32(arg.FileSize, buffer);
-		WriteAString(arg.FileName, buffer);
 		WriteUInt8Array(arg.Data, buffer);
 	}
 	CFxFileChunk ReadFileChunk(MemoryBuffer& buffer)
 	{
 		CFxFileChunk result = CFxFileChunk();
-		result.ChunksNumber = ReadInt32(buffer);
+		result.FileId = ReadAString(buffer);
+		result.ChunkId = ReadInt32(buffer);
+		result.TotalChunks = ReadInt32(buffer);
 		result.FileSize = ReadInt32(buffer);
-		result.FileName = ReadAString(buffer);
 		result.Data = ReadUInt8Array(buffer);
 		return result;
 	}

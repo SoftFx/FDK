@@ -396,17 +396,19 @@ namespace LrpServer.Net.LocalCpp
 		public static LrpServer.Net.LrpFileChunk ReadFileChunk(this MemoryBuffer buffer)
 		{
 			var result = new LrpServer.Net.LrpFileChunk();
-			result.ChunksNumber = buffer.ReadInt32();
+			result.FileId = buffer.ReadAString();
+			result.ChunkId = buffer.ReadInt32();
+			result.TotalChunks = buffer.ReadInt32();
 			result.FileSize = buffer.ReadInt32();
-			result.FileName = buffer.ReadAString();
 			result.Data = buffer.ReadUInt8Array();
 			return result;
 		}
 		public static void WriteFileChunk(this MemoryBuffer buffer, LrpServer.Net.LrpFileChunk arg)
 		{
-			buffer.WriteInt32(arg.ChunksNumber);
+			buffer.WriteAString(arg.FileId);
+			buffer.WriteInt32(arg.ChunkId);
+			buffer.WriteInt32(arg.TotalChunks);
 			buffer.WriteInt32(arg.FileSize);
-			buffer.WriteAString(arg.FileName);
 			buffer.WriteUInt8Array(arg.Data);
 		}
 		public static LrpServer.Net.LrpParams ReadLrpParams(this MemoryBuffer buffer)

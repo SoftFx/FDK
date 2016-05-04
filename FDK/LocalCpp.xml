@@ -108,9 +108,10 @@
             <Member name="Files" type="AStringArray" />
         </Type>
         <Type name="FileChunk" CSharpFullName="LrpServer.Net.LrpFileChunk" CppFullName="CFxFileChunk" kind="class">
-            <Member name="ChunksNumber" type="int32" />
+            <Member name="FileId" type="astring" />
+            <Member name="ChunkId" type="int32" />
+            <Member name="TotalChunks" type="int32" />
             <Member name="FileSize" type="int32" />
-            <Member name="FileName" type="astring" />
             <Member name="Data" type="UInt8Array" />
         </Type>
         <Type name="LrpParams" CSharpFullName="LrpServer.Net.LrpParams" CppFullName="CParameters" kind="class">
@@ -271,7 +272,7 @@
               <Param name="rejectTag" type="astring" direction="in" />
               <Return type="void" />
             </Method>
-    </Component>
+        </Component>
         <Component name="LocalChannelsPool" proxy="true">
             <Method name="Constructor">
                 <Param name="parameters" type="LrpParams" direction="in" />
