@@ -386,7 +386,7 @@ bool CLrpConnection::Send(CTimeout timeout)
     {
         throw runtime_error("Size of outgoing buffer is too small");
     }
-    if (size - sizeof(uint16) > 16777216)
+    if (size - sizeof(uint16) > numeric_limits<uint16>::max())
     {
         throw runtime_error("Size of outgoing buffer is too large");
     }

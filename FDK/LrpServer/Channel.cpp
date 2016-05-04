@@ -18,7 +18,7 @@ namespace
         {
             throw overflow_error("Memory buffer is too small");
         }
-        if (size > sizeof(uint16) + 16777216)
+        if (size > sizeof(uint16) + numeric_limits<uint16>::max())
         {
             throw overflow_error("Memory buffer is too big");
         }

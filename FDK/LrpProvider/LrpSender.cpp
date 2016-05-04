@@ -159,7 +159,7 @@ void CLrpSender::Initialize(MemoryBuffer& buffer)
 HRESULT CLrpSender::Invoke(uint16 componentId, uint16 methodId, MemoryBuffer& buffer)
 {
     size_t dataSize = buffer.GetSize() - sizeof(uint16);
-    if (dataSize > 16777216)
+    if (dataSize > numeric_limits<uint16>::max())
     {
         return E_FAIL;
     }
