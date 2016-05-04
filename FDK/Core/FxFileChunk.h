@@ -10,9 +10,10 @@ public:
     CFxFileChunk();
 public:
     string FileId;
+    string FileName;
+    int32 FileSize;
     int32 ChunkId;
     int32 TotalChunks;
-    int32 FileSize;
     vector<uint8> Data;
 };
 

@@ -13,17 +13,22 @@
         /// <summary>
         ///
         /// </summary>
+        public string FileName;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public int FileSize;
+
+        /// <summary>
+        ///
+        /// </summary>
         public int ChunkId;
 
         /// <summary>
         ///
         /// </summary>
         public int TotalChunks;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public int FileSize;
 
         /// <summary>
         ///

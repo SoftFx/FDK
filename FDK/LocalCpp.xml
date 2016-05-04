@@ -109,9 +109,10 @@
         </Type>
         <Type name="FileChunk" CSharpFullName="LrpServer.Net.LrpFileChunk" CppFullName="CFxFileChunk" kind="class">
             <Member name="FileId" type="astring" />
+            <Member name="FileName" type="astring" />
+            <Member name="FileSize" type="int32" />
             <Member name="ChunkId" type="int32" />
             <Member name="TotalChunks" type="int32" />
-            <Member name="FileSize" type="int32" />
             <Member name="Data" type="UInt8Array" />
         </Type>
         <Type name="LrpParams" CSharpFullName="LrpServer.Net.LrpParams" CppFullName="CParameters" kind="class">

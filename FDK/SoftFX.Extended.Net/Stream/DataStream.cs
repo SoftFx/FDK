@@ -46,7 +46,6 @@
             else
                 chunk = this.server.GetFileChunk(this.fileId, this.chunkId);
 
-            this.FileName = chunk.FileId;
             this.fileSize = chunk.FileSize;
             this.data = chunk.Data;
             this.chunksCount = chunk.TotalChunks;
@@ -107,12 +106,12 @@
             }
             if (this.fileSize != chunk.FileSize)
             {
-                var message = string.Format("Mismatch file size: expected = {0}, but received = {1}", fileSize, chunk.FileSize);
+                var message = string.Format("Mismatch file size: expected = {0}, but received = {1}", this.fileSize, chunk.FileSize);
                 throw new IOException(message);
             }
-            if (this.FileName != chunk.FileId)
+            if (this.fileId != chunk.FileId)
             {
-                var message = string.Format("Mismatch file name: expected = {0}, but received = {1}", this.FileName, chunk.FileId);
+                var message = string.Format("Mismatch file Id: expected = {0}, but received = {1}", this.fileId, chunk.FileId);
                 throw new IOException(message);
             }
 
@@ -137,15 +136,6 @@
             }
             return result;
         }
-
-        #region Properties
-
-        /// <summary>
-        /// Gets server side file name.
-        /// </summary>
-        public string FileName { get; private set; }
-
-        #endregion
 
         #region Not supported and Simple Implementation methods
 

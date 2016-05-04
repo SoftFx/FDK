@@ -42,6 +42,7 @@ void CLrpClientLogger::OnFileChunkMsg(const std::string& requestId, const CFxFil
     _chunk.ChunkId = chunk.ChunkId;
     _chunk.TotalChunks = chunk.TotalChunks;
     _chunk.FileSize = chunk.FileSize;
+    _chunk.FileName = chunk.FileName;
     __super::OnFileChunkMsg(requestId, _chunk);
 }
 void CLrpClientLogger::OnQuoteRawMsg(const MemoryBuffer& data)

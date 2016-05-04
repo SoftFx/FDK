@@ -13,9 +13,10 @@
                 throw new ArgumentNullException(nameof(fileChunk));
 
             this.FileId = fileChunk.FileId;
+            this.FileName = fileChunk.FileName;
+            this.FileSize = fileChunk.FileSize;
             this.ChunkId = fileChunk.ChunkId;
             this.TotalChunks = fileChunk.TotalChunks;
-            this.FileSize = fileChunk.FileSize;
             this.Data = fileChunk.Data;
         }
 
@@ -23,6 +24,16 @@
         /// Gets server side file Id.
         /// </summary>
         public string FileId { get; private set; }
+
+        /// <summary>
+        /// Gets server side file name.
+        /// </summary>
+        public string FileName { get; private set; }
+
+        /// <summary>
+        /// Gets size of the file in bytes.
+        /// </summary>
+        public int FileSize { get; private set; }
 
         /// <summary>
         /// Gets current chunks Id of the file.
@@ -33,11 +44,6 @@
         /// Gets total chunks number of the file.
         /// </summary>
         public int TotalChunks { get; private set; }
-
-        /// <summary>
-        /// Gets size of the file in bytes.
-        /// </summary>
-        public int FileSize { get; private set; }
 
         /// <summary>
         /// Gets data buffer of the current file chunk.
