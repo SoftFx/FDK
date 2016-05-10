@@ -25,10 +25,13 @@ public:
 	void OnComponentsInfoMsg(const std::string& requestId, const __int32& quotesStorageVersion);
 	void OnQuotesSubscriptionMsg(const std::string& requestId, const __int32& status, const std::string& message);
 	void OnFileChunkMsg(const std::string& requestId, const CFxFileChunk& chunk);
-	void OnDataHistoryMsg(const std::string& requestId, const CFxDataHistoryResponse& response);
-	void OnDataHistoryMetaInfoMsg(const std::string& requestId, const __int32& status, const std::string& field);
+	void OnDataHistoryMetaInfoResponseMsg(const std::string& requestId, const __int32& status, const std::string& field);
+	void OnDataHistoryMetaInfoRejectMsg(const std::string& requestId, const __int32& status, const std::string& field);
+	void OnDataHistoryResponseMsg(const std::string& requestId, const CFxDataHistoryResponse& response);
+	void OnDataHistoryRejectMsg(const std::string& requestId, const FxMarketHistoryRejectType& rejectType, const std::string& rejectReason);
 	void OnQuoteRawMsg(const MemoryBuffer& data);
 	void OnNotificationMsg(const CNotification& notification);
+	void OnBusinessRejectMsg(const std::string& rejectReason, const std::string& rejectTag);
 };
 
 class SimpleCodec

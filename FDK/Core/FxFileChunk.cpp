@@ -2,7 +2,8 @@
 #include "FxFileChunk.h"
 
 CFxFileChunk::CFxFileChunk()
-    : ChunksNumber()
-    , FileSize()
+    : FileSize()
+    , ChunkId()
+    , TotalChunks()
 {
 }

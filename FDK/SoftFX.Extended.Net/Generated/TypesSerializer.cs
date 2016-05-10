@@ -500,17 +500,21 @@ namespace SoftFX.Extended.Generated
 		public static SoftFX.Extended.FxFileChunk ReadFileChunk(this MemoryBuffer buffer)
 		{
 			var result = new SoftFX.Extended.FxFileChunk();
+			result.FileId = buffer.ReadAString();
 			result.FileName = buffer.ReadAString();
-			result.ChunksNumber = buffer.ReadInt32();
 			result.FileSize = buffer.ReadInt32();
+			result.ChunkId = buffer.ReadInt32();
+			result.TotalChunks = buffer.ReadInt32();
 			result.Data = buffer.ReadByteArray();
 			return result;
 		}
 		public static void WriteFileChunk(this MemoryBuffer buffer, SoftFX.Extended.FxFileChunk arg)
 		{
+			buffer.WriteAString(arg.FileId);
 			buffer.WriteAString(arg.FileName);
-			buffer.WriteInt32(arg.ChunksNumber);
 			buffer.WriteInt32(arg.FileSize);
+			buffer.WriteInt32(arg.ChunkId);
+			buffer.WriteInt32(arg.TotalChunks);
 			buffer.WriteByteArray(arg.Data);
 		}
 		public static SoftFX.Extended.Data.FxOrder ReadFxOrder(this MemoryBuffer buffer)

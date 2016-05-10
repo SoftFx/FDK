@@ -3,7 +3,7 @@
     using System;
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class FileChunk
     {
@@ -12,11 +12,18 @@
             if (fileChunk == null)
                 throw new ArgumentNullException(nameof(fileChunk));
 
+            this.FileId = fileChunk.FileId;
             this.FileName = fileChunk.FileName;
-            this.ChunksNumber = fileChunk.ChunksNumber;
             this.FileSize = fileChunk.FileSize;
+            this.ChunkId = fileChunk.ChunkId;
+            this.TotalChunks = fileChunk.TotalChunks;
             this.Data = fileChunk.Data;
         }
+
+        /// <summary>
+        /// Gets server side file Id.
+        /// </summary>
+        public string FileId { get; private set; }
 
         /// <summary>
         /// Gets server side file name.
@@ -24,14 +31,19 @@
         public string FileName { get; private set; }
 
         /// <summary>
-        /// Gets total chunks number of the file.
-        /// </summary>
-        public int ChunksNumber { get; private set; }
-
-        /// <summary>
         /// Gets size of the file in bytes.
         /// </summary>
         public int FileSize { get; private set; }
+
+        /// <summary>
+        /// Gets current chunks Id of the file.
+        /// </summary>
+        public int ChunkId { get; private set; }
+
+        /// <summary>
+        /// Gets total chunks number of the file.
+        /// </summary>
+        public int TotalChunks { get; private set; }
 
         /// <summary>
         /// Gets data buffer of the current file chunk.

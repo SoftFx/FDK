@@ -81,7 +81,7 @@
       <Member name="CurrencySortOrder" type="int32" />
       <Member name="SettlementCurrencySortOrder" type="int32" />
       <Member name="CurrencyPrecision" type="int32" />
-      <Member name="SettlementCurrencyPrecision" type="int32" />    
+      <Member name="SettlementCurrencyPrecision" type="int32" />
     </Type>
     <Type name="SessionInfo" CSharpFullName="SoftFX.Extended.SessionInfo" CppFullName="CFxSessionInfo" kind="class">
       <Member name="TradingSessionId" type="astring" />
@@ -131,9 +131,11 @@
       <Member name="Assets" type="AssetInfoArray" />
     </Type>
     <Type name="FileChunk" CSharpFullName="SoftFX.Extended.FxFileChunk" CppFullName="CFxFileChunk" kind="class">
+      <Member name="FileId" type="astring" />
       <Member name="FileName" type="astring" />
-      <Member name="ChunksNumber" type="int32" />
       <Member name="FileSize" type="int32" />
+      <Member name="ChunkId" type="int32" />
+      <Member name="TotalChunks" type="int32" />
       <Member name="Data" type="ByteArray" />
     </Type>
     <Type name="FxOrder" CSharpFullName="SoftFX.Extended.Data.FxOrder" CppFullName="CFxOrder" kind="class">
@@ -296,11 +298,11 @@
       <Member name="Name" type="astring" />
       <Member name="Description" type="astring" />
       <Member name="SortOrder" type="int32" />
-      <Member name="Precision" type="int32" />    
+      <Member name="Precision" type="int32" />
     </Type>
     <Type name="CurrencyInfoArray" kind="array">
       <Value name="CurrencyInfo" />
-    </Type>  
+    </Type>
   </Types>
   <Components>
     <Component name="Handle">
@@ -314,11 +316,11 @@
       </Method>
     </Component>
     <Component name="Converter">
-        <Method name="CurrenciesFromHandle">
-            <Param name="handle" type="lptr" direction="in" />
-            <Return type="CurrencyInfoArray" />
-        </Method>
-        <Method name="SymbolsFromHandle">
+      <Method name="CurrenciesFromHandle">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="CurrencyInfoArray" />
+      </Method>
+      <Method name="SymbolsFromHandle">
         <Param name="handle" type="lptr" direction="in" />
         <Return type="SymbolInfoArray" />
       </Method>
@@ -484,7 +486,7 @@
         <Param name="handle" type="lptr" direction="in" />
         <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
         <Return type="CurrencyInfoArray" />
-      </Method>        
+      </Method>
       <Method name="GetSymbols">
         <Param name="handle" type="lptr" direction="in" />
         <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
@@ -573,7 +575,7 @@
       <Method name="GetCurrencies">
         <Param name="handle" type="lptr" direction="in" />
         <Return type="CurrencyInfoArray" />
-      </Method>    
+      </Method>
     </Component>
     <Component name="TradeServer">
       <Method name ="Create">

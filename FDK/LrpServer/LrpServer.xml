@@ -21,11 +21,11 @@
 			<Method name="OnHeartBeatResponse">
 				<Return type="void" />
 			</Method>
-      <Method name="OnCurrenciesInfoRequest">
-        <Param name="id" type="astring" direction="in"/>
-        <Return type="void" />
-      </Method>
-      <Method name="OnSymbolsInfoRequest">
+      		<Method name="OnCurrenciesInfoRequest">
+        		<Param name="id" type="astring" direction="in"/>
+        		<Return type="void" />
+      		</Method>
+      		<Method name="OnSymbolsInfoRequest">
 				<Param name="id" type="astring" direction="in"/>
 				<Return type="void" />
 			</Method>

@@ -7,12 +7,14 @@
 class CORE_API CFxFileChunk
 {
 public:
-	CFxFileChunk();
+    CFxFileChunk();
 public:
-	int32 ChunksNumber;
-	int32 FileSize;
-	string FileName;
-	vector<uint8> Data;
+    string FileId;
+    string FileName;
+    int32 FileSize;
+    int32 ChunkId;
+    int32 TotalChunks;
+    vector<uint8> Data;
 };
 
 #pragma warning (pop)

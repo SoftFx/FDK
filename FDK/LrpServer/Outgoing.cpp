@@ -39,7 +39,7 @@ HRESULT COutgoing::Invoke(const uint16 componentId, const uint16 methodId, Memor
 HRESULT COutgoing::DoInvoke(const ptrdiff_t key, uint16 componentId, uint16 methodId, MemoryBuffer& buffer)
 {
     size_t dataSize = buffer.GetSize() - sizeof(uint16);
-    if (dataSize > 16777216)
+    if (dataSize > numeric_limits<uint16>::max())
     {
         return E_FAIL;
     }
@@ -154,16 +154,28 @@ void COutgoing::SendQuote(const ptrdiff_t key, const CFxQuote& quote)
     Throw(_status, buffer);
 }
 
-void COutgoing::SendDataHistoryMetaInformationFileResponse(const string& requestId, const int32 status, const string& field)
+void COutgoing::SendMarketHistoryMetadataResponse(const string& requestId, const int32 status, const string& field)
 {
     Client client(*this);
-    client.OnDataHistoryMetaInfoMsg(requestId, status, field);
+    client.OnDataHistoryMetaInfoResponseMsg(requestId, status, field);
+}
+
+void COutgoing::SendMarketHistoryMetadataReject(const string& requestId, const int32 status, const string& field)
+{
+    Client client(*this);
+    client.OnDataHistoryMetaInfoRejectMsg(requestId, status, field);
 }
 
 void COutgoing::SendDataHistoryResponse(const string& requestId, const CFxDataHistoryResponse& response)
 {
     Client client(*this);
-    client.OnDataHistoryMsg(requestId, response);
+    client.OnDataHistoryResponseMsg(requestId, response);
+}
+
+void COutgoing::SendDataHistoryReject(const string& requestId, FxMarketHistoryRejectType rejectType, const string& rejectReason)
+{
+    Client client(*this);
+    client.OnDataHistoryRejectMsg(requestId, rejectType, rejectReason);
 }
 
 void COutgoing::SendFileChunk(const string& requestId, const CFxFileChunk& chunk)
@@ -184,4 +196,12 @@ void COutgoing::SendNotification(const CNotification& notification)
 
     if (client.Is_OnNotificationMsg_Supported())
         client.OnNotificationMsg(notification);
+}
+
+void COutgoing::SendBusinessReject(const string& rejectReason, const string& rejectTag)
+{
+    Client client(*this);
+
+    if (client.Is_OnBusinessRejectMsg_Supported())
+        client.OnBusinessRejectMsg(rejectReason, rejectTag);
 }

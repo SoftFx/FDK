@@ -18,6 +18,8 @@ namespace
 	FxCommissionChargeType ReadCommissionChargeType(MemoryBuffer& buffer);
 	void WriteCommissionChargeMethod(const FxCommissionChargeMethod& arg, MemoryBuffer& buffer);
 	FxCommissionChargeMethod ReadCommissionChargeMethod(MemoryBuffer& buffer);
+	void WriteMarketHistoryRejectType(const FxMarketHistoryRejectType& arg, MemoryBuffer& buffer);
+	FxMarketHistoryRejectType ReadMarketHistoryRejectType(MemoryBuffer& buffer);
 	void WriteNotificationType(const NotificationType& arg, MemoryBuffer& buffer);
 	NotificationType ReadNotificationType(MemoryBuffer& buffer);
 	void WriteSeverity(const Severity& arg, MemoryBuffer& buffer);
@@ -146,6 +148,15 @@ namespace
 	FxCommissionChargeMethod ReadCommissionChargeMethod(MemoryBuffer& buffer)
 	{
 		auto result = (FxCommissionChargeMethod)ReadInt32(buffer);
+		return result;
+	}
+	void WriteMarketHistoryRejectType(const FxMarketHistoryRejectType& arg, MemoryBuffer& buffer)
+	{
+		WriteInt32((__int32)arg, buffer);
+	}
+	FxMarketHistoryRejectType ReadMarketHistoryRejectType(MemoryBuffer& buffer)
+	{
+		auto result = (FxMarketHistoryRejectType)ReadInt32(buffer);
 		return result;
 	}
 	void WriteNotificationType(const NotificationType& arg, MemoryBuffer& buffer)
@@ -443,17 +454,21 @@ namespace
 	}
 	void WriteFileChunk(const CFxFileChunk& arg, MemoryBuffer& buffer)
 	{
-		WriteInt32(arg.ChunksNumber, buffer);
-		WriteInt32(arg.FileSize, buffer);
+		WriteAString(arg.FileId, buffer);
 		WriteAString(arg.FileName, buffer);
+		WriteInt32(arg.FileSize, buffer);
+		WriteInt32(arg.ChunkId, buffer);
+		WriteInt32(arg.TotalChunks, buffer);
 		WriteUInt8Array(arg.Data, buffer);
 	}
 	CFxFileChunk ReadFileChunk(MemoryBuffer& buffer)
 	{
 		CFxFileChunk result = CFxFileChunk();
-		result.ChunksNumber = ReadInt32(buffer);
-		result.FileSize = ReadInt32(buffer);
+		result.FileId = ReadAString(buffer);
 		result.FileName = ReadAString(buffer);
+		result.FileSize = ReadInt32(buffer);
+		result.ChunkId = ReadInt32(buffer);
+		result.TotalChunks = ReadInt32(buffer);
 		result.Data = ReadUInt8Array(buffer);
 		return result;
 	}

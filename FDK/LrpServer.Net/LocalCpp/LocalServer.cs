@@ -286,14 +286,14 @@ namespace LrpServer.Net.LocalCpp
 
 			}
 		}
-		public bool Is_SendMarketHistoryMetadataReport_Supported
+		public bool Is_SendMarketHistoryMetadataResponse_Supported
 		{
 			get
 			{
 				return m_client.IsSupported(1, 13);
 			}
 		}
-		public void SendMarketHistoryMetadataReport(SoftFX.Lrp.LPtr handle, long id, string requestId, int status, string field)
+		public void SendMarketHistoryMetadataResponse(SoftFX.Lrp.LPtr handle, long id, string requestId, int status, string field)
 		{
 			using(MemoryBuffer buffer = m_client.Create())
 			{
@@ -308,11 +308,33 @@ namespace LrpServer.Net.LocalCpp
 
 			}
 		}
-		public bool Is_SendDataHistoryResponse_Supported
+		public bool Is_SendMarketHistoryMetadataReject_Supported
 		{
 			get
 			{
 				return m_client.IsSupported(1, 14);
+			}
+		}
+		public void SendMarketHistoryMetadataReject(SoftFX.Lrp.LPtr handle, long id, string requestId, int status, string field)
+		{
+			using(MemoryBuffer buffer = m_client.Create())
+			{
+				buffer.WriteLocalPointer(handle);
+				buffer.WriteInt64(id);
+				buffer.WriteAString(requestId);
+				buffer.WriteInt32(status);
+				buffer.WriteAString(field);
+
+				int _status = m_client.Invoke(1, 14, buffer);
+				TypesSerializer.Throw(_status, buffer);
+
+			}
+		}
+		public bool Is_SendDataHistoryResponse_Supported
+		{
+			get
+			{
+				return m_client.IsSupported(1, 15);
 			}
 		}
 		public void SendDataHistoryResponse(SoftFX.Lrp.LPtr handle, long id, string requestId, LrpServer.Net.LrpDataHistoryResponse response)
@@ -324,7 +346,29 @@ namespace LrpServer.Net.LocalCpp
 				buffer.WriteAString(requestId);
 				buffer.WriteDataHistoryResponse(response);
 
-				int _status = m_client.Invoke(1, 14, buffer);
+				int _status = m_client.Invoke(1, 15, buffer);
+				TypesSerializer.Throw(_status, buffer);
+
+			}
+		}
+		public bool Is_SendDataHistoryReject_Supported
+		{
+			get
+			{
+				return m_client.IsSupported(1, 16);
+			}
+		}
+		public void SendDataHistoryReject(SoftFX.Lrp.LPtr handle, long id, string requestId, LrpServer.Net.LrpMarketHistoryRejectType rejectType, string rejectReason)
+		{
+			using(MemoryBuffer buffer = m_client.Create())
+			{
+				buffer.WriteLocalPointer(handle);
+				buffer.WriteInt64(id);
+				buffer.WriteAString(requestId);
+				buffer.WriteMarketHistoryRejectType(rejectType);
+				buffer.WriteAString(rejectReason);
+
+				int _status = m_client.Invoke(1, 16, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 			}
@@ -333,7 +377,7 @@ namespace LrpServer.Net.LocalCpp
 		{
 			get
 			{
-				return m_client.IsSupported(1, 15);
+				return m_client.IsSupported(1, 17);
 			}
 		}
 		public void SendFileChunk(SoftFX.Lrp.LPtr handle, long id, string requestId, LrpServer.Net.LrpFileChunk chunk)
@@ -345,7 +389,7 @@ namespace LrpServer.Net.LocalCpp
 				buffer.WriteAString(requestId);
 				buffer.WriteFileChunk(chunk);
 
-				int _status = m_client.Invoke(1, 15, buffer);
+				int _status = m_client.Invoke(1, 17, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 			}
@@ -354,7 +398,7 @@ namespace LrpServer.Net.LocalCpp
 		{
 			get
 			{
-				return m_client.IsSupported(1, 16);
+				return m_client.IsSupported(1, 18);
 			}
 		}
 		public void SendNotification(SoftFX.Lrp.LPtr handle, long id, LrpServer.Net.LrpNotification notification)
@@ -365,7 +409,28 @@ namespace LrpServer.Net.LocalCpp
 				buffer.WriteInt64(id);
 				buffer.WriteNotification(notification);
 
-				int _status = m_client.Invoke(1, 16, buffer);
+				int _status = m_client.Invoke(1, 18, buffer);
+				TypesSerializer.Throw(_status, buffer);
+
+			}
+		}
+		public bool Is_SendBusinessReject_Supported
+		{
+			get
+			{
+				return m_client.IsSupported(1, 19);
+			}
+		}
+		public void SendBusinessReject(SoftFX.Lrp.LPtr handle, long id, string rejectReason, string rejectTag)
+		{
+			using(MemoryBuffer buffer = m_client.Create())
+			{
+				buffer.WriteLocalPointer(handle);
+				buffer.WriteInt64(id);
+				buffer.WriteAString(rejectReason);
+				buffer.WriteAString(rejectTag);
+
+				int _status = m_client.Invoke(1, 19, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 			}
@@ -539,16 +604,27 @@ namespace LrpServer.Net.LocalCpp
 		{
 			this.Instance.SendQuote(this.Handle, id, quote);
 		}
-		public bool Is_SendMarketHistoryMetadataReport_Supported
+		public bool Is_SendMarketHistoryMetadataResponse_Supported
 		{
 			get
 			{
-				return this.Instance.Is_SendMarketHistoryMetadataReport_Supported;
+				return this.Instance.Is_SendMarketHistoryMetadataResponse_Supported;
 			}
 		}
-		public void SendMarketHistoryMetadataReport(long id, string requestId, int status, string field)
+		public void SendMarketHistoryMetadataResponse(long id, string requestId, int status, string field)
 		{
-			this.Instance.SendMarketHistoryMetadataReport(this.Handle, id, requestId, status, field);
+			this.Instance.SendMarketHistoryMetadataResponse(this.Handle, id, requestId, status, field);
+		}
+		public bool Is_SendMarketHistoryMetadataReject_Supported
+		{
+			get
+			{
+				return this.Instance.Is_SendMarketHistoryMetadataReject_Supported;
+			}
+		}
+		public void SendMarketHistoryMetadataReject(long id, string requestId, int status, string field)
+		{
+			this.Instance.SendMarketHistoryMetadataReject(this.Handle, id, requestId, status, field);
 		}
 		public bool Is_SendDataHistoryResponse_Supported
 		{
@@ -560,6 +636,17 @@ namespace LrpServer.Net.LocalCpp
 		public void SendDataHistoryResponse(long id, string requestId, LrpServer.Net.LrpDataHistoryResponse response)
 		{
 			this.Instance.SendDataHistoryResponse(this.Handle, id, requestId, response);
+		}
+		public bool Is_SendDataHistoryReject_Supported
+		{
+			get
+			{
+				return this.Instance.Is_SendDataHistoryReject_Supported;
+			}
+		}
+		public void SendDataHistoryReject(long id, string requestId, LrpServer.Net.LrpMarketHistoryRejectType rejectType, string rejectReason)
+		{
+			this.Instance.SendDataHistoryReject(this.Handle, id, requestId, rejectType, rejectReason);
 		}
 		public bool Is_SendFileChunk_Supported
 		{
@@ -582,6 +669,17 @@ namespace LrpServer.Net.LocalCpp
 		public void SendNotification(long id, LrpServer.Net.LrpNotification notification)
 		{
 			this.Instance.SendNotification(this.Handle, id, notification);
+		}
+		public bool Is_SendBusinessReject_Supported
+		{
+			get
+			{
+				return this.Instance.Is_SendBusinessReject_Supported;
+			}
+		}
+		public void SendBusinessReject(long id, string rejectReason, string rejectTag)
+		{
+			this.Instance.SendBusinessReject(this.Handle, id, rejectReason, rejectTag);
 		}
 	}
 }

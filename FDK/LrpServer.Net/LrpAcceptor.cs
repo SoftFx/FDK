@@ -7,14 +7,14 @@
     using SoftFX.Lrp;
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class LrpAcceptor : IDisposable
     {
         #region Construction and Destruction
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="port"></param>
         /// <param name="handler"></param>
@@ -25,7 +25,7 @@
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="port"></param>
         /// <param name="sertificateFilename"></param>
@@ -59,7 +59,7 @@
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Dispose()
         {
@@ -82,7 +82,7 @@
         #region Control Methods
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Start()
         {
@@ -90,7 +90,7 @@
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Stop()
         {
@@ -102,7 +102,7 @@
         #region Methods
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id"></param>
         /// <param name="status"></param>
@@ -112,7 +112,7 @@
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id"></param>
         /// <param name="status"></param>
@@ -126,7 +126,7 @@
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id"></param>
         /// <param name="requestId"></param>
@@ -140,7 +140,7 @@
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id"></param>
         /// <param name="requestId"></param>
@@ -154,7 +154,7 @@
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id"></param>
         /// <param name="requestId"></param>
@@ -168,7 +168,7 @@
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id"></param>
         /// <param name="requestId"></param>
@@ -181,7 +181,7 @@
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id"></param>
         /// <param name="requestId"></param>
@@ -198,7 +198,7 @@
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id"></param>
         /// <param name="requestId"></param>
@@ -209,7 +209,7 @@
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id"></param>
         /// <param name="quote"></param>
@@ -219,13 +219,13 @@
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id"></param>
         /// <param name="requestId"></param>
         /// <param name="status"></param>
         /// <param name="field"></param>
-        public void SendMarketHistoryMetadataReport(long id, string requestId, int status, string field)
+        public void SendMarketHistoryMetadataResponse(long id, string requestId, int status, string field)
         {
             if (requestId == null)
                 requestId = string.Empty;
@@ -233,11 +233,29 @@
             if (field == null)
                 field = string.Empty;
 
-            this.proxy.SendMarketHistoryMetadataReport(id, requestId, status, field);
+            this.proxy.SendMarketHistoryMetadataResponse(id, requestId, status, field);
         }
 
         /// <summary>
-        /// 
+        ///
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="requestId"></param>
+        /// <param name="status"></param>
+        /// <param name="field"></param>
+        public void SendMarketHistoryMetadataReject(long id, string requestId, int status, string field)
+        {
+            if (requestId == null)
+                requestId = string.Empty;
+
+            if (field == null)
+                field = string.Empty;
+
+            this.proxy.SendMarketHistoryMetadataReject(id, requestId, status, field);
+        }
+
+        /// <summary>
+        ///
         /// </summary>
         /// <param name="id"></param>
         /// <param name="requestId"></param>
@@ -248,7 +266,19 @@
         }
 
         /// <summary>
-        /// 
+        ///
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="requestId"></param>
+        /// <param name="rejectType"></param>
+        /// <param name="rejectReason"></param>
+        public void SendDataHistoryReject(long id, string requestId, LrpMarketHistoryRejectType rejectType, string rejectReason)
+        {
+            this.proxy.SendDataHistoryReject(id, requestId, rejectType, rejectReason);
+        }
+
+        /// <summary>
+        ///
         /// </summary>
         /// <param name="id"></param>
         /// <param name="requestId"></param>
@@ -259,7 +289,7 @@
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id"></param>
         /// <param name="notification"></param>
@@ -268,12 +298,22 @@
             this.proxy.SendNotification(id, notification);
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="notification"></param>
+        public void SendBusinessReject(long id, string rejectReason, string rejectTag)
+        {
+            this.proxy.SendBusinessReject(id, rejectReason, rejectTag);
+        }
+
         #endregion
 
         #region Properties
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ILrpServerHandler Handler
         {

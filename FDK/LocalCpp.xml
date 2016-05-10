@@ -13,6 +13,7 @@
         <Type name="CommissionType" CSharpFullName="LrpServer.Net.LrpCommissionType" CppFullName="FxCommissionType" kind="enum32" />
         <Type name="CommissionChargeType" CSharpFullName="LrpServer.Net.LrpCommissionChargeType" CppFullName="FxCommissionChargeType" kind="enum32" />
         <Type name="CommissionChargeMethod" CSharpFullName="LrpServer.Net.LrpCommissionChargeMethod" CppFullName="FxCommissionChargeMethod" kind="enum32" />
+        <Type name="MarketHistoryRejectType" CSharpFullName="LrpServer.Net.LrpMarketHistoryRejectType" CppFullName="FxMarketHistoryRejectType" kind="enum32" />
         <Type name="NotificationType" CSharpFullName="LrpServer.Net.LrpNotificationType" CppFullName="NotificationType" kind="enum32" />
         <Type name="Severity" CSharpFullName="LrpServer.Net.LrpSeverity" CppFullName="Severity" kind="enum32" />
         <Type name="LrpSessionInfo" CSharpFullName="LrpServer.Net.LrpSessionInfo" CppFullName="CFxSessionInfo" kind="class">
@@ -107,9 +108,11 @@
             <Member name="Files" type="AStringArray" />
         </Type>
         <Type name="FileChunk" CSharpFullName="LrpServer.Net.LrpFileChunk" CppFullName="CFxFileChunk" kind="class">
-            <Member name="ChunksNumber" type="int32" />
-            <Member name="FileSize" type="int32" />
+            <Member name="FileId" type="astring" />
             <Member name="FileName" type="astring" />
+            <Member name="FileSize" type="int32" />
+            <Member name="ChunkId" type="int32" />
+            <Member name="TotalChunks" type="int32" />
             <Member name="Data" type="UInt8Array" />
         </Type>
         <Type name="LrpParams" CSharpFullName="LrpServer.Net.LrpParams" CppFullName="CParameters" kind="class">
@@ -219,7 +222,15 @@
                 <Param name="quote" type="Quote" direction="in" />
                 <Return type="void" />
             </Method>
-            <Method name="SendMarketHistoryMetadataReport">
+            <Method name="SendMarketHistoryMetadataResponse">
+                <Param name="handle" type="lptr" direction="in" />
+                <Param name="id" type="int64" direction="in" />
+                <Param name="requestId" type="astring" direction="in" />
+                <Param name="status" type="int32" direction="in" />
+                <Param name="field" type="astring" direction="in" />
+                <Return type="void" />
+            </Method>
+            <Method name="SendMarketHistoryMetadataReject">
                 <Param name="handle" type="lptr" direction="in" />
                 <Param name="id" type="int64" direction="in" />
                 <Param name="requestId" type="astring" direction="in" />
@@ -232,6 +243,14 @@
                 <Param name="id" type="int64" direction="in" />
                 <Param name="requestId" type="astring" direction="in" />
                 <Param name="response" type="DataHistoryResponse" direction="in" />
+                <Return type="void" />
+            </Method>
+            <Method name="SendDataHistoryReject">
+                <Param name="handle" type="lptr" direction="in" />
+                <Param name="id" type="int64" direction="in" />
+                <Param name="requestId" type="astring" direction="in" />
+                <Param name="rejectType" type="MarketHistoryRejectType" direction="in" />
+                <Param name="rejectReason" type="astring" direction="in" />
                 <Return type="void" />
             </Method>
             <Method name="SendFileChunk">
@@ -247,7 +266,14 @@
               <Param name="notification" type="Notification" direction="in" />
               <Return type="void" />
             </Method>
-    </Component>
+            <Method name="SendBusinessReject">
+              <Param name="handle" type="lptr" direction="in" />
+              <Param name="id" type="int64" direction="in" />
+              <Param name="rejectReason" type="astring" direction="in" />
+              <Param name="rejectTag" type="astring" direction="in" />
+              <Return type="void" />
+            </Method>
+        </Component>
         <Component name="LocalChannelsPool" proxy="true">
             <Method name="Constructor">
                 <Param name="parameters" type="LrpParams" direction="in" />
