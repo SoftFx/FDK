@@ -2032,6 +2032,60 @@
             Null if no conversion cannot be performed
             </summary>
         </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.SrcAssetToUsdConversionRate">
+            <summary>
+            Conversion rate to convert source asset currency to USD
+            Null if no conversion cannot be performed
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.UsdToSrcAssetConversionRate">
+            <summary>
+            Conversion rate to convert USD to source asset currency
+            Null if no conversion cannot be performed
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.DstAssetToUsdConversionRate">
+            <summary>
+            Conversion rate to convert destination asset currency to USD
+            Null if no conversion cannot be performed
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.UsdToDstAssetConversionRate">
+            <summary>
+            Conversion rate to convert USD to destination asset currency
+            Null if no conversion cannot be performed
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.SrcAssetCurrency">
+            <summary>
+            Source asset currency.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.SrcAssetAmount">
+            <summary>
+            Source asset final amount.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.SrcAssetMovement">
+            <summary>
+            Amount on which source asset was changed during described transaction.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.DstAssetCurrency">
+            <summary>
+            Destination asset currency.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.DstAssetAmount">
+            <summary>
+            Destination asset final amount.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.DstAssetMovement">
+            <summary>
+            Amount on which destinaction asset was changed during described transaction.
+            </summary>
+        </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.Options">
             <summary>
             Order execution options
