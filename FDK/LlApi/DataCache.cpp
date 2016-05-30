@@ -10,39 +10,41 @@ CDataCache::CDataCache(CFxQueue& queue)
 
 CFxSessionInfo CDataCache::GetSessionInfo() const
 {
-	CSharedLocker lock(m_synchronizer);
-	return m_sessionInfo;
+    CSharedLocker lock(m_synchronizer);
+    return m_sessionInfo;
 }
 
 void CDataCache::UpdateSessionInfo(const CFxSessionInfo& sessionInfo)
 {
-	CExclusiveLocker lock(m_synchronizer);
-	m_sessionInfo = sessionInfo;
-	m_isSessionInfoInitialized = true;
+    CExclusiveLocker lock(m_synchronizer);
+    m_sessionInfo = sessionInfo;
+    m_isSessionInfoInitialized = true;
 }
 
 void CDataCache::Clear()
 {
-	m_sessionInfo = CFxSessionInfo();
-	m_isSessionInfoInitialized = false;
-	m_isEventGenerated = false;
+    m_sessionInfo = CFxSessionInfo();
+    m_isSessionInfoInitialized = false;
+    m_isEventGenerated = false;
 }
 
 void CDataCache::Update(bool isInitialized)
 {
-	const bool isCacheInitialized = isInitialized && m_isSessionInfoInitialized;
+    // Bugfix problem with deadlock in cache initializaion
+    // const bool isCacheInitialized = isInitialized && m_isSessionInfoInitialized;
+    const bool isCacheInitialized = isInitialized;
 
-	if (!isCacheInitialized)
-	{
-		return;
-	}
+    if (!isCacheInitialized)
+    {
+        return;
+    }
 
-	if (!m_isEventGenerated)
-	{
-		CFxEventInfo eventInfo;
-		CFxMessage message(FX_MSG_CACHE_UPDATED, eventInfo);
-		m_queue.ProcessMessage(message);
-		m_isEventGenerated = true;
-	}
-	
+    if (!m_isEventGenerated)
+    {
+        CFxEventInfo eventInfo;
+        CFxMessage message(FX_MSG_CACHE_UPDATED, eventInfo);
+        m_queue.ProcessMessage(message);
+        m_isEventGenerated = true;
+    }
+
 }
