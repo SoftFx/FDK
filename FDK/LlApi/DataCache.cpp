@@ -30,7 +30,9 @@ void CDataCache::Clear()
 
 void CDataCache::Update(bool isInitialized)
 {
-    const bool isCacheInitialized = isInitialized && m_isSessionInfoInitialized;
+    // Bugfix problem with deadlock in cache initializaion
+    // const bool isCacheInitialized = isInitialized && m_isSessionInfoInitialized;
+    const bool isCacheInitialized = isInitialized;
 
     if (!isCacheInitialized)
     {

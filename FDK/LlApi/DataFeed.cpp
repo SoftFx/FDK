@@ -83,10 +83,7 @@ void CDataFeed::VTick(const CFxEventInfo& eventInfo, const CFxQuote& quote)
 void CDataFeed::VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion)
 {
     __super::VLogon(eventInfo, protocolVersion);
-}
 
-void CDataFeed::VSessionInfo(const CFxEventInfo& eventInfo, CFxSessionInfo& sessionInfo)
-{
     ResetEvent(m_serverQuotesHistoryEvent);
     m_cache.Clear();
 
