@@ -30,7 +30,6 @@ public:
 
 public:
     virtual void VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion);
-    virtual void VSessionInfo(const CFxEventInfo& eventInfo, CFxSessionInfo& sessionInfo);
     virtual void VLogout(const CFxEventInfo& eventInfo, const FxLogoutReason reason, const string& description);
 
     virtual void VTick(const CFxEventInfo& eventInfo, const CFxQuote& quote);
