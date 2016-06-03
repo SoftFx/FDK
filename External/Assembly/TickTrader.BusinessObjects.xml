@@ -2016,7 +2016,7 @@
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.UsdToProfitConversionRate">
             <summary>
-            Conversion rate to convert USD to profit currency
+            Conversion rate to convert USD to profit
             Null if no conversion cannot be performed
             </summary>
         </member>
@@ -2030,6 +2030,40 @@
             <summary>
             Conversion rate to convert USD to balance currency
             Null if no conversion cannot be performed
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.MarginCurrencyToUsdConversionRate">
+            <summary>
+            Conversion rate to convert margin currency to USD
+            Null if no conversion cannot be performed
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.UsdToMarginCurrencyConversionRate">
+            <summary>
+            Conversion rate to convert USD to margin currency
+            Null if no conversion cannot be performed
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.MarginCurrency">
+            <summary>
+            Margin currency.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.ProfitCurrencyToUsdConversionRate">
+            <summary>
+            Conversion rate to convert profit currency to USD
+            Null if no conversion cannot be performed
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.UsdToProfitCurrencyConversionRate">
+            <summary>
+            Conversion rate to convert USD to profit currency
+            Null if no conversion cannot be performed
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.ProfitCurrency">
+            <summary>
+            Profit currency.
             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.SrcAssetToUsdConversionRate">
