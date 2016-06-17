@@ -391,6 +391,7 @@ void CFixExecutionReport::GetAssets(vector<CAssetInfo>& assets) const
 			CAssetInfo asset;
 			asset.Currency = group.GetAssetCurrency();
 			asset.Balance = group.GetAssetBalance();
+			group.TryGetAssetLockedAmt(asset.LockedAmount);
 			group.TryGetAssetTradeAmt(asset.TradeAmount);
 
 			assets.push_back(asset);

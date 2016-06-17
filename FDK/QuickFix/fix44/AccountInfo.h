@@ -58,6 +58,8 @@ namespace FIX44
     FIELD_SET_EX(bool, AccountBlockedFlag);
     FIELD_SET(*this, FIX::InvestorLoginFlag);
     FIELD_SET_EX(bool, InvestorLoginFlag);
+    FIELD_SET(*this, FIX::TwoFactorAuthFlag);
+    FIELD_SET_EX(bool, TwoFactorAuthFlag);
     FIELD_SET(*this, FIX::AccountName);
     FIELD_SET_EX(std::string, AccountName);
     FIELD_SET(*this, FIX::RegistEmail);
@@ -73,9 +75,11 @@ namespace FIX44
     class NoAssets: public FIX::Group
     {
     public:
-    NoAssets() : FIX::Group(10117,10118,FIX::message_order(10118,10119,10120,0)) {}
+    NoAssets() : FIX::Group(10117,10118,FIX::message_order(10118,10154,10119,10120,0)) {}
       FIELD_SET(*this, FIX::AssetBalance);
       FIELD_SET_EX(double, AssetBalance);
+      FIELD_SET(*this, FIX::AssetLockedAmt);
+      FIELD_SET_EX(double, AssetLockedAmt);
       FIELD_SET(*this, FIX::AssetTradeAmt);
       FIELD_SET_EX(double, AssetTradeAmt);
       FIELD_SET(*this, FIX::AssetCurrency);

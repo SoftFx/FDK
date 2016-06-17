@@ -106,6 +106,7 @@
     <Type name="AssetInfo" CSharpFullName="SoftFX.Extended.AssetInfo" CppFullName="CAssetInfo" kind="class">
       <Member name="Currency" type="astring" />
       <Member name="Balance" type="double" />
+      <Member name="LockedAmount" type="double" />
       <Member name="TradeAmount" type="double" />
     </Type>
     <Type name="AssetInfoArray" kind="array">

@@ -664,6 +664,7 @@ void CFixConnection::OnAccountInfo(const FIX44::AccountInfo& message)
             CAssetInfo asset;
             asset.Currency = group.GetAssetCurrency();
             asset.Balance = group.GetAssetBalance();
+			group.TryGetAssetLockedAmt(asset.LockedAmount);
             group.TryGetAssetTradeAmt(asset.TradeAmount);
 
             if (asset.Balance == 0.0)

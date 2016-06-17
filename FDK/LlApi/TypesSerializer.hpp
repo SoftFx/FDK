@@ -584,6 +584,7 @@ namespace
 	{
 		WriteAString(arg.Currency, buffer);
 		WriteDouble(arg.Balance, buffer);
+		WriteDouble(arg.LockedAmount, buffer);
 		WriteDouble(arg.TradeAmount, buffer);
 	}
 	CAssetInfo ReadAssetInfo(MemoryBuffer& buffer)
@@ -591,6 +592,7 @@ namespace
 		CAssetInfo result = CAssetInfo();
 		result.Currency = ReadAString(buffer);
 		result.Balance = ReadDouble(buffer);
+		result.LockedAmount = ReadDouble(buffer);
 		result.TradeAmount = ReadDouble(buffer);
 		return result;
 	}

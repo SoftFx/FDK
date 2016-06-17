@@ -428,6 +428,7 @@ namespace SoftFX.Extended.Generated
 			var result = new SoftFX.Extended.AssetInfo();
 			result.Currency = buffer.ReadAString();
 			result.Balance = buffer.ReadDouble();
+			result.LockedAmount = buffer.ReadDouble();
 			result.TradeAmount = buffer.ReadDouble();
 			return result;
 		}
@@ -435,6 +436,7 @@ namespace SoftFX.Extended.Generated
 		{
 			buffer.WriteAString(arg.Currency);
 			buffer.WriteDouble(arg.Balance);
+			buffer.WriteDouble(arg.LockedAmount);
 			buffer.WriteDouble(arg.TradeAmount);
 		}
 		public static SoftFX.Extended.AssetInfo[] ReadAssetInfoArray(this MemoryBuffer buffer)
