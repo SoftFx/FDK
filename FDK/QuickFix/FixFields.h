@@ -1131,6 +1131,12 @@ namespace FIX
   DEFINE_CHAR(PosRemainingSide);
   DEFINE_UTCTIMESTAMP(RegistDate);
   DEFINE_STRING(PosByID);
+  DEFINE_CHAR(ParentOrderType);
+  DEFINE_STRING(DeviceId);
+  DEFINE_CHAR(TwoFactorReason);
+  DEFINE_STRING(OneTimePassword);
+  DEFINE_BOOLEAN(TwoFactorAuthFlag);
+  DEFINE_AMT(AssetLockedAmt);
   DEFINE_NUMINGROUP(NoStrategyParameters);
   DEFINE_STRING(StrategyParameterName);
   DEFINE_INT(StrategyParameterType);

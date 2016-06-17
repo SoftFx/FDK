@@ -19,11 +19,13 @@
         /// </summary>
         /// <param name="currency"></param>
         /// <param name="balance"></param>
+        /// <param name="lockedAmount"></param>
         /// <param name="tradeAmount"></param>
-        public AssetInfo(string currency, double balance, double tradeAmount)
+        public AssetInfo(string currency, double balance, double lockedAmount, double tradeAmount)
         {
             this.Currency = currency;
             this.Balance = balance;
+            this.LockedAmount = lockedAmount;
             this.TradeAmount = tradeAmount;
         }
 
@@ -38,6 +40,11 @@
         public double Balance { get; internal set; }
 
         /// <summary>
+        /// Gets or sets asset's locked amount.
+        /// </summary>
+        public double LockedAmount { get; internal set; }
+
+        /// <summary>
         /// Gets or sets asset's trade amount.
         /// </summary>
         public double TradeAmount { get; internal set; }
@@ -48,7 +55,7 @@
         /// <returns></returns>
         public override string ToString()
         {
-            var result = string.Format("{0} = {1}/{2}", this.Currency, this.TradeAmount.ToString(CultureInfo.InvariantCulture), this.Balance.ToString(CultureInfo.InvariantCulture));
+            var result = string.Format("{0} = {1}/{2}/{3}", this.Currency, this.TradeAmount.ToString(CultureInfo.InvariantCulture), this.LockedAmount.ToString(CultureInfo.InvariantCulture), this.Balance.ToString(CultureInfo.InvariantCulture));
             return result;
         }
     }

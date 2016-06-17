@@ -43,6 +43,8 @@ namespace FIX44
     FIELD_SET_EX(std::string, Username);
     FIELD_SET(*this, FIX::Password);
     FIELD_SET_EX(std::string, Password);
+    FIELD_SET(*this, FIX::DeviceId);
+    FIELD_SET_EX(std::string, DeviceId);
     FIELD_SET(*this, FIX::ProtocolSpec);
     FIELD_SET_EX(std::string, ProtocolSpec);
     FIELD_SET(*this, FIX::NoMsgTypes);

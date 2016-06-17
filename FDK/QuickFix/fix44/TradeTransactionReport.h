@@ -136,6 +136,8 @@ namespace FIX44
     FIELD_SET_EX(double, CloseConversionRate);
     FIELD_SET(*this, FIX::ParentOrderID);
     FIELD_SET_EX(std::string, ParentOrderID);
+    FIELD_SET(*this, FIX::ParentOrderType);
+    FIELD_SET_EX(char, ParentOrderType);
   };
 
 }

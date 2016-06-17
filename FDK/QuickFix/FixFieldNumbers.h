@@ -1129,6 +1129,12 @@ namespace FIX
     const int PosRemainingSide = 10146;
     const int RegistDate = 10147;
     const int PosByID = 10148;
+    const int ParentOrderType = 10149;
+    const int DeviceId = 10150;
+    const int TwoFactorReason = 10151;
+    const int OneTimePassword = 10152;
+    const int TwoFactorAuthFlag = 10153;
+    const int AssetLockedAmt = 10154;
     const int NoStrategyParameters = 957;
     const int StrategyParameterName = 958;
     const int StrategyParameterType = 959;
