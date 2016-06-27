@@ -17,9 +17,24 @@
             get { return (decimal)this.asset.Volume; }
         }
 
+        public decimal LockedAmount
+        {
+            get { return (decimal)this.asset.LockedVolume; }
+        }
+
+        public decimal FreeAmount
+        {
+            get { return Amount - LockedAmount; }
+        }
+
         public short CurrencyId
         {
             get { return (short)this.asset.Currency.GetHashCode(); }
+        }
+
+        public string Currency
+        {
+            get { return this.asset.Currency; }
         }
 
         public decimal Margin
