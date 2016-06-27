@@ -302,6 +302,12 @@
             <param name="Comment">Credit operation comment</param>
             <returns>Modify account credit request</returns>
         </member>
+        <member name="P:TickTrader.BusinessObjects.Requests.AccountModifyRequest.SetTwoFactorAuthKey">
+            <summary>
+            This property is used to create/delete 2FA key by calling CreateAccountTwoFactorAuthKey/DeleteAccountTwoFactorAuthKey.
+            It will be ignored in ModifyAccount
+            </summary>
+        </member>
         <member name="M:TickTrader.BusinessObjects.Requests.AccountModifyRequest.Create(System.Int64,System.String,System.String,System.String,System.String,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Int32})">
             <summary>
             Create modify account request with required parameters.
@@ -2213,6 +2219,19 @@
             <param name="id"></param>
             <param name="level2"></param>
             <param name="bestBid"></param>
+            <param name="bestAsk"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TickTrader.Common.Business.FeedTick.ConstructFormPreparedData(System.String,TickTrader.BusinessObjects.FeedTickId,System.Collections.Generic.IEnumerable{TickTrader.Common.Business.FeedLevel2Record},System.Boolean,System.Nullable{TickTrader.Common.Business.FeedLevel2Record},System.Boolean,System.Nullable{TickTrader.Common.Business.FeedLevel2Record})">
+            <summary>
+            
+            </summary>
+            <param name="symbol"></param>
+            <param name="id"></param>
+            <param name="level2"></param>
+            <param name="bidPresent"></param>
+            <param name="bestBid"></param>
+            <param name="askPresent"></param>
             <param name="bestAsk"></param>
             <returns></returns>
         </member>
