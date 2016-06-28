@@ -333,7 +333,7 @@ void CServer::ShutdownConnection(const uint64 id)
 	{
 		m_proxy.BeginShutdownConnectionNotification(id);
 	}
-	__except (GetExceptionCode() == EXCEPTION_ACCESS_VIOLATION ? EXCEPTION_EXECUTE_HANDLER : EXCEPTION_CONTINUE_SEARCH)
+	__except (EXCEPTION_EXECUTE_HANDLER)
 	{
 	}
 }
