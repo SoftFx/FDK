@@ -329,7 +329,13 @@ void CServer::SendBusinessReject(int64 id, const string& rejectReason, const str
 
 void CServer::ShutdownConnection(const uint64 id)
 {
-    m_proxy.BeginShutdownConnectionNotification(id);
+	__try
+	{
+		m_proxy.BeginShutdownConnectionNotification(id);
+	}
+	__except (GetExceptionCode() == EXCEPTION_ACCESS_VIOLATION ? EXCEPTION_EXECUTE_HANDLER : EXCEPTION_CONTINUE_SEARCH)
+	{
+	}
 }
 
 CLrpLogger& CServer::GetLogger()
