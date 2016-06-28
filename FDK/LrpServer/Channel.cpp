@@ -60,15 +60,9 @@ CTransport& CChannel::GetTransport()
 void CChannel::Finalize()
 {
     CLogStream()<<"CChannel::Finalize(id = "<<m_id<<"): finalizing">>m_logger;
-    try
-    {
-        CLock lock(m_synchronizer);
-        m_transport.Finalize();
-        m_server.ShutdownConnection(m_id);
-    }
-    catch (const std::exception&)
-    {
-    }
+	CLock lock(m_synchronizer);
+    m_transport.Finalize();
+    m_server.ShutdownConnection(m_id);
     CLogStream()<<"CChannel::Finalize(id = "<<m_id<<"): finalized">>m_logger;
 }
 void CChannel::Connect(const HRESULT /*status*/)
