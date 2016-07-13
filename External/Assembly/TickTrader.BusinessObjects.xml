@@ -1436,6 +1436,11 @@
             Gets or sets whether quotes filtering is disabled for the symbol or not.
             </summary>
         </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.Schedule">
+            <summary>
+            Gets or sets schedule
+            </summary>
+        </member>
         <member name="M:TickTrader.BusinessObjects.SymbolInfo.Clone">
             <summary>
             
@@ -1715,6 +1720,12 @@
         <member name="P:TickTrader.BusinessObjects.TradeReport.SymbolAliasOrName">
             <summary>
             Gets SymbolAlias if it is not null, otherwise Symbol
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.SymbolFk">
+            <summary>
+            Id of instrument
+            Null in case of Balance and Credit transactions.
             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.OrderAmount">
@@ -2154,6 +2165,11 @@
             </summary>
         </member>
         <member name="T:TickTrader.Common.Business.FeedTick">
+            <summary>
+            Feed Tick
+            </summary>
+        </member>
+        <member name="M:TickTrader.Common.Business.FeedTick.#ctor">
             <summary>
             
             </summary>
