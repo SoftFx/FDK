@@ -215,7 +215,7 @@
         {
             return protocolVersion >= FixProtocolVersion.Version25;
         }
-       
+
 
         /// <summary>
         /// Returns true, if a protocol version of symbol info supports 'LimitsCommission' property, otherwise false.
@@ -248,6 +248,17 @@
         public bool IsSwapSizeSupported(FixProtocolVersion protocolVersion)
         {
             return protocolVersion >= FixProtocolVersion.Version15;
+        }
+
+        /// <summary>
+        /// Returns true, if a protocol version of symbol info supports 'DefaultSlippage' properties, otherwise false.
+        /// </summary>
+        /// <exception cref="System.ArgumentNullException">If protocol version is null.</exception>
+        /// <exception cref="System.ArgumentException">If an input protocol version is unknown.</exception>
+        /// <returns>True, if the corresponding property or method is supported for a protocol version, otherwise false.</returns>
+        public bool IsDefaultSlippageSupported(FixProtocolVersion protocolVersion)
+        {
+            return protocolVersion >= FixProtocolVersion.Version36;
         }
 
         /// <summary>

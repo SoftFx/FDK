@@ -429,6 +429,10 @@ void CFixConnection::OnSymbolsInfo(const FIX44::SecurityList& message)
         if (group.TryGetSwapSizeLong(swapSizeLong))
             info.SwapSizeLong = swapSizeLong;
 
+        double defaultSlippage;
+        if (group.TryGetDefaultSlippage(defaultSlippage))
+            info.DefaultSlippage = defaultSlippage;
+
         group.TryGetTradeEnabled(info.IsTradeEnabled);
 
         group.TryGetGroupSortOrder(info.GroupSortOrder);
@@ -664,7 +668,7 @@ void CFixConnection::OnAccountInfo(const FIX44::AccountInfo& message)
             CAssetInfo asset;
             asset.Currency = group.GetAssetCurrency();
             asset.Balance = group.GetAssetBalance();
-			group.TryGetAssetLockedAmt(asset.LockedAmount);
+            group.TryGetAssetLockedAmt(asset.LockedAmount);
             group.TryGetAssetTradeAmt(asset.TradeAmount);
 
             if (asset.Balance == 0.0)
@@ -1108,6 +1112,10 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
     double posRemainingPrice;
     if (message.TryGetPosRemainingPrice(posRemainingPrice))
         report.PosRemainingPrice = posRemainingPrice;
+
+	UtcTimeStamp expiration(time_t(0));
+	if (message.TryGetExpireTime(expiration))
+		report.Expiration = expiration.toFileTime();
 
     m_receiver->VTradeTransactionReport(info, report);
 }

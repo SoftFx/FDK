@@ -138,6 +138,10 @@ namespace FIX44
     FIELD_SET_EX(std::string, ParentOrderID);
     FIELD_SET(*this, FIX::ParentOrderType);
     FIELD_SET_EX(char, ParentOrderType);
+    FIELD_SET(*this, FIX::ExpireDate);
+    FIELD_SET_EX(std::string, ExpireDate);
+    FIELD_SET(*this, FIX::ExpireTime);
+    FIELD_SET_EX(FIX::UtcTimeStamp, ExpireTime);
   };
 
 }

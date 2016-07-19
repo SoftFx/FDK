@@ -302,6 +302,7 @@ namespace SoftFX.Extended.Generated
 			result.Commission = buffer.ReadDouble();
 			result.SwapSizeShort = buffer.ReadNullDouble();
 			result.SwapSizeLong = buffer.ReadNullDouble();
+			result.DefaultSlippage = buffer.ReadNullDouble();
 			result.IsTradeEnabled = buffer.ReadBoolean();
 			result.GroupSortOrder = buffer.ReadInt32();
 			result.SortOrder = buffer.ReadInt32();
@@ -335,6 +336,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteDouble(arg.Commission);
 			buffer.WriteNullDouble(arg.SwapSizeShort);
 			buffer.WriteNullDouble(arg.SwapSizeLong);
+			buffer.WriteNullDouble(arg.DefaultSlippage);
 			buffer.WriteBoolean(arg.IsTradeEnabled);
 			buffer.WriteInt32(arg.GroupSortOrder);
 			buffer.WriteInt32(arg.SortOrder);
@@ -814,6 +816,7 @@ namespace SoftFX.Extended.Generated
 			result.OpenConversionRate = buffer.ReadNullDouble();
 			result.CloseConversionRate = buffer.ReadNullDouble();
 			result.ActionId = buffer.ReadInt32();
+			result.Expiration = buffer.ReadNullTime();
 			return result;
 		}
 		public static void WriteTradeTransactionReport(this MemoryBuffer buffer, SoftFX.Extended.Reports.TradeTransactionReport arg)
@@ -862,6 +865,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteNullDouble(arg.OpenConversionRate);
 			buffer.WriteNullDouble(arg.CloseConversionRate);
 			buffer.WriteInt32(arg.ActionId);
+			buffer.WriteNullTime(arg.Expiration);
 		}
 		public static SoftFX.Extended.ClosePositionResult ReadClosePositionResult(this MemoryBuffer buffer)
 		{

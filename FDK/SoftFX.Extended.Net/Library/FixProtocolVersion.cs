@@ -47,6 +47,7 @@
         internal static readonly FixProtocolVersion Version31 = new FixProtocolVersion(ExtendedType, 1, 31);
         internal static readonly FixProtocolVersion Version32 = new FixProtocolVersion(ExtendedType, 1, 32);
         internal static readonly FixProtocolVersion Version33 = new FixProtocolVersion(ExtendedType, 1, 33);
+        internal static readonly FixProtocolVersion Version36 = new FixProtocolVersion(ExtendedType, 1, 36);
 
         #endregion
 

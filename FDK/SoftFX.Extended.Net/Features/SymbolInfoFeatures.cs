@@ -262,6 +262,17 @@
         }
 
         /// <summary>
+        /// Returns true, if a corresponding symbol info supports 'DefaultSlippage' property, otherwise false.
+        /// </summary>
+        public bool IsDefaultSlippageSupported
+        {
+            get
+            {
+                return this.provider.IsDefaultSlippageSupported(this.protocolVersion);
+            }
+        }
+
+        /// <summary>
         /// Returns true, if a corresponding symbol info supports 'LimitsCommission' property, otherwise false.
         /// </summary>
         public bool IsSwapSizeLongSupported

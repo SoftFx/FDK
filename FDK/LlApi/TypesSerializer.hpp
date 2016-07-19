@@ -455,6 +455,7 @@ namespace
 		WriteDouble(arg.Commission, buffer);
 		WriteNullDouble(arg.SwapSizeShort, buffer);
 		WriteNullDouble(arg.SwapSizeLong, buffer);
+		WriteNullDouble(arg.DefaultSlippage, buffer);
 		WriteBoolean(arg.IsTradeEnabled, buffer);
 		WriteInt32(arg.GroupSortOrder, buffer);
 		WriteInt32(arg.SortOrder, buffer);
@@ -488,6 +489,7 @@ namespace
 		result.Commission = ReadDouble(buffer);
 		result.SwapSizeShort = ReadNullDouble(buffer);
 		result.SwapSizeLong = ReadNullDouble(buffer);
+		result.DefaultSlippage = ReadNullDouble(buffer);
 		result.IsTradeEnabled = ReadBoolean(buffer);
 		result.GroupSortOrder = ReadInt32(buffer);
 		result.SortOrder = ReadInt32(buffer);
@@ -976,6 +978,7 @@ namespace
 		WriteNullDouble(arg.OpenConversionRate, buffer);
 		WriteNullDouble(arg.CloseConversionRate, buffer);
 		WriteInt32(arg.ActionId, buffer);
+		WriteNullTime(arg.Expiration, buffer);
 	}
 	CFxTradeTransactionReport ReadTradeTransactionReport(MemoryBuffer& buffer)
 	{
@@ -1024,6 +1027,7 @@ namespace
 		result.OpenConversionRate = ReadNullDouble(buffer);
 		result.CloseConversionRate = ReadNullDouble(buffer);
 		result.ActionId = ReadInt32(buffer);
+		result.Expiration = ReadNullTime(buffer);
 		return result;
 	}
 	void WriteClosePositionResult(const CFxClosePositionResult& arg, MemoryBuffer& buffer)
