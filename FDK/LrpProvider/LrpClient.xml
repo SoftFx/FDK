@@ -95,6 +95,7 @@
     	  <Member name="Commission" type="double" />
     	  <Member name="SwapSizeShort" type="double?" />
     	  <Member name="SwapSizeLong" type="double?" />
+    	  <Member name="DefaultSlippage" type="double?" />
     	  <Member name="IsTradeEnabled" type="bool" />
     	</Type>
     	<Type name="SymbolInfo4" CSharpFullName="SoftFX.Extended.SymbolInfo" CppFullName="CFxSymbolInfo" kind="class">
@@ -118,6 +119,7 @@
     	  <Member name="Commission" type="double" />
     	  <Member name="SwapSizeShort" type="double?" />
     	  <Member name="SwapSizeLong" type="double?" />
+    	  <Member name="DefaultSlippage" type="double?" />
     	  <Member name="IsTradeEnabled" type="bool" />
     	  <Member name="GroupSortOrder" type="int32" />
     	  <Member name="SortOrder" type="int32" />
@@ -144,6 +146,7 @@
     	  <Member name="Commission" type="double" />
     	  <Member name="SwapSizeShort" type="double?" />
     	  <Member name="SwapSizeLong" type="double?" />
+    	  <Member name="DefaultSlippage" type="double?" />
     	  <Member name="IsTradeEnabled" type="bool" />
     	  <Member name="GroupSortOrder" type="int32" />
     	  <Member name="SortOrder" type="int32" />
@@ -172,6 +175,7 @@
     		  <Member name="Commission" type="double" />
     		  <Member name="SwapSizeShort" type="double?" />
     		  <Member name="SwapSizeLong" type="double?" />
+    		  <Member name="DefaultSlippage" type="double?" />
     		  <Member name="IsTradeEnabled" type="bool" />
     		  <Member name="GroupSortOrder" type="int32" />
     		  <Member name="SortOrder" type="int32" />
@@ -203,6 +207,7 @@
         <Member name="Commission" type="double" />
         <Member name="SwapSizeShort" type="double?" />
         <Member name="SwapSizeLong" type="double?" />
+        <Member name="DefaultSlippage" type="double?" />
         <Member name="IsTradeEnabled" type="bool" />
         <Member name="GroupSortOrder" type="int32" />
         <Member name="SortOrder" type="int32" />

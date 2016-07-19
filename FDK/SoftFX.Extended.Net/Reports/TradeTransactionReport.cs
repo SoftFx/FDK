@@ -12,72 +12,72 @@
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TradeTransactionReportType TradeTransactionReportType { get; internal set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TradeTransactionReason TradeTransactionReason { get; internal set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public double AccountBalance { get; internal set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public double TransactionAmount { get; internal set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string TransactionCurrency { get; internal set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string Id { get; internal set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string ClientId { get; internal set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public double Quantity { get; internal set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public double LeavesQuantity { get; internal set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public double Price { get; internal set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public double StopPrice { get; internal set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TradeRecordType TradeRecordType { get; internal set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TradeRecordSide TradeRecordSide { get; internal set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string Symbol { get; internal set; }
 
@@ -87,22 +87,22 @@
         public string Comment { get; internal set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DateTime OrderCreated { get; internal set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DateTime OrderModified { get; internal set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string PositionId { get; internal set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string PositionById { get; internal set; }
 
@@ -197,7 +197,7 @@
         public double TakeProfit { get; internal set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string NextStreamPositionId { get; internal set; }
 
@@ -230,5 +230,10 @@
         /// Order action number.
         /// </summary>
         public int ActionId { get; internal set; }
+
+        /// <summary>
+        /// Gets ExpireTime = 126 field.
+        /// </summary>
+        public DateTime? Expiration { get; internal set; }
     }
 }

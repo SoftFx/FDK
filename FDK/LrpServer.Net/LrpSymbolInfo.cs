@@ -24,6 +24,7 @@
         public double Commission;
         public double? SwapSizeShort;
         public double? SwapSizeLong;
+        public double? DefaultSlippage;
         public bool IsTradeEnabled;
         public int GroupSortOrder;
         public int SortOrder;

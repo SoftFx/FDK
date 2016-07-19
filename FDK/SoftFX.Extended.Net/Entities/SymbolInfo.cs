@@ -386,6 +386,22 @@
         }
 
         /// <summary>
+        /// Gets default slippage.
+        /// </summary>
+        public double? DefaultSlippage
+        {
+            get
+            {
+                this.ThrowIfPropertyNotSupported(() => this.DefaultSlippage);
+                return this.defaultSlippage;
+            }
+            set
+            {
+                this.defaultSlippage = value;
+            }
+        }
+
+        /// <summary>
         /// Gets whether trade is enabled for this symbol.
         /// </summary>
         public bool IsTradeEnabled
@@ -515,6 +531,7 @@
         CommissionChargeMethod commChargeMethod;
         double? swapSizeShort;
         double? swapSizeLong;
+        double? defaultSlippage;
         bool isTradeEnabled;
         int groupSortOrder;
         int sortOrder;

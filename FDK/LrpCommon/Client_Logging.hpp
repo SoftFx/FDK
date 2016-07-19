@@ -623,6 +623,8 @@ namespace
 		_stream << ';';
 		LrpWriteNullDouble("SwapSizeLong", arg.SwapSizeLong, _stream);
 		_stream << ';';
+		LrpWriteNullDouble("DefaultSlippage", arg.DefaultSlippage, _stream);
+		_stream << ';';
 		LrpWriteBoolean("IsTradeEnabled", arg.IsTradeEnabled, _stream);
 		_stream << ';';
 		_stream<<"}";
@@ -673,6 +675,8 @@ namespace
 		LrpWriteNullDouble("SwapSizeShort", arg.SwapSizeShort, _stream);
 		_stream << ';';
 		LrpWriteNullDouble("SwapSizeLong", arg.SwapSizeLong, _stream);
+		_stream << ';';
+		LrpWriteNullDouble("DefaultSlippage", arg.DefaultSlippage, _stream);
 		_stream << ';';
 		LrpWriteBoolean("IsTradeEnabled", arg.IsTradeEnabled, _stream);
 		_stream << ';';
@@ -730,6 +734,8 @@ namespace
 		LrpWriteNullDouble("SwapSizeShort", arg.SwapSizeShort, _stream);
 		_stream << ';';
 		LrpWriteNullDouble("SwapSizeLong", arg.SwapSizeLong, _stream);
+		_stream << ';';
+		LrpWriteNullDouble("DefaultSlippage", arg.DefaultSlippage, _stream);
 		_stream << ';';
 		LrpWriteBoolean("IsTradeEnabled", arg.IsTradeEnabled, _stream);
 		_stream << ';';
@@ -791,6 +797,8 @@ namespace
 		LrpWriteNullDouble("SwapSizeShort", arg.SwapSizeShort, _stream);
 		_stream << ';';
 		LrpWriteNullDouble("SwapSizeLong", arg.SwapSizeLong, _stream);
+		_stream << ';';
+		LrpWriteNullDouble("DefaultSlippage", arg.DefaultSlippage, _stream);
 		_stream << ';';
 		LrpWriteBoolean("IsTradeEnabled", arg.IsTradeEnabled, _stream);
 		_stream << ';';
@@ -858,6 +866,8 @@ namespace
 		LrpWriteNullDouble("SwapSizeShort", arg.SwapSizeShort, _stream);
 		_stream << ';';
 		LrpWriteNullDouble("SwapSizeLong", arg.SwapSizeLong, _stream);
+		_stream << ';';
+		LrpWriteNullDouble("DefaultSlippage", arg.DefaultSlippage, _stream);
 		_stream << ';';
 		LrpWriteBoolean("IsTradeEnabled", arg.IsTradeEnabled, _stream);
 		_stream << ';';

@@ -344,6 +344,7 @@ namespace
 		WriteDouble(arg.Commission, buffer);
 		WriteNullDouble(arg.SwapSizeShort, buffer);
 		WriteNullDouble(arg.SwapSizeLong, buffer);
+		WriteNullDouble(arg.DefaultSlippage, buffer);
 		WriteBoolean(arg.IsTradeEnabled, buffer);
 	}
 	CFxSymbolInfo ReadSymbolInfo3(MemoryBuffer& buffer)
@@ -369,6 +370,7 @@ namespace
 		result.Commission = ReadDouble(buffer);
 		result.SwapSizeShort = ReadNullDouble(buffer);
 		result.SwapSizeLong = ReadNullDouble(buffer);
+		result.DefaultSlippage = ReadNullDouble(buffer);
 		result.IsTradeEnabled = ReadBoolean(buffer);
 		return result;
 	}
@@ -394,6 +396,7 @@ namespace
 		WriteDouble(arg.Commission, buffer);
 		WriteNullDouble(arg.SwapSizeShort, buffer);
 		WriteNullDouble(arg.SwapSizeLong, buffer);
+		WriteNullDouble(arg.DefaultSlippage, buffer);
 		WriteBoolean(arg.IsTradeEnabled, buffer);
 		WriteInt32(arg.GroupSortOrder, buffer);
 		WriteInt32(arg.SortOrder, buffer);
@@ -421,6 +424,7 @@ namespace
 		result.Commission = ReadDouble(buffer);
 		result.SwapSizeShort = ReadNullDouble(buffer);
 		result.SwapSizeLong = ReadNullDouble(buffer);
+		result.DefaultSlippage = ReadNullDouble(buffer);
 		result.IsTradeEnabled = ReadBoolean(buffer);
 		result.GroupSortOrder = ReadInt32(buffer);
 		result.SortOrder = ReadInt32(buffer);
@@ -449,6 +453,7 @@ namespace
 		WriteDouble(arg.Commission, buffer);
 		WriteNullDouble(arg.SwapSizeShort, buffer);
 		WriteNullDouble(arg.SwapSizeLong, buffer);
+		WriteNullDouble(arg.DefaultSlippage, buffer);
 		WriteBoolean(arg.IsTradeEnabled, buffer);
 		WriteInt32(arg.GroupSortOrder, buffer);
 		WriteInt32(arg.SortOrder, buffer);
@@ -479,6 +484,7 @@ namespace
 		result.Commission = ReadDouble(buffer);
 		result.SwapSizeShort = ReadNullDouble(buffer);
 		result.SwapSizeLong = ReadNullDouble(buffer);
+		result.DefaultSlippage = ReadNullDouble(buffer);
 		result.IsTradeEnabled = ReadBoolean(buffer);
 		result.GroupSortOrder = ReadInt32(buffer);
 		result.SortOrder = ReadInt32(buffer);
@@ -509,6 +515,7 @@ namespace
 		WriteDouble(arg.Commission, buffer);
 		WriteNullDouble(arg.SwapSizeShort, buffer);
 		WriteNullDouble(arg.SwapSizeLong, buffer);
+		WriteNullDouble(arg.DefaultSlippage, buffer);
 		WriteBoolean(arg.IsTradeEnabled, buffer);
 		WriteInt32(arg.GroupSortOrder, buffer);
 		WriteInt32(arg.SortOrder, buffer);
@@ -541,6 +548,7 @@ namespace
 		result.Commission = ReadDouble(buffer);
 		result.SwapSizeShort = ReadNullDouble(buffer);
 		result.SwapSizeLong = ReadNullDouble(buffer);
+		result.DefaultSlippage = ReadNullDouble(buffer);
 		result.IsTradeEnabled = ReadBoolean(buffer);
 		result.GroupSortOrder = ReadInt32(buffer);
 		result.SortOrder = ReadInt32(buffer);
@@ -574,6 +582,7 @@ namespace
 		WriteDouble(arg.Commission, buffer);
 		WriteNullDouble(arg.SwapSizeShort, buffer);
 		WriteNullDouble(arg.SwapSizeLong, buffer);
+		WriteNullDouble(arg.DefaultSlippage, buffer);
 		WriteBoolean(arg.IsTradeEnabled, buffer);
 		WriteInt32(arg.GroupSortOrder, buffer);
 		WriteInt32(arg.SortOrder, buffer);
@@ -607,6 +616,7 @@ namespace
 		result.Commission = ReadDouble(buffer);
 		result.SwapSizeShort = ReadNullDouble(buffer);
 		result.SwapSizeLong = ReadNullDouble(buffer);
+		result.DefaultSlippage = ReadNullDouble(buffer);
 		result.IsTradeEnabled = ReadBoolean(buffer);
 		result.GroupSortOrder = ReadInt32(buffer);
 		result.SortOrder = ReadInt32(buffer);

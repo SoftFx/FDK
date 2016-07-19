@@ -174,6 +174,7 @@ namespace LrpServer.Net.LocalCpp
 			result.Commission = buffer.ReadDouble();
 			result.SwapSizeShort = buffer.ReadNullDouble();
 			result.SwapSizeLong = buffer.ReadNullDouble();
+			result.DefaultSlippage = buffer.ReadNullDouble();
 			result.IsTradeEnabled = buffer.ReadBoolean();
 			result.GroupSortOrder = buffer.ReadInt32();
 			result.SortOrder = buffer.ReadInt32();
@@ -207,6 +208,7 @@ namespace LrpServer.Net.LocalCpp
 			buffer.WriteDouble(arg.Commission);
 			buffer.WriteNullDouble(arg.SwapSizeShort);
 			buffer.WriteNullDouble(arg.SwapSizeLong);
+			buffer.WriteNullDouble(arg.DefaultSlippage);
 			buffer.WriteBoolean(arg.IsTradeEnabled);
 			buffer.WriteInt32(arg.GroupSortOrder);
 			buffer.WriteInt32(arg.SortOrder);

@@ -4,32 +4,33 @@
 class CFxSymbolInfo
 {
 public:
-	CFxSymbolInfo();
-	CFxSymbolInfo(const string& name, const string& currency, const string& settlementCurrency);
+    CFxSymbolInfo();
+    CFxSymbolInfo(const string& name, const string& currency, const string& settlementCurrency);
 
 public:
-	string Name;
-	string Currency;
-	string SettlementCurrency;
-	double ContractMultiplier;
-	int32 Precision;
-	double RoundLot;
-	double MinTradeVolume;
-	double MaxTradeVolume;
-	double TradeVolumeStep;
-	ProfitCalcMode ProfitCalcMode;
-	MarginCalcMode MarginCalcMode;
-	double MarginHedge;
-	int32 MarginFactor;
+    string Name;
+    string Currency;
+    string SettlementCurrency;
+    double ContractMultiplier;
+    int32 Precision;
+    double RoundLot;
+    double MinTradeVolume;
+    double MaxTradeVolume;
+    double TradeVolumeStep;
+    ProfitCalcMode ProfitCalcMode;
+    MarginCalcMode MarginCalcMode;
+    double MarginHedge;
+    int32 MarginFactor;
     Nullable<double> MarginFactorFractional;
-	int32 Color;
-	FxCommissionType CommissionType;
-	FxCommissionChargeType CommissionChargeType;
+    int32 Color;
+    FxCommissionType CommissionType;
+    FxCommissionChargeType CommissionChargeType;
     FxCommissionChargeMethod CommissionChargeMethod;
-	double Commission;
-	double LimitsCommission;
+    double Commission;
+    double LimitsCommission;
     Nullable<double> SwapSizeShort;
     Nullable<double> SwapSizeLong;
+    Nullable<double> DefaultSlippage;
     bool IsTradeEnabled;
     int32 GroupSortOrder;
     int32 SortOrder;
