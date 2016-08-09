@@ -4,9 +4,10 @@
 class CFxIterator : public CFxHandle
 {
 public:
-	virtual HRESULT VEndOfStream() = 0;
-	virtual HRESULT VNext(const uint32 timeoutInMilliseconds) = 0;
-	virtual void* VItem() = 0;
+    virtual int32 VTotalItems() = 0;
+    virtual HRESULT VEndOfStream() = 0;
+    virtual HRESULT VNext(const uint32 timeoutInMilliseconds) = 0;
+    virtual void* VItem() = 0;
 };
 
 
