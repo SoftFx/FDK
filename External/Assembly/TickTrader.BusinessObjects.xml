@@ -131,6 +131,13 @@
             <param name="CloseOrders">Close market orders and cancel pending orders (otherwise orders will be deleted)</param>
             <returns>Delete account request</returns>
         </member>
+        <member name="M:TickTrader.BusinessObjects.Requests.AccountLoadRequest.Create(System.Int64)">
+            <summary>
+            Create load account request with required parameters.
+            </summary>
+            <param name="AccountLogin">Loaded account login</param>
+            <returns>Load account request</returns>
+        </member>
         <member name="M:TickTrader.BusinessObjects.Requests.DomainModifyRequest.Create(System.Int32,System.String,System.String)">
             <summary>
             Create modify domain request with required parameters.
@@ -1439,6 +1446,11 @@
         <member name="P:TickTrader.BusinessObjects.SymbolInfo.Schedule">
             <summary>
             Gets or sets schedule
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.DefaultSlippage">
+            <summary>
+            Default Slippage
             </summary>
         </member>
         <member name="M:TickTrader.BusinessObjects.SymbolInfo.Clone">

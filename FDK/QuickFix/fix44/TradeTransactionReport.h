@@ -24,10 +24,6 @@ namespace FIX44
 
     FIELD_SET(*this, FIX::TradeReportID);
     FIELD_SET_EX(std::string, TradeReportID);
-    FIELD_SET(*this, FIX::TotNumTradeReports);
-    FIELD_SET_EX(int, TotNumTradeReports);
-    FIELD_SET(*this, FIX::LastRptRequested);
-    FIELD_SET_EX(bool, LastRptRequested);
     FIELD_SET(*this, FIX::TradeRequestID);
     FIELD_SET_EX(std::string, TradeRequestID);
     FIELD_SET(*this, FIX::TradeTransReportType);

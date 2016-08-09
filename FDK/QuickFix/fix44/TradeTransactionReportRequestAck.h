@@ -30,6 +30,8 @@ namespace FIX44
     FIELD_SET_EX(char, SubscriptionRequestType);
     FIELD_SET(*this, FIX::TotNumTradeReports);
     FIELD_SET_EX(int, TotNumTradeReports);
+    FIELD_SET(*this, FIX::CurNumTradeReports);
+    FIELD_SET_EX(int, CurNumTradeReports);
     FIELD_SET(*this, FIX::EndOfStrm);
     FIELD_SET_EX(bool, EndOfStrm);
     FIELD_SET(*this, FIX::TradeTransRepRequestResult);

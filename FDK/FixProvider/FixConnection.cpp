@@ -895,9 +895,10 @@ void CFixConnection::OnSuscribeToTradeTransactionReportsAck(const FIX44::TradeTr
     const char type = message.GetSubscriptionRequestType();
     if ((FIX::SubscriptionRequestType_SNAPSHOT == type) || (FIX::SubscriptionRequestType_SNAPSHOT_PLUS_UPDATES == type))
     {
+        int32 curNumTradeReports = message.GetCurNumTradeReports();
         int32 totNumTradeReports = message.GetTotNumTradeReports();
         bool endOfStrm = message.GetEndOfStrm();
-        m_receiver->VGetTradeTransactionReportsAndSubscribeToNotifications(info, totNumTradeReports, endOfStrm);
+        m_receiver->VGetTradeTransactionReportsAndSubscribeToNotifications(info, curNumTradeReports, totNumTradeReports, endOfStrm);
     }
     else if (FIX::SubscriptionRequestType_UNSUBSCRIBE == type)
     {
@@ -1113,9 +1114,9 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
     if (message.TryGetPosRemainingPrice(posRemainingPrice))
         report.PosRemainingPrice = posRemainingPrice;
 
-	UtcTimeStamp expiration(time_t(0));
-	if (message.TryGetExpireTime(expiration))
-		report.Expiration = expiration.toFileTime();
+    UtcTimeStamp expiration(time_t(0));
+    if (message.TryGetExpireTime(expiration))
+        report.Expiration = expiration.toFileTime();
 
     m_receiver->VTradeTransactionReport(info, report);
 }
