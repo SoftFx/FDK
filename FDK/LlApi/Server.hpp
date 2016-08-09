@@ -1075,11 +1075,22 @@ namespace
 namespace
 {
 	const unsigned short LrpComponent_Iterator_Id = 9;
-	const unsigned short LrpMethod_Iterator_EndOfStream_Id = 0;
-	const unsigned short LrpMethod_Iterator_Next_Id = 1;
-	const unsigned short LrpMethod_Iterator_GetTradeTransactionReport_Id = 2;
+	const unsigned short LrpMethod_Iterator_TotalItems_Id = 0;
+	const unsigned short LrpMethod_Iterator_EndOfStream_Id = 1;
+	const unsigned short LrpMethod_Iterator_Next_Id = 2;
+	const unsigned short LrpMethod_Iterator_GetTradeTransactionReport_Id = 3;
 
 	typedef void (*LrpInvoke_Iterator_Method_Handler)(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel);
+	void LrpInvoke_Iterator_TotalItems(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	{
+		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
+		auto& component = pChannel->GetIterator();
+		component; // if all methods of component are static then the next line generates warning #4189
+		auto arg0 = ReadLocalPointer(buffer);
+		auto result = component.TotalItems(arg0);
+		buffer.Reset(offset);
+		WriteInt32(result, buffer);
+	}
 	void LrpInvoke_Iterator_EndOfStream(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
 		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
@@ -1113,6 +1124,7 @@ namespace
 
 	LrpInvoke_Iterator_Method_Handler gIteratorHandlers[] = 
 	{
+		LrpInvoke_Iterator_TotalItems,
 		LrpInvoke_Iterator_EndOfStream,
 		LrpInvoke_Iterator_Next,
 		LrpInvoke_Iterator_GetTradeTransactionReport,
@@ -1120,7 +1132,7 @@ namespace
 
 	HRESULT LrpInvoke_Iterator(size_t offset, size_t methodId, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
-		if(methodId >= 3)
+		if(methodId >= 4)
 		{
 			return LRP_INVALID_METHOD_ID;
 		}
@@ -1403,6 +1415,7 @@ extern "C" const char* __stdcall LrpSignature()
 		"GetRecords@D4DAC0370A10221F3D8C88D2E1D81421;"
 		"GetPositions@66EEB769D2FA814DE7C674BB9336063B;"
 	"$Iterator;"
+		"TotalItems@2D823D88E5F1A41CD2E0D38B83A2FF81;"
 		"EndOfStream@2603242C4BD05C699776EDE9A3BE7095;"
 		"Next@B11EB7E43C20423C945B2C435640CBB7;"
 		"GetTradeTransactionReport@8B55B1D8B5B435746BADCD2C7A30D69D;"

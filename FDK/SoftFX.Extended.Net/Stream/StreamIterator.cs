@@ -22,6 +22,17 @@
         #region Public Methods
 
         /// <summary>
+        /// Returns total items in the iterator (0 if information is not available).
+        /// </summary>
+        public int TotalItems
+        {
+            get
+            {
+                return Native.Iterator.TotalItems(this.handleIterator);
+            }
+        }
+
+        /// <summary>
         /// Returns true, if the end of associated stream has been reached.
         /// </summary>
         public bool EndOfStream

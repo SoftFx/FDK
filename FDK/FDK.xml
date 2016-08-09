@@ -676,6 +676,10 @@
       </Method>
     </Component>
     <Component name="Iterator">
+      <Method name="TotalItems">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="int32" />
+      </Method>
       <Method name="EndOfStream">
         <Param name="handle" type="lptr" direction="in" />
         <Return type="bool" />
