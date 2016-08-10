@@ -90,7 +90,8 @@ HRESULT CFxTradeTransactionReportIterator::RequestReports(const bool subscribe, 
     tuple<int32, int32, bool> response = waiter.WaitForResponse();
 
     m_reportsNumber = get<0>(response);
-    m_reportsTotal = get<1>(response);
+    if (m_reportsTotal == 0)
+        m_reportsTotal = get<1>(response);
     m_endOfStream = get<2>(response);
     return S_OK;
 }
