@@ -59,16 +59,15 @@ namespace LrpServer.Net.LocalCSharp
 			buffer.Reset(offset);
 			component.BeginLogoutRequest(arg0, arg1);
 		}
-		private static void LrpInvoke_LocalServerHandler_BeginTwoFactorAuth(int offset, MemoryBuffer buffer, Channel channel)
+		private static void LrpInvoke_LocalServerHandler_BeginTwoFactorAuthRequest(int offset, MemoryBuffer buffer, Channel channel)
 		{
 			var component = channel.LocalServerHandler;
 			var arg0 = buffer.ReadLocalPointer();
 			var arg1 = buffer.ReadInt64();
 			var arg2 = buffer.ReadTwoFactorReason();
 			var arg3 = buffer.ReadAString();
-			var arg4 = buffer.ReadTime();
 			buffer.Reset(offset);
-			component.BeginTwoFactorAuth(arg0, arg1, arg2, arg3, arg4);
+			component.BeginTwoFactorAuthRequest(arg0, arg1, arg2, arg3);
 		}
 		private static void LrpInvoke_LocalServerHandler_BeginCurrenciesInfoRequest(int offset, MemoryBuffer buffer, Channel channel)
 		{
@@ -179,7 +178,7 @@ namespace LrpServer.Net.LocalCSharp
 			LrpInvoke_LocalServerHandler_BeginShutdownConnectionNotification,
 			LrpInvoke_LocalServerHandler_BeginLogonRequest,
 			LrpInvoke_LocalServerHandler_BeginLogoutRequest,
-			LrpInvoke_LocalServerHandler_BeginTwoFactorAuth,
+			LrpInvoke_LocalServerHandler_BeginTwoFactorAuthRequest,
 			LrpInvoke_LocalServerHandler_BeginCurrenciesInfoRequest,
 			LrpInvoke_LocalServerHandler_BeginSymbolsInfoRequest,
 			LrpInvoke_LocalServerHandler_BeginSessionInfoRequest,

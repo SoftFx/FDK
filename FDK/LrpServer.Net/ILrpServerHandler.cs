@@ -42,9 +42,8 @@ namespace LrpServer.Net
         /// </summary>
         /// <param name="id"></param>
         /// <param name="reason"></param>
-        /// <param name="text"></param>
-        /// <param name="expire"></param>
-        void BeginTwoFactorAuth(long id, LrpTwoFactorReason reason, string text, DateTime expire);
+        /// <param name="otp"></param>
+        void BeginTwoFactorAuthRequest(long id, LrpTwoFactorReason reason, string otp);
 
         /// <summary>
         ///

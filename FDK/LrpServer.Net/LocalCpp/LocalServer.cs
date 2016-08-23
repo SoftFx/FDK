@@ -148,14 +148,15 @@ namespace LrpServer.Net.LocalCpp
 				return m_client.IsSupported(1, 6);
 			}
 		}
-		public void SendTwoFactorAuth(SoftFX.Lrp.LPtr handle, long id, LrpServer.Net.LrpTwoFactorReason reason, string otp)
+		public void SendTwoFactorAuth(SoftFX.Lrp.LPtr handle, long id, LrpServer.Net.LrpTwoFactorReason reason, string text, System.DateTime expire)
 		{
 			using(MemoryBuffer buffer = m_client.Create())
 			{
 				buffer.WriteLocalPointer(handle);
 				buffer.WriteInt64(id);
 				buffer.WriteTwoFactorReason(reason);
-				buffer.WriteAString(otp);
+				buffer.WriteAString(text);
+				buffer.WriteTime(expire);
 
 				int _status = m_client.Invoke(1, 6, buffer);
 				TypesSerializer.Throw(_status, buffer);
@@ -555,9 +556,9 @@ namespace LrpServer.Net.LocalCpp
 				return this.Instance.Is_SendTwoFactorAuth_Supported;
 			}
 		}
-		public void SendTwoFactorAuth(long id, LrpServer.Net.LrpTwoFactorReason reason, string otp)
+		public void SendTwoFactorAuth(long id, LrpServer.Net.LrpTwoFactorReason reason, string text, System.DateTime expire)
 		{
-			this.Instance.SendTwoFactorAuth(this.Handle, id, reason, otp);
+			this.Instance.SendTwoFactorAuth(this.Handle, id, reason, text, expire);
 		}
 		public bool Is_SendSessionInfo_Supported
 		{
