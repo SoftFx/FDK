@@ -49,6 +49,7 @@ namespace SoftFX.Extended.Core
         public const int FX_MSG_NOTIFICATION = 11;
         public const int FX_MSG_QUOTES_HISTORY_RESPONSE = 12;
         public const int FX_MSG_CURRENCY_INFO = 13;
+        public const int FX_MSG_TWO_FACTOR_AUTH = 14;
 
         #endregion
 
@@ -106,7 +107,7 @@ namespace SoftFX.Extended.Core
             Iterator = new Iterator(LrpClient);
             Library = new Library(LrpClient);
         }
-        
+
         static LocalClient CreateLocalClient(string signature, string name)
         {
             var path = Path.Combine(ManagedLibrary.Path, name);

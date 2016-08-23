@@ -100,6 +100,26 @@ void CDataFeed::VLogon(const CFxEventInfo& eventInfo, const string& protocolVers
     m_sender->VSendQuotesHistoryRequest(id);
 }
 
+void CDataFeed::VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorReason reason, const std::string& text, const CDateTime& expire)
+{
+    __super::VTwoFactorAuth(eventInfo, reason, text, expire);
+
+    ResetEvent(m_serverQuotesHistoryEvent);
+    m_cache.Clear();
+
+    string id = NextId(cInternalASynchCall);
+    m_sender->VSendGetSupportedSymbols(id);
+
+    if (CheckProtocolVersion(CProtocolVersion(1, 24)))
+    {
+        id = NextId(cInternalASynchCall);
+        m_sender->VSendGetCurrencies(id);
+    }
+
+    id = NextId(cInternalASynchCall);
+    m_sender->VSendQuotesHistoryRequest(id);
+}
+
 void CDataFeed::VLogout(const CFxEventInfo& eventInfo, const FxLogoutReason reason, const string& description)
 {
     m_cache.Clear();

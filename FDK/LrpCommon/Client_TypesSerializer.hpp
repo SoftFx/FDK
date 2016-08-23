@@ -4,6 +4,8 @@ namespace
 {
 	void WriteLogoutReason(const FxLogoutReason& arg, MemoryBuffer& buffer);
 	FxLogoutReason ReadLogoutReason(MemoryBuffer& buffer);
+	void WriteTwoFactorReason(const FxTwoFactorReason& arg, MemoryBuffer& buffer);
+	FxTwoFactorReason ReadTwoFactorReason(MemoryBuffer& buffer);
 	void WriteSessionStatus(const SessionStatus& arg, MemoryBuffer& buffer);
 	SessionStatus ReadSessionStatus(MemoryBuffer& buffer);
 	void WriteProfitCalcMode(const ProfitCalcMode& arg, MemoryBuffer& buffer);
@@ -91,6 +93,15 @@ namespace
 	FxLogoutReason ReadLogoutReason(MemoryBuffer& buffer)
 	{
 		auto result = (FxLogoutReason)ReadInt32(buffer);
+		return result;
+	}
+	void WriteTwoFactorReason(const FxTwoFactorReason& arg, MemoryBuffer& buffer)
+	{
+		WriteInt32((__int32)arg, buffer);
+	}
+	FxTwoFactorReason ReadTwoFactorReason(MemoryBuffer& buffer)
+	{
+		auto result = (FxTwoFactorReason)ReadInt32(buffer);
 		return result;
 	}
 	void WriteSessionStatus(const SessionStatus& arg, MemoryBuffer& buffer)

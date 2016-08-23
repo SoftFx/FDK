@@ -31,6 +31,12 @@
             TaskEx.Start(acceptor.Handler.BeginLogoutRequest, id);
         }
 
+        public void BeginTwoFactorAuth(LPtr handle, long id, LrpTwoFactorReason reason, string text, DateTime expire)
+        {
+            var acceptor = AcceptorFromHandle(handle);
+            TaskEx.Start(acceptor.Handler.BeginTwoFactorAuth, id, reason, text, expire);
+        }
+
         public void BeginCurrenciesInfoRequest(LPtr handle, long id, string requestId)
         {
             var acceptor = AcceptorFromHandle(handle);

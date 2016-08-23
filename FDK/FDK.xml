@@ -29,6 +29,7 @@
     <Type name="FxOrderType" CSharpFullName="System.Int32" CppFullName="FxTradeRecordType" kind="enum32" />
     <Type name="OrderType" CSharpFullName="SoftFX.Extended.OrderType" CppFullName="FxOrderType" kind="enum32" />
     <Type name="LogoutReason" CSharpFullName="SoftFX.Extended.LogoutReason" CppFullName="FxLogoutReason" kind="enum32" />
+    <Type name="TwoFactorReason" CSharpFullName="SoftFX.Extended.TwoFactorReason" CppFullName="FxTwoFactorReason" kind="enum32" />
     <Type name="OrderStatus" CSharpFullName="SoftFX.Extended.OrderStatus" CppFullName="FxOrderStatus" kind="enum32" />
     <Type name="ExecutionType" CSharpFullName="SoftFX.Extended.ExecutionType" CppFullName="FxExecutionType" kind="enum32" />
     <Type name="RejectReason" CSharpFullName="SoftFX.Extended.RejectReason" CppFullName="FxRejectReason" kind="enum32" />
@@ -83,6 +84,11 @@
       <Member name="SettlementCurrencySortOrder" type="int32" />
       <Member name="CurrencyPrecision" type="int32" />
       <Member name="SettlementCurrencyPrecision" type="int32" />
+    </Type>
+    <Type name="TwoFactorAuth" CSharpFullName="SoftFX.Extended.TwoFactorAuth" CppFullName="CFxTwoFactorAuth" kind="class">
+      <Member name="Reason" type="TwoFactorReason" />
+      <Member name="Text" type="astring" />
+      <Member name="Expire" type="time" />
     </Type>
     <Type name="SessionInfo" CSharpFullName="SoftFX.Extended.SessionInfo" CppFullName="CFxSessionInfo" kind="class">
       <Member name="TradingSessionId" type="astring" />
@@ -326,6 +332,10 @@
       <Method name="SymbolsFromHandle">
         <Param name="handle" type="lptr" direction="in" />
         <Return type="SymbolInfoArray" />
+      </Method>
+      <Method name="TwoFactorAuthFromHandle">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="TwoFactorAuth" />
       </Method>
       <Method name="SessionInfoFromHandle">
         <Param name="handle" type="lptr" direction="in" />

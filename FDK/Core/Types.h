@@ -215,6 +215,17 @@ enum FxLogoutReason
     FxLogoutReason_Last         = FX_MAX_ENUM
 };
 
+enum FxTwoFactorReason
+{
+	FxTwoFactorReason_None = -1,
+	FxTwoFactorReason_Unknown = 0,
+	FxTwoFactorReason_Request = 1,
+	FxTwoFactorReason_Response = 2,
+	FxTwoFactorReason_Resume = 3,
+	FxTwoFactorReason_InvalidOTP = 4,
+	FxTwoFactorReason_TFANotSet = 5,
+	FxTwoFactorReason_Last = FX_MAX_ENUM
+};
 
 enum FxTimeDirection
 {

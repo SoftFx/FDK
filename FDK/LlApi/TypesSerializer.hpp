@@ -46,6 +46,8 @@ namespace
 	FxOrderType ReadOrderType(MemoryBuffer& buffer);
 	void WriteLogoutReason(const FxLogoutReason& arg, MemoryBuffer& buffer);
 	FxLogoutReason ReadLogoutReason(MemoryBuffer& buffer);
+	void WriteTwoFactorReason(const FxTwoFactorReason& arg, MemoryBuffer& buffer);
+	FxTwoFactorReason ReadTwoFactorReason(MemoryBuffer& buffer);
 	void WriteOrderStatus(const FxOrderStatus& arg, MemoryBuffer& buffer);
 	FxOrderStatus ReadOrderStatus(MemoryBuffer& buffer);
 	void WriteExecutionType(const FxExecutionType& arg, MemoryBuffer& buffer);
@@ -64,6 +66,8 @@ namespace
 	CDataHistoryInfo ReadDataHistoryInfo(MemoryBuffer& buffer);
 	void WriteSymbolInfo(const CFxSymbolInfo& arg, MemoryBuffer& buffer);
 	CFxSymbolInfo ReadSymbolInfo(MemoryBuffer& buffer);
+	void WriteTwoFactorAuth(const CFxTwoFactorAuth& arg, MemoryBuffer& buffer);
+	CFxTwoFactorAuth ReadTwoFactorAuth(MemoryBuffer& buffer);
 	void WriteSessionInfo(const CFxSessionInfo& arg, MemoryBuffer& buffer);
 	CFxSessionInfo ReadSessionInfo(MemoryBuffer& buffer);
 	void WriteSymbolInfoArray(const std::vector<CFxSymbolInfo>& arg, MemoryBuffer& buffer);
@@ -335,6 +339,15 @@ namespace
 		auto result = (FxLogoutReason)ReadInt32(buffer);
 		return result;
 	}
+	void WriteTwoFactorReason(const FxTwoFactorReason& arg, MemoryBuffer& buffer)
+	{
+		WriteInt32((__int32)arg, buffer);
+	}
+	FxTwoFactorReason ReadTwoFactorReason(MemoryBuffer& buffer)
+	{
+		auto result = (FxTwoFactorReason)ReadInt32(buffer);
+		return result;
+	}
 	void WriteOrderStatus(const FxOrderStatus& arg, MemoryBuffer& buffer)
 	{
 		WriteInt32((__int32)arg, buffer);
@@ -497,6 +510,20 @@ namespace
 		result.SettlementCurrencySortOrder = ReadInt32(buffer);
 		result.CurrencyPrecision = ReadInt32(buffer);
 		result.SettlementCurrencyPrecision = ReadInt32(buffer);
+		return result;
+	}
+	void WriteTwoFactorAuth(const CFxTwoFactorAuth& arg, MemoryBuffer& buffer)
+	{
+		WriteTwoFactorReason(arg.Reason, buffer);
+		WriteAString(arg.Text, buffer);
+		WriteTime(arg.Expire, buffer);
+	}
+	CFxTwoFactorAuth ReadTwoFactorAuth(MemoryBuffer& buffer)
+	{
+		CFxTwoFactorAuth result = CFxTwoFactorAuth();
+		result.Reason = ReadTwoFactorReason(buffer);
+		result.Text = ReadAString(buffer);
+		result.Expire = ReadTime(buffer);
 		return result;
 	}
 	void WriteSessionInfo(const CFxSessionInfo& arg, MemoryBuffer& buffer)

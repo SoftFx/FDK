@@ -1,6 +1,7 @@
 <Protocol>
     <Types>
 	    <Type name="LogoutReason" CSharpFullName="SoftFX.Extended.LogoutReason" CppFullName="FxLogoutReason" kind="enum32" />
+	    <Type name="TwoFactorReason" CSharpFullName="SoftFX.Extended.TwoFactorReason" CppFullName="FxTwoFactorReason" kind="enum32" />
 	    <Type name="SessionStatus" CSharpFullName="LrpServer.Net.LrpSessionStatus" CppFullName="SessionStatus" kind="enum32" />
 	    <Type name="ProfitCalcMode" CSharpFullName="SoftFX.Extended.ProfitCalcMode" CppFullName="ProfitCalcMode" kind="enum32" />
 	    <Type name="MarginCalcMode" CSharpFullName="SoftFX.Extended.MarginCalcMode" CppFullName="MarginCalcMode" kind="enum32" />
@@ -315,6 +316,12 @@
 	      <Method name="OnLogoutMsg">
 	    	<Param name="reason" type="LogoutReason" direction="in" />
 	    	<Param name="description" type="astring" direction="in" />
+	    	<Return type="void" />
+	      </Method>
+	      <Method name="OnTwoFactorAuthMsg">
+	    	<Param name="reason" type="TwoFactorReason" direction="in" />
+	    	<Param name="text" type="astring" direction="in" />
+	    	<Param name="expire" type="time" direction="in" />
 	    	<Return type="void" />
 	      </Method>
 	      <Method name="OnSessionInfoMsg">

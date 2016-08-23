@@ -141,11 +141,32 @@ namespace LrpServer.Net.LocalCpp
 
 			}
 		}
-		public bool Is_SendSessionInfo_Supported
+		public bool Is_SendTwoFactorAuth_Supported
 		{
 			get
 			{
 				return m_client.IsSupported(1, 6);
+			}
+		}
+		public void SendTwoFactorAuth(SoftFX.Lrp.LPtr handle, long id, LrpServer.Net.LrpTwoFactorReason reason, string otp)
+		{
+			using(MemoryBuffer buffer = m_client.Create())
+			{
+				buffer.WriteLocalPointer(handle);
+				buffer.WriteInt64(id);
+				buffer.WriteTwoFactorReason(reason);
+				buffer.WriteAString(otp);
+
+				int _status = m_client.Invoke(1, 6, buffer);
+				TypesSerializer.Throw(_status, buffer);
+
+			}
+		}
+		public bool Is_SendSessionInfo_Supported
+		{
+			get
+			{
+				return m_client.IsSupported(1, 7);
 			}
 		}
 		public void SendSessionInfo(SoftFX.Lrp.LPtr handle, long id, string requestId, LrpServer.Net.LrpSessionInfo sessionInfo)
@@ -157,7 +178,7 @@ namespace LrpServer.Net.LocalCpp
 				buffer.WriteAString(requestId);
 				buffer.WriteLrpSessionInfo(sessionInfo);
 
-				int _status = m_client.Invoke(1, 6, buffer);
+				int _status = m_client.Invoke(1, 7, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 			}
@@ -166,7 +187,7 @@ namespace LrpServer.Net.LocalCpp
 		{
 			get
 			{
-				return m_client.IsSupported(1, 7);
+				return m_client.IsSupported(1, 8);
 			}
 		}
 		public void SendCurrenciesInfo(SoftFX.Lrp.LPtr handle, long id, string requestId, LrpServer.Net.LrpCurrencyInfo[] currencies)
@@ -178,7 +199,7 @@ namespace LrpServer.Net.LocalCpp
 				buffer.WriteAString(requestId);
 				buffer.WriteCurrencyInfoArray(currencies);
 
-				int _status = m_client.Invoke(1, 7, buffer);
+				int _status = m_client.Invoke(1, 8, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 			}
@@ -187,7 +208,7 @@ namespace LrpServer.Net.LocalCpp
 		{
 			get
 			{
-				return m_client.IsSupported(1, 8);
+				return m_client.IsSupported(1, 9);
 			}
 		}
 		public void SendSymbolsInfo(SoftFX.Lrp.LPtr handle, long id, string requestId, LrpServer.Net.LrpSymbolInfo[] symbols)
@@ -199,7 +220,7 @@ namespace LrpServer.Net.LocalCpp
 				buffer.WriteAString(requestId);
 				buffer.WriteSymbolInfoArray(symbols);
 
-				int _status = m_client.Invoke(1, 8, buffer);
+				int _status = m_client.Invoke(1, 9, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 			}
@@ -208,7 +229,7 @@ namespace LrpServer.Net.LocalCpp
 		{
 			get
 			{
-				return m_client.IsSupported(1, 9);
+				return m_client.IsSupported(1, 10);
 			}
 		}
 		public void SendQuotesSubscriptionConfirm(SoftFX.Lrp.LPtr handle, long id, string requestId)
@@ -219,7 +240,7 @@ namespace LrpServer.Net.LocalCpp
 				buffer.WriteInt64(id);
 				buffer.WriteAString(requestId);
 
-				int _status = m_client.Invoke(1, 9, buffer);
+				int _status = m_client.Invoke(1, 10, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 			}
@@ -228,7 +249,7 @@ namespace LrpServer.Net.LocalCpp
 		{
 			get
 			{
-				return m_client.IsSupported(1, 10);
+				return m_client.IsSupported(1, 11);
 			}
 		}
 		public void SendQuotesSubscriptionReject(SoftFX.Lrp.LPtr handle, long id, string requestId, string message)
@@ -240,7 +261,7 @@ namespace LrpServer.Net.LocalCpp
 				buffer.WriteAString(requestId);
 				buffer.WriteAString(message);
 
-				int _status = m_client.Invoke(1, 10, buffer);
+				int _status = m_client.Invoke(1, 11, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 			}
@@ -249,7 +270,7 @@ namespace LrpServer.Net.LocalCpp
 		{
 			get
 			{
-				return m_client.IsSupported(1, 11);
+				return m_client.IsSupported(1, 12);
 			}
 		}
 		public void SendQuotesHistoryVersion(SoftFX.Lrp.LPtr handle, long id, string requestId, int version)
@@ -261,7 +282,7 @@ namespace LrpServer.Net.LocalCpp
 				buffer.WriteAString(requestId);
 				buffer.WriteInt32(version);
 
-				int _status = m_client.Invoke(1, 11, buffer);
+				int _status = m_client.Invoke(1, 12, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 			}
@@ -270,7 +291,7 @@ namespace LrpServer.Net.LocalCpp
 		{
 			get
 			{
-				return m_client.IsSupported(1, 12);
+				return m_client.IsSupported(1, 13);
 			}
 		}
 		public void SendQuote(SoftFX.Lrp.LPtr handle, long id, LrpServer.Net.LrpQuote quote)
@@ -281,7 +302,7 @@ namespace LrpServer.Net.LocalCpp
 				buffer.WriteInt64(id);
 				buffer.WriteQuote(quote);
 
-				int _status = m_client.Invoke(1, 12, buffer);
+				int _status = m_client.Invoke(1, 13, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 			}
@@ -290,32 +311,10 @@ namespace LrpServer.Net.LocalCpp
 		{
 			get
 			{
-				return m_client.IsSupported(1, 13);
-			}
-		}
-		public void SendMarketHistoryMetadataResponse(SoftFX.Lrp.LPtr handle, long id, string requestId, int status, string field)
-		{
-			using(MemoryBuffer buffer = m_client.Create())
-			{
-				buffer.WriteLocalPointer(handle);
-				buffer.WriteInt64(id);
-				buffer.WriteAString(requestId);
-				buffer.WriteInt32(status);
-				buffer.WriteAString(field);
-
-				int _status = m_client.Invoke(1, 13, buffer);
-				TypesSerializer.Throw(_status, buffer);
-
-			}
-		}
-		public bool Is_SendMarketHistoryMetadataReject_Supported
-		{
-			get
-			{
 				return m_client.IsSupported(1, 14);
 			}
 		}
-		public void SendMarketHistoryMetadataReject(SoftFX.Lrp.LPtr handle, long id, string requestId, int status, string field)
+		public void SendMarketHistoryMetadataResponse(SoftFX.Lrp.LPtr handle, long id, string requestId, int status, string field)
 		{
 			using(MemoryBuffer buffer = m_client.Create())
 			{
@@ -330,11 +329,33 @@ namespace LrpServer.Net.LocalCpp
 
 			}
 		}
-		public bool Is_SendDataHistoryResponse_Supported
+		public bool Is_SendMarketHistoryMetadataReject_Supported
 		{
 			get
 			{
 				return m_client.IsSupported(1, 15);
+			}
+		}
+		public void SendMarketHistoryMetadataReject(SoftFX.Lrp.LPtr handle, long id, string requestId, int status, string field)
+		{
+			using(MemoryBuffer buffer = m_client.Create())
+			{
+				buffer.WriteLocalPointer(handle);
+				buffer.WriteInt64(id);
+				buffer.WriteAString(requestId);
+				buffer.WriteInt32(status);
+				buffer.WriteAString(field);
+
+				int _status = m_client.Invoke(1, 15, buffer);
+				TypesSerializer.Throw(_status, buffer);
+
+			}
+		}
+		public bool Is_SendDataHistoryResponse_Supported
+		{
+			get
+			{
+				return m_client.IsSupported(1, 16);
 			}
 		}
 		public void SendDataHistoryResponse(SoftFX.Lrp.LPtr handle, long id, string requestId, LrpServer.Net.LrpDataHistoryResponse response)
@@ -346,7 +367,7 @@ namespace LrpServer.Net.LocalCpp
 				buffer.WriteAString(requestId);
 				buffer.WriteDataHistoryResponse(response);
 
-				int _status = m_client.Invoke(1, 15, buffer);
+				int _status = m_client.Invoke(1, 16, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 			}
@@ -355,7 +376,7 @@ namespace LrpServer.Net.LocalCpp
 		{
 			get
 			{
-				return m_client.IsSupported(1, 16);
+				return m_client.IsSupported(1, 17);
 			}
 		}
 		public void SendDataHistoryReject(SoftFX.Lrp.LPtr handle, long id, string requestId, LrpServer.Net.LrpMarketHistoryRejectType rejectType, string rejectReason)
@@ -368,7 +389,7 @@ namespace LrpServer.Net.LocalCpp
 				buffer.WriteMarketHistoryRejectType(rejectType);
 				buffer.WriteAString(rejectReason);
 
-				int _status = m_client.Invoke(1, 16, buffer);
+				int _status = m_client.Invoke(1, 17, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 			}
@@ -377,7 +398,7 @@ namespace LrpServer.Net.LocalCpp
 		{
 			get
 			{
-				return m_client.IsSupported(1, 17);
+				return m_client.IsSupported(1, 18);
 			}
 		}
 		public void SendFileChunk(SoftFX.Lrp.LPtr handle, long id, string requestId, LrpServer.Net.LrpFileChunk chunk)
@@ -389,7 +410,7 @@ namespace LrpServer.Net.LocalCpp
 				buffer.WriteAString(requestId);
 				buffer.WriteFileChunk(chunk);
 
-				int _status = m_client.Invoke(1, 17, buffer);
+				int _status = m_client.Invoke(1, 18, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 			}
@@ -398,7 +419,7 @@ namespace LrpServer.Net.LocalCpp
 		{
 			get
 			{
-				return m_client.IsSupported(1, 18);
+				return m_client.IsSupported(1, 19);
 			}
 		}
 		public void SendNotification(SoftFX.Lrp.LPtr handle, long id, LrpServer.Net.LrpNotification notification)
@@ -409,7 +430,7 @@ namespace LrpServer.Net.LocalCpp
 				buffer.WriteInt64(id);
 				buffer.WriteNotification(notification);
 
-				int _status = m_client.Invoke(1, 18, buffer);
+				int _status = m_client.Invoke(1, 19, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 			}
@@ -418,7 +439,7 @@ namespace LrpServer.Net.LocalCpp
 		{
 			get
 			{
-				return m_client.IsSupported(1, 19);
+				return m_client.IsSupported(1, 20);
 			}
 		}
 		public void SendBusinessReject(SoftFX.Lrp.LPtr handle, long id, string rejectReason, string rejectTag)
@@ -430,7 +451,7 @@ namespace LrpServer.Net.LocalCpp
 				buffer.WriteAString(rejectReason);
 				buffer.WriteAString(rejectTag);
 
-				int _status = m_client.Invoke(1, 19, buffer);
+				int _status = m_client.Invoke(1, 20, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 			}
@@ -526,6 +547,17 @@ namespace LrpServer.Net.LocalCpp
 		public void EndLogon(long id, int status, string message)
 		{
 			this.Instance.EndLogon(this.Handle, id, status, message);
+		}
+		public bool Is_SendTwoFactorAuth_Supported
+		{
+			get
+			{
+				return this.Instance.Is_SendTwoFactorAuth_Supported;
+			}
+		}
+		public void SendTwoFactorAuth(long id, LrpServer.Net.LrpTwoFactorReason reason, string otp)
+		{
+			this.Instance.SendTwoFactorAuth(this.Handle, id, reason, otp);
 		}
 		public bool Is_SendSessionInfo_Supported
 		{

@@ -22,6 +22,8 @@ namespace
 	FxMarketHistoryRejectType ReadMarketHistoryRejectType(MemoryBuffer& buffer);
 	void WriteNotificationType(const NotificationType& arg, MemoryBuffer& buffer);
 	NotificationType ReadNotificationType(MemoryBuffer& buffer);
+	void WriteTwoFactorReason(const FxTwoFactorReason& arg, MemoryBuffer& buffer);
+	FxTwoFactorReason ReadTwoFactorReason(MemoryBuffer& buffer);
 	void WriteSeverity(const Severity& arg, MemoryBuffer& buffer);
 	Severity ReadSeverity(MemoryBuffer& buffer);
 	void WriteLrpSessionInfo(const CFxSessionInfo& arg, MemoryBuffer& buffer);
@@ -166,6 +168,15 @@ namespace
 	NotificationType ReadNotificationType(MemoryBuffer& buffer)
 	{
 		auto result = (NotificationType)ReadInt32(buffer);
+		return result;
+	}
+	void WriteTwoFactorReason(const FxTwoFactorReason& arg, MemoryBuffer& buffer)
+	{
+		WriteInt32((__int32)arg, buffer);
+	}
+	FxTwoFactorReason ReadTwoFactorReason(MemoryBuffer& buffer)
+	{
+		auto result = (FxTwoFactorReason)ReadInt32(buffer);
 		return result;
 	}
 	void WriteSeverity(const Severity& arg, MemoryBuffer& buffer)

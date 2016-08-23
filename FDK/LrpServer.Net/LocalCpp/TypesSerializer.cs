@@ -114,6 +114,15 @@ namespace LrpServer.Net.LocalCpp
 		{
 			buffer.WriteInt32((int)arg);
 		}
+		public static LrpServer.Net.LrpTwoFactorReason ReadTwoFactorReason(this MemoryBuffer buffer)
+		{
+			var result = (LrpServer.Net.LrpTwoFactorReason)buffer.ReadInt32();
+			return result;
+		}
+		public static void WriteTwoFactorReason(this MemoryBuffer buffer, LrpServer.Net.LrpTwoFactorReason arg)
+		{
+			buffer.WriteInt32((int)arg);
+		}
 		public static LrpServer.Net.LrpSeverity ReadSeverity(this MemoryBuffer buffer)
 		{
 			var result = (LrpServer.Net.LrpSeverity)buffer.ReadInt32();

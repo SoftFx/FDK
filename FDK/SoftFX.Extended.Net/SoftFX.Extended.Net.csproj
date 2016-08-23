@@ -104,10 +104,13 @@
     <Compile Include="Entities\AssetInfo.cs" />
     <Compile Include="Entities\CurrencyInfo.cs" />
     <Compile Include="Entities\FileChunk.cs" />
+    <Compile Include="Entities\TwoFactorAuth.cs" />
     <Compile Include="Enums\CommissionChargeMethod.cs" />
     <Compile Include="Enums\CommissionChargeType.cs" />
     <Compile Include="Enums\CommissionType.cs" />
+    <Compile Include="Enums\TwoFactorReason.cs" />
     <Compile Include="Events\CurrencyInfoEventArgs.cs" />
+    <Compile Include="Events\TwoFactorAuthEventArgs.cs" />
     <Compile Include="Financial\Rounding\CurrencyPrecisionProvider.cs" />
     <Compile Include="Financial\Rounding\DefaultPrecision.cs" />
     <Compile Include="Financial\Rounding\FinancialRounding.cs" />

@@ -3,6 +3,7 @@
 namespace
 {
 	void LrpWriteLogoutReason(const char* name, const FxLogoutReason& arg, std::ostream& _stream);
+	void LrpWriteTwoFactorReason(const char* name, const FxTwoFactorReason& arg, std::ostream& _stream);
 	void LrpWriteSessionStatus(const char* name, const SessionStatus& arg, std::ostream& _stream);
 	void LrpWriteProfitCalcMode(const char* name, const ProfitCalcMode& arg, std::ostream& _stream);
 	void LrpWriteMarginCalcMode(const char* name, const MarginCalcMode& arg, std::ostream& _stream);
@@ -344,6 +345,14 @@ namespace
 namespace
 {
 	void LrpWriteLogoutReason(const char* name, const FxLogoutReason& arg, std::ostream& _stream)
+	{
+		if (nullptr != name)
+		{
+			_stream << name << " = ";
+		}
+		_stream<<static_cast<__int32>(arg);
+	}
+	void LrpWriteTwoFactorReason(const char* name, const FxTwoFactorReason& arg, std::ostream& _stream)
 	{
 		if (nullptr != name)
 		{
@@ -1338,10 +1347,22 @@ void Client::OnLogoutMsg(const FxLogoutReason& reason, const std::string& descri
 	_stream << ");";
 	m_stream->Write(_stream.str());
 }
+void Client::OnTwoFactorAuthMsg(const FxTwoFactorReason& reason, const std::string& text, const CDateTime& expire)
+{
+	std::stringstream _stream;
+	_stream << "[0]Client[4]OnTwoFactorAuthMsg(";
+	LrpWriteTwoFactorReason("reason", reason, _stream);
+	_stream<<", ";
+	LrpWriteAString("text", text, _stream);
+	_stream<<", ";
+	LrpWriteTime("expire", expire, _stream);
+	_stream << ");";
+	m_stream->Write(_stream.str());
+}
 void Client::OnSessionInfoMsg(const std::string& requestId, const CFxSessionInfo& sessionInfo)
 {
 	std::stringstream _stream;
-	_stream << "[0]Client[4]OnSessionInfoMsg(";
+	_stream << "[0]Client[5]OnSessionInfoMsg(";
 	LrpWriteAString("requestId", requestId, _stream);
 	_stream<<", ";
 	LrpWriteLrpSessionInfo("sessionInfo", sessionInfo, _stream);
@@ -1351,7 +1372,7 @@ void Client::OnSessionInfoMsg(const std::string& requestId, const CFxSessionInfo
 void Client::OnSessionInfoMsg2(const std::string& requestId, const CFxSessionInfo& sessionInfo)
 {
 	std::stringstream _stream;
-	_stream << "[0]Client[5]OnSessionInfoMsg2(";
+	_stream << "[0]Client[6]OnSessionInfoMsg2(";
 	LrpWriteAString("requestId", requestId, _stream);
 	_stream<<", ";
 	LrpWriteLrpSessionInfo2("sessionInfo", sessionInfo, _stream);
@@ -1361,7 +1382,7 @@ void Client::OnSessionInfoMsg2(const std::string& requestId, const CFxSessionInf
 void Client::OnCurrenciesInfoMsg(const std::string& requestId, const std::vector<CFxCurrencyInfo>& currencies)
 {
 	std::stringstream _stream;
-	_stream << "[0]Client[6]OnCurrenciesInfoMsg(";
+	_stream << "[0]Client[7]OnCurrenciesInfoMsg(";
 	LrpWriteAString("requestId", requestId, _stream);
 	_stream<<", ";
 	LrpWriteCurrencyInfoArray("currencies", currencies, _stream);
@@ -1371,7 +1392,7 @@ void Client::OnCurrenciesInfoMsg(const std::string& requestId, const std::vector
 void Client::OnSymbolsInfoMsg(const std::string& requestId, const std::vector<CFxSymbolInfo>& symbols)
 {
 	std::stringstream _stream;
-	_stream << "[0]Client[7]OnSymbolsInfoMsg(";
+	_stream << "[0]Client[8]OnSymbolsInfoMsg(";
 	LrpWriteAString("requestId", requestId, _stream);
 	_stream<<", ";
 	LrpWriteSymbolInfoArray("symbols", symbols, _stream);
@@ -1381,7 +1402,7 @@ void Client::OnSymbolsInfoMsg(const std::string& requestId, const std::vector<CF
 void Client::OnSymbolsInfoMsg2(const std::string& requestId, const std::vector<CFxSymbolInfo>& symbols)
 {
 	std::stringstream _stream;
-	_stream << "[0]Client[8]OnSymbolsInfoMsg2(";
+	_stream << "[0]Client[9]OnSymbolsInfoMsg2(";
 	LrpWriteAString("requestId", requestId, _stream);
 	_stream<<", ";
 	LrpWriteSymbolInfoArray2("symbols", symbols, _stream);
@@ -1391,7 +1412,7 @@ void Client::OnSymbolsInfoMsg2(const std::string& requestId, const std::vector<C
 void Client::OnSymbolsInfoMsg3(const std::string& requestId, const std::vector<CFxSymbolInfo>& symbols)
 {
 	std::stringstream _stream;
-	_stream << "[0]Client[9]OnSymbolsInfoMsg3(";
+	_stream << "[0]Client[10]OnSymbolsInfoMsg3(";
 	LrpWriteAString("requestId", requestId, _stream);
 	_stream<<", ";
 	LrpWriteSymbolInfoArray3("symbols", symbols, _stream);
@@ -1401,7 +1422,7 @@ void Client::OnSymbolsInfoMsg3(const std::string& requestId, const std::vector<C
 void Client::OnSymbolsInfoMsg4(const std::string& requestId, const std::vector<CFxSymbolInfo>& symbols)
 {
 	std::stringstream _stream;
-	_stream << "[0]Client[10]OnSymbolsInfoMsg4(";
+	_stream << "[0]Client[11]OnSymbolsInfoMsg4(";
 	LrpWriteAString("requestId", requestId, _stream);
 	_stream<<", ";
 	LrpWriteSymbolInfoArray4("symbols", symbols, _stream);
@@ -1411,7 +1432,7 @@ void Client::OnSymbolsInfoMsg4(const std::string& requestId, const std::vector<C
 void Client::OnSymbolsInfoMsg5(const std::string& requestId, const std::vector<CFxSymbolInfo>& symbols)
 {
 	std::stringstream _stream;
-	_stream << "[0]Client[11]OnSymbolsInfoMsg5(";
+	_stream << "[0]Client[12]OnSymbolsInfoMsg5(";
 	LrpWriteAString("requestId", requestId, _stream);
 	_stream<<", ";
 	LrpWriteSymbolInfoArray5("symbols", symbols, _stream);
@@ -1421,7 +1442,7 @@ void Client::OnSymbolsInfoMsg5(const std::string& requestId, const std::vector<C
 void Client::OnSymbolsInfoMsg6(const std::string& requestId, const std::vector<CFxSymbolInfo>& symbols)
 {
 	std::stringstream _stream;
-	_stream << "[0]Client[12]OnSymbolsInfoMsg6(";
+	_stream << "[0]Client[13]OnSymbolsInfoMsg6(";
 	LrpWriteAString("requestId", requestId, _stream);
 	_stream<<", ";
 	LrpWriteSymbolInfoArray6("symbols", symbols, _stream);
@@ -1431,7 +1452,7 @@ void Client::OnSymbolsInfoMsg6(const std::string& requestId, const std::vector<C
 void Client::OnSymbolsInfoMsg7(const std::string& requestId, const std::vector<CFxSymbolInfo>& symbols)
 {
 	std::stringstream _stream;
-	_stream << "[0]Client[13]OnSymbolsInfoMsg7(";
+	_stream << "[0]Client[14]OnSymbolsInfoMsg7(";
 	LrpWriteAString("requestId", requestId, _stream);
 	_stream<<", ";
 	LrpWriteSymbolInfoArray7("symbols", symbols, _stream);
@@ -1441,7 +1462,7 @@ void Client::OnSymbolsInfoMsg7(const std::string& requestId, const std::vector<C
 void Client::OnComponentsInfoMsg(const std::string& requestId, const __int32& quotesStorageVersion)
 {
 	std::stringstream _stream;
-	_stream << "[0]Client[14]OnComponentsInfoMsg(";
+	_stream << "[0]Client[15]OnComponentsInfoMsg(";
 	LrpWriteAString("requestId", requestId, _stream);
 	_stream<<", ";
 	LrpWriteInt32("quotesStorageVersion", quotesStorageVersion, _stream);
@@ -1451,7 +1472,7 @@ void Client::OnComponentsInfoMsg(const std::string& requestId, const __int32& qu
 void Client::OnQuotesSubscriptionMsg(const std::string& requestId, const __int32& status, const std::string& message)
 {
 	std::stringstream _stream;
-	_stream << "[0]Client[15]OnQuotesSubscriptionMsg(";
+	_stream << "[0]Client[16]OnQuotesSubscriptionMsg(";
 	LrpWriteAString("requestId", requestId, _stream);
 	_stream<<", ";
 	LrpWriteInt32("status", status, _stream);
@@ -1463,7 +1484,7 @@ void Client::OnQuotesSubscriptionMsg(const std::string& requestId, const __int32
 void Client::OnFileChunkMsg(const std::string& requestId, const CFxFileChunk& chunk)
 {
 	std::stringstream _stream;
-	_stream << "[0]Client[16]OnFileChunkMsg(";
+	_stream << "[0]Client[17]OnFileChunkMsg(";
 	LrpWriteAString("requestId", requestId, _stream);
 	_stream<<", ";
 	LrpWriteFileChunk("chunk", chunk, _stream);
@@ -1473,7 +1494,7 @@ void Client::OnFileChunkMsg(const std::string& requestId, const CFxFileChunk& ch
 void Client::OnDataHistoryMetaInfoResponseMsg(const std::string& requestId, const __int32& status, const std::string& field)
 {
 	std::stringstream _stream;
-	_stream << "[0]Client[17]OnDataHistoryMetaInfoResponseMsg(";
+	_stream << "[0]Client[18]OnDataHistoryMetaInfoResponseMsg(";
 	LrpWriteAString("requestId", requestId, _stream);
 	_stream<<", ";
 	LrpWriteInt32("status", status, _stream);
@@ -1485,7 +1506,7 @@ void Client::OnDataHistoryMetaInfoResponseMsg(const std::string& requestId, cons
 void Client::OnDataHistoryMetaInfoRejectMsg(const std::string& requestId, const __int32& status, const std::string& field)
 {
 	std::stringstream _stream;
-	_stream << "[0]Client[18]OnDataHistoryMetaInfoRejectMsg(";
+	_stream << "[0]Client[19]OnDataHistoryMetaInfoRejectMsg(";
 	LrpWriteAString("requestId", requestId, _stream);
 	_stream<<", ";
 	LrpWriteInt32("status", status, _stream);
@@ -1497,7 +1518,7 @@ void Client::OnDataHistoryMetaInfoRejectMsg(const std::string& requestId, const 
 void Client::OnDataHistoryResponseMsg(const std::string& requestId, const CFxDataHistoryResponse& response)
 {
 	std::stringstream _stream;
-	_stream << "[0]Client[19]OnDataHistoryResponseMsg(";
+	_stream << "[0]Client[20]OnDataHistoryResponseMsg(";
 	LrpWriteAString("requestId", requestId, _stream);
 	_stream<<", ";
 	LrpWriteDataHistoryResponse("response", response, _stream);
@@ -1507,7 +1528,7 @@ void Client::OnDataHistoryResponseMsg(const std::string& requestId, const CFxDat
 void Client::OnDataHistoryRejectMsg(const std::string& requestId, const FxMarketHistoryRejectType& rejectType, const std::string& rejectReason)
 {
 	std::stringstream _stream;
-	_stream << "[0]Client[20]OnDataHistoryRejectMsg(";
+	_stream << "[0]Client[21]OnDataHistoryRejectMsg(";
 	LrpWriteAString("requestId", requestId, _stream);
 	_stream<<", ";
 	LrpWriteMarketHistoryRejectType("rejectType", rejectType, _stream);
@@ -1519,7 +1540,7 @@ void Client::OnDataHistoryRejectMsg(const std::string& requestId, const FxMarket
 void Client::OnQuoteRawMsg(const MemoryBuffer& data)
 {
 	std::stringstream _stream;
-	_stream << "[0]Client[21]OnQuoteRawMsg(";
+	_stream << "[0]Client[22]OnQuoteRawMsg(";
 	LrpWriteRaw("data", data, _stream);
 	_stream << ");";
 	m_stream->Write(_stream.str());
@@ -1527,7 +1548,7 @@ void Client::OnQuoteRawMsg(const MemoryBuffer& data)
 void Client::OnNotificationMsg(const CNotification& notification)
 {
 	std::stringstream _stream;
-	_stream << "[0]Client[22]OnNotificationMsg(";
+	_stream << "[0]Client[23]OnNotificationMsg(";
 	LrpWriteNotification("notification", notification, _stream);
 	_stream << ");";
 	m_stream->Write(_stream.str());
@@ -1535,7 +1556,7 @@ void Client::OnNotificationMsg(const CNotification& notification)
 void Client::OnBusinessRejectMsg(const std::string& rejectReason, const std::string& rejectTag)
 {
 	std::stringstream _stream;
-	_stream << "[0]Client[23]OnBusinessRejectMsg(";
+	_stream << "[0]Client[24]OnBusinessRejectMsg(";
 	LrpWriteAString("rejectReason", rejectReason, _stream);
 	_stream<<", ";
 	LrpWriteAString("rejectTag", rejectTag, _stream);

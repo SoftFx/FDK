@@ -42,6 +42,12 @@ void CLocalCppServer::EndLogon(void* handle, int64 id, int32 status, const strin
     pServer->EndLogon(id, status, message);
 }
 
+void CLocalCppServer::SendTwoFactorAuth(void* handle, int64 id, const FxTwoFactorReason reason, const string& text, const CDateTime& expire)
+{
+    CServer* pServer = reinterpret_cast<CServer*>(handle);
+    pServer->SendTwoFactorAuth(id, reason, text, expire);
+}
+
 void CLocalCppServer::SendSessionInfo(void* handle, int64 id, const string& requestId, const CFxSessionInfo& sessionInfo)
 {
     CServer* pServer = reinterpret_cast<CServer*>(handle);

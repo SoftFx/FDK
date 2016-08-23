@@ -142,6 +142,11 @@
         public event LogoutHandler Logout;
 
         /// <summary>
+        /// Occurs when data feed is required two factor auth.
+        /// </summary>
+        public event TwoFactorAuthHandler TwoFactorAuth;
+
+        /// <summary>
         /// Occurs when session info received or changed.
         /// </summary>
         public event SessionInfoHandler SessionInfo;
@@ -156,7 +161,7 @@
         #region Methods
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="timeoutInMilliseconds"></param>
         /// <returns></returns>
@@ -277,6 +282,9 @@
                 case Native.FX_MSG_CACHE_UPDATED:
                     this.RaiseCacheUpdated(message);
                     break;
+                case Native.FX_MSG_TWO_FACTOR_AUTH:
+                    this.RaiseTwoFactorAuth(message);
+                    break;
                 default:
                     return false;
             }
@@ -300,6 +308,16 @@
             if (eh != null)
             {
                 var e = new LogoutEventArgs(message);
+                eh(this, e);
+            }
+        }
+
+        void RaiseTwoFactorAuth(FxMessage message)
+        {
+            var eh = this.TwoFactorAuth;
+            if (eh != null)
+            {
+                var e = new TwoFactorAuthEventArgs(message);
                 eh(this, e);
             }
         }

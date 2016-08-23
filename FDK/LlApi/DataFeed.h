@@ -30,6 +30,7 @@ public:
 
 public:
     virtual void VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion);
+    virtual void VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorReason reason, const std::string& text, const CDateTime& expire);
     virtual void VLogout(const CFxEventInfo& eventInfo, const FxLogoutReason reason, const string& description);
 
     virtual void VTick(const CFxEventInfo& eventInfo, const CFxQuote& quote);

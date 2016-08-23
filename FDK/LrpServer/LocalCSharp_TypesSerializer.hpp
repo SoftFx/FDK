@@ -4,6 +4,8 @@ namespace
 {
 	void WriteAStringArray(const std::vector<std::string>& arg, MemoryBuffer& buffer);
 	std::vector<std::string> ReadAStringArray(MemoryBuffer& buffer);
+	void WriteTwoFactorReason(const FxTwoFactorReason& arg, MemoryBuffer& buffer);
+	FxTwoFactorReason ReadTwoFactorReason(MemoryBuffer& buffer);
 	void WriteDataHistoryRequest(const CFxDataHistoryRequest& arg, MemoryBuffer& buffer);
 	CFxDataHistoryRequest ReadDataHistoryRequest(MemoryBuffer& buffer);
 	void WriteBar(const CFxBar& arg, MemoryBuffer& buffer);
@@ -33,6 +35,15 @@ namespace
 		{
 			result.push_back(ReadAString(buffer));
 		}
+		return result;
+	}
+	void WriteTwoFactorReason(const FxTwoFactorReason& arg, MemoryBuffer& buffer)
+	{
+		WriteInt32((__int32)arg, buffer);
+	}
+	FxTwoFactorReason ReadTwoFactorReason(MemoryBuffer& buffer)
+	{
+		auto result = (FxTwoFactorReason)ReadInt32(buffer);
 		return result;
 	}
 	void WriteDataHistoryRequest(const CFxDataHistoryRequest& arg, MemoryBuffer& buffer)

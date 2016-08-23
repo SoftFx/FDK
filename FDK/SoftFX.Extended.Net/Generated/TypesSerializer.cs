@@ -181,6 +181,15 @@ namespace SoftFX.Extended.Generated
 		{
 			buffer.WriteInt32((int)arg);
 		}
+		public static SoftFX.Extended.TwoFactorReason ReadTwoFactorReason(this MemoryBuffer buffer)
+		{
+			var result = (SoftFX.Extended.TwoFactorReason)buffer.ReadInt32();
+			return result;
+		}
+		public static void WriteTwoFactorReason(this MemoryBuffer buffer, SoftFX.Extended.TwoFactorReason arg)
+		{
+			buffer.WriteInt32((int)arg);
+		}
 		public static SoftFX.Extended.OrderStatus ReadOrderStatus(this MemoryBuffer buffer)
 		{
 			var result = (SoftFX.Extended.OrderStatus)buffer.ReadInt32();
@@ -344,6 +353,20 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteInt32(arg.SettlementCurrencySortOrder);
 			buffer.WriteInt32(arg.CurrencyPrecision);
 			buffer.WriteInt32(arg.SettlementCurrencyPrecision);
+		}
+		public static SoftFX.Extended.TwoFactorAuth ReadTwoFactorAuth(this MemoryBuffer buffer)
+		{
+			var result = new SoftFX.Extended.TwoFactorAuth();
+			result.Reason = buffer.ReadTwoFactorReason();
+			result.Text = buffer.ReadAString();
+			result.Expire = buffer.ReadTime();
+			return result;
+		}
+		public static void WriteTwoFactorAuth(this MemoryBuffer buffer, SoftFX.Extended.TwoFactorAuth arg)
+		{
+			buffer.WriteTwoFactorReason(arg.Reason);
+			buffer.WriteAString(arg.Text);
+			buffer.WriteTime(arg.Expire);
 		}
 		public static SoftFX.Extended.SessionInfo ReadSessionInfo(this MemoryBuffer buffer)
 		{

@@ -2,7 +2,7 @@
 #define __Core_Api_Core__
 
 
-#ifndef CORE_API 
+#ifndef CORE_API
 #ifdef CORE_EXPORTS
 #define CORE_API EXPORT_API
 #else
@@ -20,6 +20,7 @@
 #include "FxParams.h"
 #include "FxMessage.h"
 #include "FxMsgLogout.h"
+#include "FxTwoFactorAuth.h"
 #include "FxSessionInfo.h"
 #include "FxAccountInfo.h"
 #include "FxSymbolInfo.h"
@@ -49,16 +50,16 @@
 
 template<typename T> FxRef<T> TypeFromHandle(FxHandle handle)
 {
-	CFxHandle* pInstance = reinterpret_cast<CFxHandle*>(handle);
-	T* result = CHandlesPool::TypeFromHandle<T>(pInstance);
-	return result;
+    CFxHandle* pInstance = reinterpret_cast<CFxHandle*>(handle);
+    T* result = CHandlesPool::TypeFromHandle<T>(pInstance);
+    return result;
 }
 
 template<typename T> void* HandleFromType(T* handle)
 {
-	CFxHandle* pHandle = static_cast<CFxHandle*>(handle);
-	void* result = pHandle;
-	return result;
+    CFxHandle* pHandle = static_cast<CFxHandle*>(handle);
+    void* result = pHandle;
+    return result;
 }
 
 #endif

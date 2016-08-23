@@ -38,6 +38,7 @@ namespace
 void CFixConnection::InitializeMessageHandlers()
 {
     gMessageTypeToHandler[FIX::MsgType_Heartbeat] = &CFixConnection::OnEmpty;
+	gMessageTypeToHandler[FIX::MsgType_TwoFactorLogon] = reinterpret_cast<MessageHandler>(&CFixConnection::OnTwoFactorAuth);
     gMessageTypeToHandler[FIX::MsgType_TradingSessionStatus] = reinterpret_cast<MessageHandler>(&CFixConnection::OnSessionInfo);
     gMessageTypeToHandler[FIX::MsgType_CurrencyList] = reinterpret_cast<MessageHandler>(&CFixConnection::OnCurrenciesInfo);
     gMessageTypeToHandler[FIX::MsgType_SecurityList] = reinterpret_cast<MessageHandler>(&CFixConnection::OnSymbolsInfo);
@@ -269,6 +270,22 @@ void CFixConnection::onLogout(const Message& message, const SessionID& /*session
         }
     }
     m_receiver->VLogout(eventInfo, reason, description);
+}
+
+void CFixConnection::OnTwoFactorAuth(const FIX44::TwoFactorLogon& message)
+{
+	FxTwoFactorReason reason = FxTwoFactorReason_Unknown;
+	FIX::UtcTimeStamp expire;
+	std::string text;
+
+	char temp;
+	if (message.TryGetTwoFactorReason(temp))
+		reason = static_cast<FxTwoFactorReason>(temp);
+	message.TryGetExpireTime(expire);
+	message.TryGetText(text);
+
+	CFxEventInfo eventInfo;
+	m_receiver->VTwoFactorAuth(eventInfo, reason, text, expire.toFileTime());
 }
 
 void CFixConnection::OnSessionInfo(const FIX44::TradingSessionStatus& message)

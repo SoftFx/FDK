@@ -63,6 +63,12 @@ void CLrpReceiver::OnLogoutMsg(const FxLogoutReason reason, const string& descri
     m_receiver->VLogout(info, reason, description);
 }
 
+void CLrpReceiver::OnTwoFactorAuthMsg(const FxTwoFactorReason reason, const string& text, const CDateTime& expire)
+{
+    CFxEventInfo info;
+    m_receiver->VTwoFactorAuth(info, reason, text, expire);
+}
+
 void CLrpReceiver::OnSessionInfoMsg(const string& requestId, const CFxSessionInfo& info)
 {
     CFxSessionInfo temp = info;

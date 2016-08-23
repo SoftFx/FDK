@@ -32,6 +32,7 @@ public:
 
 private:
 	void OnEmpty(const FIX::Message& message);
+	void OnTwoFactorAuth(const FIX44::TwoFactorLogon& message);
 	void OnSessionInfo(const FIX44::TradingSessionStatus& message);
     void OnCurrenciesInfo(const FIX44::CurrencyList& message);
 	void OnSymbolsInfo(const FIX44::SecurityList& message);

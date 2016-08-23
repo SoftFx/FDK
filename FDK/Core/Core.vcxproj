@@ -278,6 +278,7 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
     <ClInclude Include="FxMessage.h" />
     <ClInclude Include="FxMsgLogout.h" />
     <ClInclude Include="FxMsgData.h" />
+    <ClInclude Include="FxTwoFactorAuth.h" />
     <ClInclude Include="LogoutException.h" />
     <ClInclude Include="Notification.h" />
     <ClInclude Include="FxOrder.h" />
@@ -325,6 +326,7 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
     <ClCompile Include="FxHandle.cpp" />
     <ClCompile Include="FxMessage.cpp" />
     <ClCompile Include="FxMsgLogout.cpp" />
+    <ClCompile Include="FxTwoFactorAuth.cpp" />
     <ClCompile Include="LogoutException.cpp" />
     <ClCompile Include="Notification.cpp" />
     <ClCompile Include="FxOrder.cpp" />

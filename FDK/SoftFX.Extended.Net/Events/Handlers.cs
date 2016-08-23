@@ -17,6 +17,13 @@
     public delegate void LogoutHandler(object sender, LogoutEventArgs e);
 
     /// <summary>
+    /// Represents the method that will handle two factor auth event.
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">Two factor auth information.</param>
+    public delegate void TwoFactorAuthHandler(object sender, TwoFactorAuthEventArgs e);
+
+    /// <summary>
     /// Represents the method that will handle new tick event.
     /// </summary>
     /// <param name="sender">The source of the event.</param>
@@ -66,7 +73,7 @@
     public delegate void SymbolInfoHandler(object sender, SymbolInfoEventArgs e);
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
