@@ -126,12 +126,22 @@ void CClient::VLogon(const CFxEventInfo& eventInfo, const string& protocolVersio
         m_protocolVersion = protocolVersion;
         SetEvent(m_stateEvent);
     }
+
     __super::VLogon(eventInfo, protocolVersion);
+
+    AfterLogon();
 }
 
 void CClient::VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorReason reason, const std::string& text, const CDateTime& expire)
 {
     __super::VTwoFactorAuth(eventInfo, reason, text, expire);
+
+    if (reason == FxTwoFactorReason_ServerSuccess)
+        AfterLogon();
+}
+
+void CClient::AfterLogon()
+{
 }
 
 void CClient::VSessionInfo(const CFxEventInfo& eventInfo, CFxSessionInfo& sessionInfo)

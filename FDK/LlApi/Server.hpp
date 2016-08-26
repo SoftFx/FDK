@@ -330,8 +330,9 @@ namespace
 	const unsigned short LrpMethod_ClientServer_GetNextMessage_Id = 6;
 	const unsigned short LrpMethod_ClientServer_DispatchMessage_Id = 7;
 	const unsigned short LrpMethod_ClientServer_GetNetworkActivity_Id = 8;
-	const unsigned short LrpMethod_ClientServer_GetSessionInfo_Id = 9;
-	const unsigned short LrpMethod_ClientServer_GetFileChunk_Id = 10;
+	const unsigned short LrpMethod_ClientServer_SendTwoFactorResponse_Id = 9;
+	const unsigned short LrpMethod_ClientServer_GetSessionInfo_Id = 10;
+	const unsigned short LrpMethod_ClientServer_GetFileChunk_Id = 11;
 
 	typedef void (*LrpInvoke_ClientServer_Method_Handler)(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel);
 	void LrpInvoke_ClientServer_Start(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
@@ -434,6 +435,17 @@ namespace
 		WriteUInt64(arg3, buffer);
 		WriteUInt64(arg4, buffer);
 	}
+	void LrpInvoke_ClientServer_SendTwoFactorResponse(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	{
+		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
+		auto& component = pChannel->GetClientServer();
+		component; // if all methods of component are static then the next line generates warning #4189
+		auto arg0 = ReadLocalPointer(buffer);
+		auto arg1 = ReadTwoFactorReason(buffer);
+		auto arg2 = ReadAString(buffer);
+		component.SendTwoFactorResponse(arg0, arg1, arg2);
+		buffer.Reset(offset);
+	}
 	void LrpInvoke_ClientServer_GetSessionInfo(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
 		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
@@ -470,13 +482,14 @@ namespace
 		LrpInvoke_ClientServer_GetNextMessage,
 		LrpInvoke_ClientServer_DispatchMessage,
 		LrpInvoke_ClientServer_GetNetworkActivity,
+		LrpInvoke_ClientServer_SendTwoFactorResponse,
 		LrpInvoke_ClientServer_GetSessionInfo,
 		LrpInvoke_ClientServer_GetFileChunk,
 	};
 
 	HRESULT LrpInvoke_ClientServer(size_t offset, size_t methodId, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
-		if(methodId >= 11)
+		if(methodId >= 12)
 		{
 			return LRP_INVALID_METHOD_ID;
 		}
@@ -1386,6 +1399,7 @@ extern "C" const char* __stdcall LrpSignature()
 		"GetNextMessage@7DA6E4C15870B40BB320FAD8AE769592;"
 		"DispatchMessage@A392D063EB2B6FBD41C9E9D8792FBB77;"
 		"GetNetworkActivity@F971B04D8C74F97079D5E754A167C543;"
+		"SendTwoFactorResponse@B9E034A987F3756B7B4CC10C66D42D2A;"
 		"GetSessionInfo@C43454EE497F7BEB18B46CDBB7CAEF76;"
 		"GetFileChunk@384153BF0B70B44D5CE2E25522BD5B05;"
 	"$ClientCache;"

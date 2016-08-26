@@ -11,6 +11,17 @@
         }
 
         /// <summary>
+        /// The method send two factor response with one time password.
+        /// </summary>
+        /// <param name="reason">Two factor response reason</param>
+        /// <param name="otp">One time password</param>
+        /// <returns>can not be null.</returns>
+        public void SendTwoFactorResponse(TwoFactorReason reason, string otp)
+        {
+            this.Client.Handle.SendTwoFactorResponse(reason, otp);
+        }
+
+        /// <summary>
         /// Gets a specified chunk of a specified file.
         /// </summary>
         /// <param name="fileId">A requested file id; can not be null.</param>

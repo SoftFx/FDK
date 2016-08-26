@@ -37,6 +37,9 @@ public:
     virtual void VPositionReport(const CFxEventInfo& info, CFxPositionReport& positionReport);
     virtual void VNotify(const CFxEventInfo& eventInfo, const CNotification& notification);
 
+protected:
+    virtual void AfterLogon();
+
 private:
     void UpdateAccountInfo(FxAccountType accountType, const string& account);
 

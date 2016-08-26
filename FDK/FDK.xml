@@ -454,6 +454,12 @@
         <Param name="sslBytesReceived" type="uint64" direction="out" />
         <Return type="void" />
       </Method>
+      <Method name="SendTwoFactorResponse">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="reason" type="TwoFactorReason" direction="in" />
+        <Param name="otp" type="astring" direction="in" />
+        <Return type="void" />
+      </Method>
       <Method name="GetSessionInfo">
         <Param name="handle" type="lptr" direction="in" />
         <Param name="timeoutInMilliseconds" type="uint32" direction="in" />

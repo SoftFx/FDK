@@ -68,7 +68,7 @@ void CFixSender::SendMessage(FIX::Message& message)
 void CFixSender::VSendTwoFactorResponse(const FxTwoFactorReason reason, const std::string& otp)
 {
     FIX44::TwoFactorLogon message;
-    message.SetTwoFactorReason((char)reason);
+    message.SetTwoFactorReason('0' + (char)reason);
     message.SetOneTimePassword(otp);
     return SendMessage(message);
 }

@@ -18,8 +18,8 @@ public:
     void OnHeartBeatRequest();
     void OnHeartBeatResponse();
     void OnLogonMsg(const string& protocolVersion);
-    void OnLogoutMsg(const FxLogoutReason reason, const string& description);
     void OnTwoFactorAuthMsg(const FxTwoFactorReason reason, const string& text, const CDateTime& expire);
+    void OnLogoutMsg(const FxLogoutReason reason, const string& description);
     void OnQuotesSubscriptionMsg(const string& requestId, int32 status, const string& message);
     void OnSessionInfoMsg(const string& requestId, const CFxSessionInfo& info);
     void OnSessionInfoMsg2(const string& requestId, const CFxSessionInfo& info);

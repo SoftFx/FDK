@@ -70,6 +70,7 @@ private:
 	FIX::SessionSettings m_settings;
 	FIX::MemoryStoreFactory m_messageStorefactory;
 	FIX::SessionID m_sessionID;
+	string m_deviceId;
 	string m_username;
 	string m_password;
 	string m_protocolVersion;

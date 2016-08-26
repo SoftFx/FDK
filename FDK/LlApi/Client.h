@@ -45,6 +45,7 @@ public:
 
 protected:
     bool CheckProtocolVersion(const CProtocolVersion& requiredVersion) const;
+    virtual void AfterLogon();
 
 private:
     CClient(const CClient&);

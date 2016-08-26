@@ -205,11 +205,31 @@ namespace SoftFX.Extended.Generated
 				sslBytesReceived = buffer.ReadUInt64();
 			}
 		}
-		public bool Is_GetSessionInfo_Supported
+		public bool Is_SendTwoFactorResponse_Supported
 		{
 			get
 			{
 				return m_client.IsSupported(3, 9);
+			}
+		}
+		public void SendTwoFactorResponse(SoftFX.Lrp.LPtr handle, SoftFX.Extended.TwoFactorReason reason, string otp)
+		{
+			using(MemoryBuffer buffer = m_client.Create())
+			{
+				buffer.WriteLocalPointer(handle);
+				buffer.WriteTwoFactorReason(reason);
+				buffer.WriteAString(otp);
+
+				int _status = m_client.Invoke(3, 9, buffer);
+				TypesSerializer.Throw(_status, buffer);
+
+			}
+		}
+		public bool Is_GetSessionInfo_Supported
+		{
+			get
+			{
+				return m_client.IsSupported(3, 10);
 			}
 		}
 		public SoftFX.Extended.SessionInfo GetSessionInfo(SoftFX.Lrp.LPtr handle, uint timeoutInMilliseconds)
@@ -219,7 +239,7 @@ namespace SoftFX.Extended.Generated
 				buffer.WriteLocalPointer(handle);
 				buffer.WriteUInt32(timeoutInMilliseconds);
 
-				int _status = m_client.Invoke(3, 9, buffer);
+				int _status = m_client.Invoke(3, 10, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 				var _result = buffer.ReadSessionInfo();
@@ -230,7 +250,7 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(3, 10);
+				return m_client.IsSupported(3, 11);
 			}
 		}
 		public SoftFX.Extended.FxFileChunk GetFileChunk(SoftFX.Lrp.LPtr handle, string fileId, int chunkId, uint timeoutInMilliseconds)
@@ -242,7 +262,7 @@ namespace SoftFX.Extended.Generated
 				buffer.WriteInt32(chunkId);
 				buffer.WriteUInt32(timeoutInMilliseconds);
 
-				int _status = m_client.Invoke(3, 10, buffer);
+				int _status = m_client.Invoke(3, 11, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 				var _result = buffer.ReadFileChunk();

@@ -208,20 +208,18 @@ void CDataTrade::VExecution(const CFxEventInfo& eventInfo, CFxExecutionReport& e
 
 void CDataTrade::VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion)
 {
-    m_accountType = FxAccountType_None;
-    m_cache.Clear();
-
-    string id = NextId(cInternalASynchCall);
-    m_sender->VSendGetAccountInfo(id);
-
-    id = NextId(cInternalASynchCall);
-    m_sender->VSendGetOrders(id);
-
     __super::VLogon(eventInfo, protocolVersion);
 }
 
 void CDataTrade::VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorReason reason, const std::string& text, const CDateTime& expire)
 {
+    __super::VTwoFactorAuth(eventInfo, reason, text, expire);
+}
+
+void CDataTrade::AfterLogon()
+{
+    __super::AfterLogon();
+
     m_accountType = FxAccountType_None;
     m_cache.Clear();
 
@@ -230,8 +228,6 @@ void CDataTrade::VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactor
 
     id = NextId(cInternalASynchCall);
     m_sender->VSendGetOrders(id);
-
-    __super::VTwoFactorAuth(eventInfo, reason, text, expire);
 }
 
 void CDataTrade::VLogout(const CFxEventInfo& eventInfo, const FxLogoutReason reason, const string& description)

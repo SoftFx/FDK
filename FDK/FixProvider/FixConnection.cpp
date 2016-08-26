@@ -23,6 +23,7 @@ namespace
     const string cPort = "Port";
     const string cSenderCompId = "SenderCompId";
     const string cTargetCompId = "TargetCompId";
+    const string cDeviceId = "DeviceId";
     const string cUsername = "Username";
     const string cPassword = "Password";
     const string cSecureConnection = "SecureConnection";
@@ -38,7 +39,7 @@ namespace
 void CFixConnection::InitializeMessageHandlers()
 {
     gMessageTypeToHandler[FIX::MsgType_Heartbeat] = &CFixConnection::OnEmpty;
-	gMessageTypeToHandler[FIX::MsgType_TwoFactorLogon] = reinterpret_cast<MessageHandler>(&CFixConnection::OnTwoFactorAuth);
+    gMessageTypeToHandler[FIX::MsgType_TwoFactorLogon] = reinterpret_cast<MessageHandler>(&CFixConnection::OnTwoFactorAuth);
     gMessageTypeToHandler[FIX::MsgType_TradingSessionStatus] = reinterpret_cast<MessageHandler>(&CFixConnection::OnSessionInfo);
     gMessageTypeToHandler[FIX::MsgType_CurrencyList] = reinterpret_cast<MessageHandler>(&CFixConnection::OnCurrenciesInfo);
     gMessageTypeToHandler[FIX::MsgType_SecurityList] = reinterpret_cast<MessageHandler>(&CFixConnection::OnSymbolsInfo);
@@ -104,7 +105,7 @@ CFixConnection::CFixConnection(const string& connectionString)
 
     sessionOptions.setString(FIX::SOCKET_CONNECT_HOST, address);
     sessionOptions.setLong(FIX::SOCKET_CONNECT_PORT, port);
-        sessionOptions.setBool(FIX::SOCKET_NODELAY, true);
+    sessionOptions.setBool(FIX::SOCKET_NODELAY, true);
 
     FIX::SessionID sessionID(fixVersion, senderCompId, targetCompId);
     m_sessionID = sessionID;
@@ -120,6 +121,7 @@ CFixConnection::CFixConnection(const string& connectionString)
     m_settings.set(FIX::Dictionary());
     m_logFactory = new FIX::FileLogFactory(fixLogDirectory, fixEventsFileName, fixMessagesFileName, excludeMessagesFromLogs, decodeLogFixMessages);
 
+    m_deviceId = parameters.GetString(cDeviceId);
     m_username = parameters.GetString(cUsername);
     m_password = parameters.GetString(cPassword);
 
@@ -168,6 +170,7 @@ void CFixConnection::toAdmin(FIX::Message& message, const FIX::SessionID& /*sess
     if (FIX::MsgType_Logon == type)
     {
         FIX44::Logon& logon = static_cast<FIX44::Logon&>(message);
+        logon.SetDeviceId(m_deviceId);
         logon.SetUsername(m_username);
         logon.SetPassword(m_password);
         logon.SetResetSeqNumFlag(true);
@@ -274,18 +277,18 @@ void CFixConnection::onLogout(const Message& message, const SessionID& /*session
 
 void CFixConnection::OnTwoFactorAuth(const FIX44::TwoFactorLogon& message)
 {
-	FxTwoFactorReason reason = FxTwoFactorReason_Unknown;
-	FIX::UtcTimeStamp expire;
-	std::string text;
+    FxTwoFactorReason reason = FxTwoFactorReason_Unknown;
+    FIX::UtcTimeStamp expire;
+    std::string text;
 
-	char temp;
-	if (message.TryGetTwoFactorReason(temp))
-		reason = static_cast<FxTwoFactorReason>(temp);
-	message.TryGetExpireTime(expire);
-	message.TryGetText(text);
+    char temp;
+    if (message.TryGetTwoFactorReason(temp))
+        reason = static_cast<FxTwoFactorReason>(temp - '0');
+    message.TryGetExpireTime(expire);
+    message.TryGetText(text);
 
-	CFxEventInfo eventInfo;
-	m_receiver->VTwoFactorAuth(eventInfo, reason, text, expire.toFileTime());
+    CFxEventInfo eventInfo;
+    m_receiver->VTwoFactorAuth(eventInfo, reason, text, expire.toFileTime());
 }
 
 void CFixConnection::OnSessionInfo(const FIX44::TradingSessionStatus& message)

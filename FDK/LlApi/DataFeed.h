@@ -39,6 +39,9 @@ public:
     virtual void VNotify(const CFxEventInfo& eventInfo, const CNotification& notification);
     virtual void VQuotesHistoryResponse(const CFxEventInfo& eventInfo, const int version);
 
+protected:
+    virtual void AfterLogon();
+
 public:
     const CDataFeedCache& Cache() const;
     CDataFeedCache& Cache();

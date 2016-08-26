@@ -16,28 +16,28 @@
         Unknown = 0,
 
         /// <summary>
-        /// Request two factor auth.
+        /// Server request two factor auth.
         /// </summary>
-        Request = 1,
+        ServerRequest = 1,
 
         /// <summary>
-        /// Response two factor auth.
+        /// Server success response two factor auth.
         /// </summary>
-        Response = 2,
+        ServerSuccess = 2,
 
         /// <summary>
-        /// Resume two factor session.
+        /// Server error response two factor auth.
         /// </summary>
-        Resume = 3,
+        ServerError = 3,
 
         /// <summary>
-        /// Invalid one-time-password.
+        /// Client response two factor auth.
         /// </summary>
-        InvalidOtp = 4,
+        ClientResponse = 4,
 
         /// <summary>
-        /// Two factro auth is not set for account.
+        /// Client resume two factor session.
         /// </summary>
-        TfaNotSet = 5
+        ClientResume = 5
     }
 }
