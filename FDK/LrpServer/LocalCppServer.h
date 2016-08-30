@@ -11,6 +11,7 @@ public:
 public:
     static void EndConnection(void* handle, int64 id, int32 status);
     static void EndLogon(void* handle, int64 id, int32 status, const string& message);
+    static void SendTwoFactorAuth(void* handle, int64 id, const FxTwoFactorReason reason, const string& text, const CDateTime& expire);
     static void SendSessionInfo(void* handle, int64 id, const string& requestId, const CFxSessionInfo& sessionInfo);
     static void SendCurrenciesInfo(void* handle, int64 id, const string& requestId, const vector<CFxCurrencyInfo>& currenciesInfo);
     static void SendSymbolsInfo(void* handle, int64 id, const string& requestId, const vector<CFxSymbolInfo>& symbolsInfo);

@@ -12,6 +12,7 @@ public:
 	void OnHeartBeatResponse();
 	void OnLogonMsg(const std::string& protocolVersion);
 	void OnLogoutMsg(const FxLogoutReason& reason, const std::string& description);
+	void OnTwoFactorAuthMsg(const FxTwoFactorReason& reason, const std::string& text, const CDateTime& expire);
 	void OnSessionInfoMsg(const std::string& requestId, const CFxSessionInfo& sessionInfo);
 	void OnSessionInfoMsg2(const std::string& requestId, const CFxSessionInfo& sessionInfo);
 	void OnCurrenciesInfoMsg(const std::string& requestId, const std::vector<CFxCurrencyInfo>& currencies);

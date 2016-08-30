@@ -9,26 +9,27 @@ namespace
 	const unsigned short LrpMethod_Client_OnHeartBeatResponse_Id = 1;
 	const unsigned short LrpMethod_Client_OnLogonMsg_Id = 2;
 	const unsigned short LrpMethod_Client_OnLogoutMsg_Id = 3;
-	const unsigned short LrpMethod_Client_OnSessionInfoMsg_Id = 4;
-	const unsigned short LrpMethod_Client_OnSessionInfoMsg2_Id = 5;
-	const unsigned short LrpMethod_Client_OnCurrenciesInfoMsg_Id = 6;
-	const unsigned short LrpMethod_Client_OnSymbolsInfoMsg_Id = 7;
-	const unsigned short LrpMethod_Client_OnSymbolsInfoMsg2_Id = 8;
-	const unsigned short LrpMethod_Client_OnSymbolsInfoMsg3_Id = 9;
-	const unsigned short LrpMethod_Client_OnSymbolsInfoMsg4_Id = 10;
-	const unsigned short LrpMethod_Client_OnSymbolsInfoMsg5_Id = 11;
-	const unsigned short LrpMethod_Client_OnSymbolsInfoMsg6_Id = 12;
-	const unsigned short LrpMethod_Client_OnSymbolsInfoMsg7_Id = 13;
-	const unsigned short LrpMethod_Client_OnComponentsInfoMsg_Id = 14;
-	const unsigned short LrpMethod_Client_OnQuotesSubscriptionMsg_Id = 15;
-	const unsigned short LrpMethod_Client_OnFileChunkMsg_Id = 16;
-	const unsigned short LrpMethod_Client_OnDataHistoryMetaInfoResponseMsg_Id = 17;
-	const unsigned short LrpMethod_Client_OnDataHistoryMetaInfoRejectMsg_Id = 18;
-	const unsigned short LrpMethod_Client_OnDataHistoryResponseMsg_Id = 19;
-	const unsigned short LrpMethod_Client_OnDataHistoryRejectMsg_Id = 20;
-	const unsigned short LrpMethod_Client_OnQuoteRawMsg_Id = 21;
-	const unsigned short LrpMethod_Client_OnNotificationMsg_Id = 22;
-	const unsigned short LrpMethod_Client_OnBusinessRejectMsg_Id = 23;
+	const unsigned short LrpMethod_Client_OnTwoFactorAuthMsg_Id = 4;
+	const unsigned short LrpMethod_Client_OnSessionInfoMsg_Id = 5;
+	const unsigned short LrpMethod_Client_OnSessionInfoMsg2_Id = 6;
+	const unsigned short LrpMethod_Client_OnCurrenciesInfoMsg_Id = 7;
+	const unsigned short LrpMethod_Client_OnSymbolsInfoMsg_Id = 8;
+	const unsigned short LrpMethod_Client_OnSymbolsInfoMsg2_Id = 9;
+	const unsigned short LrpMethod_Client_OnSymbolsInfoMsg3_Id = 10;
+	const unsigned short LrpMethod_Client_OnSymbolsInfoMsg4_Id = 11;
+	const unsigned short LrpMethod_Client_OnSymbolsInfoMsg5_Id = 12;
+	const unsigned short LrpMethod_Client_OnSymbolsInfoMsg6_Id = 13;
+	const unsigned short LrpMethod_Client_OnSymbolsInfoMsg7_Id = 14;
+	const unsigned short LrpMethod_Client_OnComponentsInfoMsg_Id = 15;
+	const unsigned short LrpMethod_Client_OnQuotesSubscriptionMsg_Id = 16;
+	const unsigned short LrpMethod_Client_OnFileChunkMsg_Id = 17;
+	const unsigned short LrpMethod_Client_OnDataHistoryMetaInfoResponseMsg_Id = 18;
+	const unsigned short LrpMethod_Client_OnDataHistoryMetaInfoRejectMsg_Id = 19;
+	const unsigned short LrpMethod_Client_OnDataHistoryResponseMsg_Id = 20;
+	const unsigned short LrpMethod_Client_OnDataHistoryRejectMsg_Id = 21;
+	const unsigned short LrpMethod_Client_OnQuoteRawMsg_Id = 22;
+	const unsigned short LrpMethod_Client_OnNotificationMsg_Id = 23;
+	const unsigned short LrpMethod_Client_OnBusinessRejectMsg_Id = 24;
 
 	typedef void (*LrpInvoke_Client_Method_Handler)(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel);
 	void LrpInvoke_Client_OnHeartBeatRequest(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
@@ -64,6 +65,17 @@ namespace
 		auto arg0 = ReadLogoutReason(buffer);
 		auto arg1 = ReadAString(buffer);
 		component.OnLogoutMsg(arg0, arg1);
+		buffer.Reset(offset);
+	}
+	void LrpInvoke_Client_OnTwoFactorAuthMsg(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	{
+		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
+		auto& component = pChannel->GetClient();
+		component; // if all methods of component are static then the next line generates warning #4189
+		auto arg0 = ReadTwoFactorReason(buffer);
+		auto arg1 = ReadAString(buffer);
+		auto arg2 = ReadTime(buffer);
+		component.OnTwoFactorAuthMsg(arg0, arg1, arg2);
 		buffer.Reset(offset);
 	}
 	void LrpInvoke_Client_OnSessionInfoMsg(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
@@ -275,6 +287,7 @@ namespace
 		LrpInvoke_Client_OnHeartBeatResponse,
 		LrpInvoke_Client_OnLogonMsg,
 		LrpInvoke_Client_OnLogoutMsg,
+		LrpInvoke_Client_OnTwoFactorAuthMsg,
 		LrpInvoke_Client_OnSessionInfoMsg,
 		LrpInvoke_Client_OnSessionInfoMsg2,
 		LrpInvoke_Client_OnCurrenciesInfoMsg,
@@ -299,7 +312,7 @@ namespace
 
 	HRESULT LrpInvoke_Client(size_t offset, size_t methodId, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
-		if(methodId >= 24)
+		if(methodId >= 25)
 		{
 			return LRP_INVALID_METHOD_ID;
 		}
@@ -445,6 +458,7 @@ extern "C" const char* __stdcall LrpSignature()
 		"OnHeartBeatResponse@53584CC68A5EF9F98311B4D86431576D;"
 		"OnLogonMsg@7D89BC637EEE097F74BA4D0D3043C09B;"
 		"OnLogoutMsg@B5C67418D4A0289A849B6F135D1D6DFB;"
+		"OnTwoFactorAuthMsg@E5B2EC436F6F900BE82763CA3D5A999F;"
 		"OnSessionInfoMsg@942F0D874BAD4A93A6BB742CB87129B9;"
 		"OnSessionInfoMsg2@0DCAD5CB27B3263AA30C4D4287EA9C69;"
 		"OnCurrenciesInfoMsg@E8FF29179A1AC30D070BAD0D71FC6423;"

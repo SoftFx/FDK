@@ -37,6 +37,13 @@ void CReceiver::VLogon(const CFxEventInfo& eventInfo, const string& protocolVers
     ProcessMessage(message);
 }
 
+void CReceiver::VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorReason reason, const std::string& text, const CDateTime& expire)
+{
+    CFxMessage message(FX_MSG_TWO_FACTOR_AUTH, eventInfo);
+    message.Data = new CFxMsgTwoFactorAuth(CFxTwoFactorAuth(reason, text, expire));
+    ProcessMessage(message);
+}
+
 void CReceiver::VLogout(const CFxEventInfo& eventInfo, const FxLogoutReason reason, const string& description)
 {
     CFxMessage message(FX_MSG_LOGOUT, eventInfo);

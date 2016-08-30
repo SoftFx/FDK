@@ -20,6 +20,7 @@ public:
     void Start();
     void Stop();
 public:
+    void SendTwoFactorAuth(int64 id, const FxTwoFactorReason reason, const string& text, const CDateTime& expire);
     void SendSessionInfo(int64 id, const string& requestId, const CFxSessionInfo& sessionInfo);
     void SendCurrenciesInfo(int64 id, const string& requestId, const vector<CFxCurrencyInfo>& currenciesInfo);
     void SendSymbolsInfo(int64 id, const string& requestId, const vector<CFxSymbolInfo>& symbolsInfo);

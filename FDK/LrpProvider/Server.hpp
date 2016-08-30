@@ -75,10 +75,27 @@ public:
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_OnSessionInfoRequest_Id = 4;
-	bool Is_OnSessionInfoRequest_Supported() const
+	const static unsigned short LrpMethod_OnTwoFactorAuthRequest_Id = 4;
+	bool Is_OnTwoFactorAuthRequest_Supported() const
 	{
 		return m_channel->IsSupported(0, 4);
+	}
+	void OnTwoFactorAuthRequest(const FxTwoFactorReason& reason, const std::string& otp)
+	{
+		MemoryBuffer buffer;
+		m_channel->Initialize(buffer);
+
+		WriteTwoFactorReason(reason, buffer);
+		WriteAString(otp, buffer);
+
+		const HRESULT _status = m_channel->Invoke(0, 4, buffer);
+		Throw(_status, buffer);
+
+	}
+	const static unsigned short LrpMethod_OnSessionInfoRequest_Id = 5;
+	bool Is_OnSessionInfoRequest_Supported() const
+	{
+		return m_channel->IsSupported(0, 5);
 	}
 	void OnSessionInfoRequest(const std::string& id)
 	{
@@ -87,14 +104,14 @@ public:
 
 		WriteAString(id, buffer);
 
-		const HRESULT _status = m_channel->Invoke(0, 4, buffer);
+		const HRESULT _status = m_channel->Invoke(0, 5, buffer);
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_OnSubscribeToQuotesRequest_Id = 5;
+	const static unsigned short LrpMethod_OnSubscribeToQuotesRequest_Id = 6;
 	bool Is_OnSubscribeToQuotesRequest_Supported() const
 	{
-		return m_channel->IsSupported(0, 5);
+		return m_channel->IsSupported(0, 6);
 	}
 	void OnSubscribeToQuotesRequest(const std::string& id, const std::vector<std::string>& symbols, const __int32& marketDepth)
 	{
@@ -105,14 +122,14 @@ public:
 		WriteAStringArray(symbols, buffer);
 		WriteInt32(marketDepth, buffer);
 
-		const HRESULT _status = m_channel->Invoke(0, 5, buffer);
+		const HRESULT _status = m_channel->Invoke(0, 6, buffer);
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_OnUnsubscribeQuotesRequest_Id = 6;
+	const static unsigned short LrpMethod_OnUnsubscribeQuotesRequest_Id = 7;
 	bool Is_OnUnsubscribeQuotesRequest_Supported() const
 	{
-		return m_channel->IsSupported(0, 6);
+		return m_channel->IsSupported(0, 7);
 	}
 	void OnUnsubscribeQuotesRequest(const std::string& id, const std::vector<std::string>& symbols)
 	{
@@ -122,14 +139,14 @@ public:
 		WriteAString(id, buffer);
 		WriteAStringArray(symbols, buffer);
 
-		const HRESULT _status = m_channel->Invoke(0, 6, buffer);
+		const HRESULT _status = m_channel->Invoke(0, 7, buffer);
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_OnComponentsInfoRequest_Id = 7;
+	const static unsigned short LrpMethod_OnComponentsInfoRequest_Id = 8;
 	bool Is_OnComponentsInfoRequest_Supported() const
 	{
-		return m_channel->IsSupported(0, 7);
+		return m_channel->IsSupported(0, 8);
 	}
 	void OnComponentsInfoRequest(const std::string& id, const __int32& clientVersion)
 	{
@@ -139,14 +156,14 @@ public:
 		WriteAString(id, buffer);
 		WriteInt32(clientVersion, buffer);
 
-		const HRESULT _status = m_channel->Invoke(0, 7, buffer);
+		const HRESULT _status = m_channel->Invoke(0, 8, buffer);
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_OnDataHistoryRequest_Id = 8;
+	const static unsigned short LrpMethod_OnDataHistoryRequest_Id = 9;
 	bool Is_OnDataHistoryRequest_Supported() const
 	{
-		return m_channel->IsSupported(0, 8);
+		return m_channel->IsSupported(0, 9);
 	}
 	void OnDataHistoryRequest(const std::string& id, const CFxDataHistoryRequest& request)
 	{
@@ -156,14 +173,14 @@ public:
 		WriteAString(id, buffer);
 		WriteDataHistoryRequest(request, buffer);
 
-		const HRESULT _status = m_channel->Invoke(0, 8, buffer);
+		const HRESULT _status = m_channel->Invoke(0, 9, buffer);
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_OnFileChunkRequest_Id = 9;
+	const static unsigned short LrpMethod_OnFileChunkRequest_Id = 10;
 	bool Is_OnFileChunkRequest_Supported() const
 	{
-		return m_channel->IsSupported(0, 9);
+		return m_channel->IsSupported(0, 10);
 	}
 	void OnFileChunkRequest(const std::string& id, const std::string& fieldId, const unsigned __int32& chunkId)
 	{
@@ -174,14 +191,14 @@ public:
 		WriteAString(fieldId, buffer);
 		WriteUInt32(chunkId, buffer);
 
-		const HRESULT _status = m_channel->Invoke(0, 9, buffer);
+		const HRESULT _status = m_channel->Invoke(0, 10, buffer);
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_OnBarsHistoryMetaInfoFileRequest_Id = 10;
+	const static unsigned short LrpMethod_OnBarsHistoryMetaInfoFileRequest_Id = 11;
 	bool Is_OnBarsHistoryMetaInfoFileRequest_Supported() const
 	{
-		return m_channel->IsSupported(0, 10);
+		return m_channel->IsSupported(0, 11);
 	}
 	void OnBarsHistoryMetaInfoFileRequest(const std::string& id, const std::string& symbol, const __int32& priceType, const std::string& period)
 	{
@@ -193,14 +210,14 @@ public:
 		WriteInt32(priceType, buffer);
 		WriteAString(period, buffer);
 
-		const HRESULT _status = m_channel->Invoke(0, 10, buffer);
+		const HRESULT _status = m_channel->Invoke(0, 11, buffer);
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_OnQuotesHistoryMetaInfoFileRequest_Id = 11;
+	const static unsigned short LrpMethod_OnQuotesHistoryMetaInfoFileRequest_Id = 12;
 	bool Is_OnQuotesHistoryMetaInfoFileRequest_Supported() const
 	{
-		return m_channel->IsSupported(0, 11);
+		return m_channel->IsSupported(0, 12);
 	}
 	void OnQuotesHistoryMetaInfoFileRequest(const std::string& id, const std::string& symbol, const bool& includeLevel2)
 	{
@@ -211,7 +228,7 @@ public:
 		WriteAString(symbol, buffer);
 		WriteBoolean(includeLevel2, buffer);
 
-		const HRESULT _status = m_channel->Invoke(0, 11, buffer);
+		const HRESULT _status = m_channel->Invoke(0, 12, buffer);
 		Throw(_status, buffer);
 
 	}

@@ -24,6 +24,7 @@ public:
     void SendHeartBeatRequest();
     void SendLogon(const string& protocolVersion);
     void SendLogout(const FxLogoutReason reason, const string& description);
+    void SendTwoFactorAuth(const FxTwoFactorReason reason, const string& text, const CDateTime& expire);
     void SendSessionInfo(const string& requestId, const CFxSessionInfo& sessionInfo);
     void SendCurrenciesInfo(const string& requestId, const vector<CFxCurrencyInfo>& symbolsInfo);
     void SendSymbolsInfo(const string& requestId, const vector<CFxSymbolInfo>& symbolsInfo);

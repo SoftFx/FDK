@@ -15,6 +15,7 @@
         <Type name="CommissionChargeMethod" CSharpFullName="LrpServer.Net.LrpCommissionChargeMethod" CppFullName="FxCommissionChargeMethod" kind="enum32" />
         <Type name="MarketHistoryRejectType" CSharpFullName="LrpServer.Net.LrpMarketHistoryRejectType" CppFullName="FxMarketHistoryRejectType" kind="enum32" />
         <Type name="NotificationType" CSharpFullName="LrpServer.Net.LrpNotificationType" CppFullName="NotificationType" kind="enum32" />
+        <Type name="TwoFactorReason" CSharpFullName="LrpServer.Net.LrpTwoFactorReason" CppFullName="FxTwoFactorReason" kind="enum32" />
         <Type name="Severity" CSharpFullName="LrpServer.Net.LrpSeverity" CppFullName="Severity" kind="enum32" />
         <Type name="LrpSessionInfo" CSharpFullName="LrpServer.Net.LrpSessionInfo" CppFullName="CFxSessionInfo" kind="class">
             <Member name="TradingSessionId" type="astring" />
@@ -174,6 +175,14 @@
                 <Param name="id" type="int64" direction="in" />
                 <Param name="status" type="int32" direction="in" />
                 <Param name="message" type="astring" direction="in" />
+                <Return type="void" />
+            </Method>
+            <Method name="SendTwoFactorAuth">
+                <Param name="handle" type="lptr" direction="in" />
+                <Param name="id" type="int64" direction="in" />
+                <Param name="reason" type="TwoFactorReason" direction="in" />
+                <Param name="text" type="astring" direction="in" />
+                <Param name="expire" type="time" direction="in" />
                 <Return type="void" />
             </Method>
             <Method name="SendSessionInfo">

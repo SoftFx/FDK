@@ -45,20 +45,21 @@ namespace
 	const unsigned short LrpMethod_LocalServer_Stop_Id = 3;
 	const unsigned short LrpMethod_LocalServer_EndConnection_Id = 4;
 	const unsigned short LrpMethod_LocalServer_EndLogon_Id = 5;
-	const unsigned short LrpMethod_LocalServer_SendSessionInfo_Id = 6;
-	const unsigned short LrpMethod_LocalServer_SendCurrenciesInfo_Id = 7;
-	const unsigned short LrpMethod_LocalServer_SendSymbolsInfo_Id = 8;
-	const unsigned short LrpMethod_LocalServer_SendQuotesSubscriptionConfirm_Id = 9;
-	const unsigned short LrpMethod_LocalServer_SendQuotesSubscriptionReject_Id = 10;
-	const unsigned short LrpMethod_LocalServer_SendQuotesHistoryVersion_Id = 11;
-	const unsigned short LrpMethod_LocalServer_SendQuote_Id = 12;
-	const unsigned short LrpMethod_LocalServer_SendMarketHistoryMetadataResponse_Id = 13;
-	const unsigned short LrpMethod_LocalServer_SendMarketHistoryMetadataReject_Id = 14;
-	const unsigned short LrpMethod_LocalServer_SendDataHistoryResponse_Id = 15;
-	const unsigned short LrpMethod_LocalServer_SendDataHistoryReject_Id = 16;
-	const unsigned short LrpMethod_LocalServer_SendFileChunk_Id = 17;
-	const unsigned short LrpMethod_LocalServer_SendNotification_Id = 18;
-	const unsigned short LrpMethod_LocalServer_SendBusinessReject_Id = 19;
+	const unsigned short LrpMethod_LocalServer_SendTwoFactorAuth_Id = 6;
+	const unsigned short LrpMethod_LocalServer_SendSessionInfo_Id = 7;
+	const unsigned short LrpMethod_LocalServer_SendCurrenciesInfo_Id = 8;
+	const unsigned short LrpMethod_LocalServer_SendSymbolsInfo_Id = 9;
+	const unsigned short LrpMethod_LocalServer_SendQuotesSubscriptionConfirm_Id = 10;
+	const unsigned short LrpMethod_LocalServer_SendQuotesSubscriptionReject_Id = 11;
+	const unsigned short LrpMethod_LocalServer_SendQuotesHistoryVersion_Id = 12;
+	const unsigned short LrpMethod_LocalServer_SendQuote_Id = 13;
+	const unsigned short LrpMethod_LocalServer_SendMarketHistoryMetadataResponse_Id = 14;
+	const unsigned short LrpMethod_LocalServer_SendMarketHistoryMetadataReject_Id = 15;
+	const unsigned short LrpMethod_LocalServer_SendDataHistoryResponse_Id = 16;
+	const unsigned short LrpMethod_LocalServer_SendDataHistoryReject_Id = 17;
+	const unsigned short LrpMethod_LocalServer_SendFileChunk_Id = 18;
+	const unsigned short LrpMethod_LocalServer_SendNotification_Id = 19;
+	const unsigned short LrpMethod_LocalServer_SendBusinessReject_Id = 20;
 
 	typedef void (*LrpInvoke_LocalServer_Method_Handler)(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel);
 	void LrpInvoke_LocalServer_Constructor(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
@@ -123,6 +124,19 @@ namespace
 		auto arg2 = ReadInt32(buffer);
 		auto arg3 = ReadAString(buffer);
 		component.EndLogon(arg0, arg1, arg2, arg3);
+		buffer.Reset(offset);
+	}
+	void LrpInvoke_LocalServer_SendTwoFactorAuth(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	{
+		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
+		auto& component = pChannel->GetLocalServer();
+		component; // if all methods of component are static then the next line generates warning #4189
+		auto arg0 = ReadLocalPointer(buffer);
+		auto arg1 = ReadInt64(buffer);
+		auto arg2 = ReadTwoFactorReason(buffer);
+		auto arg3 = ReadAString(buffer);
+		auto arg4 = ReadTime(buffer);
+		component.SendTwoFactorAuth(arg0, arg1, arg2, arg3, arg4);
 		buffer.Reset(offset);
 	}
 	void LrpInvoke_LocalServer_SendSessionInfo(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
@@ -302,6 +316,7 @@ namespace
 		LrpInvoke_LocalServer_Stop,
 		LrpInvoke_LocalServer_EndConnection,
 		LrpInvoke_LocalServer_EndLogon,
+		LrpInvoke_LocalServer_SendTwoFactorAuth,
 		LrpInvoke_LocalServer_SendSessionInfo,
 		LrpInvoke_LocalServer_SendCurrenciesInfo,
 		LrpInvoke_LocalServer_SendSymbolsInfo,
@@ -320,7 +335,7 @@ namespace
 
 	HRESULT LrpInvoke_LocalServer(size_t offset, size_t methodId, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
-		if(methodId >= 20)
+		if(methodId >= 21)
 		{
 			return LRP_INVALID_METHOD_ID;
 		}
@@ -446,6 +461,7 @@ extern "C" const char* __stdcall LrpSignature()
 		"Stop@A1A4AE7AFB43D7C671448EACD33040F5;"
 		"EndConnection@0370DB62007740256A63BB50A7B94630;"
 		"EndLogon@888D727D5D696B0840D375552D005AB0;"
+		"SendTwoFactorAuth@7D51A62C93372695473EE25679FE84A8;"
 		"SendSessionInfo@DE2512DED6A56D5A328F5D079AAFB5D4;"
 		"SendCurrenciesInfo@EDFB427903E76678C835150E04B40CBF;"
 		"SendSymbolsInfo@C617639149E47A1AE405672C8B247248;"

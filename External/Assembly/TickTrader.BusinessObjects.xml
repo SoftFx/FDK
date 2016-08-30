@@ -892,12 +892,12 @@
         <member name="T:TickTrader.BusinessObjects.OrderStatuses">
             <summary>
             Order statuses
-            </summary>    
+            </summary>
         </member>
         <member name="T:TickTrader.BusinessObjects.OrderExecutionOptions">
             <summary>
             Order execution options
-            </summary>    
+            </summary>
         </member>
         <member name="T:TickTrader.BusinessObjects.Order">
             <summary>
@@ -921,245 +921,245 @@
             <param name="order"></param>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.RangeId">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.AccountId">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.Symbol">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.SymbolAlias">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.SymbolAliasOrName">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.OrderId">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.ClientOrderId">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.ParentOrderId">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.Price">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.StopPrice">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.Side">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.Type">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.InitialType">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.Status">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.Amount">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.RemainingAmount">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.AggrFillPrice">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.AverageFillPrice">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.Created">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.Modified">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.Filled">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.PositionCreated">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.StopLoss">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.TakeProfit">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.Profit">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.Margin">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.UserComment">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.ManagerComment">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.UserTag">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.ManagerTag">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.Magic">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.Commission">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.AgentCommision">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.Expired">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.ClosePrice">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.MarginRateInitial">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.MarginRateCurrent">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.OpenConversionRate">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.CloseConversionRate">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.Version">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.Options">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.Properties">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.Taxes">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.ReqOpenPrice">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.ReqOpenAmount">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="M:TickTrader.BusinessObjects.Order.Clone">
-            <summary>
+             <summary>
             
-            </summary>
-            <returns></returns>
+             </summary>
+             <returns></returns>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.FilledAmount">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.TotalCommission">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.Activation">
             <summary>
@@ -1167,22 +1167,22 @@
             </summary>
         </member>
         <member name="M:TickTrader.BusinessObjects.Order.ToString">
-            <summary>
+             <summary>
             
-            </summary>
-            <returns></returns>
+             </summary>
+             <returns></returns>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.IsPending">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="M:TickTrader.BusinessObjects.Order.IsOptionSet(TickTrader.BusinessObjects.OrderExecutionOptions)">
-            <summary>
+             <summary>
             
-            </summary>
-            <param name="option"></param>
-            <returns></returns>
+             </summary>
+             <param name="option"></param>
+             <returns></returns>
         </member>
         <member name="M:TickTrader.BusinessObjects.Order.IsSameOrder(TickTrader.BusinessObjects.IOrder)">
             <summary>
@@ -1192,9 +1192,9 @@
             <returns>Returns true if it has any major changes</returns>
         </member>
         <member name="T:TickTrader.BusinessObjects.OrderExtension">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="F:TickTrader.BusinessObjects.MarketDataUpdateType.FullSnapshot">
             <summary>

@@ -87,6 +87,7 @@
     <Compile Include="LrpSessionStatus.cs" />
     <Compile Include="LrpSeverity.cs" />
     <Compile Include="LrpSymbolInfo.cs" />
+    <Compile Include="LrpTwoFactorReason.cs" />
     <Compile Include="Native.cs" />
     <Compile Include="LrpAcceptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

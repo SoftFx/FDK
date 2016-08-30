@@ -1,4 +1,6 @@
-﻿namespace SoftFX.Extended
+﻿using TickTrader.Common.Security;
+
+namespace SoftFX.Extended
 {
     using System;
     using System.Collections.Generic;
@@ -17,6 +19,7 @@
         /// </summary>
         protected ConnectionStringBuilder()
         {
+            DeviceId = DeviceIdGenerator.GetDeviceId();
             foreach (var element in this.GetValidProperties())
             {
                 if (element.CanWrite && element.PropertyType == typeof(string))
@@ -25,6 +28,12 @@
         }
 
         #region Properties
+
+        /// <summary>
+        /// Gets or sets the device ID of the data feed instance.
+        /// Can not be modified, when the data feed is running.
+        /// </summary>
+        public string DeviceId { get; set; }
 
         /// <summary>
         /// Gets or sets the username of the data feed instance.

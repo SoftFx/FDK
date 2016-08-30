@@ -88,6 +88,12 @@ void COutgoing::SendLogout(const FxLogoutReason reason, const string& descriptio
     client.OnLogoutMsg(reason, description);
 }
 
+void COutgoing::SendTwoFactorAuth(const FxTwoFactorReason reason, const string& text, const CDateTime& expire)
+{
+    Client client(*this);
+    client.OnTwoFactorAuthMsg(reason, text, expire);
+}
+
 void COutgoing::SendSessionInfo(const string& requestId, const CFxSessionInfo& sessionInfo)
 {
     Client client(*this);

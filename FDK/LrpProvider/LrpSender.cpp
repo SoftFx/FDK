@@ -26,6 +26,12 @@ void CLrpSender::Initialize(const string& remoteSignature)
     m_translators.Initialize(remoteSignature);
 }
 
+void CLrpSender::VSendTwoFactorResponse(const FxTwoFactorReason reason, const std::string& otp)
+{
+    Server server(*this);
+    server.OnTwoFactorAuthRequest(reason, otp);
+}
+
 void CLrpSender::VSendGetCurrencies(const string& id)
 {
     Server server(*this);

@@ -57,6 +57,12 @@ void CLrpReceiver::OnLogonMsg(const string& protocolVersion)
     m_receiver->VLogon(info, protocolVersion);
 }
 
+void CLrpReceiver::OnTwoFactorAuthMsg(const FxTwoFactorReason reason, const string& text, const CDateTime& expire)
+{
+    CFxEventInfo info;
+    m_receiver->VTwoFactorAuth(info, reason, text, expire);
+}
+
 void CLrpReceiver::OnLogoutMsg(const FxLogoutReason reason, const string& description)
 {
     CFxEventInfo info;

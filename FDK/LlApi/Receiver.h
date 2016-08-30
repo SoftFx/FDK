@@ -11,6 +11,7 @@ class CReceiver : public CFxQueue, public IReceiver
 {
 public:
     virtual void VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion);
+    virtual void VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorReason reason, const std::string& text, const CDateTime& expire);
     virtual void VLogout(const CFxEventInfo& eventInfo, const FxLogoutReason reason, const string& description);
     virtual void VBusinessReject(const CFxEventInfo& eventInfo);
     virtual void VTick(const CFxEventInfo& eventInfo, const CFxQuote& quotes);

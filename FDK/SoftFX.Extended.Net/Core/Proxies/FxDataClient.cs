@@ -89,6 +89,13 @@
             Native.Client.DispatchMessage(this.handle, message);
         }
 
+        public void SendTwoFactorResponse(TwoFactorReason reason, string otp)
+        {
+            this.VerifyInitialized();
+
+            Native.Client.SendTwoFactorResponse(this.handle, reason, otp);
+        }
+
         public SessionInfo GetSessionInfo(int timeoutInMilliseconds)
         {
             this.VerifyInitialized();

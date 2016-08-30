@@ -89,30 +89,31 @@ public:
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_BeginCurrenciesInfoRequest_Id = 4;
-	bool Is_BeginCurrenciesInfoRequest_Supported() const
+	const static unsigned short LrpMethod_BeginTwoFactorAuthRequest_Id = 4;
+	bool Is_BeginTwoFactorAuthRequest_Supported() const
 	{
 		return m_channel->IsSupported(0, 4);
 	}
-	void BeginCurrenciesInfoRequest(void* handle, const __int64& id, const std::string& requestId)
+	void BeginTwoFactorAuthRequest(void* handle, const __int64& id, const FxTwoFactorReason& reason, const std::string& otp)
 	{
 		MemoryBuffer buffer;
 		m_channel->Initialize(buffer);
 
 		WriteLocalPointer(handle, buffer);
 		WriteInt64(id, buffer);
-		WriteAString(requestId, buffer);
+		WriteTwoFactorReason(reason, buffer);
+		WriteAString(otp, buffer);
 
 		const HRESULT _status = m_channel->Invoke(0, 4, buffer);
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_BeginSymbolsInfoRequest_Id = 5;
-	bool Is_BeginSymbolsInfoRequest_Supported() const
+	const static unsigned short LrpMethod_BeginCurrenciesInfoRequest_Id = 5;
+	bool Is_BeginCurrenciesInfoRequest_Supported() const
 	{
 		return m_channel->IsSupported(0, 5);
 	}
-	void BeginSymbolsInfoRequest(void* handle, const __int64& id, const std::string& requestId)
+	void BeginCurrenciesInfoRequest(void* handle, const __int64& id, const std::string& requestId)
 	{
 		MemoryBuffer buffer;
 		m_channel->Initialize(buffer);
@@ -125,12 +126,12 @@ public:
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_BeginSessionInfoRequest_Id = 6;
-	bool Is_BeginSessionInfoRequest_Supported() const
+	const static unsigned short LrpMethod_BeginSymbolsInfoRequest_Id = 6;
+	bool Is_BeginSymbolsInfoRequest_Supported() const
 	{
 		return m_channel->IsSupported(0, 6);
 	}
-	void BeginSessionInfoRequest(void* handle, const __int64& id, const std::string& requestId)
+	void BeginSymbolsInfoRequest(void* handle, const __int64& id, const std::string& requestId)
 	{
 		MemoryBuffer buffer;
 		m_channel->Initialize(buffer);
@@ -143,10 +144,28 @@ public:
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_BeginSubscribeToQuotesRequest_Id = 7;
-	bool Is_BeginSubscribeToQuotesRequest_Supported() const
+	const static unsigned short LrpMethod_BeginSessionInfoRequest_Id = 7;
+	bool Is_BeginSessionInfoRequest_Supported() const
 	{
 		return m_channel->IsSupported(0, 7);
+	}
+	void BeginSessionInfoRequest(void* handle, const __int64& id, const std::string& requestId)
+	{
+		MemoryBuffer buffer;
+		m_channel->Initialize(buffer);
+
+		WriteLocalPointer(handle, buffer);
+		WriteInt64(id, buffer);
+		WriteAString(requestId, buffer);
+
+		const HRESULT _status = m_channel->Invoke(0, 7, buffer);
+		Throw(_status, buffer);
+
+	}
+	const static unsigned short LrpMethod_BeginSubscribeToQuotesRequest_Id = 8;
+	bool Is_BeginSubscribeToQuotesRequest_Supported() const
+	{
+		return m_channel->IsSupported(0, 8);
 	}
 	void BeginSubscribeToQuotesRequest(void* handle, const __int64& id, const std::string& requestId, const std::vector<std::string>& symbols, const __int32& depth)
 	{
@@ -159,14 +178,14 @@ public:
 		WriteAStringArray(symbols, buffer);
 		WriteInt32(depth, buffer);
 
-		const HRESULT _status = m_channel->Invoke(0, 7, buffer);
+		const HRESULT _status = m_channel->Invoke(0, 8, buffer);
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_BeginUnsubscribeQuotesRequest_Id = 8;
+	const static unsigned short LrpMethod_BeginUnsubscribeQuotesRequest_Id = 9;
 	bool Is_BeginUnsubscribeQuotesRequest_Supported() const
 	{
-		return m_channel->IsSupported(0, 8);
+		return m_channel->IsSupported(0, 9);
 	}
 	void BeginUnsubscribeQuotesRequest(void* handle, const __int64& id, const std::string& requestId, const std::vector<std::string>& symbols)
 	{
@@ -178,14 +197,14 @@ public:
 		WriteAString(requestId, buffer);
 		WriteAStringArray(symbols, buffer);
 
-		const HRESULT _status = m_channel->Invoke(0, 8, buffer);
+		const HRESULT _status = m_channel->Invoke(0, 9, buffer);
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_BeginComponentsInfoRequest_Id = 9;
+	const static unsigned short LrpMethod_BeginComponentsInfoRequest_Id = 10;
 	bool Is_BeginComponentsInfoRequest_Supported() const
 	{
-		return m_channel->IsSupported(0, 9);
+		return m_channel->IsSupported(0, 10);
 	}
 	void BeginComponentsInfoRequest(void* handle, const __int64& id, const std::string& requestId, const __int32& clientVersion)
 	{
@@ -197,14 +216,14 @@ public:
 		WriteAString(requestId, buffer);
 		WriteInt32(clientVersion, buffer);
 
-		const HRESULT _status = m_channel->Invoke(0, 9, buffer);
+		const HRESULT _status = m_channel->Invoke(0, 10, buffer);
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_BeginDataHistoryRequest_Id = 10;
+	const static unsigned short LrpMethod_BeginDataHistoryRequest_Id = 11;
 	bool Is_BeginDataHistoryRequest_Supported() const
 	{
-		return m_channel->IsSupported(0, 10);
+		return m_channel->IsSupported(0, 11);
 	}
 	void BeginDataHistoryRequest(void* handle, const __int64& id, const std::string& requestId, const CFxDataHistoryRequest& request)
 	{
@@ -216,14 +235,14 @@ public:
 		WriteAString(requestId, buffer);
 		WriteDataHistoryRequest(request, buffer);
 
-		const HRESULT _status = m_channel->Invoke(0, 10, buffer);
+		const HRESULT _status = m_channel->Invoke(0, 11, buffer);
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_BeginFileChunkRequest_Id = 11;
+	const static unsigned short LrpMethod_BeginFileChunkRequest_Id = 12;
 	bool Is_BeginFileChunkRequest_Supported() const
 	{
-		return m_channel->IsSupported(0, 11);
+		return m_channel->IsSupported(0, 12);
 	}
 	void BeginFileChunkRequest(void* handle, const __int64& id, const std::string& requestId, const std::string& fieldId, const unsigned __int32& chunkId)
 	{
@@ -236,14 +255,14 @@ public:
 		WriteAString(fieldId, buffer);
 		WriteUInt32(chunkId, buffer);
 
-		const HRESULT _status = m_channel->Invoke(0, 11, buffer);
+		const HRESULT _status = m_channel->Invoke(0, 12, buffer);
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_BeginBarsHistoryMetaInfoFileRequest_Id = 12;
+	const static unsigned short LrpMethod_BeginBarsHistoryMetaInfoFileRequest_Id = 13;
 	bool Is_BeginBarsHistoryMetaInfoFileRequest_Supported() const
 	{
-		return m_channel->IsSupported(0, 12);
+		return m_channel->IsSupported(0, 13);
 	}
 	void BeginBarsHistoryMetaInfoFileRequest(void* handle, const __int64& id, const std::string& requestId, const std::string& symbol, const __int32& priceType, const std::string& period)
 	{
@@ -257,14 +276,14 @@ public:
 		WriteInt32(priceType, buffer);
 		WriteAString(period, buffer);
 
-		const HRESULT _status = m_channel->Invoke(0, 12, buffer);
+		const HRESULT _status = m_channel->Invoke(0, 13, buffer);
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_BeginQuotesHistoryMetaInfoFileRequest_Id = 13;
+	const static unsigned short LrpMethod_BeginQuotesHistoryMetaInfoFileRequest_Id = 14;
 	bool Is_BeginQuotesHistoryMetaInfoFileRequest_Supported() const
 	{
-		return m_channel->IsSupported(0, 13);
+		return m_channel->IsSupported(0, 14);
 	}
 	void BeginQuotesHistoryMetaInfoFileRequest(void* handle, const __int64& id, const std::string& requestId, const std::string& symbol, const bool& includeLevel2)
 	{
@@ -277,7 +296,7 @@ public:
 		WriteAString(symbol, buffer);
 		WriteBoolean(includeLevel2, buffer);
 
-		const HRESULT _status = m_channel->Invoke(0, 13, buffer);
+		const HRESULT _status = m_channel->Invoke(0, 14, buffer);
 		Throw(_status, buffer);
 
 	}

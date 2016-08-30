@@ -187,6 +187,16 @@ void CServer::DoEndLogon(const uint64 id, const HRESULT status, const string& me
     }
 }
 
+void CServer::SendTwoFactorAuth(int64 id, const FxTwoFactorReason reason, const string& text, const CDateTime& expire)
+{
+    CChannelSharedAccessor accessor(id, m_channels);
+    CChannel* pChannel = accessor.GetChannel();
+    if (nullptr != pChannel)
+    {
+        pChannel->Outgoing().SendTwoFactorAuth(reason, text, expire);
+    }
+}
+
 void CServer::SendSessionInfo(int64 id, const string& requestId, const CFxSessionInfo& sessionInfo)
 {
     CChannelSharedAccessor accessor(id, m_channels);
@@ -329,13 +339,13 @@ void CServer::SendBusinessReject(int64 id, const string& rejectReason, const str
 
 void CServer::ShutdownConnection(const uint64 id)
 {
-	__try
-	{
-		m_proxy.BeginShutdownConnectionNotification(id);
-	}
-	__except (EXCEPTION_EXECUTE_HANDLER)
-	{
-	}
+    __try
+    {
+        m_proxy.BeginShutdownConnectionNotification(id);
+    }
+    __except (EXCEPTION_EXECUTE_HANDLER)
+    {
+    }
 }
 
 CLrpLogger& CServer::GetLogger()

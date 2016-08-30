@@ -4,6 +4,7 @@
 		<Type name="AStringArray" kind="array">
 			<Value name="astring" />
 		</Type>
+		<Type name="TwoFactorReason" CSharpFullName="LrpServer.Net.LrpTwoFactorReason" CppFullName="FxTwoFactorReason" kind="enum32" />
 		<Type name="DataHistoryRequest" CSharpFullName="LrpServer.Net.LrpDataHistoryRequest" CppFullName="CFxDataHistoryRequest" kind="class">
 			<Member name="Symbol" type="astring" />
 			<Member name="Time" type="time" />
@@ -60,6 +61,13 @@
 			<Method name="BeginLogoutRequest">
 				<Param name="handle" type="lptr" direction="in" />
 				<Param name="id" type="int64" direction="in" />
+				<Return type="void" />
+			</Method>
+			<Method name="BeginTwoFactorAuthRequest">
+				<Param name="handle" type="lptr" direction="in" />
+				<Param name="id" type="int64" direction="in" />
+                <Param name="reason" type="TwoFactorReason" direction="in" />
+                <Param name="otp" type="astring" direction="in" />
 				<Return type="void" />
 			</Method>
 			<Method name="BeginCurrenciesInfoRequest">

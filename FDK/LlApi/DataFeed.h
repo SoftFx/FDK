@@ -30,6 +30,7 @@ public:
 
 public:
     virtual void VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion);
+    virtual void VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorReason reason, const std::string& text, const CDateTime& expire);
     virtual void VLogout(const CFxEventInfo& eventInfo, const FxLogoutReason reason, const string& description);
 
     virtual void VTick(const CFxEventInfo& eventInfo, const CFxQuote& quote);
@@ -37,6 +38,9 @@ public:
     virtual void VGetSupportedSymbols(const CFxEventInfo& eventInfo, const vector<CFxSymbolInfo>& symbols);
     virtual void VNotify(const CFxEventInfo& eventInfo, const CNotification& notification);
     virtual void VQuotesHistoryResponse(const CFxEventInfo& eventInfo, const int version);
+
+protected:
+    virtual void AfterLogon();
 
 public:
     const CDataFeedCache& Cache() const;

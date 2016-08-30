@@ -18,6 +18,11 @@
 
         #region Methods
 
+        public TwoFactorAuth TwoFactorAuth()
+        {
+            return Native.Converter.TwoFactorAuthFromHandle(this.Data);
+        }
+
         public SessionInfo SessionInfo()
         {
             return Native.Converter.SessionInfoFromHandle(this.Data);

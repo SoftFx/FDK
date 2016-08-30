@@ -27,6 +27,7 @@ namespace
 		}
 		_stream << "}";
 	}
+	void LrpWriteTwoFactorReason(const char* name, const FxTwoFactorReason& arg, std::ostream& _stream);
 }
 namespace
 {
@@ -76,6 +77,14 @@ namespace
 		}
 		_stream << "}";
 	}
+	void LrpWriteTwoFactorReason(const char* name, const FxTwoFactorReason& arg, std::ostream& _stream)
+	{
+		if (nullptr != name)
+		{
+			_stream << name << " = ";
+		}
+		_stream<<static_cast<__int32>(arg);
+	}
 }
 Server::Server(ILrpTextStream* pStream) : m_stream(pStream)
 {
@@ -110,10 +119,20 @@ void Server::OnSymbolsInfoRequest(const std::string& id)
 	_stream << ");";
 	m_stream->Write(_stream.str());
 }
+void Server::OnTwoFactorAuthRequest(const FxTwoFactorReason& reason, const std::string& otp)
+{
+	std::stringstream _stream;
+	_stream << "[0]Server[4]OnTwoFactorAuthRequest(";
+	LrpWriteTwoFactorReason("reason", reason, _stream);
+	_stream<<", ";
+	LrpWriteAString("otp", otp, _stream);
+	_stream << ");";
+	m_stream->Write(_stream.str());
+}
 void Server::OnSessionInfoRequest(const std::string& id)
 {
 	std::stringstream _stream;
-	_stream << "[0]Server[4]OnSessionInfoRequest(";
+	_stream << "[0]Server[5]OnSessionInfoRequest(";
 	LrpWriteAString("id", id, _stream);
 	_stream << ");";
 	m_stream->Write(_stream.str());
@@ -121,7 +140,7 @@ void Server::OnSessionInfoRequest(const std::string& id)
 void Server::OnSubscribeToQuotesRequest(const std::string& id, const std::vector<std::string>& symbols, const __int32& marketDepth)
 {
 	std::stringstream _stream;
-	_stream << "[0]Server[5]OnSubscribeToQuotesRequest(";
+	_stream << "[0]Server[6]OnSubscribeToQuotesRequest(";
 	LrpWriteAString("id", id, _stream);
 	_stream<<", ";
 	LrpWriteAStringArray("symbols", symbols, _stream);
@@ -133,7 +152,7 @@ void Server::OnSubscribeToQuotesRequest(const std::string& id, const std::vector
 void Server::OnUnsubscribeQuotesRequest(const std::string& id, const std::vector<std::string>& symbols)
 {
 	std::stringstream _stream;
-	_stream << "[0]Server[6]OnUnsubscribeQuotesRequest(";
+	_stream << "[0]Server[7]OnUnsubscribeQuotesRequest(";
 	LrpWriteAString("id", id, _stream);
 	_stream<<", ";
 	LrpWriteAStringArray("symbols", symbols, _stream);
@@ -143,7 +162,7 @@ void Server::OnUnsubscribeQuotesRequest(const std::string& id, const std::vector
 void Server::OnComponentsInfoRequest(const std::string& id, const __int32& clientVersion)
 {
 	std::stringstream _stream;
-	_stream << "[0]Server[7]OnComponentsInfoRequest(";
+	_stream << "[0]Server[8]OnComponentsInfoRequest(";
 	LrpWriteAString("id", id, _stream);
 	_stream<<", ";
 	LrpWriteInt32("clientVersion", clientVersion, _stream);
@@ -153,7 +172,7 @@ void Server::OnComponentsInfoRequest(const std::string& id, const __int32& clien
 void Server::OnDataHistoryRequest(const std::string& id, const CFxDataHistoryRequest& request)
 {
 	std::stringstream _stream;
-	_stream << "[0]Server[8]OnDataHistoryRequest(";
+	_stream << "[0]Server[9]OnDataHistoryRequest(";
 	LrpWriteAString("id", id, _stream);
 	_stream<<", ";
 	LrpWriteDataHistoryRequest("request", request, _stream);
@@ -163,7 +182,7 @@ void Server::OnDataHistoryRequest(const std::string& id, const CFxDataHistoryReq
 void Server::OnFileChunkRequest(const std::string& id, const std::string& fieldId, const unsigned __int32& chunkId)
 {
 	std::stringstream _stream;
-	_stream << "[0]Server[9]OnFileChunkRequest(";
+	_stream << "[0]Server[10]OnFileChunkRequest(";
 	LrpWriteAString("id", id, _stream);
 	_stream<<", ";
 	LrpWriteAString("fieldId", fieldId, _stream);
@@ -175,7 +194,7 @@ void Server::OnFileChunkRequest(const std::string& id, const std::string& fieldI
 void Server::OnBarsHistoryMetaInfoFileRequest(const std::string& id, const std::string& symbol, const __int32& priceType, const std::string& period)
 {
 	std::stringstream _stream;
-	_stream << "[0]Server[10]OnBarsHistoryMetaInfoFileRequest(";
+	_stream << "[0]Server[11]OnBarsHistoryMetaInfoFileRequest(";
 	LrpWriteAString("id", id, _stream);
 	_stream<<", ";
 	LrpWriteAString("symbol", symbol, _stream);
@@ -189,7 +208,7 @@ void Server::OnBarsHistoryMetaInfoFileRequest(const std::string& id, const std::
 void Server::OnQuotesHistoryMetaInfoFileRequest(const std::string& id, const std::string& symbol, const bool& includeLevel2)
 {
 	std::stringstream _stream;
-	_stream << "[0]Server[11]OnQuotesHistoryMetaInfoFileRequest(";
+	_stream << "[0]Server[12]OnQuotesHistoryMetaInfoFileRequest(";
 	LrpWriteAString("id", id, _stream);
 	_stream<<", ";
 	LrpWriteAString("symbol", symbol, _stream);

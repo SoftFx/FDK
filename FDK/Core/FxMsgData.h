@@ -4,20 +4,20 @@
 template<typename T> class CFxMsgData : public CFxHandle
 {
 private:
-	T m_data;
+    T m_data;
 public:
-	CFxMsgData(T& data)
-	{
-		swap(m_data, data);
-	}
-	CFxMsgData(const T& data) : m_data(data)
-	{
-	}
+    CFxMsgData(T& data)
+    {
+        swap(m_data, data);
+    }
+    CFxMsgData(const T& data) : m_data(data)
+    {
+    }
 public:
-	const T& Data() const
-	{
-		return m_data;
-	}
+    const T& Data() const
+    {
+        return m_data;
+    }
 };
 
 
@@ -32,6 +32,7 @@ typedef CFxMsgData<CFxQuote> CFxMsgTick;
 typedef CFxMsgData<CFxAccountInfo> CFxMsgAccountInfo;
 typedef CFxMsgData<vector<CFxCurrencyInfo>> CFxMsgCurrencyInfo;
 typedef CFxMsgData<vector<CFxSymbolInfo>> CFxMsgSymbolInfo;
+typedef CFxMsgData<CFxTwoFactorAuth> CFxMsgTwoFactorAuth;
 typedef CFxMsgData<CFxSessionInfo> CFxMsgSessionInfo;
 typedef CFxMsgData<CFxExecutionReport> CFxMsgExecutionReport;
 typedef CFxMsgData<CFxTradeTransactionReport> CFxMsgTradeTransactionReport;

@@ -83,6 +83,16 @@ void CDataFeed::VTick(const CFxEventInfo& eventInfo, const CFxQuote& quote)
 void CDataFeed::VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion)
 {
     __super::VLogon(eventInfo, protocolVersion);
+}
+
+void CDataFeed::VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorReason reason, const std::string& text, const CDateTime& expire)
+{
+    __super::VTwoFactorAuth(eventInfo, reason, text, expire);
+}
+
+void CDataFeed::AfterLogon()
+{
+    __super::AfterLogon();
 
     ResetEvent(m_serverQuotesHistoryEvent);
     m_cache.Clear();

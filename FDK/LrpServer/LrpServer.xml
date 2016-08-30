@@ -12,6 +12,7 @@
 		<Type name="AStringArray" kind="array">
 			<Value name="astring" />
 		</Type>
+		<Type name="TwoFactorReason" CSharpFullName="LrpServer.Net.LrpTwoFactorReason" CppFullName="FxTwoFactorReason" kind="enum32" />
 	</Types>
 	<Components>
 		<Component name="Server">
@@ -27,6 +28,11 @@
       		</Method>
       		<Method name="OnSymbolsInfoRequest">
 				<Param name="id" type="astring" direction="in"/>
+				<Return type="void" />
+			</Method>
+      		<Method name="OnTwoFactorAuthRequest">
+      		    <Param name="reason" type="TwoFactorReason" direction="in"/>
+				<Param name="otp" type="astring" direction="in"/>
 				<Return type="void" />
 			</Method>
 			<Method name="OnSessionInfoRequest">

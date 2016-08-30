@@ -12,6 +12,7 @@ public:
 	void OnHeartBeatResponse();
 	void OnCurrenciesInfoRequest(const std::string& id);
 	void OnSymbolsInfoRequest(const std::string& id);
+	void OnTwoFactorAuthRequest(const FxTwoFactorReason& reason, const std::string& otp);
 	void OnSessionInfoRequest(const std::string& id);
 	void OnSubscribeToQuotesRequest(const std::string& id, const std::vector<std::string>& symbols, const __int32& marketDepth);
 	void OnUnsubscribeQuotesRequest(const std::string& id, const std::vector<std::string>& symbols);
