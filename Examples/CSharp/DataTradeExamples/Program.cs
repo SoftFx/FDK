@@ -4,9 +4,9 @@
     {
         static void Main()
         {
-            var address = "tp.dev.soft-fx.eu";
-            var username = "5";
-            var password = "123qwe!";
+            string address = "tpdemo.fxopen.com";
+            string username = "59932";
+            string password = "8mEx7zZ2";
 
             var example = new AccountInfoExample(address, username, password);
 
