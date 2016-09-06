@@ -129,6 +129,18 @@
         ///
         /// </summary>
         /// <param name="id"></param>
+        /// <param name="reason"></param>
+        /// <param name="text"></param>
+        /// <param name="expire"></param>
+        public void SendTwoFactorAuth(long id, LrpTwoFactorReason reason, string text, DateTime expire)
+        {
+            this.proxy.SendTwoFactorAuth(id, reason, text, expire);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="id"></param>
         /// <param name="requestId"></param>
         /// <param name="sessionInfo"></param>
         public void SendSessionInfo(long id, string requestId, LrpSessionInfo sessionInfo)
