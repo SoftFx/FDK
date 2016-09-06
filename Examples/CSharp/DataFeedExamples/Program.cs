@@ -6,9 +6,9 @@
     {
         static void Main()
         {
-            var address = "localhost";
-            var username = "9";
-            var password = "123qwe!";
+            string address = "tpdemo.fxopen.com";
+            string username = "59932";
+            string password = "8mEx7zZ2";
             var useFixProtocol = true;
 
             //Library.WriteFullDumpOnError(@"D:\full.dmp");

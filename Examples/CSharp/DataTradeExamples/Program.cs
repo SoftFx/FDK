@@ -8,11 +8,10 @@
             string username = "59932";
             string password = "8mEx7zZ2";
 
-
-            //var example = new AccountInfoExample(address, username, password);
+            var example = new AccountInfoExample(address, username, password);
 
             //var example = new SendLimitOrderExample(address, username, password);
-            var example = new SendMarketOrderExample(address, username, password);
+            //var example = new SendMarketOrderExample(address, username, password);
             //var example = new SendStopOrderExample(address, username, password);
             //var example = new CloseAllPositionsExample(address, username, password);
             //var example = new ClosePositionExample(address, username, password);

@@ -46,7 +46,6 @@
                 FixEventsFileName = string.Format("FIX_{0}.feed.events.log", username),
                 FixMessagesFileName = string.Format("FIX_{0}.feed.messages.log", username),
 
-                DeviceId = Guid.NewGuid().ToString(),
                 Username = username,
                 Password = password
             };
