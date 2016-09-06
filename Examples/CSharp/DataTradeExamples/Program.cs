@@ -4,15 +4,14 @@
     {
         static void Main()
         {
-            string address = "tpdemo.fxopen.com";
-            string username = "59932";
-            string password = "8mEx7zZ2";
+            var address = "tp.dev.soft-fx.eu";
+            var username = "5";
+            var password = "123qwe!";
 
-
-            //var example = new AccountInfoExample(address, username, password);
+            var example = new AccountInfoExample(address, username, password);
 
             //var example = new SendLimitOrderExample(address, username, password);
-            var example = new SendMarketOrderExample(address, username, password);
+            //var example = new SendMarketOrderExample(address, username, password);
             //var example = new SendStopOrderExample(address, username, password);
             //var example = new CloseAllPositionsExample(address, username, password);
             //var example = new ClosePositionExample(address, username, password);

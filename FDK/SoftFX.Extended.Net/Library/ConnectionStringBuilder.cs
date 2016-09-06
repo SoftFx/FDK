@@ -19,12 +19,12 @@ namespace SoftFX.Extended
         /// </summary>
         protected ConnectionStringBuilder()
         {
-            DeviceId = DeviceIdGenerator.GetDeviceId();
             foreach (var element in this.GetValidProperties())
             {
                 if (element.CanWrite && element.PropertyType == typeof(string))
                     element.SetValue(this, string.Empty, null);
             }
+            DeviceId = DeviceIdGenerator.GetDeviceId();
         }
 
         #region Properties
