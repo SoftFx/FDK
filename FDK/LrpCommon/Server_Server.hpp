@@ -9,7 +9,7 @@ namespace
 	const unsigned short LrpMethod_Server_OnHeartBeatResponse_Id = 1;
 	const unsigned short LrpMethod_Server_OnCurrenciesInfoRequest_Id = 2;
 	const unsigned short LrpMethod_Server_OnSymbolsInfoRequest_Id = 3;
-	const unsigned short LrpMethod_Server_OnTwoFactorAuthRequest_Id = 4;
+	const unsigned short LrpMethod_Server_OnTwoFactorAuthResponse_Id = 4;
 	const unsigned short LrpMethod_Server_OnSessionInfoRequest_Id = 5;
 	const unsigned short LrpMethod_Server_OnSubscribeToQuotesRequest_Id = 6;
 	const unsigned short LrpMethod_Server_OnUnsubscribeQuotesRequest_Id = 7;
@@ -54,14 +54,14 @@ namespace
 		component.OnSymbolsInfoRequest(arg0);
 		buffer.Reset(offset);
 	}
-	void LrpInvoke_Server_OnTwoFactorAuthRequest(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	void LrpInvoke_Server_OnTwoFactorAuthResponse(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
 		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
 		auto& component = pChannel->GetServer();
 		component; // if all methods of component are static then the next line generates warning #4189
 		auto arg0 = ReadTwoFactorReason(buffer);
 		auto arg1 = ReadAString(buffer);
-		component.OnTwoFactorAuthRequest(arg0, arg1);
+		component.OnTwoFactorAuthResponse(arg0, arg1);
 		buffer.Reset(offset);
 	}
 	void LrpInvoke_Server_OnSessionInfoRequest(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
@@ -155,7 +155,7 @@ namespace
 		LrpInvoke_Server_OnHeartBeatResponse,
 		LrpInvoke_Server_OnCurrenciesInfoRequest,
 		LrpInvoke_Server_OnSymbolsInfoRequest,
-		LrpInvoke_Server_OnTwoFactorAuthRequest,
+		LrpInvoke_Server_OnTwoFactorAuthResponse,
 		LrpInvoke_Server_OnSessionInfoRequest,
 		LrpInvoke_Server_OnSubscribeToQuotesRequest,
 		LrpInvoke_Server_OnUnsubscribeQuotesRequest,
@@ -242,7 +242,7 @@ extern "C" const char* __stdcall LrpSignature()
 		"OnHeartBeatResponse@53584CC68A5EF9F98311B4D86431576D;"
 		"OnCurrenciesInfoRequest@E6F0091DB9E7B73AE0CEA7CD77318241;"
 		"OnSymbolsInfoRequest@83BCDF2EEBC55F2EF1AEFBCE150E9FCF;"
-		"OnTwoFactorAuthRequest@3441CDF144C5ACD72F858CF00D9DB751;"
+		"OnTwoFactorAuthResponse@506DF28DA256AA721F9634D7D1F80D50;"
 		"OnSessionInfoRequest@A941B0F5C96CF054661A0F6925751F99;"
 		"OnSubscribeToQuotesRequest@48BD3703EA5F3D3D116930EC0F7D6E5B;"
 		"OnUnsubscribeQuotesRequest@65D0C196E1F746602C717772463A9910;"

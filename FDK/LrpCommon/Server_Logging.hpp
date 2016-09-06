@@ -119,10 +119,10 @@ void Server::OnSymbolsInfoRequest(const std::string& id)
 	_stream << ");";
 	m_stream->Write(_stream.str());
 }
-void Server::OnTwoFactorAuthRequest(const FxTwoFactorReason& reason, const std::string& otp)
+void Server::OnTwoFactorAuthResponse(const FxTwoFactorReason& reason, const std::string& otp)
 {
 	std::stringstream _stream;
-	_stream << "[0]Server[4]OnTwoFactorAuthRequest(";
+	_stream << "[0]Server[4]OnTwoFactorAuthResponse(";
 	LrpWriteTwoFactorReason("reason", reason, _stream);
 	_stream<<", ";
 	LrpWriteAString("otp", otp, _stream);

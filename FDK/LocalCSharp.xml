@@ -63,7 +63,7 @@
 				<Param name="id" type="int64" direction="in" />
 				<Return type="void" />
 			</Method>
-			<Method name="BeginTwoFactorAuthRequest">
+			<Method name="BeginTwoFactorAuthResponse">
 				<Param name="handle" type="lptr" direction="in" />
 				<Param name="id" type="int64" direction="in" />
                 <Param name="reason" type="TwoFactorReason" direction="in" />

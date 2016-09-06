@@ -43,7 +43,7 @@ namespace LrpServer.Net
         /// <param name="id"></param>
         /// <param name="reason"></param>
         /// <param name="otp"></param>
-        void BeginTwoFactorAuthRequest(long id, LrpTwoFactorReason reason, string otp);
+        void BeginTwoFactorAuthResponse(long id, LrpTwoFactorReason reason, string otp);
 
         /// <summary>
         ///

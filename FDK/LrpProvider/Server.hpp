@@ -75,12 +75,12 @@ public:
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_OnTwoFactorAuthRequest_Id = 4;
-	bool Is_OnTwoFactorAuthRequest_Supported() const
+	const static unsigned short LrpMethod_OnTwoFactorAuthResponse_Id = 4;
+	bool Is_OnTwoFactorAuthResponse_Supported() const
 	{
 		return m_channel->IsSupported(0, 4);
 	}
-	void OnTwoFactorAuthRequest(const FxTwoFactorReason& reason, const std::string& otp)
+	void OnTwoFactorAuthResponse(const FxTwoFactorReason& reason, const std::string& otp)
 	{
 		MemoryBuffer buffer;
 		m_channel->Initialize(buffer);

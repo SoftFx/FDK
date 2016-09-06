@@ -30,7 +30,7 @@
 				<Param name="id" type="astring" direction="in"/>
 				<Return type="void" />
 			</Method>
-      		<Method name="OnTwoFactorAuthRequest">
+      		<Method name="OnTwoFactorAuthResponse">
       		    <Param name="reason" type="TwoFactorReason" direction="in"/>
 				<Param name="otp" type="astring" direction="in"/>
 				<Return type="void" />
