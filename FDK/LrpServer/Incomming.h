@@ -18,7 +18,7 @@ public:
 public:
     void OnHeartBeatRequest();
     void OnHeartBeatResponse();
-    void OnTwoFactorAuthRequest(const FxTwoFactorReason reason, const std::string& otp);
+    void OnTwoFactorAuthResponse(const FxTwoFactorReason reason, const std::string& otp);
     void OnSessionInfoRequest(const string& requestId);
     void OnCurrenciesInfoRequest(const string& requestId);
     void OnSymbolsInfoRequest(const string& requestId);

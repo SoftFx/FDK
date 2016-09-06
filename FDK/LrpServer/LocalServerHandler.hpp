@@ -89,12 +89,12 @@ public:
 		Throw(_status, buffer);
 
 	}
-	const static unsigned short LrpMethod_BeginTwoFactorAuthRequest_Id = 4;
-	bool Is_BeginTwoFactorAuthRequest_Supported() const
+	const static unsigned short LrpMethod_BeginTwoFactorAuthResponse_Id = 4;
+	bool Is_BeginTwoFactorAuthResponse_Supported() const
 	{
 		return m_channel->IsSupported(0, 4);
 	}
-	void BeginTwoFactorAuthRequest(void* handle, const __int64& id, const FxTwoFactorReason& reason, const std::string& otp)
+	void BeginTwoFactorAuthResponse(void* handle, const __int64& id, const FxTwoFactorReason& reason, const std::string& otp)
 	{
 		MemoryBuffer buffer;
 		m_channel->Initialize(buffer);

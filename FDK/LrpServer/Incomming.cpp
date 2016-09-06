@@ -47,9 +47,9 @@ void CIncomming::OnHeartBeatResponse()
 {
     m_channel.ProcessHeartBeatResponse();
 }
-void CIncomming::OnTwoFactorAuthRequest(const FxTwoFactorReason reason, const std::string& otp)
+void CIncomming::OnTwoFactorAuthResponse(const FxTwoFactorReason reason, const std::string& otp)
 {
-    m_proxy.BeginTwoFactorAuthRequest(m_id, reason, otp);
+    m_proxy.BeginTwoFactorAuthResponse(m_id, reason, otp);
 }
 void CIncomming::OnSessionInfoRequest(const string& requestId)
 {

@@ -20,10 +20,10 @@ void CLocalServerHandlerProxy::BeginLogonRequest(const uint64 id, const string& 
     LocalServerHandler handler(m_client);
     handler.BeginLogonRequest(m_handle, id, address, port, username, password);
 }
-void CLocalServerHandlerProxy::BeginTwoFactorAuthRequest(const uint64 id, const FxTwoFactorReason reason, const std::string& otp)
+void CLocalServerHandlerProxy::BeginTwoFactorAuthResponse(const uint64 id, const FxTwoFactorReason reason, const std::string& otp)
 {
     LocalServerHandler handler(m_client);
-    handler.BeginTwoFactorAuthRequest(m_handle, id, reason, otp);
+    handler.BeginTwoFactorAuthResponse(m_handle, id, reason, otp);
 }
 void CLocalServerHandlerProxy::BeginCurrenciesInformationRequest(const uint64 id, const string& requestId)
 {

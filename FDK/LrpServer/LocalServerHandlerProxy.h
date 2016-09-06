@@ -12,7 +12,7 @@ private:
 public:
     void BeginNewConnectionRequest(const uint64 id, const string& address, const int port);
     void BeginLogonRequest(const uint64 id, const string& address, const int port, const string& username, const string& password);
-    void BeginTwoFactorAuthRequest(const uint64 id, const FxTwoFactorReason reason, const std::string& otp);
+    void BeginTwoFactorAuthResponse(const uint64 id, const FxTwoFactorReason reason, const std::string& otp);
     void BeginShutdownConnectionNotification(const uint64 id);
     void BeginCurrenciesInformationRequest(const uint64 id, const string& requestId);
     void BeginSymbolsInformationRequest(const uint64 id, const string& requestId);
