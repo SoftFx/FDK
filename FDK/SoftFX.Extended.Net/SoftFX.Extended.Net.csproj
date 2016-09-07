@@ -67,6 +67,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -121,6 +122,7 @@
     <Compile Include="Financial\Rounding\AccountRoundingService.cs" />
     <Compile Include="Financial\State\Processor.cs" />
     <Compile Include="Financial\State\UpdateHandler.cs" />
+    <Compile Include="Library\DeviceIdGenerator.cs" />
     <Compile Include="Resources\EmbeddedModules.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
