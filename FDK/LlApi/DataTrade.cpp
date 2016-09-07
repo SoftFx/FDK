@@ -223,11 +223,13 @@ void CDataTrade::AfterLogon()
     m_accountType = FxAccountType_None;
     m_cache.Clear();
 
+    /* IvanS: Remove automatic account info request
     string id = NextId(cInternalASynchCall);
     m_sender->VSendGetAccountInfo(id);
 
     id = NextId(cInternalASynchCall);
     m_sender->VSendGetOrders(id);
+    */
 }
 
 void CDataTrade::VLogout(const CFxEventInfo& eventInfo, const FxLogoutReason reason, const string& description)
