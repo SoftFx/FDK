@@ -1,6 +1,4 @@
-﻿using TickTrader.Common.Security;
-
-namespace SoftFX.Extended
+﻿namespace SoftFX.Extended
 {
     using System;
     using System.Collections.Generic;
