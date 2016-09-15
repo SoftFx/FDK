@@ -239,6 +239,14 @@ bool CFxExecutionReport::TryGetDeletedOrder(string& orderId) const
 			return true;
 		}
 	}
+	if (FxOrderStatus_Filled == OrderStatus)
+	{
+		if (FxOrderType_Market == OrderType)
+		{
+			orderId = GetOrderId();
+			return true;
+		}
+	}
 	return false;
 }
 
