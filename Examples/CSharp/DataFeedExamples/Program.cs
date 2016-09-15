@@ -6,9 +6,9 @@
     {
         static void Main()
         {
-            string address = "tpdemo.fxopen.com";
-            string username = "59932";
-            string password = "8mEx7zZ2";
+            string address = "tp.dev.soft-fx.eu";
+            string username = "100025";
+            string password = "a";
             var useFixProtocol = true;
 
             //Library.WriteFullDumpOnError(@"D:\full.dmp");
