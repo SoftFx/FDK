@@ -189,7 +189,9 @@ void CDataTradeCache::DoUpdateOrders(const CFxExecutionReport& report)
 
 void CDataTradeCache::Update()
 {
-	const bool isInitialized = m_isAccontInfoInitialized && m_isOrdersInitialized;
+	// IvanS: Remove automatic account info and orders list request
+	// const bool isInitialized = m_isAccontInfoInitialized && m_isOrdersInitialized;
+	const bool isInitialized = m_isAccontInfoInitialized;
 	__super::Update(isInitialized);
 }
 
