@@ -92,6 +92,7 @@
             this.Trade.Initialize(connectionString);
             this.Trade.Logon += this.OnLogon;
             this.Trade.Logout += this.OnLogout;
+            this.Trade.CacheInitialized += this.OnCacheInitialized;
             this.Trade.ExecutionReport += this.OnExecutionReport;
             this.Trade.PositionReport += this.OnPositionReport;
             this.Trade.AccountInfo += this.OnAccountInfo;
@@ -119,6 +120,11 @@
         void OnLogout(object sender, LogoutEventArgs e)
         {
             Console.WriteLine("OnLogout(): {0}", e);
+        }
+
+        void OnCacheInitialized(object sender, CacheEventArgs e)
+        {
+            Console.WriteLine("OnCacheInitialized(): {0}", e);
         }
 
         void OnNofity(object sender, NotificationEventArgs e)

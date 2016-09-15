@@ -12,9 +12,12 @@
 
         protected override void RunExample()
         {
-            var info = this.Trade.Server.GetAccountInfo();
-            Console.WriteLine(info);
-            Console.ReadKey();
+            while (true)
+            {
+                var info = this.Trade.Cache.AccountInfo;
+                Console.WriteLine(info);
+                System.Threading.Thread.Sleep(1000);
+            }
         }
     }
 }
