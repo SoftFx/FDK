@@ -40,6 +40,12 @@
             ThreadPool.QueueUserWorkItem(Execute5<T0, T1, T2, T3, T4>, arg);
         }
 
+        public static void Start<T0, T1, T2, T3, T4, T5>(Action<T0, T1, T2, T3, T4, T5> func, T0 arg0, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
+        {
+            var arg = Tuple.Create(func, arg0, arg1, arg2, arg3, arg4, arg5);
+            ThreadPool.QueueUserWorkItem(Execute6<T0, T1, T2, T3, T4, T5>, arg);
+        }
+
         #region Members
 
         static void Execute0(object obj)
@@ -76,6 +82,12 @@
         {
             var arg = (Tuple<Action<T0, T1, T2, T3, T4>, T0, T1, T2, T3, T4>)obj;
             arg.Item1(arg.Item2, arg.Item3, arg.Item4, arg.Item5, arg.Item6);
+        }
+
+        static void Execute6<T0, T1, T2, T3, T4, T5>(object obj)
+        {
+            var arg = (Tuple<Action<T0, T1, T2, T3, T4, T5>, T0, T1, T2, T3, T4, T5>)obj;
+            arg.Item1(arg.Item2, arg.Item3, arg.Item4, arg.Item5, arg.Item6, arg.Item7);
         }
 
         #endregion

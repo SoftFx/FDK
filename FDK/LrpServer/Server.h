@@ -41,7 +41,7 @@ public:
 public:
     void BeginConnection(const uint64 id, const string& address);
     void EndConnection(const uint64 id, const int32 status);
-    void BeginLogon(const uint64 id, const string& address, const string& username, const string& password);
+    void BeginLogon(const uint64 id, const string& address, const string& username, const string& password, const string& deviceid, const string& appsessionid);
     void EndLogon(const uint64 id, const HRESULT status, const string& message);
     void ShutdownConnection(const uint64 id);
 public:
@@ -49,7 +49,7 @@ public:
     HRESULT SendMessage(const uint64 id, const CMessage& message);
 private:
     void DoEndConnection(const uint64 id, const int32 status);
-    void DoBeginLogon(const uint64 id, const string& address, const string& username, const string& password);
+    void DoBeginLogon(const uint64 id, const string& address, const string& username, const string& password, const string& deviceid, const string& appsessionid);
     void DoEndLogon(const uint64 id, const HRESULT status, const string& message);
 private:
     static unsigned __stdcall ThreadFunction(void* arg);

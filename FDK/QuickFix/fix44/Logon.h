@@ -43,10 +43,14 @@ namespace FIX44
     FIELD_SET_EX(std::string, Username);
     FIELD_SET(*this, FIX::Password);
     FIELD_SET_EX(std::string, Password);
-    FIELD_SET(*this, FIX::DeviceId);
-    FIELD_SET_EX(std::string, DeviceId);
+    FIELD_SET(*this, FIX::DeviceID);
+    FIELD_SET_EX(std::string, DeviceID);
+    FIELD_SET(*this, FIX::AppSessionID);
+    FIELD_SET_EX(std::string, AppSessionID);
     FIELD_SET(*this, FIX::ProtocolSpec);
     FIELD_SET_EX(std::string, ProtocolSpec);
+    FIELD_SET(*this, FIX::TwoFactorAuthFlag);
+    FIELD_SET_EX(bool, TwoFactorAuthFlag);
     FIELD_SET(*this, FIX::NoMsgTypes);
     FIELD_SET_EX(int, NoMsgTypes);
     class NoMsgTypes: public FIX::Group

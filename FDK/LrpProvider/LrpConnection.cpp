@@ -15,6 +15,8 @@ namespace
     const string cPort = "Port";
     const string cUsername = "Username";
     const string cPassword = "Password";
+    const string cDeviceId = "DeviceId";
+    const string cAppSessionId = "AppSessionId";
     const string cLogDirectory = "LogDirectory";
     const string cSecureConnection = "SecureConnection";
     const string cEnableQuotesLogging = "EnableQuotesLogging";
@@ -35,6 +37,8 @@ CLrpConnection::CLrpConnection(const CFxParams& params)
     m_port = params.GetInt32(cPort);
     m_username = params.GetString(cUsername);
     m_password = params.GetString(cPassword);
+    m_deviceId = params.GetString(cDeviceId);
+    m_appSessionId = params.GetString(cAppSessionId);
     m_enableQuotesLogging = params.GetBoolean(cEnableQuotesLogging);
 }
 
@@ -220,6 +224,8 @@ bool CLrpConnection::DoSendUsernamePassword(CTimeout timeout)
     WriteUInt16(0, m_outgoingBuffer);
     WriteAString(m_username, m_outgoingBuffer);
     WriteAString(m_password, m_outgoingBuffer);
+    WriteAString(m_deviceId, m_outgoingBuffer);
+    WriteAString(m_appSessionId, m_outgoingBuffer);
     m_outgoingBuffer.SetPosition(0);
 
     if(Send(timeout))

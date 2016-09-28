@@ -29,7 +29,8 @@ namespace LrpServer.Net
         /// <param name="port"></param>
         /// <param name="username"></param>
         /// <param name="password"></param>
-        void BeginLogonRequest(long id, string address, int port, string username, string password);
+        /// <param name="deviceSessionIds"></param>
+        void BeginLogonRequest(long id, string address, int port, string username, string password, Tuple<string, string> deviceSessionIds);
 
         /// <summary>
         ///

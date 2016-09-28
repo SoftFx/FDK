@@ -23,9 +23,10 @@ namespace
     const string cPort = "Port";
     const string cSenderCompId = "SenderCompId";
     const string cTargetCompId = "TargetCompId";
-    const string cDeviceId = "DeviceId";
     const string cUsername = "Username";
     const string cPassword = "Password";
+    const string cDeviceId = "DeviceId";
+    const string cAppSessionId = "AppSessionId";
     const string cSecureConnection = "SecureConnection";
     const string cFixLogDirectory = "FixLogDirectory";
     const string cFixEventsFileName = "FixEventsFileName";
@@ -121,9 +122,10 @@ CFixConnection::CFixConnection(const string& connectionString)
     m_settings.set(FIX::Dictionary());
     m_logFactory = new FIX::FileLogFactory(fixLogDirectory, fixEventsFileName, fixMessagesFileName, excludeMessagesFromLogs, decodeLogFixMessages);
 
-    m_deviceId = parameters.GetString(cDeviceId);
     m_username = parameters.GetString(cUsername);
     m_password = parameters.GetString(cPassword);
+    m_deviceId = parameters.GetString(cDeviceId);
+    m_appSessionId = parameters.GetString(cAppSessionId);
 
     m_initiator = new FIX::SocketInitiator(*this, m_messageStorefactory, m_settings, *m_logFactory, mode);
 }
@@ -170,9 +172,10 @@ void CFixConnection::toAdmin(FIX::Message& message, const FIX::SessionID& /*sess
     if (FIX::MsgType_Logon == type)
     {
         FIX44::Logon& logon = static_cast<FIX44::Logon&>(message);
-        logon.SetDeviceId(m_deviceId);
         logon.SetUsername(m_username);
         logon.SetPassword(m_password);
+        logon.SetDeviceID(m_deviceId);
+        logon.SetAppSessionID(m_appSessionId);
         logon.SetResetSeqNumFlag(true);
         if (!m_protocolVersion.empty() && ("ext.0.0" != m_protocolVersion))
         {

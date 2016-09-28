@@ -19,10 +19,10 @@
             TaskEx.Start(acceptor.Handler.BeginShutdownConnectionNotification, id);
         }
 
-        public void BeginLogonRequest(LPtr handle, long id, string address, int port, string username, string password)
+        public void BeginLogonRequest(LPtr handle, long id, string address, int port, string username, string password, string deviceid, string appsessionid)
         {
             var acceptor = AcceptorFromHandle(handle);
-            TaskEx.Start(acceptor.Handler.BeginLogonRequest, id, address, port, username, password);
+            TaskEx.Start(acceptor.Handler.BeginLogonRequest, id, address, port, username, password, new Tuple<string, string>(deviceid, appsessionid));
         }
 
         public void BeginLogoutRequest(LPtr handle, long id)
