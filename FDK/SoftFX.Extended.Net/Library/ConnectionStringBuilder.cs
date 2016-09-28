@@ -23,15 +23,10 @@
                     element.SetValue(this, string.Empty, null);
             }
             DeviceId = DeviceIdGenerator.GetDeviceId();
+            AppSessionId = Guid.NewGuid().ToString();
         }
 
         #region Properties
-
-        /// <summary>
-        /// Gets or sets the device ID of the data feed instance.
-        /// Can not be modified, when the data feed is running.
-        /// </summary>
-        public string DeviceId { get; set; }
 
         /// <summary>
         /// Gets or sets the username of the data feed instance.
@@ -44,6 +39,18 @@
         /// Can not be modified, when the data feed is running.
         /// </summary>
         public string Password { get; set; }
+
+        /// <summary>
+        /// Gets or sets the device ID of the data feed instance.
+        /// Can not be modified, when the data feed is running.
+        /// </summary>
+        public string DeviceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the application session ID of the data feed instance.
+        /// Can not be modified, when the data feed is running.
+        /// </summary>
+        public string AppSessionId { get; set; }
 
         /// <summary>
         /// Gets protocol type name.

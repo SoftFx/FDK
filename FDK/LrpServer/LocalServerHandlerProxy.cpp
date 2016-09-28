@@ -15,10 +15,10 @@ CLocalServerHandlerProxy::CLocalServerHandlerProxy(void* handle) : m_handle(hand
 CLocalServerHandlerProxy::~CLocalServerHandlerProxy()
 {
 }
-void CLocalServerHandlerProxy::BeginLogonRequest(const uint64 id, const string& address, const int port, const string& username, const string& password)
+void CLocalServerHandlerProxy::BeginLogonRequest(const uint64 id, const string& address, const int port, const string& username, const string& password, const string& deviceid, const string& appsessionid)
 {
     LocalServerHandler handler(m_client);
-    handler.BeginLogonRequest(m_handle, id, address, port, username, password);
+    handler.BeginLogonRequest(m_handle, id, address, port, username, password, deviceid, appsessionid);
 }
 void CLocalServerHandlerProxy::BeginTwoFactorAuthResponse(const uint64 id, const FxTwoFactorReason reason, const std::string& otp)
 {

@@ -56,7 +56,7 @@ public:
 	{
 		return m_channel->IsSupported(0, 2);
 	}
-	void BeginLogonRequest(void* handle, const __int64& id, const std::string& address, const __int32& port, const std::string& username, const std::string& password)
+	void BeginLogonRequest(void* handle, const __int64& id, const std::string& address, const __int32& port, const std::string& username, const std::string& password, const std::string& deviceid, const std::string& appsessionid)
 	{
 		MemoryBuffer buffer;
 		m_channel->Initialize(buffer);
@@ -67,6 +67,8 @@ public:
 		WriteInt32(port, buffer);
 		WriteAString(username, buffer);
 		WriteAString(password, buffer);
+		WriteAString(deviceid, buffer);
+		WriteAString(appsessionid, buffer);
 
 		const HRESULT _status = m_channel->Invoke(0, 2, buffer);
 		Throw(_status, buffer);

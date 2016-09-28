@@ -62,7 +62,6 @@
                 EventsLogFileName = Path.Combine(logDirectory, string.Format("LRP_{0}.feed.events.log", username)),
                 MessagesLogFileName = Path.Combine(logDirectory, string.Format("LRP_{0}.feed.messages.log", username)),
 
-                DeviceId = Guid.NewGuid().ToString(),
                 Username = username,
                 Password = password
             };

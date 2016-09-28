@@ -48,8 +48,10 @@ namespace LrpServer.Net.LocalCSharp
 			var arg3 = buffer.ReadInt32();
 			var arg4 = buffer.ReadAString();
 			var arg5 = buffer.ReadAString();
+			var arg6 = buffer.ReadAString();
+			var arg7 = buffer.ReadAString();
 			buffer.Reset(offset);
-			component.BeginLogonRequest(arg0, arg1, arg2, arg3, arg4, arg5);
+			component.BeginLogonRequest(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 		}
 		private static void LrpInvoke_LocalServerHandler_BeginLogoutRequest(int offset, MemoryBuffer buffer, Channel channel)
 		{

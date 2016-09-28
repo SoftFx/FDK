@@ -49,11 +49,12 @@
         internal static readonly FixProtocolVersion Version33 = new FixProtocolVersion(ExtendedType, 1, 33);
         internal static readonly FixProtocolVersion Version36 = new FixProtocolVersion(ExtendedType, 1, 36);
         internal static readonly FixProtocolVersion Version38 = new FixProtocolVersion(ExtendedType, 1, 38);
+        internal static readonly FixProtocolVersion Version40 = new FixProtocolVersion(ExtendedType, 1, 40);
 
         #endregion
 
         /// <summary>
-        /// Creates empty protocol version instance. 
+        /// Creates empty protocol version instance.
         /// </summary>
         public FixProtocolVersion()
         {
@@ -127,7 +128,7 @@
         }
 
         /// <summary>
-        /// Returns a value indicating whether this instance is equal to a specified object. 
+        /// Returns a value indicating whether this instance is equal to a specified object.
         /// </summary>
         /// <param name="obj">Can not be null; should be ProtocolVersion instance.</param>
         /// <exception cref="System.InvalidCastException">If obj type is different than ProtocolVersion.</exception>
@@ -151,7 +152,7 @@
         }
 
         /// <summary>
-        /// Returns a value indicating whether this instance is equal to a specified object. 
+        /// Returns a value indicating whether this instance is equal to a specified object.
         /// </summary>
         /// <param name="other">Can not be null; should be ProtocolVersion instance.</param>
         /// <exception cref="System.InvalidCastException">If obj type is different than ProtocolVersion.</exception>
@@ -207,7 +208,7 @@
         }
 
         /// <summary>
-        /// Returns a value indicating whether two protocol version instances are equal. 
+        /// Returns a value indicating whether two protocol version instances are equal.
         /// </summary>
         /// <param name="first">A protocol version instance; can not be null.</param>
         /// <param name="second">A protocol version instance; can not be null.</param>
@@ -220,7 +221,7 @@
         }
 
         /// <summary>
-        /// Returns a value indicating whether two protocol version instances are equal. 
+        /// Returns a value indicating whether two protocol version instances are equal.
         /// </summary>
         /// <param name="first">A protocol version instance; can not be null.</param>
         /// <param name="second">A protocol version instance; can not be null.</param>
@@ -342,7 +343,7 @@
         {
             get
             {
-                return Version38;
+                return Version40;
             }
         }
 

@@ -11,7 +11,7 @@ namespace LrpServer.Net.LocalCSharp
 		"$LocalServerHandler;"+
 			"BeginNewConnectionRequest@E0594C3B4235C991673C32191BAE4D37;"+
 			"BeginShutdownConnectionNotification@A158045B6F252B09901470496CCF912C;"+
-			"BeginLogonRequest@9B4F531EB3B5F61F4BA9DAC40DD51F1C;"+
+			"BeginLogonRequest@4BE05751AE22CC4229ECE3EF9F0D9F2F;"+
 			"BeginLogoutRequest@1C3E8EE912A5C57A2DEEE478986030D4;"+
 			"BeginTwoFactorAuthResponse@E9D828D9931FEE3CC665E0CCD84B5AF7;"+
 			"BeginCurrenciesInfoRequest@361EE6C731F0FC0CB760CC37746056A0;"+

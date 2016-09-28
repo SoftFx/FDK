@@ -7,7 +7,7 @@
 namespace
 {
     const int cInitialVersion = 0;
-    const string cProtocolVersion = "ext.1.31";
+    const string cProtocolVersion = "ext.1.40";
 }
 
 namespace
@@ -209,13 +209,15 @@ HRESULT CHandShakeBehaviour::DoUsernamePassword()
 
     string username = ReadAString(m_state.Buffer);
     string password = ReadAString(m_state.Buffer);
+    string deviceid = ReadAString(m_state.Buffer);
+    string appsessionid = ReadAString(m_state.Buffer);
 
 
     CLogStream()<<"CHandShakeBehaviour::DoUsernamePassword(id = "<<m_id<<"): username/password = "<<username<<"/"<<password>>m_logger;
 
     m_method = nullptr;
     const string& address = m_transport.GetAddress();
-    m_server.BeginLogon(m_id, address, username, password);
+    m_server.BeginLogon(m_id, address, username, password, deviceid, appsessionid);
 
     CLogStream()<<"CHandShakeBehaviour::DoUsernamePassword(id = "<<m_id<<"): begin logon">>m_logger;
 

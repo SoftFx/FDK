@@ -7,8 +7,8 @@
         static void Main()
         {
             string address = "tp.dev.soft-fx.eu";
-            string username = "100025";
-            string password = "a";
+            string username = "9";
+            string password = "123qwe!";
             var useFixProtocol = true;
 
             //Library.WriteFullDumpOnError(@"D:\full.dmp");

@@ -150,20 +150,20 @@ void CServer::DoEndConnection(const uint64 id, const int32 status)
     }
 }
 
-void CServer::BeginLogon(const uint64 id, const string& address, const string& username, const string& password)
+void CServer::BeginLogon(const uint64 id, const string& address, const string& username, const string& password, const string& deviceid, const string& appsessionid)
 {
     __try
     {
-        DoBeginLogon(id, address, username, password);
+        DoBeginLogon(id, address, username, password, deviceid, appsessionid);
     }
     __except(EXCEPTION_EXECUTE_HANDLER)
     {
     }
 }
 
-void CServer::DoBeginLogon(const uint64 id, const string& address, const string& username, const string& password)
+void CServer::DoBeginLogon(const uint64 id, const string& address, const string& username, const string& password, const string& deviceid, const string& appsessionid)
 {
-    m_proxy.BeginLogonRequest(id, address, m_port, username, password);
+    m_proxy.BeginLogonRequest(id, address, m_port, username, password, deviceid, appsessionid);
 }
 
 void CServer::EndLogon(const uint64 id, const HRESULT status, const string& message)
