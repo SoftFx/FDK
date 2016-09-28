@@ -174,8 +174,10 @@ void CFixConnection::toAdmin(FIX::Message& message, const FIX::SessionID& /*sess
         FIX44::Logon& logon = static_cast<FIX44::Logon&>(message);
         logon.SetUsername(m_username);
         logon.SetPassword(m_password);
-        logon.SetDeviceID(m_deviceId);
-        logon.SetAppSessionID(m_appSessionId);
+        if (!m_deviceId.empty())
+            logon.SetDeviceID(m_deviceId);
+        if (!m_appSessionId.empty())
+            logon.SetAppSessionID(m_appSessionId);
         logon.SetResetSeqNumFlag(true);
         if (!m_protocolVersion.empty() && ("ext.0.0" != m_protocolVersion))
         {
