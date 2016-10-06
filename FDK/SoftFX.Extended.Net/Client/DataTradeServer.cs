@@ -117,7 +117,7 @@
             var order = this.Client.DataTradeHandle.OpenNewOrder(operationId, symbol, command, side, price, volume, stopLoss, takeProfit, expiration, comment ?? string.Empty, timeoutInMilliseconds);
             return new TradeRecord(this.Client, order);
         }
-        
+
         #endregion
 
         #region DeletePendingOrder
@@ -126,23 +126,21 @@
         /// The method deletes an existing pending order.
         /// </summary>
         /// <param name="orderId">An existing pending order ID.</param>
-        /// <param name="clientId">An existing pending client order ID.</param>
         /// <param name="side">Order side: buy or sell.</param>
-        public void DeletePendingOrder(string orderId, string clientId, TradeRecordSide side)
+        public void DeletePendingOrder(string orderId, TradeRecordSide side)
         {
-            this.DeletePendingOrderEx(null, orderId, clientId, side, this.Client.SynchOperationTimeout);
+            this.DeletePendingOrderEx(null, orderId, null, side, this.Client.SynchOperationTimeout);
         }
 
         /// <summary>
         /// The method deletes an existing pending order.
         /// </summary>
         /// <param name="orderId">An existing pending order ID.</param>
-        /// <param name="clientId">An existing pending client order ID.</param>
         /// <param name="side">Order side: buy or sell.</param>
         /// <param name="timeoutInMilliseconds">Timeout of the synchronous operation.</param>
-        public void DeletePendingOrderEx(string orderId, string clientId, TradeRecordSide side, int timeoutInMilliseconds)
+        public void DeletePendingOrderEx(string orderId, TradeRecordSide side, int timeoutInMilliseconds)
         {
-            this.DeletePendingOrderEx(null, orderId, clientId, side, timeoutInMilliseconds);
+            this.DeletePendingOrderEx(null, orderId, null, side, timeoutInMilliseconds);
         }
 
         /// <summary>
@@ -153,11 +151,10 @@
         /// Otherwise, please use GenerateOperationId method of DataClient object.
         /// </param>
         /// <param name="orderId">An existing pending order ID.</param>
-        /// <param name="clientId">An existing pending client order ID.</param>
         /// <param name="side">Order side: buy or sell.</param>
-        public void DeletePendingOrderEx(string operationId, string orderId, string clientId, TradeRecordSide side)
+        public void DeletePendingOrderEx(string operationId, string orderId, TradeRecordSide side)
         {
-            this.DeletePendingOrderEx(null, orderId, clientId, side, this.Client.SynchOperationTimeout);
+            this.DeletePendingOrderEx(null, orderId, null, side, this.Client.SynchOperationTimeout);
         }
 
         void DeletePendingOrderEx(string operationId, string orderId, string clientId, TradeRecordSide side, int timeoutInMilliseconds)
@@ -173,7 +170,6 @@
         /// The method modifies an existing trade record.
         /// </summary>
         /// <param name="orderId">An existing pending order ID.</param>
-        /// <param name="clientId">An existing pending client order ID.</param>
         /// <param name="symbol">Currency pair.</param>
         /// <param name="type">Order type: Limit or Stop.</param>
         /// <param name="side">Order side: buy or sell.</param>
@@ -184,17 +180,16 @@
         /// <param name="newExpiration">A new expiration time.</param>
         /// <param name="newComment">A new comment.</param>
         /// <returns>A modified trade record.</returns>
-        public TradeRecord ModifyTradeRecord(string orderId, string clientId, string symbol, TradeRecordType type, TradeRecordSide side,
+        public TradeRecord ModifyTradeRecord(string orderId, string symbol, TradeRecordType type, TradeRecordSide side,
                                             double volume, double? newActivationPrice = null, double? newStopLoss = null, double? newTakeProfit = null, DateTime? newExpiration = null, string newComment = null)
         {
-            return this.ModifyTradeRecordEx(orderId, clientId, symbol, type, side, volume, newActivationPrice, newStopLoss, newTakeProfit, newExpiration, newComment, this.Client.SynchOperationTimeout);
+            return this.ModifyTradeRecordEx(orderId, symbol, type, side, volume, newActivationPrice, newStopLoss, newTakeProfit, newExpiration, newComment, this.Client.SynchOperationTimeout);
         }
 
         /// <summary>
         /// The method modifies an existing trade record.
         /// </summary>
         /// <param name="orderId">An existing pending order ID.</param>
-        /// <param name="clientId">An existing pending client order ID.</param>
         /// <param name="symbol">Currency pair.</param>
         /// <param name="type">Order type: Limit or Stop.</param>
         /// <param name="side">Order side: buy or sell.</param>
@@ -206,10 +201,10 @@
         /// <param name="newComment">A new comment.</param>
         /// <param name="timeoutInMilliseconds">Timeout of the synchronous operation.</param>
         /// <returns>A modified trade record.</returns>
-        public TradeRecord ModifyTradeRecordEx(string orderId, string clientId, string symbol, TradeRecordType type, TradeRecordSide side,
+        public TradeRecord ModifyTradeRecordEx(string orderId, string symbol, TradeRecordType type, TradeRecordSide side,
                                         double volume, double? newActivationPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpiration, string newComment, int timeoutInMilliseconds)
         {
-            return this.ModifyTradeRecordEx(null, orderId, clientId, symbol, type, side, volume, newActivationPrice, newStopLoss, newTakeProfit, newExpiration, newComment, timeoutInMilliseconds);
+            return this.ModifyTradeRecordEx(null, orderId, null, symbol, type, side, volume, newActivationPrice, newStopLoss, newTakeProfit, newExpiration, newComment, timeoutInMilliseconds);
         }
 
         /// <summary>
@@ -220,7 +215,6 @@
         /// Otherwise, please use GenerateOperationId method of DataClient object.
         /// </param>
         /// <param name="orderId">An existing pending order ID.</param>
-        /// <param name="clientId">An existing pending client order ID.</param>
         /// <param name="symbol">Currency pair.</param>
         /// <param name="type">Order type: Limit or Stop.</param>
         /// <param name="side">Order side: buy or sell.</param>
@@ -231,10 +225,10 @@
         /// <param name="newExpiration">A new expiration time.</param>
         /// <param name="newComment">A new comment.</param>
         /// <returns>A modified trade record.</returns>
-        public TradeRecord ModifyTradeRecordEx(string operationId, string orderId, string clientId, string symbol, TradeRecordType type, TradeRecordSide side,
+        public TradeRecord ModifyTradeRecordEx(string operationId, string orderId, string symbol, TradeRecordType type, TradeRecordSide side,
                                         double volume, double? newActivationPrice = null, double? newStopLoss = null, double? newTakeProfit = null, DateTime? newExpiration = null, string newComment = null)
         {
-            return this.ModifyTradeRecordEx(operationId, orderId, clientId, symbol, type, side, volume, newActivationPrice, newStopLoss, newTakeProfit, newExpiration, newComment, this.Client.SynchOperationTimeout);
+            return this.ModifyTradeRecordEx(operationId, orderId, null, symbol, type, side, volume, newActivationPrice, newStopLoss, newTakeProfit, newExpiration, newComment, this.Client.SynchOperationTimeout);
         }
 
         TradeRecord ModifyTradeRecordEx(string operationId, string orderId, string clientId, string symbol, TradeRecordType type, TradeRecordSide side,

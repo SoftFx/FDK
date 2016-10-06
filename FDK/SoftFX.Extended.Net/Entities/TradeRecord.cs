@@ -333,7 +333,7 @@
         /// <param name="timeoutInMilliseconds">timeout of the operation in milliseconds</param>
         public void DeleteEx(int timeoutInMilliseconds)
         {
-            this.DataTrade.Server.DeletePendingOrderEx(this.OrderId, this.ClientOrderId, this.Side, timeoutInMilliseconds);
+            this.DataTrade.Server.DeletePendingOrderEx(this.OrderId, this.Side, timeoutInMilliseconds);
         }
 
         #endregion
@@ -367,7 +367,7 @@
         /// <returns>A modified trade record.</returns>
         public TradeRecord ModifyEx(double? newActivationPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpirationTime, string newComment, int timeoutInMilliseconds)
         {
-            var result = this.DataTrade.Server.ModifyTradeRecordEx(this.OrderId, this.ClientOrderId, this.Symbol, this.Type, this.Side, this.Volume, newActivationPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, timeoutInMilliseconds);
+            var result = this.DataTrade.Server.ModifyTradeRecordEx(this.OrderId, this.Symbol, this.Type, this.Side, this.Volume, newActivationPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, timeoutInMilliseconds);
             return result;
         }
 
