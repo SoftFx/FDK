@@ -57,7 +57,10 @@
         {
             if (operationId == null)
                 operationId = string.Empty;
-
+            if (orderId == null)
+                orderId = string.Empty;
+            if (clientId == null)
+                clientId = string.Empty;
             if (newComment == null)
                 newComment = string.Empty;
 
@@ -68,20 +71,26 @@
             return Native.TradeServer.ModifyOrder(this.handle, operationId, order, (uint)timeoutInMilliseconds);
         }
 
-        public void DeleteOrder(string operationId, string orderId, string clientID, TradeRecordSide side, int timeoutInMilliseconds)
+        public void DeleteOrder(string operationId, string orderId, string clientId, TradeRecordSide side, int timeoutInMilliseconds)
         {
             if (operationId == null)
                 operationId = string.Empty;
+            if (orderId == null)
+                orderId = string.Empty;
+            if (clientId == null)
+                clientId = string.Empty;
 
             this.VerifyInitialized();
 
-            Native.TradeServer.DeleteOrder(this.handle, operationId, orderId, clientID, side, (uint)timeoutInMilliseconds);
+            Native.TradeServer.DeleteOrder(this.handle, operationId, orderId, clientId, side, (uint)timeoutInMilliseconds);
         }
 
         public ClosePositionResult CloseOrder(string operationId, string orderId, double? closingVolume, int timeoutInMilliseconds)
         {
             if (operationId == null)
                 operationId = string.Empty;
+            if (orderId == null)
+                orderId = string.Empty;
 
             this.VerifyInitialized();
 
@@ -91,6 +100,11 @@
         public bool CloseByOrders(string firstOrderId, string secondOrderId, int timeoutInMilliseconds)
         {
             this.VerifyInitialized();
+
+            if (firstOrderId == null)
+                firstOrderId = string.Empty;
+            if (secondOrderId == null)
+                secondOrderId = string.Empty;
 
             return Native.TradeServer.CloseByPositions(this.handle, firstOrderId, secondOrderId, (uint)timeoutInMilliseconds);
         }
