@@ -135,7 +135,10 @@ void CFixSender::VSendUnsubscribeQuotes(const string& id, const vector<string>& 
 void CFixSender::VSendDeleteOrder(const string& id, const string& orderID, const string& clientID, int32 side)
 {
     FIX44::OrderCancelRequest message;
-    message.SetOrderID(orderID);
+    if (!orderID.empty())
+    {
+        message.SetOrderID(orderID);
+    }
     if (!clientID.empty())
     {
         message.SetOrigClOrdID(clientID);
@@ -162,7 +165,10 @@ void CFixSender::VSendCloseOrder(const string& id, const string& orderId, Nullab
 {
     FIX44::ClosePositionRequest message;
     message.SetClosePosReqID(id);
-    message.SetOrderID(orderId);
+    if (!orderId.empty())
+    {
+        message.SetOrderID(orderId);
+    }
     if (closingVolume.HasValue())
     {
         message.SetQuantity(*closingVolume);
@@ -175,8 +181,14 @@ void CFixSender::VSendCloseByOrders(const string& id, const string& firstOrderId
 {
     FIX44::ClosePositionRequest message;
     message.SetClosePosReqID(id);
-    message.SetOrderID(firstOrderId);
-    message.SetSecondaryOrderID(secondOrderId);
+    if (!firstOrderId.empty())
+    {
+        message.SetOrderID(firstOrderId);
+    }
+    if (!secondOrderId.empty())
+    {
+        message.SetSecondaryOrderID(secondOrderId);
+    }
     message.SetPosCloseType(FIX::PosCloseType_CLOSE_BY);
 
     return SendMessage(message);
@@ -364,7 +376,10 @@ void CFixSender::VSendModifyOrder(const string& id, const CFxOrder& request)
 {
     FIX44::OrderCancelReplaceRequest message;
 
-    message.SetOrderID(request.OrderId);
+    if (!request.OrderId.empty())
+    {
+        message.SetOrderID(request.OrderId);
+    }
     if (!request.ClientOrderId.empty())
     {
         message.SetOrigClOrdID(request.ClientOrderId);
