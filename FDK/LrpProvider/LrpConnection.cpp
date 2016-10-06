@@ -219,7 +219,7 @@ bool CLrpConnection::DoReceiveVersionResponse(CTimeout timeout)
 
 bool CLrpConnection::DoSendUsernamePassword(CTimeout timeout)
 {
-    CLogStream() << "Sending of username and password" >> m_logger;
+    CLogStream() << "Sending of username and password (Username = " << m_username << ", DeviceId = " << m_deviceId << ", AppSessionId = " << m_appSessionId << ")" >> m_logger;
     m_outgoingBuffer.Reset();
     WriteUInt16(0, m_outgoingBuffer);
     WriteAString(m_username, m_outgoingBuffer);
