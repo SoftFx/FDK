@@ -213,7 +213,7 @@ HRESULT CHandShakeBehaviour::DoUsernamePassword()
     string appsessionid = ReadAString(m_state.Buffer);
 
 
-    CLogStream()<<"CHandShakeBehaviour::DoUsernamePassword(id = "<<m_id<<"): username/password = "<<username<<"/"<<password<<", deviceid/appsessionid = "<<deviceid<<"/"<<appsessionid>>m_logger;
+    CLogStream()<<"CHandShakeBehaviour::DoUsernamePassword(id = "<<m_id<<"): Username = "<<username<<", DeviceID = "<<deviceid<<", AppSessionID = "<<appsessionid>>m_logger;
 
     m_method = nullptr;
     const string& address = m_transport.GetAddress();
