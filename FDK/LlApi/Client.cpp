@@ -125,12 +125,10 @@ void CClient::VLogon(const CFxEventInfo& eventInfo, const string& protocolVersio
     {
         CLock lock(m_dataSynchronizer);
         m_protocolVersion = protocolVersion;
-        SetEvent(m_stateEvent);
+        m_afterLogonInvoked = false;
     }
 
     __super::VLogon(eventInfo, protocolVersion, twofactor);
-
-	m_afterLogonInvoked = false;
 
 	if (!twofactor)
 		AfterLogon();
@@ -146,7 +144,9 @@ void CClient::VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorRea
 
 void CClient::AfterLogon()
 {
-    m_afterLogonInvoked = true;
+	CLock lock(m_dataSynchronizer);
+	m_afterLogonInvoked = true;
+	SetEvent(m_stateEvent);
 }
 
 void CClient::VSessionInfo(const CFxEventInfo& eventInfo, CFxSessionInfo& sessionInfo)
