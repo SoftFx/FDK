@@ -18,6 +18,7 @@ CClient::CClient(CDataCache& cache, const string& connectionString)
     , m_cache(cache)
     , m_state(ClientState_Stopped)
     , m_connection(nullptr)
+    , m_afterLogonInvoked(false)
 {
     m_stateEvent = CreateEvent(nullptr, TRUE, FALSE, nullptr);
     m_connection = CreateConnection(connectionString);
@@ -119,7 +120,7 @@ CFxSessionInfo CClient::GetSessionInfo(const size_t timeoutInMilliseconds)
     return result;
 }
 
-void CClient::VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion)
+void CClient::VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion, bool twofactor)
 {
     {
         CLock lock(m_dataSynchronizer);
@@ -127,21 +128,25 @@ void CClient::VLogon(const CFxEventInfo& eventInfo, const string& protocolVersio
         SetEvent(m_stateEvent);
     }
 
-    __super::VLogon(eventInfo, protocolVersion);
+    __super::VLogon(eventInfo, protocolVersion, twofactor);
 
-    AfterLogon();
+	m_afterLogonInvoked = false;
+
+	if (!twofactor)
+		AfterLogon();
 }
 
 void CClient::VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorReason reason, const std::string& text, const CDateTime& expire)
 {
     __super::VTwoFactorAuth(eventInfo, reason, text, expire);
 
-    if (reason == FxTwoFactorReason_ServerSuccess)
+    if ((reason == FxTwoFactorReason_ServerSuccess) && !m_afterLogonInvoked)
         AfterLogon();
 }
 
 void CClient::AfterLogon()
 {
+    m_afterLogonInvoked = true;
 }
 
 void CClient::VSessionInfo(const CFxEventInfo& eventInfo, CFxSessionInfo& sessionInfo)

@@ -80,9 +80,9 @@ void CDataFeed::VTick(const CFxEventInfo& eventInfo, const CFxQuote& quote)
     ProcessMessage(quote.Symbol, message);
 }
 
-void CDataFeed::VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion)
+void CDataFeed::VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion, bool twofactor)
 {
-    __super::VLogon(eventInfo, protocolVersion);
+    __super::VLogon(eventInfo, protocolVersion, twofactor);
 }
 
 void CDataFeed::VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorReason reason, const std::string& text, const CDateTime& expire)

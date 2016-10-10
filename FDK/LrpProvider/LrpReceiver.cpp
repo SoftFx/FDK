@@ -51,10 +51,10 @@ void CLrpReceiver::OnHeartBeatResponse()
 {
 }
 
-void CLrpReceiver::OnLogonMsg(const string& protocolVersion)
+void CLrpReceiver::OnLogonMsg(const string& protocolVersion, bool twofactor)
 {
     CFxEventInfo info;
-    m_receiver->VLogon(info, protocolVersion);
+    m_receiver->VLogon(info, protocolVersion, twofactor);
 }
 
 void CLrpReceiver::OnTwoFactorAuthMsg(const FxTwoFactorReason reason, const string& text, const CDateTime& expire)

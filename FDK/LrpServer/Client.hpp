@@ -48,12 +48,13 @@ public:
 	{
 		return m_channel->IsSupported(0, 2);
 	}
-	void OnLogonMsg(const std::string& protocolVersion)
+	void OnLogonMsg(const std::string& protocolVersion, const bool& twofactor)
 	{
 		MemoryBuffer buffer;
 		m_channel->Initialize(buffer);
 
 		WriteAString(protocolVersion, buffer);
+		WriteBoolean(twofactor, buffer);
 
 		const HRESULT _status = m_channel->Invoke(0, 2, buffer);
 		Throw(_status, buffer);

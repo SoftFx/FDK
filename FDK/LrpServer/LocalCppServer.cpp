@@ -36,10 +36,10 @@ void CLocalCppServer::EndConnection(void* handle, int64 id, int32 status)
     pServer->EndConnection(id, status);
 }
 
-void CLocalCppServer::EndLogon(void* handle, int64 id, int32 status, const string& message)
+void CLocalCppServer::EndLogon(void* handle, int64 id, int32 status, const string& message, bool twofactor)
 {
     CServer* pServer = reinterpret_cast<CServer*>(handle);
-    pServer->EndLogon(id, status, message);
+    pServer->EndLogon(id, status, message, twofactor);
 }
 
 void CLocalCppServer::SendTwoFactorAuth(void* handle, int64 id, const FxTwoFactorReason reason, const string& text, const CDateTime& expire)

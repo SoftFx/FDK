@@ -206,9 +206,9 @@ void CDataTrade::VExecution(const CFxEventInfo& eventInfo, CFxExecutionReport& e
     __super::VExecution(eventInfo, executionReport);
 }
 
-void CDataTrade::VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion)
+void CDataTrade::VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion, bool twofactor)
 {
-    __super::VLogon(eventInfo, protocolVersion);
+    __super::VLogon(eventInfo, protocolVersion, twofactor);
 }
 
 void CDataTrade::VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorReason reason, const std::string& text, const CDateTime& expire)

@@ -17,7 +17,7 @@ public:
 public:
     void OnHeartBeatRequest();
     void OnHeartBeatResponse();
-    void OnLogonMsg(const string& protocolVersion);
+    void OnLogonMsg(const string& protocolVersion, bool twofactor);
     void OnTwoFactorAuthMsg(const FxTwoFactorReason reason, const string& text, const CDateTime& expire);
     void OnLogoutMsg(const FxLogoutReason reason, const string& description);
     void OnQuotesSubscriptionMsg(const string& requestId, int32 status, const string& message);

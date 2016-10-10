@@ -175,6 +175,7 @@
                 <Param name="id" type="int64" direction="in" />
                 <Param name="status" type="int32" direction="in" />
                 <Param name="message" type="astring" direction="in" />
+                <Param name="twofactor" type="bool" direction="in" />
                 <Return type="void" />
             </Method>
             <Method name="SendTwoFactorAuth">

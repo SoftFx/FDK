@@ -1329,11 +1329,13 @@ void Client::OnHeartBeatResponse()
 	_stream << ");";
 	m_stream->Write(_stream.str());
 }
-void Client::OnLogonMsg(const std::string& protocolVersion)
+void Client::OnLogonMsg(const std::string& protocolVersion, const bool& twofactor)
 {
 	std::stringstream _stream;
 	_stream << "[0]Client[2]OnLogonMsg(";
 	LrpWriteAString("protocolVersion", protocolVersion, _stream);
+	_stream<<", ";
+	LrpWriteBoolean("twofactor", twofactor, _stream);
 	_stream << ");";
 	m_stream->Write(_stream.str());
 }

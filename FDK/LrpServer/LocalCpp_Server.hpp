@@ -123,7 +123,8 @@ namespace
 		auto arg1 = ReadInt64(buffer);
 		auto arg2 = ReadInt32(buffer);
 		auto arg3 = ReadAString(buffer);
-		component.EndLogon(arg0, arg1, arg2, arg3);
+		auto arg4 = ReadBoolean(buffer);
+		component.EndLogon(arg0, arg1, arg2, arg3, arg4);
 		buffer.Reset(offset);
 	}
 	void LrpInvoke_LocalServer_SendTwoFactorAuth(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
@@ -460,7 +461,7 @@ extern "C" const char* __stdcall LrpSignature()
 		"Start@8499C9CF2B655BFFCEA299DF849ADE26;"
 		"Stop@A1A4AE7AFB43D7C671448EACD33040F5;"
 		"EndConnection@0370DB62007740256A63BB50A7B94630;"
-		"EndLogon@888D727D5D696B0840D375552D005AB0;"
+		"EndLogon@58B5183D02692B68AB58CBCEE97A03D0;"
 		"SendTwoFactorAuth@7D51A62C93372695473EE25679FE84A8;"
 		"SendSessionInfo@DE2512DED6A56D5A328F5D079AAFB5D4;"
 		"SendCurrenciesInfo@EDFB427903E76678C835150E04B40CBF;"

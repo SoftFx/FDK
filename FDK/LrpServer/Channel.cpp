@@ -69,10 +69,10 @@ void CChannel::Connect(const HRESULT /*status*/)
 {
     //CLock lock(m_synchronizer);
 }
-void CChannel::Logon(const HRESULT status, const string& message)
+void CChannel::Logon(const HRESULT status, const string& message, bool twofactor)
 {
     CLock lock(m_synchronizer);
-    m_handShake.Logon(status, message);
+    m_handShake.Logon(status, message, twofactor);
 }
 HRESULT CChannel::SendMessage(const CMessage& message)
 {
