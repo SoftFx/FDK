@@ -156,7 +156,7 @@ void CFeedHandler::OnLogon(const set<int32>& ids)
 void CFeedHandler::DoLogon()
 {
 	CFxEventInfo info;
-	m_receiver->VLogon(info, m_protocolVersion);
+	m_receiver->VLogon(info, m_protocolVersion, false);
 
 	CFxSessionInfo sessionInfo;
 	DoFillSessionInfo(sessionInfo);

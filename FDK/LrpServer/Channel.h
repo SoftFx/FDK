@@ -22,7 +22,7 @@ private:
 public:
 	HRESULT Process();
 	void Connect(const HRESULT status);
-	void Logon(const HRESULT status, const string& message);
+	void Logon(const HRESULT status, const string& message, bool twofactor);
 	void Finalize();
 	const uint64 GetId() const;
 	HRESULT SendMessage(const CMessage& message);

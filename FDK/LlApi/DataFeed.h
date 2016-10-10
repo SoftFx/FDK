@@ -29,7 +29,7 @@ public:
     string GetTicksHistoryMetaInfoFile(const string& symbol, bool includeLevel2, const uint32 timeoutInMilliseconds);
 
 public:
-    virtual void VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion);
+    virtual void VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion, bool twofactor);
     virtual void VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorReason reason, const std::string& text, const CDateTime& expire);
     virtual void VLogout(const CFxEventInfo& eventInfo, const FxLogoutReason reason, const string& description);
 

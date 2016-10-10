@@ -38,7 +38,7 @@ public:
     string GetProtocolVersion()const;
 
 public:
-    virtual void VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion);
+    virtual void VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion, bool twofactor);
     virtual void VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorReason reason, const std::string& text, const CDateTime& expire);
     virtual void VSessionInfo(const CFxEventInfo& eventInfo, CFxSessionInfo& sessionInfo);
     virtual void VLogout(const CFxEventInfo& eventInfo, const FxLogoutReason reason, const string& description);
@@ -64,6 +64,7 @@ private:
     string m_protocolVersion;
     mutable CCriticalSection m_stateSynchronizer;
     mutable CCriticalSection m_dataSynchronizer;
+    bool m_afterLogonInvoked;
 };
 
 

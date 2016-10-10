@@ -76,10 +76,10 @@ bool COutgoing::IsSupported(uint16 componentId, uint16 methodId) const
     return result;
 }
 
-void COutgoing::SendLogon(const string& protocolVersion)
+void COutgoing::SendLogon(const string& protocolVersion, bool twofactor)
 {
     Client client(*this);
-    client.OnLogonMsg(protocolVersion);
+    client.OnLogonMsg(protocolVersion, twofactor);
 }
 
 void COutgoing::SendLogout(const FxLogoutReason reason, const string& description)

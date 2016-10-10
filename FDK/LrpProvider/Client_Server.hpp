@@ -54,7 +54,8 @@ namespace
 		auto& component = pChannel->GetClient();
 		component; // if all methods of component are static then the next line generates warning #4189
 		auto arg0 = ReadAString(buffer);
-		component.OnLogonMsg(arg0);
+		auto arg1 = ReadBoolean(buffer);
+		component.OnLogonMsg(arg0, arg1);
 		buffer.Reset(offset);
 	}
 	void LrpInvoke_Client_OnLogoutMsg(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
@@ -456,7 +457,7 @@ extern "C" const char* __stdcall LrpSignature()
 	"$Client;"
 		"OnHeartBeatRequest@649F60FAC31A75EF0179222C5C27655D;"
 		"OnHeartBeatResponse@53584CC68A5EF9F98311B4D86431576D;"
-		"OnLogonMsg@7D89BC637EEE097F74BA4D0D3043C09B;"
+		"OnLogonMsg@AC270F9715A65A3519F49F11AEF804BC;"
 		"OnLogoutMsg@B5C67418D4A0289A849B6F135D1D6DFB;"
 		"OnTwoFactorAuthMsg@E5B2EC436F6F900BE82763CA3D5A999F;"
 		"OnSessionInfoMsg@942F0D874BAD4A93A6BB742CB87129B9;"

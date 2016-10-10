@@ -208,13 +208,17 @@ void CFixConnection::fromApp(const Message& message, const FIX::SessionID& /*ses
 void CFixConnection::onLogon(const Message& message, const SessionID& /*sessionID*/)
 {
     const FIX44::Logon& logon = static_cast<const FIX44::Logon&>(message);
-    string protocolVersion = "ext.0.0";
+
+	string protocolVersion = "ext.0.0";
     logon.TryGetProtocolSpec(protocolVersion);
+
+	bool twofactor = false;
+	logon.TryGetTwoFactorAuthFlag(twofactor);
 
     m_version = CFixVersion(protocolVersion);
 
     CFxEventInfo eventInfo;
-    m_receiver->VLogon(eventInfo, protocolVersion);
+    m_receiver->VLogon(eventInfo, protocolVersion, twofactor);
 }
 
 void CFixConnection::onLogout(const Message& message, const SessionID& /*sessionID*/)

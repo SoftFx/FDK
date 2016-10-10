@@ -29,7 +29,7 @@ namespace
         buffer.SetPosition(0);
     }
 }
-CHandShakeBehaviour::CHandShakeBehaviour(CChannel& channel) : CBaseBehaviour(channel), m_method(), m_outgoing(channel.Outgoing())
+CHandShakeBehaviour::CHandShakeBehaviour(CChannel& channel) : CBaseBehaviour(channel), m_method(), m_outgoing(channel.Outgoing()), m_twofactor(false)
 {
     StartLogicalAccept();
 }
@@ -50,11 +50,12 @@ HRESULT CHandShakeBehaviour::VProcess(const uint64 now)
     const HRESULT result = (this->*m_method)();
     return result;
 }
-void CHandShakeBehaviour::Logon(const HRESULT status, const string& message)
+void CHandShakeBehaviour::Logon(const HRESULT status, const string& message, bool twofactor)
 {
     CLogStream()<<"CHandShakeBehaviour::Logon(id = "<<m_id<<"): status = "<<status<<"; message = "<<message>>m_logger;
     if (nullptr == m_method)
     {
+		m_twofactor = twofactor;
         m_state.Buffer.Reset();
         WriteUInt16(0, m_state.Buffer);
         WriteInt32(status, m_state.Buffer);
@@ -73,7 +74,7 @@ HRESULT CHandShakeBehaviour::DoLogon()
     m_state.LastIncommingEvent = GetTickCount64();
     m_state.LastOutgoingEvent = m_state.LastIncommingEvent;
 
-    m_outgoing.SendLogon(cProtocolVersion);
+    m_outgoing.SendLogon(cProtocolVersion, m_twofactor);
     m_state.Buffer.Reset();
 
     CLogStream()<<"CHandShakeBehaviour::Logon(id = "<<m_id<<") - ok">>m_logger;

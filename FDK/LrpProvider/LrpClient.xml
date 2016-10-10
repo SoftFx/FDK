@@ -311,6 +311,7 @@
 	      </Method>
 	      <Method name="OnLogonMsg">
 	    	<Param name="protocolVersion" type="astring" direction="in" />
+	    	<Param name="twofactor" type="bool" direction="in" />
 	    	<Return type="void" />
 	      </Method>
 	      <Method name="OnLogoutMsg">

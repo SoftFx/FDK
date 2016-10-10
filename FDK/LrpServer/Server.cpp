@@ -166,24 +166,24 @@ void CServer::DoBeginLogon(const uint64 id, const string& address, const string&
     m_proxy.BeginLogonRequest(id, address, m_port, username, password, deviceid, appsessionid);
 }
 
-void CServer::EndLogon(const uint64 id, const HRESULT status, const string& message)
+void CServer::EndLogon(const uint64 id, const HRESULT status, const string& message, bool twofactor)
 {
     __try
     {
-        DoEndLogon(id, status, message);
+        DoEndLogon(id, status, message, twofactor);
     }
     __except(EXCEPTION_EXECUTE_HANDLER)
     {
     }
 }
 
-void CServer::DoEndLogon(const uint64 id, const HRESULT status, const string& message)
+void CServer::DoEndLogon(const uint64 id, const HRESULT status, const string& message, bool twofactor)
 {
     CChannelSharedAccessor accessor(id, m_channels);
     CChannel* pChannel = accessor.GetChannel();
     if (nullptr != pChannel)
     {
-        pChannel->Logon(status, message);
+        pChannel->Logon(status, message, twofactor);
     }
 }
 

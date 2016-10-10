@@ -11,36 +11,37 @@ typedef HRESULT (CHandShakeBehaviour::*CHandShakeMethod)();
 class CHandShakeBehaviour : public CBaseBehaviour
 {
 public:
-	CHandShakeBehaviour(CChannel& channel);
-	virtual HRESULT VProcess(const uint64 now);
+    CHandShakeBehaviour(CChannel& channel);
+    virtual HRESULT VProcess(const uint64 now);
 public:
-	void Logon(const HRESULT status, const string& message);
+    void Logon(const HRESULT status, const string& message, bool twofactor);
 private:
-	void StartLogicalAccept();
-	HRESULT DoLogicalAccept();
+    void StartLogicalAccept();
+    HRESULT DoLogicalAccept();
 private:
-	void StartClientVersion();
-	HRESULT DoClientVersion();
+    void StartClientVersion();
+    HRESULT DoClientVersion();
 private:
-	void StartVersionResponse();
-	HRESULT DoVersionResponse();
+    void StartVersionResponse();
+    HRESULT DoVersionResponse();
 private:
-	void StartUsernamePassword();
-	HRESULT DoUsernamePassword();
+    void StartUsernamePassword();
+    HRESULT DoUsernamePassword();
 private:
-	HRESULT DoLogon();
-	HRESULT DoLogout();
+    HRESULT DoLogon();
+    HRESULT DoLogout();
 private:
-	void StartClientSignature();
-	HRESULT DoClientSignature();
+    void StartClientSignature();
+    HRESULT DoClientSignature();
 private:
-	void StartServerSignature();
-	HRESULT DoServerSignature();
+    void StartServerSignature();
+    HRESULT DoServerSignature();
 private:
-	HRESULT SelectReceive();
-	HRESULT Receive();
-	HRESULT ReceiveSize();
+    HRESULT SelectReceive();
+    HRESULT Receive();
+    HRESULT ReceiveSize();
 private:
-	CHandShakeMethod m_method;
-	COutgoing& m_outgoing;
+    CHandShakeMethod m_method;
+    COutgoing& m_outgoing;
+    bool m_twofactor;
 };

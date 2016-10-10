@@ -19,7 +19,7 @@
 class IReceiver
 {
 public:
-    virtual void VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion) = 0;
+    virtual void VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion, bool twofactor) = 0;
     virtual void VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorReason reason, const string& text, const CDateTime& expire) = 0;
     virtual void VLogout(const CFxEventInfo& eventInfo, const FxLogoutReason reason, const string& description) = 0;
     virtual void VBusinessReject(const CFxEventInfo& eventInfo) = 0;

@@ -117,12 +117,13 @@
         /// <param name="id"></param>
         /// <param name="status"></param>
         /// <param name="message"></param>
-        public void EndLogon(long id, int status, string message)
+        /// <param name="twofactor"></param>
+        public void EndLogon(long id, int status, string message, bool twofactor)
         {
             if (message == null)
                 message = string.Empty;
 
-            this.proxy.EndLogon(id, status, message);
+            this.proxy.EndLogon(id, status, message, twofactor);
         }
 
         /// <summary>

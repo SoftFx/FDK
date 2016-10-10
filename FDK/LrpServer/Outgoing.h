@@ -22,7 +22,7 @@ private:
     COutgoing& operator = (const COutgoing&);
 public:
     void SendHeartBeatRequest();
-    void SendLogon(const string& protocolVersion);
+    void SendLogon(const string& protocolVersion, bool twofactor);
     void SendLogout(const FxLogoutReason reason, const string& description);
     void SendTwoFactorAuth(const FxTwoFactorReason reason, const string& text, const CDateTime& expire);
     void SendSessionInfo(const string& requestId, const CFxSessionInfo& sessionInfo);

@@ -127,7 +127,7 @@ namespace LrpServer.Net.LocalCpp
 				return m_client.IsSupported(1, 5);
 			}
 		}
-		public void EndLogon(SoftFX.Lrp.LPtr handle, long id, int status, string message)
+		public void EndLogon(SoftFX.Lrp.LPtr handle, long id, int status, string message, bool twofactor)
 		{
 			using(MemoryBuffer buffer = m_client.Create())
 			{
@@ -135,6 +135,7 @@ namespace LrpServer.Net.LocalCpp
 				buffer.WriteInt64(id);
 				buffer.WriteInt32(status);
 				buffer.WriteAString(message);
+				buffer.WriteBoolean(twofactor);
 
 				int _status = m_client.Invoke(1, 5, buffer);
 				TypesSerializer.Throw(_status, buffer);
@@ -545,9 +546,9 @@ namespace LrpServer.Net.LocalCpp
 				return this.Instance.Is_EndLogon_Supported;
 			}
 		}
-		public void EndLogon(long id, int status, string message)
+		public void EndLogon(long id, int status, string message, bool twofactor)
 		{
-			this.Instance.EndLogon(this.Handle, id, status, message);
+			this.Instance.EndLogon(this.Handle, id, status, message, twofactor);
 		}
 		public bool Is_SendTwoFactorAuth_Supported
 		{
