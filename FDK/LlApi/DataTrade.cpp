@@ -223,7 +223,7 @@ void CDataTrade::AfterLogon()
     m_accountType = FxAccountType_None;
     m_cache.Clear();
 
-	/* IvanS: Remove automatic account info and orders list request
+    /* IvanS: Remove automatic account info and orders list request
     string id = NextId(cInternalASynchCall);
     m_sender->VSendGetAccountInfo(id);
 
