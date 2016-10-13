@@ -69,7 +69,7 @@
         public event ExecutionReportHandler ExecutionReport;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public event TradeTransactionReportHandler TradeTransactionReport;
 
@@ -91,6 +91,14 @@
         #endregion
 
         #region Properties
+
+        internal FxDataTrade DataTradeHandle
+        {
+            get
+            {
+                return this.handle;
+            }
+        }
 
         /// <summary>
         /// Gets object, which encapsulates server side methods.
@@ -225,37 +233,39 @@
 
         #region Disposing
 
+        private bool _disposed;
+
+        private void Dispose(bool disposing)
+        {
+            if (_disposed)
+            {
+                // Stop data client thread
+                if (this.IsStarted)
+                    this.Stop();
+
+                this.handle.Handle.Delete();
+                this.handle = new FxDataTrade();
+
+                _disposed = true;
+            }
+        }
+
         /// <summary>
         /// Releases all unmanaged resources.
         /// </summary>
         public override void Dispose()
         {
-            if (this.IsStarted)
-                this.Stop();
-
-            this.handle.Handle.Delete();
-            this.handle = new FxDataTrade();
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>
         /// Releases all unmanaged resources.
         /// </summary>
-        ~DataTrade()
+        ~DataFeed()
         {
             if (!Environment.HasShutdownStarted)
-                this.Dispose();
-        }
-
-        #endregion
-
-        #region Properties
-
-        internal FxDataTrade DataTradeHandle
-        {
-            get
-            {
-                return this.handle;
-            }
+                this.Dispose(false);
         }
 
         #endregion

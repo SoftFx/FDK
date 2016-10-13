@@ -210,17 +210,30 @@
 
         #region Disposing
 
+        private bool _disposed;
+
+        private void Dispose(bool disposing)
+        {
+            if (_disposed)
+            {
+                // Stop data client thread
+                if (this.IsStarted)
+                    this.Stop();
+
+                this.handle.Handle.Delete();
+                this.handle = new FxDataFeed();
+
+                _disposed = true;
+            }
+        }
+
         /// <summary>
         /// Releases all unmanaged resources.
         /// </summary>
         public override void Dispose()
         {
-            if (this.IsStarted)
-                this.Stop();
-
-            this.handle.Handle.Delete();
-            this.handle = new FxDataFeed();
-            //GC.SuppressFinalize(this);
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>
@@ -229,7 +242,7 @@
         ~DataFeed()
         {
             if (!Environment.HasShutdownStarted)
-                this.Dispose();
+                this.Dispose(false);
         }
 
         #endregion
