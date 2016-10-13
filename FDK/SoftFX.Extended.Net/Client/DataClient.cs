@@ -181,6 +181,7 @@
                 {
                     Debug.Assert(this.thread == null);
                     this.thread = new Thread(this.SafeLoop);
+                    this.thread.IsBackground = true;
                     this.thread.Start();
                 }
             }
