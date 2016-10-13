@@ -262,7 +262,7 @@
         /// <summary>
         /// Releases all unmanaged resources.
         /// </summary>
-        ~DataFeed()
+        ~DataTrade()
         {
             if (!Environment.HasShutdownStarted)
                 this.Dispose(false);
