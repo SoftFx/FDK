@@ -38,24 +38,6 @@ LRP_EMBEDDED_TYPE_SERIALIZATION(UInt16, unsigned __int16);
 LRP_EMBEDDED_TYPE_SERIALIZATION(UInt32, unsigned __int32);
 LRP_EMBEDDED_TYPE_SERIALIZATION(UInt64, unsigned __int64);
 
-inline void LrpWriteNullInt32(const char* name, const Nullable<__int32>& value, std::ostream& stream)
-{
-    if (!value.HasValue())
-        return;
-
-    LrpWriteImpl(name, value.Value(), stream);
-    LrpWriteBinaryData(&value.Value(), sizeof(__int32), stream);
-}
-
-inline void LrpWriteNullInt64(const char* name, const Nullable<__int64>& value, std::ostream& stream)
-{
-    if (!value.HasValue())
-        return;
-
-    LrpWriteImpl(name, value.Value(), stream);
-    LrpWriteBinaryData(&value.Value(), sizeof(__int64), stream);
-}
-
 inline void LrpWriteUInt8(const char* name, const __int8 value, std::ostream& stream)
 {
     LrpWriteUInt32(name, value, stream);
@@ -89,6 +71,22 @@ inline void LrpWriteBinaryData(const void* data, const size_t count, std::ostrea
         LrpWriteBinaryData(second, stream);
     }
     stream<<")";
+}
+inline void LrpWriteNullInt32(const char* name, const Nullable<__int32>& value, std::ostream& stream)
+{
+    if (!value.HasValue())
+        return;
+
+    LrpWriteImpl(name, value.Value(), stream);
+    LrpWriteBinaryData(&value.Value(), sizeof(__int32), stream);
+}
+inline void LrpWriteNullInt64(const char* name, const Nullable<__int64>& value, std::ostream& stream)
+{
+    if (!value.HasValue())
+        return;
+
+    LrpWriteImpl(name, value.Value(), stream);
+    LrpWriteBinaryData(&value.Value(), sizeof(__int64), stream);
 }
 inline void LrpWriteTime(const char* name, const CDateTime& value, std::ostream& stream)
 {
