@@ -29,6 +29,8 @@
             this.Type = (TradeRecordType)fxOrder.Type;
             this.Side = fxOrder.Side;
             this.Comment = fxOrder.Comment;
+            this.Tag = fxOrder.Tag;
+            this.Magic = fxOrder.Magic;
             this.Expiration = fxOrder.Expiration;
             this.Created = fxOrder.Created;
             this.Modified = fxOrder.Modified;
@@ -97,7 +99,7 @@
         public double AgentCommission { get; internal set;}
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public double Swap { get; internal set; }
 
@@ -135,6 +137,16 @@
         /// Gets comment of the order. Can not be null.
         /// </summary>
         public string Comment { get; internal set; }
+
+        /// <summary>
+        /// Gets tag of the order. Can not be null.
+        /// </summary>
+        public string Tag { get; internal set; }
+
+        /// <summary>
+        /// Gets magic number of the order.
+        /// </summary>
+        public int? Magic { get; internal set; }
 
         #endregion
 
@@ -348,10 +360,12 @@
         /// <param name="newTakeProfit">A new pending order take profit.</param>
         /// <param name="newExpirationTime">A new pending order expiration time.</param>
         /// <param name="newComment">A new comment</param>
+        /// <param name="newTag">A new comment</param>
+        /// <param name="newMagic">A new comment</param>
         /// <returns>A modified trade record.</returns>
-        public TradeRecord Modify(double? newActivationPrice = null, double? newStopLoss = null, double? newTakeProfit = null, DateTime? newExpirationTime = null, string newComment = null)
+        public TradeRecord Modify(double? newActivationPrice = null, double? newStopLoss = null, double? newTakeProfit = null, DateTime? newExpirationTime = null, string newComment = null, string newTag = null, int? newMagic = null)
         {
-            var result = this.ModifyEx(newActivationPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, this.DataTrade.SynchOperationTimeout);
+            var result = this.ModifyEx(newActivationPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, newTag, newMagic, this.DataTrade.SynchOperationTimeout);
             return result;
         }
 
@@ -363,11 +377,13 @@
         /// <param name="newTakeProfit">A new pending order take profit.</param>
         /// <param name="newExpirationTime">A new pending order expiration time.</param>
         /// <param name="newComment">A new comment</param>
+        /// <param name="newTag">A new comment</param>
+        /// <param name="newMagic">A new comment</param>
         /// <param name="timeoutInMilliseconds">Timeout of the operation in milliseconds.</param>
         /// <returns>A modified trade record.</returns>
-        public TradeRecord ModifyEx(double? newActivationPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpirationTime, string newComment, int timeoutInMilliseconds)
+        public TradeRecord ModifyEx(double? newActivationPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpirationTime, string newComment, string newTag, int? newMagic, int timeoutInMilliseconds)
         {
-            var result = this.DataTrade.Server.ModifyTradeRecordEx(this.OrderId, this.Symbol, this.Type, this.Side, this.Volume, newActivationPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, timeoutInMilliseconds);
+            var result = this.DataTrade.Server.ModifyTradeRecordEx(this.OrderId, this.Symbol, this.Type, this.Side, this.Volume, newActivationPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, newTag, newMagic, timeoutInMilliseconds);
             return result;
         }
 

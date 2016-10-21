@@ -7,27 +7,29 @@
 class CORE_API CFxOrder
 {
 public:
-	CFxOrder();
+    CFxOrder();
 public:
-	string OrderId;
-	string ClientOrderId;
-	string Symbol;
-	FxTradeRecordType Type;
-	FxTradeRecordSide Side;
-	double Price;
-	Nullable<double> NewPrice;
-	Nullable<double> StopLoss;
-	Nullable<double> TakeProfit;
-	double InitialVolume;
-	double Volume;
-	double Commission;
-	double AgentCommission;
-	double Swap;
-	Nullable<double> Profit;
-	Nullable<CDateTime> Expiration;
-	Nullable<CDateTime> Created;
-	Nullable<CDateTime> Modified;
-	wstring Comment;
+    string OrderId;
+    string ClientOrderId;
+    string Symbol;
+    FxTradeRecordType Type;
+    FxTradeRecordSide Side;
+    double Price;
+    Nullable<double> NewPrice;
+    Nullable<double> StopLoss;
+    Nullable<double> TakeProfit;
+    double InitialVolume;
+    double Volume;
+    double Commission;
+    double AgentCommission;
+    double Swap;
+    Nullable<double> Profit;
+    Nullable<CDateTime> Expiration;
+    Nullable<CDateTime> Created;
+    Nullable<CDateTime> Modified;
+    wstring Comment;
+    wstring Tag;
+    Nullable<int> Magic;
 };
 
 

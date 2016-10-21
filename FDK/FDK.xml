@@ -166,6 +166,8 @@
       <Member name="Created" type="time?" />
       <Member name="Modified" type="time?" />
       <Member name="Comment" type="wstring" />
+      <Member name="Tag" type="wstring" />
+      <Member name="Magic" type="int32?" />
     </Type>
     <Type name="FxOrderArray" kind="array">
       <Value name="FxOrder" />
@@ -237,6 +239,12 @@
       <Member name="TradeRecordSide" type="TradeRecordSide" />
       <Member name="Symbol" type="astring" />
       <Member name="Comment" type="astring" />
+      <Member name="Tag" type="astring" />
+      <Member name="Magic" type="int32?" />
+      <Member name="ReqOpenPrice" type="double?" />
+      <Member name="ReqOpenQuantity" type="double?" />
+      <Member name="ReqClosePrice" type="double?" />
+      <Member name="ReqCloseQuantity" type="double?" />
       <Member name="OrderCreated" type="time" />
       <Member name="OrderModified" type="time" />
       <Member name="PositionId" type="astring" />
@@ -299,6 +307,8 @@
       <Member name="StopLoss" type="double?" />
       <Member name="Text" type="astring" />
       <Member name="Comment" type="wstring" />
+      <Member name="Tag" type="wstring" />
+      <Member name="Magic" type="int32?" />
       <Member name="ClosePositionRequestId" type="astring" />
       <Member name="Assets" type="AssetInfoArray" />
       <Member name="Balance" type="double" />

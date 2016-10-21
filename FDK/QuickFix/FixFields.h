@@ -1140,6 +1140,10 @@ namespace FIX
   DEFINE_PERCENTAGE(DefaultSlippage);
   DEFINE_INT(CurNumTradeReports);
   DEFINE_STRING(AppSessionID);
+  DEFINE_PRICE(ReqOpenPrice);
+  DEFINE_QTY(ReqOpenQty);
+  DEFINE_PRICE(ReqClosePrice);
+  DEFINE_QTY(ReqCloseQty);
   DEFINE_NUMINGROUP(NoStrategyParameters);
   DEFINE_STRING(StrategyParameterName);
   DEFINE_INT(StrategyParameterType);

@@ -1138,6 +1138,10 @@ namespace FIX
     const int DefaultSlippage = 10155;
     const int CurNumTradeReports = 10156;
     const int AppSessionID = 10157;
+    const int ReqOpenPrice = 10158;
+    const int ReqOpenQty = 10159;
+    const int ReqClosePrice = 10160;
+    const int ReqCloseQty = 10161;
     const int NoStrategyParameters = 957;
     const int StrategyParameterName = 958;
     const int StrategyParameterType = 959;

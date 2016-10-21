@@ -11,6 +11,7 @@ CFxTradeTransactionReport::CFxTradeTransactionReport()
     this->AccountBalance = 0;
     this->TransactionAmount = 0;
 
+    this->Magic = 0;
     this->Quantity = 0;
     this->LeavesQuantity = 0;
     this->Price = 0;

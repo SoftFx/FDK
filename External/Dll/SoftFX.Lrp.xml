@@ -526,61 +526,61 @@
             </summary>
         </member>
         <member name="T:SoftFX.Lrp.MemoryBuffer">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="M:SoftFX.Lrp.MemoryBuffer.#ctor(System.Void*,System.Void*,System.Int32,System.Int32)">
-            <summary>
+             <summary>
             
-            </summary>
-            <param name="heap"></param>
-            <param name="data"></param>
-            <param name="size"></param>
-            <param name="capacity"></param>
+             </summary>
+             <param name="heap"></param>
+             <param name="data"></param>
+             <param name="size"></param>
+             <param name="capacity"></param>
         </member>
         <member name="M:SoftFX.Lrp.MemoryBuffer.CreateLocal">
-            <summary>
+             <summary>
             
-            </summary>
-            <returns></returns>
+             </summary>
+             <returns></returns>
         </member>
         <member name="M:SoftFX.Lrp.MemoryBuffer.CreateLocal(System.Int32)">
-            <summary>
+             <summary>
             
-            </summary>
-            <param name="size"></param>
-            <returns></returns>
+             </summary>
+             <param name="size"></param>
+             <returns></returns>
         </member>
         <member name="M:SoftFX.Lrp.MemoryBuffer.CreateRemote(System.UInt16,System.UInt16)">
-            <summary>
+             <summary>
             
-            </summary>
-            <param name="componentId"></param>
-            <param name="methodId"></param>
-            <returns></returns>
+             </summary>
+             <param name="componentId"></param>
+             <param name="methodId"></param>
+             <returns></returns>
         </member>
         <member name="M:SoftFX.Lrp.MemoryBuffer.Dispose">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="M:SoftFX.Lrp.MemoryBuffer.Finalize">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="M:SoftFX.Lrp.MemoryBuffer.Reset(System.Int32)">
-            <summary>
+             <summary>
             
-            </summary>
-            <param name="offset"></param>
+             </summary>
+             <param name="offset"></param>
         </member>
         <member name="M:SoftFX.Lrp.MemoryBuffer.ToArray">
-            <summary>
+             <summary>
             
-            </summary>
-            <returns></returns>
+             </summary>
+             <returns></returns>
         </member>
         <member name="M:SoftFX.Lrp.MemoryBuffer.ReadCount">
             <summary>
@@ -616,7 +616,21 @@
             <param name="arg">any value.</param>
             <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
         </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteNullInt32(System.Nullable{System.Int32})">
+            <summary>
+            Writes an input value to memory buffer.
+            </summary>
+            <param name="arg">any value.</param>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        </member>
         <member name="M:SoftFX.Lrp.MemoryBuffer.WriteInt64(System.Int64)">
+            <summary>
+            Writes an input value to memory buffer.
+            </summary>
+            <param name="arg">any value.</param>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteNullInt64(System.Nullable{System.Int32})">
             <summary>
             Writes an input value to memory buffer.
             </summary>
@@ -736,10 +750,10 @@
             <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
         </member>
         <member name="M:SoftFX.Lrp.MemoryBuffer.WriteAStringsArray(System.String[])">
-            <summary>
+             <summary>
             
-            </summary>
-            <param name="args"></param>
+             </summary>
+             <param name="args"></param>
         </member>
         <member name="M:SoftFX.Lrp.MemoryBuffer.ReadInt8">
             <summary>
@@ -762,7 +776,21 @@
             <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
             <returns>A read value.</returns>
         </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ReadNullInt32">
+            <summary>
+            Reads a value from memory buffer.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <returns>A read value.</returns>
+        </member>
         <member name="M:SoftFX.Lrp.MemoryBuffer.ReadInt64">
+            <summary>
+            Reads a value from memory buffer.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ReadNullInt64">
             <summary>
             Reads a value from memory buffer.
             </summary>
@@ -784,10 +812,10 @@
             <returns>A read value.</returns>
         </member>
         <member name="M:SoftFX.Lrp.MemoryBuffer.ReadUInt32">
-            <summary>
+             <summary>
             
-            </summary>
-            <returns></returns>
+             </summary>
+             <returns></returns>
         </member>
         <member name="M:SoftFX.Lrp.MemoryBuffer.ReadUInt64">
             <summary>
@@ -862,10 +890,10 @@
             <returns>A read value.</returns>
         </member>
         <member name="M:SoftFX.Lrp.MemoryBuffer.ReadNullTime">
-            <summary>
+             <summary>
             
-            </summary>
-            <returns></returns>
+             </summary>
+             <returns></returns>
         </member>
         <member name="M:SoftFX.Lrp.MemoryBuffer.ReadRaw">
             <summary>
@@ -889,14 +917,14 @@
             </summary>
         </member>
         <member name="P:SoftFX.Lrp.MemoryBuffer.Data">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:SoftFX.Lrp.MemoryBuffer.Heap">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="T:SoftFX.Lrp.Mode">
             <summary>

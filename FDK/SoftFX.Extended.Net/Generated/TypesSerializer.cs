@@ -566,6 +566,8 @@ namespace SoftFX.Extended.Generated
 			result.Created = buffer.ReadNullTime();
 			result.Modified = buffer.ReadNullTime();
 			result.Comment = buffer.ReadWString();
+			result.Tag = buffer.ReadWString();
+			result.Magic = buffer.ReadNullInt32();
 			return result;
 		}
 		public static void WriteFxOrder(this MemoryBuffer buffer, SoftFX.Extended.Data.FxOrder arg)
@@ -589,6 +591,8 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteNullTime(arg.Created);
 			buffer.WriteNullTime(arg.Modified);
 			buffer.WriteWString(arg.Comment);
+			buffer.WriteWString(arg.Tag);
+			buffer.WriteNullInt32(arg.Magic);
 		}
 		public static SoftFX.Extended.Data.FxOrder[] ReadFxOrderArray(this MemoryBuffer buffer)
 		{
@@ -810,6 +814,12 @@ namespace SoftFX.Extended.Generated
 			result.TradeRecordSide = buffer.ReadTradeRecordSide();
 			result.Symbol = buffer.ReadAString();
 			result.Comment = buffer.ReadAString();
+			result.Tag = buffer.ReadAString();
+			result.Magic = buffer.ReadNullInt32();
+			result.ReqOpenPrice = buffer.ReadNullDouble();
+			result.ReqOpenQuantity = buffer.ReadNullDouble();
+			result.ReqClosePrice = buffer.ReadNullDouble();
+			result.ReqCloseQuantity = buffer.ReadNullDouble();
 			result.OrderCreated = buffer.ReadTime();
 			result.OrderModified = buffer.ReadTime();
 			result.PositionId = buffer.ReadAString();
@@ -859,6 +869,12 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteTradeRecordSide(arg.TradeRecordSide);
 			buffer.WriteAString(arg.Symbol);
 			buffer.WriteAString(arg.Comment);
+			buffer.WriteAString(arg.Tag);
+			buffer.WriteNullInt32(arg.Magic);
+			buffer.WriteNullDouble(arg.ReqOpenPrice);
+			buffer.WriteNullDouble(arg.ReqOpenQuantity);
+			buffer.WriteNullDouble(arg.ReqClosePrice);
+			buffer.WriteNullDouble(arg.ReqCloseQuantity);
 			buffer.WriteTime(arg.OrderCreated);
 			buffer.WriteTime(arg.OrderModified);
 			buffer.WriteAString(arg.PositionId);
@@ -932,6 +948,8 @@ namespace SoftFX.Extended.Generated
 			result.StopLoss = buffer.ReadNullDouble();
 			result.Text = buffer.ReadAString();
 			result.Comment = buffer.ReadWString();
+			result.Tag = buffer.ReadWString();
+			result.Magic = buffer.ReadNullInt32();
 			result.ClosePositionRequestId = buffer.ReadAString();
 			result.Assets = buffer.ReadAssetInfoArray();
 			result.Balance = buffer.ReadDouble();
@@ -964,6 +982,8 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteNullDouble(arg.StopLoss);
 			buffer.WriteAString(arg.Text);
 			buffer.WriteWString(arg.Comment);
+			buffer.WriteWString(arg.Tag);
+			buffer.WriteNullInt32(arg.Magic);
 			buffer.WriteAString(arg.ClosePositionRequestId);
 			buffer.WriteAssetInfoArray(arg.Assets);
 			buffer.WriteDouble(arg.Balance);

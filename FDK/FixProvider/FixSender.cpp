@@ -284,6 +284,17 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
         message.SetEncodedComment(comment);
     }
 
+    if (!required.Tag.empty())
+    {
+        string tag = CW2A(required.Tag.c_str(), CP_ACP);
+        const int length = static_cast<int>(tag.length());
+        message.SetEncodedTagLen(length);
+        message.SetEncodedTag(tag);
+    }
+
+    if (required.Magic.HasValue())
+        message.SetMagic(*required.Magic);
+
     return SendMessage(message);
 }
 
@@ -457,6 +468,17 @@ void CFixSender::VSendModifyOrder(const string& id, const CFxOrder& request)
         message.SetEncodedCommentLen(length);
         message.SetEncodedComment(comment);
     }
+
+    if (!request.Tag.empty())
+    {
+        string tag = CW2A(request.Tag.c_str(), CP_ACP);
+        const int length = static_cast<int>(tag.length());
+        message.SetEncodedTagLen(length);
+        message.SetEncodedTag(tag);
+    }
+
+    if (request.Magic.HasValue())
+        message.SetMagic(*request.Magic);
 
     return SendMessage(message);
 }

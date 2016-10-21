@@ -3954,6 +3954,10 @@
     <field name='ParentOrderType' required='N' />
     <field name='ExpireDate' required='N' />
     <field name='ExpireTime' required='N' />
+    <field name='ReqOpenPrice' required='N' />
+    <field name='ReqOpenQty' required='N' />
+    <field name='ReqClosePrice' required='N' />
+    <field name='ReqCloseQty' required='N' />
   </message>
   <message name='ComponentsInfoRequest' msgcat='app' msgtype='U1018'>
     <field name='ClientQuoteHistoryVersion' required='N' />
@@ -7734,5 +7738,9 @@
   <field number='10155' name='DefaultSlippage' type='PERCENTAGE' />
   <field number='10156' name='CurNumTradeReports' type='INT' />
   <field number='10157' name='AppSessionID' type='STRING'/>
+  <field number='10158' name='ReqOpenPrice' type='PRICE' />
+  <field number='10159' name='ReqOpenQty' type='QTY' />
+  <field number='10160' name='ReqClosePrice' type='PRICE' />
+  <field number='10161' name='ReqCloseQty' type='QTY' />
 </fields>
 </fix>

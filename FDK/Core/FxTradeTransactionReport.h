@@ -24,8 +24,15 @@ public:
     FxTradeRecordSide TradeRecordSide;
     std::string Symbol;
     std::string Comment;
+    std::string Tag;
+	Nullable<int> Magic;
     CDateTime OrderCreated;
     CDateTime OrderModified;
+
+    Nullable<double> ReqOpenPrice;
+    Nullable<double> ReqOpenQuantity;
+    Nullable<double> ReqClosePrice;
+    Nullable<double> ReqCloseQuantity;
 
     std::string PositionId;
     std::string PositionById;

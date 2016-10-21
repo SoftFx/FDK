@@ -23,6 +23,8 @@
         public DateTime? Created { get; set; }
         public DateTime? Modified { get; set; }
         public string Comment { get; set; }
+        public string Tag { get; set; }
+        public int? Magic { get; set; }
 
         public FxOrder()
         {
@@ -30,9 +32,10 @@
             this.ClientOrderId = string.Empty;
             this.Symbol = string.Empty;
             this.Comment = string.Empty;
+            this.Tag = string.Empty;
         }
 
-        public FxOrder(string id, string clientId, string symbol, int type, TradeRecordSide side, double? newPrice, double volume, double? stopLoss, double? takeProfit, DateTime? expiration, string comment)
+        public FxOrder(string id, string clientId, string symbol, int type, TradeRecordSide side, double? newPrice, double volume, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic)
             : this()
         {
             this.OrderId = id;
@@ -48,9 +51,11 @@
             this.TakeProfit = takeProfit;
             this.Expiration = expiration;
             this.Comment = comment;
+            this.Tag = tag;
+            this.Magic = magic;
         }
 
-        public FxOrder(string symbol, int type, TradeRecordSide side, double price, double volume, double? stopLoss, double? takeProfit, DateTime? expiration, string comment)
+        public FxOrder(string symbol, int type, TradeRecordSide side, double price, double volume, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic)
             : this()
         {
             this.Symbol = symbol;
@@ -62,6 +67,8 @@
             this.TakeProfit = takeProfit;
             this.Expiration = expiration;
             this.Comment = comment;
+            this.Tag = tag;
+            this.Magic = magic;
         }
     }
 }
