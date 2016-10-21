@@ -7,6 +7,8 @@
         public static readonly DataType Int32 = new DataType("int32", "int", "__int32", "Int32");
         public static readonly DataType Int64 = new DataType("int64", "long", "__int64", "Int64");
 
+        public static readonly DataType NullInt32 = new DataType("int32?", "int?", "NUllable<__int32>", "NullInt32");
+        public static readonly DataType NullInt64 = new DataType("int64?", "long?", "NUllable<__int64>", "NullInt64");
 
         public static readonly DataType UInt8 = new DataType("uint8", "byte", "unsigned __int8", "UInt8");
         public static readonly DataType UInt16 = new DataType("uint16", "ushort", "unsigned __int16", "UInt16");
@@ -33,8 +35,6 @@
 
         public static readonly DataType Raw = new DataType("raw", "Lrp.Core.MemoryBuffer", "MemoryBuffer", "Raw");
 
-
         public static readonly DataType AStringsArray = new DataType("astring[]", "string[]", "std::vector<std::string>", "AStringsArray");
-
     }
 }
