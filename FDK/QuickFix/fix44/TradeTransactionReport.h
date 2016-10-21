@@ -138,6 +138,14 @@ namespace FIX44
     FIELD_SET_EX(std::string, ExpireDate);
     FIELD_SET(*this, FIX::ExpireTime);
     FIELD_SET_EX(FIX::UtcTimeStamp, ExpireTime);
+    FIELD_SET(*this, FIX::ReqOpenPrice);
+    FIELD_SET_EX(double, ReqOpenPrice);
+    FIELD_SET(*this, FIX::ReqOpenQty);
+    FIELD_SET_EX(double, ReqOpenQty);
+    FIELD_SET(*this, FIX::ReqClosePrice);
+    FIELD_SET_EX(double, ReqClosePrice);
+    FIELD_SET(*this, FIX::ReqCloseQty);
+    FIELD_SET_EX(double, ReqCloseQty);
   };
 
 }

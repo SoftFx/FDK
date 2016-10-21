@@ -13,5 +13,6 @@ CFxOrder::CFxOrder()
     , AgentCommission()
     , Swap()
     , Profit()
+    , Magic()
 {
 }

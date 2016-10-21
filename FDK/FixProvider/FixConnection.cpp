@@ -209,11 +209,11 @@ void CFixConnection::onLogon(const Message& message, const SessionID& /*sessionI
 {
     const FIX44::Logon& logon = static_cast<const FIX44::Logon&>(message);
 
-	string protocolVersion = "ext.0.0";
+    string protocolVersion = "ext.0.0";
     logon.TryGetProtocolSpec(protocolVersion);
 
-	bool twofactor = false;
-	logon.TryGetTwoFactorAuthFlag(twofactor);
+    bool twofactor = false;
+    logon.TryGetTwoFactorAuthFlag(twofactor);
 
     m_version = CFixVersion(protocolVersion);
 
@@ -603,6 +603,9 @@ void CFixConnection::OnExecution(const CFixExecutionReport& message)
 
     string comment = message.GetComment();
     report.Comment = CA2W(comment.c_str(), CP_ACP);
+    string tag = message.GetTag();
+    report.Tag = CA2W(tag.c_str(), CP_ACP);
+    report.Magic = message.GetMagic();
 
     report.ExecutionType = message.GetFxExecutionType();
     report.OrderStatus = message.GetFxOrderStatus();
@@ -1106,6 +1109,11 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
     message.TryGetTakeProfit(report.TakeProfit);
     message.TryGetTradeReportID(report.NextStreamPositionId);
     message.TryGetEncodedComment(report.Comment);
+    message.TryGetEncodedTag(report.Tag);
+
+    int magic;
+	if (message.TryGetMagic(magic))
+		report.Magic = magic;
 
     if (message.TryGetTransactTime(time))
         report.TransactionTime = time.toFileTime();
@@ -1126,6 +1134,18 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
     if (message.TryGetCloseConversionRate(closeConversionRate))
         report.CloseConversionRate = closeConversionRate;
 
+    double reqOpenPrice;
+    if (message.TryGetReqOpenPrice(reqOpenPrice))
+        report.ReqOpenPrice = reqOpenPrice;
+    double reqOpenQuantity;
+    if (message.TryGetReqOpenQty(reqOpenQuantity))
+        report.ReqOpenQuantity = reqOpenQuantity;
+    double reqClosePrice;
+    if (message.TryGetReqClosePrice(reqClosePrice))
+        report.ReqClosePrice = reqClosePrice;
+    double reqCloseQuantity;
+    if (message.TryGetReqCloseQty(reqCloseQuantity))
+        report.ReqCloseQuantity = reqCloseQuantity;
 
     message.TryGetActionID(report.ActionId);
     if (message.TryGetPosRemainingSide(side))

@@ -58,7 +58,7 @@
 
             var status = this.logonEvent.WaitOne(LogonWaitingTimeout);
             Assert.IsTrue(status, "Timeout of logon event");
-            var order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 1.1, 10000, 0, 0, null, "comment", 1000000);
+            var order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 1.1, 10000, 0, 0, null, "comment", null, null, 1000000);
             Assert.IsTrue(order.Price > 0, "Invalid order price = {0}", order.Price);
 
             CacheDontHavePositions();
@@ -85,7 +85,7 @@
             var status = this.logonEvent.WaitOne(LogonWaitingTimeout);
             Assert.IsTrue(status, "Timeout of logon event");
             const double price = 1.1;
-            var order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Limit, TradeRecordSide.Buy, price, 10000, 0, 0, null, "comment", 1000000);
+            var order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Limit, TradeRecordSide.Buy, price, 10000, 0, 0, null, "comment", null, null, 1000000);
 
             Assert.IsTrue(order.Price == price, "Invalid order price = {0}", order.Price);
             this.dataTrade.Logon -= this.OnLogon;
@@ -110,7 +110,7 @@
             var status = this.logonEvent.WaitOne(LogonWaitingTimeout);
             Assert.IsTrue(status, "Timeout of logon event");
             const double price = 1.9;
-            var order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Stop, TradeRecordSide.Buy, price, 10000, null, null, null, "comment", 1000000);
+            var order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Stop, TradeRecordSide.Buy, price, 10000, null, null, null, "comment", null, null, 1000000);
             Assert.IsTrue(order.Price == price, "Invalid order price = {0}", order.Price);
             this.dataTrade.Logon -= this.OnLogon;
             this.dataTrade.Stop();
@@ -137,7 +137,7 @@
             const Double price = 1.1;
 
             var start = DateTime.UtcNow;
-            var order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Limit, TradeRecordSide.Buy, price, 10000, null, null, null, "comment", 1000000);
+            var order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Limit, TradeRecordSide.Buy, price, 10000, null, null, null, "comment", null, null, 1000000);
             var end = DateTime.UtcNow;
             var interval = (end - start);
             Console.WriteLine("Interval = {0}", interval);

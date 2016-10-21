@@ -105,7 +105,7 @@
 
             var status = this.logonEvent.WaitOne(LogonWaitingTimeout);
             Assert.IsTrue(status, "Timeout of logon event");
-            var order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 1.1, 10000, 0, 0, null, "comment", 1000000);
+            var order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 1.1, 10000, 0, 0, null, "comment", null, null, 1000000);
             Assert.IsTrue(order.Price > 0, "Invalid order price = {0}", order.Price);
             this.dataTrade.Logon -= this.OnLogon;
             this.dataTrade.Stop();
@@ -129,7 +129,7 @@
             var status = this.logonEvent.WaitOne(LogonWaitingTimeout);
             Assert.IsTrue(status, "Timeout of logon event");
             const double price = 1.1;
-            var order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Limit, TradeRecordSide.Buy, price, 10000, 0, 0, null, "comment", 1000000);
+            var order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Limit, TradeRecordSide.Buy, price, 10000, 0, 0, null, "comment", null, null, 1000000);
 
             Assert.IsTrue(order.Price == price, "Invalid order price = {0}", order.Price);
             this.dataTrade.Logon -= this.OnLogon;
@@ -154,7 +154,7 @@
             var status = this.logonEvent.WaitOne(LogonWaitingTimeout);
             Assert.IsTrue(status, "Timeout of logon event");
             const double price = 1.9;
-            var order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Stop, TradeRecordSide.Buy, price, 10000, 0, 0, null, "comment", 1000000);
+            var order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Stop, TradeRecordSide.Buy, price, 10000, 0, 0, null, "comment", null, null, 1000000);
             Assert.IsTrue(order.Price == price, "Invalid order price = {0}", order.Price);
             this.dataTrade.Logon -= OnLogon;
             this.dataTrade.Stop();
@@ -184,7 +184,7 @@
             //const double newTakeProfit = 1.3;
             var newExpirationTime = DateTime.UtcNow.AddHours(1);
 
-            var order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Limit, TradeRecordSide.Buy, 1.1, 10000, null, null, null, "comment", 1000000);
+            var order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Limit, TradeRecordSide.Buy, 1.1, 10000, null, null, null, "comment", null, null, 1000000);
 /*
             //this.ModifyLimitOrder(order, activationPrice, null, null, null, null);
             this.ModifyLimitOrder(order, activationPrice, null, null, null, newExpirationTime);
@@ -301,7 +301,7 @@
             Assert.IsTrue(status, "Timeout of logon event");
 
             var start = DateTime.UtcNow;
-            TradeRecord order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 0, 10000, null, null, null, "comment", 1000000);
+            TradeRecord order = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 0, 10000, null, null, null, "comment", null, null, 1000000);
             DateTime end = DateTime.UtcNow;
             TimeSpan interval = (end - start);
             Console.WriteLine("Interval = {0}", interval);
@@ -335,7 +335,7 @@
             Assert.IsTrue(status, "Timeout of logon event");
             
             //Test Limit order
-            var order = this.dataTrade.Server.SendOrderEx(testContext.Symbol, TradeCommand.Limit, TradeRecordSide.Buy, testContext.VeryLowPrice, testContext.Volume, null, null, DateTime.UtcNow.AddHours(1), testContext.Comment, 1000000);
+            var order = this.dataTrade.Server.SendOrderEx(testContext.Symbol, TradeCommand.Limit, TradeRecordSide.Buy, testContext.VeryLowPrice, testContext.Volume, null, null, DateTime.UtcNow.AddHours(1), testContext.Comment, null, null, 1000000);
             Assert.IsTrue(order.Price == testContext.VeryLowPrice, "Invalid order price = {0}", order.Price);
             order.Delete();
 
@@ -344,7 +344,7 @@
             Assert.IsTrue(tradeReport.Price == order.Price);
 
             //Test stop order
-            order = this.dataTrade.Server.SendOrderEx(testContext.Symbol, TradeCommand.Stop, TradeRecordSide.Buy, testContext.VeryHighPrice, testContext.Volume, null, null, DateTime.UtcNow.AddHours(1), testContext.Comment, 1000000);
+            order = this.dataTrade.Server.SendOrderEx(testContext.Symbol, TradeCommand.Stop, TradeRecordSide.Buy, testContext.VeryHighPrice, testContext.Volume, null, null, DateTime.UtcNow.AddHours(1), testContext.Comment, null, null, 1000000);
             Assert.IsTrue(order.Price == testContext.VeryHighPrice, "Invalid order price = {0}", order.Price);
             order.Delete();
 
@@ -376,8 +376,8 @@
                 status &= this.accountInfoEvent.WaitOne(LogonWaitingTimeout);
                 Assert.IsTrue(status, "Timeout of logon event");
 
-                TradeRecord order1 = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 0, 10000, null, null, null, "comment", 1000000);
-                TradeRecord order2 = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Market, TradeRecordSide.Sell, 0, 10000, null, null, null, "comment", 1000000);
+                TradeRecord order1 = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 0, 10000, null, null, null, "comment", null, null, 1000000);
+                TradeRecord order2 = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Market, TradeRecordSide.Sell, 0, 10000, null, null, null, "comment", null, null, 1000000);
 
                 Assert.IsTrue( dataTrade.Server.CloseByPositions(order1.OrderId, order2.OrderId) );
                 var iter = this.dataTrade.Server.GetTradeTransactionReports(TimeDirection.Backward, false, DateTime.UtcNow.AddMinutes(-5), DateTime.UtcNow.AddMinutes(5));

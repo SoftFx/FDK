@@ -87,6 +87,16 @@
         public string Comment { get; internal set; }
 
         /// <summary>
+        /// Gets user-defined tag.
+        /// </summary>
+        public string Tag { get; internal set; }
+
+        /// <summary>
+        /// Gets user-defined magic number.
+        /// </summary>
+        public int? Magic { get; internal set; }
+
+        /// <summary>
         ///
         /// </summary>
         public DateTime OrderCreated { get; internal set; }
@@ -95,6 +105,26 @@
         ///
         /// </summary>
         public DateTime OrderModified { get; internal set; }
+
+        /// <summary>
+        /// Requested open price.
+        /// </summary>
+        public double? ReqOpenPrice { get; internal set; }
+
+        /// <summary>
+        /// Requested open quantity.
+        /// </summary>
+        public double? ReqOpenQuantity { get; internal set; }
+
+        /// <summary>
+        /// Requested close price.
+        /// </summary>
+        public double? ReqClosePrice { get; internal set; }
+
+        /// <summary>
+        /// Requested close quantity.
+        /// </summary>
+        public double? ReqCloseQuantity { get; internal set; }
 
         /// <summary>
         ///

@@ -727,6 +727,8 @@ namespace
 		WriteNullTime(arg.Created, buffer);
 		WriteNullTime(arg.Modified, buffer);
 		WriteWString(arg.Comment, buffer);
+		WriteWString(arg.Tag, buffer);
+		WriteNullInt32(arg.Magic, buffer);
 	}
 	CFxOrder ReadFxOrder(MemoryBuffer& buffer)
 	{
@@ -750,6 +752,8 @@ namespace
 		result.Created = ReadNullTime(buffer);
 		result.Modified = ReadNullTime(buffer);
 		result.Comment = ReadWString(buffer);
+		result.Tag = ReadWString(buffer);
+		result.Magic = ReadNullInt32(buffer);
 		return result;
 	}
 	void WriteFxOrderArray(const std::vector<CFxOrder>& arg, MemoryBuffer& buffer)
@@ -976,6 +980,12 @@ namespace
 		WriteTradeRecordSide(arg.TradeRecordSide, buffer);
 		WriteAString(arg.Symbol, buffer);
 		WriteAString(arg.Comment, buffer);
+		WriteAString(arg.Tag, buffer);
+		WriteNullInt32(arg.Magic, buffer);
+		WriteNullDouble(arg.ReqOpenPrice, buffer);
+		WriteNullDouble(arg.ReqOpenQuantity, buffer);
+		WriteNullDouble(arg.ReqClosePrice, buffer);
+		WriteNullDouble(arg.ReqCloseQuantity, buffer);
 		WriteTime(arg.OrderCreated, buffer);
 		WriteTime(arg.OrderModified, buffer);
 		WriteAString(arg.PositionId, buffer);
@@ -1025,6 +1035,12 @@ namespace
 		result.TradeRecordSide = ReadTradeRecordSide(buffer);
 		result.Symbol = ReadAString(buffer);
 		result.Comment = ReadAString(buffer);
+		result.Tag = ReadAString(buffer);
+		result.Magic = ReadNullInt32(buffer);
+		result.ReqOpenPrice = ReadNullDouble(buffer);
+		result.ReqOpenQuantity = ReadNullDouble(buffer);
+		result.ReqClosePrice = ReadNullDouble(buffer);
+		result.ReqCloseQuantity = ReadNullDouble(buffer);
 		result.OrderCreated = ReadTime(buffer);
 		result.OrderModified = ReadTime(buffer);
 		result.PositionId = ReadAString(buffer);
@@ -1098,6 +1114,8 @@ namespace
 		WriteNullDouble(arg.StopLoss, buffer);
 		WriteAString(arg.Text, buffer);
 		WriteWString(arg.Comment, buffer);
+		WriteWString(arg.Tag, buffer);
+		WriteNullInt32(arg.Magic, buffer);
 		WriteAString(arg.ClosePositionRequestId, buffer);
 		WriteAssetInfoArray(arg.Assets, buffer);
 		WriteDouble(arg.Balance, buffer);
@@ -1130,6 +1148,8 @@ namespace
 		result.StopLoss = ReadNullDouble(buffer);
 		result.Text = ReadAString(buffer);
 		result.Comment = ReadWString(buffer);
+		result.Tag = ReadWString(buffer);
+		result.Magic = ReadNullInt32(buffer);
 		result.ClosePositionRequestId = ReadAString(buffer);
 		result.Assets = ReadAssetInfoArray(buffer);
 		result.Balance = ReadDouble(buffer);

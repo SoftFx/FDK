@@ -47,10 +47,12 @@
         /// <param name="takeProfit">Take profit price.</param>
         /// <param name="expiration">Expiration time, should be specified for pending orders.</param>
         /// <param name="comment">User defined comment for a new opening order. Null is interpreded as empty string.</param>
+        /// <param name="tag">User defined tag for a new opening order. Null is interpreded as empty string.</param>
+        /// <param name="magic">User defined magic number for a new opening order. Null is not defined.</param>
         /// <returns>A new order; can not be null.</returns>
-        public TradeRecord SendOrder(string symbol, TradeCommand command, TradeRecordSide side, double price, double volume, double? stopLoss, double? takeProfit, DateTime? expiration, string comment)
+        public TradeRecord SendOrder(string symbol, TradeCommand command, TradeRecordSide side, double price, double volume, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic)
         {
-            return this.SendOrderEx(null, symbol, command, side, price, volume, stopLoss, takeProfit, expiration, comment, this.Client.SynchOperationTimeout);
+            return this.SendOrderEx(null, symbol, command, side, price, volume, stopLoss, takeProfit, expiration, comment, tag, magic, this.Client.SynchOperationTimeout);
         }
 
         /// <summary>
@@ -65,11 +67,13 @@
         /// <param name="takeProfit">Take profit price.</param>
         /// <param name="expiration">Expiration time, should be specified for pending orders.</param>
         /// <param name="comment">User defined comment for a new opening order. Null is interpreded as empty string.</param>
+        /// <param name="tag">User defined tag for a new opening order. Null is interpreded as empty string.</param>
+        /// <param name="magic">User defined magic number for a new opening order. Null is not defined.</param>
         /// <param name="timeoutInMilliseconds">Timeout of the synchronous operation.</param>
         /// <returns>A new trade record; can not be null.</returns>
-        public TradeRecord SendOrderEx(string symbol, TradeCommand command, TradeRecordSide side, double price, double volume, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, int timeoutInMilliseconds)
+        public TradeRecord SendOrderEx(string symbol, TradeCommand command, TradeRecordSide side, double price, double volume, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic, int timeoutInMilliseconds)
         {
-            return this.SendOrderEx(null, symbol, command, side, price, volume, stopLoss, takeProfit, expiration, comment, timeoutInMilliseconds);
+            return this.SendOrderEx(null, symbol, command, side, price, volume, stopLoss, takeProfit, expiration, comment, tag, magic, timeoutInMilliseconds);
         }
 
         /// <summary>
@@ -88,10 +92,12 @@
         /// <param name="takeProfit">Take profit price.</param>
         /// <param name="expiration">Expiration time, should be specified for pending orders.</param>
         /// <param name="comment">User defined comment for a new opening order. Null is interpreded as empty string.</param>
+        /// <param name="tag">User defined tag for a new opening order. Null is interpreded as empty string.</param>
+        /// <param name="magic">User defined magic number for a new opening order. Null is not defined.</param>
         /// <returns>A new trade record; can not be null.</returns>
-        public TradeRecord SendOrderEx(string operationId, string symbol, TradeCommand command, TradeRecordSide side, double price, double volume, double? stopLoss, double? takeProfit, DateTime? expiration, string comment)
+        public TradeRecord SendOrderEx(string operationId, string symbol, TradeCommand command, TradeRecordSide side, double price, double volume, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic)
         {
-            return this.SendOrderEx(operationId, symbol, command, side, price, volume, stopLoss, takeProfit, expiration, comment, this.Client.SynchOperationTimeout);
+            return this.SendOrderEx(operationId, symbol, command, side, price, volume, stopLoss, takeProfit, expiration, comment, tag, magic, this.Client.SynchOperationTimeout);
         }
 
         /// <summary>
@@ -110,11 +116,13 @@
         /// <param name="takeProfit">Take profit price.</param>
         /// <param name="expiration">Expiration time, should be specified for pending orders.</param>
         /// <param name="comment">User defined comment for a new opening order. Null is interpreded as empty string.</param>
+        /// <param name="tag">User defined tag for a new opening order. Null is interpreded as empty string.</param>
+        /// <param name="magic">User defined magic number for a new opening order. Null is not defined.</param>
         /// <param name="timeoutInMilliseconds">Timeout of the synchronous operation.</param>
         /// <returns>A new trade record; can not be null.</returns>
-        TradeRecord SendOrderEx(string operationId, string symbol, TradeCommand command, TradeRecordSide side, double price, double volume, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, int timeoutInMilliseconds)
+        TradeRecord SendOrderEx(string operationId, string symbol, TradeCommand command, TradeRecordSide side, double price, double volume, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic, int timeoutInMilliseconds)
         {
-            var order = this.Client.DataTradeHandle.OpenNewOrder(operationId, symbol, command, side, price, volume, stopLoss, takeProfit, expiration, comment ?? string.Empty, timeoutInMilliseconds);
+            var order = this.Client.DataTradeHandle.OpenNewOrder(operationId, symbol, command, side, price, volume, stopLoss, takeProfit, expiration, comment ?? string.Empty, tag ?? string.Empty, magic, timeoutInMilliseconds);
             return new TradeRecord(this.Client, order);
         }
 
@@ -179,11 +187,14 @@
         /// <param name="newTakeProfit">A new take profit price of pending order.</param>
         /// <param name="newExpiration">A new expiration time.</param>
         /// <param name="newComment">A new comment.</param>
+        /// <param name="newTag">A new tag.</param>
+        /// <param name="newMagic">A new magic.</param>
         /// <returns>A modified trade record.</returns>
         public TradeRecord ModifyTradeRecord(string orderId, string symbol, TradeRecordType type, TradeRecordSide side,
-                                            double volume, double? newActivationPrice = null, double? newStopLoss = null, double? newTakeProfit = null, DateTime? newExpiration = null, string newComment = null)
+                                            double volume, double? newActivationPrice = null, double? newStopLoss = null, double? newTakeProfit = null, DateTime? newExpiration = null,
+                                            string newComment = null, string newTag = null, int? newMagic = null)
         {
-            return this.ModifyTradeRecordEx(orderId, symbol, type, side, volume, newActivationPrice, newStopLoss, newTakeProfit, newExpiration, newComment, this.Client.SynchOperationTimeout);
+            return this.ModifyTradeRecordEx(orderId, symbol, type, side, volume, newActivationPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, this.Client.SynchOperationTimeout);
         }
 
         /// <summary>
@@ -199,12 +210,14 @@
         /// <param name="newTakeProfit">A new take profit price of pending order.</param>
         /// <param name="newExpiration">A new expiration time.</param>
         /// <param name="newComment">A new comment.</param>
+        /// <param name="newTag">A new tag.</param>
+        /// <param name="newMagic">A new magic.</param>
         /// <param name="timeoutInMilliseconds">Timeout of the synchronous operation.</param>
         /// <returns>A modified trade record.</returns>
         public TradeRecord ModifyTradeRecordEx(string orderId, string symbol, TradeRecordType type, TradeRecordSide side,
-                                        double volume, double? newActivationPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpiration, string newComment, int timeoutInMilliseconds)
+                                        double volume, double? newActivationPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpiration, string newComment, string newTag, int? newMagic, int timeoutInMilliseconds)
         {
-            return this.ModifyTradeRecordEx(null, orderId, "<OrderID>", symbol, type, side, volume, newActivationPrice, newStopLoss, newTakeProfit, newExpiration, newComment, timeoutInMilliseconds);
+            return this.ModifyTradeRecordEx(null, orderId, "<OrderID>", symbol, type, side, volume, newActivationPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, timeoutInMilliseconds);
         }
 
         /// <summary>
@@ -224,17 +237,20 @@
         /// <param name="newTakeProfit">A new take profit price of pending order.</param>
         /// <param name="newExpiration">A new expiration time.</param>
         /// <param name="newComment">A new comment.</param>
+        /// <param name="newTag">A new tag.</param>
+        /// <param name="newMagic">A new magic.</param>
         /// <returns>A modified trade record.</returns>
         public TradeRecord ModifyTradeRecordEx(string operationId, string orderId, string symbol, TradeRecordType type, TradeRecordSide side,
-                                        double volume, double? newActivationPrice = null, double? newStopLoss = null, double? newTakeProfit = null, DateTime? newExpiration = null, string newComment = null)
+                                        double volume, double? newActivationPrice = null, double? newStopLoss = null, double? newTakeProfit = null, DateTime? newExpiration = null,
+                                        string newComment = null, string newTag = null, int? newMagic = null)
         {
-            return this.ModifyTradeRecordEx(operationId, orderId, "<OrderID>", symbol, type, side, volume, newActivationPrice, newStopLoss, newTakeProfit, newExpiration, newComment, this.Client.SynchOperationTimeout);
+            return this.ModifyTradeRecordEx(operationId, orderId, "<OrderID>", symbol, type, side, volume, newActivationPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, this.Client.SynchOperationTimeout);
         }
 
         TradeRecord ModifyTradeRecordEx(string operationId, string orderId, string clientId, string symbol, TradeRecordType type, TradeRecordSide side,
-                                        double volume, double? newActivationPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpiration, string newComment, int timeoutInMilliseconds)
+                                        double volume, double? newActivationPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpiration, string newComment, string newTag, int? newMagic, int timeoutInMilliseconds)
         {
-            var order = this.Client.DataTradeHandle.ModifyOrder(operationId, orderId, clientId, symbol, type, side, volume, newActivationPrice, newStopLoss, newTakeProfit, newExpiration, newComment, timeoutInMilliseconds);
+            var order = this.Client.DataTradeHandle.ModifyOrder(operationId, orderId, clientId, symbol, type, side, volume, newActivationPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, timeoutInMilliseconds);
             return new TradeRecord(this.Client, order);
         }
 

@@ -3,7 +3,7 @@
     using System;
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class ExecutionReport
     {
@@ -135,6 +135,16 @@
         /// Gets user comment, if it is available
         /// </summary>
         public string Comment { get; internal set; }
+
+        /// <summary>
+        /// Gets user tag, if it is available
+        /// </summary>
+        public string Tag { get; internal set; }
+
+        /// <summary>
+        /// Gets magic number
+        /// </summary>
+        public int? Magic { get; internal set; }
 
         /// <summary>
         /// Gets ClosePositionRequestId = 10045 field.
