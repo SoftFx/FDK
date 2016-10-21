@@ -681,6 +681,23 @@ namespace SoftFX.Lrp
         /// </summary>
         /// <exception cref="System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
         /// <returns>A read value.</returns>
+        public int? ReadNullInt32()
+        {
+            bool hasValue = ReadBoolean();
+            if (hasValue)
+            {
+                return ReadInt32();
+            }
+            else
+            {
+                return null;
+            }
+        }
+        /// <summary>
+        /// Reads a value from memory buffer.
+        /// </summary>
+        /// <exception cref="System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+        /// <returns>A read value.</returns>
         public long ReadInt64()
         {
             int newPosition = m_position + sizeof(long);
@@ -692,6 +709,23 @@ namespace SoftFX.Lrp
             var result = *(long*)(m_data + m_position);
             m_position = newPosition;
             return result;
+        }
+        /// <summary>
+        /// Reads a value from memory buffer.
+        /// </summary>
+        /// <exception cref="System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+        /// <returns>A read value.</returns>
+        public long? ReadNullInt64()
+        {
+            bool hasValue = ReadBoolean();
+            if (hasValue)
+            {
+                return ReadInt64();
+            }
+            else
+            {
+                return null;
+            }
         }
         /// <summary>
         /// Reads a value from memory buffer.
