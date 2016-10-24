@@ -30,7 +30,7 @@ void CReceiver::ReleaseWaiter(const type_info& info, const string& id)
     m_synchInvoker.ReleaseWaiter(info, id);
 }
 
-void CReceiver::VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion, bool twofactor)
+void CReceiver::VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion, bool)
 {
     CFxMessage message(FX_MSG_LOGON, eventInfo);
     message.Data = new CFxMsgLogon(protocolVersion);
