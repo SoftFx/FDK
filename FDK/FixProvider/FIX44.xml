@@ -7735,7 +7735,7 @@
     <value enum='Y' description='YES' />
   </field>
   <field number='10154' name='AssetLockedAmt' type='AMT' />
-  <field number='10155' name='DefaultSlippage' type='PERCENTAGE' />
+  <field number='10155' name='DefaultSlippage' type='PRICE' />
   <field number='10156' name='CurNumTradeReports' type='INT' />
   <field number='10157' name='AppSessionID' type='STRING'/>
   <field number='10158' name='ReqOpenPrice' type='PRICE' />

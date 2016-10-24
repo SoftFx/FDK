@@ -1137,7 +1137,7 @@ namespace FIX
   DEFINE_STRING(OneTimePassword);
   DEFINE_BOOLEAN(TwoFactorAuthFlag);
   DEFINE_AMT(AssetLockedAmt);
-  DEFINE_PERCENTAGE(DefaultSlippage);
+  DEFINE_PRICE(DefaultSlippage);
   DEFINE_INT(CurNumTradeReports);
   DEFINE_STRING(AppSessionID);
   DEFINE_PRICE(ReqOpenPrice);
