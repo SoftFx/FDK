@@ -24,6 +24,11 @@
         /// <summary>
         /// An order to buy or sell a security only if its price matches a particular point.
         /// </summary>
-        IoC = 4
+        IoC = 4,
+
+        /// <summary>
+        /// Market order with slippage. Will be send as a limit order with IOC flag.
+        /// </summary>
+        MarketWithSlippage = 5
     }
 }

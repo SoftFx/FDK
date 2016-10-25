@@ -41,6 +41,7 @@ enum FxTradeRecordType
     FxTradeRecordType_Limit = 2,
     FxTradeRecordType_Stop  = 3,
     FxTradeRecordType_IoC   = 4,
+    FxTradeRecordType_MarketWithSlippage = 5,
     FxTradeRecordType_Last  = FX_MAX_ENUM
 };
 

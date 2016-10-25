@@ -97,6 +97,16 @@
         public int? Magic { get; internal set; }
 
         /// <summary>
+        /// Gets ImmediateOrCancel flag.
+        /// </summary>
+        public bool ImmediateOrCancel { get; internal set; }
+
+        /// <summary>
+        /// Gets MarketWithSlippage flag.
+        /// </summary>
+        public bool MarketWithSlippage { get; internal set; }
+
+        /// <summary>
         ///
         /// </summary>
         public DateTime OrderCreated { get; internal set; }

@@ -168,6 +168,8 @@
       <Member name="Comment" type="wstring" />
       <Member name="Tag" type="wstring" />
       <Member name="Magic" type="int32?" />
+      <Member name="ImmediateOrCancel" type="bool" />
+      <Member name="MarketWithSlippage" type="bool" />
     </Type>
     <Type name="FxOrderArray" kind="array">
       <Value name="FxOrder" />
@@ -241,6 +243,8 @@
       <Member name="Comment" type="astring" />
       <Member name="Tag" type="astring" />
       <Member name="Magic" type="int32?" />
+      <Member name="ImmediateOrCancel" type="bool" />
+      <Member name="MarketWithSlippage" type="bool" />
       <Member name="ReqOpenPrice" type="double?" />
       <Member name="ReqOpenQuantity" type="double?" />
       <Member name="ReqClosePrice" type="double?" />
@@ -312,6 +316,8 @@
       <Member name="ClosePositionRequestId" type="astring" />
       <Member name="Assets" type="AssetInfoArray" />
       <Member name="Balance" type="double" />
+      <Member name="ImmediateOrCancel" type="bool" />
+      <Member name="MarketWithSlippage" type="bool" />
     </Type>
     <Type name="CurrencyInfo" CSharpFullName="SoftFX.Extended.CurrencyInfo" CppFullName="CFxCurrencyInfo" kind="class">
       <Member name="Name" type="astring" />

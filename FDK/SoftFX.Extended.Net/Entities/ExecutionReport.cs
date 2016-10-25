@@ -147,6 +147,16 @@
         public int? Magic { get; internal set; }
 
         /// <summary>
+        /// Gets ImmediateOrCancel flag.
+        /// </summary>
+        public bool ImmediateOrCancel { get; internal set; }
+
+        /// <summary>
+        /// Gets MarketWithSlippage flag.
+        /// </summary>
+        public bool MarketWithSlippage { get; internal set; }
+
+        /// <summary>
         /// Gets ClosePositionRequestId = 10045 field.
         /// </summary>
         public string ClosePositionRequestId { get; internal set; }

@@ -146,6 +146,10 @@ namespace FIX44
     FIELD_SET_EX(double, ReqClosePrice);
     FIELD_SET(*this, FIX::ReqCloseQty);
     FIELD_SET_EX(double, ReqCloseQty);
+    FIELD_SET(*this, FIX::ImmediateOrCancelFlag);
+    FIELD_SET_EX(bool, ImmediateOrCancelFlag);
+    FIELD_SET(*this, FIX::MarketWithSlippageFlag);
+    FIELD_SET_EX(bool, MarketWithSlippageFlag);
   };
 
 }

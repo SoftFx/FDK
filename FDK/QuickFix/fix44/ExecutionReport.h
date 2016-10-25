@@ -557,6 +557,10 @@ namespace FIX44
     FIELD_SET_EX(double, MarginRateInitial);
     FIELD_SET(*this, FIX::ParentOrderID);
     FIELD_SET_EX(std::string, ParentOrderID);
+    FIELD_SET(*this, FIX::ImmediateOrCancelFlag);
+    FIELD_SET_EX(bool, ImmediateOrCancelFlag);
+    FIELD_SET(*this, FIX::MarketWithSlippageFlag);
+    FIELD_SET_EX(bool, MarketWithSlippageFlag);
     FIELD_SET(*this, FIX::NoContraBrokers);
     FIELD_SET_EX(int, NoContraBrokers);
     class NoContraBrokers: public FIX::Group

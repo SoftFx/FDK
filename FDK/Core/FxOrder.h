@@ -30,6 +30,8 @@ public:
     wstring Comment;
     wstring Tag;
     Nullable<int> Magic;
+    bool ImmediateOrCancel;
+    bool MarketWithSlippage;
 };
 
 

@@ -27,6 +27,8 @@ public:
     Nullable<CDateTime> Expiration;
     Nullable<CDateTime> Created;
     Nullable<CDateTime> Modified;
+    bool ImmediateOrCancel;
+    bool MarketWithSlippage;
 public:
     string OrderId;
     string ClientOrderId;

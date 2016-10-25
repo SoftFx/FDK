@@ -617,7 +617,10 @@ void CFixConnection::OnExecution(const CFixExecutionReport& message)
     report.Modified = message.GetModifiedDateTime();
     report.Commission = message.GetFxCommission();
     report.AgentCommission = message.GetFxAgentCommission();
+    report.ImmediateOrCancel = message.GetImmediateOrCancelFlag();
+    report.MarketWithSlippage = message.GetMarketWithSlippageFlag();
     report.Swap = message.GetFxSwap();
+
     message.GetAssets(report.Assets);
 
     if (!message.TryGetMassStatusRequestId(eventInfo.ID))
@@ -1112,8 +1115,15 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
     message.TryGetEncodedTag(report.Tag);
 
     int magic;
-	if (message.TryGetMagic(magic))
-		report.Magic = magic;
+    if (message.TryGetMagic(magic))
+        report.Magic = magic;
+
+    bool ioc;
+    if (message.TryGetImmediateOrCancelFlag(ioc))
+        report.ImmediateOrCancel = ioc;
+    bool mws;
+    if (message.TryGetMarketWithSlippageFlag(mws))
+        report.MarketWithSlippage = mws;
 
     if (message.TryGetTransactTime(time))
         report.TransactionTime = time.toFileTime();

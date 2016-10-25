@@ -1144,6 +1144,8 @@ namespace FIX
   DEFINE_QTY(ReqOpenQty);
   DEFINE_PRICE(ReqClosePrice);
   DEFINE_QTY(ReqCloseQty);
+  DEFINE_BOOLEAN(ImmediateOrCancelFlag);
+  DEFINE_BOOLEAN(MarketWithSlippageFlag);
   DEFINE_NUMINGROUP(NoStrategyParameters);
   DEFINE_STRING(StrategyParameterName);
   DEFINE_INT(StrategyParameterType);

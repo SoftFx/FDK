@@ -390,6 +390,24 @@ Nullable<int> CFixExecutionReport::GetMagic() const
     }
     return Nullable<int>();
 }
+bool CFixExecutionReport::GetImmediateOrCancelFlag() const
+{
+    bool ioc = 0;
+    if (TryGetImmediateOrCancelFlag(ioc))
+    {
+        return ioc;
+    }
+    return false;
+}
+bool CFixExecutionReport::GetMarketWithSlippageFlag() const
+{
+    bool mws = 0;
+    if (TryGetMarketWithSlippageFlag(mws))
+    {
+        return mws;
+    }
+    return false;
+}
 
 void CFixExecutionReport::GetAssets(vector<CAssetInfo>& assets) const
 {

@@ -393,6 +393,10 @@ namespace FIX44
     FIELD_SET_EX(std::string, EncodedTag);
     FIELD_SET(*this, FIX::Magic);
     FIELD_SET_EX(int, Magic);
+    FIELD_SET(*this, FIX::ImmediateOrCancelFlag);
+    FIELD_SET_EX(bool, ImmediateOrCancelFlag);
+    FIELD_SET(*this, FIX::MarketWithSlippageFlag);
+    FIELD_SET_EX(bool, MarketWithSlippageFlag);
     FIELD_SET(*this, FIX::NoAllocs);
     FIELD_SET_EX(int, NoAllocs);
     class NoAllocs: public FIX::Group
