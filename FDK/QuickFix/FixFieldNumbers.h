@@ -1142,6 +1142,8 @@ namespace FIX
     const int ReqOpenQty = 10159;
     const int ReqClosePrice = 10160;
     const int ReqCloseQty = 10161;
+    const int ImmediateOrCancelFlag = 10162;
+    const int MarketWithSlippageFlag = 10163;
     const int NoStrategyParameters = 957;
     const int StrategyParameterName = 958;
     const int StrategyParameterType = 959;

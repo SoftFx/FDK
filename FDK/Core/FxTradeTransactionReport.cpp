@@ -17,6 +17,9 @@ CFxTradeTransactionReport::CFxTradeTransactionReport()
     this->Price = 0;
     this->StopPrice = 0;
 
+    this->ImmediateOrCancel = false;
+    this->MarketWithSlippage = false;
+
     this->PosOpenReqPrice = 0;
     this->PosOpenPrice = 0;
     this->PositionQuantity = 0;

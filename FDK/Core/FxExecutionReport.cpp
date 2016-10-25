@@ -25,6 +25,9 @@ CFxExecutionReport::CFxExecutionReport()
     ReportsNumber = 0;
     RejectReason = FxRejectReason_None;
     OrderSide = FxTradeRecordSide_None;
+
+    ImmediateOrCancel = false;
+    MarketWithSlippage = false;
 }
 
 bool CFxExecutionReport::TryGetTradeRecord(CFxOrder& order) const
@@ -155,6 +158,8 @@ void CFxExecutionReport::CopyCommonFieldsToRecord(CFxOrder& order) const
     order.Comment = this->Comment;
     order.Tag = this->Tag;
     order.Magic = this->Magic;
+    order.ImmediateOrCancel = this->ImmediateOrCancel;
+    order.MarketWithSlippage = this->MarketWithSlippage;
     if (this->InitialVolume.HasValue())
     {
         order.InitialVolume = this->InitialVolume.Value();

@@ -31,6 +31,8 @@
             this.Comment = fxOrder.Comment;
             this.Tag = fxOrder.Tag;
             this.Magic = fxOrder.Magic;
+            this.ImmediateOrCancel = fxOrder.ImmediateOrCancel;
+            this.MarketWithSlippage = fxOrder.MarketWithSlippage;
             this.Expiration = fxOrder.Expiration;
             this.Created = fxOrder.Created;
             this.Modified = fxOrder.Modified;
@@ -117,6 +119,16 @@
         /// Gets side of the order.
         /// </summary>
         public TradeRecordSide Side { get; internal set; }
+
+        /// <summary>
+        /// Gets ImmediateOrCancel flag.
+        /// </summary>
+        public bool ImmediateOrCancel { get; internal set; }
+
+        /// <summary>
+        /// Gets MarketWithSlippage flag.
+        /// </summary>
+        public bool MarketWithSlippage { get; internal set; }
 
         /// <summary>
         /// Gets expiration time of the trade record (if specified by user).

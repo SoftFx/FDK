@@ -221,7 +221,7 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
         message.SetPrice(required.Price);
         message.SetOrdType(FIX::OrdType_MARKET);
     }
-    else if (FxTradeRecordType_Limit == required.Type || FxTradeRecordType_IoC == required.Type)
+    else if (FxTradeRecordType_Limit == required.Type || FxTradeRecordType_IoC == required.Type || FxTradeRecordType_MarketWithSlippage == required.Type)
     {
         message.SetPrice(required.Price);
         message.SetOrdType(FIX::OrdType_LIMIT);
@@ -294,6 +294,12 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
 
     if (required.Magic.HasValue())
         message.SetMagic(*required.Magic);
+
+    if (FxTradeRecordType_IoC == required.Type)
+        message.SetImmediateOrCancelFlag(FIX::ImmediateOrCancelFlag_YES);
+
+    if (FxTradeRecordType_MarketWithSlippage == required.Type)
+        message.SetMarketWithSlippageFlag(FIX::MarketWithSlippageFlag_YES);
 
     return SendMessage(message);
 }

@@ -14,5 +14,7 @@ CFxOrder::CFxOrder()
     , Swap()
     , Profit()
     , Magic()
+    , ImmediateOrCancel(false)
+    , MarketWithSlippage(false)
 {
 }

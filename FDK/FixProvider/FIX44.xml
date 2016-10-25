@@ -310,6 +310,8 @@
    <field name='Magic' required='N' />
    <field name='MarginRateInitial' required='N' />
    <field name='ParentOrderID' required='N' />
+   <field name='ImmediateOrCancelFlag' required='N' />
+   <field name='MarketWithSlippageFlag' required='N' />
   </message>
   <message name='OrderCancelReject' msgcat='app' msgtype='9'>
    <field name='OrderID' required='Y' />
@@ -505,6 +507,8 @@
    <component name='Comment' required='N' />
    <component name='Tag' required='N' />
    <field name='Magic' required='N' />
+   <field name='ImmediateOrCancelFlag' required='N' />
+   <field name='MarketWithSlippageFlag' required='N' />
   </message>
   <message name='NewOrderList' msgcat='app' msgtype='E'>
    <field name='ListID' required='Y' />
@@ -3958,6 +3962,8 @@
     <field name='ReqOpenQty' required='N' />
     <field name='ReqClosePrice' required='N' />
     <field name='ReqCloseQty' required='N' />
+    <field name='ImmediateOrCancelFlag' required='N' />
+    <field name='MarketWithSlippageFlag' required='N' />
   </message>
   <message name='ComponentsInfoRequest' msgcat='app' msgtype='U1018'>
     <field name='ClientQuoteHistoryVersion' required='N' />
@@ -7742,5 +7748,13 @@
   <field number='10159' name='ReqOpenQty' type='QTY' />
   <field number='10160' name='ReqClosePrice' type='PRICE' />
   <field number='10161' name='ReqCloseQty' type='QTY' />
+  <field number='10162' name='ImmediateOrCancelFlag' type='BOOLEAN'>
+    <value enum='N' description='NO' />
+    <value enum='Y' description='YES' />
+  </field>
+  <field number='10163' name='MarketWithSlippageFlag' type='BOOLEAN'>
+    <value enum='N' description='NO' />
+    <value enum='Y' description='YES' />
+  </field>
 </fields>
 </fix>

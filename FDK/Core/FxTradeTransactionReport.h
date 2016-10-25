@@ -25,9 +25,12 @@ public:
     std::string Symbol;
     std::string Comment;
     std::string Tag;
-	Nullable<int> Magic;
+    Nullable<int> Magic;
     CDateTime OrderCreated;
     CDateTime OrderModified;
+
+    bool ImmediateOrCancel;
+    bool MarketWithSlippage;
 
     Nullable<double> ReqOpenPrice;
     Nullable<double> ReqOpenQuantity;

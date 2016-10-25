@@ -51,6 +51,7 @@
         internal static readonly FixProtocolVersion Version38 = new FixProtocolVersion(ExtendedType, 1, 38);
         internal static readonly FixProtocolVersion Version40 = new FixProtocolVersion(ExtendedType, 1, 40);
         internal static readonly FixProtocolVersion Version41 = new FixProtocolVersion(ExtendedType, 1, 41);
+        internal static readonly FixProtocolVersion Version42 = new FixProtocolVersion(ExtendedType, 1, 42);
 
         #endregion
 
@@ -344,7 +345,7 @@
         {
             get
             {
-                return Version41;
+                return Version42;
             }
         }
 

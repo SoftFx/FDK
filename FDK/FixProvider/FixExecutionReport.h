@@ -31,6 +31,8 @@ public:
     std::string GetComment() const;
     std::string GetTag() const;
     Nullable<int> GetMagic() const;
+    bool GetImmediateOrCancelFlag() const;
+    bool GetMarketWithSlippageFlag() const;
 public:
     void GetAssets(vector<CAssetInfo>& assets) const;
 public:

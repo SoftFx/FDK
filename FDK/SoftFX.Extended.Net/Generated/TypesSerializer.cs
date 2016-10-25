@@ -568,6 +568,8 @@ namespace SoftFX.Extended.Generated
 			result.Comment = buffer.ReadWString();
 			result.Tag = buffer.ReadWString();
 			result.Magic = buffer.ReadNullInt32();
+			result.ImmediateOrCancel = buffer.ReadBoolean();
+			result.MarketWithSlippage = buffer.ReadBoolean();
 			return result;
 		}
 		public static void WriteFxOrder(this MemoryBuffer buffer, SoftFX.Extended.Data.FxOrder arg)
@@ -593,6 +595,8 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteWString(arg.Comment);
 			buffer.WriteWString(arg.Tag);
 			buffer.WriteNullInt32(arg.Magic);
+			buffer.WriteBoolean(arg.ImmediateOrCancel);
+			buffer.WriteBoolean(arg.MarketWithSlippage);
 		}
 		public static SoftFX.Extended.Data.FxOrder[] ReadFxOrderArray(this MemoryBuffer buffer)
 		{
@@ -816,6 +820,8 @@ namespace SoftFX.Extended.Generated
 			result.Comment = buffer.ReadAString();
 			result.Tag = buffer.ReadAString();
 			result.Magic = buffer.ReadNullInt32();
+			result.ImmediateOrCancel = buffer.ReadBoolean();
+			result.MarketWithSlippage = buffer.ReadBoolean();
 			result.ReqOpenPrice = buffer.ReadNullDouble();
 			result.ReqOpenQuantity = buffer.ReadNullDouble();
 			result.ReqClosePrice = buffer.ReadNullDouble();
@@ -871,6 +877,8 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteAString(arg.Comment);
 			buffer.WriteAString(arg.Tag);
 			buffer.WriteNullInt32(arg.Magic);
+			buffer.WriteBoolean(arg.ImmediateOrCancel);
+			buffer.WriteBoolean(arg.MarketWithSlippage);
 			buffer.WriteNullDouble(arg.ReqOpenPrice);
 			buffer.WriteNullDouble(arg.ReqOpenQuantity);
 			buffer.WriteNullDouble(arg.ReqClosePrice);
@@ -953,6 +961,8 @@ namespace SoftFX.Extended.Generated
 			result.ClosePositionRequestId = buffer.ReadAString();
 			result.Assets = buffer.ReadAssetInfoArray();
 			result.Balance = buffer.ReadDouble();
+			result.ImmediateOrCancel = buffer.ReadBoolean();
+			result.MarketWithSlippage = buffer.ReadBoolean();
 			return result;
 		}
 		public static void WriteExecutionReport(this MemoryBuffer buffer, SoftFX.Extended.ExecutionReport arg)
@@ -987,6 +997,8 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteAString(arg.ClosePositionRequestId);
 			buffer.WriteAssetInfoArray(arg.Assets);
 			buffer.WriteDouble(arg.Balance);
+			buffer.WriteBoolean(arg.ImmediateOrCancel);
+			buffer.WriteBoolean(arg.MarketWithSlippage);
 		}
 		public static SoftFX.Extended.CurrencyInfo ReadCurrencyInfo(this MemoryBuffer buffer)
 		{

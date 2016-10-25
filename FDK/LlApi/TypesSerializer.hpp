@@ -729,6 +729,8 @@ namespace
 		WriteWString(arg.Comment, buffer);
 		WriteWString(arg.Tag, buffer);
 		WriteNullInt32(arg.Magic, buffer);
+		WriteBoolean(arg.ImmediateOrCancel, buffer);
+		WriteBoolean(arg.MarketWithSlippage, buffer);
 	}
 	CFxOrder ReadFxOrder(MemoryBuffer& buffer)
 	{
@@ -754,6 +756,8 @@ namespace
 		result.Comment = ReadWString(buffer);
 		result.Tag = ReadWString(buffer);
 		result.Magic = ReadNullInt32(buffer);
+		result.ImmediateOrCancel = ReadBoolean(buffer);
+		result.MarketWithSlippage = ReadBoolean(buffer);
 		return result;
 	}
 	void WriteFxOrderArray(const std::vector<CFxOrder>& arg, MemoryBuffer& buffer)
@@ -982,6 +986,8 @@ namespace
 		WriteAString(arg.Comment, buffer);
 		WriteAString(arg.Tag, buffer);
 		WriteNullInt32(arg.Magic, buffer);
+		WriteBoolean(arg.ImmediateOrCancel, buffer);
+		WriteBoolean(arg.MarketWithSlippage, buffer);
 		WriteNullDouble(arg.ReqOpenPrice, buffer);
 		WriteNullDouble(arg.ReqOpenQuantity, buffer);
 		WriteNullDouble(arg.ReqClosePrice, buffer);
@@ -1037,6 +1043,8 @@ namespace
 		result.Comment = ReadAString(buffer);
 		result.Tag = ReadAString(buffer);
 		result.Magic = ReadNullInt32(buffer);
+		result.ImmediateOrCancel = ReadBoolean(buffer);
+		result.MarketWithSlippage = ReadBoolean(buffer);
 		result.ReqOpenPrice = ReadNullDouble(buffer);
 		result.ReqOpenQuantity = ReadNullDouble(buffer);
 		result.ReqClosePrice = ReadNullDouble(buffer);
@@ -1119,6 +1127,8 @@ namespace
 		WriteAString(arg.ClosePositionRequestId, buffer);
 		WriteAssetInfoArray(arg.Assets, buffer);
 		WriteDouble(arg.Balance, buffer);
+		WriteBoolean(arg.ImmediateOrCancel, buffer);
+		WriteBoolean(arg.MarketWithSlippage, buffer);
 	}
 	CFxExecutionReport ReadExecutionReport(MemoryBuffer& buffer)
 	{
@@ -1153,6 +1163,8 @@ namespace
 		result.ClosePositionRequestId = ReadAString(buffer);
 		result.Assets = ReadAssetInfoArray(buffer);
 		result.Balance = ReadDouble(buffer);
+		result.ImmediateOrCancel = ReadBoolean(buffer);
+		result.MarketWithSlippage = ReadBoolean(buffer);
 		return result;
 	}
 	void WriteCurrencyInfo(const CFxCurrencyInfo& arg, MemoryBuffer& buffer)

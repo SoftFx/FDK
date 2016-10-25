@@ -25,6 +25,8 @@
         public string Comment { get; set; }
         public string Tag { get; set; }
         public int? Magic { get; set; }
+        public bool ImmediateOrCancel { get; set; }
+        public bool MarketWithSlippage { get; set; }
 
         public FxOrder()
         {
