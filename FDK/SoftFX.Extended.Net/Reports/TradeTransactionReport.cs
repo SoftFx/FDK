@@ -275,5 +275,35 @@
         /// Gets ExpireTime = 126 field.
         /// </summary>
         public DateTime? Expiration { get; internal set; }
+
+        /// <summary>
+        /// Gets source asset currency.
+        /// </summary>
+        public string SrcAssetCurrency { get; internal set; }
+
+        /// <summary>
+        /// Gets source asset amount.
+        /// </summary>
+        public double? SrcAssetAmount { get; internal set; }
+
+        /// <summary>
+        /// Gets source asset movement.
+        /// </summary>
+        public double? SrcAssetMovement { get; internal set; }
+
+        /// <summary>
+        /// Gets destination asset currency.
+        /// </summary>
+        public string DstAssetCurrency { get; internal set; }
+
+        /// <summary>
+        /// Gets destination asset amount.
+        /// </summary>
+        public double? DstAssetAmount { get; internal set; }
+
+        /// <summary>
+        /// Gets destination asset movement.
+        /// </summary>
+        public double? DstAssetMovement { get; internal set; }
     }
 }

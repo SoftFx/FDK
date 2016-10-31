@@ -1146,6 +1146,12 @@ namespace FIX
   DEFINE_QTY(ReqCloseQty);
   DEFINE_BOOLEAN(ImmediateOrCancelFlag);
   DEFINE_BOOLEAN(MarketWithSlippageFlag);
+  DEFINE_STRING(SrcAssetCurrency);
+  DEFINE_QTY(SrcAssetAmount);
+  DEFINE_QTY(SrcAssetMovement);
+  DEFINE_STRING(DstAssetCurrency);
+  DEFINE_QTY(DstAssetAmount);
+  DEFINE_QTY(DstAssetMovement);
   DEFINE_NUMINGROUP(NoStrategyParameters);
   DEFINE_STRING(StrategyParameterName);
   DEFINE_INT(StrategyParameterType);

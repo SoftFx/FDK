@@ -150,6 +150,18 @@ namespace FIX44
     FIELD_SET_EX(bool, ImmediateOrCancelFlag);
     FIELD_SET(*this, FIX::MarketWithSlippageFlag);
     FIELD_SET_EX(bool, MarketWithSlippageFlag);
+    FIELD_SET(*this, FIX::SrcAssetCurrency);
+    FIELD_SET_EX(std::string, SrcAssetCurrency);
+    FIELD_SET(*this, FIX::SrcAssetAmount);
+    FIELD_SET_EX(double, SrcAssetAmount);
+    FIELD_SET(*this, FIX::SrcAssetMovement);
+    FIELD_SET_EX(double, SrcAssetMovement);
+    FIELD_SET(*this, FIX::DstAssetCurrency);
+    FIELD_SET_EX(std::string, DstAssetCurrency);
+    FIELD_SET(*this, FIX::DstAssetAmount);
+    FIELD_SET_EX(double, DstAssetAmount);
+    FIELD_SET(*this, FIX::DstAssetMovement);
+    FIELD_SET_EX(double, DstAssetMovement);
   };
 
 }

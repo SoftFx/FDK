@@ -3964,6 +3964,12 @@
     <field name='ReqCloseQty' required='N' />
     <field name='ImmediateOrCancelFlag' required='N' />
     <field name='MarketWithSlippageFlag' required='N' />
+    <field name='SrcAssetCurrency' required='N' />
+    <field name='SrcAssetAmount' required='N' />
+    <field name='SrcAssetMovement' required='N' />
+    <field name='DstAssetCurrency' required='N' />
+    <field name='DstAssetAmount' required='N' />
+    <field name='DstAssetMovement' required='N' />
   </message>
   <message name='ComponentsInfoRequest' msgcat='app' msgtype='U1018'>
     <field name='ClientQuoteHistoryVersion' required='N' />
@@ -7756,5 +7762,11 @@
     <value enum='N' description='NO' />
     <value enum='Y' description='YES' />
   </field>
+  <field number='10164' name='SrcAssetCurrency' type='STRING'/>
+  <field number='10165' name='SrcAssetAmount' type='QTY'/>
+  <field number='10166' name='SrcAssetMovement' type='QTY'/>
+  <field number='10167' name='DstAssetCurrency' type='STRING'/>
+  <field number='10168' name='DstAssetAmount' type='QTY'/>
+  <field number='10169' name='DstAssetMovement' type='QTY'/>
 </fields>
 </fix>

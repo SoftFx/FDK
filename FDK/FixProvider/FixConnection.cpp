@@ -1177,6 +1177,21 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
     if (message.TryGetExpireTime(expiration))
         report.Expiration = expiration.toFileTime();
 
+    message.TryGetSrcAssetCurrency(report.SrcAssetCurrency);
+    double srcAssetAmount;
+    if (message.TryGetSrcAssetAmount(srcAssetAmount))
+        report.SrcAssetAmount = srcAssetAmount;
+    double srcAssetMovement;
+    if (message.TryGetSrcAssetMovement(srcAssetMovement))
+        report.SrcAssetMovement = srcAssetMovement;
+    message.TryGetDstAssetCurrency(report.DstAssetCurrency);
+    double dstAssetAmount;
+    if (message.TryGetDstAssetAmount(dstAssetAmount))
+        report.DstAssetAmount = dstAssetAmount;
+    double dstAssetMovement;
+    if (message.TryGetDstAssetMovement(dstAssetMovement))
+        report.DstAssetMovement = dstAssetMovement;
+
     m_receiver->VTradeTransactionReport(info, report);
 }
 

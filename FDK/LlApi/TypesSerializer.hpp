@@ -1022,6 +1022,12 @@ namespace
 		WriteNullDouble(arg.CloseConversionRate, buffer);
 		WriteInt32(arg.ActionId, buffer);
 		WriteNullTime(arg.Expiration, buffer);
+		WriteAString(arg.SrcAssetCurrency, buffer);
+		WriteNullDouble(arg.SrcAssetAmount, buffer);
+		WriteNullDouble(arg.SrcAssetMovement, buffer);
+		WriteAString(arg.DstAssetCurrency, buffer);
+		WriteNullDouble(arg.DstAssetAmount, buffer);
+		WriteNullDouble(arg.DstAssetMovement, buffer);
 	}
 	CFxTradeTransactionReport ReadTradeTransactionReport(MemoryBuffer& buffer)
 	{
@@ -1079,6 +1085,12 @@ namespace
 		result.CloseConversionRate = ReadNullDouble(buffer);
 		result.ActionId = ReadInt32(buffer);
 		result.Expiration = ReadNullTime(buffer);
+		result.SrcAssetCurrency = ReadAString(buffer);
+		result.SrcAssetAmount = ReadNullDouble(buffer);
+		result.SrcAssetMovement = ReadNullDouble(buffer);
+		result.DstAssetCurrency = ReadAString(buffer);
+		result.DstAssetAmount = ReadNullDouble(buffer);
+		result.DstAssetMovement = ReadNullDouble(buffer);
 		return result;
 	}
 	void WriteClosePositionResult(const CFxClosePositionResult& arg, MemoryBuffer& buffer)

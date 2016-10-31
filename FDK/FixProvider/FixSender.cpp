@@ -47,6 +47,11 @@ CFixSender::CFixSender(const FIX::SessionID& sessionId)
 {
 }
 
+void CFixSender::SendVersion(const CFixVersion& version)
+{
+    m_version = version;
+}
+
 void CFixSender::SendMessage(FIX::Message& message)
 {
     bool status = false;
@@ -295,11 +300,14 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
     if (required.Magic.HasValue())
         message.SetMagic(*required.Magic);
 
-    if (FxTradeRecordType_IoC == required.Type)
-        message.SetImmediateOrCancelFlag(FIX::ImmediateOrCancelFlag_YES);
+    if (m_version.SupportsMarketWithSlippage())
+    {
+        if (FxTradeRecordType_IoC == required.Type)
+            message.SetImmediateOrCancelFlag(FIX::ImmediateOrCancelFlag_YES);
 
-    if (FxTradeRecordType_MarketWithSlippage == required.Type)
-        message.SetMarketWithSlippageFlag(FIX::MarketWithSlippageFlag_YES);
+        if (FxTradeRecordType_MarketWithSlippage == required.Type)
+            message.SetMarketWithSlippageFlag(FIX::MarketWithSlippageFlag_YES);
+    }
 
     return SendMessage(message);
 }
