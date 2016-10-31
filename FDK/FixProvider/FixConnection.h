@@ -3,7 +3,6 @@
 
 #include "FixSender.h"
 #include "FixExecutionReport.h"
-#include "FixVersion.h"
 
 class CFixConnection;
 

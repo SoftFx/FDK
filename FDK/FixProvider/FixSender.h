@@ -1,12 +1,14 @@
 #ifndef __FixProvider_Fix_Sender__
 #define __FixProvider_Fix_Sender__
 
+#include "FixVersion.h"
 
 class CFixSender : public ISender
 {
 public:
     CFixSender();
     CFixSender(const FIX::SessionID& sessionId);
+    void SendVersion(const CFixVersion& version);
 public:
     virtual void VSendTwoFactorResponse(const FxTwoFactorReason reason, const std::string& otp);
     virtual void VSendGetCurrencies(const string& id);
@@ -35,5 +37,6 @@ private:
     void SendMessage(FIX::Message& message);
 private:
     FIX::SessionID m_sessionID;
+    CFixVersion m_version;
 };
 #endif

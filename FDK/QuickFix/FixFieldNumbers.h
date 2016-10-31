@@ -1144,6 +1144,12 @@ namespace FIX
     const int ReqCloseQty = 10161;
     const int ImmediateOrCancelFlag = 10162;
     const int MarketWithSlippageFlag = 10163;
+    const int SrcAssetCurrency = 10164;
+    const int SrcAssetAmount = 10165;
+    const int SrcAssetMovement = 10166;
+    const int DstAssetCurrency = 10167;
+    const int DstAssetAmount = 10168;
+    const int DstAssetMovement = 10169;
     const int NoStrategyParameters = 957;
     const int StrategyParameterName = 958;
     const int StrategyParameterType = 959;

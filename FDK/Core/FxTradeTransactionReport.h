@@ -70,6 +70,13 @@ public:
     Nullable<CDateTime> Expiration;
 
     int ActionId;
+
+    std::string SrcAssetCurrency;
+    Nullable<double> SrcAssetAmount;
+    Nullable<double> SrcAssetMovement;
+    std::string DstAssetCurrency;
+    Nullable<double> DstAssetAmount;
+    Nullable<double> DstAssetMovement;
 };
 
 #pragma warning (pop)

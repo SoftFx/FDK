@@ -279,6 +279,12 @@
       <Member name="CloseConversionRate" type="double?" />
       <Member name="ActionId" type="int32" />
       <Member name="Expiration" type="time?" />
+      <Member name="SrcAssetCurrency" type="astring" />
+      <Member name="SrcAssetAmount" type="double?" />
+      <Member name="SrcAssetMovement" type="double?" />
+      <Member name="DstAssetCurrency" type="astring" />
+      <Member name="DstAssetAmount" type="double?" />
+      <Member name="DstAssetMovement" type="double?" />
     </Type>
     <Type name="ClosePositionResult" CSharpFullName="SoftFX.Extended.ClosePositionResult" CppFullName="CFxClosePositionResult" kind="class">
       <Member name="ExecutedVolume" type="double" />
