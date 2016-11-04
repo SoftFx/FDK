@@ -464,10 +464,6 @@ void CFixSender::VSendModifyOrder(const string& id, const CFxOrder& request)
         FIX::UtcTimeStamp utc(*request.Expiration);
         message.SetExpireTime(utc);
     }
-    else
-    {
-        message.SetTimeInForce(FIX::TimeInForce_GOOD_TILL_CANCEL);
-    }
 
     message.SetOrderQty(request.Volume);
 
