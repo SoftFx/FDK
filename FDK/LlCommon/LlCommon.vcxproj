@@ -130,7 +130,9 @@ copy /Y "CurrencyEntries.h" ..\..\FRE\include\
 copy /Y "PriceEntry.h" ..\..\FRE\include\
 copy /Y "TagEntry.h" ..\..\FRE\include\
 copy /Y "Rates.h" ..\..\FRE\include\
-copy /Y "MarginCalcMode.h" ..\..\FRE\include\</Command>
+copy /Y "MarginCalcMode.h" ..\..\FRE\include\
+
+..\..\Tools\7z\7z a ..\..\External\Archives\x32.zip "$(TargetPath)"</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>..\..\External\bin\lrp.exe ..\LlCommon.xml  .  /language:C++ /side:server /mode:local</Command>
@@ -185,7 +187,9 @@ copy /Y "CurrencyEntries.h" ..\..\FRE\include\
 copy /Y "PriceEntry.h" ..\..\FRE\include\
 copy /Y "TagEntry.h" ..\..\FRE\include\
 copy /Y "Rates.h" ..\..\FRE\include\
-copy /Y "MarginCalcMode.h" ..\..\FRE\include\</Command>
+copy /Y "MarginCalcMode.h" ..\..\FRE\include\
+
+..\..\Tools\7z\7z a ..\..\External\Archives\x64.zip "$(TargetPath)"</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>..\..\External\bin\lrp.exe ..\LlCommon.xml  .  /language:C++ /side:server /mode:local</Command>
@@ -240,7 +244,9 @@ copy /Y "CurrencyEntries.h" ..\..\FRE\include\
 copy /Y "PriceEntry.h" ..\..\FRE\include\
 copy /Y "TagEntry.h" ..\..\FRE\include\
 copy /Y "Rates.h" ..\..\FRE\include\
-copy /Y "MarginCalcMode.h" ..\..\FRE\include\</Command>
+copy /Y "MarginCalcMode.h" ..\..\FRE\include\
+
+..\..\Tools\7z\7z a ..\..\External\Archives\x32.zip "$(TargetPath)"</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>..\..\External\bin\lrp.exe ..\LlCommon.xml  .  /language:C++ /side:server /mode:local</Command>
@@ -271,7 +277,6 @@ copy /Y "$(TargetPath)" ..\..\FRE\
 copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
 copy /Y "$(OutDir)$(TargetName).lib" ..\..\FRE\
 
-
 copy /Y ..\..\External\Include\lrp\Nullable.h ..\..\FRE\include\
 copy /Y ..\..\External\Include\lrp\LrpStd.h ..\..\FRE\include\
 copy /Y ..\..\External\Include\lrp\LrpStdVector.h ..\..\FRE\include\
@@ -295,7 +300,9 @@ copy /Y "CurrencyEntries.h" ..\..\FRE\include\
 copy /Y "PriceEntry.h" ..\..\FRE\include\
 copy /Y "TagEntry.h" ..\..\FRE\include\
 copy /Y "Rates.h" ..\..\FRE\include\
-copy /Y "MarginCalcMode.h" ..\..\FRE\include\</Command>
+copy /Y "MarginCalcMode.h" ..\..\FRE\include\
+
+..\..\Tools\7z\7z a ..\..\External\Archives\x64.zip "$(TargetPath)"</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>..\..\External\bin\lrp.exe ..\LlCommon.xml  .  /language:C++ /side:server /mode:local</Command>

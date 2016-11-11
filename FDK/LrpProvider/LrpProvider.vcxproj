@@ -114,7 +114,9 @@
     <PostBuildEvent>
       <Command>if not exist ..\..\FRE (md ..\..\FRE)
 copy /Y "$(TargetPath)" ..\..\FRE\
-copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
+
+..\..\Tools\7z\7z a ..\..\External\Archives\x32.zip "$(TargetPath)"</Command>
     </PostBuildEvent>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -143,7 +145,9 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
     <PostBuildEvent>
       <Command>if not exist ..\..\FRE (md ..\..\FRE)
 copy /Y "$(TargetPath)" ..\..\FRE\
-copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
+
+..\..\Tools\7z\7z a ..\..\External\Archives\x64.zip "$(TargetPath)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -173,7 +177,9 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
     <PostBuildEvent>
       <Command>if not exist ..\..\FRE (md ..\..\FRE)
 copy /Y "$(TargetPath)" ..\..\FRE\
-copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
+
+..\..\Tools\7z\7z a ..\..\External\Archives\x32.zip "$(TargetPath)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -203,7 +209,9 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
     <PostBuildEvent>
       <Command>if not exist ..\..\FRE (md ..\..\FRE)
 copy /Y "$(TargetPath)" ..\..\FRE\
-copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
+
+..\..\Tools\7z\7z a ..\..\External\Archives\x64.zip "$(TargetPath)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
