@@ -131,7 +131,9 @@
     <PostBuildEvent>
       <Command>if not exist ..\..\FRE (md ..\..\FRE)
 copy /Y "$(TargetPath)" ..\..\FRE\
-copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
+
+..\..\Tools\7z\7z a ..\..\External\Archives\x32.zip "$(TargetPath)"</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>..\..\External\bin\lrp.exe FixProvider.xml  .  /language:C++ /side:server /mode:local</Command>
@@ -159,7 +161,9 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
     <PostBuildEvent>
       <Command>if not exist ..\..\FRE (md ..\..\FRE)
 copy /Y "$(TargetPath)" ..\..\FRE\
-copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
+
+..\..\Tools\7z\7z a ..\..\External\Archives\x64.zip "$(TargetPath)"</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>..\..\External\bin\lrp.exe FixProvider.xml  .  /language:C++ /side:server /mode:local</Command>
@@ -188,7 +192,9 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
     <PostBuildEvent>
       <Command>if not exist ..\..\FRE (md ..\..\FRE)
 copy /Y "$(TargetPath)" ..\..\FRE\
-copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
+
+..\..\Tools\7z\7z a ..\..\External\Archives\x32.zip "$(TargetPath)"</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>..\..\External\bin\lrp.exe FixProvider.xml  .  /language:C++ /side:server /mode:local</Command>
@@ -218,7 +224,9 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
     <PostBuildEvent>
       <Command>if not exist ..\..\FRE (md ..\..\FRE)
 copy /Y "$(TargetPath)" ..\..\FRE\
-copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\</Command>
+copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
+
+..\..\Tools\7z\7z a ..\..\External\Archives\x64.zip "$(TargetPath)"</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>..\..\External\bin\lrp.exe FixProvider.xml  .  /language:C++ /side:server /mode:local</Command>
