@@ -124,7 +124,9 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
 copy /Y ..\..\External\Dll\*.dll ..\..\FRE\
 copy /Y ..\..\External\Dll\*.pdb ..\..\FRE\
 copy /Y ..\..\External\Dll\SoftFX.Lrp.x86.dll "$(TargetDir)"
-copy /Y ..\..\External\Dll\SoftFX.Lrp.x86.pdb "$(TargetDir)"</Command>
+copy /Y ..\..\External\Dll\SoftFX.Lrp.x86.pdb "$(TargetDir)"
+
+..\..\Tools\7z\7z a ..\..\External\Archives\x32.zip "$(TargetPath)"</Command>
     </PostBuildEvent>
     <ResourceCompile>
       <PreprocessorDefinitions>_MSC_VER;WIN32;SAL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -159,7 +161,9 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
 copy /Y ..\..\External\Dll\*.dll ..\..\FRE\
 copy /Y ..\..\External\Dll\*.pdb ..\..\FRE\
 copy /Y ..\..\External\Dll\SoftFX.Lrp.x64.dll "$(TargetDir)"
-copy /Y ..\..\External\Dll\SoftFX.Lrp.x64.pdb "$(TargetDir)"</Command>
+copy /Y ..\..\External\Dll\SoftFX.Lrp.x64.pdb "$(TargetDir)"
+
+..\..\Tools\7z\7z a ..\..\External\Archives\x64.zip "$(TargetPath)"</Command>
     </PostBuildEvent>
     <ResourceCompile>
       <PreprocessorDefinitions>SAL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -195,7 +199,9 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
 copy /Y ..\..\External\Dll\*.dll ..\..\FRE\
 copy /Y ..\..\External\Dll\*.pdb ..\..\FRE\
 copy /Y ..\..\External\Dll\SoftFX.Lrp.x86.dll "$(TargetDir)"
-copy /Y ..\..\External\Dll\SoftFX.Lrp.x86.pdb "$(TargetDir)"</Command>
+copy /Y ..\..\External\Dll\SoftFX.Lrp.x86.pdb "$(TargetDir)"
+
+..\..\Tools\7z\7z a ..\..\External\Archives\x32.zip "$(TargetPath)"</Command>
     </PostBuildEvent>
     <ResourceCompile>
       <PreprocessorDefinitions>SAL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -231,7 +237,9 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
 copy /Y ..\..\External\Dll\*.dll ..\..\FRE\
 copy /Y ..\..\External\Dll\*.pdb ..\..\FRE\
 copy /Y ..\..\External\Dll\SoftFX.Lrp.x64.dll "$(TargetDir)"
-copy /Y ..\..\External\Dll\SoftFX.Lrp.x64.pdb "$(TargetDir)"</Command>
+copy /Y ..\..\External\Dll\SoftFX.Lrp.x64.pdb "$(TargetDir)"
+
+..\..\Tools\7z\7z a ..\..\External\Archives\x64.zip "$(TargetPath)"</Command>
     </PostBuildEvent>
     <ResourceCompile>
       <PreprocessorDefinitions>SAL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
