@@ -32,7 +32,7 @@
             get { return this.entry.GetHashCode(); }
         }
 
-        public IEnumerable<ICalculatorOrder> Orders
+        public IEnumerable<IOrderModel> Orders
         {
             get { return this.entry.Trades.Select(CalculatorConvert.ToCalculatorOrder); }
         }
@@ -45,19 +45,25 @@
             remove { }
         }
 
-        public event Action<ICalculatorOrder> OrderAdded
+        public event Action<IOrderModel> OrderAdded
         {
             add { }
             remove { }
         }
 
-        public event Action<IEnumerable<ICalculatorOrder>> OrdersAdded
+        public event Action<IOrderModel> OrderRemoved
         {
             add { }
             remove { }
         }
 
-        public event Action<ICalculatorOrder> OrderRemoved
+        public event Action<IOrderModel> OrderReplaced
+        {
+            add { }
+            remove { }
+        }
+
+        public event Action<IEnumerable<IOrderModel>> OrdersAdded
         {
             add { }
             remove { }

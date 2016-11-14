@@ -65,7 +65,7 @@
             return new MarginAccountInfo(account);
         }
 
-        public static ICalculatorOrder ToCalculatorOrder(TradeEntry trade)
+        public static IOrderModel ToCalculatorOrder(TradeEntry trade)
         {
             return new CalculatorOrder(trade);
         }
