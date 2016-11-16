@@ -4,7 +4,7 @@
     using TickTrader.BusinessLogic;
     using TickTrader.BusinessObjects;
 
-    sealed class CalculatorOrder : ICalculatorOrder
+    sealed class CalculatorOrder : IOrderModel
     {
         readonly TradeEntry entry;
         readonly Func<decimal, decimal> roundMargin;
@@ -109,7 +109,7 @@
             }
         }
 
-        OrderCalculator ICalculatorOrder.Calculator { get; set; }
+        OrderCalculator IOrderModel.Calculator { get; set; }
 
         public decimal? Margin
         {
@@ -150,7 +150,7 @@
 
         #region Events
 
-        event Action<ICalculatorOrder> ICalculatorOrder.EssentialParametersChanged
+        event Action<IOrderModel> IOrderModel.EssentialParametersChanged
         {
             add
             {

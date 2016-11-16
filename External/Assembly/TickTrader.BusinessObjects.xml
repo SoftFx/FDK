@@ -123,12 +123,13 @@
             <param name="Record">Access list record</param>
             <returns>New access list record request</returns>
         </member>
-        <member name="M:TickTrader.BusinessObjects.Requests.AccountDeleteRequest.Create(System.Int64,System.Boolean)">
+        <member name="M:TickTrader.BusinessObjects.Requests.AccountDeleteRequest.Create(System.Int64,System.Boolean,System.Boolean)">
             <summary>
             Delete account request with required parameters.
             </summary>
             <param name="AccountId">Account Id</param>
             <param name="CloseOrders">Close market orders and cancel pending orders (otherwise orders will be deleted)</param>
+            <param name="archivation">Archivation flag</param>
             <returns>Delete account request</returns>
         </member>
         <member name="M:TickTrader.BusinessObjects.Requests.AccountLoadRequest.Create(System.Int64)">
@@ -643,7 +644,7 @@
             <param name="Rights">Manager securities rights</param>
             <returns>New manager securities request</returns>
         </member>
-        <member name="M:TickTrader.BusinessObjects.Requests.OpenOrderRequest.Create(System.Int64,TickTrader.BusinessObjects.OrderTypes,TickTrader.BusinessObjects.OrderSides,System.String,System.Decimal,System.Decimal,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String,System.String,System.String,System.String,System.Int32,System.Nullable{System.DateTime})">
+        <member name="M:TickTrader.BusinessObjects.Requests.OpenOrderRequest.Create(System.Int64,TickTrader.BusinessObjects.OrderTypes,TickTrader.BusinessObjects.OrderSides,System.String,System.Decimal,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String,System.String,System.String,System.String,System.Int32,System.Nullable{System.DateTime})">
             <summary>
             Create open order request with required parameters.
             </summary>
@@ -652,6 +653,7 @@
             <param name="OrderSide">Order side (buy, sell)</param>
             <param name="Symbol">Symbol name</param>
             <param name="Amount">Amount</param>
+            <param name="StopPrice"> Stop price</param>
             <param name="Price">Price</param>
             <param name="SL">Stop limit (can be null)</param>
             <param name="TP">Take profit (can be null)</param>
@@ -663,7 +665,7 @@
             <param name="Expiration">Expiration date/time (default is null)</param>
             <returns>Open order request</returns>
         </member>
-        <member name="M:TickTrader.BusinessObjects.Requests.OpenOrderRequest.CreateClient(System.Int64,TickTrader.BusinessObjects.OrderTypes,TickTrader.BusinessObjects.OrderSides,System.String,System.Decimal,System.Decimal,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String,System.String,System.String,System.String,System.Int32,System.Nullable{System.DateTime})">
+        <member name="M:TickTrader.BusinessObjects.Requests.OpenOrderRequest.CreateClient(System.Int64,TickTrader.BusinessObjects.OrderTypes,TickTrader.BusinessObjects.OrderSides,System.String,System.Decimal,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String,System.String,System.String,System.String,System.Int32,System.Nullable{System.DateTime})">
             <summary>
             Create open order request with required parameters (client emulation).
             </summary>
@@ -672,6 +674,7 @@
             <param name="OrderSide">Order side (buy, sell)</param>
             <param name="Symbol">Symbol name</param>
             <param name="Amount">Amount</param>
+            <param name="StopPrice">Stop price</param>
             <param name="Price">Price</param>
             <param name="SL">Stop limit (can be null)</param>
             <param name="TP">Take profit (can be null)</param>
@@ -683,33 +686,36 @@
             <param name="Expiration">Expiration date/time (default is null)</param>
             <returns>Open order request</returns>
         </member>
-        <member name="M:TickTrader.BusinessObjects.Requests.OrderReplaceRequest.Create(System.Int64,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String)">
+        <member name="M:TickTrader.BusinessObjects.Requests.OrderReplaceRequest.Create(System.Int64,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String)">
             <summary>
             Create order replace request with required parameters.
             </summary>
             <param name="OrderId">Order Id to activate</param>
+            <param name="StopPrice">Order stop price (null if you want to keep previous value)</param>
             <param name="Price">Order price (null if you want to keep previous value)</param>
             <param name="SL">Order stop loss value (null if you want to keep previous value)</param>
             <param name="TP">Order take profit value (null if you want to keep previous value)</param>
             <param name="UserComment">Order user comment (null if you want to keep previous value)</param>
             <returns>Order replace request</returns>
         </member>
-        <member name="M:TickTrader.BusinessObjects.Requests.OrderReplaceRequest.CreateClient(System.Int64,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String)">
+        <member name="M:TickTrader.BusinessObjects.Requests.OrderReplaceRequest.CreateClient(System.Int64,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String)">
             <summary>
             Create order replace request with required parameters (client emulation).
             </summary>
             <param name="OrderId">Order Id to activate</param>
+            <param name="StopPrice">Order stop price (null if you want to keep previous value)</param>
             <param name="Price">Order price (null if you want to keep previous value)</param>
             <param name="SL">Order stop loss value (null if you want to keep previous value)</param>
             <param name="TP">Order take profit value (null if you want to keep previous value)</param>
             <param name="UserComment">Order user comment (null if you want to keep previous value)</param>
             <returns>Order replace request</returns>
         </member>
-        <member name="M:TickTrader.BusinessObjects.Requests.OrderReplaceRequest.Create(System.Int64,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.DateTime})">
+        <member name="M:TickTrader.BusinessObjects.Requests.OrderReplaceRequest.Create(System.Int64,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.DateTime})">
             <summary>
             Create order replace request with required parameters.
             </summary>
             <param name="OrderId">Order Id to activate</param>
+            <param name="StopPrice">Order stop price (null if you want to keep previous value)</param>
             <param name="Price">Order price (null if you want to keep previous value)</param>
             <param name="SL">Order stop loss value (null if you want to keep previous value)</param>
             <param name="TP">Order take profit value (null if you want to keep previous value)</param>
@@ -724,11 +730,12 @@
             <param name="Expiration">Order expiration date (null if you want to keep previous value)</param>
             <returns>Order replace request</returns>
         </member>
-        <member name="M:TickTrader.BusinessObjects.Requests.OrderReplaceRequest.CreateClient(System.Int64,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.DateTime})">
+        <member name="M:TickTrader.BusinessObjects.Requests.OrderReplaceRequest.CreateClient(System.Int64,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.DateTime})">
             <summary>
             Create order replace request with required parameters (client emulation).
             </summary>
             <param name="OrderId">Order Id to activate</param>
+            <param name="StopPrice">Order stop price (null if you want to keep previous value)</param>
             <param name="Price">Order price (null if you want to keep previous value)</param>
             <param name="SL">Order stop loss value (null if you want to keep previous value)</param>
             <param name="TP">Order take profit value (null if you want to keep previous value)</param>
@@ -782,22 +789,6 @@
             <param name="Description">Desired symbol security description</param>
             <returns>New symbol security request</returns>
         </member>
-        <member name="M:TickTrader.BusinessObjects.Requests.SetServerConfigRequest.Create(System.Int32,TickTrader.BusinessObjects.ServerConfig)">
-            <summary>
-            Create set server time request with required parameters.
-            </summary>
-            <param name="configVersion">Configuration version</param>
-            <param name="serverConfig">Server common configuration</param>        
-            <returns>Set server time request</returns>
-        </member>
-        <member name="M:TickTrader.BusinessObjects.Requests.SetServerTimeRequest.Create(System.Int32,TickTrader.BusinessObjects.ServerTimeConfig)">
-            <summary>
-            Create set server time request with required parameters.
-            </summary>
-            <param name="configVersion">Configuration version</param>
-            <param name="serverTime">Server time configuration</param>        
-            <returns>Set server time request</returns>
-        </member>
         <member name="M:TickTrader.BusinessObjects.Requests.SymbolModifyRequest.Create(System.Int32,System.String,System.String,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.Nullable{System.Boolean})">
             <summary>
             Create modify symbol request with required parameters.
@@ -840,7 +831,7 @@
         <member name="F:TickTrader.BusinessObjects.Requests.TradingSessionStatus.Opened">
             <summary>Trading session is opened</summary>
         </member>
-        <member name="F:TickTrader.BusinessObjects.TradeConfiguration.RolloverTime">
+        <member name="P:TickTrader.BusinessObjects.TradeConfiguration.RolloverTime">
             <summary>
             Rollover Time. The date will be ignored.
             </summary>
@@ -1000,6 +991,11 @@
             
              </summary>
         </member>
+        <member name="P:TickTrader.BusinessObjects.Order.HiddenAmount">
+             <summary>
+            
+             </summary>
+        </member>
         <member name="P:TickTrader.BusinessObjects.Order.AggrFillPrice">
              <summary>
             
@@ -1145,6 +1141,11 @@
             
              </summary>
         </member>
+        <member name="P:TickTrader.BusinessObjects.Order.ClientApp">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:TickTrader.BusinessObjects.Order.Clone">
              <summary>
             
@@ -1152,6 +1153,11 @@
              <returns></returns>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.FilledAmount">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.VisibleAmount">
              <summary>
             
              </summary>
@@ -1330,11 +1336,6 @@
               All = TicksLevel2|BarsAndTicks
             </summary>
         </member>
-        <member name="P:TickTrader.BusinessObjects.SymbolInfo.ContractSize">
-            <summary>
-            Gets or sets the size of contract.
-            </summary>
-        </member>
         <member name="P:TickTrader.BusinessObjects.SymbolInfo.ContractSizeFractional">
             <summary>
             Gets or sets the size of contract fractional.
@@ -1344,12 +1345,6 @@
             <summary>
             Gets or sets the margin ratio, which is taken for hedged positions.
             Supported values: [0.0, 1.0].
-            </summary>
-        </member>
-        <member name="P:TickTrader.BusinessObjects.SymbolInfo.MarginFactor">
-            <summary>
-            Gets or sets the margin ratio in percent. Now it is obsolete and deprecated.
-            Supported values: [0, 100].
             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.SymbolInfo.MarginFactorFractional">
@@ -1499,11 +1494,6 @@
             Gets or sets the TODO
             </summary>
         </member>
-        <member name="P:TickTrader.BusinessObjects.GroupSymbolInfo.CommissionChargeMethod">
-            <summary>
-            Gets or sets the TODO
-            </summary>
-        </member>
         <member name="P:TickTrader.BusinessObjects.GroupSymbolInfo.LimitsCommission">
             <summary>
             Gets or sets the TODO
@@ -1644,14 +1634,6 @@
             user-friendly unique identifier of the report entity.
             </summary>
         </member>
-        <member name="P:TickTrader.BusinessObjects.TradeReport.ParentOrderId">
-            <summary>
-            Identifier of an order which was a cause to create the position described by this report entity.
-            Valid only for Gross accounts.
-            The value of this field can be equal OrderId.
-            The value differs from OrderId in case of partiall fill of pending order or partiall close of position.
-            </summary>
-        </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.ClientOrderId">
             <summary>
             Unique (but not guaranteed) identifier of an order supplied by client on order opening.
@@ -1752,6 +1734,11 @@
             Null in case of Balance and Credit transactions.
             </summary>
         </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.OrderHiddenAmount">
+            <summary>
+            Hidden amount of the order.
+            </summary>
+        </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.OrderLastFillAmount">
             <summary>
             The amount which was filled during described transaction.
@@ -1816,6 +1803,11 @@
             The amount specified on order closing.
             Not affected by consequent order modifications.
             Null in case of Balance and Credit transactions.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.ClientApp">
+            <summary>
+            
             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.RequestTime">
@@ -2161,6 +2153,12 @@
             Determines whether order has IoC option
             </summary>
         </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.IsMarketWithSlippage">
+            <summary>
+            Is "market with slippage" flag
+            Determines whether order has "market with slippage" option
+            </summary>
+        </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.SideString">
             <summary>
             Gets value of Side as string. It is used only by Web site.
@@ -2239,7 +2237,7 @@
             <param name="id"></param>
             <param name="level2"></param>
         </member>
-        <member name="M:TickTrader.Common.Business.FeedTick.ConstructFormPreparedData(System.String,TickTrader.BusinessObjects.FeedTickId,System.Collections.Generic.IEnumerable{TickTrader.Common.Business.FeedLevel2Record},System.Nullable{TickTrader.Common.Business.FeedLevel2Record},System.Nullable{TickTrader.Common.Business.FeedLevel2Record})">
+        <member name="M:TickTrader.Common.Business.FeedTick.ConstructFormPreparedData(System.String,TickTrader.BusinessObjects.FeedTickId,System.Collections.Generic.IEnumerable{TickTrader.Common.Business.FeedLevel2Record},System.Nullable{TickTrader.Common.Business.FeedLevel2Record},System.Nullable{TickTrader.Common.Business.FeedLevel2Record},System.Boolean)">
             <summary>
             
             </summary>
@@ -2250,7 +2248,7 @@
             <param name="bestAsk"></param>
             <returns></returns>
         </member>
-        <member name="M:TickTrader.Common.Business.FeedTick.ConstructFormPreparedData(System.String,TickTrader.BusinessObjects.FeedTickId,System.Collections.Generic.IEnumerable{TickTrader.Common.Business.FeedLevel2Record},System.Boolean,System.Nullable{TickTrader.Common.Business.FeedLevel2Record},System.Boolean,System.Nullable{TickTrader.Common.Business.FeedLevel2Record})">
+        <member name="M:TickTrader.Common.Business.FeedTick.ConstructFormPreparedData(System.String,TickTrader.BusinessObjects.FeedTickId,System.Collections.Generic.IEnumerable{TickTrader.Common.Business.FeedLevel2Record},System.Boolean,System.Nullable{TickTrader.Common.Business.FeedLevel2Record},System.Boolean,System.Nullable{TickTrader.Common.Business.FeedLevel2Record},System.Boolean)">
             <summary>
             
             </summary>
@@ -2302,12 +2300,12 @@
             
             </summary>
         </member>
-        <member name="P:TickTrader.Common.Business.FeedTick.DisabledFiltration">
+        <member name="P:TickTrader.Common.Business.FeedTick.Level2">
             <summary>
             
             </summary>
         </member>
-        <member name="P:TickTrader.Common.Business.FeedTick.Level2">
+        <member name="P:TickTrader.Common.Business.FeedTick.DisabledFiltration">
             <summary>
             
             </summary>
