@@ -1493,6 +1493,12 @@
    <field name='TradSesPreCloseTime' required='N' />
    <field name='TradSesCloseTime' required='N' />
    <field name='TradSesEndTime' required='N' />
+   <group name='NoStatusGroups' required='N'>
+    <field name='StatusGroupID' required='Y' />
+    <field name='TradSesStatus' required='Y' />
+    <field name='TradSesStartTime' required='Y' />
+    <field name='TradSesEndTime' required='Y' />
+   </group>
    <field name='TotalVolumeTraded' required='N' />
    <field name='Text' required='N' />
    <field name='EncodedTextLen' required='N' />
@@ -2088,6 +2094,7 @@
     <field name='DefaultSlippage' required='N' />
     <field name='SortOrder' required='N' />
     <field name='GroupSortOrder' required='N' />
+    <field name='StatusGroupID' required='N' />
    </group>
   </message>
   <message name='DerivativeSecurityListRequest' msgcat='app' msgtype='z'>
@@ -7768,5 +7775,7 @@
   <field number='10167' name='DstAssetCurrency' type='STRING'/>
   <field number='10168' name='DstAssetAmount' type='QTY'/>
   <field number='10169' name='DstAssetMovement' type='QTY'/>
+  <field number='10170' name='StatusGroupID' type='STRING'/>
+  <field number='10171' name='NoStatusGroups' type='NUMINGROUP' />
 </fields>
 </fix>

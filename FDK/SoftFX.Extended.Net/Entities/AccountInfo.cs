@@ -104,7 +104,7 @@
         /// <returns>can not be null</returns>
         public override string ToString()
         {
-            return string.Format("AccountId = {0}; Type = {1}; Currency = {2}; Leverage = {3}; Balance = {4}; Equity = {5}; Margin = {6}", this.AccountId, this.Type, this.Currency, this.Leverage, this.Balance, this.Equity, this.Margin);
+            return string.Format("AccountId = {0}; Type = {1}; Readonly = {2}; Currency = {3}; Leverage = {4}; Balance = {5}; Equity = {6}; Margin = {7}", this.AccountId, this.Type, this.IsReadOnly, this.Currency, this.Leverage, this.Balance, this.Equity, this.Margin);
         }
     }
 }

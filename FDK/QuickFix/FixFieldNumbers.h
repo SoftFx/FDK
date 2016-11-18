@@ -1150,6 +1150,8 @@ namespace FIX
     const int DstAssetCurrency = 10167;
     const int DstAssetAmount = 10168;
     const int DstAssetMovement = 10169;
+    const int StatusGroupID = 10170;
+    const int NoStatusGroups = 10171;
     const int NoStrategyParameters = 957;
     const int StrategyParameterName = 958;
     const int StrategyParameterType = 959;

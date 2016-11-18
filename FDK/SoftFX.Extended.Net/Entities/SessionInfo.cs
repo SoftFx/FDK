@@ -81,12 +81,20 @@
         public DateTime EndTime { get; internal set; }
 
         /// <summary>
+        /// Status groups.
+        /// </summary>
+        public StatusGroupInfo[] StatusGroups { get; internal set; }
+
+        /// <summary>
         /// Returns formatted string for the class instance.
         /// </summary>
         /// <returns>Can not be null.</returns>
         public override string ToString()
         {
-            return string.Format("Status = {0}; Start = {1}; End = {2}; Open = {3}; Close = {4}", this.Status, this.StartTime, this.EndTime, this.OpenTime, this.CloseTime);
+            string s = string.Format("Status = {0}; Start = {1}; End = {2}; Open = {3}; Close = {4};", this.Status, this.StartTime, this.EndTime, this.OpenTime, this.CloseTime);
+            foreach (StatusGroupInfo info in StatusGroups)
+                s += " " + info.ToString();
+            return s;
         }
     }
 }

@@ -495,6 +495,22 @@
             }
         }
 
+        /// <summary>
+        /// Symbol status group id.
+        /// </summary>
+        public string StatusGroupId
+        {
+            get
+            {
+//                this.ThrowIfPropertyNotSupported(() => this.StatusGroupId);
+                return this.statusGroupId;
+            }
+            internal set
+            {
+                this.statusGroupId = value;
+            }
+        }
+
         #endregion
 
         /// <summary>
@@ -503,7 +519,7 @@
         /// <returns></returns>
         public override string ToString()
         {
-            var result = string.Format("Name = {0}; ContractMultiplier = {1}", this.Name, this.ContractMultiplier);
+            var result = string.Format("Name = {0}; ContractMultiplier = {1}; StatusGroupId = {2}", this.Name, this.ContractMultiplier, this.StatusGroupId);
             return result;
         }
 
@@ -539,6 +555,7 @@
         int settlementCurrencySortOrder;
         int currencyPrecision;
         int settlementCurrencyPrecision;
+        string statusGroupId;
 
         #endregion
     }
