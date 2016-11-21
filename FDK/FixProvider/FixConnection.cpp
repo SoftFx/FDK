@@ -311,11 +311,31 @@ void CFixConnection::OnSessionInfo(const FIX44::TradingSessionStatus& message)
     sessionInfo.OpenTime = message.GetTradSesOpenTime().toFileTime();
     sessionInfo.CloseTime = message.GetTradSesCloseTime().toFileTime();
     sessionInfo.EndTime = message.GetTradSesEndTime().toFileTime();
-
     sessionInfo.Status = (::SessionStatus)message.GetTradSesStatus();
     message.TryGetPlatformTimezoneOffset(sessionInfo.ServerTimeZoneOffset);
     message.TryGetPlatformCompany(sessionInfo.PlatformCompany);
     message.TryGetPlatformName(sessionInfo.PlatformName);
+
+	int32 count;
+	if (message.TryGetNoStatusGroups(count))
+	{
+		sessionInfo.StatusGroups.reserve(count);
+
+		for (int32 index = 1; index <= count; ++index)
+		{
+			FIX44::TradingSessionStatus::NoStatusGroups group;
+			message.getGroup(index, group);
+
+			CFxStatusGroupInfo statusGroupInfo;
+			statusGroupInfo.StatusGroupId = group.GetStatusGroupID();
+			statusGroupInfo.Status = (::SessionStatus) group.GetTradSesStatus();
+			statusGroupInfo.StartTime = group.GetTradSesStartTime().toFileTime();
+			statusGroupInfo.EndTime = group.GetTradSesEndTime().toFileTime();
+
+			sessionInfo.StatusGroups.push_back(statusGroupInfo);
+		}
+	}
+
     m_receiver->VSessionInfo(eventInfo, sessionInfo);
 }
 
@@ -466,6 +486,8 @@ void CFixConnection::OnSymbolsInfo(const FIX44::SecurityList& message)
 
         group.TryGetGroupSortOrder(info.GroupSortOrder);
         group.TryGetSortOrder(info.SortOrder);
+
+		group.TryGetStatusGroupID(info.StatusGroupId);
 
         symbols.push_back(info);
     }

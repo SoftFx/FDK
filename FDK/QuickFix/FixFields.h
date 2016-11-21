@@ -1152,6 +1152,8 @@ namespace FIX
   DEFINE_STRING(DstAssetCurrency);
   DEFINE_QTY(DstAssetAmount);
   DEFINE_QTY(DstAssetMovement);
+  DEFINE_STRING(StatusGroupID);
+  DEFINE_NUMINGROUP(NoStatusGroups);
   DEFINE_NUMINGROUP(NoStrategyParameters);
   DEFINE_STRING(StrategyParameterName);
   DEFINE_INT(StrategyParameterType);

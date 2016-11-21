@@ -38,6 +38,7 @@ public:
     int32 SettlementCurrencySortOrder;
     int32 CurrencyPrecision;
     int32 SettlementCurrencyPrecision;
+	string StatusGroupId;
 };
 
 inline CFxSymbolInfo::CFxSymbolInfo()

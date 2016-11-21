@@ -105,6 +105,7 @@
     <Compile Include="Entities\AssetInfo.cs" />
     <Compile Include="Entities\CurrencyInfo.cs" />
     <Compile Include="Entities\FileChunk.cs" />
+    <Compile Include="Entities\StatusGroupInfo.cs" />
     <Compile Include="Entities\TwoFactorAuth.cs" />
     <Compile Include="Enums\CommissionChargeMethod.cs" />
     <Compile Include="Enums\CommissionChargeType.cs" />

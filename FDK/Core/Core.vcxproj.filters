@@ -200,6 +200,9 @@
     <ClInclude Include="FxTwoFactorAuth.h">
       <Filter>Types\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="FxStatusGroupInfo.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -311,6 +314,9 @@
       <Filter>Errors\Sources</Filter>
     </ClCompile>
     <ClCompile Include="FxTwoFactorAuth.cpp">
+      <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxStatusGroupInfo.cpp">
       <Filter>Types\Sources</Filter>
     </ClCompile>
   </ItemGroup>

@@ -84,11 +84,21 @@
       <Member name="SettlementCurrencySortOrder" type="int32" />
       <Member name="CurrencyPrecision" type="int32" />
       <Member name="SettlementCurrencyPrecision" type="int32" />
+      <Member name="StatusGroupId" type="astring" />
     </Type>
     <Type name="TwoFactorAuth" CSharpFullName="SoftFX.Extended.TwoFactorAuth" CppFullName="CFxTwoFactorAuth" kind="class">
       <Member name="Reason" type="TwoFactorReason" />
       <Member name="Text" type="astring" />
       <Member name="Expire" type="time" />
+    </Type>
+    <Type name="StatusGroupInfo" CSharpFullName="SoftFX.Extended.StatusGroupInfo" CppFullName="CFxStatusGroupInfo" kind="class">
+      <Member name="StatusGroupId" type="astring" />
+      <Member name="Status" type="SessionStatus" />
+      <Member name="StartTime" type="time" />
+      <Member name="EndTime" type="time" />
+    </Type>
+    <Type name="StatusGroupInfoArray" kind="array">
+      <Value name="StatusGroupInfo" />
     </Type>
     <Type name="SessionInfo" CSharpFullName="SoftFX.Extended.SessionInfo" CppFullName="CFxSessionInfo" kind="class">
       <Member name="TradingSessionId" type="astring" />
@@ -100,6 +110,7 @@
       <Member name="EndTime" type="time" />
       <Member name="PlatformName" type="astring" />
       <Member name="PlatformCompany" type="astring" />
+      <Member name="StatusGroups" type="StatusGroupInfoArray" />
     </Type>
     <Type name="SymbolInfoArray" kind="array">
       <Value name="SymbolInfo" />

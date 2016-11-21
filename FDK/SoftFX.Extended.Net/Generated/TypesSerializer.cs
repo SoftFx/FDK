@@ -319,6 +319,7 @@ namespace SoftFX.Extended.Generated
 			result.SettlementCurrencySortOrder = buffer.ReadInt32();
 			result.CurrencyPrecision = buffer.ReadInt32();
 			result.SettlementCurrencyPrecision = buffer.ReadInt32();
+			result.StatusGroupId = buffer.ReadAString();
 			return result;
 		}
 		public static void WriteSymbolInfo(this MemoryBuffer buffer, SoftFX.Extended.SymbolInfo arg)
@@ -353,6 +354,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteInt32(arg.SettlementCurrencySortOrder);
 			buffer.WriteInt32(arg.CurrencyPrecision);
 			buffer.WriteInt32(arg.SettlementCurrencyPrecision);
+			buffer.WriteAString(arg.StatusGroupId);
 		}
 		public static SoftFX.Extended.TwoFactorAuth ReadTwoFactorAuth(this MemoryBuffer buffer)
 		{
@@ -368,6 +370,40 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteAString(arg.Text);
 			buffer.WriteTime(arg.Expire);
 		}
+		public static SoftFX.Extended.StatusGroupInfo ReadStatusGroupInfo(this MemoryBuffer buffer)
+		{
+			var result = new SoftFX.Extended.StatusGroupInfo();
+			result.StatusGroupId = buffer.ReadAString();
+			result.Status = buffer.ReadSessionStatus();
+			result.StartTime = buffer.ReadTime();
+			result.EndTime = buffer.ReadTime();
+			return result;
+		}
+		public static void WriteStatusGroupInfo(this MemoryBuffer buffer, SoftFX.Extended.StatusGroupInfo arg)
+		{
+			buffer.WriteAString(arg.StatusGroupId);
+			buffer.WriteSessionStatus(arg.Status);
+			buffer.WriteTime(arg.StartTime);
+			buffer.WriteTime(arg.EndTime);
+		}
+		public static SoftFX.Extended.StatusGroupInfo[] ReadStatusGroupInfoArray(this MemoryBuffer buffer)
+		{
+			int length = buffer.ReadCount();
+			var result = new SoftFX.Extended.StatusGroupInfo[length];
+			for(int index = 0; index < length; ++index)
+			{
+				result[index] = buffer.ReadStatusGroupInfo();
+			}
+			return result;
+		}
+		public static void WriteStatusGroupInfoArray(this MemoryBuffer buffer, SoftFX.Extended.StatusGroupInfo[] arg)
+		{
+			buffer.WriteInt32(arg.Length);
+			foreach(var element in arg)
+			{
+				buffer.WriteStatusGroupInfo(element);
+			}
+		}
 		public static SoftFX.Extended.SessionInfo ReadSessionInfo(this MemoryBuffer buffer)
 		{
 			var result = new SoftFX.Extended.SessionInfo();
@@ -380,6 +416,7 @@ namespace SoftFX.Extended.Generated
 			result.EndTime = buffer.ReadTime();
 			result.PlatformName = buffer.ReadAString();
 			result.PlatformCompany = buffer.ReadAString();
+			result.StatusGroups = buffer.ReadStatusGroupInfoArray();
 			return result;
 		}
 		public static void WriteSessionInfo(this MemoryBuffer buffer, SoftFX.Extended.SessionInfo arg)
@@ -393,6 +430,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteTime(arg.EndTime);
 			buffer.WriteAString(arg.PlatformName);
 			buffer.WriteAString(arg.PlatformCompany);
+			buffer.WriteStatusGroupInfoArray(arg.StatusGroups);
 		}
 		public static SoftFX.Extended.SymbolInfo[] ReadSymbolInfoArray(this MemoryBuffer buffer)
 		{
