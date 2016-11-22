@@ -132,6 +132,40 @@ namespace LrpServer.Net.LocalCpp
 		{
 			buffer.WriteInt32((int)arg);
 		}
+		public static LrpServer.Net.LrpStatusGroupInfo ReadStatusGroupInfo(this MemoryBuffer buffer)
+		{
+			var result = new LrpServer.Net.LrpStatusGroupInfo();
+			result.StatusGroupId = buffer.ReadAString();
+			result.Status = buffer.ReadSessionStatus();
+			result.StartTime = buffer.ReadTime();
+			result.EndTime = buffer.ReadTime();
+			return result;
+		}
+		public static void WriteStatusGroupInfo(this MemoryBuffer buffer, LrpServer.Net.LrpStatusGroupInfo arg)
+		{
+			buffer.WriteAString(arg.StatusGroupId);
+			buffer.WriteSessionStatus(arg.Status);
+			buffer.WriteTime(arg.StartTime);
+			buffer.WriteTime(arg.EndTime);
+		}
+		public static LrpServer.Net.LrpStatusGroupInfo[] ReadStatusGroupInfoArray(this MemoryBuffer buffer)
+		{
+			int length = buffer.ReadCount();
+			var result = new LrpServer.Net.LrpStatusGroupInfo[length];
+			for(int index = 0; index < length; ++index)
+			{
+				result[index] = buffer.ReadStatusGroupInfo();
+			}
+			return result;
+		}
+		public static void WriteStatusGroupInfoArray(this MemoryBuffer buffer, LrpServer.Net.LrpStatusGroupInfo[] arg)
+		{
+			buffer.WriteInt32(arg.Length);
+			foreach(var element in arg)
+			{
+				buffer.WriteStatusGroupInfo(element);
+			}
+		}
 		public static LrpServer.Net.LrpSessionInfo ReadLrpSessionInfo(this MemoryBuffer buffer)
 		{
 			var result = new LrpServer.Net.LrpSessionInfo();
@@ -144,6 +178,7 @@ namespace LrpServer.Net.LocalCpp
 			result.OpenTime = buffer.ReadTime();
 			result.CloseTime = buffer.ReadTime();
 			result.EndTime = buffer.ReadTime();
+			result.StatusGroups = buffer.ReadStatusGroupInfoArray();
 			return result;
 		}
 		public static void WriteLrpSessionInfo(this MemoryBuffer buffer, LrpServer.Net.LrpSessionInfo arg)
@@ -157,6 +192,7 @@ namespace LrpServer.Net.LocalCpp
 			buffer.WriteTime(arg.OpenTime);
 			buffer.WriteTime(arg.CloseTime);
 			buffer.WriteTime(arg.EndTime);
+			buffer.WriteStatusGroupInfoArray(arg.StatusGroups);
 		}
 		public static LrpServer.Net.LrpSymbolInfo ReadSymbolInfo(this MemoryBuffer buffer)
 		{
@@ -191,6 +227,7 @@ namespace LrpServer.Net.LocalCpp
 			result.SettlementCurrencySortOrder = buffer.ReadInt32();
 			result.CurrencyPrecision = buffer.ReadInt32();
 			result.SettlementCurrencyPrecision = buffer.ReadInt32();
+			result.StatusGroupId = buffer.ReadAString();
 			return result;
 		}
 		public static void WriteSymbolInfo(this MemoryBuffer buffer, LrpServer.Net.LrpSymbolInfo arg)
@@ -225,6 +262,7 @@ namespace LrpServer.Net.LocalCpp
 			buffer.WriteInt32(arg.SettlementCurrencySortOrder);
 			buffer.WriteInt32(arg.CurrencyPrecision);
 			buffer.WriteInt32(arg.SettlementCurrencyPrecision);
+			buffer.WriteAString(arg.StatusGroupId);
 		}
 		public static LrpServer.Net.LrpSymbolInfo[] ReadSymbolInfoArray(this MemoryBuffer buffer)
 		{

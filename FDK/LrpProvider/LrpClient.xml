@@ -20,6 +20,15 @@
 	        <Member name="CloseTime" type="time" />
 	        <Member name="EndTime" type="time" />
 	    </Type>
+        <Type name="StatusGroupInfo" CSharpFullName="LrpServer.Net.LrpStatusGroupInfo" CppFullName="CFxStatusGroupInfo" kind="class">
+            <Member name="StatusGroupId" type="astring" />
+            <Member name="Status" type="SessionStatus" />
+            <Member name="StartTime" type="time" />
+            <Member name="EndTime" type="time" />
+        </Type>
+        <Type name="StatusGroupInfoArray" kind="array">
+            <Value name="StatusGroupInfo" />
+        </Type>
     	<Type name="LrpSessionInfo2" CSharpFullName="LrpServer.Net.LrpSessionInfo" CppFullName="CFxSessionInfo" kind="class">
     	  <Member name="TradingSessionId" type="astring" />
     	  <Member name="Status" type="SessionStatus" />
@@ -30,6 +39,7 @@
     	  <Member name="OpenTime" type="time" />
     	  <Member name="CloseTime" type="time" />
     	  <Member name="EndTime" type="time" />
+    	  <Member name="StatusGroups" type="StatusGroupInfoArray" />
     	</Type>
         <Type name="CurrencyInfo" CSharpFullName="SoftFX.Extended.CurrencyInfo" CppFullName="CFxCurrencyInfo" kind="class">
     	  <Member name="Name" type="astring" />
@@ -216,6 +226,7 @@
         <Member name="SettlementCurrencySortOrder" type="int32" />
         <Member name="CurrencyPrecision" type="int32" />
         <Member name="SettlementCurrencyPrecision" type="int32" />
+        <Member name="StatusGroupId" type="astring" />
       </Type>
       <Type name="AStringArray" kind="array">
 	    <Value name="astring" />

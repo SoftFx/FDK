@@ -14,6 +14,31 @@ namespace
 	void LrpWriteNotificationType(const char* name, const NotificationType& arg, std::ostream& _stream);
 	void LrpWriteSeverity(const char* name, const Severity& arg, std::ostream& _stream);
 	void LrpWriteLrpSessionInfo(const char* name, const CFxSessionInfo& arg, std::ostream& _stream);
+	void LrpWriteStatusGroupInfo(const char* name, const CFxStatusGroupInfo& arg, std::ostream& _stream);
+	void LrpWriteStatusGroupInfoArray(const char* name, const std::vector<CFxStatusGroupInfo>& arg, std::ostream& _stream);
+	template<size_t count> void LrpWriteStatusGroupInfoArray(const char* name, const CFxStatusGroupInfo(&arg)[count], std::ostream& _stream)
+	{
+		if (nullptr != name)
+		{
+			_stream << name << " = ";
+		}
+		_stream << "[" << count << "]{";
+		const CFxStatusGroupInfo* it = arg;
+		const CFxStatusGroupInfo* end = it + count;
+		if (it != end)
+		{
+			LrpWriteStatusGroupInfo(nullptr, *it, _stream);
+			_stream << ";";
+			++it;
+		}
+		for (; it != end; ++it)
+		{
+			_stream << " ";
+			LrpWriteStatusGroupInfo(nullptr, *it, _stream);
+			_stream << ";";
+		}
+		_stream << "}";
+	}
 	void LrpWriteLrpSessionInfo2(const char* name, const CFxSessionInfo& arg, std::ostream& _stream);
 	void LrpWriteCurrencyInfo(const char* name, const CFxCurrencyInfo& arg, std::ostream& _stream);
 	void LrpWriteSymbolInfo(const char* name, const CFxSymbolInfo& arg, std::ostream& _stream);
@@ -455,6 +480,46 @@ namespace
 		_stream << ';';
 		_stream<<"}";
 	}
+	void LrpWriteStatusGroupInfo(const char* name, const CFxStatusGroupInfo& arg, std::ostream& _stream)
+	{
+		if (nullptr != name)
+		{
+			_stream << name << " = ";
+		}
+		_stream<<"{";
+		LrpWriteAString("StatusGroupId", arg.StatusGroupId, _stream);
+		_stream << ';';
+		LrpWriteSessionStatus("Status", arg.Status, _stream);
+		_stream << ';';
+		LrpWriteTime("StartTime", arg.StartTime, _stream);
+		_stream << ';';
+		LrpWriteTime("EndTime", arg.EndTime, _stream);
+		_stream << ';';
+		_stream<<"}";
+	}
+	void LrpWriteStatusGroupInfoArray(const char* name, const std::vector<CFxStatusGroupInfo>& arg, std::ostream& _stream)
+	{
+		if (nullptr != name)
+		{
+			_stream << name << " = ";
+		}
+		_stream << "[" << arg.size() << "]{";
+		auto it = LrpBeginIterator(arg);
+		auto end = LrpEndIterator(arg);
+		if (it != end)
+		{
+			LrpWriteStatusGroupInfo(nullptr, *it, _stream);
+			_stream << ";";
+			++it;
+		}
+		for (; it != end; ++it)
+		{
+			_stream << " ";
+			LrpWriteStatusGroupInfo(nullptr, *it, _stream);
+			_stream << ";";
+		}
+		_stream << "}";
+	}
 	void LrpWriteLrpSessionInfo2(const char* name, const CFxSessionInfo& arg, std::ostream& _stream)
 	{
 		if (nullptr != name)
@@ -479,6 +544,8 @@ namespace
 		LrpWriteTime("CloseTime", arg.CloseTime, _stream);
 		_stream << ';';
 		LrpWriteTime("EndTime", arg.EndTime, _stream);
+		_stream << ';';
+		LrpWriteStatusGroupInfoArray("StatusGroups", arg.StatusGroups, _stream);
 		_stream << ';';
 		_stream<<"}";
 	}
@@ -891,6 +958,8 @@ namespace
 		LrpWriteInt32("CurrencyPrecision", arg.CurrencyPrecision, _stream);
 		_stream << ';';
 		LrpWriteInt32("SettlementCurrencyPrecision", arg.SettlementCurrencyPrecision, _stream);
+		_stream << ';';
+		LrpWriteAString("StatusGroupId", arg.StatusGroupId, _stream);
 		_stream << ';';
 		_stream<<"}";
 	}
