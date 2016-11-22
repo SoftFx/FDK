@@ -32,5 +32,6 @@
         public int SettlementCurrencySortOrder;
         public int CurrencyPrecision;
         public int SettlementCurrencyPrecision;
+        public string StatusGroupId;
     }
 }

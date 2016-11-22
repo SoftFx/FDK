@@ -55,6 +55,11 @@
         public DateTime EndTime { get; set; }
 
         /// <summary>
+        /// Gets status groups.
+        /// </summary>
+        public LrpStatusGroupInfo[] StatusGroups { get; set; }
+
+        /// <summary>
         /// Returns formatted string for the class instance.
         /// </summary>
         /// <returns>Can not be null.</returns>

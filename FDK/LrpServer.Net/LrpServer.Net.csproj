@@ -92,6 +92,7 @@
     <Compile Include="LrpAcceptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LrpSessionInfo.cs" />
+    <Compile Include="LrpStatusGroupInfo.cs" />
     <Compile Include="Threading\TaskEx.cs" />
   </ItemGroup>
   <ItemGroup>
