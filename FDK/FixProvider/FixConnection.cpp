@@ -316,25 +316,25 @@ void CFixConnection::OnSessionInfo(const FIX44::TradingSessionStatus& message)
     message.TryGetPlatformCompany(sessionInfo.PlatformCompany);
     message.TryGetPlatformName(sessionInfo.PlatformName);
 
-	int32 count;
-	if (message.TryGetNoStatusGroups(count))
-	{
-		sessionInfo.StatusGroups.reserve(count);
+    int32 count;
+    if (message.TryGetNoStatusGroups(count))
+    {
+        sessionInfo.StatusGroups.reserve(count);
 
-		for (int32 index = 1; index <= count; ++index)
-		{
-			FIX44::TradingSessionStatus::NoStatusGroups group;
-			message.getGroup(index, group);
+        for (int32 index = 1; index <= count; ++index)
+        {
+            FIX44::TradingSessionStatus::NoStatusGroups group;
+            message.getGroup(index, group);
 
-			CFxStatusGroupInfo statusGroupInfo;
-			statusGroupInfo.StatusGroupId = group.GetStatusGroupID();
-			statusGroupInfo.Status = (::SessionStatus) group.GetTradSesStatus();
-			statusGroupInfo.StartTime = group.GetTradSesStartTime().toFileTime();
-			statusGroupInfo.EndTime = group.GetTradSesEndTime().toFileTime();
+            CFxStatusGroupInfo statusGroupInfo;
+            statusGroupInfo.StatusGroupId = group.GetStatusGroupID();
+            statusGroupInfo.Status = (::SessionStatus) group.GetTradSesStatus();
+            statusGroupInfo.StartTime = group.GetTradSesStartTime().toFileTime();
+            statusGroupInfo.EndTime = group.GetTradSesEndTime().toFileTime();
 
-			sessionInfo.StatusGroups.push_back(statusGroupInfo);
-		}
-	}
+            sessionInfo.StatusGroups.push_back(statusGroupInfo);
+        }
+    }
 
     m_receiver->VSessionInfo(eventInfo, sessionInfo);
 }
@@ -400,7 +400,7 @@ void CFixConnection::OnSymbolsInfo(const FIX44::SecurityList& message)
 
         CFxSymbolInfo info(name, currency, settlementCurrency);
 
-		group.TryGetEncodedSecurityDesc(info.Description);
+        group.TryGetEncodedText(info.Description);
 
         if (!group.TryGetCurrencySortOrder(info.CurrencySortOrder))
             info.CurrencySortOrder = 0;
@@ -489,7 +489,7 @@ void CFixConnection::OnSymbolsInfo(const FIX44::SecurityList& message)
         group.TryGetGroupSortOrder(info.GroupSortOrder);
         group.TryGetSortOrder(info.SortOrder);
 
-		group.TryGetStatusGroupID(info.StatusGroupId);
+        group.TryGetStatusGroupID(info.StatusGroupId);
 
         symbols.push_back(info);
     }
