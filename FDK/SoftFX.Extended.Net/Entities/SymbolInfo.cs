@@ -65,6 +65,23 @@
         }
 
         /// <summary>
+        /// Gets description of the symbol.
+        /// </summary>
+        /// <exception cref="SoftFX.Extended.Errors.UnsupportedFeatureException">If the feature is not supported by used protocol version.</exception>
+        public string Description
+        {
+            get
+            {
+//                this.ThrowIfPropertyNotSupported(() => this.Description);
+                return this.description;
+            }
+            internal set
+            {
+                this.description = value;
+            }
+        }
+
+        /// <summary>
         /// Gets precision of the symbol.
         /// </summary>
         /// <exception cref="SoftFX.Extended.Errors.UnsupportedFeatureException">If the feature is not supported by used protocol version.</exception>
@@ -519,7 +536,7 @@
         /// <returns></returns>
         public override string ToString()
         {
-            var result = string.Format("Name = {0}; ContractMultiplier = {1}; StatusGroupId = {2}", this.Name, this.ContractMultiplier, this.StatusGroupId);
+            var result = string.Format("Name = {0}; Descrtiption = {1}; StatusGroupId = {2}", this.Name, this.Description, this.StatusGroupId);
             return result;
         }
 
@@ -528,6 +545,7 @@
         string name;
         string currency;
         string settlementCurrency;
+        string description;
         int precision;
         double roundLot;
         double minTradeVolume;

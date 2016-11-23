@@ -8,9 +8,10 @@ public:
     CFxSymbolInfo(const string& name, const string& currency, const string& settlementCurrency);
 
 public:
-    string Name;
+    string Name;	
     string Currency;
     string SettlementCurrency;
+	string Description;
     double ContractMultiplier;
     int32 Precision;
     double RoundLot;

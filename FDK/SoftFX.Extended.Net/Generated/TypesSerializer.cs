@@ -293,6 +293,7 @@ namespace SoftFX.Extended.Generated
 			result.Currency = buffer.ReadAString();
 			result.SettlementCurrency = buffer.ReadAString();
 			result.ContractMultiplier = buffer.ReadDouble();
+			result.Description = buffer.ReadAString();
 			result.Precision = buffer.ReadInt32();
 			result.RoundLot = buffer.ReadDouble();
 			result.MinTradeVolume = buffer.ReadDouble();
@@ -328,6 +329,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteAString(arg.Currency);
 			buffer.WriteAString(arg.SettlementCurrency);
 			buffer.WriteDouble(arg.ContractMultiplier);
+			buffer.WriteAString(arg.Description);
 			buffer.WriteInt32(arg.Precision);
 			buffer.WriteDouble(arg.RoundLot);
 			buffer.WriteDouble(arg.MinTradeVolume);

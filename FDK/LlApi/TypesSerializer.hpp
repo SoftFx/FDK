@@ -454,6 +454,7 @@ namespace
 		WriteAString(arg.Currency, buffer);
 		WriteAString(arg.SettlementCurrency, buffer);
 		WriteDouble(arg.ContractMultiplier, buffer);
+		WriteAString(arg.Description, buffer);
 		WriteInt32(arg.Precision, buffer);
 		WriteDouble(arg.RoundLot, buffer);
 		WriteDouble(arg.MinTradeVolume, buffer);
@@ -489,6 +490,7 @@ namespace
 		result.Currency = ReadAString(buffer);
 		result.SettlementCurrency = ReadAString(buffer);
 		result.ContractMultiplier = ReadDouble(buffer);
+		result.Description = ReadAString(buffer);
 		result.Precision = ReadInt32(buffer);
 		result.RoundLot = ReadDouble(buffer);
 		result.MinTradeVolume = ReadDouble(buffer);

@@ -200,6 +200,7 @@
         <Member name="Currency" type="astring" />
         <Member name="SettlementCurrency" type="astring" />
         <Member name="ContractMultiplier" type="double" />
+        <Member name="Description" type="astring" />
         <Member name="Precision" type="int32" />
         <Member name="RoundLot" type="double" />
         <Member name="MinTradeVolume" type="double" />
