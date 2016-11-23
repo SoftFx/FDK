@@ -536,7 +536,7 @@
         /// <returns></returns>
         public override string ToString()
         {
-            var result = string.Format("Name = {0}; Descrtiption = {1}; StatusGroupId = {2}", this.Name, this.Description, this.StatusGroupId);
+            var result = string.Format("Name = {0}; ContractMultiplier = {1}; StatusGroupId = {2}; Descrtiption = {3}", this.Name, this.ContractMultiplier, this.StatusGroupId, this.Description);
             return result;
         }
 
