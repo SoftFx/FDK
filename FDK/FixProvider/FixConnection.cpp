@@ -400,6 +400,8 @@ void CFixConnection::OnSymbolsInfo(const FIX44::SecurityList& message)
 
         CFxSymbolInfo info(name, currency, settlementCurrency);
 
+		group.TryGetEncodedSecurityDesc(info.Description);
+
         if (!group.TryGetCurrencySortOrder(info.CurrencySortOrder))
             info.CurrencySortOrder = 0;
 

@@ -907,6 +907,8 @@ namespace
 		_stream << ';';
 		LrpWriteDouble("ContractMultiplier", arg.ContractMultiplier, _stream);
 		_stream << ';';
+		LrpWriteAString("Description", arg.Description, _stream);
+		_stream << ';';
 		LrpWriteInt32("Precision", arg.Precision, _stream);
 		_stream << ';';
 		LrpWriteDouble("RoundLot", arg.RoundLot, _stream);

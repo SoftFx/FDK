@@ -5,6 +5,7 @@
         public string Name;
         public string Currency;
         public string SettlementCurrency;
+        public string Description;
         public int Precision;
         public double RoundLot;
         public double MinTradeVolume;
