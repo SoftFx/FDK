@@ -2,7 +2,7 @@
 #define __Native_Waiter__
 
 #include "IWaiter.h"
-#include "Receiver.h"
+#include "Client.h"
 #include "Timeout.h"
 
 class CWaiter : public IWaiter
@@ -30,18 +30,18 @@ private:
 	typedef std::pair<CFxEventInfo, T> Entry;
 
 public:
-	Waiter(const uint32 timeoutInMilliseconds, const string& prefix, CReceiver& receiver) :
+	Waiter(const uint32 timeoutInMilliseconds, const string& prefix, CClient& receiver) :
 		CWaiter(timeoutInMilliseconds), m_receiver(receiver)
 	{
 		m_id = receiver.NextId(prefix);
 		receiver.RegisterWaiter(typeid(T), m_id, this);
 	}
-	Waiter(const uint32 timeoutInMilliseconds, const CWaiter& waiter, CReceiver& receiver) : CWaiter(timeoutInMilliseconds), m_receiver(receiver)
+	Waiter(const uint32 timeoutInMilliseconds, const CWaiter& waiter, CClient& receiver) : CWaiter(timeoutInMilliseconds), m_receiver(receiver)
 	{
 		m_id = waiter.Id();
 		receiver.RegisterWaiter(typeid(T), m_id, this);
 	}
-	Waiter(const uint32 timeoutInMilliseconds, const string& prefix, const string& id, CReceiver& receiver) :
+	Waiter(const uint32 timeoutInMilliseconds, const string& prefix, const string& id, CClient& receiver) :
 	CWaiter(timeoutInMilliseconds), m_receiver(receiver)
 	{
 		m_id = prefix + id;
@@ -124,7 +124,7 @@ private:
 	}
 
 private:
-	CReceiver& m_receiver;
+    CClient& m_receiver;
 	deque<Entry> m_items;
 };
 
