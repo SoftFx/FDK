@@ -454,7 +454,7 @@ namespace
 		WriteAString(arg.Currency, buffer);
 		WriteAString(arg.SettlementCurrency, buffer);
 		WriteDouble(arg.ContractMultiplier, buffer);
-		WriteAString(arg.Description, buffer);
+		WriteWString(arg.Description, buffer);
 		WriteInt32(arg.Precision, buffer);
 		WriteDouble(arg.RoundLot, buffer);
 		WriteDouble(arg.MinTradeVolume, buffer);
@@ -490,7 +490,7 @@ namespace
 		result.Currency = ReadAString(buffer);
 		result.SettlementCurrency = ReadAString(buffer);
 		result.ContractMultiplier = ReadDouble(buffer);
-		result.Description = ReadAString(buffer);
+		result.Description = ReadWString(buffer);
 		result.Precision = ReadInt32(buffer);
 		result.RoundLot = ReadDouble(buffer);
 		result.MinTradeVolume = ReadDouble(buffer);
@@ -695,7 +695,7 @@ namespace
 		WriteAccountType(arg.Type, buffer);
 		WriteAString(arg.Name, buffer);
 		WriteAString(arg.Email, buffer);
-		WriteAString(arg.Comment, buffer);
+		WriteWString(arg.Comment, buffer);
 		WriteAString(arg.Currency, buffer);
 		WriteNullTime(arg.RegistredDate, buffer);
 		WriteInt32(arg.Leverage, buffer);
@@ -716,7 +716,7 @@ namespace
 		result.Type = ReadAccountType(buffer);
 		result.Name = ReadAString(buffer);
 		result.Email = ReadAString(buffer);
-		result.Comment = ReadAString(buffer);
+		result.Comment = ReadWString(buffer);
 		result.Currency = ReadAString(buffer);
 		result.RegistredDate = ReadNullTime(buffer);
 		result.Leverage = ReadInt32(buffer);
@@ -1028,8 +1028,8 @@ namespace
 		WriteTradeRecordType(arg.TradeRecordType, buffer);
 		WriteTradeRecordSide(arg.TradeRecordSide, buffer);
 		WriteAString(arg.Symbol, buffer);
-		WriteAString(arg.Comment, buffer);
-		WriteAString(arg.Tag, buffer);
+		WriteWString(arg.Comment, buffer);
+		WriteWString(arg.Tag, buffer);
 		WriteNullInt32(arg.Magic, buffer);
 		WriteBoolean(arg.ImmediateOrCancel, buffer);
 		WriteBoolean(arg.MarketWithSlippage, buffer);
@@ -1091,8 +1091,8 @@ namespace
 		result.TradeRecordType = ReadTradeRecordType(buffer);
 		result.TradeRecordSide = ReadTradeRecordSide(buffer);
 		result.Symbol = ReadAString(buffer);
-		result.Comment = ReadAString(buffer);
-		result.Tag = ReadAString(buffer);
+		result.Comment = ReadWString(buffer);
+		result.Tag = ReadWString(buffer);
 		result.Magic = ReadNullInt32(buffer);
 		result.ImmediateOrCancel = ReadBoolean(buffer);
 		result.MarketWithSlippage = ReadBoolean(buffer);
@@ -1227,7 +1227,7 @@ namespace
 	void WriteCurrencyInfo(const CFxCurrencyInfo& arg, MemoryBuffer& buffer)
 	{
 		WriteAString(arg.Name, buffer);
-		WriteAString(arg.Description, buffer);
+		WriteWString(arg.Description, buffer);
 		WriteInt32(arg.SortOrder, buffer);
 		WriteInt32(arg.Precision, buffer);
 	}
@@ -1235,7 +1235,7 @@ namespace
 	{
 		CFxCurrencyInfo result = CFxCurrencyInfo();
 		result.Name = ReadAString(buffer);
-		result.Description = ReadAString(buffer);
+		result.Description = ReadWString(buffer);
 		result.SortOrder = ReadInt32(buffer);
 		result.Precision = ReadInt32(buffer);
 		return result;

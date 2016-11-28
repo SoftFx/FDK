@@ -139,10 +139,10 @@ void CDataFeed::VGetSupportedSymbols(const CFxEventInfo& eventInfo, const vector
             for (const auto& s : symbols)
             {
                 if (currenciesMap.find(s.Currency) == currenciesMap.end())
-                    currenciesMap[s.Currency] = CFxCurrencyInfo(s.Currency, "", s.CurrencySortOrder, s.CurrencyPrecision);
+                    currenciesMap[s.Currency] = CFxCurrencyInfo(s.Currency, L"", s.CurrencySortOrder, s.CurrencyPrecision);
 
                 if (currenciesMap.find(s.SettlementCurrency) == currenciesMap.end())
-                    currenciesMap[s.SettlementCurrency] = CFxCurrencyInfo(s.SettlementCurrency, "", s.SettlementCurrencySortOrder, s.SettlementCurrencyPrecision);
+                    currenciesMap[s.SettlementCurrency] = CFxCurrencyInfo(s.SettlementCurrency, L"", s.SettlementCurrencySortOrder, s.SettlementCurrencyPrecision);
             }
 
             vector<CFxCurrencyInfo> currencies;

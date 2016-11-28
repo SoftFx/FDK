@@ -14,6 +14,29 @@ namespace
 {
     const FIX::UtcTimeStamp cZeroTime(time_t(0));
     map<string, MessageHandler> gMessageTypeToHandler;
+
+    wstring& Utf8ToStd(wstring& dest, const string& src)
+    {
+        if (! src.length())
+        {
+            dest = L"";
+            return dest;
+        }
+
+        int result = MultiByteToWideChar(CP_UTF8, 0, src.data(), src.length(), 0, 0);
+        
+        if (! result)
+            throw logic_error("Invalid string to convert from UTF-8");
+
+        dest.resize(result);
+
+        result = MultiByteToWideChar(CP_UTF8, 0, src.data(), src.length(), const_cast<wchar_t*>(dest.data()), dest.length());
+
+        if (! result)
+            throw logic_error("Invalid string to convert from UTF-8");
+
+        return dest;
+    }
 }
 
 namespace
@@ -366,8 +389,11 @@ void CFixConnection::OnCurrenciesInfo(const FIX44::CurrencyList& message)
         int precision = 0;
         group.TryGetCurrencyPrecision(precision);
 
-        string description;
-        group.TryGetEncodedText(description);
+        wstring description;
+
+        string encodedDescription;
+        if (group.TryGetEncodedText(encodedDescription))
+            Utf8ToStd(description, encodedDescription);
 
         CFxCurrencyInfo info(name, description, sortOder, precision);
 
@@ -400,7 +426,9 @@ void CFixConnection::OnSymbolsInfo(const FIX44::SecurityList& message)
 
         CFxSymbolInfo info(name, currency, settlementCurrency);
 
-        group.TryGetEncodedText(info.Description);
+        string encodedDescription;
+        if (group.TryGetEncodedText(encodedDescription))
+            Utf8ToStd(info.Description, encodedDescription);
 
         if (!group.TryGetCurrencySortOrder(info.CurrencySortOrder))
             info.CurrencySortOrder = 0;
@@ -625,10 +653,10 @@ void CFixConnection::OnExecution(const CFixExecutionReport& message)
     report.Text = message.GetFxText();
     report.ClosePositionRequestId = message.GetFxClosePositionRequestId();
 
-    string comment = message.GetComment();
-    report.Comment = CA2W(comment.c_str(), CP_ACP);
-    string tag = message.GetTag();
-    report.Tag = CA2W(tag.c_str(), CP_ACP);
+    string encodedComment = message.GetComment();
+    Utf8ToStd(report.Comment, encodedComment);
+    string encodedTag = message.GetTag();
+    Utf8ToStd(report.Tag, encodedTag);
     report.Magic = message.GetMagic();
 
     report.ExecutionType = message.GetFxExecutionType();
@@ -709,7 +737,10 @@ void CFixConnection::OnAccountInfo(const FIX44::AccountInfo& message)
     message.TryGetInvestorLoginFlag(accountInfo.IsReadOnly);
     message.TryGetAccountBlockedFlag(accountInfo.IsBlocked);
     message.TryGetRegistEmail(accountInfo.Email);
-    message.TryGetEncodedComment(accountInfo.Comment);
+
+    string encodedComment;
+    if (message.TryGetEncodedComment(encodedComment))
+        Utf8ToStd(accountInfo.Comment, encodedComment);
 
     FIX::UtcTimeStamp time(time_t(0));
     if (message.TryGetRegistDate(time))
@@ -1135,8 +1166,14 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
     message.TryGetStopLoss(report.StopLoss);
     message.TryGetTakeProfit(report.TakeProfit);
     message.TryGetTradeReportID(report.NextStreamPositionId);
-    message.TryGetEncodedComment(report.Comment);
-    message.TryGetEncodedTag(report.Tag);
+
+    string encodedComment;
+    if (message.TryGetEncodedComment(encodedComment))
+        Utf8ToStd(report.Comment, encodedComment);
+
+    string encodedTag;
+    if (message.TryGetEncodedTag(encodedTag))
+        Utf8ToStd(report.Tag, encodedTag);
 
     int magic;
     if (message.TryGetMagic(magic))

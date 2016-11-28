@@ -58,7 +58,7 @@
       <Member name="Currency" type="astring" />
       <Member name="SettlementCurrency" type="astring" />
       <Member name="ContractMultiplier" type="double" />
-      <Member name="Description" type="astring" />
+      <Member name="Description" type="wstring" />
       <Member name="Precision" type="int32" />
       <Member name="RoundLot" type="double" />
       <Member name="MinTradeVolume" type="double" />
@@ -136,7 +136,7 @@
       <Member name="Type" type="AccountType" />
       <Member name="Name" type="astring" />
       <Member name="Email" type="astring" />
-      <Member name="Comment" type="astring" />
+      <Member name="Comment" type="wstring" />
       <Member name="Currency" type="astring" />
       <Member name="RegistredDate" type="time?" />
       <Member name="Leverage" type="int32" />
@@ -252,8 +252,8 @@
       <Member name="TradeRecordType" type="TradeRecordType" />
       <Member name="TradeRecordSide" type="TradeRecordSide" />
       <Member name="Symbol" type="astring" />
-      <Member name="Comment" type="astring" />
-      <Member name="Tag" type="astring" />
+      <Member name="Comment" type="wstring" />
+      <Member name="Tag" type="wstring" />
       <Member name="Magic" type="int32?" />
       <Member name="ImmediateOrCancel" type="bool" />
       <Member name="MarketWithSlippage" type="bool" />
@@ -339,7 +339,7 @@
     </Type>
     <Type name="CurrencyInfo" CSharpFullName="SoftFX.Extended.CurrencyInfo" CppFullName="CFxCurrencyInfo" kind="class">
       <Member name="Name" type="astring" />
-      <Member name="Description" type="astring" />
+      <Member name="Description" type="wstring" />
       <Member name="SortOrder" type="int32" />
       <Member name="Precision" type="int32" />
     </Type>

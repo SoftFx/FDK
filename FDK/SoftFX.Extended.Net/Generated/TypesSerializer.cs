@@ -293,7 +293,7 @@ namespace SoftFX.Extended.Generated
 			result.Currency = buffer.ReadAString();
 			result.SettlementCurrency = buffer.ReadAString();
 			result.ContractMultiplier = buffer.ReadDouble();
-			result.Description = buffer.ReadAString();
+			result.Description = buffer.ReadWString();
 			result.Precision = buffer.ReadInt32();
 			result.RoundLot = buffer.ReadDouble();
 			result.MinTradeVolume = buffer.ReadDouble();
@@ -329,7 +329,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteAString(arg.Currency);
 			buffer.WriteAString(arg.SettlementCurrency);
 			buffer.WriteDouble(arg.ContractMultiplier);
-			buffer.WriteAString(arg.Description);
+			buffer.WriteWString(arg.Description);
 			buffer.WriteInt32(arg.Precision);
 			buffer.WriteDouble(arg.RoundLot);
 			buffer.WriteDouble(arg.MinTradeVolume);
@@ -529,7 +529,7 @@ namespace SoftFX.Extended.Generated
 			result.Type = buffer.ReadAccountType();
 			result.Name = buffer.ReadAString();
 			result.Email = buffer.ReadAString();
-			result.Comment = buffer.ReadAString();
+			result.Comment = buffer.ReadWString();
 			result.Currency = buffer.ReadAString();
 			result.RegistredDate = buffer.ReadNullTime();
 			result.Leverage = buffer.ReadInt32();
@@ -550,7 +550,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteAccountType(arg.Type);
 			buffer.WriteAString(arg.Name);
 			buffer.WriteAString(arg.Email);
-			buffer.WriteAString(arg.Comment);
+			buffer.WriteWString(arg.Comment);
 			buffer.WriteAString(arg.Currency);
 			buffer.WriteNullTime(arg.RegistredDate);
 			buffer.WriteInt32(arg.Leverage);
@@ -857,8 +857,8 @@ namespace SoftFX.Extended.Generated
 			result.TradeRecordType = buffer.ReadTradeRecordType();
 			result.TradeRecordSide = buffer.ReadTradeRecordSide();
 			result.Symbol = buffer.ReadAString();
-			result.Comment = buffer.ReadAString();
-			result.Tag = buffer.ReadAString();
+			result.Comment = buffer.ReadWString();
+			result.Tag = buffer.ReadWString();
 			result.Magic = buffer.ReadNullInt32();
 			result.ImmediateOrCancel = buffer.ReadBoolean();
 			result.MarketWithSlippage = buffer.ReadBoolean();
@@ -920,8 +920,8 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteTradeRecordType(arg.TradeRecordType);
 			buffer.WriteTradeRecordSide(arg.TradeRecordSide);
 			buffer.WriteAString(arg.Symbol);
-			buffer.WriteAString(arg.Comment);
-			buffer.WriteAString(arg.Tag);
+			buffer.WriteWString(arg.Comment);
+			buffer.WriteWString(arg.Tag);
 			buffer.WriteNullInt32(arg.Magic);
 			buffer.WriteBoolean(arg.ImmediateOrCancel);
 			buffer.WriteBoolean(arg.MarketWithSlippage);
@@ -1056,7 +1056,7 @@ namespace SoftFX.Extended.Generated
 		{
 			var result = new SoftFX.Extended.CurrencyInfo();
 			result.Name = buffer.ReadAString();
-			result.Description = buffer.ReadAString();
+			result.Description = buffer.ReadWString();
 			result.SortOrder = buffer.ReadInt32();
 			result.Precision = buffer.ReadInt32();
 			return result;
@@ -1064,7 +1064,7 @@ namespace SoftFX.Extended.Generated
 		public static void WriteCurrencyInfo(this MemoryBuffer buffer, SoftFX.Extended.CurrencyInfo arg)
 		{
 			buffer.WriteAString(arg.Name);
-			buffer.WriteAString(arg.Description);
+			buffer.WriteWString(arg.Description);
 			buffer.WriteInt32(arg.SortOrder);
 			buffer.WriteInt32(arg.Precision);
 		}

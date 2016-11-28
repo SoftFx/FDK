@@ -66,9 +66,6 @@
     <ClInclude Include="IWaiter.h">
       <Filter>_Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Receiver.h">
-      <Filter>_Headers</Filter>
-    </ClInclude>
     <ClInclude Include="DataFeed.h">
       <Filter>_Headers</Filter>
     </ClInclude>
@@ -171,9 +168,6 @@
       <Filter>_Sources</Filter>
     </ClCompile>
     <ClCompile Include="Waiter.cpp">
-      <Filter>_Sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Receiver.cpp">
       <Filter>_Sources</Filter>
     </ClCompile>
     <ClCompile Include="DataFeed.cpp">

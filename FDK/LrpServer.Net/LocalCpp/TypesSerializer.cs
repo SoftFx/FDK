@@ -201,7 +201,7 @@ namespace LrpServer.Net.LocalCpp
 			result.Currency = buffer.ReadAString();
 			result.SettlementCurrency = buffer.ReadAString();
 			result.ContractMultiplier = buffer.ReadDouble();
-			result.Description = buffer.ReadAString();
+			result.Description = buffer.ReadWString();
 			result.Precision = buffer.ReadInt32();
 			result.RoundLot = buffer.ReadDouble();
 			result.MinTradeVolume = buffer.ReadDouble();
@@ -237,7 +237,7 @@ namespace LrpServer.Net.LocalCpp
 			buffer.WriteAString(arg.Currency);
 			buffer.WriteAString(arg.SettlementCurrency);
 			buffer.WriteDouble(arg.ContractMultiplier);
-			buffer.WriteAString(arg.Description);
+			buffer.WriteWString(arg.Description);
 			buffer.WriteInt32(arg.Precision);
 			buffer.WriteDouble(arg.RoundLot);
 			buffer.WriteDouble(arg.MinTradeVolume);
@@ -288,7 +288,7 @@ namespace LrpServer.Net.LocalCpp
 		{
 			var result = new LrpServer.Net.LrpCurrencyInfo();
 			result.Name = buffer.ReadAString();
-			result.Description = buffer.ReadAString();
+			result.Description = buffer.ReadWString();
 			result.SortOrder = buffer.ReadInt32();
 			result.Precision = buffer.ReadInt32();
 			return result;
@@ -296,7 +296,7 @@ namespace LrpServer.Net.LocalCpp
 		public static void WriteCurrencyInfo(this MemoryBuffer buffer, LrpServer.Net.LrpCurrencyInfo arg)
 		{
 			buffer.WriteAString(arg.Name);
-			buffer.WriteAString(arg.Description);
+			buffer.WriteWString(arg.Description);
 			buffer.WriteInt32(arg.SortOrder);
 			buffer.WriteInt32(arg.Precision);
 		}
