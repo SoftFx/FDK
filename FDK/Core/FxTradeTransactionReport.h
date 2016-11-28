@@ -23,8 +23,8 @@ public:
     FxOrderType TradeRecordType;
     FxTradeRecordSide TradeRecordSide;
     std::string Symbol;
-    std::string Comment;
-    std::string Tag;
+    std::wstring Comment;
+    std::wstring Tag;
     Nullable<int> Magic;
     CDateTime OrderCreated;
     CDateTime OrderModified;

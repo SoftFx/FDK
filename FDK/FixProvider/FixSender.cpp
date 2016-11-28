@@ -15,10 +15,7 @@ namespace
 namespace
 {
     const int cClientQuoteHistoryVersion = 1;
-}
 
-namespace
-{
     void FillSymbols(const vector<string>& symbols, FIX44::MarketDataRequest &message)
     {
         message.SetNoMDEntryTypes(1);
@@ -35,6 +32,29 @@ namespace
             symbol.SetSymbol(element);
             message.addGroup(symbol);
         }
+    }
+
+    string& StdToUtf8(string& dest, const wstring& src)
+    {
+        if (! src.length())
+        {
+            dest = "";
+            return dest;
+        }
+
+        int result = WideCharToMultiByte(CP_UTF8, 0, src.data(), (int) src.length(), 0, 0, NULL, NULL);
+
+        if (! result)
+            throw logic_error("Invalid string to convert to UTF-8");
+
+        dest.resize(result);
+
+        result = WideCharToMultiByte(CP_UTF8, 0, src.data(), (int) src.length(), const_cast<char*>(dest.data()), (int) dest.length(), NULL, NULL);
+
+        if (! result)
+            throw logic_error("Invalid string to convert to UTF-8");
+
+        return dest;
     }
 }
 
@@ -283,18 +303,18 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
 
     if (!required.Comment.empty())
     {
-        string comment = CW2A(required.Comment.c_str(), CP_ACP);
-        const int length = static_cast<int>(comment.length());
-        message.SetEncodedCommentLen(length);
-        message.SetEncodedComment(comment);
+        string encodedComment;
+        StdToUtf8(encodedComment, required.Comment);
+        message.SetEncodedCommentLen((int) encodedComment.length());
+        message.SetEncodedComment(encodedComment);
     }
 
     if (!required.Tag.empty())
     {
-        string tag = CW2A(required.Tag.c_str(), CP_ACP);
-        const int length = static_cast<int>(tag.length());
-        message.SetEncodedTagLen(length);
-        message.SetEncodedTag(tag);
+        string encodedTag;
+        StdToUtf8(encodedTag, required.Tag);
+        message.SetEncodedTagLen((int) encodedTag.length());
+        message.SetEncodedTag(encodedTag);
     }
 
     if (required.Magic.HasValue())
@@ -473,18 +493,18 @@ void CFixSender::VSendModifyOrder(const string& id, const CFxOrder& request)
 
     if (!request.Comment.empty())
     {
-        string comment = CW2A(request.Comment.c_str(), CP_ACP);
-        const int length = static_cast<int>(comment.length());
-        message.SetEncodedCommentLen(length);
-        message.SetEncodedComment(comment);
+        string encodedComment;
+        StdToUtf8(encodedComment, request.Comment);
+        message.SetEncodedCommentLen((int) encodedComment.length());
+        message.SetEncodedComment(encodedComment);
     }
 
     if (!request.Tag.empty())
     {
-        string tag = CW2A(request.Tag.c_str(), CP_ACP);
-        const int length = static_cast<int>(tag.length());
-        message.SetEncodedTagLen(length);
-        message.SetEncodedTag(tag);
+        string encodedTag;
+        StdToUtf8(encodedTag, request.Tag);
+        message.SetEncodedTagLen((int) encodedTag.length());
+        message.SetEncodedTag(encodedTag);
     }
 
     if (request.Magic.HasValue())

@@ -11,7 +11,7 @@ public:
     string Name;	
     string Currency;
     string SettlementCurrency;
-	string Description;
+	wstring Description;
     double ContractMultiplier;
     int32 Precision;
     double RoundLot;
