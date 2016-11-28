@@ -1,15 +1,18 @@
 #ifndef __Core_CurrencyInfo__
 #define __Core_CurrencyInfo__
 
+#include <string>
+#include"Types.h"
+
 class CFxCurrencyInfo
 {
 public:
     CFxCurrencyInfo();
-    CFxCurrencyInfo(const string& name, const string& description, const int& sortOrder, const int& precision);
+    CFxCurrencyInfo(const std::string& name, const std::wstring& description, const int& sortOrder, const int& precision);
 
 public:
-    string Name;
-    string Description;
+    std::string Name;
+    std::wstring Description;
     int32 SortOrder;
     int32 Precision;
 };
@@ -22,7 +25,7 @@ inline CFxCurrencyInfo::CFxCurrencyInfo()
 {
 }
 
-inline CFxCurrencyInfo::CFxCurrencyInfo(const string& name, const string& description, const int& sortOrder, const int& precision)
+inline CFxCurrencyInfo::CFxCurrencyInfo(const std::string& name, const std::wstring& description, const int& sortOrder, const int& precision)
     : Name(name)
     , Description(description)
     , SortOrder(sortOrder)

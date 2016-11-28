@@ -15,7 +15,7 @@ public:
 	FxAccountType Type;
 	string Name;
 	string Email;
-	string Comment;
+	wstring Comment;
 	string Currency;
 	Nullable<CDateTime> RegistredDate;
 	int32 Leverage;

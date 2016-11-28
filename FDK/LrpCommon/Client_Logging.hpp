@@ -558,7 +558,7 @@ namespace
 		_stream<<"{";
 		LrpWriteAString("Name", arg.Name, _stream);
 		_stream << ';';
-		LrpWriteAString("Description", arg.Description, _stream);
+		LrpWriteWString("Description", arg.Description, _stream);
 		_stream << ';';
 		LrpWriteInt32("SortOrder", arg.SortOrder, _stream);
 		_stream << ';';
@@ -907,7 +907,7 @@ namespace
 		_stream << ';';
 		LrpWriteDouble("ContractMultiplier", arg.ContractMultiplier, _stream);
 		_stream << ';';
-		LrpWriteAString("Description", arg.Description, _stream);
+		LrpWriteWString("Description", arg.Description, _stream);
 		_stream << ';';
 		LrpWriteInt32("Precision", arg.Precision, _stream);
 		_stream << ';';

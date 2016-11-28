@@ -261,7 +261,7 @@ namespace
 		WriteAString(arg.Currency, buffer);
 		WriteAString(arg.SettlementCurrency, buffer);
 		WriteDouble(arg.ContractMultiplier, buffer);
-		WriteAString(arg.Description, buffer);
+		WriteWString(arg.Description, buffer);
 		WriteInt32(arg.Precision, buffer);
 		WriteDouble(arg.RoundLot, buffer);
 		WriteDouble(arg.MinTradeVolume, buffer);
@@ -297,7 +297,7 @@ namespace
 		result.Currency = ReadAString(buffer);
 		result.SettlementCurrency = ReadAString(buffer);
 		result.ContractMultiplier = ReadDouble(buffer);
-		result.Description = ReadAString(buffer);
+		result.Description = ReadWString(buffer);
 		result.Precision = ReadInt32(buffer);
 		result.RoundLot = ReadDouble(buffer);
 		result.MinTradeVolume = ReadDouble(buffer);
@@ -349,7 +349,7 @@ namespace
 	void WriteCurrencyInfo(const CFxCurrencyInfo& arg, MemoryBuffer& buffer)
 	{
 		WriteAString(arg.Name, buffer);
-		WriteAString(arg.Description, buffer);
+		WriteWString(arg.Description, buffer);
 		WriteInt32(arg.SortOrder, buffer);
 		WriteInt32(arg.Precision, buffer);
 	}
@@ -357,7 +357,7 @@ namespace
 	{
 		CFxCurrencyInfo result = CFxCurrencyInfo();
 		result.Name = ReadAString(buffer);
-		result.Description = ReadAString(buffer);
+		result.Description = ReadWString(buffer);
 		result.SortOrder = ReadInt32(buffer);
 		result.Precision = ReadInt32(buffer);
 		return result;

@@ -43,7 +43,7 @@
     	</Type>
         <Type name="CurrencyInfo" CSharpFullName="SoftFX.Extended.CurrencyInfo" CppFullName="CFxCurrencyInfo" kind="class">
     	  <Member name="Name" type="astring" />
-          <Member name="Description" type="astring" />
+          <Member name="Description" type="wstring" />
     	  <Member name="SortOrder" type="int32" />
     	  <Member name="Precision" type="int32" />
         </Type>
@@ -200,7 +200,7 @@
         <Member name="Currency" type="astring" />
         <Member name="SettlementCurrency" type="astring" />
         <Member name="ContractMultiplier" type="double" />
-        <Member name="Description" type="astring" />
+        <Member name="Description" type="wstring" />
         <Member name="Precision" type="int32" />
         <Member name="RoundLot" type="double" />
         <Member name="MinTradeVolume" type="double" />
