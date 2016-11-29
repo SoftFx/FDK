@@ -273,8 +273,16 @@ void CDataFeed::VGetCurrencies(const CFxEventInfo& eventInfo, const vector<CFxCu
     if (eventInfo.IsInternalAsynchCall())
     {
         m_cache.UpdateCurrencies(currencies);
+
+        CFxMessage message(FX_MSG_CURRENCY_INFO, eventInfo);
+        message.Data = new CFxMsgCurrencyInfo(currencies);
+        ProcessMessage(message);
     }
-    __super::VGetCurrencies(eventInfo, currencies);
+    else
+    {
+        vector<CFxCurrencyInfo> temp = currencies;
+        m_synchInvoker.Response(eventInfo, temp);
+    }
 }
 
 void CDataFeed::VGetSupportedSymbols(const CFxEventInfo& eventInfo, const vector<CFxSymbolInfo>& symbols)
@@ -305,28 +313,31 @@ void CDataFeed::VGetSupportedSymbols(const CFxEventInfo& eventInfo, const vector
 
             m_cache.UpdateCurrencies(currencies);
         }
+
+        CFxMessage message(FX_MSG_SYMBOL_INFO, eventInfo);
+        message.Data = new CFxMsgSymbolInfo(symbols);
+        ProcessMessage(message);
     }
-    __super::VGetSupportedSymbols(eventInfo, symbols);
+    else
+    {
+        vector<CFxSymbolInfo> temp = symbols;
+        m_synchInvoker.Response(eventInfo, temp);
+    }
 }
 
 void CDataFeed::VSubscribeToQuotes(const CFxEventInfo& eventInfo, HRESULT status)
 {
-    CClient::VSubscribeToQuotes(eventInfo, status);
+    m_synchInvoker.Response(eventInfo, status);
 }
 
 void CDataFeed::VDataHistoryResponse(const CFxEventInfo& eventInfo, CFxDataHistoryResponse& response)
 {
-    CClient::VDataHistoryResponse(eventInfo, response);
-}
-
-void CDataFeed::VFileChunk(const CFxEventInfo& eventInfo, CFxFileChunk& chunk)
-{
-    CClient::VFileChunk(eventInfo, chunk);
+    m_synchInvoker.Response(eventInfo, response);    
 }
 
 void CDataFeed::VMetaInfoFile(const CFxEventInfo& eventInfo, string& file)
 {
-    CClient::VMetaInfoFile(eventInfo, file);
+    m_synchInvoker.Response(eventInfo, file);    
 }
 
 void CDataFeed::VNotify(const CFxEventInfo& eventInfo, const CNotification& notification)
@@ -343,10 +354,11 @@ void CDataFeed::VNotify(const CFxEventInfo& eventInfo, const CNotification& noti
         }
 
     }
-    __super::VNotify(eventInfo, notification);
+
+    CClient::VNotify(eventInfo, notification);
 }
 
-void CDataFeed::VQuotesHistoryResponse(const CFxEventInfo& /*eventInfo*/, const int version)
+void CDataFeed::VQuotesHistoryResponse(const CFxEventInfo& eventInfo, const int version)
 {
     m_cache.SetServerQuotesHistoryVersion(version);
     SetEvent(m_serverQuotesHistoryEvent);

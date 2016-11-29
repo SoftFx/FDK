@@ -94,6 +94,36 @@ bool CClient::WaitForLogon(size_t timeoutInMilliseconds)
     return (WAIT_OBJECT_0 == status);
 }
 
+string CClient::GetProtocolVersion() const
+{
+    CLock lock(m_dataSynchronizer);
+    return m_protocolVersion;
+}
+
+void CClient::SendTwoFactorResponse(const FxTwoFactorReason reason, const std::string& otp)
+{
+    m_sender->VSendTwoFactorResponse(reason, otp);
+}
+
+CFxSessionInfo CClient::GetSessionInfo(const size_t timeoutInMilliseconds)
+{
+    Waiter<CFxSessionInfo> waiter(static_cast<uint32>(timeoutInMilliseconds), cExternalSynchCall, *this);
+
+    m_sender->VSendGetSessionInfo(waiter.Id());
+
+    CFxSessionInfo result = waiter.WaitForResponse();
+    return result;
+}
+
+CFxFileChunk CClient::GetFileChunk(const string& fileId, uint32 chunkId, const size_t timeoutInMilliseconds)
+{
+    Waiter<CFxFileChunk> waiter(static_cast<uint32>(timeoutInMilliseconds), cExternalSynchCall, fileId, *this);
+    m_sender->VSendGetFileChunk(waiter.Id(), fileId, chunkId);
+
+    CFxFileChunk result = waiter.WaitForResponse();
+    return result;
+}
+
 void CClient::GetNetworkActivity(uint64* pLogicalBytesSent, uint64* pPhysicalBytesSent, uint64* pLogicalBytesReceived, uint64* pPhysicalBytesReceived)
 {
     m_connection->VGetActivity(pLogicalBytesSent, pPhysicalBytesSent, pLogicalBytesReceived, pPhysicalBytesReceived);
@@ -126,37 +156,6 @@ void CClient::RegisterWaiter(const type_info& info, const string& id, IWaiter* p
 void CClient::ReleaseWaiter(const type_info& info, const string& id)
 {
     m_synchInvoker.ReleaseWaiter(info, id);
-}
-
-void CClient::SendTwoFactorResponse(const FxTwoFactorReason reason, const std::string& otp)
-{
-    m_sender->VSendTwoFactorResponse(reason, otp);
-}
-
-CFxSessionInfo CClient::GetSessionInfo(const size_t timeoutInMilliseconds)
-{
-    Waiter<CFxSessionInfo> waiter(static_cast<uint32>(timeoutInMilliseconds), cExternalSynchCall, *this);
-
-    m_sender->VSendGetSessionInfo(waiter.Id());
-
-    CFxSessionInfo result = waiter.WaitForResponse();
-    return result;
-}
-
-string CClient::GetProtocolVersion() const
-{
-    CLock lock(m_dataSynchronizer);
-    return m_protocolVersion;
-}
-
-CFxFileChunk CClient::GetFileChunk(const string& fileId, uint32 chunkId, const size_t timeoutInMilliseconds)
-{
-    Waiter<CFxFileChunk> waiter(static_cast<uint32>(timeoutInMilliseconds), cExternalSynchCall, fileId, *this);
-
-    m_sender->VSendGetFileChunk(waiter.Id(), fileId, chunkId);
-
-    CFxFileChunk result = waiter.WaitForResponse();
-    return result;
 }
 
 void CClient::VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion, bool twofactor)
@@ -207,7 +206,7 @@ void CClient::VBusinessReject(const CFxEventInfo& eventInfo)
     m_synchInvoker.Response(eventInfo);
 }
 
-void CClient::VTick(const CFxEventInfo& /*eventInfo*/, const CFxQuote& /*quotes*/)
+void CClient::VTick(const CFxEventInfo&, const CFxQuote&)
 {
 }
 
@@ -227,70 +226,40 @@ void CClient::VSessionInfo(const CFxEventInfo& eventInfo, CFxSessionInfo& sessio
     }
 }
 
-void CClient::VAccountInfo(const CFxEventInfo& eventInfo, CFxAccountInfo& accountInfo)
-{
-    m_synchInvoker.Response(eventInfo, accountInfo);
+void CClient::VAccountInfo(const CFxEventInfo&, CFxAccountInfo&)
+{   
 }
 
-void CClient::VGetCurrencies(const CFxEventInfo& eventInfo, const vector<CFxCurrencyInfo>& currencies)
+void CClient::VGetCurrencies(const CFxEventInfo&, const vector<CFxCurrencyInfo>&)
 {
-    if (eventInfo.IsInternalAsynchCall())
-    {
-        CFxMessage message(FX_MSG_CURRENCY_INFO, eventInfo);
-        message.Data = new CFxMsgCurrencyInfo(currencies);
-        ProcessMessage(message);
-    }
-    vector<CFxCurrencyInfo> temp = currencies;
-    m_synchInvoker.Response(eventInfo, temp);
 }
 
-void CClient::VGetSupportedSymbols(const CFxEventInfo& eventInfo, const vector<CFxSymbolInfo>& symbols)
+void CClient::VGetSupportedSymbols(const CFxEventInfo&, const vector<CFxSymbolInfo>&)
 {
-    if (eventInfo.IsInternalAsynchCall())
-    {
-        CFxMessage message(FX_MSG_SYMBOL_INFO, eventInfo);
-        message.Data = new CFxMsgSymbolInfo(symbols);
-        ProcessMessage(message);
-    }
-    vector<CFxSymbolInfo> temp = symbols;
-    m_synchInvoker.Response(eventInfo, temp);
 }
 
-void CClient::VSubscribeToQuotes(const CFxEventInfo& eventInfo, HRESULT status)
+void CClient::VSubscribeToQuotes(const CFxEventInfo&, HRESULT)
 {
-    m_synchInvoker.Response(eventInfo, status);
 }
 
-void CClient::VClosePositions(const CFxEventInfo& eventInfo, CFxClosePositionsResponse& response)
-{
-    m_synchInvoker.Response(eventInfo, response);
+void CClient::VClosePositions(const CFxEventInfo&, CFxClosePositionsResponse&)
+{   
 }
 
-void CClient::VExecution(const CFxEventInfo& eventInfo, CFxExecutionReport& executionReport)
+void CClient::VExecution(const CFxEventInfo&, CFxExecutionReport&)
 {
-    if (!eventInfo.IsInternalAsynchCall() && (FxExecutionType_OrderStatus != executionReport.ExecutionType))
-    {
-        CFxMessage message(FX_MSG_EXECUTION_REPORT, eventInfo);
-        CFxExecutionReport temp = executionReport;
-        message.Data = new CFxMsgExecutionReport(temp);
-        ProcessMessage(message);
-    }
-    m_synchInvoker.Response(eventInfo, executionReport);
 }
 
-void CClient::VDataHistoryResponse(const CFxEventInfo& eventInfo, CFxDataHistoryResponse& response)
+void CClient::VDataHistoryResponse(const CFxEventInfo&, CFxDataHistoryResponse&)
 {
-    m_synchInvoker.Response(eventInfo, response);
 }
 
-void CClient::VTradeHistoryResponse(const CFxEventInfo& eventInfo, CFxTradeHistoryResponse& response)
-{
-    m_synchInvoker.Response(eventInfo, response);
+void CClient::VTradeHistoryResponse(const CFxEventInfo&, CFxTradeHistoryResponse&)
+{    
 }
 
-void CClient::VTradeHistoryReport(const CFxEventInfo& eventInfo, CFxTradeHistoryReport& report)
-{
-    m_synchInvoker.Response(eventInfo, report);
+void CClient::VTradeHistoryReport(const CFxEventInfo&, CFxTradeHistoryReport&)
+{    
 }
 
 void CClient::VFileChunk(const CFxEventInfo& eventInfo, CFxFileChunk& chunk)
@@ -298,44 +267,24 @@ void CClient::VFileChunk(const CFxEventInfo& eventInfo, CFxFileChunk& chunk)
     m_synchInvoker.Response(eventInfo, chunk);
 }
 
-void CClient::VMetaInfoFile(const CFxEventInfo& eventInfo, string& file)
+void CClient::VMetaInfoFile(const CFxEventInfo&, string&)
 {
-    m_synchInvoker.Response(eventInfo, file);
 }
 
-void CClient::VGetTradeTransactionReportsAndSubscribeToNotifications(const CFxEventInfo& info, const int32 curReportsNumber, const int32 totReportsNumber, const bool endOfStream)
+void CClient::VGetTradeTransactionReportsAndSubscribeToNotifications(const CFxEventInfo&, const int32, const int32, const bool)
 {
-    tuple<int32, int32, bool> response(curReportsNumber, totReportsNumber, endOfStream);
-    m_synchInvoker.Response(info, response);
 }
 
-void CClient::VTradeTransactionReport(const CFxEventInfo& info, CFxTradeTransactionReport& report)
+void CClient::VTradeTransactionReport(const CFxEventInfo&, CFxTradeTransactionReport&)
 {
-    if (info.IsNotification())
-    {
-        CFxMessage message(FX_MSG_TRADE_TRANSACTION_REPORT, info);
-        CFxTradeTransactionReport temp(report);
-        message.Data = new CFxMsgTradeTransactionReport(temp);
-        ProcessMessage(message);
-    }
-    else
-    {
-        m_synchInvoker.Response(info, report);
-    }
 }
 
-void CClient::VUnsubscribeTradeTransactionReportsNotifications(const CFxEventInfo& info)
+void CClient::VUnsubscribeTradeTransactionReportsNotifications(const CFxEventInfo&)
 {
-    HRESULT response = info.Status;
-    m_synchInvoker.Response(info, response);
 }
 
-void CClient::VPositionReport(const CFxEventInfo& info, CFxPositionReport& positionReport)
+void CClient::VPositionReport(const CFxEventInfo&, CFxPositionReport&)
 {
-    CFxMessage message(FX_MSG_POSITION_REPORT, info);
-    CFxPositionReport temp = positionReport;
-    message.Data = new CFxMsgPositionReport(temp);
-    ProcessMessage(message);
 }
 
 void CClient::VNotify(const CFxEventInfo& eventInfo, const CNotification& notification)

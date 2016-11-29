@@ -85,7 +85,7 @@ HRESULT CFxTradeTransactionReportIterator::VNext(const uint32 timeoutInMilliseco
 HRESULT CFxTradeTransactionReportIterator::RequestReports(const bool subscribe, const string& position, const uint32 timeoutInMilliseconds)
 {
     Waiter<tuple<int32, int32, bool> > waiter(timeoutInMilliseconds, m_waiter, *m_dataTrade);
-    ISender& sender = m_dataTrade->Sender();
+    ISender& sender = *m_dataTrade->m_sender;
     sender.VSendGetTradeTransactionReportsAndSubscribeToNotifications(waiter.Id(), m_direction, subscribe, m_from, m_to, m_preferedBufferSize, position);
     tuple<int32, int32, bool> response = waiter.WaitForResponse();
 
@@ -93,6 +93,7 @@ HRESULT CFxTradeTransactionReportIterator::RequestReports(const bool subscribe, 
     if (m_reportsTotal == 0)
         m_reportsTotal = get<1>(response);
     m_endOfStream = get<2>(response);
+
     return S_OK;
 }
 

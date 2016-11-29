@@ -26,8 +26,16 @@ public:
     bool WaitForLogon(size_t timeoutInMilliseconds);
 
     const CDataCache& Cache()const;
+    CDataCache& Cache();
 
-    ISender& Sender();
+public:
+
+    string GetProtocolVersion()const;
+
+    void SendTwoFactorResponse(const FxTwoFactorReason reason, const std::string& otp);
+
+    CFxSessionInfo GetSessionInfo(const size_t timeoutInMilliseconds);
+    CFxFileChunk GetFileChunk(const string& fileId, uint32 chunkId, const size_t timeoutInMilliseconds);
 
     void GetNetworkActivity(uint64* pLogicalBytesSent, uint64* pPhysicalBytesSent, uint64* pLogicalBytesReceived, uint64* pPhysicalBytesReceived);
 
@@ -36,12 +44,7 @@ public:
     const string NextIdIfEmpty(const string& prefix, const string& externalId);
 
     void RegisterWaiter(const type_info& info, const string& id, IWaiter* pWaiter);
-    void ReleaseWaiter(const type_info& info, const string& id);
-
-    void SendTwoFactorResponse(const FxTwoFactorReason reason, const std::string& otp);
-    CFxSessionInfo GetSessionInfo(const size_t timeoutInMilliseconds);
-    CFxFileChunk GetFileChunk(const string& fileId, uint32 chunkId, const size_t timeoutInMilliseconds);
-    string GetProtocolVersion()const;
+    void ReleaseWaiter(const type_info& info, const string& id);    
 
     virtual void VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion, bool twofactor);
     virtual void VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorReason reason, const std::string& text, const CDateTime& expire);
@@ -99,9 +102,9 @@ inline const CDataCache& CClient::Cache() const
     return m_cache;
 }
 
-inline ISender& CClient::Sender()
+inline CDataCache& CClient::Cache()
 {
-    return *m_sender;
+    return m_cache;
 }
 
 #pragma endregion

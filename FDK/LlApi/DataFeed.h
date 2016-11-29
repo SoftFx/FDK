@@ -17,7 +17,7 @@ public:
     vector<CFxCurrencyInfo> GetCurrencies(uint32 timeoutInMilliseconds);
     vector<CFxSymbolInfo> GetSupportedSymbols(uint32 timeoutInMilliseconds);
     HRESULT SubscribeToQuotes(const vector<string>& symbols, int32 depth, uint32 timeoutInMilliseconds);
-    HRESULT UnsubscribeQuotes(const vector<string>& symbols, uint32 timeoutInMilliseconds);
+    HRESULT UnsubscribeQuotes(const vector<string>& symbols, uint32 timeoutInMilliseconds);    
     int GetQuotesHistoryVersion(const uint32 timeoutInMilliseconds);
     CDataHistoryInfo GetHistoryBars(const string& symbol, CDateTime time, int32 barsNumber, FxPriceType priceType, const string& period, const uint32 timeoutInMilliseconds);
     CDataHistoryInfo GetQuoteHistoryFiles(const string& symbol, bool includeLevel2, CDateTime time, const uint32 timeoutInMillisecond);
@@ -33,7 +33,6 @@ public:
     virtual void VGetSupportedSymbols(const CFxEventInfo& eventInfo, const vector<CFxSymbolInfo>& symbols);
     virtual void VSubscribeToQuotes(const CFxEventInfo& eventInfo, HRESULT status);
     virtual void VDataHistoryResponse(const CFxEventInfo& eventInfo, CFxDataHistoryResponse& response);
-    virtual void VFileChunk(const CFxEventInfo& eventInfo, CFxFileChunk& chunk);
     virtual void VMetaInfoFile(const CFxEventInfo& eventInfo, string& file);
     virtual void VNotify(const CFxEventInfo& eventInfo, const CNotification& notification);
     virtual void VQuotesHistoryResponse(const CFxEventInfo& eventInfo, const int version);

@@ -44,6 +44,8 @@ protected:
 
 private:    
 
+    friend class CFxTradeTransactionReportIterator;
+
     CDataTrade(const CDataTrade&);
     CDataTrade& operator = (const CDataTrade&);
 

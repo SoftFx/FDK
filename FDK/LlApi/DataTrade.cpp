@@ -256,7 +256,9 @@ void CDataTrade::VLogout(const CFxEventInfo& eventInfo, const FxLogoutReason rea
 void CDataTrade::VAccountInfo(const CFxEventInfo& eventInfo, CFxAccountInfo& accountInfo)
 {
     UpdateAccountInfo(accountInfo.Type, accountInfo.AccountId);
-    if (eventInfo.IsInternalAsynchCall() || eventInfo.IsNotification())
+
+    if (eventInfo.IsInternalAsynchCall() || 
+        eventInfo.IsNotification())
     {
         m_cache.UpdateAccountInfo(accountInfo);
         CFxMessage message(FX_MSG_ACCOUNT_INFO, eventInfo);
@@ -265,13 +267,13 @@ void CDataTrade::VAccountInfo(const CFxEventInfo& eventInfo, CFxAccountInfo& acc
     }
     else
     {
-        __super::VAccountInfo(eventInfo, accountInfo);
+        m_synchInvoker.Response(eventInfo, accountInfo);
     }
 }
 
 void CDataTrade::VClosePositions(const CFxEventInfo& eventInfo, CFxClosePositionsResponse& response)
 {
-    CClient::VClosePositions(eventInfo, response);
+    m_synchInvoker.Response(eventInfo, response);
 }
 
 void CDataTrade::VExecution(const CFxEventInfo& eventInfo, CFxExecutionReport& executionReport)
@@ -297,32 +299,51 @@ void CDataTrade::VExecution(const CFxEventInfo& eventInfo, CFxExecutionReport& e
         }
     }
 
-    __super::VExecution(eventInfo, executionReport);
+    if (!eventInfo.IsInternalAsynchCall() && (FxExecutionType_OrderStatus != executionReport.ExecutionType))
+    {
+        CFxMessage message(FX_MSG_EXECUTION_REPORT, eventInfo);
+        CFxExecutionReport temp = executionReport;
+        message.Data = new CFxMsgExecutionReport(temp);
+        ProcessMessage(message);
+    }
+    m_synchInvoker.Response(eventInfo, executionReport);
 }
 
 void CDataTrade::VTradeHistoryResponse(const CFxEventInfo& eventInfo, CFxTradeHistoryResponse& response)
 {
-    CClient::VTradeHistoryResponse(eventInfo, response);
+    m_synchInvoker.Response(eventInfo, response);
 }
 
 void CDataTrade::VTradeHistoryReport(const CFxEventInfo& eventInfo, CFxTradeHistoryReport& report)
 {
-    CClient::VTradeHistoryReport(eventInfo, report);
+    m_synchInvoker.Response(eventInfo, report);
 }
 
 void CDataTrade::VGetTradeTransactionReportsAndSubscribeToNotifications(const CFxEventInfo& info, const int32 curReportsNumber, const int32 totReportsNumber, const bool endOfStream)
 {
-    CClient::VGetTradeTransactionReportsAndSubscribeToNotifications(info, curReportsNumber, totReportsNumber, endOfStream);
+    tuple<int32, int32, bool> response(curReportsNumber, totReportsNumber, endOfStream);
+    m_synchInvoker.Response(info, response);
 }
 
 void CDataTrade::VTradeTransactionReport(const CFxEventInfo& info, CFxTradeTransactionReport& report)
 {
-    CClient::VTradeTransactionReport(info, report);
+    if (info.IsNotification())
+    {
+        CFxMessage message(FX_MSG_TRADE_TRANSACTION_REPORT, info);
+        CFxTradeTransactionReport temp(report);
+        message.Data = new CFxMsgTradeTransactionReport(temp);
+        ProcessMessage(message);
+    }
+    else
+    {
+        m_synchInvoker.Response(info, report);
+    }
 }
 
 void CDataTrade::VUnsubscribeTradeTransactionReportsNotifications(const CFxEventInfo& info)
 {
-    CClient::VUnsubscribeTradeTransactionReportsNotifications(info);
+    HRESULT response = info.Status;
+    m_synchInvoker.Response(info, response);
 }
 
 void CDataTrade::VPositionReport(const CFxEventInfo& info, CFxPositionReport& positionReport)
@@ -330,13 +351,17 @@ void CDataTrade::VPositionReport(const CFxEventInfo& info, CFxPositionReport& po
     if (FxAccountType_Net == m_accountType)
     {
         m_cache.UpdatePosition(positionReport);
-        __super::VPositionReport(info, positionReport);
+
+        CFxMessage message(FX_MSG_POSITION_REPORT, info);
+        CFxPositionReport temp = positionReport;
+        message.Data = new CFxMsgPositionReport(temp);
+        ProcessMessage(message);
     }
 }
 
 void CDataTrade::VNotify(const CFxEventInfo& eventInfo, const CNotification& notification)
 {
-    __super::VNotify(eventInfo, notification);
+    CClient::VNotify(eventInfo, notification);
 
     if (NotificationType_Balance == notification.Type)
     {
