@@ -24,6 +24,30 @@ CFxAccountInfo CDataTrade::GetAccountInfo(const uint32 timeoutInMilliseconds)
     return result;
 }
 
+vector<CFxOrder> CDataTrade::GetOrders(const size_t timeoutInMilliseconds)
+{
+    Waiter<CFxExecutionReport> waiter(static_cast<uint32>(timeoutInMilliseconds), cExternalSynchCall, *this);
+    m_sender->VSendGetOrders(waiter.Id());
+    vector<CFxOrder> result;
+    for (int count = 1;; ++count)
+    {
+        CFxExecutionReport report = waiter.WaitForResponse();
+        if (0 == report.ReportsNumber)
+        {
+            return result;
+        }
+        CFxOrder order;
+        if (report.TryGetTradeRecord(order))
+        {
+            result.push_back(order);
+        }
+        if (count == report.ReportsNumber)
+        {
+            return result;
+        }
+    }
+}
+
 CFxOrder CDataTrade::OpenNewOrder(const string& operationId, const CFxOrder& order, const size_t timeoutInMilliseconds)
 {
     string id = NextIdIfEmpty(cExternalSynchCall, operationId);
@@ -88,26 +112,25 @@ CFxOrder CDataTrade::OpenNewOrder(const string& operationId, const CFxOrder& ord
     }
 }
 
-vector<CFxOrder> CDataTrade::GetOrders(const size_t timeoutInMilliseconds)
+CFxOrder CDataTrade::ModifyOrder(const string& operationId, const CFxOrder& order, const size_t timeoutInMilliseconds)
 {
-    Waiter<CFxExecutionReport> waiter(static_cast<uint32>(timeoutInMilliseconds), cExternalSynchCall, *this);
-    m_sender->VSendGetOrders(waiter.Id());
-    vector<CFxOrder> result;
-    for (int count = 1;; ++count)
+    const string id = NextIdIfEmpty(cExternalSynchCall, operationId);
+    Waiter<CFxExecutionReport> waiter(static_cast<uint32>(timeoutInMilliseconds), string(), id, *this);
+    m_sender->VSendModifyOrder(waiter.Id(), order);
+
+    CFxOrder result;
+    for (;;)
     {
-        CFxExecutionReport report = waiter.WaitForResponse();
-        if (0 == report.ReportsNumber)
+        CFxEventInfo info;
+        CFxExecutionReport report = waiter.WaitForResponse(info);
+        if (FxOrderStatus_Calculated == report.OrderStatus)
         {
+            report.TryGetTradeRecord(result);
             return result;
         }
-        CFxOrder order;
-        if (report.TryGetTradeRecord(order))
+        if (FxOrderStatus_Rejected == report.OrderStatus)
         {
-            result.push_back(order);
-        }
-        if (count == report.ReportsNumber)
-        {
-            return result;
+            throw CRejectException(info.Message, report.RejectReason);
         }
     }
 }
@@ -180,30 +203,23 @@ size_t CDataTrade::CloseAllOrders(const uint32 timeoutInMilliseconds)
     return result;
 }
 
-void CDataTrade::VExecution(const CFxEventInfo& eventInfo, CFxExecutionReport& executionReport)
+FxIterator CDataTrade::GetTradeTransactionReportsAndSubscribeToNotifications(FxTimeDirection direction, bool subscribe, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, uint32 bufferSize, uint32 timeoutInMilliseconds)
 {
-    if (FxAccountType_Gross == m_accountType)
+    auto_ptr<CFxTradeTransactionReportIterator> it(new CFxTradeTransactionReportIterator(direction, from, to, bufferSize, *this));
+    const HRESULT status = it->Construct(subscribe, timeoutInMilliseconds);
+    if (FAILED(status))
     {
-        m_cache.UpdateOrders(executionReport);
+        return nullptr;
     }
-    else if ((FxOrderType_Limit == executionReport.OrderType) || (FxOrderType_Stop == executionReport.OrderType))
-    {
-        m_cache.UpdateOrders(executionReport);
-    }
-    else if (IsFinite(executionReport.Balance))
-    {
-        m_cache.UpdateBalance(executionReport.Balance);
-    }
+    FxIterator result = it.release();
+    return result;
+}
 
-    if (FxAccountType_Cash == m_accountType)
-    {
-        if (executionReport.Assets.size() > 0)
-        {
-            m_cache.UpdateAssets(executionReport.Assets);
-        }
-    }
-
-    __super::VExecution(eventInfo, executionReport);
+void CDataTrade::UnsubscribeTradeTransactionReports(size_t timeoutInMilliseconds)
+{
+    Waiter<HRESULT> waiter(static_cast<uint32>(timeoutInMilliseconds), cExternalSynchCall, *this);
+    m_sender->VSendUnsubscribeTradeTransactionReports(waiter.Id());
+    waiter.WaitForResponse();
 }
 
 void CDataTrade::VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion, bool twofactor)
@@ -253,59 +269,68 @@ void CDataTrade::VAccountInfo(const CFxEventInfo& eventInfo, CFxAccountInfo& acc
     }
 }
 
-CFxOrder CDataTrade::ModifyOrder(const string& operationId, const CFxOrder& order, const size_t timeoutInMilliseconds)
+void CDataTrade::VClosePositions(const CFxEventInfo& eventInfo, CFxClosePositionsResponse& response)
 {
-    const string id = NextIdIfEmpty(cExternalSynchCall, operationId);
-    Waiter<CFxExecutionReport> waiter(static_cast<uint32>(timeoutInMilliseconds), string(), id, *this);
-    m_sender->VSendModifyOrder(waiter.Id(), order);
+    CClient::VClosePositions(eventInfo, response);
+}
 
-    CFxOrder result;
-    for (;;)
+void CDataTrade::VExecution(const CFxEventInfo& eventInfo, CFxExecutionReport& executionReport)
+{
+    if (FxAccountType_Gross == m_accountType)
     {
-        CFxEventInfo info;
-        CFxExecutionReport report = waiter.WaitForResponse(info);
-        if (FxOrderStatus_Calculated == report.OrderStatus)
+        m_cache.UpdateOrders(executionReport);
+    }
+    else if ((FxOrderType_Limit == executionReport.OrderType) || (FxOrderType_Stop == executionReport.OrderType))
+    {
+        m_cache.UpdateOrders(executionReport);
+    }
+    else if (IsFinite(executionReport.Balance))
+    {
+        m_cache.UpdateBalance(executionReport.Balance);
+    }
+
+    if (FxAccountType_Cash == m_accountType)
+    {
+        if (executionReport.Assets.size() > 0)
         {
-            report.TryGetTradeRecord(result);
-            return result;
-        }
-        if (FxOrderStatus_Rejected == report.OrderStatus)
-        {
-            throw CRejectException(info.Message, report.RejectReason);
+            m_cache.UpdateAssets(executionReport.Assets);
         }
     }
+
+    __super::VExecution(eventInfo, executionReport);
 }
 
-FxIterator CDataTrade::GetTradeTransactionReportsAndSubscribeToNotifications(FxTimeDirection direction, bool subscribe, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, uint32 bufferSize, uint32 timeoutInMilliseconds)
+void CDataTrade::VTradeHistoryResponse(const CFxEventInfo& eventInfo, CFxTradeHistoryResponse& response)
 {
-    auto_ptr<CFxTradeTransactionReportIterator> it(new CFxTradeTransactionReportIterator(direction, from, to, bufferSize, *this));
-    const HRESULT status = it->Construct(subscribe, timeoutInMilliseconds);
-    if (FAILED(status))
-    {
-        return nullptr;
-    }
-    FxIterator result = it.release();
-    return result;
+    CClient::VTradeHistoryResponse(eventInfo, response);
 }
 
-void CDataTrade::UnsubscribeTradeTransactionReports(size_t timeoutInMilliseconds)
+void CDataTrade::VTradeHistoryReport(const CFxEventInfo& eventInfo, CFxTradeHistoryReport& report)
 {
-    Waiter<HRESULT> waiter(static_cast<uint32>(timeoutInMilliseconds), cExternalSynchCall, *this);
-    m_sender->VSendUnsubscribeTradeTransactionReports(waiter.Id());
-    waiter.WaitForResponse();
+    CClient::VTradeHistoryReport(eventInfo, report);
 }
 
-void CDataTrade::UpdateAccountInfo(FxAccountType accountType, const string& account)
+void CDataTrade::VGetTradeTransactionReportsAndSubscribeToNotifications(const CFxEventInfo& info, const int32 curReportsNumber, const int32 totReportsNumber, const bool endOfStream)
 {
-    if (FxAccountType_None != m_accountType)
+    CClient::VGetTradeTransactionReportsAndSubscribeToNotifications(info, curReportsNumber, totReportsNumber, endOfStream);
+}
+
+void CDataTrade::VTradeTransactionReport(const CFxEventInfo& info, CFxTradeTransactionReport& report)
+{
+    CClient::VTradeTransactionReport(info, report);
+}
+
+void CDataTrade::VUnsubscribeTradeTransactionReportsNotifications(const CFxEventInfo& info)
+{
+    CClient::VUnsubscribeTradeTransactionReportsNotifications(info);
+}
+
+void CDataTrade::VPositionReport(const CFxEventInfo& info, CFxPositionReport& positionReport)
+{
+    if (FxAccountType_Net == m_accountType)
     {
-        return;
-    }
-    m_accountType = accountType;
-    if (FxAccountType_Net == accountType)
-    {
-        string id = NextId(cInternalASynchCall);
-        m_sender->VSendPositionReportRequest(id, account);
+        m_cache.UpdatePosition(positionReport);
+        __super::VPositionReport(info, positionReport);
     }
 }
 
@@ -326,11 +351,17 @@ void CDataTrade::VNotify(const CFxEventInfo& eventInfo, const CNotification& not
     }
 }
 
-void CDataTrade::VPositionReport(const CFxEventInfo& info, CFxPositionReport& positionReport)
+void CDataTrade::UpdateAccountInfo(FxAccountType accountType, const string& account)
 {
-    if (FxAccountType_Net == m_accountType)
+    if (FxAccountType_None != m_accountType)
     {
-        m_cache.UpdatePosition(positionReport);
-        __super::VPositionReport(info, positionReport);
+        return;
+    }
+    m_accountType = accountType;
+    if (FxAccountType_Net == accountType)
+    {
+        string id = NextId(cInternalASynchCall);
+        m_sender->VSendPositionReportRequest(id, account);
     }
 }
+

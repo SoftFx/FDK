@@ -54,12 +54,6 @@ bool CClient::Start()
     }
 }
 
-bool CClient::WaitForLogon(size_t timeoutInMilliseconds)
-{
-    const DWORD status = WaitForSingleObject(m_stateEvent, static_cast<DWORD>(timeoutInMilliseconds));
-    return (WAIT_OBJECT_0 == status);
-}
-
 HRESULT CClient::Shutdown()
 {
     CLock lock(m_stateSynchronizer);
@@ -92,6 +86,12 @@ HRESULT CClient::Stop()
     CFxQueue::Dispose();
     m_state = ClientState_Stopped;
     return S_OK;
+}
+
+bool CClient::WaitForLogon(size_t timeoutInMilliseconds)
+{
+    const DWORD status = WaitForSingleObject(m_stateEvent, static_cast<DWORD>(timeoutInMilliseconds));
+    return (WAIT_OBJECT_0 == status);
 }
 
 void CClient::GetNetworkActivity(uint64* pLogicalBytesSent, uint64* pPhysicalBytesSent, uint64* pLogicalBytesReceived, uint64* pPhysicalBytesReceived)
@@ -127,8 +127,6 @@ void CClient::ReleaseWaiter(const type_info& info, const string& id)
 {
     m_synchInvoker.ReleaseWaiter(info, id);
 }
-
-#pragma region session information
 
 void CClient::SendTwoFactorResponse(const FxTwoFactorReason reason, const std::string& otp)
 {
@@ -367,5 +365,3 @@ bool CClient::CheckProtocolVersion(const CProtocolVersion& requiredVersion) cons
     CProtocolVersion currentVersion(version);
     return requiredVersion <= currentVersion;
 }
-
-#pragma endregion
