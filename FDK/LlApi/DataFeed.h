@@ -9,7 +9,6 @@ class CDataFeed : public CClient
 public:
 
     CDataFeed(const string& connectionString);
-    ~CDataFeed();
 
     const CDataFeedCache& Cache() const;
     CDataFeedCache& Cache();
@@ -46,7 +45,6 @@ private:
     CDataFeed(const CDataFeed&);
     CDataFeed& operator = (const CDataFeed&);
 
-    HANDLE m_serverQuotesHistoryEvent;
     CCriticalSection m_synchronizer;
     CDataFeedCache m_cache;
 };
