@@ -17,35 +17,6 @@ CDataFeed::CDataFeed(const string& connectionString)
     : CClient(m_cache, connectionString)
     , m_cache(*this)
 {
-    m_serverQuotesHistoryEvent = CreateEvent(nullptr, true, false, nullptr);
-}
-
-CDataFeed::~CDataFeed()
-{
-    CloseHandle(m_serverQuotesHistoryEvent);
-}
-
-HRESULT CDataFeed::SubscribeToQuotes(const vector<string>& symbols, int32 depth, uint32 timeoutInMilliseconds)
-{
-    Waiter<HRESULT> waiter(timeoutInMilliseconds, cExternalSynchCall, *this);
-    m_sender->VSendSubscribeToQuotes(waiter.Id(), symbols, depth);
-    CFxEventInfo info;
-    HRESULT result = waiter.WaitForResponse(info);
-    if (FAILED(result))
-    {
-        throw CRejectException(info.Message, result);
-    }
-    return result;
-}
-
-HRESULT CDataFeed::UnsubscribeQuotes(const vector<string>& symbols, uint32 timeoutInMilliseconds)
-{
-    Waiter<HRESULT> waiter(timeoutInMilliseconds, cExternalSynchCall, *this);
-    m_sender->VSendUnsubscribeQuotes(waiter.Id(), symbols);
-
-    HRESULT result = waiter.WaitForResponse();
-
-    return result;
 }
 
 vector<CFxCurrencyInfo> CDataFeed::GetCurrencies(uint32 timeoutInMilliseconds)
@@ -71,91 +42,40 @@ vector<CFxSymbolInfo> CDataFeed::GetSupportedSymbols(uint32 timeoutInMillisecond
     return result;
 }
 
-void CDataFeed::VTick(const CFxEventInfo& eventInfo, const CFxQuote& quote)
+HRESULT CDataFeed::SubscribeToQuotes(const vector<string>& symbols, int32 depth, uint32 timeoutInMilliseconds)
 {
-    m_cache.UpdateQuotes(quote);
-
-    CFxMessage message(FX_MSG_TICK, eventInfo);
-    message.Data = new CFxMsgTick(quote);
-    ProcessMessage(quote.Symbol, message);
-}
-
-void CDataFeed::VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion, bool twofactor)
-{
-    __super::VLogon(eventInfo, protocolVersion, twofactor);
-}
-
-void CDataFeed::VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorReason reason, const std::string& text, const CDateTime& expire)
-{
-    __super::VTwoFactorAuth(eventInfo, reason, text, expire);
-}
-
-void CDataFeed::AfterLogon()
-{
-    __super::AfterLogon();
-
-    ResetEvent(m_serverQuotesHistoryEvent);
-    m_cache.Clear();
-
-    string id = NextId(cInternalASynchCall);
-    m_sender->VSendGetSupportedSymbols(id);
-
-    if (CheckProtocolVersion(CProtocolVersion(1, 24)))
+    Waiter<HRESULT> waiter(timeoutInMilliseconds, cExternalSynchCall, *this);
+    m_sender->VSendSubscribeToQuotes(waiter.Id(), symbols, depth);
+    CFxEventInfo info;
+    HRESULT result = waiter.WaitForResponse(info);
+    if (FAILED(result))
     {
-        id = NextId(cInternalASynchCall);
-        m_sender->VSendGetCurrencies(id);
+        throw CRejectException(info.Message, result);
     }
-
-    id = NextId(cInternalASynchCall);
-    m_sender->VSendQuotesHistoryRequest(id);
+    return result;
 }
 
-void CDataFeed::VLogout(const CFxEventInfo& eventInfo, const FxLogoutReason reason, const string& description)
+HRESULT CDataFeed::UnsubscribeQuotes(const vector<string>& symbols, uint32 timeoutInMilliseconds)
 {
-    m_cache.Clear();
-    SetEvent(m_serverQuotesHistoryEvent);
-    __super::VLogout(eventInfo, reason, description);
+    Waiter<HRESULT> waiter(timeoutInMilliseconds, cExternalSynchCall, *this);
+    m_sender->VSendUnsubscribeQuotes(waiter.Id(), symbols);
+
+    HRESULT result = waiter.WaitForResponse();
+
+    return result;
 }
 
-void CDataFeed::VGetCurrencies(const CFxEventInfo& eventInfo, const vector<CFxCurrencyInfo>& currencies)
+int CDataFeed::GetQuotesHistoryVersion(const uint32 timeoutInMilliseconds)
 {
-    if (eventInfo.IsInternalAsynchCall())
-    {
-        m_cache.UpdateCurrencies(currencies);
-    }
-    __super::VGetCurrencies(eventInfo, currencies);
-}
+    Nullable<int> version = m_cache.GetServerQuotesHistoryVersion();
 
-void CDataFeed::VGetSupportedSymbols(const CFxEventInfo& eventInfo, const vector<CFxSymbolInfo>& symbols)
-{
-    if (eventInfo.IsInternalAsynchCall())
-    {
-        m_cache.UpdateSymbols(symbols);
+    if (version.HasValue())
+        return version.Value();
 
-        if (!CheckProtocolVersion(CProtocolVersion(1, 24)))
-        {
-            map<string, CFxCurrencyInfo> currenciesMap;
+    Waiter<int> waiter(timeoutInMilliseconds, cExternalSynchCall, *this);
+    m_sender->VSendQuotesHistoryRequest(waiter.Id());
 
-            for (const auto& s : symbols)
-            {
-                if (currenciesMap.find(s.Currency) == currenciesMap.end())
-                    currenciesMap[s.Currency] = CFxCurrencyInfo(s.Currency, L"", s.CurrencySortOrder, s.CurrencyPrecision);
-
-                if (currenciesMap.find(s.SettlementCurrency) == currenciesMap.end())
-                    currenciesMap[s.SettlementCurrency] = CFxCurrencyInfo(s.SettlementCurrency, L"", s.SettlementCurrencySortOrder, s.SettlementCurrencyPrecision);
-            }
-
-            vector<CFxCurrencyInfo> currencies;
-
-            for (const auto& c : currenciesMap)
-            {
-                currencies.push_back(c.second);
-            }
-
-            m_cache.UpdateCurrencies(currencies);
-        }
-    }
-    __super::VGetSupportedSymbols(eventInfo, symbols);
+    return waiter.WaitForResponse();
 }
 
 CDataHistoryInfo CDataFeed::GetHistoryBars(const string& symbol, CDateTime time, int32 barsNumber, FxPriceType priceType, const string& period, const uint32 timeoutInMilliseconds)
@@ -276,6 +196,122 @@ string CDataFeed::GetTicksHistoryMetaInfoFile(const string& symbol, bool include
     return result;
 }
 
+void CDataFeed::VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion, bool twofactor)
+{
+    __super::VLogon(eventInfo, protocolVersion, twofactor);
+}
+
+void CDataFeed::VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorReason reason, const std::string& text, const CDateTime& expire)
+{
+    __super::VTwoFactorAuth(eventInfo, reason, text, expire);
+}
+
+void CDataFeed::AfterLogon()
+{
+    __super::AfterLogon();
+
+    m_cache.Clear();
+
+    string id = NextId(cInternalASynchCall);
+    m_sender->VSendGetSupportedSymbols(id);
+
+    if (CheckProtocolVersion(CProtocolVersion(1, 24)))
+    {
+        id = NextId(cInternalASynchCall);
+        m_sender->VSendGetCurrencies(id);
+    }
+
+    id = NextId(cInternalASynchCall);
+    m_sender->VSendQuotesHistoryRequest(id);
+}
+
+void CDataFeed::VLogout(const CFxEventInfo& eventInfo, const FxLogoutReason reason, const string& description)
+{
+    m_cache.Clear();
+    __super::VLogout(eventInfo, reason, description);
+}
+
+void CDataFeed::VTick(const CFxEventInfo& eventInfo, const CFxQuote& quote)
+{
+    m_cache.UpdateQuotes(quote);
+
+    CFxMessage message(FX_MSG_TICK, eventInfo);
+    message.Data = new CFxMsgTick(quote);
+    ProcessMessage(quote.Symbol, message);
+}
+
+void CDataFeed::VGetCurrencies(const CFxEventInfo& eventInfo, const vector<CFxCurrencyInfo>& currencies)
+{
+    if (eventInfo.IsInternalAsynchCall())
+    {
+        m_cache.UpdateCurrencies(currencies);
+
+        CFxMessage message(FX_MSG_CURRENCY_INFO, eventInfo);
+        message.Data = new CFxMsgCurrencyInfo(currencies);
+        ProcessMessage(message);
+    }
+    else
+    {
+        vector<CFxCurrencyInfo> temp = currencies;
+        m_synchInvoker.Response(eventInfo, temp);
+    }
+}
+
+void CDataFeed::VGetSupportedSymbols(const CFxEventInfo& eventInfo, const vector<CFxSymbolInfo>& symbols)
+{
+    if (eventInfo.IsInternalAsynchCall())
+    {
+        m_cache.UpdateSymbols(symbols);
+
+        if (!CheckProtocolVersion(CProtocolVersion(1, 24)))
+        {
+            map<string, CFxCurrencyInfo> currenciesMap;
+
+            for (const auto& s : symbols)
+            {
+                if (currenciesMap.find(s.Currency) == currenciesMap.end())
+                    currenciesMap[s.Currency] = CFxCurrencyInfo(s.Currency, L"", s.CurrencySortOrder, s.CurrencyPrecision);
+
+                if (currenciesMap.find(s.SettlementCurrency) == currenciesMap.end())
+                    currenciesMap[s.SettlementCurrency] = CFxCurrencyInfo(s.SettlementCurrency, L"", s.SettlementCurrencySortOrder, s.SettlementCurrencyPrecision);
+            }
+
+            vector<CFxCurrencyInfo> currencies;
+
+            for (const auto& c : currenciesMap)
+            {
+                currencies.push_back(c.second);
+            }
+
+            m_cache.UpdateCurrencies(currencies);
+        }
+
+        CFxMessage message(FX_MSG_SYMBOL_INFO, eventInfo);
+        message.Data = new CFxMsgSymbolInfo(symbols);
+        ProcessMessage(message);
+    }
+    else
+    {
+        vector<CFxSymbolInfo> temp = symbols;
+        m_synchInvoker.Response(eventInfo, temp);
+    }
+}
+
+void CDataFeed::VSubscribeToQuotes(const CFxEventInfo& eventInfo, HRESULT status)
+{
+    m_synchInvoker.Response(eventInfo, status);
+}
+
+void CDataFeed::VDataHistoryResponse(const CFxEventInfo& eventInfo, CFxDataHistoryResponse& response)
+{
+    m_synchInvoker.Response(eventInfo, response);    
+}
+
+void CDataFeed::VMetaInfoFile(const CFxEventInfo& eventInfo, string& file)
+{
+    m_synchInvoker.Response(eventInfo, file);    
+}
+
 void CDataFeed::VNotify(const CFxEventInfo& eventInfo, const CNotification& notification)
 {
     if (NotificationType_ConfigUpdated == notification.Type)
@@ -290,44 +326,20 @@ void CDataFeed::VNotify(const CFxEventInfo& eventInfo, const CNotification& noti
         }
 
     }
-    __super::VNotify(eventInfo, notification);
+
+    CClient::VNotify(eventInfo, notification);
 }
 
-void CDataFeed::VQuotesHistoryResponse(const CFxEventInfo& /*eventInfo*/, const int version)
+void CDataFeed::VQuotesHistoryResponse(const CFxEventInfo& eventInfo, const int version)
 {
-    m_cache.SetServerQuotesHistoryVersion(version);
-    SetEvent(m_serverQuotesHistoryEvent);
-}
-
-int CDataFeed::GetQuotesHistoryVersion(const uint32 timeoutInMilliseconds)
-{
-    Nullable<int> version;
-
-    DWORD status = WaitForSingleObject(m_serverQuotesHistoryEvent, 0);
-    version = m_cache.GetServerQuotesHistoryVersion();
-
-    string id;
-
-    if (!version.HasValue())
+    if (eventInfo.IsInternalAsynchCall())
     {
-        id = NextId(cExternalSynchCall);
-        m_sender->VSendQuotesHistoryRequest(id);
-
-        status = WaitForSingleObject(m_serverQuotesHistoryEvent, timeoutInMilliseconds);
-        version = m_cache.GetServerQuotesHistoryVersion();
-    }
-
-    if (version.HasValue())
-    {
-        return version.Value();
-    }
-
-    if (WAIT_OBJECT_0 == status)
-    {
-        throw runtime_error("Couldn't get server quotes storage version due to logout");
+        m_cache.SetServerQuotesHistoryVersion(version);
     }
     else
     {
-        throw CTimeoutException(id, 0);
+        int temp = version;
+        m_synchInvoker.Response(eventInfo, temp);
     }
 }
+

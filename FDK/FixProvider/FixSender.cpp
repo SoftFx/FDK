@@ -614,9 +614,10 @@ void CFixSender::VSendPositionReportRequest(const string& id, const string& acco
     return SendMessage(message);
 }
 
-void CFixSender::VSendQuotesHistoryRequest(const string& /*id*/)
+void CFixSender::VSendQuotesHistoryRequest(const string& id)
 {
     FIX44::ComponentsInfoRequest request;
+    request.SetCompReqID(id);
     request.SetClientQuoteHistoryVersion(cClientQuoteHistoryVersion);
     return SendMessage(request);
 }

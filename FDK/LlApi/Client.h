@@ -13,40 +13,39 @@ extern const string cInternalASynchCall;
 
 class CClient : public CFxQueue, public IReceiver
 {
-protected:
+public:
 
     CClient(CDataCache& cache, const string& connectionString);
-
-public:
     virtual ~CClient();
 
-public:
-    bool Start();
-    bool WaitForLogon(size_t timeoutInMilliseconds);
+    bool Start();    
+
     HRESULT Shutdown();
     HRESULT Stop();
+
+    bool WaitForLogon(size_t timeoutInMilliseconds);
+
     const CDataCache& Cache()const;
-    ISender& Sender();
+    CDataCache& Cache();
 
 public:
+
+    string GetProtocolVersion()const;
+
+    void SendTwoFactorResponse(const FxTwoFactorReason reason, const std::string& otp);
+
+    CFxSessionInfo GetSessionInfo(const size_t timeoutInMilliseconds);
+    CFxFileChunk GetFileChunk(const string& fileId, uint32 chunkId, const size_t timeoutInMilliseconds);
+
     void GetNetworkActivity(uint64* pLogicalBytesSent, uint64* pPhysicalBytesSent, uint64* pLogicalBytesReceived, uint64* pPhysicalBytesReceived);
 
-public:
     const string NextId();
     const string NextId(const string& prefix);
     const string NextIdIfEmpty(const string& prefix, const string& externalId);
 
-public:
     void RegisterWaiter(const type_info& info, const string& id, IWaiter* pWaiter);
-    void ReleaseWaiter(const type_info& info, const string& id);
+    void ReleaseWaiter(const type_info& info, const string& id);    
 
-public:
-    void SendTwoFactorResponse(const FxTwoFactorReason reason, const std::string& otp);
-    CFxSessionInfo GetSessionInfo(const size_t timeoutInMilliseconds);
-    CFxFileChunk GetFileChunk(const string& fileId, uint32 chunkId, const size_t timeoutInMilliseconds);
-    string GetProtocolVersion()const;
-
-public:
     virtual void VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion, bool twofactor);
     virtual void VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorReason reason, const std::string& text, const CDateTime& expire);
     virtual void VLogout(const CFxEventInfo& eventInfo, const FxLogoutReason reason, const string& description);
@@ -72,29 +71,27 @@ public:
     virtual void VQuotesHistoryResponse(const CFxEventInfo& eventInfo, const int version);
 
 protected:
+
     bool CheckProtocolVersion(const CProtocolVersion& requiredVersion) const;
-    virtual void AfterLogon();
 
-private:
-    CClient(const CClient&);
-    CClient& operator = (const CClient&);
+    virtual void AfterLogon();    
 
-protected:
-    ISender* m_sender;
-
-private:
-    HANDLE m_stateEvent;
-
-private:
     CDataCache& m_cache;
     ClientState m_state;
+    HANDLE m_stateEvent;
     CIdGenerator m_idGenerator;
     CSynchInvoker m_synchInvoker;
     IConnection* m_connection;
+    ISender* m_sender;
     string m_protocolVersion;
     mutable CCriticalSection m_stateSynchronizer;
     mutable CCriticalSection m_dataSynchronizer;
     bool m_afterLogonInvoked;
+
+private:
+
+    CClient(const CClient&);
+    CClient& operator = (const CClient&);
 };
 
 
@@ -105,9 +102,9 @@ inline const CDataCache& CClient::Cache() const
     return m_cache;
 }
 
-inline ISender& CClient::Sender()
+inline CDataCache& CClient::Cache()
 {
-    return *m_sender;
+    return m_cache;
 }
 
 #pragma endregion
