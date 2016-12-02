@@ -7,7 +7,7 @@
 namespace
 {
     const int cInitialVersion = 0;
-    const string cProtocolVersion = "ext.1.40";
+    const string cProtocolVersion = "ext.1.46";
 }
 
 namespace
@@ -55,7 +55,7 @@ void CHandShakeBehaviour::Logon(const HRESULT status, const string& message, boo
     CLogStream()<<"CHandShakeBehaviour::Logon(id = "<<m_id<<"): status = "<<status<<"; message = "<<message>>m_logger;
     if (nullptr == m_method)
     {
-		m_twofactor = twofactor;
+        m_twofactor = twofactor;
         m_state.Buffer.Reset();
         WriteUInt16(0, m_state.Buffer);
         WriteInt32(status, m_state.Buffer);
