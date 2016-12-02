@@ -5,10 +5,8 @@
     using SoftFX.Extended.Core;
     using TickTrader.Server.Monitoring;
     using TickTrader.Server.QuoteHistory.Store;
-    //using TickTrader.Server.QuoteHistory.Store.Bdb;
     using TickTrader.Server.QuoteHistory.Store.Ntfs;
-    using TickTrader.Server.QuoteHistory.Store.SQLite;
-
+    
 	/// <summary>
 	/// The class contains all supported storage adapter types.
 	/// </summary>
@@ -45,14 +43,9 @@
 		static void Construct()
 		{
 			Ntfs = typeof(NtfsHistoryStore);
-			SQLite = typeof(SQLiteHistoryStore);
-            //BerkeleyDB = typeof(BdbHistoryStore);
-
             Providers = new Dictionary<string, Type>
             {
-                {"Ntfs",       Ntfs       },
-                {"SQLite",     SQLite     },
-                //{"BerkeleyDB", BerkeleyDB }
+                {"Ntfs",       Ntfs       }
             };
 		}
 
