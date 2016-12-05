@@ -3979,11 +3979,11 @@
     <field name='DstAssetMovement' required='N' />
   </message>
   <message name='ComponentsInfoRequest' msgcat='app' msgtype='U1018'>
-    <field name='CompReqID' required='Y' />
+    <field name='CompReqID' required='N' />
     <field name='ClientQuoteHistoryVersion' required='N' />
   </message>
   <message name='ComponentsInfoReport' msgcat='app' msgtype='U1019'>
-    <field name='CompReqID' required='Y' />
+    <field name='CompReqID' required='N' />
     <field name='ServerQuoteHistoryVersion' required='N' />
   </message>
   <message name='TwoFactorLogon' msgcat='app' msgtype='U1022'>
