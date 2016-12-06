@@ -1352,7 +1352,7 @@ void CFixConnection::OnNotification(const FIX44::Notification& message)
 void CFixConnection::OnComponentsInfoReport(const FIX44::ComponentsInfoReport& message)
 {
     CFxEventInfo info;
-    info.ID = message.GetCompReqID();
+    message.TryGetCompReqID(info.ID);
     const int version = message.GetServerQuoteHistoryVersion();
     m_receiver->VQuotesHistoryResponse(info, version);
 }
