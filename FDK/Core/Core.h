@@ -36,6 +36,7 @@
 #include "DataHistoryInfo.h"
 #include "Notification.h"
 #include "FxCurrencyInfo.h"
+#include "PerformanceLogger.h"
 
 
 #include "ArgumentNullException.h"

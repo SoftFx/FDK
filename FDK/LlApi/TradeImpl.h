@@ -5,7 +5,7 @@
 class CTradeImpl
 {
 public:
-	void* Create(const std::string& connectionString);
+	void* Create(const std::string& name, const std::string& connectionString);
 	void* GetTradeTransactionReportsAndSubscribe(void* handle, int direction, bool subscribe, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, size_t preferdBufferSize, const size_t timeoutInMilliseconds);
 	void UnsubscribeTradeTransactionReports(void* handle, size_t timeoutInMilliseconds);
 	void* GetTradeCaptureReports(void* handle, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, const size_t timeoutInMilliseconds);

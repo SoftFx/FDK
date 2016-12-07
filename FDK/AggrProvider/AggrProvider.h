@@ -8,6 +8,6 @@
 #endif
 
 const char* GetProtocolType();
-IConnection* CreateConnection(const std::string& connectionString);
-IConnection* CreateAggrConnection(const std::string& connectionString);
+IConnection* CreateConnection(const std::string& name, const std::string& connectionString);
+IConnection* CreateAggrConnection(const std::string& name, const std::string& connectionString);
 #endif

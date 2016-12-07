@@ -29,10 +29,11 @@ namespace SoftFX.Extended.Generated
 				return m_client.IsSupported(5, 0);
 			}
 		}
-		public SoftFX.Lrp.LPtr Create(string connectionString)
+		public SoftFX.Lrp.LPtr Create(string name, string connectionString)
 		{
 			using(MemoryBuffer buffer = m_client.Create())
 			{
+				buffer.WriteAString(name);
 				buffer.WriteAString(connectionString);
 
 				int _status = m_client.Invoke(5, 0, buffer);

@@ -308,6 +308,7 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
     <ClInclude Include="ISender.h" />
     <ClInclude Include="FxParams.h" />
     <ClInclude Include="NotImplementedException.h" />
+    <ClInclude Include="PerformanceLogger.h" />
     <ClInclude Include="Ref.h" />
     <ClInclude Include="RejectException.h" />
     <ClInclude Include="RuntimeError.h" />
@@ -349,6 +350,7 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
     <ClCompile Include="FxTradeHistoryResponse.cpp" />
     <ClCompile Include="HandlesPool.cpp" />
     <ClCompile Include="NotImplementedException.cpp" />
+    <ClCompile Include="PerformanceLogger.cpp" />
     <ClCompile Include="RejectException.cpp" />
     <ClCompile Include="FxStatusGroupInfo.cpp" />
     <ClCompile Include="TimeoutException.cpp" />

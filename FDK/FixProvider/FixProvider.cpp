@@ -3,14 +3,14 @@
 #include "FixConnection.h"
 
 
-IConnection* CreateConnection(const std::string& connectionString)
+IConnection* CreateConnection(const std::string& name, const std::string& connectionString)
 {
-	IConnection* result = CreateFixConnection(connectionString);
+	IConnection* result = CreateFixConnection(name, connectionString);
 	return result;
 }
-IConnection* CreateFixConnection(const std::string& connectionString)
+IConnection* CreateFixConnection(const std::string& name, const std::string& connectionString)
 {
-	IConnection* result = new CFixConnection(connectionString);
+	IConnection* result = new CFixConnection(name, connectionString);
 	return result;
 }
 const char* GetProtocolType()

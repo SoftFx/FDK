@@ -9,9 +9,9 @@
     {
         #region Creating and Converting
 
-        public static FxDataFeed Create(string connectionString)
+        public static FxDataFeed Create(string name, string connectionString)
         {
-            var handle = Native.FeedServer.Create(connectionString);
+            var handle = Native.FeedServer.Create(name, connectionString);
             return new FxDataFeed(handle);
         }
 

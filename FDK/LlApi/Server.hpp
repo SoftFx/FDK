@@ -559,7 +559,8 @@ namespace
 		auto& component = pChannel->GetFeedServer();
 		component; // if all methods of component are static then the next line generates warning #4189
 		auto arg0 = ReadAString(buffer);
-		auto result = component.Create(arg0);
+		auto arg1 = ReadAString(buffer);
+		auto result = component.Create(arg0, arg1);
 		buffer.Reset(offset);
 		WriteLocalPointer(result, buffer);
 	}
@@ -865,7 +866,8 @@ namespace
 		auto& component = pChannel->GetTradeServer();
 		component; // if all methods of component are static then the next line generates warning #4189
 		auto arg0 = ReadAString(buffer);
-		auto result = component.Create(arg0);
+		auto arg1 = ReadAString(buffer);
+		auto result = component.Create(arg0, arg1);
 		buffer.Reset(offset);
 		WriteLocalPointer(result, buffer);
 	}
@@ -1405,7 +1407,7 @@ extern "C" const char* __stdcall LrpSignature()
 	"$ClientCache;"
 		"GetSessionInfo@F88104E790197A081EEE1E5529096368;"
 	"$FeedServer;"
-		"Create@70E15A05E6BE6DCCFFD3EE8F2B355DCB;"
+		"Create@3B600297C4910456A888F1A45C27B07F;"
 		"GetQuoteHistoryFiles@06324080EDE3B81326C9328F86125C5B;"
 		"GetBarsHistoryFiles@7507193C2AEA59209885B65DCCCF100A;"
 		"GetCurrencies@110F4541D32D9EE443AEF3A770447495;"
@@ -1425,7 +1427,7 @@ extern "C" const char* __stdcall LrpSignature()
 		"TryGetQuote@1CC660CAA93E845F3E00780845CA86C4;"
 		"GetCurrencies@3AA598E434D8DA6D35A1FA3F9C7AF48C;"
 	"$TradeServer;"
-		"Create@70E15A05E6BE6DCCFFD3EE8F2B355DCB;"
+		"Create@3B600297C4910456A888F1A45C27B07F;"
 		"GetTradeTransactionReportsAndSubscribe@01D0DCEF3E6E853DC5C184E4A6D85085;"
 		"GetTradeCaptureReports@874C22E243BFC4DED82F08A53E84EF80;"
 		"UnsubscribeTradeTransactionReports@42E7909824399BBE11FEC757FAB1BBD7;"

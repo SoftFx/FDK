@@ -20,9 +20,9 @@ namespace
 	}
 }
 
-void* CTradeImpl::Create(const std::string& connectionString)
+void* CTradeImpl::Create(const std::string& name, const std::string& connectionString)
 {
-	CDataTrade* result = new CDataTrade(connectionString);
+	CDataTrade* result = new CDataTrade(name, connectionString);
 	return result;
 }
 

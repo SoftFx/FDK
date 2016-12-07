@@ -17,10 +17,20 @@
 
         #region Construction
 
+
         /// <summary>
         /// Creates a new data trade instance.
         /// </summary>
-        public DataTrade()
+        public DataTrade() : 
+            this("Trade")
+        {
+        }
+
+        /// <summary>
+        /// Creates and initializes a new data trade instance.
+        /// </summary>
+        public DataTrade(string name) :
+            base(name)
         {
             this.Server = new DataTradeServer(this);
             this.Cache = new DataTradeCache(this);
@@ -30,8 +40,8 @@
         /// Creates and initializes a new data trade instance.
         /// </summary>
         /// <exception cref="System.ArgumentNullException">If connectionString is null.</exception>
-        public DataTrade(string connectionString)
-            : this()
+        public DataTrade(string name, string connectionString) :
+            this(name)
         {
             this.Initialize(connectionString);
         }
@@ -40,7 +50,7 @@
         {
             this.handle.Handle.Delete();
             this.handle = new FxDataTrade();
-            this.handle = FxDataTrade.Create(connectionString);
+            this.handle = FxDataTrade.Create(name_, connectionString);
 
             return this.handle.DataClient;
         }
@@ -99,6 +109,7 @@
                 return this.handle;
             }
         }
+
 
         /// <summary>
         /// Gets object, which encapsulates server side methods.
@@ -162,6 +173,12 @@
 
         void RaiseExecutionReport(FxMessage message)
         {
+#if LOG_PERFORMANCE
+            ulong timestamp = loggerOut_.GetTimestamp();
+            string id = message.ExecutionReport().ClientOrderId;
+            string execTypeString = ((int) message.ExecutionReport().ExecutionType).ToString();
+            loggerOut_.LogTimestamp(id + execTypeString, timestamp, "ExecReport");
+#endif
             var eh = this.ExecutionReport;
             if (eh != null)
             {
@@ -233,39 +250,23 @@
 
         #region Disposing
 
-        private bool _disposed;
-
-        private void Dispose(bool disposing)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="disposing"></param>
+        protected override void Dispose(bool disposing)
         {
-            if (_disposed)
-            {
-                // Stop data client thread
-                if (this.IsStarted)
-                    this.Stop();
+            // Stop data client thread
+            if (this.IsStarted)
+                this.Stop();
 
+            if (! this.handle.Handle.IsNull)
+            {
                 this.handle.Handle.Delete();
                 this.handle = new FxDataTrade();
-
-                _disposed = true;
             }
-        }
 
-        /// <summary>
-        /// Releases all unmanaged resources.
-        /// </summary>
-        public override void Dispose()
-        {
-            this.Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        /// <summary>
-        /// Releases all unmanaged resources.
-        /// </summary>
-        ~DataTrade()
-        {
-            if (!Environment.HasShutdownStarted)
-                this.Dispose(false);
+            base.Dispose(disposing);
         }
 
         #endregion

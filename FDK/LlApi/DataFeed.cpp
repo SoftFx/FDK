@@ -13,8 +13,8 @@ namespace
     const string cUnsupportedFeature = "Feature is not supported by this protocol version.";
 }
 
-CDataFeed::CDataFeed(const string& connectionString) : 
-    CClient(m_cache, connectionString),
+CDataFeed::CDataFeed(const string& name, const string& connectionString) : 
+    CClient(m_cache, name, connectionString),
     m_cache(*this)
 {
     m_serverQuotesHistoryEvent = CreateEvent(nullptr, true, false, nullptr);

@@ -19,9 +19,9 @@ namespace
 	}
 }
 
-void* CFeedImpl::Create(const std::string& connectionString)
+void* CFeedImpl::Create(const std::string& name, const std::string& connectionString)
 {
-	CDataFeed* result = new CDataFeed(connectionString);
+	CDataFeed* result = new CDataFeed(name, connectionString);
 	return result;
 }
 

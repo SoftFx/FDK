@@ -19,7 +19,7 @@ public:
     virtual void VGetActivity(uint64* pLogicalBytesSent, uint64* pPhysicalBytesSent, uint64* pLogicalBytesReceived, uint64* pPhysicalBytesReceived);
 
 public:
-    CFixConnection(const string& connectionString);
+    CFixConnection(const string& name, const string& connectionString);
     virtual ~CFixConnection();
     static void InitializeMessageHandlers();
 
@@ -57,6 +57,7 @@ private:
     void OnComponentsInfoReport(const FIX44::ComponentsInfoReport& message);
 
 private:
+    string name_;
     CFixSender m_sender;
     IReceiver* m_receiver;
     FIX::LogFactory* m_logFactory;
@@ -74,6 +75,12 @@ private:
     string m_deviceId;
     string m_appSessionId;
     string m_protocolVersion;
+
+#ifdef LOG_PERFORMANCE
+    Performance::Logger loggerIn_;
+    Performance::Logger loggerOut_;
+#endif
+
 };
 
 

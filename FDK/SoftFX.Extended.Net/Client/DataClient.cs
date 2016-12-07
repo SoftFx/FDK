@@ -21,8 +21,9 @@
 
         #region Construction
 
-        internal DataClient()
+        internal DataClient(string name)
         {
+            this.name_ = name;
             this.SynchOperationTimeout = 60000;
         }
 
@@ -43,6 +44,10 @@
             if (connectionString == null)
                 throw new ArgumentNullException(nameof(connectionString), "Connection string can not be null.");
 
+#if LOG_PERFORMANCE            
+            loggerOut_ = new Core.Performance.Logger(name_ + ".t1", ".NET Out", ".\\Logs");
+            loggerIn_ = new Core.Performance.Logger(name_ + ".t2", ".NET In", ".\\Logs");
+#endif
             lock (synchronizer)
             {
                 if (this.IsStarted)
@@ -78,6 +83,18 @@
                 return this.handle;
             }
         }
+
+        /// <summary>
+        /// Name
+        /// </summary>
+        public string Name
+        {
+            get { return name_;  }
+        }
+
+        /// <summary>
+        /// </summary>
+        protected string name_;
 
         internal abstract DataServer DataServer { get; }
 
@@ -348,6 +365,39 @@
         /// <summary>
         /// Releases all unmanaged resources.
         /// </summary>
-        public abstract void Dispose();
+        public virtual void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Releases all unmanaged resources.
+        /// </summary>
+        ~DataClient()
+        {
+            if (!Environment.HasShutdownStarted)
+                this.Dispose(false);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="disposing"></param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+#if LOG_PERFORMANCE
+                loggerOut_.Dispose();
+                loggerIn_.Dispose();
+#endif
+            }
+        }
+
+#if LOG_PERFORMANCE
+        internal Core.Performance.Logger loggerOut_;
+        internal Core.Performance.Logger loggerIn_;
+#endif
     }
 }

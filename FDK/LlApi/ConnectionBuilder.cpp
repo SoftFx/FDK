@@ -56,7 +56,7 @@ namespace
 	}
 }
 
-IConnection* CreateConnection(const string& connectionString)
+IConnection* CreateConnection(const string& name, const string& connectionString)
 {
 	CFxParams params(connectionString);
 	const string protocolType = params.GetString(cProtocolType);
@@ -66,7 +66,7 @@ IConnection* CreateConnection(const string& connectionString)
 	{
 		throw CRuntimeError("Unsupported protocol type = ") + protocolType;
 	}
-	IConnection* result = pDll->CreateConnection(connectionString);
+	IConnection* result = pDll->CreateConnection(name, connectionString);
 	return result;
 }
 

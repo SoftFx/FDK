@@ -515,6 +515,7 @@
     </Component>
     <Component name="FeedServer">
       <Method name ="Create">
+        <Param name="name" type="astring" direction="in" />
         <Param name="connectionString" type="astring" direction="in" />
         <Return type="lptr" />
       </Method>
@@ -632,6 +633,7 @@
     </Component>
     <Component name="TradeServer">
       <Method name ="Create">
+        <Param name="name" type="astring" direction="in" />
         <Param name="connectionString" type="astring" direction="in" />
         <Return type="lptr" />
       </Method>

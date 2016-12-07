@@ -20,7 +20,16 @@
         /// <summary>
         /// Creates a new data feed instance. You should use Initialize method to finish the instance initialization.
         /// </summary>
-        public DataFeed()
+        public DataFeed() :
+            this("Feed")
+        {
+        }
+
+        /// <summary>
+        /// Creates and initializes a new data feed instance.
+        /// </summary>
+        public DataFeed(string name) :
+            base(name)
         {
             this.Server = new DataFeedServer(this);
             this.Cache = new DataFeedCache(this);
@@ -30,8 +39,8 @@
         /// Creates and initializes a new data feed instance.
         /// </summary>
         /// <exception cref="System.ArgumentNullException">If connectionString is null.</exception>
-        public DataFeed(string connectionString)
-            : this()
+        public DataFeed(string name, string connectionString) :
+            this(name)
         {
             this.Initialize(connectionString);
         }
@@ -40,7 +49,7 @@
         {
             this.handle.Handle.Delete();
             this.handle = new FxDataFeed();
-            this.handle = FxDataFeed.Create(connectionString);
+            this.handle = FxDataFeed.Create(name_, connectionString);
 
             return this.handle.DataClient;
         }
@@ -169,6 +178,11 @@
 
         void RaiseTick(FxMessage message)
         {
+#if LOG_PERFORMANCE
+            ulong timestamp = loggerOut_.GetTimestamp();
+            string id = message.Quote().Id;
+            loggerOut_.LogTimestamp(id, timestamp, "Tick");
+#endif
             var eh = this.Tick;
             if (eh != null)
             {
@@ -210,39 +224,23 @@
 
         #region Disposing
 
-        private bool _disposed;
-
-        private void Dispose(bool disposing)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="disposing"></param>
+        protected override void Dispose(bool disposing)
         {
-            if (_disposed)
-            {
-                // Stop data client thread
-                if (this.IsStarted)
-                    this.Stop();
+            // Stop data client thread
+            if (this.IsStarted)
+                this.Stop();
 
+            if (! this.handle.Handle.IsNull)
+            {
                 this.handle.Handle.Delete();
                 this.handle = new FxDataFeed();
-
-                _disposed = true;
             }
-        }
 
-        /// <summary>
-        /// Releases all unmanaged resources.
-        /// </summary>
-        public override void Dispose()
-        {
-            this.Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        /// <summary>
-        /// Releases all unmanaged resources.
-        /// </summary>
-        ~DataFeed()
-        {
-            if (!Environment.HasShutdownStarted)
-                this.Dispose(false);
+            base.Dispose(disposing);
         }
 
         #endregion

@@ -24,6 +24,14 @@
             }
         }
 
+        public bool IsNull
+        {
+            get
+            {
+                return handle != LPtr.Zero;
+            }
+        }
+
         LPtr handle;
     }
 }

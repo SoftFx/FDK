@@ -55,22 +55,29 @@ namespace
             throw logic_error("Invalid string to convert to UTF-8");
 
         return dest;
-    }
+    }    
 }
 
 CFixSender::CFixSender()
 {
 }
 
-CFixSender::CFixSender(const FIX::SessionID& sessionId)
-    : m_sessionID(sessionId)
+void CFixSender::SessionID(const FIX::SessionID& sessionId)
 {
+    m_sessionID = sessionId;
 }
 
 void CFixSender::SendVersion(const CFixVersion& version)
 {
     m_version = version;
 }
+
+#ifdef LOG_PERFORMANCE
+void CFixSender::setLogger(Performance::Logger* logger)
+{
+    logger_ = logger;
+}
+#endif
 
 void CFixSender::SendMessage(FIX::Message& message)
 {
@@ -328,6 +335,11 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
         if (FxTradeRecordType_MarketWithSlippage == required.Type)
             message.SetMarketWithSlippageFlag(FIX::MarketWithSlippageFlag_YES);
     }
+
+#ifdef LOG_PERFORMANCE
+    uint64_t timestamp = logger_->getTimestamp();
+    logger_->logTimestamp(id.c_str(), timestamp, "NewOrder");
+#endif
 
     return SendMessage(message);
 }

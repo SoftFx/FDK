@@ -89,9 +89,10 @@ void CFixConnection::InitializeMessageHandlers()
     gMessageTypeToHandler[FIX::MsgType_ComponentsInfoReport] = reinterpret_cast<MessageHandler>(&CFixConnection::OnComponentsInfoReport);
 }
 
-CFixConnection::CFixConnection(const string& connectionString)
-    : m_receiver(nullptr)
-{
+CFixConnection::CFixConnection(const string& name, const string& connectionString) : 
+    name_(name),
+    m_receiver(nullptr)    
+{   
     CFxParams parameters(connectionString);
     const string fixVersion = parameters.GetString(cFixVersion);
 
@@ -111,6 +112,11 @@ CFixConnection::CFixConnection(const string& connectionString)
 
     parameters.TryGetString(cProtocolVersion, m_protocolVersion);
 
+#ifdef LOG_PERFORMANCE
+    loggerIn_.open((name + ".t0").c_str(), "C++ In", ".\\Logs");
+    loggerOut_.open((name + ".t3").c_str(), "C++ Out", ".\\Logs");
+    m_sender.setLogger(&loggerOut_);
+#endif
 
     FIX::Dictionary sessionOptions;
     sessionOptions.setString(FIX::BEGINSTRING, fixVersion);
@@ -133,7 +139,7 @@ CFixConnection::CFixConnection(const string& connectionString)
 
     FIX::SessionID sessionID(fixVersion, senderCompId, targetCompId);
     m_sessionID = sessionID;
-    m_sender = CFixSender(sessionID);
+    m_sender.SessionID(sessionID);    
     m_settings.set(sessionID, sessionOptions);
 
     const string fixLogDirectory = parameters.GetString(cFixLogDirectory);
@@ -565,6 +571,11 @@ void CFixConnection::OnSubscribeToQuotesAck(const FIX44::MarketDataRequestAck& m
 
 void CFixConnection::OnTick(const FIX44::MarketDataSnapshotFullRefresh& message)
 {
+#ifdef LOG_PERFORMANCE
+    uint64_t timestamp = loggerIn_.getTimestamp();
+    string id = message.GetTickId();
+    loggerIn_.logTimestamp(id.c_str(), timestamp, "Tick");
+#endif
     CFxEventInfo eventInfo;
     const string symbol = message.GetSymbol();
 
@@ -630,6 +641,14 @@ void CFixConnection::OnClose(const FIX44::ClosePositionRequestAck& message)
 
 void CFixConnection::OnExecution(const CFixExecutionReport& message)
 {
+#ifdef LOG_PERFORMANCE
+    uint64_t timestamp = loggerIn_.getTimestamp();
+    string id = message.GetFxClientOrderId();
+    char executionTypeString[16];
+    itoa(message.GetFxExecutionType(), executionTypeString, 10);
+    loggerIn_.logTimestamp((id + executionTypeString).c_str(), timestamp, "ExecReport");
+#endif
+
     CFxEventInfo eventInfo;
     CFxExecutionReport report;
 

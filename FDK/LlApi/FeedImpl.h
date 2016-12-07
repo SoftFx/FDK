@@ -1,10 +1,11 @@
 #pragma once
 
+#include <string>
 
 class CFeedImpl
 {
 public:
-	void* Create(const std::string& connectionString);
+	void* Create(const std::string& name, const std::string& connectionString);
 	CDataHistoryInfo GetBarsHistoryFiles(void* handle, const string& symbol, int priceType, const string& period, CDateTime time, size_t timeoutInMilliseconds);
 	CDataHistoryInfo GetQuoteHistoryFiles(void* handle, const string& symbol, bool includeLevel2, CDateTime time, size_t timeoutInMilliseconds);
     std::vector<CFxCurrencyInfo> GetCurrencies(void* handle, size_t timeoutInMilliseconds);

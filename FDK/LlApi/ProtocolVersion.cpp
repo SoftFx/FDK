@@ -8,8 +8,8 @@ namespace
 }
 
 CProtocolVersion::CProtocolVersion()
-    : Major()
-    , Minor()
+    : Major(0)
+    , Minor(0)
 {
 }
 
@@ -20,8 +20,8 @@ CProtocolVersion::CProtocolVersion(int major, int minor)
 }
 
 CProtocolVersion::CProtocolVersion(const string& st)
-    : Major()
-    , Minor()
+    : Major(0)
+    , Minor(0)
 {
 	if (!st.empty())
 	{
@@ -34,6 +34,23 @@ CProtocolVersion::CProtocolVersion(const string& st)
 		Major = atoi(what[1].first);
 		Minor = atoi(what[2].first);
 	}
+}
+
+int CProtocolVersion::getMajor() const
+{
+    return Major;
+}
+
+int CProtocolVersion::getMinor() const
+{
+    return Minor;
+}
+
+std::string CProtocolVersion::toString() const
+{
+    char sz[32];
+    snprintf(sz, sizeof(sz), "ext.%i.%i", Major, Minor);
+    return sz;
 }
 
 bool operator < (const CProtocolVersion& first, const CProtocolVersion& second)
