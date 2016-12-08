@@ -91,7 +91,11 @@ void CFixConnection::InitializeMessageHandlers()
 
 CFixConnection::CFixConnection(const string& name, const string& connectionString) : 
     name_(name),
-    m_receiver(nullptr)    
+#ifdef LOG_PERFORMANCE
+    loggerIn_(service_),
+    loggerOut_(service_),
+#endif
+    m_receiver(nullptr)
 {   
     CFxParams parameters(connectionString);
     const string fixVersion = parameters.GetString(cFixVersion);
@@ -113,9 +117,10 @@ CFixConnection::CFixConnection(const string& name, const string& connectionStrin
     parameters.TryGetString(cProtocolVersion, m_protocolVersion);
 
 #ifdef LOG_PERFORMANCE
-    loggerIn_.open((name + ".t0").c_str(), "C++ In", ".\\Logs");
-    loggerOut_.open((name + ".t3").c_str(), "C++ Out", ".\\Logs");
     m_sender.setLogger(&loggerOut_);
+    service_.start(0);
+    loggerIn_.open((name + ".t0").c_str(), "C++ In", ".\\Logs");
+    loggerOut_.open((name + ".t3").c_str(), "C++ Out", ".\\Logs");    
 #endif
 
     FIX::Dictionary sessionOptions;
@@ -642,11 +647,12 @@ void CFixConnection::OnClose(const FIX44::ClosePositionRequestAck& message)
 void CFixConnection::OnExecution(const CFixExecutionReport& message)
 {
 #ifdef LOG_PERFORMANCE
-    uint64_t timestamp = loggerIn_.getTimestamp();
-    string id = message.GetFxClientOrderId();
-    char executionTypeString[16];
-    itoa(message.GetFxExecutionType(), executionTypeString, 10);
-    loggerIn_.logTimestamp((id + executionTypeString).c_str(), timestamp, "ExecReport");
+    if (message.GetFxExecutionType() == FxExecutionType_Trade)
+    {
+        uint64_t timestamp = loggerIn_.getTimestamp();
+        string id = message.GetFxClientOrderId();
+        loggerIn_.logTimestamp(id.c_str(), timestamp, "ExecReport");
+    }
 #endif
 
     CFxEventInfo eventInfo;

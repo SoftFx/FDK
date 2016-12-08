@@ -77,6 +77,7 @@ private:
     string m_protocolVersion;
 
 #ifdef LOG_PERFORMANCE
+    Performance::Service service_;
     Performance::Logger loggerIn_;
     Performance::Logger loggerOut_;
 #endif

@@ -21,6 +21,11 @@
 
         #region Construction
 
+        static DataClient()
+        {
+            Native.Initialize();
+        }
+
         internal DataClient(string name)
         {
             this.name_ = name;
@@ -45,8 +50,9 @@
                 throw new ArgumentNullException(nameof(connectionString), "Connection string can not be null.");
 
 #if LOG_PERFORMANCE            
-            loggerOut_ = new Core.Performance.Logger(name_ + ".t1", ".NET Out", ".\\Logs");
-            loggerIn_ = new Core.Performance.Logger(name_ + ".t2", ".NET In", ".\\Logs");
+            service_ = new Core.Performance.Service(0);
+            loggerOut_ = new Core.Performance.Logger(service_, name_ + ".t1", ".NET Out", ".\\Logs");
+            loggerIn_ = new Core.Performance.Logger(service_, name_ + ".t2", ".NET In", ".\\Logs");
 #endif
             lock (synchronizer)
             {
@@ -65,11 +71,6 @@
         /// </summary>
         protected virtual void OnInitialized()
         {
-        }
-
-        static DataClient()
-        {
-            Native.Initialize();
         }
 
         #endregion
@@ -389,13 +390,20 @@
             if (disposing)
             {
 #if LOG_PERFORMANCE
-                loggerOut_.Dispose();
-                loggerIn_.Dispose();
+                if (loggerOut_ != null)
+                    loggerOut_.Dispose();
+
+                if (loggerIn_ != null)
+                    loggerIn_.Dispose();
+
+                if (service_ != null)
+                    service_.Dispose();
 #endif
             }
         }
 
 #if LOG_PERFORMANCE
+        internal Core.Performance.Service service_;
         internal Core.Performance.Logger loggerOut_;
         internal Core.Performance.Logger loggerIn_;
 #endif

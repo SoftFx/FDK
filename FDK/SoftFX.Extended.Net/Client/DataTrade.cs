@@ -174,10 +174,12 @@
         void RaiseExecutionReport(FxMessage message)
         {
 #if LOG_PERFORMANCE
-            ulong timestamp = loggerOut_.GetTimestamp();
-            string id = message.ExecutionReport().ClientOrderId;
-            string execTypeString = ((int) message.ExecutionReport().ExecutionType).ToString();
-            loggerOut_.LogTimestamp(id + execTypeString, timestamp, "ExecReport");
+            if (message.ExecutionReport().ExecutionType == ExecutionType.Trade)
+            {
+                ulong timestamp = loggerOut_.GetTimestamp();
+                string id = message.ExecutionReport().ClientOrderId;
+                loggerOut_.LogTimestamp(id, timestamp, "ExecReport");
+            }
 #endif
             var eh = this.ExecutionReport;
             if (eh != null)

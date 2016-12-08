@@ -7,41 +7,39 @@ using namespace std;
 
 namespace Performance
 {
-    Logger::Logger() : 
-        opened_(false)
+    Service::Service() :
+        started_(false)
     {
     }
 
-    Logger::Logger(const char* name, const char* description, const char* logDirectory) :
-        opened_(false)
+    Service::Service(int capacity) :
+        started_(false)
     {
-        open(name, description, logDirectory);
+        start(capacity);
     }
 
-    Logger::~Logger()
+    Service::~Service()
     {
-        close();
+        stop();
     }
 
-    bool Logger::opened() const
+    bool Service::started() const
     {
-        return opened_;
+        return started_;
     }
 
-    void Logger::open(const char* name, const char* description, const char* logDirectory)
+    void Service::start(int capcity)
     {
-        if (opened_)
-            throw runtime_error("Performance logger is already opened");
-
-        name_ = name;        
+        if (started_)
+            throw runtime_error("Performance service is already started");
 
         timestampVector_.reserve(32);
 
         LARGE_INTEGER frequency;
-        if (! QueryPerformanceFrequency(&frequency))
+        if (!QueryPerformanceFrequency(&frequency))
             throw runtime_error("Could not get high resolution timer frequency");
 
-        timerFrequency_ = frequency.QuadPart;        
+        timerFrequency_ = frequency.QuadPart;
 
         InitializeCriticalSection(&cs_);
 
@@ -53,32 +51,14 @@ namespace Performance
                 throw runtime_error("Could not create event object");
 
             try
-            {                
-                string path = string(logDirectory) + "\\" + name_ + ".log";
-                file_ = _fsopen(path.c_str(), "w", _SH_DENYWR);
+            {
+                stop_ = false;
+                thread_ = CreateThread(NULL, 0, thread, this, 0, NULL);
 
-                if (file_ == NULL)
-                    throw runtime_error("Could not open log file : " + path);
+                if (thread_ == NULL)
+                    throw runtime_error("Could not start a thread");
 
-                try
-                {
-                    fprintf(file_, "%s\r\n", description);
-                    fflush(file_);
-
-                    stop_ = false;
-                    thread_ = CreateThread(NULL, 0, thread, this, 0, NULL);
-
-                    if (thread_ == NULL)
-                        throw runtime_error("Could not start a thread");
-
-                    opened_ = true;
-                }
-                catch (...)
-                {
-                    fclose(file_);                    
-
-                    throw;
-                }
+                started_ = true;
             }
             catch (...)
             {
@@ -95,11 +75,11 @@ namespace Performance
         }
     }
 
-    void Logger::close()
+    void Service::stop()
     {
-        if (opened_)
+        if (started_)
         {
-            opened_ = false;
+            started_ = false;
 
             EnterCriticalSection(&cs_);
 
@@ -118,57 +98,19 @@ namespace Performance
             WaitForSingleObject(thread_, INFINITE);
             CloseHandle(thread_);
 
-            fclose(file_);
-
             CloseHandle(event_);
 
             DeleteCriticalSection(&cs_);
         }
     }
-
-    void Logger::logTimestamp(const char* id, uint64_t timestamp, const char* memo)
-    {
-        EnterCriticalSection(&cs_);
-
-        try
-        {
-            if (timestampVector_.size() < 10000)
-            {
-                timestampVector_.resize(timestampVector_.size() + 1);
-                TimestampItem& timestampItem = timestampVector_.back();
-
-                strncpy(timestampItem.id, id, sizeof(timestampItem.id));
-                timestampItem.timestamp = timestamp;
-                strncpy(timestampItem.memo, memo, sizeof(timestampItem.memo));
-
-                SetEvent(event_);
-            }
-
-            LeaveCriticalSection(&cs_);            
-        }
-        catch (...)
-        {
-            LeaveCriticalSection(&cs_);
-
-            throw;
-        }
-    }
-
-    uint64_t Logger::getTimestamp() const
-    {
-        LARGE_INTEGER counter;
-        QueryPerformanceCounter(&counter);
-
-        return (uint64_t) (counter.QuadPart * 1000000 / timerFrequency_);
-    }
     
-    DWORD WINAPI Logger::thread(LPVOID parameter)
+    DWORD WINAPI Service::thread(LPVOID parameter)
     {
         try
         {
-            Logger* logger = (Logger*) parameter;
+            Service* service = (Service*)parameter;
 
-            logger->process();
+            service->process();
 
             return 0;
         }
@@ -178,7 +120,7 @@ namespace Performance
         }
     }
 
-    void Logger::process()
+    void Service::process()
     {
         TimestampVector timestampVector;
         timestampVector.reserve(32);
@@ -213,13 +155,155 @@ namespace Performance
             {
                 const TimestampItem& timestampItem = timestampVector[index];
 
-                fprintf(file_, "%s;%I64u;%s\r\n", timestampItem.id, timestampItem.timestamp, timestampItem.memo);
+                if (timestampItem.type_ == titLog)
+                {
+                    fprintf(timestampItem.logger_->file_, "%s;%I64u;%s\r\n", timestampItem.id, timestampItem.timestamp, timestampItem.memo);
+                    fflush(timestampItem.logger_->file_);
+                }
+                else if (timestampItem.type_ == titSignal)
+                {
+                    SetEvent(timestampItem.logger_->event_);
+                }
             }
-
-            fflush(file_);
 
             if (stop)
                 break;
         }
     }
+
+    Logger::Logger(Service& service) :
+        service_(service),
+        opened_(false)
+    {
+    }
+
+    Logger::Logger(Service& service, const char* name, const char* description, const char* logDirectory) :
+        service_(service),
+        opened_(false)
+    {
+        open(name, description, logDirectory);
+    }
+
+    Logger::~Logger()
+    {
+        close();
+    }
+
+    bool Logger::opened() const
+    {
+        return opened_;
+    }
+
+    void Logger::open(const char* name, const char* description, const char* logDirectory)
+    {
+        if (opened_)
+            throw runtime_error("Performance logger is already opened");
+
+        name_ = name;
+
+        event_ = CreateEvent(NULL, FALSE, FALSE, NULL);
+
+        if (event_ == NULL)
+            throw runtime_error("Could not create event object");
+
+        try
+        {
+            string path = string(logDirectory) + "\\" + name_ + ".log";
+            file_ = _fsopen(path.c_str(), "w", _SH_DENYWR);
+
+            if (file_ == NULL)
+                throw runtime_error("Could not open log file : " + path);
+
+            try
+            {
+                fprintf(file_, "%s\r\n", description);
+                fflush(file_);
+
+                opened_ = true;
+            }
+            catch (...)
+            {
+                fclose(file_);
+
+                throw;
+            }
+        }
+        catch (...)
+        {
+            CloseHandle(event_);
+
+            throw;
+        }
+    }
+
+    void Logger::close()
+    {
+        if (opened_)
+        {
+            opened_ = false;
+
+            EnterCriticalSection(&service_.cs_);
+
+            try
+            {
+                service_.timestampVector_.resize(service_.timestampVector_.size() + 1);
+                Service::TimestampItem& timestampItem = service_.timestampVector_.back();
+
+                timestampItem.type_ = Service::titSignal;
+                timestampItem.logger_ = this;
+
+                SetEvent(service_.event_);
+
+                LeaveCriticalSection(&service_.cs_);
+            }
+            catch (...)
+            {
+                LeaveCriticalSection(&service_.cs_);
+            }
+
+            WaitForSingleObject(event_, INFINITE);            
+
+            fclose(file_);
+
+            CloseHandle(event_);
+        }
+    }
+
+    void Logger::logTimestamp(const char* id, uint64_t timestamp, const char* memo)
+    {
+        EnterCriticalSection(&service_.cs_);
+
+        try
+        {
+            if (service_.timestampVector_.size() < 10000)
+            {
+                service_.timestampVector_.resize(service_.timestampVector_.size() + 1);
+                Service::TimestampItem& timestampItem = service_.timestampVector_.back();
+
+                timestampItem.type_ = Service::titLog;
+                timestampItem.logger_ = this;                
+                strncpy(timestampItem.id, id, sizeof(timestampItem.id));
+                timestampItem.timestamp = timestamp;
+                strncpy(timestampItem.memo, memo, sizeof(timestampItem.memo));
+
+                SetEvent(service_.event_);
+            }
+
+            LeaveCriticalSection(&service_.cs_);
+        }
+        catch (...)
+        {
+            LeaveCriticalSection(&service_.cs_);
+
+            throw;
+        }
+    }
+
+    uint64_t Logger::getTimestamp() const
+    {
+        LARGE_INTEGER counter;
+        QueryPerformanceCounter(&counter);
+
+        return (uint64_t) (counter.QuadPart * 1000000 / service_.timerFrequency_);
+    }    
 }
