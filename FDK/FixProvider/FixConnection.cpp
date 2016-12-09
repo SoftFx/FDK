@@ -91,11 +91,11 @@ void CFixConnection::InitializeMessageHandlers()
 
 CFixConnection::CFixConnection(const string& name, const string& connectionString) : 
     name_(name),
+    m_receiver(nullptr),
 #ifdef LOG_PERFORMANCE
     loggerIn_(service_),
-    loggerOut_(service_),
+    loggerOut_(service_)
 #endif
-    m_receiver(nullptr)
 {   
     CFxParams parameters(connectionString);
     const string fixVersion = parameters.GetString(cFixVersion);
@@ -119,8 +119,8 @@ CFixConnection::CFixConnection(const string& name, const string& connectionStrin
 #ifdef LOG_PERFORMANCE
     m_sender.setLogger(&loggerOut_);
     service_.start(0);
-    loggerIn_.open((name + ".t0").c_str(), "C++ In", ".\\Logs");
-    loggerOut_.open((name + ".t3").c_str(), "C++ Out", ".\\Logs");    
+    loggerIn_.open(name + ".t2", name + " C++ In", ".\\Logs");
+    loggerOut_.open(name + ".t1", name + " C++ Out", ".\\Logs");
 #endif
 
     FIX::Dictionary sessionOptions;

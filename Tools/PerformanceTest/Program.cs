@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace BenchmarkTest
+namespace PerformanceTest
 {
     class Program
     {
@@ -24,6 +24,8 @@ namespace BenchmarkTest
                 string address = args[0];
                 string username = args[1];
                 string password = args[2];
+
+                Console.WriteLine("Benchmark Test");
 
                 Test test = new Test(address, username, password);
 

@@ -1,4 +1,4 @@
-﻿namespace BenchmarkTest
+﻿namespace PerformanceTest
 {
     using System;
     using System.IO;
@@ -83,11 +83,6 @@
                 symbols[index] = info[index].Name;
 
             Feed.Server.SubscribeToQuotes(symbols, 1);
-/*
-            string[] symbols = new string[1];
-            symbols[0] = "EURUSD";
-            Feed.Server.SubscribeToQuotes(symbols, 1);
-*/
         }
 
         public void Stop()
@@ -123,7 +118,7 @@
                         string symbol = e.Tick.Symbol;
                         double volume = e.Tick.Asks[0].Volume;
 
-                        Console.WriteLine("Bying {0}: {1}", symbol, volume);
+                        Console.WriteLine("Buying {0}: {1}", symbol, volume);
 
                         Trade.Server.SendOrder
                         (

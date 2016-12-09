@@ -157,7 +157,7 @@ namespace Performance
 
                 if (timestampItem.type_ == titLog)
                 {
-                    fprintf(timestampItem.logger_->file_, "%s;%I64u;%s\r\n", timestampItem.id, timestampItem.timestamp, timestampItem.memo);
+                    fprintf(timestampItem.logger_->file_, "%s;%I64u;%s\n", timestampItem.id, timestampItem.timestamp, timestampItem.memo);
                     fflush(timestampItem.logger_->file_);
                 }
                 else if (timestampItem.type_ == titSignal)
@@ -177,7 +177,7 @@ namespace Performance
     {
     }
 
-    Logger::Logger(Service& service, const char* name, const char* description, const char* logDirectory) :
+    Logger::Logger(Service& service, const string& name, const string& description, const string& logDirectory) :
         service_(service),
         opened_(false)
     {
@@ -194,7 +194,7 @@ namespace Performance
         return opened_;
     }
 
-    void Logger::open(const char* name, const char* description, const char* logDirectory)
+    void Logger::open(const string& name, const string& description, const string& logDirectory)
     {
         if (opened_)
             throw runtime_error("Performance logger is already opened");
@@ -209,14 +209,14 @@ namespace Performance
         try
         {
             string path = string(logDirectory) + "\\" + name_ + ".log";
-            file_ = _fsopen(path.c_str(), "w", _SH_DENYWR);
+            file_ = _fsopen(path.c_str(), "wt", _SH_DENYWR);
 
             if (file_ == NULL)
                 throw runtime_error("Could not open log file : " + path);
 
             try
             {
-                fprintf(file_, "%s\r\n", description);
+                fprintf(file_, "%s\n", description);
                 fflush(file_);
 
                 opened_ = true;

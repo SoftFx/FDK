@@ -51,8 +51,8 @@
 
 #if LOG_PERFORMANCE            
             service_ = new Core.Performance.Service(0);
-            loggerOut_ = new Core.Performance.Logger(service_, name_ + ".t1", ".NET Out", ".\\Logs");
-            loggerIn_ = new Core.Performance.Logger(service_, name_ + ".t2", ".NET In", ".\\Logs");
+            loggerOut_ = new Core.Performance.Logger(service_, name_ + ".t3", name_ + " .NET Out", ".\\Logs");
+            loggerIn_ = new Core.Performance.Logger(service_, name_ + ".t0", name_ + " .NET In", ".\\Logs");
 #endif
             lock (synchronizer)
             {
