@@ -91,11 +91,11 @@ void CFixConnection::InitializeMessageHandlers()
 
 CFixConnection::CFixConnection(const string& name, const string& connectionString) : 
     name_(name),
-    m_receiver(nullptr),
 #ifdef LOG_PERFORMANCE
     loggerIn_(service_),
-    loggerOut_(service_)
+    loggerOut_(service_),
 #endif
+    m_receiver(nullptr)
 {   
     CFxParams parameters(connectionString);
     const string fixVersion = parameters.GetString(cFixVersion);
