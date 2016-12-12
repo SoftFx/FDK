@@ -266,7 +266,6 @@ copy /Y ..\..\External\Dll\SoftFX.Lrp.x64.pdb "$(TargetDir)"
     <ClInclude Include="Sal.Windows.h" />
     <ClInclude Include="Sal.Windows.hpp" />
     <ClInclude Include="Job.h" />
-    <ClInclude Include="Lock.h" />
     <ClInclude Include="Networking.h" />
     <ClInclude Include="Referenceable.h" />
     <ClInclude Include="SecureSocket.h" />

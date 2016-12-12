@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "CriticalSection.h"
+
 #ifdef _MSC_VER
 CCriticalSection::CCriticalSection()
 {

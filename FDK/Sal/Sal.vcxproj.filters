@@ -59,9 +59,6 @@
     <ClInclude Include="CriticalSection.h">
       <Filter>_Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Lock.h">
-      <Filter>_Headers</Filter>
-    </ClInclude>
     <ClInclude Include="Sal.Windows.hpp">
       <Filter>_Sources</Filter>
     </ClInclude>

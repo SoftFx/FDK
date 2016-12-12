@@ -39,7 +39,6 @@ SAL_API std::string FxCombinePath(const std::string& directory, const std::strin
 #include "CriticalSection.h"
 #include "Semaphore.h"
 #include "SharedExclusiveLock.h"
-#include "Lock.h"
 #include "Text.h"
 #include "DateTime.h"
 #include "TlsValue.h"

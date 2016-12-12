@@ -2,6 +2,7 @@
 #define PERFORMANCE_LOGGER_H
 
 #include <vector>
+#include <string>
 #include <stdio.h>
 #include <windows.h>
 
@@ -65,13 +66,13 @@ namespace Performance
     public:
 
         Logger(Service& service);
-        Logger(Service& service, const char* name, const char* description, const char* logDirectory);
+        Logger(Service& service, const std::string& name, const std::string& description, const std::string& logDirectory);
 
         ~Logger();
 
         bool opened() const;
 
-        void open(const char* name, const char* description, const char* logDirectory);
+        void open(const std::string& name, const std::string& description, const std::string& logDirectory);
 
         void close();
 

@@ -1,4 +1,6 @@
-﻿namespace SoftFX.Extended
+﻿using System;
+
+namespace SoftFX.Extended
 {
     /// <summary>
     /// Contains common server side methods of feed and trade.
@@ -18,6 +20,9 @@
         /// <returns>can not be null.</returns>
         public void SendTwoFactorResponse(TwoFactorReason reason, string otp)
         {
+            if (string.IsNullOrEmpty(otp))
+                throw new ArgumentException("One time password can not be null or empty string!", nameof(otp));
+
             this.Client.Handle.SendTwoFactorResponse(reason, otp);
         }
 
@@ -70,7 +75,7 @@
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <typeparam name="TClient"></typeparam>
     public class DataServer<TClient> : DataServer

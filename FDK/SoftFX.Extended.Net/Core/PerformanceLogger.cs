@@ -259,7 +259,7 @@ namespace SoftFX.Extended.Core.Performance
             ulong counter;
             QueryPerformanceCounter(out counter);
 
-            return counter * 1000000 / service_.frequency_;
+            return (ulong) ((double) counter * 1000000 / service_.frequency_);
         }
 
         [DllImport("Kernel32.dll")]

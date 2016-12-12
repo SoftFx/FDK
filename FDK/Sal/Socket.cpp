@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Socket.h"
-#include "Lock.h"
 #include <iostream>
 
 namespace

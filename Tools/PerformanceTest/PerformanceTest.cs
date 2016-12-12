@@ -1,4 +1,4 @@
-﻿namespace BenchmarkTest
+﻿namespace PerformanceTest
 {
     using System;
     using System.IO;
@@ -6,7 +6,6 @@
     using System.Threading;
     using SoftFX.Extended;
     using SoftFX.Extended.Events;
-    using SoftFX.Extended.Financial;
 
     public class Test : IDisposable
     {
@@ -26,11 +25,11 @@
             dataFeedBuilder.Address = address;
             dataFeedBuilder.Port = 5001;
             dataFeedBuilder.Username = username;
-            dataFeedBuilder.Password = password;
-            dataFeedBuilder.DecodeLogFixMessages = true;
-            dataFeedBuilder.FixLogDirectory = LogPath;
-            dataFeedBuilder.FixEventsFileName = string.Format("{0}.feed.events.log", username);
-            dataFeedBuilder.FixMessagesFileName = string.Format("{0}.feed.messages.log", username);
+            dataFeedBuilder.Password = password;            
+//            dataFeedBuilder.FixLogDirectory = LogPath;
+//            dataFeedBuilder.FixEventsFileName = string.Format("{0}.feed.events.log", username);
+//            dataFeedBuilder.FixMessagesFileName = string.Format("{0}.feed.messages.log", username);
+//            dataFeedBuilder.DecodeLogFixMessages = true;
 
             Feed.Initialize(dataFeedBuilder.ToString());
             Feed.SynchOperationTimeout = 60000;
@@ -49,10 +48,10 @@
             dataTradeBuilder.Port = 5002;
             dataTradeBuilder.Username = username;
             dataTradeBuilder.Password = password;
-            dataTradeBuilder.DecodeLogFixMessages = true;
-            dataTradeBuilder.FixLogDirectory = LogPath;
-            dataTradeBuilder.FixEventsFileName = string.Format("{0}.trade.events.log", username);
-            dataTradeBuilder.FixMessagesFileName = string.Format("{0}.trade.messages.log", username);
+//            dataTradeBuilder.FixLogDirectory = LogPath;
+//            dataTradeBuilder.FixEventsFileName = string.Format("{0}.trade.events.log", username);
+//            dataTradeBuilder.FixMessagesFileName = string.Format("{0}.trade.messages.log", username);
+//            dataTradeBuilder.DecodeLogFixMessages = true;
 
             Trade.Initialize(dataTradeBuilder.ToString());
             Trade.SynchOperationTimeout = 60000;
@@ -83,11 +82,6 @@
                 symbols[index] = info[index].Name;
 
             Feed.Server.SubscribeToQuotes(symbols, 1);
-/*
-            string[] symbols = new string[1];
-            symbols[0] = "EURUSD";
-            Feed.Server.SubscribeToQuotes(symbols, 1);
-*/
         }
 
         public void Stop()
@@ -118,12 +112,13 @@
 
                 if (tickCount - lastTickCount >= 1000)
                 {
-                    if (e.Tick.HasAsk)
-                    {
-                        string symbol = e.Tick.Symbol;
-                        double volume = e.Tick.Asks[0].Volume;
+                    string symbol = e.Tick.Symbol;
 
-                        Console.WriteLine("Bying {0}: {1}", symbol, volume);
+                    if (e.Tick.Asks.Length > 0 && e.Tick.Bids.Length > 0)
+                    {                        
+                        double volume = Math.Min(e.Tick.Asks[0].Volume, e.Tick.Bids[0].Volume);
+
+                        Console.WriteLine("Buying {0}: {1}", symbol, volume);
 
                         Trade.Server.SendOrder
                         (
@@ -194,15 +189,10 @@
         public void Dispose()
         {
             if (this.Trade != null)
-            {                
                 this.Trade.Dispose();
-                this.Trade = null;
-            }
+
             if (this.Feed != null)
-            {                
                 this.Feed.Dispose();
-                this.Feed = null;
-            }
         }
 
         DataTrade Trade;
