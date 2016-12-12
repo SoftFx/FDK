@@ -9,9 +9,9 @@
     {
         #region Creating and Converting
 
-        public static FxDataTrade Create(string connectionString)
+        public static FxDataTrade Create(string name, string connectionString)
         {
-            var handle = Native.TradeServer.Create(connectionString);
+            var handle = Native.TradeServer.Create(name, connectionString);
             return new FxDataTrade(handle);
         }
 

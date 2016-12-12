@@ -43,7 +43,7 @@ std::string CDllLibrary::GetProtocolType() const
 	return m_getProtocolType();
 }
 
-IConnection* CDllLibrary::CreateConnection(const string& connectionString) const
+IConnection* CDllLibrary::CreateConnection(const string& name, const string& connectionString) const
 {
-	return m_createConnection(connectionString);
+	return m_createConnection(name, connectionString);
 }

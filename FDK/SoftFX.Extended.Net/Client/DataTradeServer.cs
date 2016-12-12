@@ -33,7 +33,7 @@
             return handle.GetAccountInfo(timeoutInMilliseconds);
         }
 
-        #region SendOrder
+#region SendOrder
 
         /// <summary>
         /// The method opens a new order.
@@ -122,13 +122,21 @@
         /// <returns>A new trade record; can not be null.</returns>
         TradeRecord SendOrderEx(string operationId, string symbol, TradeCommand command, TradeRecordSide side, double price, double volume, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic, int timeoutInMilliseconds)
         {
+#if LOG_PERFORMANCE
+            ulong timestamp = Client.loggerIn_.GetTimestamp();
+#endif
             var order = this.Client.DataTradeHandle.OpenNewOrder(operationId, symbol, command, side, price, volume, stopLoss, takeProfit, expiration, comment ?? string.Empty, tag ?? string.Empty, magic, timeoutInMilliseconds);
-            return new TradeRecord(this.Client, order);
+            TradeRecord tradeRecord = new TradeRecord(this.Client, order);
+
+#if LOG_PERFORMANCE
+            Client.loggerIn_.LogTimestamp(tradeRecord.ClientOrderId, timestamp, "NewOrder");
+#endif
+            return tradeRecord;
         }
 
-        #endregion
+#endregion
 
-        #region DeletePendingOrder
+#region DeletePendingOrder
 
         /// <summary>
         /// The method deletes an existing pending order.
@@ -170,9 +178,9 @@
             this.Client.DataTradeHandle.DeleteOrder(operationId, orderId, clientId, side, timeoutInMilliseconds);
         }
 
-        #endregion
+#endregion
 
-        #region Modify
+#region Modify
 
         /// <summary>
         /// The method modifies an existing trade record.
@@ -254,9 +262,9 @@
             return new TradeRecord(this.Client, order);
         }
 
-        #endregion
+#endregion
 
-        #region ClosePosition methods
+#region ClosePosition methods
 
         /// <summary>
         /// The method closes an existing position.
@@ -312,9 +320,9 @@
             return this.Client.DataTradeHandle.CloseOrder(operationId, orderId, null, timeoutInMilliseconds);
         }
 
-        #endregion
+#endregion
 
-        #region ClosePositionPartially methods
+#region ClosePositionPartially methods
 
         /// <summary>
         /// The method closes an existing market order.
@@ -377,7 +385,7 @@
             return this.Client.DataTradeHandle.CloseOrder(operationId, orderId, volume, timeoutInMilliseconds);
         }
 
-        #endregion
+#endregion
 
         /// <summary>
         /// The method closes by two orders.
@@ -536,6 +544,6 @@
         public void UnsubscribeTradeTransactionReportsEx(int timeoutInMilliseconds)
         {
             this.Client.DataTradeHandle.UnsubscribeTradeTransactionReports(timeoutInMilliseconds);
-        }
+        }        
     }
 }

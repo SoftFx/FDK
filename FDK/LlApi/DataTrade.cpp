@@ -8,8 +8,8 @@
 typedef CClient __super;
 #endif
 
-CDataTrade::CDataTrade(const string& connectionString)
-    : CClient(m_cache, connectionString)
+CDataTrade::CDataTrade(const string& name, const string& connectionString)
+    : CClient(m_cache, name, connectionString)
     , m_accountType(FxAccountType_None)
     , m_cache(*this)
 {

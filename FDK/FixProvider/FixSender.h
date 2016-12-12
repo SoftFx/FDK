@@ -7,8 +7,11 @@ class CFixSender : public ISender
 {
 public:
     CFixSender();
-    CFixSender(const FIX::SessionID& sessionId);
+    void SessionID(const FIX::SessionID& sessionId);
     void SendVersion(const CFixVersion& version);
+#ifdef LOG_PERFORMANCE
+    void setLogger(Performance::Logger* logger);
+#endif
 public:
     virtual void VSendTwoFactorResponse(const FxTwoFactorReason reason, const std::string& otp);
     virtual void VSendGetCurrencies(const string& id);
@@ -37,6 +40,9 @@ private:
     void SendMessage(FIX::Message& message);
 private:
     FIX::SessionID m_sessionID;
-    CFixVersion m_version;
+    CFixVersion m_version;    
+#ifdef LOG_PERFORMANCE
+    Performance::Logger* logger_;
+#endif
 };
 #endif

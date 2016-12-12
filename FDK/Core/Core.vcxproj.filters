@@ -203,6 +203,9 @@
     <ClInclude Include="FxStatusGroupInfo.h">
       <Filter>Types\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="PerformanceLogger.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -318,6 +321,9 @@
     </ClCompile>
     <ClCompile Include="FxStatusGroupInfo.cpp">
       <Filter>Types\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="PerformanceLogger.cpp">
+      <Filter>_Sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

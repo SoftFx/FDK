@@ -9,15 +9,16 @@ const string cExternalSynchCall = "ES";
 const string cInternalASynchCall = "IA";
 
 
-CClient::CClient(CDataCache& cache, const string& connectionString)
+CClient::CClient(CDataCache& cache, const string& name, const string& connectionString)
     : m_sender(nullptr)
     , m_cache(cache)
+    , name_(name)
     , m_state(ClientState_Stopped)
     , m_connection(nullptr)
     , m_afterLogonInvoked(false)
 {
     m_stateEvent = CreateEvent(nullptr, TRUE, FALSE, nullptr);
-    m_connection = CreateConnection(connectionString);
+    m_connection = CreateConnection(name, connectionString);
     m_connection->VReceiver(this);
     m_sender = m_connection->VSender();
 }
@@ -28,6 +29,11 @@ CClient::~CClient()
     SetEvent(m_stateEvent);
     CloseHandle(m_stateEvent);
     m_stateEvent = nullptr;
+}
+
+string CClient::getName()
+{
+    return name_;
 }
 
 bool CClient::Start()

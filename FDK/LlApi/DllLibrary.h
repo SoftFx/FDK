@@ -8,10 +8,10 @@ public:
 public:
 	bool IsAdapter() const;
 	string GetProtocolType() const;
-	IConnection* CreateConnection(const string& connectionString) const;
+	IConnection* CreateConnection(const string& name, const string& connectionString) const;
 private:
 	typedef const char* (*GetProtocolTypeFunc)();
-	typedef IConnection* (*CreateConnectionFunc)(const string& connectionString);
+	typedef IConnection* (*CreateConnectionFunc)(const string& name, const string& connectionString);
 private:
 	HMODULE m_module;
 	GetProtocolTypeFunc m_getProtocolType;

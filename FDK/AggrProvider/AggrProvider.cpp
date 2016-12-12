@@ -8,12 +8,12 @@ const char* GetProtocolType()
 {
 	return "Aggr";
 }
-IConnection* CreateConnection(const std::string& connectionString)
+IConnection* CreateConnection(const std::string& name, const std::string& connectionString)
 {
-	IConnection* result = CreateAggrConnection(connectionString);
+	IConnection* result = CreateAggrConnection(name, connectionString);
 	return result;
 }
-IConnection* CreateAggrConnection(const std::string& connectionString)
+IConnection* CreateAggrConnection(const std::string& name, const std::string& connectionString)
 {
 	IConnection* result = new CAggrConnection(connectionString);
 	return result;

@@ -32,7 +32,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;_DEBUG</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;_DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -124,6 +124,7 @@
     <Compile Include="Financial\State\Processor.cs" />
     <Compile Include="Financial\State\UpdateHandler.cs" />
     <Compile Include="Library\DeviceIdGenerator.cs" />
+    <Compile Include="Core\PerformanceLogger.cs" />
     <Compile Include="Resources\EmbeddedModules.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

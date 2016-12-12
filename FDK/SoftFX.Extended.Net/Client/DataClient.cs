@@ -21,8 +21,14 @@
 
         #region Construction
 
-        internal DataClient()
+        static DataClient()
         {
+            Native.Initialize();
+        }
+
+        internal DataClient(string name)
+        {
+            this.name_ = name;
             this.SynchOperationTimeout = 60000;
         }
 
@@ -43,6 +49,11 @@
             if (connectionString == null)
                 throw new ArgumentNullException(nameof(connectionString), "Connection string can not be null.");
 
+#if LOG_PERFORMANCE            
+            service_ = new Core.Performance.Service(0);
+            loggerOut_ = new Core.Performance.Logger(service_, name_ + ".t1", ".NET Out", ".\\Logs");
+            loggerIn_ = new Core.Performance.Logger(service_, name_ + ".t2", ".NET In", ".\\Logs");
+#endif
             lock (synchronizer)
             {
                 if (this.IsStarted)
@@ -62,11 +73,6 @@
         {
         }
 
-        static DataClient()
-        {
-            Native.Initialize();
-        }
-
         #endregion
 
         #region Properties
@@ -78,6 +84,18 @@
                 return this.handle;
             }
         }
+
+        /// <summary>
+        /// Name
+        /// </summary>
+        public string Name
+        {
+            get { return name_;  }
+        }
+
+        /// <summary>
+        /// </summary>
+        protected string name_;
 
         internal abstract DataServer DataServer { get; }
 
@@ -348,6 +366,46 @@
         /// <summary>
         /// Releases all unmanaged resources.
         /// </summary>
-        public abstract void Dispose();
+        public virtual void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Releases all unmanaged resources.
+        /// </summary>
+        ~DataClient()
+        {
+            if (!Environment.HasShutdownStarted)
+                this.Dispose(false);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="disposing"></param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+#if LOG_PERFORMANCE
+                if (loggerOut_ != null)
+                    loggerOut_.Dispose();
+
+                if (loggerIn_ != null)
+                    loggerIn_.Dispose();
+
+                if (service_ != null)
+                    service_.Dispose();
+#endif
+            }
+        }
+
+#if LOG_PERFORMANCE
+        internal Core.Performance.Service service_;
+        internal Core.Performance.Logger loggerOut_;
+        internal Core.Performance.Logger loggerIn_;
+#endif
     }
 }

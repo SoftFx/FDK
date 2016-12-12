@@ -15,8 +15,10 @@ class CClient : public CFxQueue, public IReceiver
 {
 public:
 
-    CClient(CDataCache& cache, const string& connectionString);
+    CClient(CDataCache& cache, const string& name, const string& connectionString);
     virtual ~CClient();
+
+    string getName();
 
     bool Start();    
 
@@ -77,6 +79,7 @@ protected:
     virtual void AfterLogon();    
 
     CDataCache& m_cache;
+    string name_;
     ClientState m_state;
     HANDLE m_stateEvent;
     CIdGenerator m_idGenerator;

@@ -8,7 +8,7 @@ class CDataTrade : public CClient
 {
 public:
 
-    CDataTrade(const string& connectionString);
+    CDataTrade(const string& name, const string& connectionString);
 
     const CDataTradeCache& Cache()const;
     CDataTradeCache& Cache();
