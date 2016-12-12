@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "CriticalSection.h"
-#include "Lock.h"
 #include "Networking.h"
 #include "Socket.h"
 #include "SimpleSocket.h"

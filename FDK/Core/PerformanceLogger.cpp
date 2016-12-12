@@ -216,7 +216,7 @@ namespace Performance
 
             try
             {
-                fprintf(file_, "%s\n", description);
+                fprintf(file_, "%s\n", description.c_str());
                 fflush(file_);
 
                 opened_ = true;
@@ -304,6 +304,6 @@ namespace Performance
         LARGE_INTEGER counter;
         QueryPerformanceCounter(&counter);
 
-        return (uint64_t) (counter.QuadPart * 1000000 / service_.timerFrequency_);
-    }    
+        return (uint64_t) ((double) counter.QuadPart * 1000000 / service_.timerFrequency_);
+    }
 }

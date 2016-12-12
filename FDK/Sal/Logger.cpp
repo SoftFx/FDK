@@ -2,7 +2,8 @@
 #pragma warning (disable : 4251) // 'identifier' : class 'type' needs to have dll-interface to be used by clients of class 'type2'
 #include "Logger.h"
 #include "Delegate.h"
-#include "Lock.h"
+#include "CriticalSection.h"
+
 namespace
 {
 	CCriticalSection gSynchronizer;

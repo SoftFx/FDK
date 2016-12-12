@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "CallsWaiter.h"
-#include "Lock.h"
 
 CCallsWaiter::CCallsWaiter() : m_isWaiting(false), m_counter(), m_event(0, 1)
 {

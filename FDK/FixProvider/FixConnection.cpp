@@ -145,23 +145,30 @@ CFixConnection::CFixConnection(const string& name, const string& connectionStrin
     FIX::SessionID sessionID(fixVersion, senderCompId, targetCompId);
     m_sessionID = sessionID;
     m_sender.SessionID(sessionID);    
-    m_settings.set(sessionID, sessionOptions);
-
-    const string fixLogDirectory = parameters.GetString(cFixLogDirectory);
-    const string fixEventsFileName = parameters.GetString(cFixEventsFileName);
-    const string fixMessagesFileName = parameters.GetString(cFixMessagesFileName);
-    const string excludeMessagesFromLogs = parameters.GetString(cExcludeMessagesFromLogs);
+    m_settings.set(sessionID, sessionOptions);   
 
     // create default settings
     m_settings.set(FIX::Dictionary());
-    m_logFactory = new FIX::FileLogFactory(fixLogDirectory, fixEventsFileName, fixMessagesFileName, excludeMessagesFromLogs, decodeLogFixMessages);
+
+    const string fixLogDirectory = parameters.GetString(cFixLogDirectory);
+
+    if (fixLogDirectory.length())
+    {
+        const string fixEventsFileName = parameters.GetString(cFixEventsFileName);
+        const string fixMessagesFileName = parameters.GetString(cFixMessagesFileName);
+        const string excludeMessagesFromLogs = parameters.GetString(cExcludeMessagesFromLogs);
+
+        m_logFactory = new FIX::FileLogFactory(fixLogDirectory, fixEventsFileName, fixMessagesFileName, excludeMessagesFromLogs, decodeLogFixMessages);
+    }
+    else
+        m_logFactory = new NullLogFactory();
 
     m_username = parameters.GetString(cUsername);
     m_password = parameters.GetString(cPassword);
     m_deviceId = parameters.GetString(cDeviceId);
     m_appSessionId = parameters.GetString(cAppSessionId);
 
-    m_initiator = new FIX::SocketInitiator(*this, m_messageStorefactory, m_settings, *m_logFactory, mode);
+    m_initiator = new FIX::SocketInitiator(*this, m_messageStorefactory, m_settings, *m_logFactory, mode);        
 }
 
 CFixConnection::~CFixConnection()

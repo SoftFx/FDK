@@ -25,7 +25,7 @@ namespace PerformanceTest
                 string username = args[1];
                 string password = args[2];
 
-                Console.WriteLine("Benchmark Test");
+                Console.WriteLine("Performance Test");
 
                 Test test = new Test(address, username, password);
 
