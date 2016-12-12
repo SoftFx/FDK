@@ -1,8 +1,5 @@
 #include "stdafx.h"
 #include "EventImpl.h"
-#include "Lock.h"
-
-
 
 EventInfoEntry::EventInfoEntry() : Previous(), Next(), m_counter()
 {
