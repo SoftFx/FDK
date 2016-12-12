@@ -66,6 +66,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="SoftFX.Extended.Net">
+      <HintPath>..\..\..\FRE\SoftFX.Extended.Net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -75,16 +78,10 @@
   <ItemGroup>
     <None Include="app.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\FDK\SoftFX.Extended.Net\SoftFX.Extended.Net.csproj">
-      <Project>{d15bba76-552e-4c6d-ae64-fd6f30ccf770}</Project>
-      <Name>SoftFX.Extended.Net</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>xcopy /Y "$(TargetPath)" "..\..\..\FRE\BenchmarkTest.exe*"
+xcopy /Y "$(OutDir)$(TargetName).pdb" "..\..\..\FRE\BenchmarkTest.pdb*"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
