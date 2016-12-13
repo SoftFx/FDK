@@ -55,7 +55,7 @@ namespace
             throw logic_error("Invalid string to convert to UTF-8");
 
         return dest;
-    }    
+    }
 }
 
 CFixSender::CFixSender()
@@ -101,7 +101,8 @@ void CFixSender::VSendTwoFactorResponse(const FxTwoFactorReason reason, const st
 {
     FIX44::TwoFactorLogon message;
     message.SetTwoFactorReason('0' + (char)reason);
-    message.SetOneTimePassword(otp);
+    if (!otp.empty())
+        message.SetOneTimePassword(otp);
     return SendMessage(message);
 }
 

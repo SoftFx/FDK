@@ -20,9 +20,6 @@ namespace SoftFX.Extended
         /// <returns>can not be null.</returns>
         public void SendTwoFactorResponse(TwoFactorReason reason, string otp)
         {
-            if (string.IsNullOrEmpty(otp))
-                throw new ArgumentException("One time password can not be null or empty string!", nameof(otp));
-
             this.Client.Handle.SendTwoFactorResponse(reason, otp);
         }
 
