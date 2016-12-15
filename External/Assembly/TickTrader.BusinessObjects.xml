@@ -351,6 +351,14 @@
             <param name="BalanceCurrency">Balance currency</param>
             <returns>New account request</returns>
         </member>
+        <member name="M:TickTrader.BusinessObjects.Requests.ActivateOrderRequest.Create(System.Int64,TickTrader.BusinessObjects.ActivationTypes)">
+            <summary>
+            Create activate order request with required parameters.
+            </summary>
+            <param name="OrderId">Order Id to activate</param>
+            <param name="Activation">Order activation type</param>         
+            <returns>Activate order request</returns>
+        </member>
         <member name="M:TickTrader.BusinessObjects.Requests.ActivateOrderRequest.Create(System.Int64,TickTrader.BusinessObjects.ActivationTypes,System.Nullable{System.Decimal},System.Nullable{System.Decimal})">
             <summary>
             Create activate order request with required parameters.
@@ -820,15 +828,15 @@
             <param name="IsPrimary">Desired symbol primary flag</param>
             <returns>New symbol request</returns>
         </member>
-        <member name="T:TickTrader.BusinessObjects.Requests.TradingSessionStatus">
+        <member name="T:TickTrader.BusinessObjects.TradingSessionStatus">
             <summary>
             Trading session status
             </summary>
         </member>
-        <member name="F:TickTrader.BusinessObjects.Requests.TradingSessionStatus.Closed">
+        <member name="F:TickTrader.BusinessObjects.TradingSessionStatus.Closed">
             <summary>Trading session is closed</summary>
         </member>
-        <member name="F:TickTrader.BusinessObjects.Requests.TradingSessionStatus.Opened">
+        <member name="F:TickTrader.BusinessObjects.TradingSessionStatus.Opened">
             <summary>Trading session is opened</summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeConfiguration.RolloverTime">
@@ -1441,6 +1449,11 @@
         <member name="P:TickTrader.BusinessObjects.SymbolInfo.Schedule">
             <summary>
             Gets or sets schedule
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.ScheduleId">
+            <summary>
+            Symbol scheduler Id
             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.SymbolInfo.DefaultSlippage">

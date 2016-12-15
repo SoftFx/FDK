@@ -1,4 +1,6 @@
-﻿namespace SoftFX.Extended
+﻿using System;
+
+namespace SoftFX.Extended
 {
     /// <summary>
     /// Contains common server side methods of feed and trade.
@@ -70,7 +72,7 @@
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <typeparam name="TClient"></typeparam>
     public class DataServer<TClient> : DataServer
