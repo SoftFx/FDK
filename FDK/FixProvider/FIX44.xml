@@ -252,6 +252,7 @@
    <field name='HandlInst' required='N' />
    <field name='MinQty' required='N' />
    <field name='MaxFloor' required='N' />
+   <field name='HiddenQty' required='N' />
    <field name='PositionEffect' required='N' />
    <field name='MaxShow' required='N' />
    <field name='BookingType' required='N' />
@@ -444,6 +445,7 @@
    <field name='ExecInst' required='N' />
    <field name='MinQty' required='N' />
    <field name='MaxFloor' required='N' />
+   <field name='HiddenQty' required='N' />
    <field name='ExDestination' required='N' />
    <group name='NoTradingSessions' required='N'>
     <field name='TradingSessionID' required='N' />
@@ -678,6 +680,7 @@
    <field name='ExecInst' required='N' />
    <field name='MinQty' required='N' />
    <field name='MaxFloor' required='N' />
+   <field name='HiddenQty' required='N' />
    <field name='ExDestination' required='N' />
    <group name='NoTradingSessions' required='N'>
     <field name='TradingSessionID' required='N' />
@@ -7780,5 +7783,6 @@
   <field number='10170' name='StatusGroupID' type='STRING'/>
   <field number='10171' name='NoStatusGroups' type='NUMINGROUP' />
   <field number='10172' name='CompReqID' type='STRING' />
+  <field number='10173' name='HiddenQty' type='QTY' />
 </fields>
 </fix>

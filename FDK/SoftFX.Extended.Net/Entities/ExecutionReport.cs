@@ -52,6 +52,11 @@
         public double LeavesVolume { get; internal set; }
 
         /// <summary>
+        /// Gets HiddenVolume.
+        /// </summary>
+        public double? HiddenVolume { get; internal set; }
+
+        /// <summary>
         /// Get LastQty = 32 field.
         /// </summary>
         public double? TradeAmount { get; internal set; }

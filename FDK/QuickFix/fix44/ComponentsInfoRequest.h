@@ -15,13 +15,6 @@ namespace FIX44
     ComponentsInfoRequest(const ComponentsInfoRequest& m) : Message(m) {}
     static FIX::MsgType MsgType() { return FIX::MsgType("U1018"); }
 
-    ComponentsInfoRequest(
-      const FIX::CompReqID& aCompReqID )
-    : Message(MsgType())
-    {
-      set(aCompReqID);
-    }
-
     FIELD_SET(*this, FIX::CompReqID);
     FIELD_SET_EX(std::string, CompReqID);
     FIELD_SET(*this, FIX::ClientQuoteHistoryVersion);

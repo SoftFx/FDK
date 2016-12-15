@@ -13,7 +13,8 @@ public:
     double ExecutedVolume;
     Nullable<double> InitialVolume;
     double LeavesVolume;
-    Nullable<double> TradeAmount;
+    Nullable<double> HiddenVolume;
+    Nullable<double> TradeAmount;    
     Nullable<double> AveragePrice;
     Nullable<double> Price;
     double TradePrice;

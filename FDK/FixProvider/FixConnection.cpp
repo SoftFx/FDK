@@ -668,6 +668,7 @@ void CFixConnection::OnExecution(const CFixExecutionReport& message)
     report.ExecutedVolume = message.GetFxExecutedVolume();
     report.InitialVolume = message.GetFxInitialVolume();
     report.LeavesVolume = message.GetFxLeavesVolume();
+    report.HiddenVolume = message.GetFxHiddenVolume();
     report.TradeAmount = message.GetFxTradeAmount();
     report.AveragePrice = message.GetFxAveragePrice();
     report.Price = message.GetFxPrice();

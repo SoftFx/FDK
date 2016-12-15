@@ -15,6 +15,7 @@
         public double? TakeProfit { get; set; }
         public double InitialVolume { get; set; }
         public double Volume { get; set; }
+        public double? HiddenVolume { get; set; }
         public double Commission { get; set; }
         public double AgentCommission { get; set; }
         public double Swap { get; set; }
@@ -37,7 +38,7 @@
             this.Tag = string.Empty;
         }
 
-        public FxOrder(string id, string clientId, string symbol, int type, TradeRecordSide side, double? newPrice, double volume, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic)
+        public FxOrder(string id, string clientId, string symbol, int type, TradeRecordSide side, double? newPrice, double volume, double? hiddenVolume, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic)
             : this()
         {
             this.OrderId = id;
@@ -49,6 +50,7 @@
             this.Price = 0;
             this.NewPrice = newPrice;
             this.Volume = volume;
+            this.HiddenVolume = hiddenVolume;
             this.StopLoss = stopLoss;
             this.TakeProfit = takeProfit;
             this.Expiration = expiration;
@@ -57,7 +59,7 @@
             this.Magic = magic;
         }
 
-        public FxOrder(string symbol, int type, TradeRecordSide side, double price, double volume, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic)
+        public FxOrder(string symbol, int type, TradeRecordSide side, double price, double volume, double? hiddenVolume, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic)
             : this()
         {
             this.Symbol = symbol;
@@ -65,6 +67,7 @@
             this.Side = side;
             this.Price = price;
             this.Volume = volume;
+            this.HiddenVolume = hiddenVolume;
             this.StopLoss = stopLoss;
             this.TakeProfit = takeProfit;
             this.Expiration = expiration;

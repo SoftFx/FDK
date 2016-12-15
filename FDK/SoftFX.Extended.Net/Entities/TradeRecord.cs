@@ -23,6 +23,7 @@
             this.TakeProfit = fxOrder.TakeProfit;
             this.InitialVolume = fxOrder.InitialVolume;
             this.Volume = fxOrder.Volume;
+            this.HiddenVolume = fxOrder.HiddenVolume;
             this.Commission = fxOrder.Commission;
             this.Swap = fxOrder.Swap;
             this.Profit = fxOrder.Profit;
@@ -74,6 +75,11 @@
         /// Gets volume of the order.
         /// </summary>
         public double Volume { get; internal set; }
+
+        /// <summary>
+        /// Gets hidden volume of the order.
+        /// </summary>
+        public double? HiddenVolume { get; internal set; }
 
         /// <summary>
         /// Initially requested order size.
@@ -375,9 +381,9 @@
         /// <param name="newTag">A new comment</param>
         /// <param name="newMagic">A new comment</param>
         /// <returns>A modified trade record.</returns>
-        public TradeRecord Modify(double? newActivationPrice = null, double? newStopLoss = null, double? newTakeProfit = null, DateTime? newExpirationTime = null, string newComment = null, string newTag = null, int? newMagic = null)
+        public TradeRecord Modify(double? newHiddenVolume, double? newActivationPrice = null, double? newStopLoss = null, double? newTakeProfit = null, DateTime? newExpirationTime = null, string newComment = null, string newTag = null, int? newMagic = null)
         {
-            var result = this.ModifyEx(newActivationPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, newTag, newMagic, this.DataTrade.SynchOperationTimeout);
+            var result = this.ModifyEx(newHiddenVolume, newActivationPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, newTag, newMagic, this.DataTrade.SynchOperationTimeout);
             return result;
         }
 
@@ -393,9 +399,9 @@
         /// <param name="newMagic">A new comment</param>
         /// <param name="timeoutInMilliseconds">Timeout of the operation in milliseconds.</param>
         /// <returns>A modified trade record.</returns>
-        public TradeRecord ModifyEx(double? newActivationPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpirationTime, string newComment, string newTag, int? newMagic, int timeoutInMilliseconds)
+        public TradeRecord ModifyEx(double? newHiddenVolume, double? newActivationPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpirationTime, string newComment, string newTag, int? newMagic, int timeoutInMilliseconds)
         {
-            var result = this.DataTrade.Server.ModifyTradeRecordEx(this.OrderId, this.Symbol, this.Type, this.Side, this.Volume, newActivationPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, newTag, newMagic, timeoutInMilliseconds);
+            var result = this.DataTrade.Server.ModifyTradeRecordEx(this.OrderId, this.Symbol, this.Type, this.Side, this.Volume, newHiddenVolume, newActivationPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, newTag, newMagic, timeoutInMilliseconds);
             return result;
         }
 

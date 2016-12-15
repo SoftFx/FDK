@@ -760,6 +760,7 @@ namespace
 		WriteNullDouble(arg.NewPrice, buffer);
 		WriteDouble(arg.InitialVolume, buffer);
 		WriteDouble(arg.Volume, buffer);
+		WriteNullDouble(arg.HiddenVolume, buffer);
 		WriteNullDouble(arg.TakeProfit, buffer);
 		WriteNullDouble(arg.StopLoss, buffer);
 		WriteDouble(arg.Commission, buffer);
@@ -787,6 +788,7 @@ namespace
 		result.NewPrice = ReadNullDouble(buffer);
 		result.InitialVolume = ReadDouble(buffer);
 		result.Volume = ReadDouble(buffer);
+		result.HiddenVolume = ReadNullDouble(buffer);
 		result.TakeProfit = ReadNullDouble(buffer);
 		result.StopLoss = ReadNullDouble(buffer);
 		result.Commission = ReadDouble(buffer);
@@ -1162,6 +1164,7 @@ namespace
 		WriteDouble(arg.ExecutedVolume, buffer);
 		WriteNullDouble(arg.InitialVolume, buffer);
 		WriteDouble(arg.LeavesVolume, buffer);
+		WriteNullDouble(arg.HiddenVolume, buffer);
 		WriteNullDouble(arg.TradeAmount, buffer);
 		WriteDouble(arg.Commission, buffer);
 		WriteDouble(arg.AgentCommission, buffer);
@@ -1198,6 +1201,7 @@ namespace
 		result.ExecutedVolume = ReadDouble(buffer);
 		result.InitialVolume = ReadNullDouble(buffer);
 		result.LeavesVolume = ReadDouble(buffer);
+		result.HiddenVolume = ReadNullDouble(buffer);
 		result.TradeAmount = ReadNullDouble(buffer);
 		result.Commission = ReadDouble(buffer);
 		result.AgentCommission = ReadDouble(buffer);

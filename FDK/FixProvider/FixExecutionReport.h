@@ -7,6 +7,7 @@ public:
     double GetFxExecutedVolume() const;
     Nullable<double> GetFxInitialVolume() const;
     double GetFxLeavesVolume() const;
+    Nullable<double> GetFxHiddenVolume() const;
     Nullable<double> GetFxTradeAmount() const;
     Nullable<double> GetFxAveragePrice() const;
     Nullable<double> GetFxPrice() const;

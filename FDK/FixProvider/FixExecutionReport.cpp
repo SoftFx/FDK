@@ -23,6 +23,15 @@ double CFixExecutionReport::GetFxLeavesVolume()const
     this->TryGetLeavesQty(result);
     return result;
 }
+Nullable<double> CFixExecutionReport::GetFxHiddenVolume()const
+{
+    double result = 0;
+    if (TryGetHiddenQty(result))
+    {
+        return result;
+    }
+    return Nullable<double>();
+}
 Nullable<double> CFixExecutionReport::GetFxTradeAmount()const
 {
     double result = 0;

@@ -20,6 +20,7 @@ public:
     Nullable<double> TakeProfit;
     double InitialVolume;
     double Volume;
+    Nullable<double> HiddenVolume;
     double Commission;
     double AgentCommission;
     double Swap;

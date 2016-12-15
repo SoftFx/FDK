@@ -282,6 +282,11 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
     }
     message.SetOrderQty(required.Volume);
 
+    if (required.HiddenVolume.HasValue())
+    {
+        message.SetHiddenQty(required.HiddenVolume.Value());
+    }
+
     if (required.TakeProfit.HasValue())
     {
         message.SetTakeProfit(*required.TakeProfit);
@@ -484,6 +489,10 @@ void CFixSender::VSendModifyOrder(const string& id, const CFxOrder& request)
     if (request.StopLoss.HasValue())
     {
         message.SetStopLoss(*request.StopLoss);
+    }
+    if (request.HiddenVolume.HasValue())
+    {
+        message.SetHiddenQty(request.HiddenVolume.Value());
     }
     if (request.TakeProfit.HasValue())
     {
