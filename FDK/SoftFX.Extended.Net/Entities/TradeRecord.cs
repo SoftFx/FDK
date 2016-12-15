@@ -381,7 +381,7 @@
         /// <param name="newTag">A new comment</param>
         /// <param name="newMagic">A new comment</param>
         /// <returns>A modified trade record.</returns>
-        public TradeRecord Modify(double? newHiddenVolume, double? newActivationPrice = null, double? newStopLoss = null, double? newTakeProfit = null, DateTime? newExpirationTime = null, string newComment = null, string newTag = null, int? newMagic = null)
+        public TradeRecord Modify(double? newHiddenVolume, double? newActivationPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpirationTime, string newComment, string newTag, int? newMagic)
         {
             var result = this.ModifyEx(newHiddenVolume, newActivationPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, newTag, newMagic, this.DataTrade.SynchOperationTimeout);
             return result;

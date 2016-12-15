@@ -203,8 +203,8 @@
         /// <param name="newMagic">A new magic.</param>
         /// <returns>A modified trade record.</returns>
         public TradeRecord ModifyTradeRecord(string orderId, string symbol, TradeRecordType type, TradeRecordSide side,
-                                            double volume, double? hiddenVolume, double? newActivationPrice = null, double? newStopLoss = null, double? newTakeProfit = null, DateTime? newExpiration = null,
-                                            string newComment = null, string newTag = null, int? newMagic = null)
+                                            double volume, double? hiddenVolume, double? newActivationPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpiration,
+                                            string newComment, string newTag, int? newMagic)
         {
             return this.ModifyTradeRecordEx(orderId, symbol, type, side, volume, hiddenVolume, newActivationPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, this.Client.SynchOperationTimeout);
         }
@@ -253,8 +253,8 @@
         /// <param name="newMagic">A new magic.</param>
         /// <returns>A modified trade record.</returns>
         public TradeRecord ModifyTradeRecordEx(string operationId, string orderId, string symbol, TradeRecordType type, TradeRecordSide side,
-                                        double volume, double? hiddenVolume, double? newActivationPrice = null, double? newStopLoss = null, double? newTakeProfit = null, DateTime? newExpiration = null,
-                                        string newComment = null, string newTag = null, int? newMagic = null)
+                                        double volume, double? hiddenVolume, double? newActivationPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpiration,
+                                        string newComment, string newTag, int? newMagic)
         {
             return this.ModifyTradeRecordEx(operationId, orderId, "<OrderID>", symbol, type, side, volume, hiddenVolume, newActivationPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, this.Client.SynchOperationTimeout);
         }
