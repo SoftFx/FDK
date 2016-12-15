@@ -26,7 +26,7 @@
             }
             it.Dispose();
             Console.WriteLine("Reports number = {0}", reportsNumber);
-            var position = this.Trade.Server.SendOrder("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 0, 1000000, null, null, null, null, null, null);
+            var position = this.Trade.Server.SendOrder("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 0, 1000000, null, null, null, null, null, null, null);
             var result = position.Close();
             Thread.Sleep(1000);
         }
