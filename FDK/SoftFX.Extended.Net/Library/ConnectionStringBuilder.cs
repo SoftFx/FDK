@@ -23,6 +23,7 @@
                     element.SetValue(this, string.Empty, null);
             }
             DeviceId = "";
+            AppId = "";
             AppSessionId = "";
         }
 
@@ -45,6 +46,12 @@
         /// Can not be modified, when the data feed is running.
         /// </summary>
         public string DeviceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the application ID of the data feed instance.
+        /// Can not be modified, when the data feed is running.
+        /// </summary>
+        public string AppId { get; set; }
 
         /// <summary>
         /// Gets or sets the application session ID of the data feed instance.

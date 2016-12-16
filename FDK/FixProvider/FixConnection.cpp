@@ -49,6 +49,7 @@ namespace
     const string cUsername = "Username";
     const string cPassword = "Password";
     const string cDeviceId = "DeviceId";
+    const string cAppId = "AppId";
     const string cAppSessionId = "AppSessionId";
     const string cSecureConnection = "SecureConnection";
     const string cFixLogDirectory = "FixLogDirectory";
@@ -96,7 +97,7 @@ CFixConnection::CFixConnection(const string& name, const string& connectionStrin
     loggerOut_(service_),
 #endif
     m_receiver(nullptr)
-{   
+{      
     CFxParams parameters(connectionString);
     const string fixVersion = parameters.GetString(cFixVersion);
 
@@ -144,8 +145,8 @@ CFixConnection::CFixConnection(const string& name, const string& connectionStrin
 
     FIX::SessionID sessionID(fixVersion, senderCompId, targetCompId);
     m_sessionID = sessionID;
-    m_sender.SessionID(sessionID);    
-    m_settings.set(sessionID, sessionOptions);   
+    m_sender.SessionID(sessionID);        
+    m_settings.set(sessionID, sessionOptions);       
 
     // create default settings
     m_settings.set(FIX::Dictionary());
@@ -166,6 +167,8 @@ CFixConnection::CFixConnection(const string& name, const string& connectionStrin
     m_username = parameters.GetString(cUsername);
     m_password = parameters.GetString(cPassword);
     m_deviceId = parameters.GetString(cDeviceId);
+    m_appId = parameters.GetString(cAppId);
+    m_sender.AppId(m_appId);
     m_appSessionId = parameters.GetString(cAppSessionId);
 
     m_initiator = new FIX::SocketInitiator(*this, m_messageStorefactory, m_settings, *m_logFactory, mode);        
@@ -257,6 +260,7 @@ void CFixConnection::onLogon(const Message& message, const SessionID& /*sessionI
     logon.TryGetTwoFactorAuthFlag(twofactor);
 
     m_version = CFixVersion(protocolVersion);
+    m_sender.SendVersion(m_version);
 
     CFxEventInfo eventInfo;
     m_receiver->VLogon(eventInfo, protocolVersion, twofactor);

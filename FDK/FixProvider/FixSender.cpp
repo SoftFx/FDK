@@ -72,6 +72,11 @@ void CFixSender::SendVersion(const CFixVersion& version)
     m_version = version;
 }
 
+void CFixSender::AppId(const std::string& appId)
+{
+    m_appId = appId;
+}
+
 #ifdef LOG_PERFORMANCE
 void CFixSender::setLogger(Performance::Logger* logger)
 {
@@ -191,6 +196,13 @@ void CFixSender::VSendDeleteOrder(const string& id, const string& orderID, const
     }
     FIX::UtcTimeStamp utcNow;
     message.SetTransactTime(utcNow);
+
+    if (m_version.SupportsAppId())
+    {
+        if (!m_appId.empty())
+            message.SetClAppID(m_appId);
+    }
+
     return SendMessage(message);
 }
 
@@ -207,6 +219,13 @@ void CFixSender::VSendCloseOrder(const string& id, const string& orderId, Nullab
         message.SetQuantity(*closingVolume);
     }
     message.SetPosCloseType(FIX::PosCloseType_CLOSE);
+
+    if (m_version.SupportsAppId())
+    {
+        if (!m_appId.empty())
+            message.SetClAppID(m_appId);
+    }
+
     return SendMessage(message);
 }
 
@@ -224,6 +243,12 @@ void CFixSender::VSendCloseByOrders(const string& id, const string& firstOrderId
     }
     message.SetPosCloseType(FIX::PosCloseType_CLOSE_BY);
 
+    if (m_version.SupportsAppId())
+    {
+        if (!m_appId.empty())
+            message.SetClAppID(m_appId);
+    }
+
     return SendMessage(message);
 }
 
@@ -232,6 +257,12 @@ void CFixSender::VSendCloseAllOrders(const string& id)
     FIX44::ClosePositionRequest message;
     message.SetClosePosReqID(id);
     message.SetPosCloseType(FIX::PosCloseType_CLOSE_ALL);
+
+    if (m_version.SupportsAppId())
+    {
+        if (!m_appId.empty())
+            message.SetClAppID(m_appId);
+    }
 
     return SendMessage(message);
 }
@@ -340,6 +371,12 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
 
         if (FxTradeRecordType_MarketWithSlippage == required.Type)
             message.SetMarketWithSlippageFlag(FIX::MarketWithSlippageFlag_YES);
+    }
+
+    if (m_version.SupportsAppId())
+    {
+        if (! m_appId.empty())
+            message.SetClAppID(m_appId);
     }
 
 #ifdef LOG_PERFORMANCE
@@ -531,6 +568,12 @@ void CFixSender::VSendModifyOrder(const string& id, const CFxOrder& request)
 
     if (request.Magic.HasValue())
         message.SetMagic(*request.Magic);
+
+    if (m_version.SupportsAppId())
+    {
+        if (!m_appId.empty())
+            message.SetClAppID(m_appId);
+    }
 
     return SendMessage(message);
 }

@@ -62,6 +62,8 @@ namespace FIX44
     FIELD_SET_EX(std::string, TradeOriginationDate);
     FIELD_SET(*this, FIX::TradeDate);
     FIELD_SET_EX(std::string, TradeDate);
+    FIELD_SET(*this, FIX::ClAppID);
+    FIELD_SET_EX(std::string, ClAppID);
     FIELD_SET(*this, FIX::Account);
     FIELD_SET_EX(std::string, Account);
     FIELD_SET(*this, FIX::AcctIDSource);

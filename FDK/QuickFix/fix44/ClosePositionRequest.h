@@ -30,6 +30,8 @@ namespace FIX44
     FIELD_SET_EX(std::string, OrderID);
     FIELD_SET(*this, FIX::SecondaryOrderID);
     FIELD_SET_EX(std::string, SecondaryOrderID);
+    FIELD_SET(*this, FIX::ClAppID);
+    FIELD_SET_EX(std::string, ClAppID);
     FIELD_SET(*this, FIX::PosCloseType);
     FIELD_SET_EX(char, PosCloseType);
     FIELD_SET(*this, FIX::Quantity);

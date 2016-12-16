@@ -73,6 +73,7 @@ private:
     string m_username;
     string m_password;
     string m_deviceId;
+    string m_appId;
     string m_appSessionId;
     string m_protocolVersion;
 

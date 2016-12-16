@@ -1156,6 +1156,7 @@ namespace FIX
   DEFINE_NUMINGROUP(NoStatusGroups);
   DEFINE_STRING(CompReqID);
   DEFINE_QTY(HiddenQty);
+  DEFINE_STRING(ClAppID);
   DEFINE_NUMINGROUP(NoStrategyParameters);
   DEFINE_STRING(StrategyParameterName);
   DEFINE_INT(StrategyParameterType);
