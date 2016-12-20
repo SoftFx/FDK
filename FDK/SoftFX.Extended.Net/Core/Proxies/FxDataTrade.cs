@@ -40,20 +40,20 @@
 
         #region Server Methods
 
-        public FxOrder OpenNewOrder(string operationId, string symbol, TradeCommand command, TradeRecordSide side, double priceThreshold, double volume, double? hiddenVolumen, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic, int timeoutInMilliseconds)
+        public FxOrder OpenNewOrder(string operationId, string symbol, TradeCommand command, TradeRecordSide side, double priceThreshold, double volume, double? stopPrice, double? hiddenVolumen, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic, int timeoutInMilliseconds)
         {
             if (operationId == null)
                 operationId = string.Empty;
 
             this.VerifyInitialized();
 
-            var order = new FxOrder(symbol, (int)command, side, priceThreshold, volume, hiddenVolumen, stopLoss, takeProfit, expiration, comment, tag, magic);
+            var order = new FxOrder(symbol, (int)command, side, priceThreshold, volume, stopPrice, hiddenVolumen, stopLoss, takeProfit, expiration, comment, tag, magic);
 
             return Native.TradeServer.OpenNewOrder(this.handle, operationId, order, (uint)timeoutInMilliseconds);
         }
 
         public FxOrder ModifyOrder(string operationId, string orderId, string clientId, string symbol, TradeRecordType type, TradeRecordSide side,
-                                        double volume, double? hiddenVolume, double? newActivationPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpiration, string newComment, string newTag, int? newMagic, int timeoutInMilliseconds)
+                                        double volume, double? stopPrice, double? hiddenVolume, double? newActivationPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpiration, string newComment, string newTag, int? newMagic, int timeoutInMilliseconds)
         {
             if (operationId == null)
                 operationId = string.Empty;
@@ -68,7 +68,7 @@
 
             this.VerifyInitialized();
 
-            var order = new FxOrder(orderId, clientId, symbol, (int)type, side, newActivationPrice, volume, hiddenVolume, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic);
+            var order = new FxOrder(orderId, clientId, symbol, (int)type, side, newActivationPrice, volume, stopPrice, hiddenVolume, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic);
 
             return Native.TradeServer.ModifyOrder(this.handle, operationId, order, (uint)timeoutInMilliseconds);
         }

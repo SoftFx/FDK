@@ -21,8 +21,8 @@
             {
                 TargetCompId = "EXECUTOR",
                 ProtocolVersion = FixProtocolVersion.TheLatestVersion.ToString(),
-                SecureConnection = true,
-                Port = 5004,
+                SecureConnection = false,
+                Port = 5002,
                 //ExcludeMessagesFromLogs = "W",
                 DecodeLogFixMessages = true,
 
@@ -114,7 +114,7 @@
 
         void OnLogon(object sender, LogonEventArgs e)
         {
-            this.syncEvent.Set();
+            
         }
 
         void OnLogout(object sender, LogoutEventArgs e)
@@ -124,6 +124,7 @@
 
         void OnCacheInitialized(object sender, CacheEventArgs e)
         {
+            this.syncEvent.Set();
             Console.WriteLine("OnCacheInitialized(): {0}", e);
         }
 

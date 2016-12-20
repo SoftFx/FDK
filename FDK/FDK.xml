@@ -163,6 +163,7 @@
       <Member name="ClientOrderId" type="astring" />
       <Member name="Symbol" type="astring" />
       <Member name="Price" type="double" />
+      <Member name="StopPrice" type="double?" />
       <Member name="NewPrice" type="double?" />
       <Member name="InitialVolume" type="double" />
       <Member name="Volume" type="double" />

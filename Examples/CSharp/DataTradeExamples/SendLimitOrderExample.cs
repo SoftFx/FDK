@@ -12,11 +12,9 @@
 
         protected override void RunExample()
         {
-            //var expiration = DateTime.UtcNow.AddMinutes(10);
-            var record = this.Trade.Server.SendOrder("EURUSD", TradeCommand.Limit, TradeRecordSide.Buy, 2.0, 100000, null, null, null, null, null, null, null);
-            Console.WriteLine("Limit order: {0}", record);
-            Console.ReadKey();
-            Console.WriteLine(this.Trade.Cache.TradeRecords[0].Type);
+//            var record = this.Trade.Server.SendOrder("EUR/USD", TradeCommand.StopLimit, TradeRecordSide.Buy, 2.0, 100000, 3.0, null, null, null, null, null, null, null);
+            var record = this.Trade.Server.SendOrder("EUR/USD", TradeCommand.Limit, TradeRecordSide.Buy, 2.0, 100000, null, null, null, null, null, null, null, null);
+            Console.WriteLine("Trade record: {0}", record);
             Console.ReadKey();
         }
     }

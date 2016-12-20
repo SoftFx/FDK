@@ -757,6 +757,7 @@ namespace
 		WriteAString(arg.ClientOrderId, buffer);
 		WriteAString(arg.Symbol, buffer);
 		WriteDouble(arg.Price, buffer);
+		WriteNullDouble(arg.StopPrice, buffer);
 		WriteNullDouble(arg.NewPrice, buffer);
 		WriteDouble(arg.InitialVolume, buffer);
 		WriteDouble(arg.Volume, buffer);
@@ -785,6 +786,7 @@ namespace
 		result.ClientOrderId = ReadAString(buffer);
 		result.Symbol = ReadAString(buffer);
 		result.Price = ReadDouble(buffer);
+		result.StopPrice = ReadNullDouble(buffer);
 		result.NewPrice = ReadNullDouble(buffer);
 		result.InitialVolume = ReadDouble(buffer);
 		result.Volume = ReadDouble(buffer);

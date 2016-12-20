@@ -10,6 +10,7 @@
         public int Type { get; set; }
         public TradeRecordSide Side { get; set; }
         public double Price { get; set; }
+        public double? StopPrice { get; set; }
         public double? NewPrice { get; set; }
         public double? StopLoss { get; set; }
         public double? TakeProfit { get; set; }
@@ -38,7 +39,7 @@
             this.Tag = string.Empty;
         }
 
-        public FxOrder(string id, string clientId, string symbol, int type, TradeRecordSide side, double? newPrice, double volume, double? hiddenVolume, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic)
+        public FxOrder(string id, string clientId, string symbol, int type, TradeRecordSide side, double? newPrice, double volume, double? stopPrice, double? hiddenVolume, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic)
             : this()
         {
             this.OrderId = id;
@@ -50,6 +51,7 @@
             this.Price = 0;
             this.NewPrice = newPrice;
             this.Volume = volume;
+            this.StopPrice = stopPrice;
             this.HiddenVolume = hiddenVolume;
             this.StopLoss = stopLoss;
             this.TakeProfit = takeProfit;
@@ -59,7 +61,7 @@
             this.Magic = magic;
         }
 
-        public FxOrder(string symbol, int type, TradeRecordSide side, double price, double volume, double? hiddenVolume, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic)
+        public FxOrder(string symbol, int type, TradeRecordSide side, double price, double volume, double? stopPrice, double? hiddenVolume, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic)
             : this()
         {
             this.Symbol = symbol;
@@ -67,6 +69,7 @@
             this.Side = side;
             this.Price = price;
             this.Volume = volume;
+            this.StopPrice = stopPrice;
             this.HiddenVolume = hiddenVolume;
             this.StopLoss = stopLoss;
             this.TakeProfit = takeProfit;

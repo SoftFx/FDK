@@ -25,6 +25,18 @@
         /// A stop-limit order will be executed at a specified price (or better) after a given stop price has been reached.
         /// Once the stop price is reached, the stop-limit order becomes a limit order to buy (or sell) at the limit price or better.
         /// </summary>
-        Stop = 3
+        Stop = 3,
+
+        /// <summary>
+        /// </summary>
+        IoC = 4,
+
+        /// <summary>
+        /// </summary>
+        MarketWithSlippage = 5,
+
+        /// <summary>
+        /// </summary>
+        StopLimit = 6
     }
 }

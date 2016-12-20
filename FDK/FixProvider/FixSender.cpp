@@ -295,6 +295,13 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
         message.SetStopPx(required.Price);
         message.SetOrdType(FIX::OrdType_STOP);
     }
+    else if (FxTradeRecordType_StopLimit == required.Type)
+    {
+        message.SetOrdType(FIX::OrdType_STOP_LIMIT);
+        message.SetPrice(required.Price);
+        if (required.StopPrice.HasValue())
+            message.SetStopPx(required.StopPrice.Value());
+    }
     else
     {
         throw CArgumentException(cInvalidType);
@@ -378,7 +385,7 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
         if (! m_appId.empty())
             message.SetClAppID(m_appId);
     }
-
+    
 #ifdef LOG_PERFORMANCE
     uint64_t timestamp = logger_->getTimestamp();
     logger_->logTimestamp(id.c_str(), timestamp, "NewOrder");
@@ -506,6 +513,14 @@ void CFixSender::VSendModifyOrder(const string& id, const CFxOrder& request)
     else if (FxTradeRecordType_Position == request.Type)
     {
         message.SetOrdType(FIX::OrdType_POSITION);
+    }
+    else if (FxTradeRecordType_StopLimit == request.Type)
+    {
+        message.SetOrdType(FIX::OrdType_STOP_LIMIT);
+        if (request.NewPrice.HasValue())
+            message.SetPrice(request.NewPrice.Value());
+        if (request.StopPrice.HasValue())
+            message.SetStopPx(request.StopPrice.Value());
     }
     else
     {

@@ -23,6 +23,7 @@
             this.TakeProfit = fxOrder.TakeProfit;
             this.InitialVolume = fxOrder.InitialVolume;
             this.Volume = fxOrder.Volume;
+            this.StopPrice = fxOrder.StopPrice;
             this.HiddenVolume = fxOrder.HiddenVolume;
             this.Commission = fxOrder.Commission;
             this.Swap = fxOrder.Swap;
@@ -75,6 +76,11 @@
         /// Gets volume of the order.
         /// </summary>
         public double Volume { get; internal set; }
+
+        /// <summary>
+        /// Gets stop price of the order.
+        /// </summary>
+        public double? StopPrice { get; internal set; }
 
         /// <summary>
         /// Gets hidden volume of the order.
@@ -204,13 +210,24 @@
         }
 
         /// <summary>
+        /// Returns true, if the trade record is stop limit order.
+        /// </summary>
+        public bool IsStopLimitOrder
+        {
+            get
+            {
+                return this.Type == TradeRecordType.StopLimit;
+            }
+        }
+
+        /// <summary>
         /// Returns true, if the trade record is limit or stop order.
         /// </summary>
         public bool IsPendingOrder
         {
             get
             {
-                return this.IsLimitOrder || this.IsStopOrder;
+                return this.IsLimitOrder || this.IsStopOrder || this.IsStopLimitOrder;
             }
         }
 
@@ -381,9 +398,9 @@
         /// <param name="newTag">A new comment</param>
         /// <param name="newMagic">A new comment</param>
         /// <returns>A modified trade record.</returns>
-        public TradeRecord Modify(double? newHiddenVolume, double? newActivationPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpirationTime, string newComment, string newTag, int? newMagic)
+        public TradeRecord Modify(double? newStopPrice, double? newHiddenVolume, double? newActivationPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpirationTime, string newComment, string newTag, int? newMagic)
         {
-            var result = this.ModifyEx(newHiddenVolume, newActivationPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, newTag, newMagic, this.DataTrade.SynchOperationTimeout);
+            var result = this.ModifyEx(newStopPrice, newHiddenVolume, newActivationPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, newTag, newMagic, this.DataTrade.SynchOperationTimeout);
             return result;
         }
 
@@ -399,9 +416,9 @@
         /// <param name="newMagic">A new comment</param>
         /// <param name="timeoutInMilliseconds">Timeout of the operation in milliseconds.</param>
         /// <returns>A modified trade record.</returns>
-        public TradeRecord ModifyEx(double? newHiddenVolume, double? newActivationPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpirationTime, string newComment, string newTag, int? newMagic, int timeoutInMilliseconds)
+        public TradeRecord ModifyEx(double? newStopPrice, double? newHiddenVolume, double? newActivationPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpirationTime, string newComment, string newTag, int? newMagic, int timeoutInMilliseconds)
         {
-            var result = this.DataTrade.Server.ModifyTradeRecordEx(this.OrderId, this.Symbol, this.Type, this.Side, this.Volume, newHiddenVolume, newActivationPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, newTag, newMagic, timeoutInMilliseconds);
+            var result = this.DataTrade.Server.ModifyTradeRecordEx(this.OrderId, this.Symbol, this.Type, this.Side, this.Volume, newStopPrice, newHiddenVolume, newActivationPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, newTag, newMagic, timeoutInMilliseconds);
             return result;
         }
 
@@ -415,7 +432,7 @@
         /// <returns>can not be null</returns>
         public override string ToString()
         {
-            return string.Format("Id = {0}; {1} {2} {3}; Price = {4}; Volume = {5}; SL = {6}; TP = {7}", this.OrderId, this.Symbol, this.Type, this.Side, this.Price, this.Volume, this.StopLoss, this.TakeProfit);
+            return string.Format("Id = {0}; {1} {2} {3}; Price = {4}; Volume = {5}; SP = {8}; SL = {6}; TP = {7}", this.OrderId, this.Symbol, this.Type, this.Side, this.Price, this.Volume, this.StopLoss, this.TakeProfit, this.StopPrice);
         }
     }
 }

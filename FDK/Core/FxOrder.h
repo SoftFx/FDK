@@ -15,6 +15,7 @@ public:
     FxTradeRecordType Type;
     FxTradeRecordSide Side;
     double Price;
+    Nullable<double> StopPrice;
     Nullable<double> NewPrice;
     Nullable<double> StopLoss;
     Nullable<double> TakeProfit;

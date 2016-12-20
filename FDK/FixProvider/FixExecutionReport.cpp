@@ -270,6 +270,10 @@ FxOrderType CFixExecutionReport::GetFxOrderType() const
     {
         return FxOrderType_Position;
     }
+    else if (FIX::OrdType_STOPLIMIT == orderType)
+    {
+        return FxOrderType_StopLimit;
+    }
     throw CRuntimeError("CFixExecutionReport::GetFxOrderType(); invalid fix order type = ") + orderType;
 }
 

@@ -591,6 +591,7 @@ namespace SoftFX.Extended.Generated
 			result.ClientOrderId = buffer.ReadAString();
 			result.Symbol = buffer.ReadAString();
 			result.Price = buffer.ReadDouble();
+			result.StopPrice = buffer.ReadNullDouble();
 			result.NewPrice = buffer.ReadNullDouble();
 			result.InitialVolume = buffer.ReadDouble();
 			result.Volume = buffer.ReadDouble();
@@ -619,6 +620,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteAString(arg.ClientOrderId);
 			buffer.WriteAString(arg.Symbol);
 			buffer.WriteDouble(arg.Price);
+			buffer.WriteNullDouble(arg.StopPrice);
 			buffer.WriteNullDouble(arg.NewPrice);
 			buffer.WriteDouble(arg.InitialVolume);
 			buffer.WriteDouble(arg.Volume);
