@@ -22,9 +22,9 @@
                 if (element.CanWrite && element.PropertyType == typeof(string))
                     element.SetValue(this, string.Empty, null);
             }
-            DeviceId = "";            
+            DeviceId = "";
             AppSessionId = "";
-            AppId = "FDK " + Assembly.GetCallingAssembly().GetName().Version.ToString();
+            AppId = "FDK";
         }
 
         #region Properties
