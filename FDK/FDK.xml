@@ -163,9 +163,11 @@
       <Member name="ClientOrderId" type="astring" />
       <Member name="Symbol" type="astring" />
       <Member name="Price" type="double" />
+      <Member name="StopPrice" type="double?" />
       <Member name="NewPrice" type="double?" />
       <Member name="InitialVolume" type="double" />
       <Member name="Volume" type="double" />
+      <Member name="HiddenVolume" type="double?" />
       <Member name="TakeProfit" type="double?" />
       <Member name="StopLoss" type="double?" />
       <Member name="Commission" type="double" />
@@ -246,6 +248,7 @@
       <Member name="Id" type="astring" />
       <Member name="ClientId" type="astring" />
       <Member name="Quantity" type="double" />
+      <Member name="HiddenQuantity" type="double?" />
       <Member name="LeavesQuantity" type="double" />
       <Member name="Price" type="double" />
       <Member name="StopPrice" type="double" />
@@ -312,6 +315,7 @@
       <Member name="ExecutedVolume" type="double" />
       <Member name="InitialVolume" type="double?" />
       <Member name="LeavesVolume" type="double" />
+      <Member name="HiddenVolume" type="double?" />
       <Member name="TradeAmount" type="double?" />
       <Member name="Commission" type="double" />
       <Member name="AgentCommission" type="double" />

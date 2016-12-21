@@ -72,6 +72,11 @@ void CFixSender::SendVersion(const CFixVersion& version)
     m_version = version;
 }
 
+void CFixSender::AppId(const std::string& appId)
+{
+    m_appId = appId;
+}
+
 #ifdef LOG_PERFORMANCE
 void CFixSender::setLogger(Performance::Logger* logger)
 {
@@ -191,6 +196,13 @@ void CFixSender::VSendDeleteOrder(const string& id, const string& orderID, const
     }
     FIX::UtcTimeStamp utcNow;
     message.SetTransactTime(utcNow);
+
+    if (m_version.SupportsAppId())
+    {
+        if (!m_appId.empty())
+            message.SetClAppID(m_appId);
+    }
+
     return SendMessage(message);
 }
 
@@ -207,6 +219,13 @@ void CFixSender::VSendCloseOrder(const string& id, const string& orderId, Nullab
         message.SetQuantity(*closingVolume);
     }
     message.SetPosCloseType(FIX::PosCloseType_CLOSE);
+
+    if (m_version.SupportsAppId())
+    {
+        if (!m_appId.empty())
+            message.SetClAppID(m_appId);
+    }
+
     return SendMessage(message);
 }
 
@@ -224,6 +243,12 @@ void CFixSender::VSendCloseByOrders(const string& id, const string& firstOrderId
     }
     message.SetPosCloseType(FIX::PosCloseType_CLOSE_BY);
 
+    if (m_version.SupportsAppId())
+    {
+        if (!m_appId.empty())
+            message.SetClAppID(m_appId);
+    }
+
     return SendMessage(message);
 }
 
@@ -232,6 +257,12 @@ void CFixSender::VSendCloseAllOrders(const string& id)
     FIX44::ClosePositionRequest message;
     message.SetClosePosReqID(id);
     message.SetPosCloseType(FIX::PosCloseType_CLOSE_ALL);
+
+    if (m_version.SupportsAppId())
+    {
+        if (!m_appId.empty())
+            message.SetClAppID(m_appId);
+    }
 
     return SendMessage(message);
 }
@@ -264,6 +295,13 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
         message.SetStopPx(required.Price);
         message.SetOrdType(FIX::OrdType_STOP);
     }
+    else if (FxTradeRecordType_StopLimit == required.Type)
+    {
+        message.SetOrdType(FIX::OrdType_STOP_LIMIT);
+        message.SetPrice(required.Price);
+        if (required.StopPrice.HasValue())
+            message.SetStopPx(required.StopPrice.Value());
+    }
     else
     {
         throw CArgumentException(cInvalidType);
@@ -282,6 +320,11 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
         throw CArgumentException(cInvalidSide);
     }
     message.SetOrderQty(required.Volume);
+
+    if (required.HiddenVolume.HasValue())
+    {
+        message.SetHiddenQty(required.HiddenVolume.Value());
+    }
 
     if (required.TakeProfit.HasValue())
     {
@@ -337,6 +380,12 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
             message.SetMarketWithSlippageFlag(FIX::MarketWithSlippageFlag_YES);
     }
 
+    if (m_version.SupportsAppId())
+    {
+        if (! m_appId.empty())
+            message.SetClAppID(m_appId);
+    }
+    
 #ifdef LOG_PERFORMANCE
     uint64_t timestamp = logger_->getTimestamp();
     logger_->logTimestamp(id.c_str(), timestamp, "NewOrder");
@@ -465,6 +514,14 @@ void CFixSender::VSendModifyOrder(const string& id, const CFxOrder& request)
     {
         message.SetOrdType(FIX::OrdType_POSITION);
     }
+    else if (FxTradeRecordType_StopLimit == request.Type)
+    {
+        message.SetOrdType(FIX::OrdType_STOP_LIMIT);
+        if (request.NewPrice.HasValue())
+            message.SetPrice(request.NewPrice.Value());
+        if (request.StopPrice.HasValue())
+            message.SetStopPx(request.StopPrice.Value());
+    }
     else
     {
         throw CArgumentException(cInvalidType);
@@ -485,6 +542,10 @@ void CFixSender::VSendModifyOrder(const string& id, const CFxOrder& request)
     if (request.StopLoss.HasValue())
     {
         message.SetStopLoss(*request.StopLoss);
+    }
+    if (request.HiddenVolume.HasValue())
+    {
+        message.SetHiddenQty(request.HiddenVolume.Value());
     }
     if (request.TakeProfit.HasValue())
     {
@@ -522,6 +583,12 @@ void CFixSender::VSendModifyOrder(const string& id, const CFxOrder& request)
 
     if (request.Magic.HasValue())
         message.SetMagic(*request.Magic);
+
+    if (m_version.SupportsAppId())
+    {
+        if (!m_appId.empty())
+            message.SetClAppID(m_appId);
+    }
 
     return SendMessage(message);
 }

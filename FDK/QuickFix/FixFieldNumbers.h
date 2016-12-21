@@ -1153,6 +1153,8 @@ namespace FIX
     const int StatusGroupID = 10170;
     const int NoStatusGroups = 10171;
     const int CompReqID = 10172;
+    const int HiddenQty = 10173;
+    const int ClAppID = 10174;
     const int NoStrategyParameters = 957;
     const int StrategyParameterName = 958;
     const int StrategyParameterType = 959;

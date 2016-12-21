@@ -252,6 +252,7 @@
    <field name='HandlInst' required='N' />
    <field name='MinQty' required='N' />
    <field name='MaxFloor' required='N' />
+   <field name='HiddenQty' required='N' />
    <field name='PositionEffect' required='N' />
    <field name='MaxShow' required='N' />
    <field name='BookingType' required='N' />
@@ -421,6 +422,7 @@
    <component name='Parties' required='N' />
    <field name='TradeOriginationDate' required='N' />
    <field name='TradeDate' required='N' />
+   <field name='ClAppID' required='N' />
    <field name='Account' required='N' />
    <field name='AcctIDSource' required='N' />
    <field name='AccountType' required='N' />
@@ -444,6 +446,7 @@
    <field name='ExecInst' required='N' />
    <field name='MinQty' required='N' />
    <field name='MaxFloor' required='N' />
+   <field name='HiddenQty' required='N' />
    <field name='ExDestination' required='N' />
    <group name='NoTradingSessions' required='N'>
     <field name='TradingSessionID' required='N' />
@@ -627,6 +630,7 @@
    <field name='ClOrdLinkID' required='N' />
    <field name='ListID' required='N' />
    <field name='OrigOrdModTime' required='N' />
+   <field name='ClAppID' required='N' />
    <field name='Account' required='N' />
    <field name='AcctIDSource' required='N' />
    <field name='AccountType' required='N' />
@@ -655,6 +659,7 @@
    <field name='ClOrdLinkID' required='N' />
    <field name='ListID' required='N' />
    <field name='OrigOrdModTime' required='N' />
+   <field name='ClAppID' required='N' />
    <field name='Account' required='N' />
    <field name='AcctIDSource' required='N' />
    <field name='AccountType' required='N' />
@@ -678,6 +683,7 @@
    <field name='ExecInst' required='N' />
    <field name='MinQty' required='N' />
    <field name='MaxFloor' required='N' />
+   <field name='HiddenQty' required='N' />
    <field name='ExDestination' required='N' />
    <group name='NoTradingSessions' required='N'>
     <field name='TradingSessionID' required='N' />
@@ -3847,8 +3853,9 @@
     <field name='ClosePosReqID' required='Y' />
     <field name='OrderID' required='N' />
     <field name='SecondaryOrderID' required='N' />
+    <field name='ClAppID' required='N' />
     <field name='PosCloseType' required='Y' />
-    <field name='Quantity' required='N' />
+    <field name='Quantity' required='N' /> 
   </message>
   <message name='ClosePositionRequestAck' msgcat='app' msgtype='U1009'>
     <field name='ClosePosReqID' required='Y' />
@@ -3926,6 +3933,7 @@
     <field name='ActionID' required='N' />
     <field name='ClOrdID' required='N' />
     <field name='OrderQty' required='N' />
+    <field name='HiddenQty' required='N' />
     <field name='OrderLeavesQty' required='N' />
     <field name='OrderPrice' required='N' />
     <field name='OrderStopPx' required='N' />
@@ -7780,5 +7788,7 @@
   <field number='10170' name='StatusGroupID' type='STRING'/>
   <field number='10171' name='NoStatusGroups' type='NUMINGROUP' />
   <field number='10172' name='CompReqID' type='STRING' />
+  <field number='10173' name='HiddenQty' type='QTY' />
+  <field number='10174' name='ClAppID' type='STRING' />
 </fields>
 </fix>

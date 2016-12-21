@@ -13,11 +13,12 @@ public:
     double ExecutedVolume;
     Nullable<double> InitialVolume;
     double LeavesVolume;
-    Nullable<double> TradeAmount;
+    Nullable<double> HiddenVolume;
+    Nullable<double> TradeAmount;    
     Nullable<double> AveragePrice;
     Nullable<double> Price;
-    double TradePrice;
     Nullable<double> StopPrice;
+    double TradePrice;    
     Nullable<double> TakeProfit;
     Nullable<double> StopLoss;
     double Balance;
@@ -58,6 +59,7 @@ private:
     bool TryGetPositionFromPosition(CFxOrder& order)const;
     bool TryGetStopOrder(CFxOrder& order)const;
     bool TryGetLimitOrder(CFxOrder& order)const;
+    bool TryGetStopLimitOrder(CFxOrder& order)const;
 public:
     bool TryGetClosedPosition(string& orderId, double& leavesVolume, double& commission, double& agentCommission, double& swap) const;
     bool TryGetDeletedOrder(string& orderId) const;
@@ -70,7 +72,6 @@ public:
     const string& GetOrderId()const;
 private:
     void CopyCommonFieldsToRecord(CFxOrder& order)const;
-    bool CopyCreatedAndModifiedDateTime(CFxOrder& order)const;
 };
 
 #pragma warning (pop)

@@ -132,6 +132,8 @@
                                 null,
                                 null,
                                 null,
+                                null,
+                                null,
                                 null
                         );
 
@@ -166,6 +168,8 @@
                                 TradeRecordSide.Sell,
                                 0,
                                 volume,
+                                null,
+                                null,
                                 null,
                                 null,
                                 null,

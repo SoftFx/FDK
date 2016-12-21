@@ -29,6 +29,10 @@ bool CFixVersion::SupportsMarketWithSlippage()
 {
     return ((Major > 1) || ((Major == 1) && (Minor == 42)));
 }
+bool CFixVersion::SupportsAppId()
+{
+    return *this >= CFixVersion(1, 47);
+}
 bool operator < (const CFixVersion& first, const CFixVersion& second)
 {
     if (first.Major == second.Major)

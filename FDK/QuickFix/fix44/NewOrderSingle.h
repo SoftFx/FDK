@@ -62,6 +62,8 @@ namespace FIX44
     FIELD_SET_EX(std::string, TradeOriginationDate);
     FIELD_SET(*this, FIX::TradeDate);
     FIELD_SET_EX(std::string, TradeDate);
+    FIELD_SET(*this, FIX::ClAppID);
+    FIELD_SET_EX(std::string, ClAppID);
     FIELD_SET(*this, FIX::Account);
     FIELD_SET_EX(std::string, Account);
     FIELD_SET(*this, FIX::AcctIDSource);
@@ -91,6 +93,8 @@ namespace FIX44
     FIELD_SET_EX(double, MinQty);
     FIELD_SET(*this, FIX::MaxFloor);
     FIELD_SET_EX(double, MaxFloor);
+    FIELD_SET(*this, FIX::HiddenQty);
+    FIELD_SET_EX(double, HiddenQty);
     FIELD_SET(*this, FIX::ExDestination);
     FIELD_SET(*this, FIX::ProcessCode);
     FIELD_SET_EX(char, ProcessCode);

@@ -23,6 +23,15 @@ double CFixExecutionReport::GetFxLeavesVolume()const
     this->TryGetLeavesQty(result);
     return result;
 }
+Nullable<double> CFixExecutionReport::GetFxHiddenVolume()const
+{
+    double result = 0;
+    if (TryGetHiddenQty(result))
+    {
+        return result;
+    }
+    return Nullable<double>();
+}
 Nullable<double> CFixExecutionReport::GetFxTradeAmount()const
 {
     double result = 0;
@@ -260,6 +269,10 @@ FxOrderType CFixExecutionReport::GetFxOrderType() const
     else if(FIX::OrdType_POSITION == orderType)
     {
         return FxOrderType_Position;
+    }
+    else if (FIX::OrdType_STOPLIMIT == orderType)
+    {
+        return FxOrderType_StopLimit;
     }
     throw CRuntimeError("CFixExecutionReport::GetFxOrderType(); invalid fix order type = ") + orderType;
 }

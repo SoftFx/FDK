@@ -9,6 +9,7 @@ public:
     CFixSender();
     void SessionID(const FIX::SessionID& sessionId);
     void SendVersion(const CFixVersion& version);
+    void AppId(const std::string& appId);
 #ifdef LOG_PERFORMANCE
     void setLogger(Performance::Logger* logger);
 #endif
@@ -40,7 +41,8 @@ private:
     void SendMessage(FIX::Message& message);
 private:
     FIX::SessionID m_sessionID;
-    CFixVersion m_version;    
+    CFixVersion m_version;
+    std::string m_appId;
 #ifdef LOG_PERFORMANCE
     Performance::Logger* logger_;
 #endif
