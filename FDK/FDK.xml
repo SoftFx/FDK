@@ -248,6 +248,7 @@
       <Member name="Id" type="astring" />
       <Member name="ClientId" type="astring" />
       <Member name="Quantity" type="double" />
+      <Member name="HiddenQuantity" type="double?" />
       <Member name="LeavesQuantity" type="double" />
       <Member name="Price" type="double" />
       <Member name="StopPrice" type="double" />

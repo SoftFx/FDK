@@ -1146,6 +1146,10 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
     {
         report.TradeRecordType = FxOrderType_Position;
     }
+    else if (FIX::OrdType_STOPLIMIT == orderType)
+    {
+        report.TradeRecordType = FxOrderType_StopLimit;
+    }
 
     char side = 0;
     message.TryGetSide(side);
@@ -1289,6 +1293,9 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
     double dstAssetMovement;
     if (message.TryGetDstAssetMovement(dstAssetMovement))
         report.DstAssetMovement = dstAssetMovement;
+    double hiddenQty;
+    if (message.TryGetHiddenQty(hiddenQty))
+        report.HiddenQuantity = hiddenQty;
 
     m_receiver->VTradeTransactionReport(info, report);
 }

@@ -1026,6 +1026,7 @@ namespace
 		WriteAString(arg.Id, buffer);
 		WriteAString(arg.ClientId, buffer);
 		WriteDouble(arg.Quantity, buffer);
+		WriteNullDouble(arg.HiddenQuantity, buffer);
 		WriteDouble(arg.LeavesQuantity, buffer);
 		WriteDouble(arg.Price, buffer);
 		WriteDouble(arg.StopPrice, buffer);
@@ -1089,6 +1090,7 @@ namespace
 		result.Id = ReadAString(buffer);
 		result.ClientId = ReadAString(buffer);
 		result.Quantity = ReadDouble(buffer);
+		result.HiddenQuantity = ReadNullDouble(buffer);
 		result.LeavesQuantity = ReadDouble(buffer);
 		result.Price = ReadDouble(buffer);
 		result.StopPrice = ReadDouble(buffer);

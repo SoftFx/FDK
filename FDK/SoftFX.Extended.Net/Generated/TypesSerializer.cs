@@ -855,6 +855,7 @@ namespace SoftFX.Extended.Generated
 			result.Id = buffer.ReadAString();
 			result.ClientId = buffer.ReadAString();
 			result.Quantity = buffer.ReadDouble();
+			result.HiddenQuantity = buffer.ReadNullDouble();
 			result.LeavesQuantity = buffer.ReadDouble();
 			result.Price = buffer.ReadDouble();
 			result.StopPrice = buffer.ReadDouble();
@@ -918,6 +919,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteAString(arg.Id);
 			buffer.WriteAString(arg.ClientId);
 			buffer.WriteDouble(arg.Quantity);
+			buffer.WriteNullDouble(arg.HiddenQuantity);
 			buffer.WriteDouble(arg.LeavesQuantity);
 			buffer.WriteDouble(arg.Price);
 			buffer.WriteDouble(arg.StopPrice);

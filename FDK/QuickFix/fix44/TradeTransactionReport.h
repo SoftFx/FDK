@@ -46,6 +46,8 @@ namespace FIX44
     FIELD_SET_EX(std::string, ClOrdID);
     FIELD_SET(*this, FIX::OrderQty);
     FIELD_SET_EX(double, OrderQty);
+    FIELD_SET(*this, FIX::HiddenQty);
+    FIELD_SET_EX(double, HiddenQty);
     FIELD_SET(*this, FIX::OrderLeavesQty);
     FIELD_SET_EX(double, OrderLeavesQty);
     FIELD_SET(*this, FIX::OrderPrice);

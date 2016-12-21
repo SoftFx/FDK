@@ -54,6 +54,11 @@
         /// <summary>
         ///
         /// </summary>
+        public double? HiddenQuantity { get; internal set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         public double LeavesQuantity { get; internal set; }
 
         /// <summary>

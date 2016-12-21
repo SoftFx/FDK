@@ -3933,6 +3933,7 @@
     <field name='ActionID' required='N' />
     <field name='ClOrdID' required='N' />
     <field name='OrderQty' required='N' />
+    <field name='HiddenQty' required='N' />
     <field name='OrderLeavesQty' required='N' />
     <field name='OrderPrice' required='N' />
     <field name='OrderStopPx' required='N' />
