@@ -15,6 +15,15 @@ CDataTrade::CDataTrade(const string& name, const string& connectionString)
 {
 }
 
+CFxTradeServerInfo CDataTrade::GetTradeServerInfo(const uint32 timeoutInMilliseconds)
+{
+    Waiter<CFxTradeServerInfo> waiter(timeoutInMilliseconds, cExternalSynchCall, *this);
+    m_sender->VSendGetTradeServerInfo(waiter.Id());
+
+    CFxTradeServerInfo result = waiter.WaitForResponse();
+    return result;
+}
+
 CFxAccountInfo CDataTrade::GetAccountInfo(const uint32 timeoutInMilliseconds)
 {
     Waiter<CFxAccountInfo> waiter(timeoutInMilliseconds, cExternalSynchCall, *this);
@@ -251,6 +260,11 @@ void CDataTrade::VLogout(const CFxEventInfo& eventInfo, const FxLogoutReason rea
     m_accountType = FxAccountType_None;
     m_cache.Clear();
     __super::VLogout(eventInfo, reason, description);
+}
+
+void CDataTrade::VTradeServerInfoReport(const CFxEventInfo& eventInfo, CFxTradeServerInfo& tradeServerInfo)
+{
+    m_synchInvoker.Response(eventInfo, tradeServerInfo);
 }
 
 void CDataTrade::VAccountInfo(const CFxEventInfo& eventInfo, CFxAccountInfo& accountInfo)

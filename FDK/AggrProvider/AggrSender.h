@@ -11,6 +11,7 @@ public:
     virtual void VSendGetCurrencies(const string& id);
     virtual void VSendGetSupportedSymbols(const string& id);
     virtual void VSendGetSessionInfo(const string& id);
+    virtual void VSendGetTradeServerInfo(const string& id);
     virtual void VSendGetAccountInfo(const string& id);
     virtual void VSendSubscribeToQuotes(const string& id, const vector<string>& symbols, int32 depth);
     virtual void VSendUnsubscribeQuotes(const string& id, const vector<string>& symbols);

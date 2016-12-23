@@ -36,6 +36,10 @@ void CAggrSender::VSendGetSessionInfo(const string& id)
 	m_receiver->VSessionInfo(info, session);
 }
 
+void CAggrSender::VSendGetTradeServerInfo(const string& id)
+{
+}
+
 void CAggrSender::VSendGetAccountInfo(const string& id)
 {
 	CFxEventInfo info;

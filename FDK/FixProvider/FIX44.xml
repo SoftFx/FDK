@@ -3855,7 +3855,7 @@
     <field name='SecondaryOrderID' required='N' />
     <field name='ClAppID' required='N' />
     <field name='PosCloseType' required='Y' />
-    <field name='Quantity' required='N' /> 
+    <field name='Quantity' required='N' />
   </message>
   <message name='ClosePositionRequestAck' msgcat='app' msgtype='U1009'>
     <field name='ClosePosReqID' required='Y' />
@@ -3999,6 +3999,30 @@
     <field name='OneTimePassword' required='N' />
     <field name='ExpireTime' required='N' />
     <field name='Text' required='N' />
+  </message>
+  <message name='TradeServerInfoRequest' msgcat='app' msgtype='U1023'>
+    <field name='TrdSrvReqID' required='Y' />
+  </message>
+  <message name='TradeServerInfoReport' msgcat='app' msgtype='U1024'>
+    <field name='TrdSrvReqID' required='Y' />
+    <field name='CompanyName' required='N' />
+    <field name='CompanyFullName' required='N' />
+    <field name='EncodedCompanyDescriptionLen' required='N' />
+    <field name='EncodedCompanyDescription' required='N' />
+    <field name='CompanyAddress' required='N' />
+    <field name='CompanyEmail' required='N' />
+    <field name='CompanyPhone' required='N' />
+    <field name='CompanyWebSite' required='N' />
+    <field name='ServerName' required='N' />
+    <field name='ServerFullName' required='N' />
+    <field name='EncodedServerDescriptionLen' required='N' />
+    <field name='EncodedServerDescription' required='N' />
+    <field name='ServerAddress' required='N' />
+    <field name='ServerFixFeedSslPort' required='N' />
+    <field name='ServerFixTradeSslPort' required='N' />
+    <field name='ServerWebSocketFeedPort' required='N' />
+    <field name='ServerWebSocketTradePort' required='N' />
+    <field name='ServerRestPort' required='N' />
   </message>
  </messages>
  <trailer>
@@ -4625,6 +4649,8 @@
    <value enum='U1020' description='CURRENCYLISTREQUEST' />
    <value enum='U1021' description='CURRENCYLIST' />
    <value enum='U1022' description='TWOFACTORLOGON' />
+   <value enum='U1023' description='TRADESERVERINFOREQUEST' />
+   <value enum='U1024' description='TRADESERVERINFOREPORT' />
   </field>
   <field number='36' name='NewSeqNo' type='SEQNUM' />
   <field number='37' name='OrderID' type='STRING' />
@@ -7749,6 +7775,7 @@
     <value enum='1' description='MARKET' />
     <value enum='2' description='LIMIT' />
     <value enum='3' description='STOP' />
+    <value enum='4' description='STOPLIMIT' />
   </field>
   <field number='10150' name='DeviceID' type='STRING'/>
   <field number='10151' name='TwoFactorReason' type='CHAR'>
@@ -7787,8 +7814,27 @@
   <field number='10169' name='DstAssetMovement' type='QTY'/>
   <field number='10170' name='StatusGroupID' type='STRING'/>
   <field number='10171' name='NoStatusGroups' type='NUMINGROUP' />
-  <field number='10172' name='CompReqID' type='STRING' />
+  <field number='10172' name='CompReqID' type='STRING'/>
   <field number='10173' name='HiddenQty' type='QTY' />
   <field number='10174' name='ClAppID' type='STRING' />
+  <field number='10175' name='TrdSrvReqID' type='STRING' />
+  <field number='10176' name='CompanyName' type='STRING' />
+  <field number='10177' name='CompanyFullName' type='STRING' />
+  <field number='10178' name='EncodedCompanyDescriptionLen' type='LENGTH' />
+  <field number='10179' name='EncodedCompanyDescription' type='DATA' />
+  <field number='10180' name='CompanyAddress' type='STRING' />
+  <field number='10181' name='CompanyEmail' type='STRING' />
+  <field number='10182' name='CompanyPhone' type='STRING' />
+  <field number='10183' name='CompanyWebSite' type='STRING' />
+  <field number='10184' name='ServerName' type='STRING' />
+  <field number='10185' name='ServerFullName' type='STRING' />
+  <field number='10186' name='EncodedServerDescriptionLen' type='LENGTH' />
+  <field number='10187' name='EncodedServerDescription' type='DATA' />
+  <field number='10188' name='ServerAddress' type='STRING' />
+  <field number='10189' name='ServerFixFeedSslPort' type='INT' />
+  <field number='10190' name='ServerFixTradeSslPort' type='INT' />
+  <field number='10191' name='ServerWebSocketFeedPort' type='INT' />
+  <field number='10192' name='ServerWebSocketTradePort' type='INT' />
+  <field number='10193' name='ServerRestPort' type='INT' />
 </fields>
 </fix>

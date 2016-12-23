@@ -74,6 +74,7 @@ void CFixConnection::InitializeMessageHandlers()
     gMessageTypeToHandler[FIX::MsgType_ClosePositionRequestAck] = reinterpret_cast<MessageHandler>(&CFixConnection::OnClose);
     gMessageTypeToHandler[FIX::MsgType_ExecutionReport] = reinterpret_cast<MessageHandler>(&CFixConnection::OnExecution);
     gMessageTypeToHandler[FIX::MsgType_OrderCancelReject] = reinterpret_cast<MessageHandler>(&CFixConnection::OnCancel);
+    gMessageTypeToHandler[FIX::MsgType_TradeServerInfoReport] = reinterpret_cast<MessageHandler>(&CFixConnection::OnTradeServerInfoReport);
     gMessageTypeToHandler[FIX::MsgType_AccountInfo] = reinterpret_cast<MessageHandler>(&CFixConnection::OnAccountInfo);
     gMessageTypeToHandler[FIX::MsgType_MarketDataHistory] = reinterpret_cast<MessageHandler>(&CFixConnection::OnMarketDataHistory);
     gMessageTypeToHandler[FIX::MsgType_MarketDataHistoryRequestReject] = reinterpret_cast<MessageHandler>(&CFixConnection::OnMarketDataHistoryReject);
@@ -735,6 +736,43 @@ void CFixConnection::OnCancel(const FIX44::OrderCancelReject& message)
     message.TryGetText(executionReport.Text);
     executionReport.OrderStatus = FxOrderStatus_Rejected;
     m_receiver->VExecution(eventInfo, executionReport);
+}
+
+void CFixConnection::OnTradeServerInfoReport(const FIX44::TradeServerInfoReport& message)
+{
+    CFxEventInfo eventInfo;
+    eventInfo.ID = message.GetTrdSrvReqID();
+
+    CFxTradeServerInfo tradeServerInfo;
+    message.TryGetCompanyName(tradeServerInfo.CompanyName);
+    message.TryGetCompanyFullName(tradeServerInfo.CompanyFullName);
+    string encodedCompanyDescription;
+    if (message.TryGetEncodedCompanyDescription(encodedCompanyDescription))
+        Utf8ToStd(tradeServerInfo.CompanyDescription, encodedCompanyDescription);
+    message.TryGetCompanyAddress(tradeServerInfo.CompanyAddress);
+    message.TryGetCompanyEmail(tradeServerInfo.CompanyEmail);
+    message.TryGetCompanyPhone(tradeServerInfo.CompanyPhone);
+    message.TryGetCompanyWebSite(tradeServerInfo.CompanyWebSite);
+    message.TryGetServerName(tradeServerInfo.ServerName);
+    message.TryGetServerFullName(tradeServerInfo.ServerFullName);
+    message.TryGetServerFullName(tradeServerInfo.ServerFullName);
+    string encodedServerDescription;
+    if (message.TryGetEncodedServerDescription(encodedServerDescription))
+        Utf8ToStd(tradeServerInfo.ServerDescription, encodedServerDescription);
+    message.TryGetServerAddress(tradeServerInfo.ServerAddress);    
+    int port;
+    if (message.TryGetServerFixFeedSslPort(port))
+        tradeServerInfo.ServerFixFeedSslPort = port;
+    if (message.TryGetServerFixTradeSslPort(port))
+        tradeServerInfo.ServerFixTradeSslPort = port;
+    if (message.TryGetServerWebSocketFeedPort(port))
+        tradeServerInfo.ServerWebSocketFeedPort = port;
+    if (message.TryGetServerWebSocketTradePort(port))
+        tradeServerInfo.ServerWebSocketTradePort = port;
+    if (message.TryGetServerRestPort(port))
+        tradeServerInfo.ServerRestPort = port;
+
+    m_receiver->VTradeServerInfoReport(eventInfo, tradeServerInfo);
 }
 
 void CFixConnection::OnAccountInfo(const FIX44::AccountInfo& message)

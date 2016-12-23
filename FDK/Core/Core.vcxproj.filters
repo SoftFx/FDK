@@ -206,6 +206,9 @@
     <ClInclude Include="PerformanceLogger.h">
       <Filter>_Headers</Filter>
     </ClInclude>
+    <ClInclude Include="FxTradeServerInfo.h">
+      <Filter>Types\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

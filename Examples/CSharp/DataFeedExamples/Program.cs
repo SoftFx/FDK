@@ -6,8 +6,8 @@
     {
         static void Main()
         {
-            string address = "tp.dev.soft-fx.eu";
-            string username = "9";
+            string address = "localhost";
+            string username = "6";
             string password = "123qwe!";
             var useFixProtocol = true;
 

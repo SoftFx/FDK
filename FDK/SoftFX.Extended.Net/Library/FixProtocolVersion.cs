@@ -8,10 +8,11 @@
     /// </summary>
     public class FixProtocolVersion : IComparable<FixProtocolVersion>
     {
+        static readonly FixProtocolVersion CurrentVersion = new FixProtocolVersion("ext", 1, 48);
+
         #region Predefined known protocol versions
 
         const string ExtendedType = "ext";
-
         internal static readonly FixProtocolVersion Initial = new FixProtocolVersion(ExtendedType, 0, 0);
         internal static readonly FixProtocolVersion Versioning = new FixProtocolVersion(ExtendedType, 1, 0);
         internal static readonly FixProtocolVersion SymbolExtending = new FixProtocolVersion(ExtendedType, 1, 1);
@@ -350,7 +351,7 @@
         {
             get
             {
-                return Version47;
+                return CurrentVersion;
             }
         }
 

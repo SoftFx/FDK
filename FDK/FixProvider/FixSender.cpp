@@ -136,6 +136,13 @@ void CFixSender::VSendGetSessionInfo(const string& id)
     return SendMessage(message);
 }
 
+void CFixSender::VSendGetTradeServerInfo(const string& id)
+{
+    FIX44::TradeServerInfoRequest message;
+    message.SetTrdSrvReqID(id);
+    return SendMessage(message);
+}
+
 void CFixSender::VSendGetAccountInfo(const string& id)
 {
     FIX44::AccountInfoRequest message;

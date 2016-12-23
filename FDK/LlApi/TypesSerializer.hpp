@@ -84,6 +84,8 @@ namespace
 	CAssetInfo ReadAssetInfo(MemoryBuffer& buffer);
 	void WriteAssetInfoArray(const std::vector<CAssetInfo>& arg, MemoryBuffer& buffer);
 	std::vector<CAssetInfo> ReadAssetInfoArray(MemoryBuffer& buffer);
+	void WriteTradeServerInfo(const CFxTradeServerInfo& arg, MemoryBuffer& buffer);
+	CFxTradeServerInfo ReadTradeServerInfo(MemoryBuffer& buffer);
 	void WriteAccountInfo(const CFxAccountInfo& arg, MemoryBuffer& buffer);
 	CFxAccountInfo ReadAccountInfo(MemoryBuffer& buffer);
 	void WriteFileChunk(const CFxFileChunk& arg, MemoryBuffer& buffer);
@@ -687,6 +689,46 @@ namespace
 		{
 			result.push_back(ReadAssetInfo(buffer));
 		}
+		return result;
+	}
+	void WriteTradeServerInfo(const CFxTradeServerInfo& arg, MemoryBuffer& buffer)
+	{
+		WriteAString(arg.CompanyName, buffer);
+		WriteAString(arg.CompanyFullName, buffer);
+		WriteWString(arg.CompanyDescription, buffer);
+		WriteAString(arg.CompanyAddress, buffer);
+		WriteAString(arg.CompanyEmail, buffer);
+		WriteAString(arg.CompanyPhone, buffer);
+		WriteAString(arg.CompanyWebSite, buffer);
+		WriteAString(arg.ServerName, buffer);
+		WriteAString(arg.ServerFullName, buffer);
+		WriteWString(arg.ServerDescription, buffer);
+		WriteAString(arg.ServerAddress, buffer);
+		WriteNullInt32(arg.ServerFixFeedSslPort, buffer);
+		WriteNullInt32(arg.ServerFixTradeSslPort, buffer);
+		WriteNullInt32(arg.ServerWebSocketFeedPort, buffer);
+		WriteNullInt32(arg.ServerWebSocketTradePort, buffer);
+		WriteNullInt32(arg.ServerRestPort, buffer);
+	}
+	CFxTradeServerInfo ReadTradeServerInfo(MemoryBuffer& buffer)
+	{
+		CFxTradeServerInfo result = CFxTradeServerInfo();
+		result.CompanyName = ReadAString(buffer);
+		result.CompanyFullName = ReadAString(buffer);
+		result.CompanyDescription = ReadWString(buffer);
+		result.CompanyAddress = ReadAString(buffer);
+		result.CompanyEmail = ReadAString(buffer);
+		result.CompanyPhone = ReadAString(buffer);
+		result.CompanyWebSite = ReadAString(buffer);
+		result.ServerName = ReadAString(buffer);
+		result.ServerFullName = ReadAString(buffer);
+		result.ServerDescription = ReadWString(buffer);
+		result.ServerAddress = ReadAString(buffer);
+		result.ServerFixFeedSslPort = ReadNullInt32(buffer);
+		result.ServerFixTradeSslPort = ReadNullInt32(buffer);
+		result.ServerWebSocketFeedPort = ReadNullInt32(buffer);
+		result.ServerWebSocketTradePort = ReadNullInt32(buffer);
+		result.ServerRestPort = ReadNullInt32(buffer);
 		return result;
 	}
 	void WriteAccountInfo(const CFxAccountInfo& arg, MemoryBuffer& buffer)
