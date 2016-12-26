@@ -9,6 +9,7 @@ public:
 	void* GetTradeTransactionReportsAndSubscribe(void* handle, int direction, bool subscribe, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, size_t preferdBufferSize, const size_t timeoutInMilliseconds);
 	void UnsubscribeTradeTransactionReports(void* handle, size_t timeoutInMilliseconds);
 	void* GetTradeCaptureReports(void* handle, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, const size_t timeoutInMilliseconds);
+    CFxTradeServerInfo GetTradeServerInfo(void* handle, size_t timeoutInMilliseconds);
 	CFxAccountInfo GetAccountInfo(void* handle, size_t timeoutInMilliseconds);
 	size_t CloseAllPositions(void* handle, size_t timeoutInMilliseconds);
 	bool CloseByPositions(void* handle, const string& first, const string& second, size_t timeoutInMilliseconds);

@@ -3,6 +3,7 @@
 #include "FxEventInfo.h"
 #include "FxSessionInfo.h"
 #include "FxQuote.h"
+#include "FxTradeServerInfo.h"
 #include "FxAccountInfo.h"
 #include "FxClosePositionsResponse.h"
 #include "FxExecutionReport.h"
@@ -25,6 +26,7 @@ public:
     virtual void VBusinessReject(const CFxEventInfo& eventInfo) = 0;
     virtual void VTick(const CFxEventInfo& eventInfo, const CFxQuote& quotes) = 0;
     virtual void VSessionInfo(const CFxEventInfo& eventInfo, CFxSessionInfo& sessionInfo) = 0;
+    virtual void VTradeServerInfoReport(const CFxEventInfo& eventInfo, CFxTradeServerInfo& serverInfo) = 0;
     virtual void VAccountInfo(const CFxEventInfo& eventInfo, CFxAccountInfo& accountInfo) = 0;
     virtual void VGetCurrencies(const CFxEventInfo& eventInfo, const vector<CFxCurrencyInfo>& currencies) = 0;
     virtual void VGetSupportedSymbols(const CFxEventInfo& eventInfo, const vector<CFxSymbolInfo>& symbols) = 0;

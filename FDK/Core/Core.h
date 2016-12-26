@@ -28,6 +28,7 @@
 #include "FxDataHistoryRequest.h"
 #include "FxDataHistoryResponse.h"
 #include "FxClosePositionResult.h"
+#include "FxTradeServerInfo.h"
 #include "RuntimeError.h"
 #include "FxMsgData.h"
 #include "FxIterator.h"

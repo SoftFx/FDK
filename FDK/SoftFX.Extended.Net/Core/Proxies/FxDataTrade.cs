@@ -40,6 +40,13 @@
 
         #region Server Methods
 
+        public TradeServerInfo GetTradeServerInfo(int timeoutInMilliseconds)
+        {
+            this.VerifyInitialized();
+
+            return Native.TradeServer.GetTradeServerInfo(handle, (uint)timeoutInMilliseconds);
+        }
+
         public FxOrder OpenNewOrder(string operationId, string symbol, TradeCommand command, TradeRecordSide side, double priceThreshold, double volume, double? stopPrice, double? hiddenVolumen, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic, int timeoutInMilliseconds)
         {
             if (operationId == null)

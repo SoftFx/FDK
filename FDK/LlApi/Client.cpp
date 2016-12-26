@@ -232,6 +232,10 @@ void CClient::VSessionInfo(const CFxEventInfo& eventInfo, CFxSessionInfo& sessio
     }
 }
 
+void CClient::VTradeServerInfoReport(const CFxEventInfo&, CFxTradeServerInfo&)
+{
+}
+
 void CClient::VAccountInfo(const CFxEventInfo&, CFxAccountInfo&)
 {   
 }

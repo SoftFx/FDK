@@ -41,6 +41,7 @@ private:
     void OnClose(const FIX44::ClosePositionRequestAck& message);
     void OnExecution(const CFixExecutionReport& message);
     void OnCancel(const FIX44::OrderCancelReject& message);
+    void OnTradeServerInfoReport(const FIX44::TradeServerInfoReport& message);
     void OnAccountInfo(const FIX44::AccountInfo& message);
     void OnMarketDataHistory(const FIX44::MarketDataHistory& message);
     void OnMarketDataHistoryReject(const FIX44::MarketDataHistoryRequestReject& message);

@@ -50,6 +50,11 @@ void CLrpSender::VSendGetSessionInfo(const string& id)
     server.OnSessionInfoRequest(id);
 }
 
+void CLrpSender::VSendGetTradeServerInfo(const string& id)
+{
+    throw std::exception("CLrpSender::VSendGetTradeServerInfo() method is not implemented.");
+}
+
 void CLrpSender::VSendGetAccountInfo(const string& id)
 {
     throw std::exception("CLrpSender::VSendGetAccountInfo() method is not implemented.");

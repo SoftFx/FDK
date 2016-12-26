@@ -112,6 +112,8 @@ using namespace std;
 #include "../QuickFix/fix44/ComponentsInfoRequest.h"
 #include "../QuickFix/fix44/ComponentsInfoReport.h"
 #include "../QuickFix/fix44/TwoFactorLogon.h"
+#include "../QuickFix/fix44/TradeServerInfoRequest.h"
+#include "../QuickFix/fix44/TradeServerInfoReport.h"
 #pragma warning (pop)
 using namespace FIX;
 

@@ -522,6 +522,46 @@ namespace SoftFX.Extended.Generated
 				buffer.WriteAssetInfo(element);
 			}
 		}
+		public static SoftFX.Extended.TradeServerInfo ReadTradeServerInfo(this MemoryBuffer buffer)
+		{
+			var result = new SoftFX.Extended.TradeServerInfo();
+			result.CompanyName = buffer.ReadAString();
+			result.CompanyFullName = buffer.ReadAString();
+			result.CompanyDescription = buffer.ReadWString();
+			result.CompanyAddress = buffer.ReadAString();
+			result.CompanyEmail = buffer.ReadAString();
+			result.CompanyPhone = buffer.ReadAString();
+			result.CompanyWebSite = buffer.ReadAString();
+			result.ServerName = buffer.ReadAString();
+			result.ServerFullName = buffer.ReadAString();
+			result.ServerDescription = buffer.ReadWString();
+			result.ServerAddress = buffer.ReadAString();
+			result.ServerFixFeedSslPort = buffer.ReadNullInt32();
+			result.ServerFixTradeSslPort = buffer.ReadNullInt32();
+			result.ServerWebSocketFeedPort = buffer.ReadNullInt32();
+			result.ServerWebSocketTradePort = buffer.ReadNullInt32();
+			result.ServerRestPort = buffer.ReadNullInt32();
+			return result;
+		}
+		public static void WriteTradeServerInfo(this MemoryBuffer buffer, SoftFX.Extended.TradeServerInfo arg)
+		{
+			buffer.WriteAString(arg.CompanyName);
+			buffer.WriteAString(arg.CompanyFullName);
+			buffer.WriteWString(arg.CompanyDescription);
+			buffer.WriteAString(arg.CompanyAddress);
+			buffer.WriteAString(arg.CompanyEmail);
+			buffer.WriteAString(arg.CompanyPhone);
+			buffer.WriteAString(arg.CompanyWebSite);
+			buffer.WriteAString(arg.ServerName);
+			buffer.WriteAString(arg.ServerFullName);
+			buffer.WriteWString(arg.ServerDescription);
+			buffer.WriteAString(arg.ServerAddress);
+			buffer.WriteNullInt32(arg.ServerFixFeedSslPort);
+			buffer.WriteNullInt32(arg.ServerFixTradeSslPort);
+			buffer.WriteNullInt32(arg.ServerWebSocketFeedPort);
+			buffer.WriteNullInt32(arg.ServerWebSocketTradePort);
+			buffer.WriteNullInt32(arg.ServerRestPort);
+		}
 		public static SoftFX.Extended.AccountInfo ReadAccountInfo(this MemoryBuffer buffer)
 		{
 			var result = new SoftFX.Extended.AccountInfo();

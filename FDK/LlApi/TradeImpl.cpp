@@ -44,6 +44,12 @@ void* CTradeImpl::GetTradeCaptureReports(void* /*handle*/, const Nullable<CDateT
 	throw CNotImplementedException();
 }
 
+CFxTradeServerInfo CTradeImpl::GetTradeServerInfo(void* handle, size_t timeoutInMilliseconds)
+{
+    FxRef<CDataTrade> trade = DataTradeFromHandle(handle);
+    return trade->GetTradeServerInfo(static_cast<uint32>(timeoutInMilliseconds));
+}
+
 CFxAccountInfo CTradeImpl::GetAccountInfo(void* handle, size_t timeoutInMilliseconds)
 {
 	FxRef<CDataTrade> trade = DataTradeFromHandle(handle);

@@ -286,6 +286,7 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
     <ClInclude Include="FxMessage.h" />
     <ClInclude Include="FxMsgLogout.h" />
     <ClInclude Include="FxMsgData.h" />
+    <ClInclude Include="FxTradeServerInfo.h" />
     <ClInclude Include="FxTwoFactorAuth.h" />
     <ClInclude Include="FxStatusGroupInfo.h" />
     <ClInclude Include="LogoutException.h" />

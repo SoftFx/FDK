@@ -131,6 +131,24 @@
     <Type name="AssetInfoArray" kind="array">
       <Value name="AssetInfo" />
     </Type>
+    <Type name="TradeServerInfo" CSharpFullName="SoftFX.Extended.TradeServerInfo" CppFullName="CFxTradeServerInfo" kind="class">
+      <Member name="CompanyName" type="astring" />
+      <Member name="CompanyFullName" type="astring" />
+      <Member name="CompanyDescription" type="wstring" />
+      <Member name="CompanyAddress" type="astring" />
+      <Member name="CompanyEmail" type="astring" />
+      <Member name="CompanyPhone" type="astring" />
+      <Member name="CompanyWebSite" type="astring" />
+      <Member name="ServerName" type="astring" />
+      <Member name="ServerFullName" type="astring" />
+      <Member name="ServerDescription" type="wstring" />
+      <Member name="ServerAddress" type="astring" />
+      <Member name="ServerFixFeedSslPort" type="int32?" />
+      <Member name="ServerFixTradeSslPort" type="int32?" />
+      <Member name="ServerWebSocketFeedPort" type="int32?" />
+      <Member name="ServerWebSocketTradePort" type="int32?" />
+      <Member name="ServerRestPort" type="int32?" />
+    </Type>    
     <Type name="AccountInfo" CSharpFullName="SoftFX.Extended.AccountInfo" CppFullName="CFxAccountInfo" kind="class">
       <Member name="AccountId" type="astring" />
       <Member name="Type" type="AccountType" />
@@ -662,6 +680,11 @@
         <Param name="handle" type="lptr" direction="in" />
         <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
         <Return type="void" />
+      </Method>
+      <Method name="GetTradeServerInfo">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="TradeServerInfo" />
       </Method>
       <Method name="GetAccountInfo">
         <Param name="handle" type="lptr" direction="in" />

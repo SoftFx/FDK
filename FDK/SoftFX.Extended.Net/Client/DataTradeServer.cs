@@ -14,6 +14,24 @@
         }
 
         /// <summary>
+        /// </summary>
+        /// <returns></returns>
+        public TradeServerInfo GetTradeServerInfo()
+        {
+            return Client.DataTradeHandle.GetTradeServerInfo(Client.SynchOperationTimeout);
+        }
+
+        /// <summary>
+        /// </summary>
+        /// <param name="timeoutInMilliseconds"></param>
+        /// <returns></returns>
+        public TradeServerInfo GetTradeServerInfo(int timeoutInMilliseconds)
+        {
+            return Client.DataTradeHandle.GetTradeServerInfo(timeoutInMilliseconds);
+        }
+
+
+        /// <summary>
         /// The method returns the current account information.
         /// </summary>
         /// <returns>Can not be null.</returns>

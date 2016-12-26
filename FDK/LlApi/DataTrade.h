@@ -13,6 +13,7 @@ public:
     const CDataTradeCache& Cache()const;
     CDataTradeCache& Cache();
 
+    CFxTradeServerInfo GetTradeServerInfo(const uint32 timeoutInMilliseconds);
     CFxAccountInfo GetAccountInfo(const uint32 timeoutInMilliseconds);
     vector<CFxOrder> GetOrders(const size_t timeoutInMilliseconds);
     CFxOrder OpenNewOrder(const string& operationId, const CFxOrder& order, const size_t timeoutInMilliseconds);
@@ -27,6 +28,7 @@ public:
     virtual void VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion, bool twofactor);
     virtual void VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorReason reason, const std::string& text, const CDateTime& expire);
     virtual void VLogout(const CFxEventInfo& eventInfo, const FxLogoutReason reason, const string& description);
+    virtual void VTradeServerInfoReport(const CFxEventInfo& eventInfo, CFxTradeServerInfo& tradeServerInfo);
     virtual void VAccountInfo(const CFxEventInfo& eventInfo, CFxAccountInfo& accountInfo);
     virtual void VClosePositions(const CFxEventInfo& eventInfo, CFxClosePositionsResponse& response);
     virtual void VExecution(const CFxEventInfo& eventInfo, CFxExecutionReport& executionReport);

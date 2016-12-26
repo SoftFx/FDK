@@ -850,14 +850,15 @@ namespace
 	const unsigned short LrpMethod_TradeServer_GetTradeTransactionReportsAndSubscribe_Id = 1;
 	const unsigned short LrpMethod_TradeServer_GetTradeCaptureReports_Id = 2;
 	const unsigned short LrpMethod_TradeServer_UnsubscribeTradeTransactionReports_Id = 3;
-	const unsigned short LrpMethod_TradeServer_GetAccountInfo_Id = 4;
-	const unsigned short LrpMethod_TradeServer_DeleteOrder_Id = 5;
-	const unsigned short LrpMethod_TradeServer_CloseAllPositions_Id = 6;
-	const unsigned short LrpMethod_TradeServer_CloseByPositions_Id = 7;
-	const unsigned short LrpMethod_TradeServer_GetRecords_Id = 8;
-	const unsigned short LrpMethod_TradeServer_OpenNewOrder_Id = 9;
-	const unsigned short LrpMethod_TradeServer_ModifyOrder_Id = 10;
-	const unsigned short LrpMethod_TradeServer_CloseOrder_Id = 11;
+	const unsigned short LrpMethod_TradeServer_GetTradeServerInfo_Id = 4;
+	const unsigned short LrpMethod_TradeServer_GetAccountInfo_Id = 5;
+	const unsigned short LrpMethod_TradeServer_DeleteOrder_Id = 6;
+	const unsigned short LrpMethod_TradeServer_CloseAllPositions_Id = 7;
+	const unsigned short LrpMethod_TradeServer_CloseByPositions_Id = 8;
+	const unsigned short LrpMethod_TradeServer_GetRecords_Id = 9;
+	const unsigned short LrpMethod_TradeServer_OpenNewOrder_Id = 10;
+	const unsigned short LrpMethod_TradeServer_ModifyOrder_Id = 11;
+	const unsigned short LrpMethod_TradeServer_CloseOrder_Id = 12;
 
 	typedef void (*LrpInvoke_TradeServer_Method_Handler)(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel);
 	void LrpInvoke_TradeServer_Create(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
@@ -909,6 +910,17 @@ namespace
 		auto arg1 = ReadUInt32(buffer);
 		component.UnsubscribeTradeTransactionReports(arg0, arg1);
 		buffer.Reset(offset);
+	}
+	void LrpInvoke_TradeServer_GetTradeServerInfo(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	{
+		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
+		auto& component = pChannel->GetTradeServer();
+		component; // if all methods of component are static then the next line generates warning #4189
+		auto arg0 = ReadLocalPointer(buffer);
+		auto arg1 = ReadUInt32(buffer);
+		auto result = component.GetTradeServerInfo(arg0, arg1);
+		buffer.Reset(offset);
+		WriteTradeServerInfo(result, buffer);
 	}
 	void LrpInvoke_TradeServer_GetAccountInfo(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
@@ -1017,6 +1029,7 @@ namespace
 		LrpInvoke_TradeServer_GetTradeTransactionReportsAndSubscribe,
 		LrpInvoke_TradeServer_GetTradeCaptureReports,
 		LrpInvoke_TradeServer_UnsubscribeTradeTransactionReports,
+		LrpInvoke_TradeServer_GetTradeServerInfo,
 		LrpInvoke_TradeServer_GetAccountInfo,
 		LrpInvoke_TradeServer_DeleteOrder,
 		LrpInvoke_TradeServer_CloseAllPositions,
@@ -1029,7 +1042,7 @@ namespace
 
 	HRESULT LrpInvoke_TradeServer(size_t offset, size_t methodId, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
-		if(methodId >= 12)
+		if(methodId >= 13)
 		{
 			return LRP_INVALID_METHOD_ID;
 		}
@@ -1431,6 +1444,7 @@ extern "C" const char* __stdcall LrpSignature()
 		"GetTradeTransactionReportsAndSubscribe@01D0DCEF3E6E853DC5C184E4A6D85085;"
 		"GetTradeCaptureReports@874C22E243BFC4DED82F08A53E84EF80;"
 		"UnsubscribeTradeTransactionReports@42E7909824399BBE11FEC757FAB1BBD7;"
+		"GetTradeServerInfo@A34A6F98C30D420EA60766CCA907ADD3;"
 		"GetAccountInfo@77376FF9BF6E473A6FE180A27645607E;"
 		"DeleteOrder@DE7E6163B4AE4C044E27D27E5F8318A7;"
 		"CloseAllPositions@3DC14AEEA2352306357FB18073E5937D;"
