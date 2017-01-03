@@ -21,7 +21,7 @@
         /// <summary>
         /// Creates a new data trade instance.
         /// </summary>
-        public DataTrade() : 
+        public DataTrade() :
             this("Trade")
         {
         }
@@ -29,20 +29,21 @@
         /// <summary>
         /// Creates and initializes a new data trade instance.
         /// </summary>
-        public DataTrade(string name) :
-            base(name)
+        /// <exception cref="System.ArgumentNullException">If connectionString is null.</exception>
+        public DataTrade(string connectionString) :
+            this(connectionString, "Trade")
         {
-            this.Server = new DataTradeServer(this);
-            this.Cache = new DataTradeCache(this);
         }
 
         /// <summary>
         /// Creates and initializes a new data trade instance.
         /// </summary>
         /// <exception cref="System.ArgumentNullException">If connectionString is null.</exception>
-        public DataTrade(string name, string connectionString) :
-            this(name)
+        public DataTrade(string connectionString, string name) :
+            base(name)
         {
+            this.Server = new DataTradeServer(this);
+            this.Cache = new DataTradeCache(this);
             this.Initialize(connectionString);
         }
 
@@ -253,7 +254,7 @@
         #region Disposing
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
