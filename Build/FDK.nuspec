@@ -8,7 +8,7 @@
         <description>This package offers access to FDK's</description>
     </metadata>
     <files>
-        <file src="..\FRE\SoftFX.Extended.Net.dll" target="lib\net46\SoftFX.Extended.Net.dll" />
-        <file src="..\FRE\SoftFX.Lrp.dll" target="lib\net46\SoftFX.Lrp.dll" />
+        <file src="..\FRE\SoftFX.Extended.Net.dll" target="lib\net40\SoftFX.Extended.Net.dll" />
+        <file src="..\FRE\SoftFX.Lrp.dll" target="lib\net40\SoftFX.Lrp.dll" />
     </files>
 </package>
