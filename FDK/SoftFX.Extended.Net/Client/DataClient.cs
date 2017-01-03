@@ -23,7 +23,6 @@
 
         static DataClient()
         {
-            this.name_ = "Client";
             Native.Initialize();
         }
 
