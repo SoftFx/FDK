@@ -3,7 +3,7 @@
     using System;
     using SoftFX.Extended.Core;
     using SoftFX.Extended.Events;
-    
+
     /// <summary>
     /// This class connects to trading platform and receives quotes and other notifications.
     /// </summary>
@@ -28,20 +28,21 @@
         /// <summary>
         /// Creates and initializes a new data feed instance.
         /// </summary>
-        public DataFeed(string name) :
-            base(name)
+        /// <exception cref="System.ArgumentNullException">If connectionString is null.</exception>
+        public DataFeed(string connectionString) :
+            this(connectionString, "Feed")
         {
-            this.Server = new DataFeedServer(this);
-            this.Cache = new DataFeedCache(this);
         }
 
         /// <summary>
         /// Creates and initializes a new data feed instance.
         /// </summary>
         /// <exception cref="System.ArgumentNullException">If connectionString is null.</exception>
-        public DataFeed(string name, string connectionString) :
-            this(name)
+        public DataFeed(string connectionString, string name) :
+            base(name)
         {
+            this.Server = new DataFeedServer(this);
+            this.Cache = new DataFeedCache(this);
             this.Initialize(connectionString);
         }
 
@@ -225,7 +226,7 @@
         #region Disposing
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
