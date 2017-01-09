@@ -22,7 +22,7 @@
         /// Creates a new data trade instance.
         /// </summary>
         public DataTrade() :
-            this("Trade")
+            this(null, "Trade")
         {
         }
 
@@ -44,7 +44,8 @@
         {
             this.Server = new DataTradeServer(this);
             this.Cache = new DataTradeCache(this);
-            this.Initialize(connectionString);
+            if (!string.IsNullOrEmpty(connectionString))
+                this.Initialize(connectionString);
         }
 
         internal override FxDataClient CreateFxDataClient(string connectionString)

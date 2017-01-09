@@ -21,7 +21,7 @@
         /// Creates a new data feed instance. You should use Initialize method to finish the instance initialization.
         /// </summary>
         public DataFeed() :
-            this("Feed")
+            this(null, "Feed")
         {
         }
 
@@ -43,7 +43,8 @@
         {
             this.Server = new DataFeedServer(this);
             this.Cache = new DataFeedCache(this);
-            this.Initialize(connectionString);
+            if (!string.IsNullOrEmpty(connectionString))
+                this.Initialize(connectionString);
         }
 
         internal override FxDataClient CreateFxDataClient(string connectionString)
