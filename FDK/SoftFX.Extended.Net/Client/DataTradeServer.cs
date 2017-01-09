@@ -171,7 +171,7 @@
         /// <param name="side">Order side: buy or sell.</param>
         public void DeletePendingOrder(string orderId, TradeRecordSide side)
         {
-            this.DeletePendingOrderEx(null, orderId, "<OrderID>", side, this.Client.SynchOperationTimeout);
+            this.DeletePendingOrderEx(null, orderId, "Client-" + orderId, side, this.Client.SynchOperationTimeout);
         }
 
         /// <summary>
@@ -182,7 +182,7 @@
         /// <param name="timeoutInMilliseconds">Timeout of the synchronous operation.</param>
         public void DeletePendingOrderEx(string orderId, TradeRecordSide side, int timeoutInMilliseconds)
         {
-            this.DeletePendingOrderEx(null, orderId, "<OrderID>", side, timeoutInMilliseconds);
+            this.DeletePendingOrderEx(null, orderId, "Client-" + orderId, side, timeoutInMilliseconds);
         }
 
         /// <summary>
@@ -196,7 +196,7 @@
         /// <param name="side">Order side: buy or sell.</param>
         public void DeletePendingOrderEx(string operationId, string orderId, TradeRecordSide side)
         {
-            this.DeletePendingOrderEx(null, orderId, "<OrderID>", side, this.Client.SynchOperationTimeout);
+            this.DeletePendingOrderEx(null, orderId, "Client-" + orderId, side, this.Client.SynchOperationTimeout);
         }
 
         void DeletePendingOrderEx(string operationId, string orderId, string clientId, TradeRecordSide side, int timeoutInMilliseconds)
@@ -251,7 +251,7 @@
         public TradeRecord ModifyTradeRecordEx(string orderId, string symbol, TradeRecordType type, TradeRecordSide side,
                                         double volume, double? stopPrice, double? hiddenVolume, double? newActivationPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpiration, string newComment, string newTag, int? newMagic, int timeoutInMilliseconds)
         {
-            return this.ModifyTradeRecordEx(null, orderId, "<OrderID>", symbol, type, side, volume, stopPrice, hiddenVolume, newActivationPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, timeoutInMilliseconds);
+            return this.ModifyTradeRecordEx(null, orderId, "Client-" + orderId, symbol, type, side, volume, stopPrice, hiddenVolume, newActivationPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, timeoutInMilliseconds);
         }
 
         /// <summary>
@@ -278,7 +278,7 @@
                                         double volume, double? stopPrice, double? hiddenVolume, double? newActivationPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpiration,
                                         string newComment, string newTag, int? newMagic)
         {
-            return this.ModifyTradeRecordEx(operationId, orderId, "<OrderID>", symbol, type, side, volume, stopPrice, hiddenVolume, newActivationPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, this.Client.SynchOperationTimeout);
+            return this.ModifyTradeRecordEx(operationId, orderId, "Client-" + orderId, symbol, type, side, volume, stopPrice, hiddenVolume, newActivationPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, this.Client.SynchOperationTimeout);
         }
 
         TradeRecord ModifyTradeRecordEx(string operationId, string orderId, string clientId, string symbol, TradeRecordType type, TradeRecordSide side,
@@ -570,6 +570,6 @@
         public void UnsubscribeTradeTransactionReportsEx(int timeoutInMilliseconds)
         {
             this.Client.DataTradeHandle.UnsubscribeTradeTransactionReports(timeoutInMilliseconds);
-        }        
+        }
     }
 }
