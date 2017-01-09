@@ -340,7 +340,7 @@
             {
                 var bids = this.GetBars(symbol, PriceType.Bid, period, startTime, endTime);
                 var asks = this.GetBars(symbol, PriceType.Ask, period, startTime, endTime);
-                var bars = new PairBars(bids, asks, DateTime.Compare(startTime, endTime) >= 0);
+                var bars = new PairBars(bids, asks, DateTime.Compare(endTime, startTime) >= 0);
                 var result = bars.ToArray();
                 return result;
             }
