@@ -35,43 +35,44 @@
 
 enum FxTradeRecordType
 {
-    FxTradeRecordType_None  = -1, 
-    FxTradeRecordType_Market    = 0,
-    FxTradeRecordType_Position  = 1,
-    FxTradeRecordType_Limit = 2,
-    FxTradeRecordType_Stop  = 3,
-    FxTradeRecordType_IoC   = 4,
-    FxTradeRecordType_MarketWithSlippage = 5,
-    FxTradeRecordType_StopLimit = 6,
-    FxTradeRecordType_Last  = FX_MAX_ENUM
+    FxTradeRecordType_None                  = -1,
+    FxTradeRecordType_Market                = 0,
+    FxTradeRecordType_Position              = 1,
+    FxTradeRecordType_Limit                 = 2,
+    FxTradeRecordType_Stop                  = 3,
+    FxTradeRecordType_IoC                   = 4,
+    FxTradeRecordType_MarketWithSlippage    = 5,
+    FxTradeRecordType_StopLimit             = 6,
+    FxTradeRecordType_Last                  = FX_MAX_ENUM
 };
 
 enum FxOrderType
 {
-    FxOrderType_None        = -1,
-    FxOrderType_Market      = 0,
-    FxOrderType_Position    = 1,
-    FxOrderType_Limit       = 2,
-    FxOrderType_Stop        = 3,
-    FxOrderType_IoC         = 4,
-    FxOrderType_StopLimit   = 5,
-    FxOrderType_Last        = FX_MAX_ENUM
+    FxOrderType_None                = -1,
+    FxOrderType_Market              = 0,
+    FxOrderType_Position            = 1,
+    FxOrderType_Limit               = 2,
+    FxOrderType_Stop                = 3,
+    FxOrderType_IoC                 = 4,
+    FxOrderType_MarketWithSlippage  = 5,
+    FxOrderType_StopLimit           = 6,
+    FxOrderType_Last                = FX_MAX_ENUM
 };
 
 enum FxRejectReason
 {
-    FxRejectReason_None             = -1,
-    FxRejectReason_DealerReject         = 0,
-    FxRejectReason_UnknownSymbol        = 1,
-    FxRejectReason_TradeSessionIsClosed     = 2,
-    FxRejectReason_OrderExceedsLImit        = 3,
-    FxRejectReason_OffQuotes            = 4,
-    FxRejectReason_UnknownOrder         = 5,
-    FxRejectReason_DuplicateClientOrderId   = 6,
+    FxRejectReason_None                         = -1,
+    FxRejectReason_DealerReject                 = 0,
+    FxRejectReason_UnknownSymbol                = 1,
+    FxRejectReason_TradeSessionIsClosed         = 2,
+    FxRejectReason_OrderExceedsLImit            = 3,
+    FxRejectReason_OffQuotes                    = 4,
+    FxRejectReason_UnknownOrder                 = 5,
+    FxRejectReason_DuplicateClientOrderId       = 6,
     FxRejectReason_InvalidTradeRecordParameters = 11,
-    FxRejectReason_IncorrectQuantity        = 13,
-    FxRejectReason_Unknown          = 99,
-    FxRejectReason_Last             = FX_MAX_ENUM
+    FxRejectReason_IncorrectQuantity            = 13,
+    FxRejectReason_Unknown                      = 99,
+    FxRejectReason_Last                         = FX_MAX_ENUM
 };
 
 enum FxTradeRecordSide

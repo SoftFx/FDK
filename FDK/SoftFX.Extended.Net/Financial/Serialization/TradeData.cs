@@ -156,6 +156,10 @@
             {
                 return TradeRecordType.Stop;
             }
+            if (type == TradeType.StopLimit)
+            {
+                return TradeRecordType.StopLimit;
+            }
 
             var message = string.Format("Unsupporred trade type = {0}", type);
             throw new ArgumentException(message, nameof(type));
@@ -174,6 +178,10 @@
             if (type == TradeRecordType.Stop)
             {
                 return TradeType.Stop;
+            }
+            if (type == TradeRecordType.StopLimit)
+            {
+                return TradeType.StopLimit;
             }
 
             var message = string.Format("Unsupported trade record type = {0}", type);
