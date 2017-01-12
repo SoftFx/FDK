@@ -96,9 +96,9 @@
                 case TradeRecordType.Stop:
                     return OrderTypes.Stop;
                 case TradeRecordType.IoC:
-                    return OrderTypes.IoC;
+                    return OrderTypes.Limit;
                 case TradeRecordType.MarketWithSlippage:
-                    return OrderTypes.MarketWithSlippage;
+                    return OrderTypes.Limit;
                 case TradeRecordType.StopLimit:
                     return OrderTypes.StopLimit;
             }

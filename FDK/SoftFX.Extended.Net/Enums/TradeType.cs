@@ -24,5 +24,10 @@
         /// for internal usage only
         /// </summary>
         Stop = 2,
+
+        /// <summary>
+        /// for internal usage only
+        /// </summary>
+        StopLimit = 3,
     }
 }
