@@ -61,6 +61,11 @@
             get { return (decimal)this.entry.Price; }
         }
 
+        public decimal? StopPrice
+        {
+            get { return (decimal)this.entry.StopPrice; }
+        }
+
         public decimal RemainingAmount
         {
             get { return this.Amount; }

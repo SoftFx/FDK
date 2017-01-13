@@ -161,8 +161,9 @@ namespace SoftFX.Extended.Financial.Generated
 			result.Type = buffer.ReadTradeType();
 			result.Side = buffer.ReadTradeSide();
 			result.Symbol = buffer.ReadAString();
-			result.Price = buffer.ReadDouble();
 			result.Volume = buffer.ReadDouble();
+			result.Price = buffer.ReadNullDouble();
+			result.StopPrice = buffer.ReadNullDouble();
 			result.Commission = buffer.ReadDouble();
 			result.AgentCommission = buffer.ReadDouble();
 			result.Swap = buffer.ReadDouble();
@@ -179,8 +180,9 @@ namespace SoftFX.Extended.Financial.Generated
 			buffer.WriteTradeType(arg.Type);
 			buffer.WriteTradeSide(arg.Side);
 			buffer.WriteAString(arg.Symbol);
-			buffer.WriteDouble(arg.Price);
 			buffer.WriteDouble(arg.Volume);
+			buffer.WriteNullDouble(arg.Price);
+			buffer.WriteNullDouble(arg.StopPrice);
 			buffer.WriteDouble(arg.Commission);
 			buffer.WriteDouble(arg.AgentCommission);
 			buffer.WriteDouble(arg.Swap);

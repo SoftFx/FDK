@@ -195,8 +195,9 @@ namespace
 		WriteTradeType(arg.Type, buffer);
 		WriteTradeSide(arg.Side, buffer);
 		WriteAString(arg.Symbol, buffer);
-		WriteDouble(arg.Price, buffer);
 		WriteDouble(arg.Volume, buffer);
+		WriteNullDouble(arg.Price, buffer);
+		WriteNullDouble(arg.StopPrice, buffer);
 		WriteDouble(arg.Commission, buffer);
 		WriteDouble(arg.AgentCommission, buffer);
 		WriteDouble(arg.Swap, buffer);
@@ -213,8 +214,9 @@ namespace
 		result.Type = ReadTradeType(buffer);
 		result.Side = ReadTradeSide(buffer);
 		result.Symbol = ReadAString(buffer);
-		result.Price = ReadDouble(buffer);
 		result.Volume = ReadDouble(buffer);
+		result.Price = ReadNullDouble(buffer);
+		result.StopPrice = ReadNullDouble(buffer);
 		result.Commission = ReadDouble(buffer);
 		result.AgentCommission = ReadDouble(buffer);
 		result.Swap = ReadDouble(buffer);

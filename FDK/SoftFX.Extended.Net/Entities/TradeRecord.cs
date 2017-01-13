@@ -22,7 +22,7 @@
             this.StopLoss = fxOrder.StopLoss;
             this.TakeProfit = fxOrder.TakeProfit;
             this.InitialVolume = fxOrder.InitialVolume;
-            this.Volume = fxOrder.Volume;
+            this.Volume = fxOrder.Volume ?? 0;
             this.StopPrice = fxOrder.StopPrice;
             this.HiddenVolume = fxOrder.HiddenVolume;
             this.Commission = fxOrder.Commission;
@@ -68,9 +68,9 @@
         public string Symbol { get; internal set; }
 
         /// <summary>
-        /// Gets price of the order.
+        /// Initially requested order size.
         /// </summary>
-        public double Price { get; internal set; }
+        public double InitialVolume { get; internal set; }
 
         /// <summary>
         /// Gets volume of the order.
@@ -78,19 +78,19 @@
         public double Volume { get; internal set; }
 
         /// <summary>
-        /// Gets stop price of the order.
-        /// </summary>
-        public double? StopPrice { get; internal set; }
-
-        /// <summary>
         /// Gets hidden volume of the order.
         /// </summary>
         public double? HiddenVolume { get; internal set; }
 
         /// <summary>
-        /// Initially requested order size.
+        /// Gets price of the order.
         /// </summary>
-        public double InitialVolume { get; internal set; }
+        public double? Price { get; internal set; }
+
+        /// <summary>
+        /// Gets stop price of the order.
+        /// </summary>
+        public double? StopPrice { get; internal set; }
 
         /// <summary>
         /// Gets take profit of the order.
