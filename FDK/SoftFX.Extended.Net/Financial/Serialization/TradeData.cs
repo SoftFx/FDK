@@ -25,8 +25,9 @@
             this.Type = TradeTypeFromTradeRecordType(entry.Type);
             this.Side  = entry.Side;
             this.Symbol = entry.Symbol;
-            this.Price = entry.Price;
             this.Volume = entry.Volume;
+            this.Price = entry.Price;
+            this.StopPrice = entry.StopPrice;
             this.Commission = entry.Commission;
             this.AgentCommission = entry.AgentCommission;
             this.Swap = entry.Swap;
@@ -45,8 +46,9 @@
                 Type = TradeRecordTypeFromTradeType(this.Type),
                 Side = this.Side,
                 Symbol = this.Symbol,
-                Price = this.Price,
                 Volume = this.Volume,
+                Price = this.Price,
+                StopPrice = this.StopPrice,
                 Commission = this.Commission,
                 AgentCommission = this.AgentCommission,
                 Swap = this.Swap,
@@ -86,14 +88,20 @@
         /// <summary>
         /// For internal usage only
         /// </summary>
-        [XmlAttribute("Price")]
-        public double Price { get; set; }
+        [XmlAttribute("Volume")]
+        public double Volume { get; set; }
 
         /// <summary>
         /// For internal usage only
         /// </summary>
-        [XmlAttribute("Volume")]
-        public double Volume { get; set; }
+        [XmlAttribute("Price")]
+        public double? Price { get; set; }
+
+        /// <summary>
+        /// For internal usage only
+        /// </summary>
+        [XmlAttribute("StopPrice")]
+        public double? StopPrice { get; set; }
 
         /// <summary>
         /// For internal usage only

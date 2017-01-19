@@ -6,11 +6,11 @@
     sealed class UpdateHandler
     {
         readonly Processor processor;
-        readonly Action<SymbolInfo[], AccountInfo, Quote> updateCallback;
+        readonly Action<CurrencyInfo[], SymbolInfo[], AccountInfo, Quote> updateCallback;
 
         public object SyncRoot { get; private set; }
 
-        public UpdateHandler(DataTrade trade, DataFeed feed, Action<SymbolInfo[], AccountInfo, Quote> updateCallback, Processor processor)
+        public UpdateHandler(DataTrade trade, DataFeed feed, Action<CurrencyInfo[], SymbolInfo[], AccountInfo, Quote> updateCallback, Processor processor)
         {
             if (trade == null)
                 throw new ArgumentNullException(nameof(trade));
@@ -29,7 +29,8 @@
 
             this.SyncRoot = new object();
 
-            feed.SymbolInfo += this.OnSymbolInfo;
+            feed.CurrencyInfo += this.OnCurrencyInfo;
+            feed.SymbolInfo += this.OnSymbolInfo;            
             feed.Tick += this.OnTick;
 
             trade.AccountInfo += this.OnAccountInfo;
@@ -40,11 +41,20 @@
 
         #region Events Handlers
 
+        void OnCurrencyInfo(object sender, CurrencyInfoEventArgs e)
+        {
+            lock (this.SyncRoot)
+            {
+                this.updateCallback(e.Information, null, null, null);
+                this.processor.WakeUp();
+            }
+        }
+
         void OnSymbolInfo(object sender, SymbolInfoEventArgs e)
         {
             lock (this.SyncRoot)
             {
-                this.updateCallback(e.Information, null, null);
+                this.updateCallback(null, e.Information, null, null);
                 this.processor.WakeUp();
             }
         }
@@ -55,7 +65,7 @@
 
             lock (this.SyncRoot)
             {
-                this.updateCallback(null, null, quote);
+                this.updateCallback(null, null, null, quote);
                 this.processor.WakeUp();
             }
         }
@@ -64,7 +74,7 @@
         {
             lock (this.SyncRoot)
             {
-                this.updateCallback(null, e.Information, null);
+                this.updateCallback(null, null, e.Information, null);
                 this.processor.WakeUp();
             }
         }

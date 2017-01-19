@@ -142,12 +142,12 @@
                 if (element.Side == TradeRecordSide.Buy)
                 {
                     assets[symbol.ToIndex].Volume += element.NativeVolume;
-                    assets[symbol.FromIndex].Volume -= element.NativeVolume * element.Price;
+                    assets[symbol.FromIndex].Volume -= element.NativeVolume * (element.Price ?? 0);
                 }
                 else if (element.Side == TradeRecordSide.Sell)
                 {
                     assets[symbol.ToIndex].Volume -= element.NativeVolume;
-                    assets[symbol.FromIndex].Volume += element.NativeVolume * element.Price;
+                    assets[symbol.FromIndex].Volume += element.NativeVolume * (element.Price ?? 0);
                 }
             }
 

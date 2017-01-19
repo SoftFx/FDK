@@ -23,7 +23,7 @@
 			<Member name="Symbol" type="astring" />
 			<Member name="From" type="astring" />
 			<Member name="To" type="astring" />
-      <Member name="ContractSize" type="double" />      
+      <Member name="ContractSize" type="double" />
 			<Member name="Hedging" type="double" />
 			<Member name="MarginFactorOfPositions" type="double" />
 			<Member name="MarginFactorOfLimitOrders" type="double" />
@@ -37,8 +37,9 @@
 			<Member name="Type" type="TradeType" />
 			<Member name="Side" type="TradeSide" />
 			<Member name="Symbol" type="astring" />
-			<Member name="Price" type="double" />
 			<Member name="Volume" type="double" />
+			<Member name="Price" type="double?" />
+			<Member name="StopPrice" type="double?" />
       <Member name="Commission" type="double" />
       <Member name="AgentCommission" type="double" />
       <Member name="Swap" type="double" />

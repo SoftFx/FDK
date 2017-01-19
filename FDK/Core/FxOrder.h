@@ -14,14 +14,13 @@ public:
     string Symbol;
     FxTradeRecordType Type;
     FxTradeRecordSide Side;
-    double Price;
+    double InitialVolume;
+    Nullable<double> Volume;
+    Nullable<double> HiddenVolume;
+    Nullable<double> Price;
     Nullable<double> StopPrice;
-    Nullable<double> NewPrice;
     Nullable<double> StopLoss;
     Nullable<double> TakeProfit;
-    double InitialVolume;
-    double Volume;
-    Nullable<double> HiddenVolume;
     double Commission;
     double AgentCommission;
     double Swap;

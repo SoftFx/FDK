@@ -29,6 +29,7 @@
 
         #region State Fields
 
+        IEnumerable<CurrencyInfo> currencyInfo;
         IEnumerable<SymbolInfo> symbolInfo;
         AccountInfo accountInfo;
         IDictionary<string, Quote> quotes;
@@ -100,8 +101,11 @@
 
         #region Event Handlers
 
-        void OnUpdate(SymbolInfo[] symbolInfo, AccountInfo accountInfo, Quote quote)
+        void OnUpdate(CurrencyInfo[] currencyInfo, SymbolInfo[] symbolInfo, AccountInfo accountInfo, Quote quote)
         {
+            if (currencyInfo != null)
+                this.currencyInfo = currencyInfo;
+
             if (symbolInfo != null)
                 this.symbolInfo = symbolInfo;
 
@@ -131,6 +135,7 @@
         /// </summary>
         public void Calculate()
         {
+            IEnumerable<CurrencyInfo> currencyUpdate;
             IEnumerable<SymbolInfo> symbolsUpdate;
             AccountInfo accountUpdate;
             IDictionary<string, Quote> quotesUpdate;
@@ -139,6 +144,9 @@
 
             lock (this.updateHandler.SyncRoot)
             {
+                currencyUpdate = this.currencyInfo;
+                this.currencyInfo = null;
+
                 symbolsUpdate = this.symbolInfo;
                 this.symbolInfo = null;
 
@@ -153,13 +161,13 @@
 
             lock (this.calculator)
             {
-                this.PrepareCalculator(accountUpdate, symbolsUpdate, quotesUpdate);
+                this.PrepareCalculator(accountUpdate, currencyUpdate, symbolsUpdate, quotesUpdate);
 
                 this.calculator.Calculate();
             }
         }
 
-        void PrepareCalculator(AccountInfo accountUpdate, IEnumerable<SymbolInfo> symbolsUpdate, IDictionary<string, Quote> quotesUpdate)
+        void PrepareCalculator(AccountInfo accountUpdate, IEnumerable<CurrencyInfo> currencyUpdate, IEnumerable<SymbolInfo> symbolsUpdate, IDictionary<string, Quote> quotesUpdate)
         {
             if (accountUpdate != null)
             {
@@ -185,6 +193,20 @@
             if (this.account.Type != AccountType.Cash)
             {
                 this.account.Balance = this.trade.Cache.AccountInfo.Balance;
+            }
+
+            if (currencyUpdate != null)
+            {
+                var provider = new SymbolInfoFeaturesProvider();
+                var features = provider.GetInfo(new FixProtocolVersion(this.feed.UsedProtocolVersion));
+                var currencies = features.IsCurrencySortOrderSupported ? currencyUpdate.OrderBy(o => o.SortOrder).Select(o => o.Name) : MajorCurrencies;
+
+                this.calculator.Currencies.Clear();
+
+                foreach (var currency in currencies)
+                {
+                    this.calculator.Currencies.Add(currency);
+                }
             }
 
             if (symbolsUpdate != null)
@@ -220,16 +242,6 @@
                     var precisionProvider = new CurrencyPrecisionProvider(this.feed.Cache.Currencies);
                     this.account.RoundingService = new AccountRoundingService(FinancialRounding.Instance, precisionProvider, account.Currency);
                 }
-
-                var currencies = features.IsCurrencySortOrderSupported ? this.feed.Cache.Currencies.OrderBy(o => o.SortOrder).Select(o => o.Name)
-                                                                       : MajorCurrencies;
-
-                this.calculator.Currencies.Clear();
-
-                foreach (var currency in currencies)
-                {
-                    this.calculator.Currencies.Add(currency);
-                }
             }
 
             foreach (var quote in quotesUpdate.Values)
@@ -243,7 +255,7 @@
             var records = this.trade.Cache.TradeRecords;
             foreach (var record in records)
             {
-                var entry = new TradeEntry(this.account, record.Type, record.Side, record.Symbol, record.Price, record.Volume)
+                var entry = new TradeEntry(this.account, record.Type, record.Side, record.Symbol, record.Volume, record.Price, record.StopPrice)
                 {
                     Tag = record,
                     Commission = record.Commission,
@@ -257,7 +269,7 @@
             var positions = this.trade.Cache.Positions;
             foreach (var position in positions)
             {
-                var buy = new TradeEntry(this.account, TradeRecordType.Position, TradeRecordSide.Buy, position.Symbol, position.BuyPrice.Value, position.BuyAmount)
+                var buy = new TradeEntry(this.account, TradeRecordType.Position, TradeRecordSide.Buy, position.Symbol, position.BuyAmount, position.BuyPrice.Value, null)
                 {
                     Tag = position,
                     Commission = position.Commission,
@@ -265,7 +277,7 @@
                     Swap = position.Swap
 
                 };
-                var sell = new TradeEntry(this.account, TradeRecordType.Position, TradeRecordSide.Sell, position.Symbol, position.SellPrice.Value, position.SellAmount)
+                var sell = new TradeEntry(this.account, TradeRecordType.Position, TradeRecordSide.Sell, position.Symbol, position.SellAmount, position.SellPrice.Value, null)
                 {
                     Tag = position
                 };
