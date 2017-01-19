@@ -29,17 +29,19 @@
         /// <param name="type"></param>
         /// <param name="side"></param>
         /// <param name="symbol"></param>
-        /// <param name="price"></param>
         /// <param name="volume"></param>
+        /// <param name="price"></param>
+        /// <param name="stopPrice"></param>
         /// <param name="staticMarginRate"></param>
-        public TradeEntry(AccountEntry owner, TradeRecordType type, TradeRecordSide side, string symbol, double price, double volume, double? staticMarginRate = null)
+        public TradeEntry(AccountEntry owner, TradeRecordType type, TradeRecordSide side, string symbol, double volume, double? price, double? stopPrice, double? staticMarginRate = null)
             : base(owner)
         {
             this.Type = type;
             this.Side = side;
             this.Symbol = symbol;
-            this.Price = price;
             this.Volume = volume;
+            this.Price = price;
+            this.StopPrice = stopPrice;
             //this.StaticMarginRate = staticMarginRate;
         }
 
@@ -83,16 +85,22 @@
         public string Symbol { get; set; }
 
         /// <summary>
-        /// Gets and sets trade price.
-        /// </summary>
-        [Category("Parameters")]
-        public double Price { get; set; }
-
-        /// <summary>
         /// Gets and sets trade volume.
         /// </summary>
         [Category("Parameters")]
         public double Volume { get; set; }
+
+        /// <summary>
+        /// Gets and sets trade price.
+        /// </summary>
+        [Category("Parameters")]
+        public double? Price { get; set; }
+
+        /// <summary>
+        /// Gets and sets trade stop price.
+        /// </summary>
+        [Category("Parameters")]
+        public double? StopPrice { get; set; }
 
         /// <summary>
         /// Gets or sets static margin rate.

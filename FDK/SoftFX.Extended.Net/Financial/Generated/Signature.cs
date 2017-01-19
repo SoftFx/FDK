@@ -9,8 +9,8 @@ namespace SoftFX.Extended.Financial.Generated
 		public const string Value = 
 		"$Exceptions;"+
 		"$Serializer;"+
-			"Serialize@FF8910FF4BA3A6985A6E718A6D9ABFAC;"+
-			"Deserialize@A2ECE2C977631B1FC0C5A7518E3CB856;"+
+			"Serialize@D438B340F4B0DCE07C0727A816BDB261;"+
+			"Deserialize@913ED7230CFE1990501B4248E11143A0;"+
 		"$FinCalc;"+
 			"Constructor@9891140067A7206F09C78A3E4B47A617;"+
 			"Destructor@578A3F61986EADEE8A91305955BD65E4;"+

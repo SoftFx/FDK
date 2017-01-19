@@ -49,7 +49,7 @@
             if (connectionString == null)
                 throw new ArgumentNullException(nameof(connectionString), "Connection string can not be null.");
 
-#if LOG_PERFORMANCE            
+#if LOG_PERFORMANCE
             service_ = new Core.Performance.Service(0);
             loggerOut_ = new Core.Performance.Logger(service_, name_ + ".t3", name_ + " .NET Out", ".\\Logs");
             loggerIn_ = new Core.Performance.Logger(service_, name_ + ".t0", name_ + " .NET In", ".\\Logs");
@@ -382,7 +382,7 @@
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)

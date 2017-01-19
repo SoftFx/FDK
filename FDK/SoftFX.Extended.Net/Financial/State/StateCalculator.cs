@@ -255,7 +255,7 @@
             var records = this.trade.Cache.TradeRecords;
             foreach (var record in records)
             {
-                var entry = new TradeEntry(this.account, record.Type, record.Side, record.Symbol, record.Price, record.Volume)
+                var entry = new TradeEntry(this.account, record.Type, record.Side, record.Symbol, record.Volume, record.Price, record.StopPrice)
                 {
                     Tag = record,
                     Commission = record.Commission,
@@ -269,7 +269,7 @@
             var positions = this.trade.Cache.Positions;
             foreach (var position in positions)
             {
-                var buy = new TradeEntry(this.account, TradeRecordType.Position, TradeRecordSide.Buy, position.Symbol, position.BuyPrice.Value, position.BuyAmount)
+                var buy = new TradeEntry(this.account, TradeRecordType.Position, TradeRecordSide.Buy, position.Symbol, position.BuyAmount, position.BuyPrice.Value, null)
                 {
                     Tag = position,
                     Commission = position.Commission,
@@ -277,7 +277,7 @@
                     Swap = position.Swap
 
                 };
-                var sell = new TradeEntry(this.account, TradeRecordType.Position, TradeRecordSide.Sell, position.Symbol, position.SellPrice.Value, position.SellAmount)
+                var sell = new TradeEntry(this.account, TradeRecordType.Position, TradeRecordSide.Sell, position.Symbol, position.SellAmount, position.SellPrice.Value, null)
                 {
                     Tag = position
                 };

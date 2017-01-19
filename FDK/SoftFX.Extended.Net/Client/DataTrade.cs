@@ -21,29 +21,31 @@
         /// <summary>
         /// Creates a new data trade instance.
         /// </summary>
-        public DataTrade() : 
-            this("Trade")
+        public DataTrade() :
+            this(null, "Trade")
         {
-        }
-
-        /// <summary>
-        /// Creates and initializes a new data trade instance.
-        /// </summary>
-        public DataTrade(string name) :
-            base(name)
-        {
-            this.Server = new DataTradeServer(this);
-            this.Cache = new DataTradeCache(this);
         }
 
         /// <summary>
         /// Creates and initializes a new data trade instance.
         /// </summary>
         /// <exception cref="System.ArgumentNullException">If connectionString is null.</exception>
-        public DataTrade(string name, string connectionString) :
-            this(name)
+        public DataTrade(string connectionString) :
+            this(connectionString, "Trade")
         {
-            this.Initialize(connectionString);
+        }
+
+        /// <summary>
+        /// Creates and initializes a new data trade instance.
+        /// </summary>
+        /// <exception cref="System.ArgumentNullException">If connectionString is null.</exception>
+        public DataTrade(string connectionString, string name) :
+            base(name)
+        {
+            this.Server = new DataTradeServer(this);
+            this.Cache = new DataTradeCache(this);
+            if (!string.IsNullOrEmpty(connectionString))
+                this.Initialize(connectionString);
         }
 
         internal override FxDataClient CreateFxDataClient(string connectionString)
@@ -253,7 +255,7 @@
         #region Disposing
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)

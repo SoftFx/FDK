@@ -289,23 +289,27 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
 
     if (FxTradeRecordType_Market == required.Type)
     {
-        message.SetPrice(required.Price);
         message.SetOrdType(FIX::OrdType_MARKET);
+        if (required.Price.HasValue())
+            message.SetPrice(required.Price.Value());
     }
     else if (FxTradeRecordType_Limit == required.Type || FxTradeRecordType_IoC == required.Type || FxTradeRecordType_MarketWithSlippage == required.Type)
     {
-        message.SetPrice(required.Price);
         message.SetOrdType(FIX::OrdType_LIMIT);
+        if (required.Price.HasValue())
+            message.SetPrice(required.Price.Value());
     }
     else if (FxTradeRecordType_Stop == required.Type)
     {
-        message.SetStopPx(required.Price);
         message.SetOrdType(FIX::OrdType_STOP);
+        if (required.StopPrice.HasValue())
+            message.SetStopPx(required.StopPrice.Value());
     }
     else if (FxTradeRecordType_StopLimit == required.Type)
     {
         message.SetOrdType(FIX::OrdType_STOP_LIMIT);
-        message.SetPrice(required.Price);
+        if (required.Price.HasValue())
+            message.SetPrice(required.Price.Value());
         if (required.StopPrice.HasValue())
             message.SetStopPx(required.StopPrice.Value());
     }
@@ -326,7 +330,11 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
     {
         throw CArgumentException(cInvalidSide);
     }
-    message.SetOrderQty(required.Volume);
+    
+    if (required.Volume.HasValue())
+    {
+        message.SetOrderQty(required.Volume.Value());
+    }
 
     if (required.HiddenVolume.HasValue())
     {
@@ -504,17 +512,17 @@ void CFixSender::VSendModifyOrder(const string& id, const CFxOrder& request)
     if (FxTradeRecordType_Limit == request.Type)
     {
         message.SetOrdType(FIX::OrdType_LIMIT);
-        if (request.NewPrice.HasValue())
+        if (request.Price.HasValue())
         {
-            message.SetPrice(*request.NewPrice);
+            message.SetPrice(request.Price.Value());
         }
     }
     else if (FxTradeRecordType_Stop == request.Type)
     {
         message.SetOrdType(FIX::OrdType_STOP);
-        if (request.NewPrice.HasValue())
+        if (request.StopPrice.HasValue())
         {
-            message.SetStopPx(*request.NewPrice);
+            message.SetStopPx(request.StopPrice.Value());
         }
     }
     else if (FxTradeRecordType_Position == request.Type)
@@ -524,8 +532,8 @@ void CFixSender::VSendModifyOrder(const string& id, const CFxOrder& request)
     else if (FxTradeRecordType_StopLimit == request.Type)
     {
         message.SetOrdType(FIX::OrdType_STOP_LIMIT);
-        if (request.NewPrice.HasValue())
-            message.SetPrice(request.NewPrice.Value());
+        if (request.Price.HasValue())
+            message.SetPrice(request.Price.Value());
         if (request.StopPrice.HasValue())
             message.SetStopPx(request.StopPrice.Value());
     }
@@ -566,7 +574,10 @@ void CFixSender::VSendModifyOrder(const string& id, const CFxOrder& request)
         message.SetExpireTime(utc);
     }
 
-    message.SetOrderQty(request.Volume);
+    if (request.Volume.HasValue())
+    {
+        message.SetOrderQty(request.Volume.Value());
+    }
 
     FIX::UtcTimeStamp now;
     message.SetTransactTime(now);

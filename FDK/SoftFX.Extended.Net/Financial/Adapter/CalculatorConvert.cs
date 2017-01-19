@@ -95,6 +95,12 @@
                     return OrderTypes.Limit;
                 case TradeRecordType.Stop:
                     return OrderTypes.Stop;
+                case TradeRecordType.IoC:
+                    return OrderTypes.Limit;
+                case TradeRecordType.MarketWithSlippage:
+                    return OrderTypes.Limit;
+                case TradeRecordType.StopLimit:
+                    return OrderTypes.StopLimit;
             }
 
             throw new ArgumentException("type");

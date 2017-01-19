@@ -131,7 +131,7 @@ void CBridgeClient::Execute(const string& id, const CFxOrder& order)
 			string st = stream.str();
 			pLogger->Output(st);
 		}
-		status = trade.ExecuteIOC(side, order.Symbol, order.Price, order.Volume, executedPrice, executedVolume);
+		status = trade.ExecuteIOC(side, order.Symbol, order.Price.Value(), order.Volume.Value(), executedPrice, executedVolume);
 		if (nullptr != pLogger)
 		{
 			stringstream stream;
@@ -179,8 +179,8 @@ void CBridgeClient::SendNewOrder(const string& id, CDateTime cretionTime, const 
 	report.Symbol = order.Symbol;
 	report.OrderId = order.OrderId;
 	report.ClientOrderId = id;
-	report.InitialVolume = order.Volume;
-	report.LeavesVolume = order.Volume;
+	report.InitialVolume = order.Volume.Value();
+	report.LeavesVolume = order.Volume.Value();
 	report.Created = cretionTime;
 
 	report.ExecutedVolume = 0;
@@ -209,8 +209,8 @@ void CBridgeClient::SendReject(const string& id, CDateTime cretionTime, const CF
 	report.Symbol = order.Symbol;
 	report.OrderId = order.OrderId;
 	report.ClientOrderId = id;
-	report.InitialVolume = order.Volume;
-	report.LeavesVolume = order.Volume;
+	report.InitialVolume = order.Volume.Value();
+	report.LeavesVolume = order.Volume.Value();
 	report.Created = cretionTime;
 
 	report.ExecutedVolume = 0;
@@ -242,7 +242,7 @@ void CBridgeClient::SendFirstFilled(const string& id, CDateTime creationTime, CD
 {
 	CFxExecutionReport report;
 	report.ExecutionType = FxExecutionType_Trade;
-	if (executedVolume < order.Volume)
+	if (executedVolume < order.Volume.Value())
 	{
 		report.OrderStatus = FxOrderStatus_PartiallyFilled;
 	}
@@ -260,8 +260,8 @@ void CBridgeClient::SendFirstFilled(const string& id, CDateTime creationTime, CD
 	report.TradeAmount = executedVolume;
 	report.TradePrice = executedPrice;
 	report.ClientOrderId = id;
-	report.InitialVolume = order.Volume;
-	report.LeavesVolume = order.Volume - executedVolume;
+	report.InitialVolume = order.Volume.Value();
+	report.LeavesVolume = order.Volume.Value() - executedVolume;
 
 
 	report.ExecutedVolume = executedVolume;

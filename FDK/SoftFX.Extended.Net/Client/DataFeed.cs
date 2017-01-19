@@ -3,7 +3,7 @@
     using System;
     using SoftFX.Extended.Core;
     using SoftFX.Extended.Events;
-    
+
     /// <summary>
     /// This class connects to trading platform and receives quotes and other notifications.
     /// </summary>
@@ -21,28 +21,30 @@
         /// Creates a new data feed instance. You should use Initialize method to finish the instance initialization.
         /// </summary>
         public DataFeed() :
-            this("Feed")
+            this(null, "Feed")
         {
-        }
-
-        /// <summary>
-        /// Creates and initializes a new data feed instance.
-        /// </summary>
-        public DataFeed(string name) :
-            base(name)
-        {
-            this.Server = new DataFeedServer(this);
-            this.Cache = new DataFeedCache(this);
         }
 
         /// <summary>
         /// Creates and initializes a new data feed instance.
         /// </summary>
         /// <exception cref="System.ArgumentNullException">If connectionString is null.</exception>
-        public DataFeed(string name, string connectionString) :
-            this(name)
+        public DataFeed(string connectionString) :
+            this(connectionString, "Feed")
         {
-            this.Initialize(connectionString);
+        }
+
+        /// <summary>
+        /// Creates and initializes a new data feed instance.
+        /// </summary>
+        /// <exception cref="System.ArgumentNullException">If connectionString is null.</exception>
+        public DataFeed(string connectionString, string name) :
+            base(name)
+        {
+            this.Server = new DataFeedServer(this);
+            this.Cache = new DataFeedCache(this);
+            if (!string.IsNullOrEmpty(connectionString))
+                this.Initialize(connectionString);
         }
 
         internal override FxDataClient CreateFxDataClient(string connectionString)
@@ -225,7 +227,7 @@
         #region Disposing
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
