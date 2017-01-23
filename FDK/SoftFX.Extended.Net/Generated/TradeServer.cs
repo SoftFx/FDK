@@ -50,7 +50,7 @@ namespace SoftFX.Extended.Generated
 				return m_client.IsSupported(7, 1);
 			}
 		}
-		public SoftFX.Lrp.LPtr GetTradeTransactionReportsAndSubscribe(SoftFX.Lrp.LPtr handle, int direction, bool subscribe, System.DateTime? from, System.DateTime? to, uint preferedBufferSize, uint timeoutInMilliseconds)
+		public SoftFX.Lrp.LPtr GetTradeTransactionReportsAndSubscribe(SoftFX.Lrp.LPtr handle, int direction, bool subscribe, System.DateTime? from, System.DateTime? to, uint preferedBufferSize, int? skipCancel, uint timeoutInMilliseconds)
 		{
 			using(MemoryBuffer buffer = m_client.Create())
 			{
@@ -60,6 +60,7 @@ namespace SoftFX.Extended.Generated
 				buffer.WriteNullTime(from);
 				buffer.WriteNullTime(to);
 				buffer.WriteUInt32(preferedBufferSize);
+				buffer.WriteNullInt32(skipCancel);
 				buffer.WriteUInt32(timeoutInMilliseconds);
 
 				int _status = m_client.Invoke(7, 1, buffer);

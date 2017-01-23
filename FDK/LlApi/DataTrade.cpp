@@ -212,9 +212,9 @@ size_t CDataTrade::CloseAllOrders(const uint32 timeoutInMilliseconds)
     return result;
 }
 
-FxIterator CDataTrade::GetTradeTransactionReportsAndSubscribeToNotifications(FxTimeDirection direction, bool subscribe, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, uint32 bufferSize, uint32 timeoutInMilliseconds)
+FxIterator CDataTrade::GetTradeTransactionReportsAndSubscribeToNotifications(FxTimeDirection direction, bool subscribe, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, uint32 bufferSize, const Nullable<bool>& skipCancel, uint32 timeoutInMilliseconds)
 {
-    auto_ptr<CFxTradeTransactionReportIterator> it(new CFxTradeTransactionReportIterator(direction, from, to, bufferSize, *this));
+    auto_ptr<CFxTradeTransactionReportIterator> it(new CFxTradeTransactionReportIterator(direction, from, to, bufferSize, skipCancel, *this));
     const HRESULT status = it->Construct(subscribe, timeoutInMilliseconds);
     if (FAILED(status))
     {

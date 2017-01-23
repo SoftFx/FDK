@@ -17,7 +17,7 @@ void CAggrSender::VSendDataHistoryRequest(const string& id, const CFxDataHistory
     CFxDataHistoryResponse response;
     m_receiver->VDataHistoryResponse(info, response);
 }
-void CAggrSender::VSendGetTradeTransactionReportsAndSubscribeToNotifications(const string& id, FxTimeDirection /*direction*/, bool /*subscribe*/, const Nullable<CDateTime>& /*from*/, const Nullable<CDateTime>& /*to*/, uint32 /*bufferSize*/, const string& /*position*/)
+void CAggrSender::VSendGetTradeTransactionReportsAndSubscribeToNotifications(const string& id, FxTimeDirection /*direction*/, bool /*subscribe*/, const Nullable<CDateTime>& /*from*/, const Nullable<CDateTime>& /*to*/, uint32 /*bufferSize*/, const string& /*position*/, const Nullable<bool>& skipCancel)
 {
     CFxEventInfo info;
     info.ID = id;

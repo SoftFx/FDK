@@ -3904,6 +3904,7 @@
   </message>
   <message name='TradeTransactionReportRequest' msgcat='app' msgtype='U1015'>
     <field name='TradeRequestID' required='Y' />
+    <field name='TradeRequestType' required='N' />
     <field name='SubscriptionRequestType' required='N' />
     <field name='StrmngDirection' required='N' />
     <field name='StrmngBufSize' required='N' />

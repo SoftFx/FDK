@@ -22,7 +22,7 @@ public:
     CFxClosePositionResult CloseOrder(const string& operationId, const string& orderId, Nullable<double> closingVolume, const size_t timeoutInMilliseconds);
     bool CloseByOrders(const string& firstOrderId, const string& secondOrderId, const size_t timeoutInMilliseconds);
     size_t CloseAllOrders(const uint32 timeoutInMilliseconds);
-    FxIterator GetTradeTransactionReportsAndSubscribeToNotifications(FxTimeDirection direction, bool subscribe, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, uint32 bufferSize, uint32 timeoutInMilliseconds);
+    FxIterator GetTradeTransactionReportsAndSubscribeToNotifications(FxTimeDirection direction, bool subscribe, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, uint32 bufferSize, const Nullable<bool>& skipCancel, uint32 timeoutInMilliseconds);
     void UnsubscribeTradeTransactionReports(size_t timeoutInMilliseconds);
 
     virtual void VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion, bool twofactor);

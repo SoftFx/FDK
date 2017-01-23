@@ -6,9 +6,10 @@ namespace
     const string cOutOfRangeError = "Out of range exception";
 }
 
-CFxTradeTransactionReportIterator::CFxTradeTransactionReportIterator(const FxTimeDirection direction, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, const uint32 preferedBufferSize, CDataTrade& dataTrade)
+CFxTradeTransactionReportIterator::CFxTradeTransactionReportIterator(const FxTimeDirection direction, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, const uint32 preferedBufferSize, const Nullable<bool>& skipCancel, CDataTrade& dataTrade)
     : m_direction(direction)
     , m_preferedBufferSize(preferedBufferSize)
+    , m_skipCancel(skipCancel)
     , m_dataTrade(&dataTrade)
     , m_from(from)
     , m_to(to)
@@ -62,7 +63,7 @@ HRESULT CFxTradeTransactionReportIterator::VNext(const uint32 timeoutInMilliseco
             m_isFinished = true;
             return S_OK;
         }
-        const HRESULT result = RequestReports(false, m_position, timeoutInMilliseconds);
+        const HRESULT result = RequestReports(false, m_position, m_skipCancel, timeoutInMilliseconds);
         if (FAILED(result))
         {
             return result;
@@ -82,11 +83,11 @@ HRESULT CFxTradeTransactionReportIterator::VNext(const uint32 timeoutInMilliseco
     return S_OK;
 }
 
-HRESULT CFxTradeTransactionReportIterator::RequestReports(const bool subscribe, const string& position, const uint32 timeoutInMilliseconds)
+HRESULT CFxTradeTransactionReportIterator::RequestReports(const bool subscribe, const string& position, const Nullable<bool>& skipCancel, const uint32 timeoutInMilliseconds)
 {
     Waiter<tuple<int32, int32, bool> > waiter(timeoutInMilliseconds, m_waiter, *m_dataTrade);
     ISender& sender = *m_dataTrade->m_sender;
-    sender.VSendGetTradeTransactionReportsAndSubscribeToNotifications(waiter.Id(), m_direction, subscribe, m_from, m_to, m_preferedBufferSize, position);
+    sender.VSendGetTradeTransactionReportsAndSubscribeToNotifications(waiter.Id(), m_direction, subscribe, m_from, m_to, m_preferedBufferSize, position, skipCancel);
     tuple<int32, int32, bool> response = waiter.WaitForResponse();
 
     m_reportsNumber = get<0>(response);
@@ -100,7 +101,7 @@ HRESULT CFxTradeTransactionReportIterator::RequestReports(const bool subscribe, 
 HRESULT CFxTradeTransactionReportIterator::Construct(const bool subscribe, const uint32 timeoutInMilliseconds)
 {
     CTimeout timeout(timeoutInMilliseconds);
-    const HRESULT result = RequestReports(subscribe, string(), timeoutInMilliseconds);
+    const HRESULT result = RequestReports(subscribe, string(), m_skipCancel, timeoutInMilliseconds);
     if (SUCCEEDED(result))
     {
         VNext(timeout);
