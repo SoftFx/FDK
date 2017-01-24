@@ -135,11 +135,14 @@
                          .ToArray();
         }
 
-        public LPtr GetTradeTransactionReportsAndSubscribeToNotifications(TimeDirection direction, bool subscribe, DateTime? from, DateTime? to, int preferedBufferSize, int timeoutInMilliseconds)
+        public LPtr GetTradeTransactionReportsAndSubscribeToNotifications(TimeDirection direction, bool subscribe, DateTime? from, DateTime? to, int preferedBufferSize, bool? skipCancel, int timeoutInMilliseconds)
         {
             this.VerifyInitialized();
 
-            return Native.TradeServer.GetTradeTransactionReportsAndSubscribe(this.handle, (int)direction, subscribe, from, to, (UInt32)preferedBufferSize, (UInt32)timeoutInMilliseconds);
+            int? skipCancelInt = null;
+            if (skipCancel.HasValue)
+                skipCancelInt = skipCancel.Value ? 1 : 0;
+            return Native.TradeServer.GetTradeTransactionReportsAndSubscribe(this.handle, (int)direction, subscribe, from, to, (UInt32)preferedBufferSize, skipCancelInt, (UInt32)timeoutInMilliseconds);
         }
 
         public void UnsubscribeTradeTransactionReports(int timeoutInMilliseconds)

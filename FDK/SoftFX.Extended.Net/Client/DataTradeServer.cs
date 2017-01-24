@@ -539,9 +539,9 @@
         /// The parameter is supported since 1.6 FIX version.
         /// </param>
         /// <returns>Can not be null.</returns>
-        public StreamIterator<TradeTransactionReport> GetTradeTransactionReports(TimeDirection direction, bool subscribeToNotifications, DateTime? from, DateTime? to)
+        public StreamIterator<TradeTransactionReport> GetTradeTransactionReports(TimeDirection direction, bool subscribeToNotifications, DateTime? from, DateTime? to, bool? skipCancel)
         {
-            return this.GetTradeTransactionReports(direction, subscribeToNotifications, from, to, 16);
+            return this.GetTradeTransactionReports(direction, subscribeToNotifications, from, to, 16, skipCancel);
         }
 
         /// <summary>
@@ -562,9 +562,9 @@
         /// </param>
         /// <param name="preferedBufferSize"> Specifies number of reports requested at once. Server has itself limitation and if you specify out of range value it will be ignored.</param>
         /// <returns>Can not be null.</returns>
-        public StreamIterator<TradeTransactionReport> GetTradeTransactionReports(TimeDirection direction, bool subscribeToNotifications, DateTime? from, DateTime? to, int preferedBufferSize)
+        public StreamIterator<TradeTransactionReport> GetTradeTransactionReports(TimeDirection direction, bool subscribeToNotifications, DateTime? from, DateTime? to, int preferedBufferSize, bool? skipCancel)
         {
-            return this.GetTradeTransactionReportsEx(direction, subscribeToNotifications, from, to, preferedBufferSize, this.Client.SynchOperationTimeout);
+            return this.GetTradeTransactionReportsEx(direction, subscribeToNotifications, from, to, preferedBufferSize, skipCancel, this.Client.SynchOperationTimeout);
         }
 
         /// <summary>
@@ -586,9 +586,9 @@
         /// <param name="preferedBufferSize"> Specifies number of reports requested at once. Server has itself limitation and if you specify out of range value it will be ignored.</param>
         /// <param name="timeoutInMilliseconds">Timeout of the operation in milliseconds</param>
         /// <returns>Can not be null.</returns>
-        public unsafe StreamIterator<TradeTransactionReport> GetTradeTransactionReportsEx(TimeDirection direction, bool subscribeToNotifications, DateTime? from, DateTime? to, int preferedBufferSize, int timeoutInMilliseconds)
+        public unsafe StreamIterator<TradeTransactionReport> GetTradeTransactionReportsEx(TimeDirection direction, bool subscribeToNotifications, DateTime? from, DateTime? to, int preferedBufferSize, bool? skipCancel, int timeoutInMilliseconds)
         {
-            var data = this.Client.DataTradeHandle.GetTradeTransactionReportsAndSubscribeToNotifications(direction, subscribeToNotifications, from, to, preferedBufferSize, timeoutInMilliseconds);
+            var data = this.Client.DataTradeHandle.GetTradeTransactionReportsAndSubscribeToNotifications(direction, subscribeToNotifications, from, to, preferedBufferSize, skipCancel, timeoutInMilliseconds);
             return new TradeTransactionReportsIterator(this.Client, data);
         }
 

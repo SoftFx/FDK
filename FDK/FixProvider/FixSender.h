@@ -34,7 +34,7 @@ public:
     virtual void VSendGetFileChunk(const string& id, const string& fileId, const uint32 chunkId);
     virtual void VSendGetBarsHistoryMetaInfoFile(const string& id, const string& symbol, int32 priceType, const string& period);
     virtual void VSendGetTicksHistoryMetaInfoFile(const string& id, const string& symbol, bool includeLevel2);
-    virtual void VSendGetTradeTransactionReportsAndSubscribeToNotifications(const string& id, FxTimeDirection direction, bool subscribe, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, uint32 bufferSize, const string& position);
+    virtual void VSendGetTradeTransactionReportsAndSubscribeToNotifications(const string& id, FxTimeDirection direction, bool subscribe, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, uint32 bufferSize, const string& position, const Nullable<bool>& skipCancel);
     virtual void VSendUnsubscribeTradeTransactionReports(const string& id);
     virtual void VSendPositionReportRequest(const string& id, const string& account);
     virtual void VSendQuotesHistoryRequest(const string& id);

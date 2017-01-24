@@ -26,10 +26,13 @@ void* CTradeImpl::Create(const std::string& name, const std::string& connectionS
 	return result;
 }
 
-void* CTradeImpl::GetTradeTransactionReportsAndSubscribe(void* handle, int direction, bool subscribe, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, size_t preferdBufferSize, const size_t timeoutInMilliseconds)
+void* CTradeImpl::GetTradeTransactionReportsAndSubscribe(void* handle, int direction, bool subscribe, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, size_t preferdBufferSize, const Nullable<int>& skipCancel, const size_t timeoutInMilliseconds)
 {
 	FxRef<CDataTrade> trade = DataTradeFromHandle(handle);
-	void* result = trade->GetTradeTransactionReportsAndSubscribeToNotifications((FxTimeDirection)direction, subscribe, from, to, (uint32)preferdBufferSize, (uint32)timeoutInMilliseconds); 
+    Nullable<bool> skipCancelBool;
+    if (skipCancel.HasValue())
+        skipCancelBool = skipCancel.Value() != 0;
+	void* result = trade->GetTradeTransactionReportsAndSubscribeToNotifications((FxTimeDirection)direction, subscribe, from, to, (uint32)preferdBufferSize, skipCancelBool, (uint32)timeoutInMilliseconds);
 	return result;
 }
 

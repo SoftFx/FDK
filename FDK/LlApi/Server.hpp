@@ -883,8 +883,9 @@ namespace
 		auto arg3 = ReadNullTime(buffer);
 		auto arg4 = ReadNullTime(buffer);
 		auto arg5 = ReadUInt32(buffer);
-		auto arg6 = ReadUInt32(buffer);
-		auto result = component.GetTradeTransactionReportsAndSubscribe(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
+		auto arg6 = ReadNullInt32(buffer);
+		auto arg7 = ReadUInt32(buffer);
+		auto result = component.GetTradeTransactionReportsAndSubscribe(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 		buffer.Reset(offset);
 		WriteLocalPointer(result, buffer);
 	}
@@ -1441,7 +1442,7 @@ extern "C" const char* __stdcall LrpSignature()
 		"GetCurrencies@3AA598E434D8DA6D35A1FA3F9C7AF48C;"
 	"$TradeServer;"
 		"Create@3B600297C4910456A888F1A45C27B07F;"
-		"GetTradeTransactionReportsAndSubscribe@01D0DCEF3E6E853DC5C184E4A6D85085;"
+		"GetTradeTransactionReportsAndSubscribe@DD8DB0FB21C7F331B2C86C95B0BC9905;"
 		"GetTradeCaptureReports@874C22E243BFC4DED82F08A53E84EF80;"
 		"UnsubscribeTradeTransactionReports@42E7909824399BBE11FEC757FAB1BBD7;"
 		"GetTradeServerInfo@A34A6F98C30D420EA60766CCA907ADD3;"

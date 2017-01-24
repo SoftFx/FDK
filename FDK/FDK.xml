@@ -665,6 +665,7 @@
         <Param name="from" type="time?" direction="in" />
         <Param name="to" type="time?" direction="in" />
         <Param name="preferedBufferSize" type="uint32" direction="in" />
+        <Param name="skipCancel" type="int32?" direction="in" />
         <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
         <Return type="lptr" />
       </Method>

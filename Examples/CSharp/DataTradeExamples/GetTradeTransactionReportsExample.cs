@@ -19,9 +19,11 @@
             var from = to.AddDays(-1);
 
             var reportsNumber = 0;
-            var it = this.Trade.Server.GetTradeTransactionReports(TimeDirection.Forward, true, null, null, 100);
+            var it = this.Trade.Server.GetTradeTransactionReports(TimeDirection.Forward, true, null, null, 100, null);
             for (; !it.EndOfStream; it.Next())
             {
+                var s = it.Item;
+                Console.WriteLine(s);
                 reportsNumber++;
             }
             it.Dispose();

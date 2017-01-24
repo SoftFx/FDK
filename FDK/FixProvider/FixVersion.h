@@ -13,6 +13,7 @@ public:
     CFixVersion(const std::string& st);
     bool SupportsMarketWithSlippage();
     bool SupportsAppId();
+    bool SupportsTradeRequestType();
 private:
     friend bool operator < (const CFixVersion& first, const CFixVersion& second);
     friend bool operator > (const CFixVersion& first, const CFixVersion& second);

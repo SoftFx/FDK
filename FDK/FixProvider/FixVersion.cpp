@@ -33,6 +33,10 @@ bool CFixVersion::SupportsAppId()
 {
     return *this >= CFixVersion(1, 47);
 }
+bool CFixVersion::SupportsTradeRequestType()
+{
+    return *this >= CFixVersion(1, 50);
+}
 bool operator < (const CFixVersion& first, const CFixVersion& second)
 {
     if (first.Major == second.Major)

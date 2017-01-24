@@ -646,7 +646,7 @@ void CFixSender::VSendGetTicksHistoryMetaInfoFile(const string& id, const string
     return SendMessage(message);
 }
 
-void CFixSender::VSendGetTradeTransactionReportsAndSubscribeToNotifications(const string& id, FxTimeDirection direction, bool subscribe, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, uint32 bufferSize, const string& position)
+void CFixSender::VSendGetTradeTransactionReportsAndSubscribeToNotifications(const string& id, FxTimeDirection direction, bool subscribe, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, uint32 bufferSize, const string& position, const Nullable<bool>& skipCancel)
 {
     FIX44::TradeTransactionReportRequest message;
     if ((!from.HasValue()) ^ (!to.HasValue()))
@@ -654,6 +654,20 @@ void CFixSender::VSendGetTradeTransactionReportsAndSubscribeToNotifications(cons
         throw CArgumentException("From and to parameters should be specified simultaneously.");
     }
     message.SetTradeRequestID(id);
+    if (skipCancel.HasValue())
+    {
+        if (m_version.SupportsTradeRequestType())
+        {
+            if (skipCancel.Value())
+            {
+                message.SetTradeRequestType(FIX::TradeRequestType_MATCHEDTRADES);
+            }
+            else
+                message.SetTradeRequestType(FIX::TradeRequestType_ALLTRADES);
+        }
+        else
+            throw exception("Skip cancel is not supported");
+    }
     if (subscribe)
     {
         message.SetSubscriptionRequestType(FIX::SubscriptionRequestType_SNAPSHOT_PLUS_UPDATES);

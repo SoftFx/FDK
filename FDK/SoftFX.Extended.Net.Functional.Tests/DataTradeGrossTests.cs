@@ -339,7 +339,7 @@
             Assert.IsTrue(order.Price == testContext.VeryLowPrice, "Invalid order price = {0}", order.Price);
             order.Delete();
 
-            Reports.TradeTransactionReport tradeReport = this.dataTrade.Server.GetTradeTransactionReports(TimeDirection.Backward, false, DateTime.UtcNow.AddMinutes(-5), DateTime.UtcNow.AddMinutes(5)).Item;
+            Reports.TradeTransactionReport tradeReport = this.dataTrade.Server.GetTradeTransactionReports(TimeDirection.Backward, false, DateTime.UtcNow.AddMinutes(-5), DateTime.UtcNow.AddMinutes(5), false).Item;
             Assert.IsTrue(tradeReport.TradeRecordType == order.Type);
             Assert.IsTrue(tradeReport.Price == order.Price);
 
@@ -348,7 +348,7 @@
             Assert.IsTrue(order.Price == testContext.VeryHighPrice, "Invalid order price = {0}", order.Price);
             order.Delete();
 
-            tradeReport = this.dataTrade.Server.GetTradeTransactionReports(TimeDirection.Backward, false, DateTime.UtcNow.AddMinutes(-5), DateTime.UtcNow.AddMinutes(5)).Item;
+            tradeReport = this.dataTrade.Server.GetTradeTransactionReports(TimeDirection.Backward, false, DateTime.UtcNow.AddMinutes(-5), DateTime.UtcNow.AddMinutes(5), false).Item;
             Assert.IsTrue(tradeReport.TradeRecordType == order.Type);
             Assert.IsTrue(tradeReport.StopPrice == order.Price);
 
@@ -380,7 +380,7 @@
                 TradeRecord order2 = this.dataTrade.Server.SendOrderEx("EURUSD", TradeCommand.Market, TradeRecordSide.Sell, 0, 10000, null, null, null, null, null, "comment", null, null, 1000000);
 
                 Assert.IsTrue( dataTrade.Server.CloseByPositions(order1.OrderId, order2.OrderId) );
-                var iter = this.dataTrade.Server.GetTradeTransactionReports(TimeDirection.Backward, false, DateTime.UtcNow.AddMinutes(-5), DateTime.UtcNow.AddMinutes(5));
+                var iter = this.dataTrade.Server.GetTradeTransactionReports(TimeDirection.Backward, false, DateTime.UtcNow.AddMinutes(-5), DateTime.UtcNow.AddMinutes(5), false);
                 TradeTransactionReport tradeReport1 = iter.Item;
                 iter.Next();
                 TradeTransactionReport tradeReport2 = iter.Item;

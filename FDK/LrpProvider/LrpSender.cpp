@@ -133,7 +133,7 @@ void CLrpSender::VSendGetTicksHistoryMetaInfoFile(const string& id, const string
     server.OnQuotesHistoryMetaInfoFileRequest(id, symbol, includeLevel2);
 }
 
-void CLrpSender::VSendGetTradeTransactionReportsAndSubscribeToNotifications(const string& id, FxTimeDirection direction, bool subscribe, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, uint32 bufferSize, const string& position)
+void CLrpSender::VSendGetTradeTransactionReportsAndSubscribeToNotifications(const string& id, FxTimeDirection direction, bool subscribe, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, uint32 bufferSize, const string& position, const Nullable<bool>& skipCancel)
 {
     throw std::exception("CLrpSender::VSendGetTradeTransactionReportsAndSubscribeToNotifications() method is not implemented.");
 }
