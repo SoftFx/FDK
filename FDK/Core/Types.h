@@ -250,6 +250,7 @@ enum FxTradeTransactionReportType
     FxTradeTransactionReportType_BalanceTransaction = 5,
     FxTradeTransactionReportType_Credit         = 6,
     FxTradeTransactionReportType_PositionOpened     = 7,
+    FxTradeTransactionReportType_OrderActivated     = 8,
     FxTradeTransactionReportType_Last           = FX_MAX_ENUM
 };
 

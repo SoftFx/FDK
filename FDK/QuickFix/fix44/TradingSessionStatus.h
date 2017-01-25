@@ -69,7 +69,7 @@ namespace FIX44
     class NoStatusGroups: public FIX::Group
     {
     public:
-    NoStatusGroups() : FIX::Group(10171,10170,FIX::message_order(10170,340,341,345,0)) {}
+    NoStatusGroups() : FIX::Group(10171,10170,FIX::message_order(10170,340,341,345,342,344,0)) {}
       FIELD_SET(*this, FIX::StatusGroupID);
       FIELD_SET_EX(std::string, StatusGroupID);
       FIELD_SET(*this, FIX::TradSesStatus);
@@ -78,6 +78,10 @@ namespace FIX44
       FIELD_SET_EX(FIX::UtcTimeStamp, TradSesStartTime);
       FIELD_SET(*this, FIX::TradSesEndTime);
       FIELD_SET_EX(FIX::UtcTimeStamp, TradSesEndTime);
+      FIELD_SET(*this, FIX::TradSesOpenTime);
+      FIELD_SET_EX(FIX::UtcTimeStamp, TradSesOpenTime);
+      FIELD_SET(*this, FIX::TradSesCloseTime);
+      FIELD_SET_EX(FIX::UtcTimeStamp, TradSesCloseTime);
     };
   };
 
