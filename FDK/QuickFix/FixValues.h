@@ -4031,6 +4031,7 @@ namespace FIX
   const int TradeTransReportType_BalanceTrans = 5;
   const int TradeTransReportType_Credit = 6;
   const int TradeTransReportType_PositionOpened = 7;
+  const int TradeTransReportType_OrderActivated = 8;
   const int TradeTransReason_ClientRequest = 0;
   const int TradeTransReason_PndOrdAct = 1;
   const int TradeTransReason_StopOut = 2;

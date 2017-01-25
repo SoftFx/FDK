@@ -1504,6 +1504,8 @@
     <field name='TradSesStatus' required='Y' />
     <field name='TradSesStartTime' required='Y' />
     <field name='TradSesEndTime' required='Y' />
+    <field name='TradSesOpenTime' required='N' />
+    <field name='TradSesCloseTime' required='N' />
    </group>
    <field name='TotalVolumeTraded' required='N' />
    <field name='Text' required='N' />
@@ -7612,6 +7614,7 @@
     <value enum='5' description='BalanceTrans' />
     <value enum='6' description='Credit' />
     <value enum='7' description='PositionOpened' />
+    <value enum='8' description='OrderActivated' />
   </field>
   <field number='10079' name='TradeTransReason' type='INT'>
     <value enum='0' description='ClientRequest' />

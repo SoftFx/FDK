@@ -542,6 +542,8 @@ namespace
 		WriteSessionStatus(arg.Status, buffer);
 		WriteTime(arg.StartTime, buffer);
 		WriteTime(arg.EndTime, buffer);
+		WriteTime(arg.OpenTime, buffer);
+		WriteTime(arg.CloseTime, buffer);
 	}
 	CFxStatusGroupInfo ReadStatusGroupInfo(MemoryBuffer& buffer)
 	{
@@ -550,6 +552,8 @@ namespace
 		result.Status = ReadSessionStatus(buffer);
 		result.StartTime = ReadTime(buffer);
 		result.EndTime = ReadTime(buffer);
+		result.OpenTime = ReadTime(buffer);
+		result.CloseTime = ReadTime(buffer);
 		return result;
 	}
 	void WriteStatusGroupInfoArray(const std::vector<CFxStatusGroupInfo>& arg, MemoryBuffer& buffer)

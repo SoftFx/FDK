@@ -32,11 +32,21 @@
         public DateTime EndTime { get; internal set; }
 
         /// <summary>
+        /// Gets open time of the current feed/trade session.
+        /// </summary>
+        public DateTime OpenTime { get; internal set; }
+
+        /// <summary>
+        /// Gets the close time of the current feed/trade session.
+        /// </summary>
+        public DateTime CloseTime { get; internal set; }
+
+        /// <summary>
         /// Returns string representation.
         /// </summary>
         public override string ToString()
         {
-            return string.Format("StatusGroupId = {0}; Status = {1}; Start = {2}; End = {3};", StatusGroupId, Status, StartTime, EndTime);
+            return string.Format("StatusGroupId = {0}; Status = {1}; Start = {2}; End = {3}; Open = {4}; Close = {5};", StatusGroupId, Status, StartTime, EndTime, OpenTime, CloseTime);
         }
     }
 }

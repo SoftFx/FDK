@@ -139,6 +139,8 @@ namespace LrpServer.Net.LocalCpp
 			result.Status = buffer.ReadSessionStatus();
 			result.StartTime = buffer.ReadTime();
 			result.EndTime = buffer.ReadTime();
+			result.OpenTime = buffer.ReadTime();
+			result.CloseTime = buffer.ReadTime();
 			return result;
 		}
 		public static void WriteStatusGroupInfo(this MemoryBuffer buffer, LrpServer.Net.LrpStatusGroupInfo arg)
@@ -147,6 +149,8 @@ namespace LrpServer.Net.LocalCpp
 			buffer.WriteSessionStatus(arg.Status);
 			buffer.WriteTime(arg.StartTime);
 			buffer.WriteTime(arg.EndTime);
+			buffer.WriteTime(arg.OpenTime);
+			buffer.WriteTime(arg.CloseTime);
 		}
 		public static LrpServer.Net.LrpStatusGroupInfo[] ReadStatusGroupInfoArray(this MemoryBuffer buffer)
 		{

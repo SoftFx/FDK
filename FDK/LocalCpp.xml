@@ -22,6 +22,8 @@
             <Member name="Status" type="SessionStatus" />
             <Member name="StartTime" type="time" />
             <Member name="EndTime" type="time" />
+            <Member name="OpenTime" type="time" />
+            <Member name="CloseTime" type="time" />
         </Type>
         <Type name="StatusGroupInfoArray" kind="array">
             <Value name="StatusGroupInfo" />

@@ -495,6 +495,10 @@ namespace
 		_stream << ';';
 		LrpWriteTime("EndTime", arg.EndTime, _stream);
 		_stream << ';';
+		LrpWriteTime("OpenTime", arg.OpenTime, _stream);
+		_stream << ';';
+		LrpWriteTime("CloseTime", arg.CloseTime, _stream);
+		_stream << ';';
 		_stream<<"}";
 	}
 	void LrpWriteStatusGroupInfoArray(const char* name, const std::vector<CFxStatusGroupInfo>& arg, std::ostream& _stream)
