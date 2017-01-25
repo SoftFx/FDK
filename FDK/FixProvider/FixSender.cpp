@@ -330,7 +330,7 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
     {
         throw CArgumentException(cInvalidSide);
     }
-    
+
     if (required.Volume.HasValue())
     {
         message.SetOrderQty(required.Volume.Value());
@@ -400,7 +400,7 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
         if (! m_appId.empty())
             message.SetClAppID(m_appId);
     }
-    
+
 #ifdef LOG_PERFORMANCE
     uint64_t timestamp = logger_->getTimestamp();
     logger_->logTimestamp(id.c_str(), timestamp, "NewOrder");
@@ -665,8 +665,6 @@ void CFixSender::VSendGetTradeTransactionReportsAndSubscribeToNotifications(cons
             else
                 message.SetTradeRequestType(FIX::TradeRequestType_ALLTRADES);
         }
-        else
-            throw exception("Skip cancel is not supported");
     }
     if (subscribe)
     {
