@@ -528,6 +528,22 @@
             }
         }
 
+        /// <summary>
+        /// Symbol security description.
+        /// </summary>
+        public string SecurityDescription
+        {
+            get
+            {
+//                this.ThrowIfPropertyNotSupported(() => this.SecurityDescription);
+                return this.securityDescription;
+            }
+            internal set
+            {
+                this.securityDescription = value;
+            }
+        }
+
         #endregion
 
         /// <summary>
@@ -574,6 +590,7 @@
         int currencyPrecision;
         int settlementCurrencyPrecision;
         string statusGroupId;
+        string securityDescription;
 
         #endregion
     }

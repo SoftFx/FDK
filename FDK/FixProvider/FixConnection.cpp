@@ -547,6 +547,10 @@ void CFixConnection::OnSymbolsInfo(const FIX44::SecurityList& message)
 
         group.TryGetStatusGroupID(info.StatusGroupId);
 
+        string encodedSecurityDescription;
+        if (group.TryGetEncodedText(encodedSecurityDescription))
+            Utf8ToStd(info.SecurityDescription, encodedSecurityDescription);
+
         symbols.push_back(info);
     }
 

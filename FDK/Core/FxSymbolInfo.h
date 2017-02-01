@@ -8,10 +8,10 @@ public:
     CFxSymbolInfo(const string& name, const string& currency, const string& settlementCurrency);
 
 public:
-    string Name;	
+    string Name;
     string Currency;
     string SettlementCurrency;
-	wstring Description;
+    wstring Description;
     double ContractMultiplier;
     int32 Precision;
     double RoundLot;
@@ -39,7 +39,8 @@ public:
     int32 SettlementCurrencySortOrder;
     int32 CurrencyPrecision;
     int32 SettlementCurrencyPrecision;
-	string StatusGroupId;
+    string StatusGroupId;
+    wstring SecurityDescription;
 };
 
 inline CFxSymbolInfo::CFxSymbolInfo()
