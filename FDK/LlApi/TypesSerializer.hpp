@@ -484,6 +484,7 @@ namespace
 		WriteInt32(arg.CurrencyPrecision, buffer);
 		WriteInt32(arg.SettlementCurrencyPrecision, buffer);
 		WriteAString(arg.StatusGroupId, buffer);
+		WriteWString(arg.SecurityDescription, buffer);
 	}
 	CFxSymbolInfo ReadSymbolInfo(MemoryBuffer& buffer)
 	{
@@ -520,6 +521,7 @@ namespace
 		result.CurrencyPrecision = ReadInt32(buffer);
 		result.SettlementCurrencyPrecision = ReadInt32(buffer);
 		result.StatusGroupId = ReadAString(buffer);
+		result.SecurityDescription = ReadWString(buffer);
 		return result;
 	}
 	void WriteTwoFactorAuth(const CFxTwoFactorAuth& arg, MemoryBuffer& buffer)
