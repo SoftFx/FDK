@@ -264,7 +264,7 @@
             TradeRecord result = null; 
             try
             {
-                result = initial.Modify(null, null, newActivationPrice, newStopLoss, newTakeProfit, newExpirationTime, null, null, null);
+                result = initial.Modify(newActivationPrice, null, newStopLoss, newTakeProfit, newExpirationTime, null, null, null);
             }
             catch
             {
@@ -306,7 +306,7 @@
             TimeSpan interval = (end - start);
             Console.WriteLine("Interval = {0}", interval);
 
-            var modified = order.Modify(null, null, null, null, 1.0, null, null, null, null);
+            var modified = order.Modify(null, null, null, 1.0, null, null, null, null);
 
             order.Close();
 

@@ -144,7 +144,7 @@
 
             Assert.IsTrue(order.Price == price, "Invalid order price = {0}", order.Price);
 
-            order.Modify(null, null, 1.0, null, null, null, null, null, null);
+            order.Modify(1.0, null, null, null, null, null, null, null);
 
             order.Delete();
 
