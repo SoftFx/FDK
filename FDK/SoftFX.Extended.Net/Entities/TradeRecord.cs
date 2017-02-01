@@ -390,7 +390,8 @@
         /// <summary>
         /// Modifies an existing order.
         /// </summary>
-        /// <param name="newActivationPrice">A new pending order activation price.</param>
+        /// <param name="newPrice">A new pending order price.</param>
+        /// <param name="newStopPrice">A new pending order stop price.</param>
         /// <param name="newStopLoss">A new pending order stop loss.</param>
         /// <param name="newTakeProfit">A new pending order take profit.</param>
         /// <param name="newExpirationTime">A new pending order expiration time.</param>
@@ -398,16 +399,17 @@
         /// <param name="newTag">A new comment</param>
         /// <param name="newMagic">A new comment</param>
         /// <returns>A modified trade record.</returns>
-        public TradeRecord Modify(double? newStopPrice, double? newHiddenVolume, double? newActivationPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpirationTime, string newComment, string newTag, int? newMagic)
+        public TradeRecord Modify(double? newPrice, double? newStopPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpirationTime, string newComment, string newTag, int? newMagic)
         {
-            var result = this.ModifyEx(newStopPrice, newHiddenVolume, newActivationPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, newTag, newMagic, this.DataTrade.SynchOperationTimeout);
+            var result = this.ModifyEx(newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, newTag, newMagic, this.DataTrade.SynchOperationTimeout);
             return result;
         }
 
         /// <summary>
         /// Modifies an existing order.
         /// </summary>
-        /// <param name="newActivationPrice">A new pending order activation price.</param>
+        /// <param name="newPrice">A new pending order price.</param>
+        /// <param name="newStopPrice">A new pending order stop price.</param>
         /// <param name="newStopLoss">A new pending order stop loss.</param>
         /// <param name="newTakeProfit">A new pending order take profit.</param>
         /// <param name="newExpirationTime">A new pending order expiration time.</param>
@@ -416,9 +418,9 @@
         /// <param name="newMagic">A new comment</param>
         /// <param name="timeoutInMilliseconds">Timeout of the operation in milliseconds.</param>
         /// <returns>A modified trade record.</returns>
-        public TradeRecord ModifyEx(double? newStopPrice, double? newHiddenVolume, double? newActivationPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpirationTime, string newComment, string newTag, int? newMagic, int timeoutInMilliseconds)
+        public TradeRecord ModifyEx(double? newPrice, double? newStopPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpirationTime, string newComment, string newTag, int? newMagic, int timeoutInMilliseconds)
         {
-            var result = this.DataTrade.Server.ModifyTradeRecordEx(this.OrderId, this.Symbol, this.Type, this.Side, this.Volume, newStopPrice, newHiddenVolume, newActivationPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, newTag, newMagic, timeoutInMilliseconds);
+            var result = this.DataTrade.Server.ModifyTradeRecordEx(this.OrderId, this.Symbol, this.Type, this.Side, this.Volume, null, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, newTag, newMagic, timeoutInMilliseconds);
             return result;
         }
 
