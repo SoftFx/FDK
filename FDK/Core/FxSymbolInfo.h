@@ -40,6 +40,7 @@ public:
     int32 CurrencyPrecision;
     int32 SettlementCurrencyPrecision;
     string StatusGroupId;
+    string SecurityName;
     wstring SecurityDescription;
 };
 
