@@ -529,6 +529,22 @@
         }
 
         /// <summary>
+        /// Symbol security name.
+        /// </summary>
+        public string SecurityName
+        {
+            get
+            {
+//                this.ThrowIfPropertyNotSupported(() => this.SecurityName);
+                return this.securityName;
+            }
+            internal set
+            {
+                this.securityName = value;
+            }
+        }
+
+        /// <summary>
         /// Symbol security description.
         /// </summary>
         public string SecurityDescription
@@ -590,6 +606,7 @@
         int currencyPrecision;
         int settlementCurrencyPrecision;
         string statusGroupId;
+        string securityName;
         string securityDescription;
 
         #endregion

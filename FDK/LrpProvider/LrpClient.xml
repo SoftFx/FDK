@@ -230,6 +230,7 @@
         <Member name="CurrencyPrecision" type="int32" />
         <Member name="SettlementCurrencyPrecision" type="int32" />
         <Member name="StatusGroupId" type="astring" />
+        <Member name="SecurityName" type="astring" />
         <Member name="SecurityDescription" type="wstring" />
       </Type>
       <Type name="AStringArray" kind="array">

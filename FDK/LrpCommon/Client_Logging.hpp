@@ -967,6 +967,8 @@ namespace
 		_stream << ';';
 		LrpWriteAString("StatusGroupId", arg.StatusGroupId, _stream);
 		_stream << ';';
+		LrpWriteAString("SecurityName", arg.SecurityName, _stream);
+		_stream << ';';
 		LrpWriteWString("SecurityDescription", arg.SecurityDescription, _stream);
 		_stream << ';';
 		_stream<<"}";
