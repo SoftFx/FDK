@@ -233,7 +233,7 @@ namespace LrpServer.Net.LocalCpp
 			result.CurrencyPrecision = buffer.ReadInt32();
 			result.SettlementCurrencyPrecision = buffer.ReadInt32();
 			result.StatusGroupId = buffer.ReadAString();
-			result.SecurityName = buffer.ReadWString();
+			result.SecurityName = buffer.ReadAString();
 			result.SecurityDescription = buffer.ReadWString();
 			return result;
 		}
@@ -271,7 +271,7 @@ namespace LrpServer.Net.LocalCpp
 			buffer.WriteInt32(arg.CurrencyPrecision);
 			buffer.WriteInt32(arg.SettlementCurrencyPrecision);
 			buffer.WriteAString(arg.StatusGroupId);
-			buffer.WriteWString(arg.SecurityName);
+			buffer.WriteAString(arg.SecurityName);
 			buffer.WriteWString(arg.SecurityDescription);
 		}
 		public static LrpServer.Net.LrpSymbolInfo[] ReadSymbolInfoArray(this MemoryBuffer buffer)
