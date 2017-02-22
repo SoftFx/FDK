@@ -550,7 +550,7 @@ void CFixConnection::OnSymbolsInfo(const FIX44::SecurityList& message)
         group.TryGetSecurityID(info.SecurityName);
 
         string encodedSecurityDescription;
-        if (group.TryGetEncodedText(encodedSecurityDescription))
+        if (group.TryGetEncodedSecurityDesc(encodedSecurityDescription))
             Utf8ToStd(info.SecurityDescription, encodedSecurityDescription);
 
         symbols.push_back(info);
