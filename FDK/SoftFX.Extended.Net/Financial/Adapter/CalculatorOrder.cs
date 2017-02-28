@@ -37,6 +37,7 @@
         public decimal Amount
         {
             get { return (decimal)this.entry.NativeVolume; }
+            set { }
         }
 
         public decimal? Commission
@@ -59,6 +60,7 @@
         public decimal? Price
         {
             get { return (decimal)this.entry.Price; }
+            set { }
         }
 
         public decimal? StopPrice
@@ -69,11 +71,13 @@
         public decimal RemainingAmount
         {
             get { return this.Amount; }
+            set { }
         }
 
         public OrderSides Side
         {
             get { return CalculatorConvert.ToOrderSides(this.entry.Side); }
+            set { }
         }
 
         public decimal? Swap
@@ -89,6 +93,7 @@
         public OrderTypes Type
         {
             get { return CalculatorConvert.ToOrderTypes( this.entry.Type); }
+            set { }
         }
 
         #region Calculated Properties
