@@ -11,6 +11,7 @@
 #define FIX_ORDER_STATUS_NEW 0x0
 #define FIX_ORDER_STATUS_PARTIALLY_FILLED 0x1
 #define FIX_ORDER_STATUS_FILLED 0x2
+#define FIX_ORDER_STATUS_DONE 0x3
 #define FIX_ORDER_STATUS_CANCELLED 0x4
 #define FIX_ORDER_STATUS_PENDING_CANCEL 0x6
 #define FIX_ORDER_STATUS_REJECTED 0x8
@@ -50,29 +51,29 @@
 class CFxFixExecutionReport : public CFxHandle
 {
 public:
-	CFxFixExecutionReport(const FIX44::ExecutionReport& message);
+    CFxFixExecutionReport(const FIX44::ExecutionReport& message);
 public:
-	double ExecutedVolume;
-	double InitialVolume;
-	double LeavesVolume;
-	double TradeAmount;
-	double AveragePrice;
-	double Price;
-	double StopPrice;
-	double TakeProfit;
-	double StopLoss;
-	CDateTime Expiration;
+    double ExecutedVolume;
+    double InitialVolume;
+    double LeavesVolume;
+    double TradeAmount;
+    double AveragePrice;
+    double Price;
+    double StopPrice;
+    double TakeProfit;
+    double StopLoss;
+    CDateTime Expiration;
 
-	std::string OrderId;
-	std::string ClientOrderId;
-	std::string Symbol;
-	std::string Text;
+    std::string OrderId;
+    std::string ClientOrderId;
+    std::string Symbol;
+    std::string Text;
 
-	int32 ExecutionType;
-	int32 OrderStatus;
-	int32 OrderType;
-	int32 OrderSide;
-	int32 OrderRejectReason;
+    int32 ExecutionType;
+    int32 OrderStatus;
+    int32 OrderType;
+    int32 OrderSide;
+    int32 OrderRejectReason;
 };
 
 
