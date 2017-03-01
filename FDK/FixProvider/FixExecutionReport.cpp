@@ -342,6 +342,10 @@ FxOrderStatus CFixExecutionReport::GetFxOrderStatus() const
     {
         return FxOrderStatus_Filled;
     }
+    if (FIX::OrdStatus_DONE == orderStatus)
+    {
+        return FxOrderStatus_Activated;
+    }
     if (FIX::OrdStatus_CANCELED == orderStatus)
     {
         return FxOrderStatus_Canceled;

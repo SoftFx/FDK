@@ -166,6 +166,7 @@ enum FxOrderStatus
     FxOrderStatus_PendingReplace    = 8,
     FxOrderStatus_Done          = 9,
     FxOrderStatus_PendingClose      = 10,
+    FxOrderStatus_Activated     = 11,
     FxOrderStatus_Last          = FX_MAX_ENUM
 };
 
