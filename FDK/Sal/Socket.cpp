@@ -100,6 +100,7 @@ int Socket::Connect(ConnectType type, const sockaddr* address, int addressLen, c
     }
 }
 
+
 int Socket::connectDirect(const sockaddr* address, int addressLen)
 {
     return ::connect(m_socket, address, addressLen);
