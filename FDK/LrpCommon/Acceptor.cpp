@@ -39,7 +39,7 @@ namespace
 			return INVALID_SOCKET;
 		}
 		addr.sin_addr.s_addr = inet_addr("127.0.0.1");
-		status = connect(client, reinterpret_cast<sockaddr*>(&addr), sizeof(addr));
+		status = connect(client, ConnectType_Direct, reinterpret_cast<sockaddr*>(&addr), sizeof(addr), 0, 0, 0, 0);
 		if (SOCKET_ERROR == status)
 		{
 			return INVALID_SOCKET;

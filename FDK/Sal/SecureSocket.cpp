@@ -120,10 +120,10 @@ HRESULT SecureSocket::LogicalAccept()
 	m_isAccepting = false;
 	return S_OK;
 }
-int SecureSocket::Connect(const struct sockaddr* name, int namelen)
+int SecureSocket::Connect(ConnectType type, const sockaddr* address, int addressLen, const sockaddr* proxyAddress, int proxyAddressLen, const char* userName, const char* password)
 {
 	int timeout = 0;
-	const int result = DoConnect(name, namelen, timeout);
+	const int result = DoConnect(type, address, addressLen, proxyAddress, proxyAddressLen, userName, password, timeout);
 	if (SOCKET_ERROR == result)
 	{
 		return SOCKET_ERROR;
@@ -145,9 +145,9 @@ int SecureSocket::Connect(const struct sockaddr* name, int namelen)
 	return result;
 }
 
-int SecureSocket::DoConnect(const struct sockaddr* name, int namelen, int& timeout)
+int SecureSocket::DoConnect(ConnectType type, const sockaddr* address, int addressLen, const sockaddr* proxyAddress, int proxyAddressLen, const char* userName, const char* password, int& timeout)
 {
-	int result = DoPhysicalConnect(name, namelen, timeout);
+	int result = DoPhysicalConnect(type, address, addressLen, proxyAddress, proxyAddressLen, userName, password, timeout);
 	if (SOCKET_ERROR != result)
 	{
 		return result;
@@ -160,7 +160,7 @@ int SecureSocket::DoConnect(const struct sockaddr* name, int namelen, int& timeo
 	// need to reinitialize
 	if (DoReinitialize())
 	{
-		result = DoPhysicalConnect(name, namelen, timeout);
+		result = DoPhysicalConnect(type, address, addressLen, proxyAddress, proxyAddressLen, userName, password, timeout);
 	}
 	else
 	{
@@ -168,10 +168,10 @@ int SecureSocket::DoConnect(const struct sockaddr* name, int namelen, int& timeo
 	}
 	return result;
 }
-int SecureSocket::DoPhysicalConnect(const struct sockaddr* name, int namelen, int& timeout)
+int SecureSocket::DoPhysicalConnect(ConnectType type, const sockaddr* address, int addressLen, const sockaddr* proxyAddress, int proxyAddressLen, const char* userName, const char* password, int& timeout)
 {
 	const DWORD start = GetTickCount();
-	const int result = ::connect(m_socket, name, namelen);
+	const int result = Socket::Connect(type, address, addressLen, proxyAddress, proxyAddressLen, userName, password);
 	if (SOCKET_ERROR == result)
 	{
 		return SOCKET_ERROR;

@@ -7,7 +7,7 @@
 #define FX_SOCKET_ENABLE_STATS 2
 
 #include "SocketState.h"
-
+#include "ConnectType.h"
 
 extern "C"
 {
@@ -16,7 +16,7 @@ extern "C"
 	HRESULT FxLogicalAccept(SOCKET s);  // implemented
 	int FxBind(SOCKET s, const struct sockaddr* name, int namelen); // implemented
 	int FxCloseSocket(SOCKET s); // implemented
-	int FxConnect(SOCKET s, const struct sockaddr* name, int namelen); // implemented
+	int FxConnect(SOCKET s, ConnectType type, const sockaddr* address, int addressLen, const sockaddr* proxyAddress, int proxyAddressLen, const char* userName, const char* password); // implemented
 	int FxGetPeerName(SOCKET s, struct sockaddr* name, socklen_t* namelen); // implemented
 	int FxGetSockName(SOCKET s, struct sockaddr* name, socklen_t* namelen); // implemented
 	int FxGetSockOpt(SOCKET s, int level, int optname, char* optval, socklen_t* optlen); // implemented

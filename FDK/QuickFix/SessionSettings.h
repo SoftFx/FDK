@@ -124,6 +124,11 @@ const char REFRESH_ON_LOGON[] = "RefreshOnLogon";
 const char MILLISECONDS_IN_TIMESTAMP[] = "MillisecondsInTimeStamp";
 const char HTTP_ACCEPT_PORT[] = "HttpAcceptPort";
 const char PERSIST_MESSAGES[] = "PersistMessages";
+const char PROXY_TYPE[] = "ProxyType";
+const char PROXY_ADDRESS[] = "ProxyAddress";
+const char PROXY_PORT[] = "ProxyPort";
+const char PROXY_USERNAME[] = "ProxyUserName";
+const char PROXY_PASSWORD[] = "ProxyPassword";
 
 /// Container for setting dictionaries mapped to sessions.
 class SessionSettings

@@ -63,7 +63,9 @@ private:
   void onError( SocketConnector& );
   void onTimeout( SocketConnector& );
 
-  void getHost( const SessionID&, const Dictionary&, std::string&, short& );
+  void getHost( const SessionID&, const Dictionary&, std::string&, short&, 
+      std::string& proxyType, std::string& proxyAddress, short& proxyPort, 
+      std::string& proxyUserName, std::string& proxyPassword);
 
   SessionSettings m_settings;
   SessionToHostNum m_sessionToHostNum;

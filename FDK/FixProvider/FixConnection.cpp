@@ -59,6 +59,11 @@ namespace
     const string cDecodeLogFixMessages = "DecodeLogFixMessages";
     const string cExcludeMessagesFromLogs = "ExcludeMessagesFromLogs";
     const string cEnableNetworkStatistics = "EnableNetworkStatistics";
+    const string cProxyType = "ProxyType";
+    const string cProxyAddress = "ProxyAddress";
+    const string cProxyPort = "ProxyPort";
+    const string cProxyUserName = "ProxyUserName";
+    const string cProxyPassword = "ProxyPassword";
 }
 
 void CFixConnection::InitializeMessageHandlers()
@@ -143,6 +148,26 @@ CFixConnection::CFixConnection(const string& name, const string& connectionStrin
     sessionOptions.setString(FIX::SOCKET_CONNECT_HOST, address);
     sessionOptions.setLong(FIX::SOCKET_CONNECT_PORT, port);
     sessionOptions.setBool(FIX::SOCKET_NODELAY, true);
+
+    string proxyType;
+    if (parameters.TryGetString(cProxyType, proxyType))
+        sessionOptions.setString(FIX::PROXY_TYPE, proxyType);
+
+    string proxyAddress;
+    if (parameters.TryGetString(cProxyAddress, proxyAddress))
+        sessionOptions.setString(FIX::PROXY_ADDRESS, proxyAddress);
+
+    int proxyPort;
+    if (parameters.TryGetInt32(cProxyPort, proxyPort))
+        sessionOptions.setLong(FIX::PROXY_PORT, proxyPort);
+
+    string proxyUserName;
+    if (parameters.TryGetString(cProxyUserName, proxyUserName))
+        sessionOptions.setString(FIX::PROXY_USERNAME, proxyUserName);
+
+    string proxyPassword;
+    if (parameters.TryGetString(cProxyPassword, proxyPassword))
+        sessionOptions.setString(FIX::PROXY_PASSWORD, proxyPassword);
 
     FIX::SessionID sessionID(fixVersion, senderCompId, targetCompId);
     m_sessionID = sessionID;

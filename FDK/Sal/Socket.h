@@ -4,6 +4,7 @@
 #include "CriticalSection.h"
 #endif
 #include "SocketState.h"
+#include "ConnectType.h"
 
 class Socket
 {
@@ -20,14 +21,14 @@ public:
 	int GetPeerName(struct sockaddr* name, socklen_t* namelen);
 	int GetSockName(struct sockaddr* name, socklen_t* namelen);
 	int GetSockOpt(int level, int optname, char* optval, socklen_t* optlen);
-	int SetSockOpt(int level, int optname, const sockoptval_t* optval, int optlen);
+	int SetSockOpt(int level, int optname, const sockoptval_t* optval, int optlen);    
 	SOCKET Handle();
 public:
 	void GetActivity(uint64* pDataBytesSent, uint64* pSslBytesSent, uint64* pDataBytesReceived, uint64* pSslBytesReceived)const;
 public:
 	virtual Socket* PhysicalAccept(struct sockaddr* addr, socklen_t* addrlen, const char* ceritificateFileName, const char* password) = 0;
 	virtual HRESULT LogicalAccept() = 0;
-	virtual int Connect(const struct sockaddr* name, int namelen) = 0;
+	virtual int Connect(ConnectType type, const sockaddr* address, int addressLen, const sockaddr* proxyAddress, int proxyAddressLen, const char* userName, const char* password);
 	virtual int Recv(char* buf, int len, int flags) = 0;
 	virtual int RecvFrom(char* buf, int len, int flags, struct sockaddr* from, socklen_t* fromlen) = 0;
 	virtual int Send(const char* buf, int len, int flags) = 0;
@@ -54,6 +55,10 @@ protected:
 	SOCKET m_socket;
 	bool m_isAccepting;
 private:
+    int connectDirect(const sockaddr* address, int addressLen);
+    int connectProxySocks4(const sockaddr* address, int addressLen, const sockaddr* proxyAddress, int proxyAddressLen, const char* userName);
+    int connectProxySocks5(const sockaddr* address, int addressLen, const sockaddr* proxyAddress, int proxyAddressLen, const char* userName, const char* password);
+
 	const bool m_enabledStats;
 	atomic<LONGLONG> m_dataBytesSent;
 	atomic<LONGLONG> m_sslBytesSent;

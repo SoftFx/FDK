@@ -92,8 +92,9 @@ private:
 SocketConnector::SocketConnector( int timeout )
 : m_monitor( timeout ) {}
 
-int SocketConnector::connect( const std::string& address, int port, bool noDelay,
-                              int sendBufSize, int rcvBufSize , int mode)
+int SocketConnector::connect(ConnectType type, const std::string& address, int port, bool noDelay,
+                              int sendBufSize, int rcvBufSize , int mode,
+                                const std::string& proxyAddress, int proxyPort, const std::string& proxyUserName, const std::string& proxyPassword)
 {
 
   int socket = socket_createConnector(mode);
@@ -107,7 +108,7 @@ int SocketConnector::connect( const std::string& address, int port, bool noDelay
     if( rcvBufSize )
       socket_setsockopt( socket, SO_RCVBUF, rcvBufSize );
 
-    if( socket_connect( socket, address.c_str(), port ) < 0 )
+    if(socket_connect(socket, type, address.c_str(), port, proxyAddress.c_str(), proxyPort, proxyUserName.c_str(), proxyPassword.c_str()) < 0 )
     {
       DWORD code = GetLastError();
       socket_close( socket );
@@ -124,11 +125,12 @@ int SocketConnector::connect( const std::string& address, int port, bool noDelay
   
 }
 
-int SocketConnector::connect( const std::string& address, int port, bool noDelay, 
-                              int sendBufSize, int rcvBufSize, Strategy& strategy , int mode)
+int SocketConnector::connect(ConnectType type, const std::string& address, int port, bool noDelay,
+                              int sendBufSize, int rcvBufSize, Strategy& strategy , int mode,
+                                const std::string& proxyAddress, int proxyPort, const std::string& proxyUserName, const std::string& proxyPassword)
 {
 
-  int socket = connect( address, port, noDelay, sendBufSize, rcvBufSize , mode);
+  int socket = connect( type, address, port, noDelay, sendBufSize, rcvBufSize , mode, proxyAddress, proxyPort, proxyUserName, proxyPassword);
   return socket;
 
   

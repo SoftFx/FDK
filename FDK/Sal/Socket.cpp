@@ -16,6 +16,297 @@ Socket::~Socket()
 {
 	Finalize();
 }
+
+#pragma pack(push)
+#pragma pack(1)
+
+struct socks4_request_header_t
+{
+    uint8_t vn;
+    uint8_t cd;
+    uint16_t dstport;
+    uint32_t dstip;
+};
+
+struct socks4_response_header_t
+{
+    uint8_t vn;
+    uint8_t cd;
+    uint16_t dstport;
+    uint32_t dstip;
+};
+
+struct socks5_method_request_header_t
+{
+    uint8_t ver;
+    uint8_t methods;
+    uint8_t method;
+};
+
+struct socks5_method_response_header_t
+{
+    uint8_t ver;
+    uint8_t method;
+};
+
+struct socks5_logon_request_header_t
+{
+    uint8_t ver;
+};
+
+struct socks5_logon_response_header_t
+{
+    uint8_t ver;
+    uint8_t status;
+};
+
+struct socks5_connect_request_header_t
+{
+    uint8_t ver;
+    uint8_t cmd;
+    uint8_t rsv;
+    uint8_t atyp;
+    uint32_t addr;
+    uint16_t port;
+};
+
+struct socks5_connect_response_header_t
+{
+    uint8_t ver;
+    uint8_t rep;
+    uint8_t rsv;
+    uint8_t atyp;
+    uint32_t addr;
+    uint16_t port;
+};
+
+#pragma pack(pop)
+
+int Socket::Connect(ConnectType type, const sockaddr* address, int addressLen, const sockaddr* proxyAddress, int proxyAddressLen, const char* userName, const char* password)
+{
+    switch (type)
+    {
+    case ConnectType_Direct:
+        return connectDirect(address, addressLen);
+
+    case ConnectType_ProxySocks4:
+        return connectProxySocks4(address, addressLen, proxyAddress, proxyAddressLen, userName);
+
+    case ConnectType_ProxySocks5:
+        return connectProxySocks5(address, addressLen, proxyAddress, proxyAddressLen, userName, password);
+
+    default:
+        return -1;
+    }
+}
+
+
+int Socket::connectDirect(const sockaddr* address, int addressLen)
+{
+    return ::connect(m_socket, address, addressLen);
+}
+
+int Socket::connectProxySocks4(const sockaddr* address, int addressLen, const sockaddr* proxyAddress, int proxyAddressLen, const char* userName) 
+{
+    int result = ::connect(m_socket, proxyAddress, proxyAddressLen);
+
+    if (result < 0)
+        return result;
+
+    size_t user_name_size = strlen(userName) + 1;
+    size_t socks_request_size = sizeof(socks4_request_header_t) + user_name_size;
+
+    socks4_request_header_t* socks_request_header = (socks4_request_header_t*)malloc(socks_request_size);
+    socks_request_header->vn = 4;
+    socks_request_header->cd = 1;
+    socks_request_header->dstport = ((const sockaddr_in*)address)->sin_port;
+    socks_request_header->dstip = ((const sockaddr_in*)address)->sin_addr.S_un.S_addr;
+    memcpy(socks_request_header + 1, userName, user_name_size);
+
+    result = ::send(m_socket, (const char*)socks_request_header, (int)socks_request_size, 0);
+
+    if (result < 0)
+    {
+        free(socks_request_header);
+        return result;
+    }
+
+    free(socks_request_header);
+
+    socks4_response_header_t socks_response_header;
+
+    char* data = (char*)&socks_response_header;
+    int len = sizeof(socks4_response_header_t);
+
+    while (true)
+    {
+        result = ::recv(m_socket, data, len, 0);
+
+        if (result < 0)
+            return result;
+
+        if (result == 0)
+            return -1;
+
+        data += result;
+        len -= result;
+
+        if (!len)
+            break;
+    }
+
+    if (socks_response_header.vn != 0)
+        return -1;
+
+    if (socks_response_header.cd != 90)
+        return -1;
+
+    return 0;
+}
+
+int Socket::connectProxySocks5(const sockaddr* address, int addressLen, const sockaddr* proxyAddress, int proxyAddressLen, const char* userName, const char* password)
+{
+    int result = ::connect(m_socket, proxyAddress, proxyAddressLen);
+
+    if (result < 0)
+        return result;
+
+    socks5_method_request_header_t socks5_method_request_header;
+    socks5_method_request_header.ver = 0x05;
+    socks5_method_request_header.methods = 1;
+    socks5_method_request_header.method = 0x02;
+
+    result = ::send(m_socket, (const char*)&socks5_method_request_header, sizeof(socks5_method_request_header_t), 0);
+
+    if (result < 0)
+        return result;
+
+    socks5_method_response_header_t socks5_method_response_header;
+
+    char* data = (char*)&socks5_method_response_header;
+    int len = sizeof(socks5_method_response_header_t);
+
+    while (true)
+    {
+        result = ::recv(m_socket, data, len, 0);
+
+        if (result < 0)
+            return result;
+
+        if (result == 0)
+            return -1;
+
+        data += result;
+        len -= result;
+
+        if (!len)
+            break;
+    }
+
+    if (socks5_method_response_header.ver != 0x05)
+        return -1;
+
+    if (socks5_method_response_header.method != 0x02)
+        return -1;
+
+    size_t userNameSize = strlen(userName);
+    size_t passwordSize = strlen(password);
+    size_t logonRequestSize = sizeof(socks5_logon_request_header_t) + 1 + userNameSize + 1 + passwordSize;
+
+    socks5_logon_request_header_t* socks5_logon_request_header = (socks5_logon_request_header_t*) malloc(logonRequestSize);
+    socks5_logon_request_header->ver = 0x01;
+    data = (char*)(socks5_logon_request_header + 1);
+    *data = userNameSize;
+    data += 1;
+    memcpy(data, userName, userNameSize);
+    data += userNameSize;
+    *data = passwordSize;
+    data += 1;
+    memcpy(data, password, passwordSize);
+    data += passwordSize;
+
+    result = ::send(m_socket, (const char*) socks5_logon_request_header, logonRequestSize, 0);
+
+    if (result < 0)
+    {
+        free(socks5_logon_request_header);
+        return result;
+    }
+
+    free(socks5_logon_request_header);
+
+    socks5_logon_response_header_t socks5_logon_response_header;
+
+    data = (char*) &socks5_logon_response_header;
+    len = sizeof(socks5_logon_response_header_t);
+
+    while (true)
+    {
+        result = ::recv(m_socket, data, len, 0);
+
+        if (result < 0)
+            return result;
+
+        if (result == 0)
+            return -1;
+
+        data += result;
+        len -= result;
+
+        if (!len)
+            break;
+    }
+
+    if (socks5_logon_response_header.ver != 0x01)
+        return -1;
+
+    if (socks5_logon_response_header.status != 0x00)
+        return -1;
+
+    socks5_connect_request_header_t socks5_connect_request_header;
+    socks5_connect_request_header.ver = 0x05;
+    socks5_connect_request_header.cmd = 0x01;
+    socks5_connect_request_header.rsv = 0x00;
+    socks5_connect_request_header.atyp = 0x01;
+    socks5_connect_request_header.addr = ((const sockaddr_in*)address)->sin_addr.S_un.S_addr;
+    socks5_connect_request_header.port = ((const sockaddr_in*)address)->sin_port;
+
+    result = ::send(m_socket, (const char*)&socks5_connect_request_header, sizeof(socks5_connect_request_header_t), 0);
+
+    if (result < 0)
+        return result;
+
+    socks5_connect_response_header_t socks5_connect_response_header;
+
+    data = (char*)&socks5_connect_response_header;
+    len = sizeof(socks5_connect_response_header_t);
+
+    while (true)
+    {
+        result = ::recv(m_socket, data, len, 0);
+
+        if (result < 0)
+            return result;
+
+        if (result == 0)
+            return -1;
+
+        data += result;
+        len -= result;
+
+        if (!len)
+            break;
+    }
+
+    if (socks5_connect_response_header.ver != 0x05)
+        return -1;
+
+    if (socks5_connect_response_header.rep != 0x00)
+        return -1;
+
+    return 0;
+}
+
 /// <summary>
 /// 
 /// </summary>

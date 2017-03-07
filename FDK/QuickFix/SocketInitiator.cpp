@@ -136,17 +136,42 @@ void SocketInitiator::doConnect( const SessionID& s, const Dictionary& d )
 
   try
   {
-    std::string address;
-    short port = 0;
     Session* session = Session::lookupSession( s );
     if( !session->isSessionTime(UtcTimeStamp()) ) return;
 
     Log* log = session->getLog();
 
-    getHost( s, d, address, port );
+    std::string address;
+    short port = 0;
+    std::string proxyType;
+    std::string proxyAddress;
+    short proxyPort;
+    std::string proxyUserName;
+    std::string proxyPassword;
+    getHost( s, d, address, port, proxyType, proxyAddress, proxyPort, proxyUserName, proxyPassword);
 
-    log->onEvent( "Connecting to " + address + " on port " + IntConvertor::convert((unsigned short)port) );
-    int result = m_connector.connect( address, port, m_noDelay, m_sendBufSize, m_rcvBufSize, m_mode );
+    ConnectType connectType;
+
+    if (proxyType == "")
+    {
+        connectType = ConnectType_Direct;
+        log->onEvent("Connecting to " + address + " on port " + IntConvertor::convert((unsigned short)port));
+    }
+    else if (proxyType == "Socks4")
+    {
+        connectType = ConnectType_ProxySocks4;
+        log->onEvent("Connecting to " + address + " on port " + IntConvertor::convert((unsigned short)port) + " via socks 4 proxy " + proxyAddress + " on port " + IntConvertor::convert((unsigned short)proxyPort) + " as " + proxyUserName);
+    }
+    else if (proxyType == "Socks5")
+    {
+        connectType = ConnectType_ProxySocks5;
+        log->onEvent("Connecting to " + address + " on port " + IntConvertor::convert((unsigned short)port) + " via socks 5 proxy " + proxyAddress + " on port " + IntConvertor::convert((unsigned short)proxyPort) + " as " + proxyUserName);
+    }
+    else
+        throw ConfigError("Invalid proxy type : " + proxyType);
+    
+    int result = m_connector.connect(connectType, address, port, m_noDelay, m_sendBufSize, m_rcvBufSize, m_mode, proxyAddress, proxyPort, proxyUserName, proxyPassword );
+
     if( result != -1 )
     {
       setPending( s );
@@ -258,7 +283,9 @@ void SocketInitiator::onTimeout( SocketConnector& )
 }
 
 void SocketInitiator::getHost( const SessionID& s, const Dictionary& d,
-                               std::string& address, short& port )
+    std::string& address, short& port, std::string& porxyType, 
+    std::string& proxyAddress, short& proxyPort,
+    std::string& proxyUserName, std::string& proxyPassword)
 {
 
   int num = 0;
@@ -269,9 +296,9 @@ void SocketInitiator::getHost( const SessionID& s, const Dictionary& d,
   hostStream << SOCKET_CONNECT_HOST << num;
   std::string hostString = hostStream.str();
 
-  std::stringstream portStream;
-  std::string portString = portStream.str();
+  std::stringstream portStream;  
   portStream << SOCKET_CONNECT_PORT << num;
+  std::string portString = portStream.str();
 
   if( d.has(hostString) && d.has(portString) )
   {
@@ -285,9 +312,76 @@ void SocketInitiator::getHost( const SessionID& s, const Dictionary& d,
     port = ( short ) d.getLong( SOCKET_CONNECT_PORT );
   }
 
-  m_sessionToHostNum[ s ] = ++num;
+  std::stringstream proxyTypeSream;
+  proxyTypeSream << PROXY_TYPE << num;
+  std::string proxyTypeString = proxyTypeSream.str();
 
-  
+  if (d.has(proxyTypeString))
+  {
+      porxyType = d.getString(proxyTypeString);
+  }
+  else if (d.has(PROXY_TYPE))
+  {
+      porxyType = d.getString(PROXY_TYPE);
+  }
+  else
+      porxyType = "";
+
+  std::stringstream proxyAddressStream;
+  proxyAddressStream << PROXY_ADDRESS << num;
+  std::string proxyAddressString = proxyAddressStream.str();
+
+  std::stringstream proxyPortStream;
+  proxyPortStream << PROXY_PORT << num;
+  std::string proxyPortString = proxyPortStream.str();  
+
+  if (d.has(proxyAddressString) && d.has(proxyPortString))
+  {
+      proxyAddress = d.getString(proxyAddressString);
+      proxyPort = (short)d.getLong(proxyPortString);
+  }
+  else if (d.has(PROXY_ADDRESS) && d.has(PROXY_PORT))
+  {
+      proxyAddress = d.getString(PROXY_ADDRESS);
+      proxyPort = (short)d.getLong(PROXY_PORT);
+  }
+  else
+  {
+      proxyAddress = "";
+      proxyPort = 0;
+  }
+
+  std::stringstream proxyUserNameSream;
+  proxyUserNameSream << PROXY_USERNAME << num;
+  std::string proxyUserNameString = proxyUserNameSream.str();
+
+  if (d.has(proxyUserNameString))
+  {
+      proxyUserName = d.getString(proxyUserNameString);
+  }
+  else if (d.has(PROXY_USERNAME))
+  {
+      proxyUserName = d.getString(PROXY_USERNAME);
+  }
+  else
+      proxyUserName = "";
+
+  std::stringstream proxyPasswordSream;
+  proxyPasswordSream << PROXY_PASSWORD << num;
+  std::string proxyPasswordString = proxyPasswordSream.str();
+
+  if (d.has(proxyPasswordString))
+  {
+      proxyPassword = d.getString(proxyPasswordString);
+  }
+  else if (d.has(PROXY_PASSWORD))
+  {
+      proxyPassword = d.getString(PROXY_PASSWORD);
+  }
+  else
+      proxyPassword = "";
+
+  m_sessionToHostNum[ s ] = ++num;  
 }
 
 void SocketInitiator::GetNetworkActivity(uint64* pLogicalBytesSent, uint64* pPhysicalBytesSent, uint64* pLogicalBytesReceived, uint64* pPhysicalBytesReceived)

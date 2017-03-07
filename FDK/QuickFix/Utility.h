@@ -106,7 +106,7 @@ void socket_init();
 void socket_term();
 int socket_createAcceptor( int port, bool reuse = false );
 int socket_createConnector( int mode );
-int socket_connect( int s, const char* address, int port );
+int socket_connect(int s, ConnectType type, const char* address, int port, const char* proxyAddress, int proxyPort, const char* userName, const char* password);
 int socket_accept( int s );
 int socket_send( int s, const char* msg, int length );
 void socket_close( int s );
