@@ -330,7 +330,7 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
     {
         throw CArgumentException(cInvalidSide);
     }
-    
+
     if (required.Volume.HasValue())
     {
         message.SetOrderQty(required.Volume.Value());
@@ -374,6 +374,8 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
         message.SetEncodedCommentLen((int) encodedComment.length());
         message.SetEncodedComment(encodedComment);
     }
+    else
+        message.SetEncodedCommentLen(0);
 
     if (!required.Tag.empty())
     {
@@ -382,6 +384,8 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
         message.SetEncodedTagLen((int) encodedTag.length());
         message.SetEncodedTag(encodedTag);
     }
+    else
+        message.SetEncodedTagLen(0);
 
     if (required.Magic.HasValue())
         message.SetMagic(*required.Magic);
@@ -400,7 +404,7 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
         if (! m_appId.empty())
             message.SetClAppID(m_appId);
     }
-    
+
 #ifdef LOG_PERFORMANCE
     uint64_t timestamp = logger_->getTimestamp();
     logger_->logTimestamp(id.c_str(), timestamp, "NewOrder");
@@ -590,6 +594,8 @@ void CFixSender::VSendModifyOrder(const string& id, const CFxOrder& request)
         message.SetEncodedCommentLen((int) encodedComment.length());
         message.SetEncodedComment(encodedComment);
     }
+    else
+        message.SetEncodedCommentLen(0);
 
     if (!request.Tag.empty())
     {
@@ -598,6 +604,8 @@ void CFixSender::VSendModifyOrder(const string& id, const CFxOrder& request)
         message.SetEncodedTagLen((int) encodedTag.length());
         message.SetEncodedTag(encodedTag);
     }
+    else
+        message.SetEncodedTagLen(0);
 
     if (request.Magic.HasValue())
         message.SetMagic(*request.Magic);
@@ -665,8 +673,6 @@ void CFixSender::VSendGetTradeTransactionReportsAndSubscribeToNotifications(cons
             else
                 message.SetTradeRequestType(FIX::TradeRequestType_ALLTRADES);
         }
-        else
-            throw exception("Skip cancel is not supported");
     }
     if (subscribe)
     {

@@ -34,5 +34,7 @@
         public int CurrencyPrecision;
         public int SettlementCurrencyPrecision;
         public string StatusGroupId;
+        public string SecurityName;
+        public string SecurityDescription;
     }
 }

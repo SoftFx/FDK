@@ -24,7 +24,7 @@ namespace
         }
 
         int result = MultiByteToWideChar(CP_UTF8, 0, src.data(), src.length(), 0, 0);
-        
+
         if (! result)
             throw logic_error("Invalid string to convert from UTF-8");
 
@@ -96,14 +96,14 @@ void CFixConnection::InitializeMessageHandlers()
     gMessageTypeToHandler[FIX::MsgType_ComponentsInfoReport] = reinterpret_cast<MessageHandler>(&CFixConnection::OnComponentsInfoReport);
 }
 
-CFixConnection::CFixConnection(const string& name, const string& connectionString) : 
+CFixConnection::CFixConnection(const string& name, const string& connectionString) :
     name_(name),
 #ifdef LOG_PERFORMANCE
     loggerIn_(service_),
     loggerOut_(service_),
 #endif
     m_receiver(nullptr)
-{      
+{
     CFxParams parameters(connectionString);
     const string fixVersion = parameters.GetString(cFixVersion);
 
@@ -171,8 +171,8 @@ CFixConnection::CFixConnection(const string& name, const string& connectionStrin
 
     FIX::SessionID sessionID(fixVersion, senderCompId, targetCompId);
     m_sessionID = sessionID;
-    m_sender.SessionID(sessionID);        
-    m_settings.set(sessionID, sessionOptions);       
+    m_sender.SessionID(sessionID);
+    m_settings.set(sessionID, sessionOptions);
 
     // create default settings
     m_settings.set(FIX::Dictionary());
@@ -197,7 +197,7 @@ CFixConnection::CFixConnection(const string& name, const string& connectionStrin
     m_sender.AppId(m_appId);
     m_appSessionId = parameters.GetString(cAppSessionId);
 
-    m_initiator = new FIX::SocketInitiator(*this, m_messageStorefactory, m_settings, *m_logFactory, mode);        
+    m_initiator = new FIX::SocketInitiator(*this, m_messageStorefactory, m_settings, *m_logFactory, mode);
 }
 
 CFixConnection::~CFixConnection()
@@ -403,6 +403,11 @@ void CFixConnection::OnSessionInfo(const FIX44::TradingSessionStatus& message)
             statusGroupInfo.StartTime = group.GetTradSesStartTime().toFileTime();
             statusGroupInfo.EndTime = group.GetTradSesEndTime().toFileTime();
 
+            if (group.isSet(FIX::TradSesOpenTime()))
+                statusGroupInfo.OpenTime = group.GetTradSesOpenTime().toFileTime();
+            if (group.isSet(FIX::TradSesCloseTime()))
+                statusGroupInfo.CloseTime = group.GetTradSesCloseTime().toFileTime();
+
             sessionInfo.StatusGroups.push_back(statusGroupInfo);
         }
     }
@@ -566,6 +571,12 @@ void CFixConnection::OnSymbolsInfo(const FIX44::SecurityList& message)
         group.TryGetSortOrder(info.SortOrder);
 
         group.TryGetStatusGroupID(info.StatusGroupId);
+
+        group.TryGetSecurityID(info.SecurityName);
+
+        string encodedSecurityDescription;
+        if (group.TryGetEncodedSecurityDesc(encodedSecurityDescription))
+            Utf8ToStd(info.SecurityDescription, encodedSecurityDescription);
 
         symbols.push_back(info);
     }
@@ -784,7 +795,7 @@ void CFixConnection::OnTradeServerInfoReport(const FIX44::TradeServerInfoReport&
     string encodedServerDescription;
     if (message.TryGetEncodedServerDescription(encodedServerDescription))
         Utf8ToStd(tradeServerInfo.ServerDescription, encodedServerDescription);
-    message.TryGetServerAddress(tradeServerInfo.ServerAddress);    
+    message.TryGetServerAddress(tradeServerInfo.ServerAddress);
     int port;
     if (message.TryGetServerFixFeedSslPort(port))
         tradeServerInfo.ServerFixFeedSslPort = port;
@@ -1137,6 +1148,10 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
     else if (FIX::TradeTransReportType_PositionOpened == tradeTransactionReportType)
     {
         report.TradeTransactionReportType = FxTradeTransactionReportType_PositionOpened;
+    }
+    else if (FIX::TradeTransReportType_OrderActivated == tradeTransactionReportType)
+    {
+        report.TradeTransactionReportType = FxTradeTransactionReportType_OrderActivated;
     }
 
     int reason = 0;

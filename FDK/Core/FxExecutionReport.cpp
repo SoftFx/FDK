@@ -41,7 +41,7 @@ bool CFxExecutionReport::TryGetTradeRecord(CFxOrder& order) const
     {
         return true;
     }
-    if (TryGetStopOrder(order)) 
+    if (TryGetStopOrder(order))
     {
         return true;
     }
@@ -76,7 +76,7 @@ bool CFxExecutionReport::TryGetPositionFromMarket(CFxOrder& order) const
         return false;
     }
 
-    order.Type = FxTradeRecordType_Position;        
+    order.Type = FxTradeRecordType_Position;
     order.Volume = *this->TradeAmount;
     order.Price = this->TradePrice;
 
@@ -96,7 +96,7 @@ bool CFxExecutionReport::TryGetPositionFromPosition(CFxOrder& order) const
         return false;
     }
 
-    order.Type = FxTradeRecordType_Position;    
+    order.Type = FxTradeRecordType_Position;
     order.Price = *(this->Price);
 
     CopyCommonFieldsToRecord(order);
@@ -288,6 +288,14 @@ bool CFxExecutionReport::TryGetActivatedOrder(string& orderId) const
     if ((FxOrderStatus_Filled == OrderStatus) && (FxExecutionType_Trade == ExecutionType))
     {
         if ((FxOrderType_Limit == OrderType) || (FxOrderType_Stop == OrderType) || (FxOrderType_StopLimit == OrderType))
+        {
+            orderId = GetOrderId();
+            return true;
+        }
+    }
+    if ((FxOrderStatus_Activated == OrderStatus) && (FxExecutionType_Trade == ExecutionType))
+    {
+        if (FxOrderType_StopLimit == OrderType)
         {
             orderId = GetOrderId();
             return true;

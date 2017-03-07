@@ -198,6 +198,8 @@ namespace
 		WriteSessionStatus(arg.Status, buffer);
 		WriteTime(arg.StartTime, buffer);
 		WriteTime(arg.EndTime, buffer);
+		WriteTime(arg.OpenTime, buffer);
+		WriteTime(arg.CloseTime, buffer);
 	}
 	CFxStatusGroupInfo ReadStatusGroupInfo(MemoryBuffer& buffer)
 	{
@@ -206,6 +208,8 @@ namespace
 		result.Status = ReadSessionStatus(buffer);
 		result.StartTime = ReadTime(buffer);
 		result.EndTime = ReadTime(buffer);
+		result.OpenTime = ReadTime(buffer);
+		result.CloseTime = ReadTime(buffer);
 		return result;
 	}
 	void WriteStatusGroupInfoArray(const std::vector<CFxStatusGroupInfo>& arg, MemoryBuffer& buffer)
@@ -289,6 +293,8 @@ namespace
 		WriteInt32(arg.CurrencyPrecision, buffer);
 		WriteInt32(arg.SettlementCurrencyPrecision, buffer);
 		WriteAString(arg.StatusGroupId, buffer);
+		WriteAString(arg.SecurityName, buffer);
+		WriteWString(arg.SecurityDescription, buffer);
 	}
 	CFxSymbolInfo ReadSymbolInfo(MemoryBuffer& buffer)
 	{
@@ -325,6 +331,8 @@ namespace
 		result.CurrencyPrecision = ReadInt32(buffer);
 		result.SettlementCurrencyPrecision = ReadInt32(buffer);
 		result.StatusGroupId = ReadAString(buffer);
+		result.SecurityName = ReadAString(buffer);
+		result.SecurityDescription = ReadWString(buffer);
 		return result;
 	}
 	void WriteSymbolInfoArray(const std::vector<CFxSymbolInfo>& arg, MemoryBuffer& buffer)

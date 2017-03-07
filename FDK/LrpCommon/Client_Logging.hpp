@@ -495,6 +495,10 @@ namespace
 		_stream << ';';
 		LrpWriteTime("EndTime", arg.EndTime, _stream);
 		_stream << ';';
+		LrpWriteTime("OpenTime", arg.OpenTime, _stream);
+		_stream << ';';
+		LrpWriteTime("CloseTime", arg.CloseTime, _stream);
+		_stream << ';';
 		_stream<<"}";
 	}
 	void LrpWriteStatusGroupInfoArray(const char* name, const std::vector<CFxStatusGroupInfo>& arg, std::ostream& _stream)
@@ -962,6 +966,10 @@ namespace
 		LrpWriteInt32("SettlementCurrencyPrecision", arg.SettlementCurrencyPrecision, _stream);
 		_stream << ';';
 		LrpWriteAString("StatusGroupId", arg.StatusGroupId, _stream);
+		_stream << ';';
+		LrpWriteAString("SecurityName", arg.SecurityName, _stream);
+		_stream << ';';
+		LrpWriteWString("SecurityDescription", arg.SecurityDescription, _stream);
 		_stream << ';';
 		_stream<<"}";
 	}

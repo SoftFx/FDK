@@ -8,5 +8,7 @@ public:
 	SessionStatus Status;
 	CDateTime StartTime;
 	CDateTime EndTime;
+    CDateTime OpenTime;
+    CDateTime CloseTime;
 };
 

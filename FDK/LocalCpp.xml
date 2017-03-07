@@ -22,6 +22,8 @@
             <Member name="Status" type="SessionStatus" />
             <Member name="StartTime" type="time" />
             <Member name="EndTime" type="time" />
+            <Member name="OpenTime" type="time" />
+            <Member name="CloseTime" type="time" />
         </Type>
         <Type name="StatusGroupInfoArray" kind="array">
             <Value name="StatusGroupInfo" />
@@ -71,6 +73,8 @@
             <Member name="CurrencyPrecision" type="int32" />
             <Member name="SettlementCurrencyPrecision" type="int32" />
             <Member name="StatusGroupId" type="astring" />
+            <Member name="SecurityName" type="astring" />
+            <Member name="SecurityDescription" type="wstring" />
         </Type>
         <Type name="SymbolInfoArray" kind="array">
             <Value name="SymbolInfo" />
