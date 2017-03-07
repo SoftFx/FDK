@@ -29,7 +29,13 @@
                 Address = address,
                 Username = username,
                 Password = password,
-
+/*
+                ProxyType = "Socks5",
+                ProxyAddress = "10.9.14.50",
+                ProxyPort = 1080,
+                ProxyUserName = "User",
+                ProxyPassword = "Password",
+*/
                 FixLogDirectory = LogPath,
                 FixEventsFileName = string.Format("{0}.trade.events.log", username),
                 FixMessagesFileName = string.Format("{0}.trade.messages.log", username)

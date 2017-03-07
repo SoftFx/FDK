@@ -39,10 +39,12 @@ public:
 
   SocketConnector( int timeout = 0 );
 
-  int connect( const std::string& address, int port, bool noDelay, 
-               int sendBufSize, int rcvBufSize , int mode );
-  int connect( const std::string& address, int port, bool noDelay, 
-               int sendBufSize, int rcvBufSize, Strategy& strategy, int mode );
+  int connect( ConnectType type, const std::string& address, int port, bool noDelay, 
+               int sendBufSize, int rcvBufSize , int mode,
+                const std::string& proxyAddress, int proxyPort, const std::string& proxyUserName, const std::string& proxyPassword);
+  int connect(ConnectType type, const std::string& address, int port, bool noDelay,
+               int sendBufSize, int rcvBufSize, Strategy& strategy, int mode,
+                const std::string& proxyAddress, int proxyPort, const std::string& proxyUserName, const std::string& proxyPassword);
   void block( Strategy& strategy, bool poll = 0, double timeout = 0.0 );
   SocketMonitor& getMonitor() { return m_monitor; }
 

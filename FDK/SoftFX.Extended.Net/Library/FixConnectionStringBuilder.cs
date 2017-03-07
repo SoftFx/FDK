@@ -93,6 +93,26 @@
         public bool EnableNetworkStatistics { get; set; }
 
         /// <summary>
+        /// </summary>
+        public string ProxyType { get; set; }
+
+        /// <summary>
+        /// </summary>
+        public string ProxyAddress { get; set; }
+
+        /// <summary>
+        /// </summary>
+        public int ProxyPort { get; set; }
+
+        /// <summary>
+        /// </summary>
+        public string ProxyUserName { get; set; }
+
+        /// <summary>
+        /// </summary>
+        public string ProxyPassword { get; set; }
+
+        /// <summary>
         /// Gets protocol type name = "Fix".
         /// </summary>
         public override string ProtocolType

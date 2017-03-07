@@ -141,7 +141,6 @@ copy /Y ..\..\External\Dll\SoftFX.Lrp.x86.pdb "$(TargetDir)"
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;SAL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <TreatWarningAsError>true</TreatWarningAsError>
       <AdditionalIncludeDirectories>..\..\External\include</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4302;4311</DisableSpecificWarnings>
     </ClCompile>
@@ -248,6 +247,7 @@ copy /Y ..\..\External\Dll\SoftFX.Lrp.x64.pdb "$(TargetDir)"
   <ItemGroup>
     <ClInclude Include="CallsWaiter.h" />
     <ClInclude Include="Compression.h" />
+    <ClInclude Include="ConnectType.h" />
     <ClInclude Include="CriticalSection.h" />
     <ClInclude Include="DateTime.h" />
     <ClInclude Include="Delegate.h" />

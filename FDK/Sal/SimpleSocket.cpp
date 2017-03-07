@@ -30,9 +30,9 @@ HRESULT SimpleSocket::LogicalAccept()
 	m_isAccepting = false;
 	return S_OK;
 }
-int SimpleSocket::Connect(const struct sockaddr* name, int namelen)
+int SimpleSocket::Connect(ConnectType type, const sockaddr* address, int addressLen, const sockaddr* proxyAddress, int proxyAddressLen, const char* userName, const char* password)
 {
-	const int result = ::connect(m_socket, name, namelen);
+	const int result = Socket::Connect(type, address, addressLen, proxyAddress, proxyAddressLen, userName, password);
 	if (0 == result)
 	{
 		EnableKeepAlive(m_socket);

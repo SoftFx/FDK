@@ -11,7 +11,7 @@ public:
 public:
 	virtual Socket* PhysicalAccept(struct sockaddr* addr, socklen_t* addrlen, const char* ceritificateFileName, const char* password);
 	virtual HRESULT LogicalAccept();
-	virtual int Connect(const struct sockaddr* name, int namelen);
+    virtual int Connect(ConnectType type, const sockaddr* address, int addressLen, const sockaddr* proxyAddress, int proxyAddressLen, const char* userName, const char* password);
 	virtual int Send(const char* buf, int len, int flags);
 	virtual int RecvFrom(char* buf, int len, int flags, struct sockaddr* from, socklen_t* fromlen);
 	virtual int Recv(char* buf, int len, int flags);

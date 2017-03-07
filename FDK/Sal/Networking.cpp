@@ -182,7 +182,7 @@ extern "C"
 		FxCloseSocket(result);
 		return INVALID_SOCKET;
 	}
-	int FxConnect(SOCKET s, const struct sockaddr* name, int namelen)
+	int FxConnect(SOCKET s, ConnectType type, const sockaddr* address, int addressLen, const sockaddr* proxyAddress, int proxyAddressLen, const char* userName, const char* password)
 	{
 		const ptrdiff_t index = static_cast<ptrdiff_t>(s);
 		Socket* pSocket = gHandle2Socket[index];
@@ -191,7 +191,7 @@ extern "C"
 		{
 			return SOCKET_ERROR;
 		}
-		const int result = pSocket->Connect(name, namelen);
+		const int result = pSocket->Connect(type, address, addressLen, proxyAddress, proxyAddressLen, userName, password);
 		return result;
 	}
 	int FxGetPeerName(SOCKET s, struct sockaddr* name, socklen_t* namelen)

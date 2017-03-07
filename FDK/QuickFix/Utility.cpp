@@ -146,7 +146,7 @@ int socket_createConnector( int mode )
   
 }
 
-int socket_connect( int socket, const char* address, int port )
+int socket_connect( int socket, ConnectType type, const char* address, int port, const char* proxyAddress, int proxyPort, const char* userName, const char* password )
 {
 
   const char* hostname = socket_hostname( address );
@@ -157,13 +157,21 @@ int socket_connect( int socket, const char* address, int port )
   addr.sin_port = htons( port );
   addr.sin_addr.s_addr = inet_addr( hostname );
 
-  int result = connect( socket, reinterpret_cast < sockaddr* > ( &addr ),
-                        sizeof( addr ) );
+  if (type == ConnectType_Direct)
+      return connect(socket, ConnectType_Direct, (sockaddr*)&addr, sizeof(addr), 0, 0, 0, 0);
 
-  return result;
+  const char* proxyHostname = socket_hostname(proxyAddress);
+  if (proxyHostname == 0) 
+      return -1;
 
-  
+  sockaddr_in proxyAddr;
+  proxyAddr.sin_family = PF_INET;
+  proxyAddr.sin_port = htons(proxyPort);
+  proxyAddr.sin_addr.s_addr = inet_addr(proxyHostname);
+
+  return connect( socket, type, (sockaddr*) &addr, sizeof(addr), (sockaddr*) &proxyAddr, sizeof(proxyAddr), userName, password);
 }
+
 
 int socket_accept( int s )
 {
@@ -422,7 +430,7 @@ std::pair<int, int> socket_createpair()
   const char* host = socket_hostname( acceptor );
   short port = socket_hostport( acceptor );
   int client = socket_createConnector(FX_SOCKET_MODE_SIMPLE);
-  socket_connect( client, "localhost", port );
+  socket_connect( client, ConnectType_Direct, "localhost", port, 0, 0, 0, 0 );
   int server = socket_accept( acceptor );
   #ifdef FX_OVERRIDE_WINSOCKS
   socket_close(acceptor);
