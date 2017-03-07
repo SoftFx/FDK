@@ -214,7 +214,6 @@ copy /Y ..\..\External\Dll\SoftFX.Lrp.x86.pdb "$(TargetDir)"
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SAL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <TreatWarningAsError>true</TreatWarningAsError>
       <AdditionalIncludeDirectories>..\..\External\include</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4302;4311</DisableSpecificWarnings>
     </ClCompile>
