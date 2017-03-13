@@ -15,6 +15,10 @@
             this.entry = entry;
         }
 
+        public void LogError(string message)
+        {
+        }
+
         public decimal Balance
         {
             get { return (decimal)this.entry.Balance; }
