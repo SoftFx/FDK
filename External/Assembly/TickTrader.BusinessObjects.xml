@@ -1154,6 +1154,16 @@
             
             </summary>
         </member>
+        <member name="P:TickTrader.BusinessObjects.Order.IsReducedOpenCommission">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.IsReducedCloseCommission">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:TickTrader.BusinessObjects.Order.Clone">
              <summary>
             
@@ -1451,11 +1461,6 @@
             Gets or sets schedule
             </summary>
         </member>
-        <member name="P:TickTrader.BusinessObjects.SymbolInfo.ScheduleId">
-            <summary>
-            Symbol scheduler Id
-            </summary>
-        </member>
         <member name="P:TickTrader.BusinessObjects.SymbolInfo.DefaultSlippage">
             <summary>
             Default Slippage
@@ -1518,6 +1523,16 @@
             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.GroupSymbolInfo.GroupSortOrder">
+            <summary>
+            Gets or sets the TODO
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.GroupSymbolInfo.SecurityDescription">
+            <summary>
+            Gets or sets the TODO
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.GroupSymbolInfo.SecurityName">
             <summary>
             Gets or sets the TODO
             </summary>
