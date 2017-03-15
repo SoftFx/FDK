@@ -4,9 +4,8 @@
     {
         static void Main()
         {
-            //string address = "tp.dev.soft-fx.eu";
-            string address = "localhost";
-            string username = "6";
+            string address = "tp.dev.soft-fx.eu";
+            string username = "5";
             string password = "123qwe!";
 
             //var example = new TradeServerInfoExample(address, username, password);
