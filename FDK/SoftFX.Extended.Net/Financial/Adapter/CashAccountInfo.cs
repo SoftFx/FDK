@@ -17,6 +17,18 @@
             this.assets = assets;
         }
 
+        public void LogInfo(string message)
+        {
+        }
+
+        public void LogWarn(string message)
+        {
+        }
+
+        public void LogError(string message)
+        {
+        }
+
         public IEnumerable<IAssetModel> Assets
         {
             get { return this.assets.Select(CalculatorConvert.ToAssetModel); }
