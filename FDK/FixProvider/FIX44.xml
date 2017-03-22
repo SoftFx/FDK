@@ -2081,6 +2081,7 @@
     <field name='MarginHedge' required='N' />
     <field name='MarginFactor' required='N' />
     <field name='MarginFactorFractional' required='N' />
+    <field name='StopOrderMarginReduction' required='N' />
     <field name='TradingSessionID' required='N' />
     <field name='TradingSessionSubID' required='N' />
     <field name='ExpirationCycle' required='N' />
@@ -7850,15 +7851,16 @@
   <field number='10191' name='ServerWebSocketFeedPort' type='INT' />
   <field number='10192' name='ServerWebSocketTradePort' type='INT' />
   <field number='10193' name='ServerRestPort' type='INT' />
-  <field number='10194' name='MarginCurrencyToUsdConversionRate' type='FLOAT' />
-  <field number='10195' name='UsdToMarginCurrencyConversionRate' type='FLOAT' />
-  <field number='10196' name='MarginCurrency' type='STRING' />
-  <field number='10197' name='ProfitCurrencyToUsdConversionRate' type='FLOAT' />
-  <field number='10198' name='UsdToProfitCurrencyConversionRate' type='FLOAT' />
-  <field number='10199' name='ProfitCurrency' type='STRING' />
-  <field number='10200' name='SrcAssetToUsdConversionRate' type='FLOAT' />
-  <field number='10201' name='UsdToSrcAssetConversionRate' type='FLOAT' />
-  <field number='10202' name='DstAssetToUsdConversionRate' type='FLOAT' />
-  <field number='10203' name='UsdToDstAssetConversionRate' type='FLOAT' />
+  <field number='10194' name='StopOrderMarginReduction' type='FLOAT' />
+  <field number='10195' name='MarginCurrencyToUsdConversionRate' type='FLOAT' />
+  <field number='10196' name='UsdToMarginCurrencyConversionRate' type='FLOAT' />
+  <field number='10197' name='MarginCurrency' type='STRING' />
+  <field number='10198' name='ProfitCurrencyToUsdConversionRate' type='FLOAT' />
+  <field number='10199' name='UsdToProfitCurrencyConversionRate' type='FLOAT' />
+  <field number='10200' name='ProfitCurrency' type='STRING' />
+  <field number='10201' name='SrcAssetToUsdConversionRate' type='FLOAT' />
+  <field number='10202' name='UsdToSrcAssetConversionRate' type='FLOAT' />
+  <field number='10203' name='DstAssetToUsdConversionRate' type='FLOAT' />
+  <field number='10204' name='UsdToDstAssetConversionRate' type='FLOAT' />
 </fields>
 </fix>

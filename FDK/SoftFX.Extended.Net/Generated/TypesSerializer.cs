@@ -323,6 +323,7 @@ namespace SoftFX.Extended.Generated
 			result.StatusGroupId = buffer.ReadAString();
 			result.SecurityName = buffer.ReadAString();
 			result.SecurityDescription = buffer.ReadWString();
+			result.StopOrderMarginReduction = buffer.ReadNullDouble();
 			return result;
 		}
 		public static void WriteSymbolInfo(this MemoryBuffer buffer, SoftFX.Extended.SymbolInfo arg)
@@ -361,6 +362,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteAString(arg.StatusGroupId);
 			buffer.WriteAString(arg.SecurityName);
 			buffer.WriteWString(arg.SecurityDescription);
+			buffer.WriteNullDouble(arg.StopOrderMarginReduction);
 		}
 		public static SoftFX.Extended.TwoFactorAuth ReadTwoFactorAuth(this MemoryBuffer buffer)
 		{

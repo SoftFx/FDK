@@ -578,6 +578,10 @@ void CFixConnection::OnSymbolsInfo(const FIX44::SecurityList& message)
         if (group.TryGetEncodedSecurityDesc(encodedSecurityDescription))
             Utf8ToStd(info.SecurityDescription, encodedSecurityDescription);
 
+        double stopOrderMarginReduction;
+        if (group.TryGetStopOrderMarginReduction(stopOrderMarginReduction))
+            info.StopOrderMarginReduction = stopOrderMarginReduction;
+
         symbols.push_back(info);
     }
 

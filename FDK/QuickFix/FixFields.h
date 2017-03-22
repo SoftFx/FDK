@@ -1176,6 +1176,7 @@ namespace FIX
   DEFINE_INT(ServerWebSocketFeedPort);
   DEFINE_INT(ServerWebSocketTradePort);
   DEFINE_INT(ServerRestPort);
+  DEFINE_FLOAT(StopOrderMarginReduction);
   DEFINE_FLOAT(MarginCurrencyToUsdConversionRate);
   DEFINE_FLOAT(UsdToMarginCurrencyConversionRate);
   DEFINE_STRING(MarginCurrency);

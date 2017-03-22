@@ -486,6 +486,7 @@ namespace
 		WriteAString(arg.StatusGroupId, buffer);
 		WriteAString(arg.SecurityName, buffer);
 		WriteWString(arg.SecurityDescription, buffer);
+		WriteNullDouble(arg.StopOrderMarginReduction, buffer);
 	}
 	CFxSymbolInfo ReadSymbolInfo(MemoryBuffer& buffer)
 	{
@@ -524,6 +525,7 @@ namespace
 		result.StatusGroupId = ReadAString(buffer);
 		result.SecurityName = ReadAString(buffer);
 		result.SecurityDescription = ReadWString(buffer);
+		result.StopOrderMarginReduction = ReadNullDouble(buffer);
 		return result;
 	}
 	void WriteTwoFactorAuth(const CFxTwoFactorAuth& arg, MemoryBuffer& buffer)
