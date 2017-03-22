@@ -3988,6 +3988,16 @@
     <field name='DstAssetCurrency' required='N' />
     <field name='DstAssetAmount' required='N' />
     <field name='DstAssetMovement' required='N' />
+    <field name='MarginCurrencyToUsdConversionRate' required='N' />
+    <field name='UsdToMarginCurrencyConversionRate' required='N' />
+    <field name='MarginCurrency' required='N' />
+    <field name='ProfitCurrencyToUsdConversionRate' required='N' />
+    <field name='UsdToProfitCurrencyConversionRate' required='N' />
+    <field name='ProfitCurrency' required='N' />
+    <field name='SrcAssetToUsdConversionRate' required='N' />
+    <field name='UsdToSrcAssetConversionRate' required='N' />
+    <field name='DstAssetToUsdConversionRate' required='N' />
+    <field name='UsdToDstAssetConversionRate' required='N' />
   </message>
   <message name='ComponentsInfoRequest' msgcat='app' msgtype='U1018'>
     <field name='CompReqID' required='N' />
@@ -7840,5 +7850,15 @@
   <field number='10191' name='ServerWebSocketFeedPort' type='INT' />
   <field number='10192' name='ServerWebSocketTradePort' type='INT' />
   <field number='10193' name='ServerRestPort' type='INT' />
+  <field number='10194' name='MarginCurrencyToUsdConversionRate' type='FLOAT' />
+  <field number='10195' name='UsdToMarginCurrencyConversionRate' type='FLOAT' />
+  <field number='10196' name='MarginCurrency' type='STRING' />
+  <field number='10197' name='ProfitCurrencyToUsdConversionRate' type='FLOAT' />
+  <field number='10198' name='UsdToProfitCurrencyConversionRate' type='FLOAT' />
+  <field number='10199' name='ProfitCurrency' type='STRING' />
+  <field number='10200' name='SrcAssetToUsdConversionRate' type='FLOAT' />
+  <field number='10201' name='UsdToSrcAssetConversionRate' type='FLOAT' />
+  <field number='10202' name='DstAssetToUsdConversionRate' type='FLOAT' />
+  <field number='10203' name='UsdToDstAssetConversionRate' type='FLOAT' />
 </fields>
 </fix>

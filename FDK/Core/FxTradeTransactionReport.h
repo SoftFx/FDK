@@ -78,6 +78,17 @@ public:
     std::string DstAssetCurrency;
     Nullable<double> DstAssetAmount;
     Nullable<double> DstAssetMovement;
+
+    Nullable<double> MarginCurrencyToUsdConversionRate;
+    Nullable<double> UsdToMarginCurrencyConversionRate;
+    std::string MarginCurrency;
+    Nullable<double> ProfitCurrencyToUsdConversionRate;
+    Nullable<double> UsdToProfitCurrencyConversionRate;
+    std::string ProfitCurrency;
+    Nullable<double> SrcAssetToUsdConversionRate;
+    Nullable<double> UsdToSrcAssetConversionRate;
+    Nullable<double> DstAssetToUsdConversionRate;
+    Nullable<double> UsdToDstAssetConversionRate;
 };
 
 #pragma warning (pop)

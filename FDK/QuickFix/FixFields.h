@@ -1176,6 +1176,16 @@ namespace FIX
   DEFINE_INT(ServerWebSocketFeedPort);
   DEFINE_INT(ServerWebSocketTradePort);
   DEFINE_INT(ServerRestPort);
+  DEFINE_FLOAT(MarginCurrencyToUsdConversionRate);
+  DEFINE_FLOAT(UsdToMarginCurrencyConversionRate);
+  DEFINE_STRING(MarginCurrency);
+  DEFINE_FLOAT(ProfitCurrencyToUsdConversionRate);
+  DEFINE_FLOAT(UsdToProfitCurrencyConversionRate);
+  DEFINE_STRING(ProfitCurrency);
+  DEFINE_FLOAT(SrcAssetToUsdConversionRate);
+  DEFINE_FLOAT(UsdToSrcAssetConversionRate);
+  DEFINE_FLOAT(DstAssetToUsdConversionRate);
+  DEFINE_FLOAT(UsdToDstAssetConversionRate);
   DEFINE_NUMINGROUP(NoStrategyParameters);
   DEFINE_STRING(StrategyParameterName);
   DEFINE_INT(StrategyParameterType);

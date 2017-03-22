@@ -321,6 +321,16 @@
       <Member name="DstAssetCurrency" type="astring" />
       <Member name="DstAssetAmount" type="double?" />
       <Member name="DstAssetMovement" type="double?" />
+      <Member name="MarginCurrencyToUsdConversionRate" type="double?" />
+      <Member name="UsdToMarginCurrencyConversionRate" type="double?" />
+      <Member name="MarginCurrency" type="astring" />
+      <Member name="ProfitCurrencyToUsdConversionRate" type="double?" />
+      <Member name="UsdToProfitCurrencyConversionRate" type="double?" />
+      <Member name="ProfitCurrency" type="astring" />
+      <Member name="SrcAssetToUsdConversionRate" type="double?" />
+      <Member name="UsdToSrcAssetConversionRate" type="double?" />
+      <Member name="DstAssetToUsdConversionRate" type="double?" />
+      <Member name="UsdToDstAssetConversionRate" type="double?" />
     </Type>
     <Type name="ClosePositionResult" CSharpFullName="SoftFX.Extended.ClosePositionResult" CppFullName="CFxClosePositionResult" kind="class">
       <Member name="ExecutedVolume" type="double" />

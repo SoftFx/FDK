@@ -953,6 +953,16 @@ namespace SoftFX.Extended.Generated
 			result.DstAssetCurrency = buffer.ReadAString();
 			result.DstAssetAmount = buffer.ReadNullDouble();
 			result.DstAssetMovement = buffer.ReadNullDouble();
+			result.MarginCurrencyToUsdConversionRate = buffer.ReadNullDouble();
+			result.UsdToMarginCurrencyConversionRate = buffer.ReadNullDouble();
+			result.MarginCurrency = buffer.ReadAString();
+			result.ProfitCurrencyToUsdConversionRate = buffer.ReadNullDouble();
+			result.UsdToProfitCurrencyConversionRate = buffer.ReadNullDouble();
+			result.ProfitCurrency = buffer.ReadAString();
+			result.SrcAssetToUsdConversionRate = buffer.ReadNullDouble();
+			result.UsdToSrcAssetConversionRate = buffer.ReadNullDouble();
+			result.DstAssetToUsdConversionRate = buffer.ReadNullDouble();
+			result.UsdToDstAssetConversionRate = buffer.ReadNullDouble();
 			return result;
 		}
 		public static void WriteTradeTransactionReport(this MemoryBuffer buffer, SoftFX.Extended.Reports.TradeTransactionReport arg)
@@ -1017,6 +1027,16 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteAString(arg.DstAssetCurrency);
 			buffer.WriteNullDouble(arg.DstAssetAmount);
 			buffer.WriteNullDouble(arg.DstAssetMovement);
+			buffer.WriteNullDouble(arg.MarginCurrencyToUsdConversionRate);
+			buffer.WriteNullDouble(arg.UsdToMarginCurrencyConversionRate);
+			buffer.WriteAString(arg.MarginCurrency);
+			buffer.WriteNullDouble(arg.ProfitCurrencyToUsdConversionRate);
+			buffer.WriteNullDouble(arg.UsdToProfitCurrencyConversionRate);
+			buffer.WriteAString(arg.ProfitCurrency);
+			buffer.WriteNullDouble(arg.SrcAssetToUsdConversionRate);
+			buffer.WriteNullDouble(arg.UsdToSrcAssetConversionRate);
+			buffer.WriteNullDouble(arg.DstAssetToUsdConversionRate);
+			buffer.WriteNullDouble(arg.UsdToDstAssetConversionRate);
 		}
 		public static SoftFX.Extended.ClosePositionResult ReadClosePositionResult(this MemoryBuffer buffer)
 		{
