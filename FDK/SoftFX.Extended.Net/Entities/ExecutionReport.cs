@@ -102,6 +102,11 @@
         public double? StopPrice { get; internal set; }
 
         /// <summary>
+        /// Gets LastPx = 31 field.
+        /// </summary>
+        public double TradePrice { get; internal set; }
+
+        /// <summary>
         /// Gets ExpireTime = 126 field.
         /// </summary>
         public DateTime? Expiration { get; internal set; }

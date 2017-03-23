@@ -1248,6 +1248,7 @@ namespace
 		WriteNullDouble(arg.AveragePrice, buffer);
 		WriteNullDouble(arg.Price, buffer);
 		WriteNullDouble(arg.StopPrice, buffer);
+		WriteDouble(arg.TradePrice, buffer);
 		WriteNullTime(arg.Expiration, buffer);
 		WriteNullTime(arg.Created, buffer);
 		WriteNullTime(arg.Modified, buffer);
@@ -1285,6 +1286,7 @@ namespace
 		result.AveragePrice = ReadNullDouble(buffer);
 		result.Price = ReadNullDouble(buffer);
 		result.StopPrice = ReadNullDouble(buffer);
+		result.TradePrice = ReadDouble(buffer);
 		result.Expiration = ReadNullTime(buffer);
 		result.Created = ReadNullTime(buffer);
 		result.Modified = ReadNullTime(buffer);
