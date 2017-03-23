@@ -1466,6 +1466,11 @@
             Default Slippage
             </summary>
         </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.StopOrderMarginReduction">
+            <summary>
+            Margin reduction for Stop orders
+            </summary>
+        </member>
         <member name="M:TickTrader.BusinessObjects.SymbolInfo.Clone">
             <summary>
             
