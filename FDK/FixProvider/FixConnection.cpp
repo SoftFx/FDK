@@ -578,6 +578,10 @@ void CFixConnection::OnSymbolsInfo(const FIX44::SecurityList& message)
         if (group.TryGetEncodedSecurityDesc(encodedSecurityDescription))
             Utf8ToStd(info.SecurityDescription, encodedSecurityDescription);
 
+        double stopOrderMarginReduction;
+        if (group.TryGetStopOrderMarginReduction(stopOrderMarginReduction))
+            info.StopOrderMarginReduction = stopOrderMarginReduction;
+
         symbols.push_back(info);
     }
 
@@ -1374,6 +1378,33 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
     double hiddenQty;
     if (message.TryGetHiddenQty(hiddenQty))
         report.HiddenQuantity = hiddenQty;
+
+    double marginCurrencyToUsdConversionRate;
+    if (message.TryGetMarginCurrencyToUsdConversionRate(marginCurrencyToUsdConversionRate))
+        report.MarginCurrencyToUsdConversionRate = marginCurrencyToUsdConversionRate;
+    double usdToMarginCurrencyConversionRate;
+    if (message.TryGetMarginCurrencyToUsdConversionRate(usdToMarginCurrencyConversionRate))
+        report.UsdToMarginCurrencyConversionRate = usdToMarginCurrencyConversionRate;
+    message.TryGetMarginCurrency(report.MarginCurrency);
+    double profitCurrencyToUsdConversionRate;
+    if (message.TryGetProfitCurrencyToUsdConversionRate(profitCurrencyToUsdConversionRate))
+        report.ProfitCurrencyToUsdConversionRate = profitCurrencyToUsdConversionRate;
+    double usdToProfitCurrencyConversionRate;
+    if (message.TryGetUsdToProfitCurrencyConversionRate(usdToProfitCurrencyConversionRate))
+        report.UsdToProfitCurrencyConversionRate = usdToProfitCurrencyConversionRate;
+    message.TryGetProfitCurrency(report.ProfitCurrency);
+    double srcAssetToUsdConversionRate;
+    if (message.TryGetSrcAssetToUsdConversionRate(srcAssetToUsdConversionRate))
+        report.SrcAssetToUsdConversionRate = srcAssetToUsdConversionRate;
+    double usdToSrcAssetConversionRate;
+    if (message.TryGetUsdToSrcAssetConversionRate(usdToSrcAssetConversionRate))
+        report.UsdToSrcAssetConversionRate = usdToSrcAssetConversionRate;
+    double dstAssetToUsdConversionRate;
+    if (message.TryGetDstAssetToUsdConversionRate(dstAssetToUsdConversionRate))
+        report.DstAssetToUsdConversionRate = dstAssetToUsdConversionRate;
+    double usdToDstAssetConversionRate;
+    if (message.TryGetUsdToDstAssetConversionRate(usdToDstAssetConversionRate))
+        report.UsdToDstAssetConversionRate = usdToDstAssetConversionRate;
 
     m_receiver->VTradeTransactionReport(info, report);
 }

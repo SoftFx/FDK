@@ -164,6 +164,26 @@ namespace FIX44
     FIELD_SET_EX(double, DstAssetAmount);
     FIELD_SET(*this, FIX::DstAssetMovement);
     FIELD_SET_EX(double, DstAssetMovement);
+    FIELD_SET(*this, FIX::MarginCurrencyToUsdConversionRate);
+    FIELD_SET_EX(double, MarginCurrencyToUsdConversionRate);
+    FIELD_SET(*this, FIX::UsdToMarginCurrencyConversionRate);
+    FIELD_SET_EX(double, UsdToMarginCurrencyConversionRate);
+    FIELD_SET(*this, FIX::MarginCurrency);
+    FIELD_SET_EX(std::string, MarginCurrency);
+    FIELD_SET(*this, FIX::ProfitCurrencyToUsdConversionRate);
+    FIELD_SET_EX(double, ProfitCurrencyToUsdConversionRate);
+    FIELD_SET(*this, FIX::UsdToProfitCurrencyConversionRate);
+    FIELD_SET_EX(double, UsdToProfitCurrencyConversionRate);
+    FIELD_SET(*this, FIX::ProfitCurrency);
+    FIELD_SET_EX(std::string, ProfitCurrency);
+    FIELD_SET(*this, FIX::SrcAssetToUsdConversionRate);
+    FIELD_SET_EX(double, SrcAssetToUsdConversionRate);
+    FIELD_SET(*this, FIX::UsdToSrcAssetConversionRate);
+    FIELD_SET_EX(double, UsdToSrcAssetConversionRate);
+    FIELD_SET(*this, FIX::DstAssetToUsdConversionRate);
+    FIELD_SET_EX(double, DstAssetToUsdConversionRate);
+    FIELD_SET(*this, FIX::UsdToDstAssetConversionRate);
+    FIELD_SET_EX(double, UsdToDstAssetConversionRate);
   };
 
 }

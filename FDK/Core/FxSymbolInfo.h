@@ -42,6 +42,7 @@ public:
     string StatusGroupId;
     string SecurityName;
     wstring SecurityDescription;
+    Nullable<double> StopOrderMarginReduction;
 };
 
 inline CFxSymbolInfo::CFxSymbolInfo()

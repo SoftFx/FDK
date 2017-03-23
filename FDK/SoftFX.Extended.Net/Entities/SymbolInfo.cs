@@ -560,6 +560,20 @@
             }
         }
 
+        /// <summary>
+        /// </summary>
+        public double? StopOrderMarginReduction
+        {
+            get
+            {
+                return this.stopOrderMarginReduction;
+            }
+            internal set
+            {
+                this.stopOrderMarginReduction = value;
+            }
+        }
+
         #endregion
 
         /// <summary>
@@ -608,6 +622,7 @@
         string statusGroupId;
         string securityName;
         string securityDescription;
+        double? stopOrderMarginReduction;
 
         #endregion
     }

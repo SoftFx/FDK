@@ -486,6 +486,7 @@ namespace
 		WriteAString(arg.StatusGroupId, buffer);
 		WriteAString(arg.SecurityName, buffer);
 		WriteWString(arg.SecurityDescription, buffer);
+		WriteNullDouble(arg.StopOrderMarginReduction, buffer);
 	}
 	CFxSymbolInfo ReadSymbolInfo(MemoryBuffer& buffer)
 	{
@@ -524,6 +525,7 @@ namespace
 		result.StatusGroupId = ReadAString(buffer);
 		result.SecurityName = ReadAString(buffer);
 		result.SecurityDescription = ReadWString(buffer);
+		result.StopOrderMarginReduction = ReadNullDouble(buffer);
 		return result;
 	}
 	void WriteTwoFactorAuth(const CFxTwoFactorAuth& arg, MemoryBuffer& buffer)
@@ -1126,6 +1128,16 @@ namespace
 		WriteAString(arg.DstAssetCurrency, buffer);
 		WriteNullDouble(arg.DstAssetAmount, buffer);
 		WriteNullDouble(arg.DstAssetMovement, buffer);
+		WriteNullDouble(arg.MarginCurrencyToUsdConversionRate, buffer);
+		WriteNullDouble(arg.UsdToMarginCurrencyConversionRate, buffer);
+		WriteAString(arg.MarginCurrency, buffer);
+		WriteNullDouble(arg.ProfitCurrencyToUsdConversionRate, buffer);
+		WriteNullDouble(arg.UsdToProfitCurrencyConversionRate, buffer);
+		WriteAString(arg.ProfitCurrency, buffer);
+		WriteNullDouble(arg.SrcAssetToUsdConversionRate, buffer);
+		WriteNullDouble(arg.UsdToSrcAssetConversionRate, buffer);
+		WriteNullDouble(arg.DstAssetToUsdConversionRate, buffer);
+		WriteNullDouble(arg.UsdToDstAssetConversionRate, buffer);
 	}
 	CFxTradeTransactionReport ReadTradeTransactionReport(MemoryBuffer& buffer)
 	{
@@ -1190,6 +1202,16 @@ namespace
 		result.DstAssetCurrency = ReadAString(buffer);
 		result.DstAssetAmount = ReadNullDouble(buffer);
 		result.DstAssetMovement = ReadNullDouble(buffer);
+		result.MarginCurrencyToUsdConversionRate = ReadNullDouble(buffer);
+		result.UsdToMarginCurrencyConversionRate = ReadNullDouble(buffer);
+		result.MarginCurrency = ReadAString(buffer);
+		result.ProfitCurrencyToUsdConversionRate = ReadNullDouble(buffer);
+		result.UsdToProfitCurrencyConversionRate = ReadNullDouble(buffer);
+		result.ProfitCurrency = ReadAString(buffer);
+		result.SrcAssetToUsdConversionRate = ReadNullDouble(buffer);
+		result.UsdToSrcAssetConversionRate = ReadNullDouble(buffer);
+		result.DstAssetToUsdConversionRate = ReadNullDouble(buffer);
+		result.UsdToDstAssetConversionRate = ReadNullDouble(buffer);
 		return result;
 	}
 	void WriteClosePositionResult(const CFxClosePositionResult& arg, MemoryBuffer& buffer)

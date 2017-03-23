@@ -6,11 +6,9 @@ namespace TradeFeedExamples
     {
         static void Main(string[] args)
         {
-            string address = "localhost";
-            string username = "5";
+            string address = "tp.dev.soft-fx.eu";
+            string username = "100035";
             string password = "123qwe!";
-
-            Library.Path = @"Y:\TickTrader\FDK\FRE";
 
             var example = new StateCalculatorExample(address, username, password);
 

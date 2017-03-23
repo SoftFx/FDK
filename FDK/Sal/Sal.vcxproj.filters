@@ -158,9 +158,6 @@
     <ClInclude Include="ZipHandle.h">
       <Filter>Compression\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Lock.h">
-      <Filter>_Headers</Filter>
-    </ClInclude>
     <ClInclude Include="ConnectType.h">
       <Filter>Networking\Headers</Filter>
     </ClInclude>
@@ -240,9 +237,6 @@
     </ClCompile>
     <ClCompile Include="ZipHandle.cpp">
       <Filter>Compression\Sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Lock.cpp">
-      <Filter>_Sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -310,5 +310,45 @@
         /// Gets destination asset movement.
         /// </summary>
         public double? DstAssetMovement { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public double? MarginCurrencyToUsdConversionRate { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public double? UsdToMarginCurrencyConversionRate { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public string MarginCurrency { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public double? ProfitCurrencyToUsdConversionRate { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public double? UsdToProfitCurrencyConversionRate { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public string ProfitCurrency { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public double? SrcAssetToUsdConversionRate { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public double? UsdToSrcAssetConversionRate { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public double? DstAssetToUsdConversionRate { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public double? UsdToDstAssetConversionRate { get; internal set; }
     }
 }
