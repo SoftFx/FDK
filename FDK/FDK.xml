@@ -357,6 +357,7 @@
       <Member name="AveragePrice" type="double?" />
       <Member name="Price" type="double?" />
       <Member name="StopPrice" type="double?" />
+      <Member name="TradePrice" type="double" />
       <Member name="Expiration" type="time?" />
       <Member name="Created" type="time?" />
       <Member name="Modified" type="time?" />

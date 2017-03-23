@@ -1075,6 +1075,7 @@ namespace SoftFX.Extended.Generated
 			result.AveragePrice = buffer.ReadNullDouble();
 			result.Price = buffer.ReadNullDouble();
 			result.StopPrice = buffer.ReadNullDouble();
+			result.TradePrice = buffer.ReadDouble();
 			result.Expiration = buffer.ReadNullTime();
 			result.Created = buffer.ReadNullTime();
 			result.Modified = buffer.ReadNullTime();
@@ -1112,6 +1113,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteNullDouble(arg.AveragePrice);
 			buffer.WriteNullDouble(arg.Price);
 			buffer.WriteNullDouble(arg.StopPrice);
+			buffer.WriteDouble(arg.TradePrice);
 			buffer.WriteNullTime(arg.Expiration);
 			buffer.WriteNullTime(arg.Created);
 			buffer.WriteNullTime(arg.Modified);

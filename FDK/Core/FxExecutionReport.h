@@ -14,11 +14,11 @@ public:
     Nullable<double> InitialVolume;
     double LeavesVolume;
     Nullable<double> HiddenVolume;
-    Nullable<double> TradeAmount;    
+    Nullable<double> TradeAmount;
     Nullable<double> AveragePrice;
     Nullable<double> Price;
     Nullable<double> StopPrice;
-    double TradePrice;    
+    double TradePrice;
     Nullable<double> TakeProfit;
     Nullable<double> StopLoss;
     double Balance;
