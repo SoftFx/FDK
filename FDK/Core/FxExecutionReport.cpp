@@ -37,6 +37,10 @@ bool CFxExecutionReport::TryGetTradeRecord(CFxOrder& order) const
     {
         return true;
     }
+    if (TryGetIOCOrder(order))
+    {
+        return true;
+    }
     if (TryGetLimitOrder(order))
     {
         return true;
@@ -76,11 +80,11 @@ bool CFxExecutionReport::TryGetPositionFromMarket(CFxOrder& order) const
         return false;
     }
 
+    CopyCommonFieldsToRecord(order);
+
     order.Type = FxTradeRecordType_Position;
     order.Volume = *this->TradeAmount;
     order.Price = this->TradePrice;
-
-    CopyCommonFieldsToRecord(order);
 
     return true;
 }
@@ -96,10 +100,39 @@ bool CFxExecutionReport::TryGetPositionFromPosition(CFxOrder& order) const
         return false;
     }
 
+    CopyCommonFieldsToRecord(order);
+
     order.Type = FxTradeRecordType_Position;
     order.Price = *(this->Price);
 
+    return true;
+}
+
+bool CFxExecutionReport::TryGetIOCOrder(CFxOrder& order) const
+{
+    if (FxOrderType_Limit != OrderType)
+    {
+        return false;
+    }
+    if (!ImmediateOrCancel)
+    {
+        return false;
+    }
+    if ((FxOrderStatus_Filled != OrderStatus) && (FxOrderStatus_Calculated != OrderStatus))
+    {
+        return false;
+    }
+    if (FxExecutionType_Trade != ExecutionType)
+    {
+        return false;
+    }
+
     CopyCommonFieldsToRecord(order);
+
+    order.Type = FxTradeRecordType_Limit;
+    order.Volume = this->ExecutedVolume;
+    order.Price = this->TradePrice;
+    order.ImmediateOrCancel = true;
 
     return true;
 }
@@ -107,6 +140,10 @@ bool CFxExecutionReport::TryGetPositionFromPosition(CFxOrder& order) const
 bool CFxExecutionReport::TryGetLimitOrder(CFxOrder& order) const
 {
     if (FxOrderType_Limit != OrderType)
+    {
+        return false;
+    }
+    if (ImmediateOrCancel)
     {
         return false;
     }
@@ -119,10 +156,10 @@ bool CFxExecutionReport::TryGetLimitOrder(CFxOrder& order) const
         return false;
     }
 
+    CopyCommonFieldsToRecord(order);
+
     order.Type = FxTradeRecordType_Limit;
     order.Price = *(this->Price);
-
-    CopyCommonFieldsToRecord(order);
 
     return true;
 }
@@ -141,10 +178,10 @@ bool CFxExecutionReport::TryGetStopOrder(CFxOrder& order) const
         return false;
     }
 
+    CopyCommonFieldsToRecord(order);
+
     order.Type = FxTradeRecordType_Stop;
     order.Price = *(this->StopPrice);
-
-    CopyCommonFieldsToRecord(order);
 
     return true;
 }
@@ -164,11 +201,11 @@ bool CFxExecutionReport::TryGetStopLimitOrder(CFxOrder& order) const
         return false;
     }
 
+    CopyCommonFieldsToRecord(order);
+
     order.Type = FxTradeRecordType_StopLimit;
     order.Price = Price.Value();
     order.StopPrice = StopPrice;
-
-    CopyCommonFieldsToRecord(order);
 
     return true;
 }
