@@ -57,8 +57,9 @@ private:
     bool TryGetPosition(CFxOrder& order)const;
     bool TryGetPositionFromMarket(CFxOrder& order)const;
     bool TryGetPositionFromPosition(CFxOrder& order)const;
-    bool TryGetStopOrder(CFxOrder& order)const;
+    bool TryGetIOCOrder(CFxOrder& order)const;
     bool TryGetLimitOrder(CFxOrder& order)const;
+    bool TryGetStopOrder(CFxOrder& order)const;
     bool TryGetStopLimitOrder(CFxOrder& order)const;
 public:
     bool TryGetClosedPosition(string& orderId, double& leavesVolume, double& commission, double& agentCommission, double& swap) const;
