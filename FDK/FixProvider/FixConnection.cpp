@@ -1383,7 +1383,7 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
     if (message.TryGetMarginCurrencyToUsdConversionRate(marginCurrencyToUsdConversionRate))
         report.MarginCurrencyToUsdConversionRate = marginCurrencyToUsdConversionRate;
     double usdToMarginCurrencyConversionRate;
-    if (message.TryGetMarginCurrencyToUsdConversionRate(usdToMarginCurrencyConversionRate))
+    if (message.TryGetUsdToMarginCurrencyConversionRate(usdToMarginCurrencyConversionRate))
         report.UsdToMarginCurrencyConversionRate = usdToMarginCurrencyConversionRate;
     message.TryGetMarginCurrency(report.MarginCurrency);
     double profitCurrencyToUsdConversionRate;
