@@ -168,7 +168,7 @@
       </fileset>
     </zip>
     <zip zipfile="${ArtifactsDir}\FDK ${Build}\Externals.zip">
-      <fileset basedir="${SourcesDir}\FRE\">
+      <fileset basedir="${SourcesDir}\..\FRE\">
         <include name="**\*" />
       </fileset>
     </zip>
