@@ -167,6 +167,11 @@
         <include name="SoftFX.Lrp.dll" />
       </fileset>
     </zip>
+    <zip zipfile="${ArtifactsDir}\FDK ${Build}\Externals.zip">
+      <fileset basedir="${SourcesDir}\FRE\">
+        <include name="**\*" />
+      </fileset>
+    </zip>
     <zip zipfile="${ArtifactsDir}\FDK ${Build}\Help.zip">
       <fileset basedir="${SourcesDir}\SandCastle\Help\">
         <exclude name="FDK Documentation.chm" />
