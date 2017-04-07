@@ -69,10 +69,12 @@ void CDataTradeCache::DoUpdateAccountInfo(const CFxAccountInfo& accountInfo)
     CExclusiveLocker lock(m_synchronizer);
     m_accountInfo = accountInfo;
     m_isAccontInfoInitialized = true;
+    /* FDKPRO-511: DataTrade.Cache.TradeRecords.Length = 0 after EVENT Trade.CacheInitialized
     if (FxAccountType_Cash == m_accountInfo.Type || FxAccountType_Net ==  m_accountInfo.Type)
     {
         m_isOrdersInitialized = true;
     }
+    */
     Update();
 }
 
