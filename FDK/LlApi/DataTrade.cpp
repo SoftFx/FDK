@@ -271,7 +271,7 @@ void CDataTrade::VAccountInfo(const CFxEventInfo& eventInfo, CFxAccountInfo& acc
 {
     UpdateAccountInfo(accountInfo.Type, accountInfo.AccountId);
 
-    if (eventInfo.IsInternalAsynchCall() || 
+    if (eventInfo.IsInternalAsynchCall() ||
         eventInfo.IsNotification())
     {
         m_cache.UpdateAccountInfo(accountInfo);
@@ -292,7 +292,7 @@ void CDataTrade::VClosePositions(const CFxEventInfo& eventInfo, CFxClosePosition
 
 void CDataTrade::VExecution(const CFxEventInfo& eventInfo, CFxExecutionReport& executionReport)
 {
-    if (FxAccountType_Gross == m_accountType)
+    if (FxExecutionType_OrderStatus == executionReport.ExecutionType)
     {
         m_cache.UpdateOrders(executionReport);
     }
@@ -403,4 +403,3 @@ void CDataTrade::UpdateAccountInfo(FxAccountType accountType, const string& acco
         m_sender->VSendPositionReportRequest(id, account);
     }
 }
-
