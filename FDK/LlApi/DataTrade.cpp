@@ -150,11 +150,18 @@ void CDataTrade::DeleteOrder(const string& /*operationId*/, const string& orderI
     m_sender->VSendDeleteOrder(waiter.Id(), orderId, clientId, side);
 
     CFxEventInfo info;
-    CFxExecutionReport executionReport = waiter.WaitForResponse(info);
-    if (FxOrderStatus_Rejected == executionReport.OrderStatus)
-    {
-        throw CRejectException(executionReport.Text, executionReport.RejectReason);
-    }
+	// Wait for pending cancel execution report
+    CFxExecutionReport report = waiter.WaitForResponse(info);
+	if (report.IsReject())
+	{
+		throw CRejectException(report.Text, report.RejectReason);
+	}
+	// Wait for cancel result execution report
+	report = waiter.WaitForResponse(info);
+	if (report.IsReject())
+	{
+		throw CRejectException(report.Text, report.RejectReason);
+	}
 }
 
 CFxClosePositionResult CDataTrade::CloseOrder(const string& operationId, const string& orderId, Nullable<double> closingVolume, const size_t timeoutInMilliseconds)
