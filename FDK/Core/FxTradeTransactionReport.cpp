@@ -17,6 +17,8 @@ CFxTradeTransactionReport::CFxTradeTransactionReport()
     this->Price = 0;
     this->StopPrice = 0;
 
+    this->IsReducedOpenCommission = false;
+    this->IsReducedCloseCommission = false;
     this->ImmediateOrCancel = false;
     this->MarketWithSlippage = false;
 

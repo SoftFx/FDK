@@ -28,6 +28,8 @@ public:
     Nullable<CDateTime> Expiration;
     Nullable<CDateTime> Created;
     Nullable<CDateTime> Modified;
+    bool IsReducedOpenCommission;
+    bool IsReducedCloseCommission;
     bool ImmediateOrCancel;
     bool MarketWithSlippage;
 public:

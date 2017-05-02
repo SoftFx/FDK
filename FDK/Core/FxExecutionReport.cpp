@@ -226,6 +226,8 @@ void CFxExecutionReport::CopyCommonFieldsToRecord(CFxOrder& order) const
     order.Comment = this->Comment;
     order.Tag = this->Tag;
     order.Magic = this->Magic;
+    order.IsReducedOpenCommission = this->IsReducedOpenCommission;
+    order.IsReducedCloseCommission = this->IsReducedCloseCommission;
     order.ImmediateOrCancel = this->ImmediateOrCancel;
     order.MarketWithSlippage = this->MarketWithSlippage;
     if (this->InitialVolume.HasValue())

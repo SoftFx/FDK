@@ -1187,6 +1187,10 @@ namespace FIX
   DEFINE_FLOAT(UsdToSrcAssetConversionRate);
   DEFINE_FLOAT(DstAssetToUsdConversionRate);
   DEFINE_FLOAT(UsdToDstAssetConversionRate);
+  DEFINE_QTY(MaxVisibleQty);
+  DEFINE_BOOLEAN(CommOpenReducedFlag);
+  DEFINE_BOOLEAN(CommCloseReducedFlag);
+  DEFINE_UTCTIMESTAMP(ModifyTime);
   DEFINE_NUMINGROUP(NoStrategyParameters);
   DEFINE_STRING(StrategyParameterName);
   DEFINE_INT(StrategyParameterType);

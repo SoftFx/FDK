@@ -9,26 +9,27 @@
 class CORE_API CFxAccountInfo
 {
 public:
-	CFxAccountInfo();
+    CFxAccountInfo();
 public:
-	string AccountId;
-	FxAccountType Type;
-	string Name;
-	string Email;
-	wstring Comment;
-	string Currency;
-	Nullable<CDateTime> RegistredDate;
-	int32 Leverage;
-	double Balance;
-	double Margin;
-	double Equity;
-	double MarginCallLevel;
-	double StopOutLevel;
-	bool IsValid;
-	bool IsReadOnly;
-	bool IsBlocked;
+    string AccountId;
+    FxAccountType Type;
+    string Name;
+    string Email;
+    wstring Comment;
+    string Currency;
+    Nullable<CDateTime> RegistredDate;
+    Nullable<CDateTime> ModifiedTime;
+    int32 Leverage;
+    double Balance;
+    double Margin;
+    double Equity;
+    double MarginCallLevel;
+    double StopOutLevel;
+    bool IsValid;
+    bool IsReadOnly;
+    bool IsBlocked;
 public:
-	vector<CAssetInfo> Assets;
+    vector<CAssetInfo> Assets;
 };
 
 #pragma warning (pop)
