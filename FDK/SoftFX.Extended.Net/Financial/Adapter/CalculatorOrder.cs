@@ -52,6 +52,11 @@
             get { return this.error == null || this.error.Code == OrderErrorCode.None; }
         }
 
+        public bool IsHiddenIceberg
+        {
+            get { return false; }
+        }
+
         public long OrderId
         {
             get { return this.entry.GetHashCode(); }

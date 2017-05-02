@@ -265,6 +265,16 @@
             throw new NotImplementedException();
         }
 
+        public List<HistoryBar> QueryBarHistoryCache(DateTime to, int maxBars, string symbol, string periodicity, FxPriceType priceType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<TickValue> QueryTickHistoryCache(DateTime to, int maxTicks, string symbol, bool includeLevel2)
+        {
+            throw new NotImplementedException();
+        }
+
         public int GetHistoryVersion()
         {
             return this.dataFeed.Server.GetQuotesHistoryVersion();

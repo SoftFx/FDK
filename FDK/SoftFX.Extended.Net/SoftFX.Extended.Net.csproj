@@ -91,14 +91,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\External\Assembly\TickTrader.Server.QuoteHistory.dll</HintPath>
     </Reference>
-    <Reference Include="TickTrader.Server.QuoteHistory.Store.Bdb">
-      <HintPath>..\..\External\Assembly\TickTrader.Server.QuoteHistory.Store.Bdb.dll</HintPath>
-    </Reference>
     <Reference Include="TickTrader.Server.QuoteHistory.Store.Ntfs">
       <HintPath>..\..\External\Assembly\TickTrader.Server.QuoteHistory.Store.Ntfs.dll</HintPath>
-    </Reference>
-    <Reference Include="TickTrader.Server.QuoteHistory.Store.SQLite">
-      <HintPath>..\..\External\Assembly\TickTrader.Server.QuoteHistory.Store.SQLite.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
