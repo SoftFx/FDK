@@ -23,10 +23,10 @@ double CFixExecutionReport::GetFxLeavesVolume()const
     this->TryGetLeavesQty(result);
     return result;
 }
-Nullable<double> CFixExecutionReport::GetFxHiddenVolume()const
+Nullable<double> CFixExecutionReport::GetFxMaxVisibleVolume()const
 {
     double result = 0;
-    if (TryGetHiddenQty(result))
+    if (TryGetMaxVisibleQty(result))
     {
         return result;
     }

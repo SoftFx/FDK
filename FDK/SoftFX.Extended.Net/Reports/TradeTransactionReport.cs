@@ -54,7 +54,7 @@
         /// <summary>
         ///
         /// </summary>
-        public double? HiddenQuantity { get; internal set; }
+        public double? MaxVisibleQuantity { get; internal set; }
 
         /// <summary>
         ///

@@ -336,9 +336,9 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
         message.SetOrderQty(required.Volume.Value());
     }
 
-    if (required.HiddenVolume.HasValue())
+    if (required.MaxVisibleVolume.HasValue())
     {
-        message.SetHiddenQty(required.HiddenVolume.Value());
+        message.SetMaxVisibleQty(required.MaxVisibleVolume.Value());
     }
 
     if (required.TakeProfit.HasValue())
@@ -562,9 +562,9 @@ void CFixSender::VSendModifyOrder(const string& id, const CFxOrder& request)
     {
         message.SetStopLoss(*request.StopLoss);
     }
-    if (request.HiddenVolume.HasValue())
+    if (request.MaxVisibleVolume.HasValue())
     {
-        message.SetHiddenQty(request.HiddenVolume.Value());
+        message.SetMaxVisibleQty(request.MaxVisibleVolume.Value());
     }
     if (request.TakeProfit.HasValue())
     {

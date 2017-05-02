@@ -24,7 +24,7 @@
             this.InitialVolume = fxOrder.InitialVolume;
             this.Volume = fxOrder.Volume ?? 0;
             this.StopPrice = fxOrder.StopPrice;
-            this.HiddenVolume = fxOrder.HiddenVolume;
+            this.MaxVisibleVolume = fxOrder.MaxVisibleVolume;
             this.Commission = fxOrder.Commission;
             this.Swap = fxOrder.Swap;
             this.Profit = fxOrder.Profit;
@@ -80,9 +80,9 @@
         public double Volume { get; internal set; }
 
         /// <summary>
-        /// Gets hidden volume of the order.
+        /// Gets max visible volume of the order.
         /// </summary>
-        public double? HiddenVolume { get; internal set; }
+        public double? MaxVisibleVolume { get; internal set; }
 
         /// <summary>
         /// Gets price of the order.

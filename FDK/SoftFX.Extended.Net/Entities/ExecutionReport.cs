@@ -52,9 +52,9 @@
         public double LeavesVolume { get; internal set; }
 
         /// <summary>
-        /// Gets HiddenVolume.
+        /// Gets MaxVisibleVolume.
         /// </summary>
-        public double? HiddenVolume { get; internal set; }
+        public double? MaxVisibleVolume { get; internal set; }
 
         /// <summary>
         /// Get LastQty = 32 field.

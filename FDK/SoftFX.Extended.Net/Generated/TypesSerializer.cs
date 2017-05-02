@@ -644,7 +644,7 @@ namespace SoftFX.Extended.Generated
 			result.Symbol = buffer.ReadAString();
 			result.InitialVolume = buffer.ReadDouble();
 			result.Volume = buffer.ReadNullDouble();
-			result.HiddenVolume = buffer.ReadNullDouble();
+			result.MaxVisibleVolume = buffer.ReadNullDouble();
 			result.Price = buffer.ReadNullDouble();
 			result.StopPrice = buffer.ReadNullDouble();
 			result.TakeProfit = buffer.ReadNullDouble();
@@ -674,7 +674,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteAString(arg.Symbol);
 			buffer.WriteDouble(arg.InitialVolume);
 			buffer.WriteNullDouble(arg.Volume);
-			buffer.WriteNullDouble(arg.HiddenVolume);
+			buffer.WriteNullDouble(arg.MaxVisibleVolume);
 			buffer.WriteNullDouble(arg.Price);
 			buffer.WriteNullDouble(arg.StopPrice);
 			buffer.WriteNullDouble(arg.TakeProfit);
@@ -909,7 +909,7 @@ namespace SoftFX.Extended.Generated
 			result.Id = buffer.ReadAString();
 			result.ClientId = buffer.ReadAString();
 			result.Quantity = buffer.ReadDouble();
-			result.HiddenQuantity = buffer.ReadNullDouble();
+			result.MaxVisibleQuantity = buffer.ReadNullDouble();
 			result.LeavesQuantity = buffer.ReadDouble();
 			result.Price = buffer.ReadDouble();
 			result.StopPrice = buffer.ReadDouble();
@@ -985,7 +985,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteAString(arg.Id);
 			buffer.WriteAString(arg.ClientId);
 			buffer.WriteDouble(arg.Quantity);
-			buffer.WriteNullDouble(arg.HiddenQuantity);
+			buffer.WriteNullDouble(arg.MaxVisibleQuantity);
 			buffer.WriteDouble(arg.LeavesQuantity);
 			buffer.WriteDouble(arg.Price);
 			buffer.WriteDouble(arg.StopPrice);
@@ -1075,7 +1075,7 @@ namespace SoftFX.Extended.Generated
 			result.ExecutedVolume = buffer.ReadDouble();
 			result.InitialVolume = buffer.ReadNullDouble();
 			result.LeavesVolume = buffer.ReadDouble();
-			result.HiddenVolume = buffer.ReadNullDouble();
+			result.MaxVisibleVolume = buffer.ReadNullDouble();
 			result.TradeAmount = buffer.ReadNullDouble();
 			result.Commission = buffer.ReadDouble();
 			result.AgentCommission = buffer.ReadDouble();
@@ -1115,7 +1115,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteDouble(arg.ExecutedVolume);
 			buffer.WriteNullDouble(arg.InitialVolume);
 			buffer.WriteDouble(arg.LeavesVolume);
-			buffer.WriteNullDouble(arg.HiddenVolume);
+			buffer.WriteNullDouble(arg.MaxVisibleVolume);
 			buffer.WriteNullDouble(arg.TradeAmount);
 			buffer.WriteDouble(arg.Commission);
 			buffer.WriteDouble(arg.AgentCommission);

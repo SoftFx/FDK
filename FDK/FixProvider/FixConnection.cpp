@@ -713,7 +713,7 @@ void CFixConnection::OnExecution(const CFixExecutionReport& message)
     report.ExecutedVolume = message.GetFxExecutedVolume();
     report.InitialVolume = message.GetFxInitialVolume();
     report.LeavesVolume = message.GetFxLeavesVolume();
-    report.HiddenVolume = message.GetFxHiddenVolume();
+    report.MaxVisibleVolume = message.GetFxMaxVisibleVolume();
     report.TradeAmount = message.GetFxTradeAmount();
     report.AveragePrice = message.GetFxAveragePrice();
     report.Price = message.GetFxPrice();
@@ -1387,9 +1387,9 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
     double dstAssetMovement;
     if (message.TryGetDstAssetMovement(dstAssetMovement))
         report.DstAssetMovement = dstAssetMovement;
-    double hiddenQty;
-    if (message.TryGetHiddenQty(hiddenQty))
-        report.HiddenQuantity = hiddenQty;
+    double maxVisibleQty;
+    if (message.TryGetMaxVisibleQty(maxVisibleQty))
+        report.MaxVisibleQuantity = maxVisibleQty;
 
     double marginCurrencyToUsdConversionRate;
     if (message.TryGetMarginCurrencyToUsdConversionRate(marginCurrencyToUsdConversionRate))
