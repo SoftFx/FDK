@@ -844,6 +844,13 @@
             Rollover Time. The date will be ignored.
             </summary>
         </member>
+        <member name="M:TickTrader.BusinessObjects.Level2Collection.#ctor(System.Collections.Generic.IEnumerable{TickTrader.BusinessObjects.Level2Value},System.Collections.Generic.IEnumerable{TickTrader.BusinessObjects.Level2Value})">
+            <summary>
+            Initialize level2 with a list of bids and asks
+            </summary>
+            <param name="bids">bids list</param>
+            <param name="asks">asks list</param>
+        </member>
         <member name="M:TickTrader.BusinessObjects.Level2Collection.#ctor(System.Collections.Generic.List{TickTrader.BusinessObjects.Level2Value},System.Int32,System.Byte,System.Byte)">
             <summary>
             Warning should be sorted in collection and proper offset set
@@ -1164,6 +1171,11 @@
             
             </summary>
         </member>
+        <member name="P:TickTrader.BusinessObjects.Order.MaxVisibleAmount">
+             <summary>
+            
+             </summary>
+        </member>
         <member name="M:TickTrader.BusinessObjects.Order.Clone">
              <summary>
             
@@ -1467,6 +1479,11 @@
             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.SymbolInfo.StopOrderMarginReduction">
+            <summary>
+            Margin reduction for Stop orders
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.HiddenLimitOrderMarginReduction">
             <summary>
             Margin reduction for Stop orders
             </summary>
@@ -2180,6 +2197,28 @@
             Indicates whether IoC
             </summary>
         </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.OrderMaxVisibleAmount">
+            <summary>
+            Max visible amount of the order.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.ReducedOpenCommissionFlag">
+            <summary>
+            True if Open Commission was reduced
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.ReducedCloseCommissionFlag">
+            <summary>
+            True if Close Commission was reduced
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.SymbolPrecision">
+            <summary>
+            Symbol percision.
+            Null in case of no symbol was used.
+            Null in case of Balance and Credit transactions.
+            </summary>
+        </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.IsIoC">
             <summary>
             Is IoC flag
@@ -2190,6 +2229,12 @@
             <summary>
             Is "market with slippage" flag
             Determines whether order has "market with slippage" option
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.IsHiddenIceberg">
+            <summary>
+            Is HiddenIceberg flag
+            Determines whether order has HiddenIceberg option
             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.SideString">
