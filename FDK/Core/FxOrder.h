@@ -16,7 +16,7 @@ public:
     FxTradeRecordSide Side;
     double InitialVolume;
     Nullable<double> Volume;
-    Nullable<double> HiddenVolume;
+    Nullable<double> MaxVisibleVolume;
     Nullable<double> Price;
     Nullable<double> StopPrice;
     Nullable<double> StopLoss;

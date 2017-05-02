@@ -17,7 +17,7 @@ public:
     std::string Id;
     std::string ClientId;
     double Quantity;
-    Nullable<double> HiddenQuantity;
+    Nullable<double> MaxVisibleQuantity;
     double LeavesQuantity;
     double Price;
     double StopPrice;

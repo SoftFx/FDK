@@ -812,7 +812,7 @@ namespace
 		WriteAString(arg.Symbol, buffer);
 		WriteDouble(arg.InitialVolume, buffer);
 		WriteNullDouble(arg.Volume, buffer);
-		WriteNullDouble(arg.HiddenVolume, buffer);
+		WriteNullDouble(arg.MaxVisibleVolume, buffer);
 		WriteNullDouble(arg.Price, buffer);
 		WriteNullDouble(arg.StopPrice, buffer);
 		WriteNullDouble(arg.TakeProfit, buffer);
@@ -842,7 +842,7 @@ namespace
 		result.Symbol = ReadAString(buffer);
 		result.InitialVolume = ReadDouble(buffer);
 		result.Volume = ReadNullDouble(buffer);
-		result.HiddenVolume = ReadNullDouble(buffer);
+		result.MaxVisibleVolume = ReadNullDouble(buffer);
 		result.Price = ReadNullDouble(buffer);
 		result.StopPrice = ReadNullDouble(buffer);
 		result.TakeProfit = ReadNullDouble(buffer);
@@ -1082,7 +1082,7 @@ namespace
 		WriteAString(arg.Id, buffer);
 		WriteAString(arg.ClientId, buffer);
 		WriteDouble(arg.Quantity, buffer);
-		WriteNullDouble(arg.HiddenQuantity, buffer);
+		WriteNullDouble(arg.MaxVisibleQuantity, buffer);
 		WriteDouble(arg.LeavesQuantity, buffer);
 		WriteDouble(arg.Price, buffer);
 		WriteDouble(arg.StopPrice, buffer);
@@ -1158,7 +1158,7 @@ namespace
 		result.Id = ReadAString(buffer);
 		result.ClientId = ReadAString(buffer);
 		result.Quantity = ReadDouble(buffer);
-		result.HiddenQuantity = ReadNullDouble(buffer);
+		result.MaxVisibleQuantity = ReadNullDouble(buffer);
 		result.LeavesQuantity = ReadDouble(buffer);
 		result.Price = ReadDouble(buffer);
 		result.StopPrice = ReadDouble(buffer);
@@ -1248,7 +1248,7 @@ namespace
 		WriteDouble(arg.ExecutedVolume, buffer);
 		WriteNullDouble(arg.InitialVolume, buffer);
 		WriteDouble(arg.LeavesVolume, buffer);
-		WriteNullDouble(arg.HiddenVolume, buffer);
+		WriteNullDouble(arg.MaxVisibleVolume, buffer);
 		WriteNullDouble(arg.TradeAmount, buffer);
 		WriteDouble(arg.Commission, buffer);
 		WriteDouble(arg.AgentCommission, buffer);
@@ -1288,7 +1288,7 @@ namespace
 		result.ExecutedVolume = ReadDouble(buffer);
 		result.InitialVolume = ReadNullDouble(buffer);
 		result.LeavesVolume = ReadDouble(buffer);
-		result.HiddenVolume = ReadNullDouble(buffer);
+		result.MaxVisibleVolume = ReadNullDouble(buffer);
 		result.TradeAmount = ReadNullDouble(buffer);
 		result.Commission = ReadDouble(buffer);
 		result.AgentCommission = ReadDouble(buffer);
