@@ -16,6 +16,8 @@ CFxOrder::CFxOrder()
     , Swap()
     , Profit()
     , Magic()
+    , IsReducedOpenCommission(false)
+    , IsReducedCloseCommission(false)
     , ImmediateOrCancel(false)
     , MarketWithSlippage(false)
 {

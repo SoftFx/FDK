@@ -32,6 +32,8 @@ public:
     std::string GetComment() const;
     std::string GetTag() const;
     Nullable<int> GetMagic() const;
+    bool GetReducedOpenCommissionFlag() const;
+    bool GetReducedCloseCommissionFlag() const;
     bool GetImmediateOrCancelFlag() const;
     bool GetMarketWithSlippageFlag() const;
 public:

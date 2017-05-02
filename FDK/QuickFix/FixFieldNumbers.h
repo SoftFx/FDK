@@ -1185,6 +1185,10 @@ namespace FIX
     const int UsdToSrcAssetConversionRate = 10202;
     const int DstAssetToUsdConversionRate = 10203;
     const int UsdToDstAssetConversionRate = 10204;
+    const int MaxVisibleQty = 10205;
+    const int CommOpenReducedFlag = 10206;
+    const int CommCloseReducedFlag = 10207;
+    const int ModifyTime = 10208;
     const int NoStrategyParameters = 957;
     const int StrategyParameterName = 958;
     const int StrategyParameterType = 959;

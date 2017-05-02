@@ -162,6 +162,7 @@
       <Member name="Comment" type="wstring" />
       <Member name="Currency" type="astring" />
       <Member name="RegistredDate" type="time?" />
+      <Member name="ModifiedTime" type="time?" />
       <Member name="Leverage" type="int32" />
       <Member name="Balance" type="double" />
       <Member name="Margin" type="double" />
@@ -204,6 +205,8 @@
       <Member name="Comment" type="wstring" />
       <Member name="Tag" type="wstring" />
       <Member name="Magic" type="int32?" />
+      <Member name="IsReducedOpenCommission" type="bool" />
+      <Member name="IsReducedCloseCommission" type="bool" />
       <Member name="ImmediateOrCancel" type="bool" />
       <Member name="MarketWithSlippage" type="bool" />
     </Type>
@@ -280,6 +283,8 @@
       <Member name="Comment" type="wstring" />
       <Member name="Tag" type="wstring" />
       <Member name="Magic" type="int32?" />
+      <Member name="IsReducedOpenCommission" type="bool" />
+      <Member name="IsReducedCloseCommission" type="bool" />
       <Member name="ImmediateOrCancel" type="bool" />
       <Member name="MarketWithSlippage" type="bool" />
       <Member name="ReqOpenPrice" type="double?" />
@@ -371,6 +376,8 @@
       <Member name="ClosePositionRequestId" type="astring" />
       <Member name="Assets" type="AssetInfoArray" />
       <Member name="Balance" type="double" />
+      <Member name="IsReducedOpenCommission" type="bool" />
+      <Member name="IsReducedCloseCommission" type="bool" />
       <Member name="ImmediateOrCancel" type="bool" />
       <Member name="MarketWithSlippage" type="bool" />
     </Type>

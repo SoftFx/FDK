@@ -750,6 +750,7 @@ namespace
 		WriteWString(arg.Comment, buffer);
 		WriteAString(arg.Currency, buffer);
 		WriteNullTime(arg.RegistredDate, buffer);
+		WriteNullTime(arg.ModifiedTime, buffer);
 		WriteInt32(arg.Leverage, buffer);
 		WriteDouble(arg.Balance, buffer);
 		WriteDouble(arg.Margin, buffer);
@@ -771,6 +772,7 @@ namespace
 		result.Comment = ReadWString(buffer);
 		result.Currency = ReadAString(buffer);
 		result.RegistredDate = ReadNullTime(buffer);
+		result.ModifiedTime = ReadNullTime(buffer);
 		result.Leverage = ReadInt32(buffer);
 		result.Balance = ReadDouble(buffer);
 		result.Margin = ReadDouble(buffer);
@@ -827,6 +829,8 @@ namespace
 		WriteWString(arg.Comment, buffer);
 		WriteWString(arg.Tag, buffer);
 		WriteNullInt32(arg.Magic, buffer);
+		WriteBoolean(arg.IsReducedOpenCommission, buffer);
+		WriteBoolean(arg.IsReducedCloseCommission, buffer);
 		WriteBoolean(arg.ImmediateOrCancel, buffer);
 		WriteBoolean(arg.MarketWithSlippage, buffer);
 	}
@@ -855,6 +859,8 @@ namespace
 		result.Comment = ReadWString(buffer);
 		result.Tag = ReadWString(buffer);
 		result.Magic = ReadNullInt32(buffer);
+		result.IsReducedOpenCommission = ReadBoolean(buffer);
+		result.IsReducedCloseCommission = ReadBoolean(buffer);
 		result.ImmediateOrCancel = ReadBoolean(buffer);
 		result.MarketWithSlippage = ReadBoolean(buffer);
 		return result;
@@ -1086,6 +1092,8 @@ namespace
 		WriteWString(arg.Comment, buffer);
 		WriteWString(arg.Tag, buffer);
 		WriteNullInt32(arg.Magic, buffer);
+		WriteBoolean(arg.IsReducedOpenCommission, buffer);
+		WriteBoolean(arg.IsReducedCloseCommission, buffer);
 		WriteBoolean(arg.ImmediateOrCancel, buffer);
 		WriteBoolean(arg.MarketWithSlippage, buffer);
 		WriteNullDouble(arg.ReqOpenPrice, buffer);
@@ -1160,6 +1168,8 @@ namespace
 		result.Comment = ReadWString(buffer);
 		result.Tag = ReadWString(buffer);
 		result.Magic = ReadNullInt32(buffer);
+		result.IsReducedOpenCommission = ReadBoolean(buffer);
+		result.IsReducedCloseCommission = ReadBoolean(buffer);
 		result.ImmediateOrCancel = ReadBoolean(buffer);
 		result.MarketWithSlippage = ReadBoolean(buffer);
 		result.ReqOpenPrice = ReadNullDouble(buffer);
@@ -1262,6 +1272,8 @@ namespace
 		WriteAString(arg.ClosePositionRequestId, buffer);
 		WriteAssetInfoArray(arg.Assets, buffer);
 		WriteDouble(arg.Balance, buffer);
+		WriteBoolean(arg.IsReducedOpenCommission, buffer);
+		WriteBoolean(arg.IsReducedCloseCommission, buffer);
 		WriteBoolean(arg.ImmediateOrCancel, buffer);
 		WriteBoolean(arg.MarketWithSlippage, buffer);
 	}
@@ -1300,6 +1312,8 @@ namespace
 		result.ClosePositionRequestId = ReadAString(buffer);
 		result.Assets = ReadAssetInfoArray(buffer);
 		result.Balance = ReadDouble(buffer);
+		result.IsReducedOpenCommission = ReadBoolean(buffer);
+		result.IsReducedCloseCommission = ReadBoolean(buffer);
 		result.ImmediateOrCancel = ReadBoolean(buffer);
 		result.MarketWithSlippage = ReadBoolean(buffer);
 		return result;

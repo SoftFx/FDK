@@ -157,6 +157,16 @@
         public int? Magic { get; internal set; }
 
         /// <summary>
+        /// Gets ReducedOpenCommission flag.
+        /// </summary>
+        public bool IsReducedOpenCommission { get; set; }
+
+        /// <summary>
+        /// Gets ReducedCloseCommission flag.
+        /// </summary>
+        public bool IsReducedCloseCommission { get; set; }
+
+        /// <summary>
         /// Gets ImmediateOrCancel flag.
         /// </summary>
         public bool ImmediateOrCancel { get; internal set; }

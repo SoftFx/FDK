@@ -470,6 +470,8 @@ namespace FIX44
     FIELD_SET_EX(double, MaxFloor);
     FIELD_SET(*this, FIX::HiddenQty);
     FIELD_SET_EX(double, HiddenQty);
+    FIELD_SET(*this, FIX::MaxVisibleQty);
+    FIELD_SET_EX(double, MaxVisibleQty);
     FIELD_SET(*this, FIX::PositionEffect);
     FIELD_SET_EX(char, PositionEffect);
     FIELD_SET(*this, FIX::MaxShow);
@@ -563,6 +565,10 @@ namespace FIX44
     FIELD_SET_EX(bool, ImmediateOrCancelFlag);
     FIELD_SET(*this, FIX::MarketWithSlippageFlag);
     FIELD_SET_EX(bool, MarketWithSlippageFlag);
+    FIELD_SET(*this, FIX::CommOpenReducedFlag);
+    FIELD_SET_EX(bool, CommOpenReducedFlag);
+    FIELD_SET(*this, FIX::CommCloseReducedFlag);
+    FIELD_SET_EX(bool, CommCloseReducedFlag);
     FIELD_SET(*this, FIX::NoContraBrokers);
     FIELD_SET_EX(int, NoContraBrokers);
     class NoContraBrokers: public FIX::Group

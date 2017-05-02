@@ -66,6 +66,8 @@ namespace FIX44
     FIELD_SET_EX(std::string, RegistEmail);
     FIELD_SET(*this, FIX::RegistDate);
     FIELD_SET_EX(FIX::UtcTimeStamp, RegistDate);
+    FIELD_SET(*this, FIX::ModifyTime);
+    FIELD_SET_EX(FIX::UtcTimeStamp, ModifyTime);
     FIELD_SET(*this, FIX::EncodedCommentLen);
     FIELD_SET_EX(int, EncodedCommentLen);
     FIELD_SET(*this, FIX::EncodedComment);

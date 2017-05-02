@@ -4124,6 +4124,10 @@ namespace FIX
   const char ImmediateOrCancelFlag_YES = 'Y';
   const char MarketWithSlippageFlag_NO = 'N';
   const char MarketWithSlippageFlag_YES = 'Y';
+  const char CommOpenReducedFlag_NO = 'N';
+  const char CommOpenReducedFlag_YES = 'Y';
+  const char CommCloseReducedFlag_NO = 'N';
+  const char CommCloseReducedFlag_YES = 'Y';
   const int StrategyParameterType_INT = 1;
   const int StrategyParameterType_LENGTH = 2;
   const int StrategyParameterType_NUMINGROUP = 3;

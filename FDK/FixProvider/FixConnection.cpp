@@ -747,6 +747,8 @@ void CFixConnection::OnExecution(const CFixExecutionReport& message)
     report.Modified = message.GetModifiedDateTime();
     report.Commission = message.GetFxCommission();
     report.AgentCommission = message.GetFxAgentCommission();
+    report.IsReducedOpenCommission = message.GetReducedOpenCommissionFlag();
+    report.IsReducedCloseCommission = message.GetReducedCloseCommissionFlag();
     report.ImmediateOrCancel = message.GetImmediateOrCancelFlag();
     report.MarketWithSlippage = message.GetMarketWithSlippageFlag();
     report.Swap = message.GetFxSwap();
@@ -857,9 +859,12 @@ void CFixConnection::OnAccountInfo(const FIX44::AccountInfo& message)
     if (message.TryGetEncodedComment(encodedComment))
         Utf8ToStd(accountInfo.Comment, encodedComment);
 
-    FIX::UtcTimeStamp time(time_t(0));
-    if (message.TryGetRegistDate(time))
-        accountInfo.RegistredDate = time.toFileTime();
+    FIX::UtcTimeStamp registred(time_t(0));
+    if (message.TryGetRegistDate(registred))
+        accountInfo.RegistredDate = registred.toFileTime();
+    FIX::UtcTimeStamp modified(time_t(0));
+    if (message.TryGetModifyTime(modified))
+        accountInfo.ModifiedTime = modified.toFileTime();
 
     auto count = 0;
     if (message.TryGetNoAssets(count))
@@ -1301,6 +1306,13 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
     int magic;
     if (message.TryGetMagic(magic))
         report.Magic = magic;
+
+    bool reducedOpenCommisstion;
+    if (message.TryGetCommOpenReducedFlag(reducedOpenCommisstion))
+        report.IsReducedOpenCommission = reducedOpenCommisstion;
+    bool reducedCloseCommisstion;
+    if (message.TryGetCommCloseReducedFlag(reducedCloseCommisstion))
+        report.IsReducedCloseCommission = reducedCloseCommisstion;
 
     bool ioc;
     if (message.TryGetImmediateOrCancelFlag(ioc))

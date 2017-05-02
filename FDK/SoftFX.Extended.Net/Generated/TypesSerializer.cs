@@ -582,6 +582,7 @@ namespace SoftFX.Extended.Generated
 			result.Comment = buffer.ReadWString();
 			result.Currency = buffer.ReadAString();
 			result.RegistredDate = buffer.ReadNullTime();
+			result.ModifiedTime = buffer.ReadNullTime();
 			result.Leverage = buffer.ReadInt32();
 			result.Balance = buffer.ReadDouble();
 			result.Margin = buffer.ReadDouble();
@@ -603,6 +604,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteWString(arg.Comment);
 			buffer.WriteAString(arg.Currency);
 			buffer.WriteNullTime(arg.RegistredDate);
+			buffer.WriteNullTime(arg.ModifiedTime);
 			buffer.WriteInt32(arg.Leverage);
 			buffer.WriteDouble(arg.Balance);
 			buffer.WriteDouble(arg.Margin);
@@ -659,6 +661,8 @@ namespace SoftFX.Extended.Generated
 			result.Comment = buffer.ReadWString();
 			result.Tag = buffer.ReadWString();
 			result.Magic = buffer.ReadNullInt32();
+			result.IsReducedOpenCommission = buffer.ReadBoolean();
+			result.IsReducedCloseCommission = buffer.ReadBoolean();
 			result.ImmediateOrCancel = buffer.ReadBoolean();
 			result.MarketWithSlippage = buffer.ReadBoolean();
 			return result;
@@ -687,6 +691,8 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteWString(arg.Comment);
 			buffer.WriteWString(arg.Tag);
 			buffer.WriteNullInt32(arg.Magic);
+			buffer.WriteBoolean(arg.IsReducedOpenCommission);
+			buffer.WriteBoolean(arg.IsReducedCloseCommission);
 			buffer.WriteBoolean(arg.ImmediateOrCancel);
 			buffer.WriteBoolean(arg.MarketWithSlippage);
 		}
@@ -913,6 +919,8 @@ namespace SoftFX.Extended.Generated
 			result.Comment = buffer.ReadWString();
 			result.Tag = buffer.ReadWString();
 			result.Magic = buffer.ReadNullInt32();
+			result.IsReducedOpenCommission = buffer.ReadBoolean();
+			result.IsReducedCloseCommission = buffer.ReadBoolean();
 			result.ImmediateOrCancel = buffer.ReadBoolean();
 			result.MarketWithSlippage = buffer.ReadBoolean();
 			result.ReqOpenPrice = buffer.ReadNullDouble();
@@ -987,6 +995,8 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteWString(arg.Comment);
 			buffer.WriteWString(arg.Tag);
 			buffer.WriteNullInt32(arg.Magic);
+			buffer.WriteBoolean(arg.IsReducedOpenCommission);
+			buffer.WriteBoolean(arg.IsReducedCloseCommission);
 			buffer.WriteBoolean(arg.ImmediateOrCancel);
 			buffer.WriteBoolean(arg.MarketWithSlippage);
 			buffer.WriteNullDouble(arg.ReqOpenPrice);
@@ -1089,6 +1099,8 @@ namespace SoftFX.Extended.Generated
 			result.ClosePositionRequestId = buffer.ReadAString();
 			result.Assets = buffer.ReadAssetInfoArray();
 			result.Balance = buffer.ReadDouble();
+			result.IsReducedOpenCommission = buffer.ReadBoolean();
+			result.IsReducedCloseCommission = buffer.ReadBoolean();
 			result.ImmediateOrCancel = buffer.ReadBoolean();
 			result.MarketWithSlippage = buffer.ReadBoolean();
 			return result;
@@ -1127,6 +1139,8 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteAString(arg.ClosePositionRequestId);
 			buffer.WriteAssetInfoArray(arg.Assets);
 			buffer.WriteDouble(arg.Balance);
+			buffer.WriteBoolean(arg.IsReducedOpenCommission);
+			buffer.WriteBoolean(arg.IsReducedCloseCommission);
 			buffer.WriteBoolean(arg.ImmediateOrCancel);
 			buffer.WriteBoolean(arg.MarketWithSlippage);
 		}

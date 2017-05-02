@@ -95,6 +95,8 @@ namespace FIX44
     FIELD_SET_EX(double, MaxFloor);
     FIELD_SET(*this, FIX::HiddenQty);
     FIELD_SET_EX(double, HiddenQty);
+    FIELD_SET(*this, FIX::MaxVisibleQty);
+    FIELD_SET_EX(double, MaxVisibleQty);
     FIELD_SET(*this, FIX::ExDestination);
     FIELD_SET(*this, FIX::ProcessCode);
     FIELD_SET_EX(char, ProcessCode);

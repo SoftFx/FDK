@@ -48,6 +48,8 @@ namespace FIX44
     FIELD_SET_EX(double, OrderQty);
     FIELD_SET(*this, FIX::HiddenQty);
     FIELD_SET_EX(double, HiddenQty);
+    FIELD_SET(*this, FIX::MaxVisibleQty);
+    FIELD_SET_EX(double, MaxVisibleQty);
     FIELD_SET(*this, FIX::OrderLeavesQty);
     FIELD_SET_EX(double, OrderLeavesQty);
     FIELD_SET(*this, FIX::OrderPrice);
@@ -184,6 +186,10 @@ namespace FIX44
     FIELD_SET_EX(double, DstAssetToUsdConversionRate);
     FIELD_SET(*this, FIX::UsdToDstAssetConversionRate);
     FIELD_SET_EX(double, UsdToDstAssetConversionRate);
+    FIELD_SET(*this, FIX::CommOpenReducedFlag);
+    FIELD_SET_EX(bool, CommOpenReducedFlag);
+    FIELD_SET(*this, FIX::CommCloseReducedFlag);
+    FIELD_SET_EX(bool, CommCloseReducedFlag);
   };
 
 }

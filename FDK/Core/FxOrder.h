@@ -31,6 +31,8 @@ public:
     wstring Comment;
     wstring Tag;
     Nullable<int> Magic;
+    bool IsReducedOpenCommission;
+    bool IsReducedCloseCommission;
     bool ImmediateOrCancel;
     bool MarketWithSlippage;
 };

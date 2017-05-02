@@ -25,26 +25,31 @@
         /// Gets account name.
         /// </summary>
         public string Name { get; internal set; }
-	
+
         /// <summary>
         /// Gets account email.
         /// </summary>
         public string Email { get; internal set; }
-	
+
         /// <summary>
         /// Gets account comment.
         /// </summary>
         public string Comment { get; internal set; }
-	
+
         /// <summary>
         /// Gets the account balance currency.
         /// </summary>
         public string Currency { get; internal set; }
-	
+
         /// <summary>
         /// Gets the account registered date.
         /// </summary>
         public DateTime? RegistredDate { get; internal set; }
+
+        /// <summary>
+        /// Gets the account last modified time.
+        /// </summary>
+        public DateTime? ModifiedTime { get; internal set; }
 
         /// <summary>
         /// Gets the account leverage.

@@ -33,6 +33,8 @@
             this.Comment = fxOrder.Comment;
             this.Tag = fxOrder.Tag;
             this.Magic = fxOrder.Magic;
+            this.IsReducedOpenCommission = fxOrder.IsReducedOpenCommission;
+            this.IsReducedCloseCommission = fxOrder.IsReducedCloseCommission;
             this.ImmediateOrCancel = fxOrder.ImmediateOrCancel;
             this.MarketWithSlippage = fxOrder.MarketWithSlippage;
             this.Expiration = fxOrder.Expiration;
@@ -131,6 +133,16 @@
         /// Gets side of the order.
         /// </summary>
         public TradeRecordSide Side { get; internal set; }
+
+        /// <summary>
+        /// Gets ReducedOpenCommission flag.
+        /// </summary>
+        public bool IsReducedOpenCommission { get; set; }
+
+        /// <summary>
+        /// Gets ReducedCloseCommission flag.
+        /// </summary>
+        public bool IsReducedCloseCommission { get; set; }
 
         /// <summary>
         /// Gets ImmediateOrCancel flag.

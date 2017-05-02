@@ -30,6 +30,8 @@ public:
     CDateTime OrderCreated;
     CDateTime OrderModified;
 
+    bool IsReducedOpenCommission;
+    bool IsReducedCloseCommission;
     bool ImmediateOrCancel;
     bool MarketWithSlippage;
 

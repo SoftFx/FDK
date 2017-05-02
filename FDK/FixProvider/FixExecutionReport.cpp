@@ -407,6 +407,24 @@ Nullable<int> CFixExecutionReport::GetMagic() const
     }
     return Nullable<int>();
 }
+bool CFixExecutionReport::GetReducedOpenCommissionFlag() const
+{
+    bool reducedOpenCommission = 0;
+    if (TryGetCommOpenReducedFlag(reducedOpenCommission))
+    {
+        return reducedOpenCommission;
+    }
+    return false;
+}
+bool CFixExecutionReport::GetReducedCloseCommissionFlag() const
+{
+    bool reducedCloseCommission = 0;
+    if (TryGetCommCloseReducedFlag(reducedCloseCommission))
+    {
+        return reducedCloseCommission;
+    }
+    return false;
+}
 bool CFixExecutionReport::GetImmediateOrCancelFlag() const
 {
     bool ioc = 0;

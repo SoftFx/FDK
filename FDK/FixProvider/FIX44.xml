@@ -253,6 +253,7 @@
    <field name='MinQty' required='N' />
    <field name='MaxFloor' required='N' />
    <field name='HiddenQty' required='N' />
+   <field name='MaxVisibleQty' required='N' />
    <field name='PositionEffect' required='N' />
    <field name='MaxShow' required='N' />
    <field name='BookingType' required='N' />
@@ -313,6 +314,8 @@
    <field name='ParentOrderID' required='N' />
    <field name='ImmediateOrCancelFlag' required='N' />
    <field name='MarketWithSlippageFlag' required='N' />
+   <field name='CommOpenReducedFlag' required='N' />
+   <field name='CommCloseReducedFlag' required='N' />
   </message>
   <message name='OrderCancelReject' msgcat='app' msgtype='9'>
    <field name='OrderID' required='Y' />
@@ -447,6 +450,7 @@
    <field name='MinQty' required='N' />
    <field name='MaxFloor' required='N' />
    <field name='HiddenQty' required='N' />
+   <field name='MaxVisibleQty' required='N' />
    <field name='ExDestination' required='N' />
    <group name='NoTradingSessions' required='N'>
     <field name='TradingSessionID' required='N' />
@@ -684,6 +688,7 @@
    <field name='MinQty' required='N' />
    <field name='MaxFloor' required='N' />
    <field name='HiddenQty' required='N' />
+   <field name='MaxVisibleQty' required='N' />
    <field name='ExDestination' required='N' />
    <group name='NoTradingSessions' required='N'>
     <field name='TradingSessionID' required='N' />
@@ -3849,6 +3854,7 @@
     <field name='AccountName' required='N' />
     <field name='RegistEmail' required='N' />
     <field name='RegistDate' required='N' />
+    <field name='ModifyTime' required='N' />
     <component name='Comment' required='N' />
     <component name='Assets' required='N' />
   </message>
@@ -3938,6 +3944,7 @@
     <field name='ClOrdID' required='N' />
     <field name='OrderQty' required='N' />
     <field name='HiddenQty' required='N' />
+    <field name='MaxVisibleQty' required='N' />
     <field name='OrderLeavesQty' required='N' />
     <field name='OrderPrice' required='N' />
     <field name='OrderStopPx' required='N' />
@@ -3999,6 +4006,8 @@
     <field name='UsdToSrcAssetConversionRate' required='N' />
     <field name='DstAssetToUsdConversionRate' required='N' />
     <field name='UsdToDstAssetConversionRate' required='N' />
+    <field name='CommOpenReducedFlag' required='N' />
+    <field name='CommCloseReducedFlag' required='N' />
   </message>
   <message name='ComponentsInfoRequest' msgcat='app' msgtype='U1018'>
     <field name='CompReqID' required='N' />
@@ -7862,5 +7871,15 @@
   <field number='10202' name='UsdToSrcAssetConversionRate' type='FLOAT' />
   <field number='10203' name='DstAssetToUsdConversionRate' type='FLOAT' />
   <field number='10204' name='UsdToDstAssetConversionRate' type='FLOAT' />
+  <field number='10205' name='MaxVisibleQty' type='QTY' />
+  <field number='10206' name='CommOpenReducedFlag' type='BOOLEAN'>
+    <value enum='N' description='NO' />
+    <value enum='Y' description='YES' />
+  </field>
+  <field number='10207' name='CommCloseReducedFlag' type='BOOLEAN'>
+    <value enum='N' description='NO' />
+    <value enum='Y' description='YES' />
+  </field>
+  <field number='10208' name='ModifyTime' type='UTCTIMESTAMP' />
 </fields>
 </fix>
