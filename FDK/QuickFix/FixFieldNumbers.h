@@ -1189,6 +1189,7 @@ namespace FIX
     const int CommOpenReducedFlag = 10206;
     const int CommCloseReducedFlag = 10207;
     const int ModifyTime = 10208;
+    const int HiddenLimitOrderMarginReduction = 10209;
     const int NoStrategyParameters = 957;
     const int StrategyParameterName = 958;
     const int StrategyParameterType = 959;

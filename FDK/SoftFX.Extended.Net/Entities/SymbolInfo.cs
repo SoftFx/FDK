@@ -574,6 +574,20 @@
             }
         }
 
+        /// <summary>
+        /// </summary>
+        public double? HiddenLimitOrderMarginReduction
+        {
+            get
+            {
+                return this.hiddenLimitOrderMarginReduction;
+            }
+            internal set
+            {
+                this.hiddenLimitOrderMarginReduction = value;
+            }
+        }
+
         #endregion
 
         /// <summary>
@@ -623,6 +637,7 @@
         string securityName;
         string securityDescription;
         double? stopOrderMarginReduction;
+        double? hiddenLimitOrderMarginReduction;
 
         #endregion
     }

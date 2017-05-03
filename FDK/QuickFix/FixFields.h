@@ -1191,6 +1191,7 @@ namespace FIX
   DEFINE_BOOLEAN(CommOpenReducedFlag);
   DEFINE_BOOLEAN(CommCloseReducedFlag);
   DEFINE_UTCTIMESTAMP(ModifyTime);
+  DEFINE_FLOAT(HiddenLimitOrderMarginReduction);
   DEFINE_NUMINGROUP(NoStrategyParameters);
   DEFINE_STRING(StrategyParameterName);
   DEFINE_INT(StrategyParameterType);

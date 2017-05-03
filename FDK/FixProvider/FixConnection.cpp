@@ -582,6 +582,10 @@ void CFixConnection::OnSymbolsInfo(const FIX44::SecurityList& message)
         if (group.TryGetStopOrderMarginReduction(stopOrderMarginReduction))
             info.StopOrderMarginReduction = stopOrderMarginReduction;
 
+        double hiddenLimitOrderMarginReduction;
+        if (group.TryGetHiddenLimitOrderMarginReduction(hiddenLimitOrderMarginReduction))
+            info.HiddenLimitOrderMarginReduction = hiddenLimitOrderMarginReduction;
+
         symbols.push_back(info);
     }
 
