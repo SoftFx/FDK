@@ -89,6 +89,7 @@
       <Member name="SecurityName" type="astring" />
       <Member name="SecurityDescription" type="wstring" />
       <Member name="StopOrderMarginReduction" type="double?" />
+      <Member name="HiddenLimitOrderMarginReduction" type="double?" />
     </Type>
     <Type name="TwoFactorAuth" CSharpFullName="SoftFX.Extended.TwoFactorAuth" CppFullName="CFxTwoFactorAuth" kind="class">
       <Member name="Reason" type="TwoFactorReason" />

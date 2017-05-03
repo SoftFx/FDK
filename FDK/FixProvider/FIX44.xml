@@ -2087,6 +2087,7 @@
     <field name='MarginFactor' required='N' />
     <field name='MarginFactorFractional' required='N' />
     <field name='StopOrderMarginReduction' required='N' />
+    <field name='HiddenLimitOrderMarginReduction' required='N' />
     <field name='TradingSessionID' required='N' />
     <field name='TradingSessionSubID' required='N' />
     <field name='ExpirationCycle' required='N' />
@@ -7881,5 +7882,6 @@
     <value enum='Y' description='YES' />
   </field>
   <field number='10208' name='ModifyTime' type='UTCTIMESTAMP' />
+  <field number='10209' name='HiddenLimitOrderMarginReduction' type='FLOAT' />
 </fields>
 </fix>

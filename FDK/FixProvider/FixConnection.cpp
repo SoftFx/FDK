@@ -582,6 +582,10 @@ void CFixConnection::OnSymbolsInfo(const FIX44::SecurityList& message)
         if (group.TryGetStopOrderMarginReduction(stopOrderMarginReduction))
             info.StopOrderMarginReduction = stopOrderMarginReduction;
 
+        double hiddenLimitOrderMarginReduction;
+        if (group.TryGetHiddenLimitOrderMarginReduction(hiddenLimitOrderMarginReduction))
+            info.HiddenLimitOrderMarginReduction = hiddenLimitOrderMarginReduction;
+
         symbols.push_back(info);
     }
 
@@ -1307,12 +1311,12 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
     if (message.TryGetMagic(magic))
         report.Magic = magic;
 
-    bool reducedOpenCommisstion;
-    if (message.TryGetCommOpenReducedFlag(reducedOpenCommisstion))
-        report.IsReducedOpenCommission = reducedOpenCommisstion;
-    bool reducedCloseCommisstion;
-    if (message.TryGetCommCloseReducedFlag(reducedCloseCommisstion))
-        report.IsReducedCloseCommission = reducedCloseCommisstion;
+    bool reducedOpenCommission;
+    if (message.TryGetCommOpenReducedFlag(reducedOpenCommission))
+        report.IsReducedOpenCommission = reducedOpenCommission;
+    bool reducedCloseCommission;
+    if (message.TryGetCommCloseReducedFlag(reducedCloseCommission))
+        report.IsReducedCloseCommission = reducedCloseCommission;
 
     bool ioc;
     if (message.TryGetImmediateOrCancelFlag(ioc))

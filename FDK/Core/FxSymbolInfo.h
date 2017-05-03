@@ -43,6 +43,7 @@ public:
     string SecurityName;
     wstring SecurityDescription;
     Nullable<double> StopOrderMarginReduction;
+    Nullable<double> HiddenLimitOrderMarginReduction;
 };
 
 inline CFxSymbolInfo::CFxSymbolInfo()
