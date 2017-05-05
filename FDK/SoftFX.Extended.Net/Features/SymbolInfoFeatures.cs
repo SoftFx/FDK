@@ -294,7 +294,7 @@
             }
         }
 
-        internal bool IsGroupSortOrderSupported
+        public bool IsGroupSortOrderSupported
         {
             get
             {
@@ -302,7 +302,7 @@
             }
         }
 
-        internal bool IsSortOrderSupported
+        public bool IsSortOrderSupported
         {
             get
             {
@@ -310,7 +310,7 @@
             }
         }
 
-        internal bool IsCurrencySortOrderSupported
+        public bool IsCurrencySortOrderSupported
         {
             get
             {
@@ -318,7 +318,7 @@
             }
         }
 
-        internal bool IsSettlementCurrencySortOrderSupported
+        public bool IsSettlementCurrencySortOrderSupported
         {
             get
             {
@@ -326,7 +326,7 @@
             }
         }
 
-        internal bool IsCurrencyPrecisionSupported
+        public bool IsCurrencyPrecisionSupported
         {
             get
             {
@@ -334,7 +334,7 @@
             }
         }
 
-        internal bool IsSettlementCurrencyPrecisionSupported
+        public bool IsSettlementCurrencyPrecisionSupported
         {
             get
             {
