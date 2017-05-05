@@ -146,8 +146,8 @@
 
         #region Internal Properties
 
-        internal int GroupSortOrder { get; set; }
-        internal int SortOrder { get; set; }
+        public int GroupSortOrder { get; internal set; }
+        public int SortOrder { get; internal set; }
 
         internal int FromIndex { get; set; }
         internal int ToIndex { get; set; }

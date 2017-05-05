@@ -434,79 +434,79 @@
             }
         }
 
-        internal int GroupSortOrder
+        public int GroupSortOrder
         {
             get
             {
                 this.ThrowIfPropertyNotSupported(() => this.GroupSortOrder);
                 return this.groupSortOrder;
             }
-            set
+            internal set
             {
                 this.groupSortOrder = value;
             }
         }
 
-        internal int SortOrder
+        public int SortOrder
         {
             get
             {
                 this.ThrowIfPropertyNotSupported(() => this.SortOrder);
                 return this.sortOrder;
             }
-            set
+            internal set
             {
                 this.sortOrder = value;
             }
         }
 
-        internal int CurrencySortOrder
+        public int CurrencySortOrder
         {
             get
             {
                 this.ThrowIfPropertyNotSupported(() => this.CurrencySortOrder);
                 return this.currencySortOrder;
             }
-            set
+            internal set
             {
                 this.currencySortOrder = value;
             }
         }
 
-        internal int SettlementCurrencySortOrder
+        public int SettlementCurrencySortOrder
         {
             get
             {
                 this.ThrowIfPropertyNotSupported(() => this.SettlementCurrencySortOrder);
                 return this.settlementCurrencySortOrder;
             }
-            set
+            internal set
             {
                 this.settlementCurrencySortOrder = value;
             }
         }
 
-        internal int CurrencyPrecision
+        public int CurrencyPrecision
         {
             get
             {
                 this.ThrowIfPropertyNotSupported(() => this.CurrencyPrecision);
                 return this.currencyPrecision;
             }
-            set
+            internal set
             {
                 this.currencyPrecision = value;
             }
         }
 
-        internal int SettlementCurrencyPrecision
+        public int SettlementCurrencyPrecision
         {
             get
             {
                 this.ThrowIfPropertyNotSupported(() => this.SettlementCurrencyPrecision);
                 return this.settlementCurrencyPrecision;
             }
-            set
+            internal set
             {
                 this.settlementCurrencyPrecision = value;
             }
