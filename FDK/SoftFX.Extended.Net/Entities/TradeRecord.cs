@@ -137,12 +137,12 @@
         /// <summary>
         /// Gets ReducedOpenCommission flag.
         /// </summary>
-        public bool IsReducedOpenCommission { get; set; }
+        public bool IsReducedOpenCommission { get; internal set; }
 
         /// <summary>
         /// Gets ReducedCloseCommission flag.
         /// </summary>
-        public bool IsReducedCloseCommission { get; set; }
+        public bool IsReducedCloseCommission { get; internal set; }
 
         /// <summary>
         /// Gets ImmediateOrCancel flag.
@@ -153,6 +153,24 @@
         /// Gets MarketWithSlippage flag.
         /// </summary>
         public bool MarketWithSlippage { get; internal set; }
+
+        /// <summary>
+        /// Gets IsHidden trade.
+        /// </summary>
+        public bool IsHidden
+        { get { return MaxVisibleVolume.HasValue && MaxVisibleVolume.Value == 0; } }
+
+        /// <summary>
+        /// Gets IsIceberg trade.
+        /// </summary>
+        public bool IsIceberg
+        { get { return MaxVisibleVolume.HasValue && MaxVisibleVolume.Value > 0; } }
+
+        /// <summary>
+        /// Gets IsHiddenOrIceberg trade.
+        /// </summary>
+        public bool IsHiddenOrIceberg
+        { get { return IsHidden || IsIceberg; } }
 
         /// <summary>
         /// Gets expiration time of the trade record (if specified by user).

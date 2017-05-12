@@ -40,6 +40,12 @@
             set { }
         }
 
+        public decimal? MaxVisibleAmount
+        {
+            get { return null; }
+            set { }
+        }
+
         public decimal? Commission
         {
             get { return (decimal)this.entry.Commission; }
@@ -52,9 +58,12 @@
             get { return this.error == null || this.error.Code == OrderErrorCode.None; }
         }
 
+        public bool IsHidden => MaxVisibleAmount.HasValue && MaxVisibleAmount.Value == 0;
+        public bool IsIceberg => MaxVisibleAmount.HasValue && MaxVisibleAmount.Value > 0;
+
         public bool IsHiddenIceberg
         {
-            get { return false; }
+            get { return IsHidden || IsIceberg; }
         }
 
         public long OrderId
