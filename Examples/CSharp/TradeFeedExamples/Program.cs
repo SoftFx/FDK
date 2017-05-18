@@ -7,7 +7,7 @@ namespace TradeFeedExamples
         static void Main(string[] args)
         {
             string address = "tp.dev.soft-fx.eu";
-            string username = "100035";
+            string username = "5";
             string password = "123qwe!";
 
             var example = new StateCalculatorExample(address, username, password);

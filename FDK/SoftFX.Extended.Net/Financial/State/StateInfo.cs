@@ -60,6 +60,7 @@
                 return false;
 
             record.Profit = entry.Profit;
+            record.Margin = entry.Margin;
 
             records.Add(record);
 
@@ -74,6 +75,7 @@
 
             if (entry.Profit.HasValue)
                 position.Profit = position.Profit.GetValueOrDefault() + entry.Profit;
+            position.Margin = entry.Margin;
 
             // some magic; see Calculate method of state calcualtor
             if (entry.Side == TradeRecordSide.Buy)

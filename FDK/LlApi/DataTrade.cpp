@@ -303,7 +303,7 @@ void CDataTrade::VExecution(const CFxEventInfo& eventInfo, CFxExecutionReport& e
     {
         m_cache.UpdateOrders(executionReport);
     }
-    else if ((FxOrderType_Limit == executionReport.OrderType) || (FxOrderType_Stop == executionReport.OrderType || executionReport.OrderType == FxOrderType_StopLimit))
+    else if ((FxOrderType_Position == executionReport.OrderType) || (FxOrderType_Limit == executionReport.OrderType) || (FxOrderType_Stop == executionReport.OrderType) || (FxOrderType_StopLimit == executionReport.OrderType))
     {
         m_cache.UpdateOrders(executionReport);
     }

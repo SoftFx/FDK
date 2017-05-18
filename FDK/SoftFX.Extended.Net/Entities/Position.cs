@@ -48,6 +48,11 @@
         /// It's used by FinancialCalculator.
         /// </summary>
         public double? Profit { get; internal set; }
+        
+        /// <summary>
+        /// It's used by FinancialCalculator.
+        /// </summary>
+        public double? Margin { get; internal set; }
 
         /// <summary>
         /// Gets average price of buy position.

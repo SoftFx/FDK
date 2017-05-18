@@ -118,11 +118,11 @@ bool CFxExecutionReport::TryGetIOCOrder(CFxOrder& order) const
     {
         return false;
     }
-    if ((FxOrderStatus_Filled != OrderStatus) && (FxOrderStatus_Calculated != OrderStatus))
+    if (FxOrderStatus_Calculated != OrderStatus)
     {
         return false;
     }
-    if (FxExecutionType_Trade != ExecutionType)
+    if ((FxExecutionType_Calculated != ExecutionType) && (FxExecutionType_OrderStatus != ExecutionType) && (FxExecutionType_Replace != ExecutionType))
     {
         return false;
     }
