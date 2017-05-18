@@ -125,6 +125,11 @@
         public double? Profit { get; internal set; }
 
         /// <summary>
+        /// It's used by FinancialCalculator.
+        /// </summary>
+        public double? Margin { get; internal set; }
+
+        /// <summary>
         /// Gets type of the order.
         /// </summary>
         public TradeRecordType Type { get; internal set; }

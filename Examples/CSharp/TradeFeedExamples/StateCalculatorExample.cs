@@ -19,8 +19,8 @@ namespace TradeFeedExamples
             this.Subscribe();
             this.Calculator.StateInfoChanged += StateInfoChanged;
 
-            var position = this.Trade.Server.SendOrder("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 0, 100000, null, null, null, null, null, null, null, null);
-            var result = position.ClosePartially(40000);
+            //var position = this.Trade.Server.SendOrder("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 0, 100000, null, null, null, null, null, null, null, null);
+            //var result = position.ClosePartially(40000);
 
             Console.ReadKey();
 
@@ -31,7 +31,7 @@ namespace TradeFeedExamples
 
         void StateInfoChanged(object sender, StateInfoEventArgs e)
         {
-            Console.WriteLine("Generation = {0}; Margin = {1}", e.Information.Generation, e.Information.Margin);
+            Console.WriteLine("Generation = {0}; Margin = {1}; Trades = {2}", e.Information.Generation, e.Information.Margin, e.Information.TradeRecords.Length);
         }
 
         void CloseAll()
