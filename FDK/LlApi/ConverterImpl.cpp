@@ -25,6 +25,11 @@ vector<CFxCurrencyInfo> CConverterImpl::CurrenciesFromHandle(void* handle)
     return DataFromHandle<vector<CFxCurrencyInfo> >(handle);
 }
 
+std::string CConverterImpl::SymbolFromHandle(void* handle)
+{
+    return DataFromHandle<std::string>(handle);
+}
+
 vector<CFxSymbolInfo> CConverterImpl::SymbolsFromHandle(void* handle)
 {
     return DataFromHandle<vector<CFxSymbolInfo> >(handle);

@@ -3,10 +3,12 @@
 
 #include "FixVersion.h"
 
+class CFixConnection;
+
 class CFixSender : public ISender
 {
 public:
-    CFixSender();
+    CFixSender(CFixConnection* connection);
     void SessionID(const FIX::SessionID& sessionId);
     void SendVersion(const CFixVersion& version);
     void AppId(const std::string& appId);
@@ -41,6 +43,7 @@ public:
 private:
     void SendMessage(FIX::Message& message);
 private:
+    CFixConnection* m_connection;
     FIX::SessionID m_sessionID;
     CFixVersion m_version;
     std::string m_appId;

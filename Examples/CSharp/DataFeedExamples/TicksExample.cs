@@ -14,6 +14,8 @@
             : base(address, username, password, useFixProtocol)
         {
             this.Feed.Logon += this.OnLogon;
+            this.Feed.Subscribed += this.OnSubscribed;
+            this.Feed.Unsubscribed += this.OnUnsubscribed;
             this.Feed.Tick += this.OnTick;
         }
 
@@ -33,6 +35,26 @@
         {
             Console.WriteLine("Press any key to stop");
             Console.ReadKey();
+
+            var symbols = new[]
+            {
+                "EURUSD",
+                "EURJPY",
+            };
+            this.Feed.Server.UnsubscribeQuotes(symbols);
+
+            Console.WriteLine("Press any key to exit");
+            Console.ReadKey();
+        }
+
+        void OnSubscribed(object sender, SubscribedEventArgs e)
+        {
+            Console.WriteLine("OnSubscribed(): {0}", e.Tick.Symbol);
+        }
+
+        void OnUnsubscribed(object sender, UnsubscribedEventArgs e)
+        {
+            Console.WriteLine("OnUnsubscribed(): {0}", e.Symbol);
         }
 
         void OnTick(object sender, TickEventArgs e)

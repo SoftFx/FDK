@@ -50,6 +50,8 @@ namespace SoftFX.Extended.Core
         public const int FX_MSG_QUOTES_HISTORY_RESPONSE = 12;
         public const int FX_MSG_CURRENCY_INFO = 13;
         public const int FX_MSG_TWO_FACTOR_AUTH = 14;
+        public const int FX_MSG_SUBSCRIBED = 15;
+        public const int FX_MSG_UNSUBSCRIBED = 16;
 
         #endregion
 

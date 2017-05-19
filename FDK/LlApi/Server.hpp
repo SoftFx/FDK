@@ -52,17 +52,18 @@ namespace
 {
 	const unsigned short LrpComponent_Converter_Id = 1;
 	const unsigned short LrpMethod_Converter_CurrenciesFromHandle_Id = 0;
-	const unsigned short LrpMethod_Converter_SymbolsFromHandle_Id = 1;
-	const unsigned short LrpMethod_Converter_TwoFactorAuthFromHandle_Id = 2;
-	const unsigned short LrpMethod_Converter_SessionInfoFromHandle_Id = 3;
-	const unsigned short LrpMethod_Converter_NotificationFromHandle_Id = 4;
-	const unsigned short LrpMethod_Converter_QuoteFromHandle_Id = 5;
-	const unsigned short LrpMethod_Converter_ProtocolVersionFromHandle_Id = 6;
-	const unsigned short LrpMethod_Converter_AccountInfoFromHandle_Id = 7;
-	const unsigned short LrpMethod_Converter_PositionFromHandle_Id = 8;
-	const unsigned short LrpMethod_Converter_TradeTransactionReportFromHandle_Id = 9;
-	const unsigned short LrpMethod_Converter_ExecutionReportFromHandle_Id = 10;
-	const unsigned short LrpMethod_Converter_GetLogoutInfoFromHandle_Id = 11;
+	const unsigned short LrpMethod_Converter_SymbolFromHandle_Id = 1;
+	const unsigned short LrpMethod_Converter_SymbolsFromHandle_Id = 2;
+	const unsigned short LrpMethod_Converter_TwoFactorAuthFromHandle_Id = 3;
+	const unsigned short LrpMethod_Converter_SessionInfoFromHandle_Id = 4;
+	const unsigned short LrpMethod_Converter_NotificationFromHandle_Id = 5;
+	const unsigned short LrpMethod_Converter_QuoteFromHandle_Id = 6;
+	const unsigned short LrpMethod_Converter_ProtocolVersionFromHandle_Id = 7;
+	const unsigned short LrpMethod_Converter_AccountInfoFromHandle_Id = 8;
+	const unsigned short LrpMethod_Converter_PositionFromHandle_Id = 9;
+	const unsigned short LrpMethod_Converter_TradeTransactionReportFromHandle_Id = 10;
+	const unsigned short LrpMethod_Converter_ExecutionReportFromHandle_Id = 11;
+	const unsigned short LrpMethod_Converter_GetLogoutInfoFromHandle_Id = 12;
 
 	typedef void (*LrpInvoke_Converter_Method_Handler)(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel);
 	void LrpInvoke_Converter_CurrenciesFromHandle(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
@@ -74,6 +75,16 @@ namespace
 		auto result = component.CurrenciesFromHandle(arg0);
 		buffer.Reset(offset);
 		WriteCurrencyInfoArray(result, buffer);
+	}
+	void LrpInvoke_Converter_SymbolFromHandle(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	{
+		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
+		auto& component = pChannel->GetConverter();
+		component; // if all methods of component are static then the next line generates warning #4189
+		auto arg0 = ReadLocalPointer(buffer);
+		auto result = component.SymbolFromHandle(arg0);
+		buffer.Reset(offset);
+		WriteAString(result, buffer);
 	}
 	void LrpInvoke_Converter_SymbolsFromHandle(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
@@ -194,6 +205,7 @@ namespace
 	LrpInvoke_Converter_Method_Handler gConverterHandlers[] = 
 	{
 		LrpInvoke_Converter_CurrenciesFromHandle,
+		LrpInvoke_Converter_SymbolFromHandle,
 		LrpInvoke_Converter_SymbolsFromHandle,
 		LrpInvoke_Converter_TwoFactorAuthFromHandle,
 		LrpInvoke_Converter_SessionInfoFromHandle,
@@ -209,7 +221,7 @@ namespace
 
 	HRESULT LrpInvoke_Converter(size_t offset, size_t methodId, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
-		if(methodId >= 12)
+		if(methodId >= 13)
 		{
 			return LRP_INVALID_METHOD_ID;
 		}
@@ -1387,6 +1399,7 @@ extern "C" const char* __stdcall LrpSignature()
 		"NotificationFromHandle@BEB02BF3BB04C8EB7209F50A97731858;"
 	"$Converter;"
 		"CurrenciesFromHandle@A8CC264990787ED33862B4A6E0838363;"
+		"SymbolFromHandle@73F5BE94DE15128BA7988BF2FE336B72;"
 		"SymbolsFromHandle@797F92546863068E0B7674D1D0E22285;"
 		"TwoFactorAuthFromHandle@FB915A5C7CB1D480C3EE3A2B05FEC71F;"
 		"SessionInfoFromHandle@7C15EA0A8059440A0600AB96ACC75455;"

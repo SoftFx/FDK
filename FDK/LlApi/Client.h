@@ -20,7 +20,7 @@ public:
 
     string getName();
 
-    bool Start();    
+    bool Start();
 
     HRESULT Shutdown();
     HRESULT Stop();
@@ -46,12 +46,14 @@ public:
     const string NextIdIfEmpty(const string& prefix, const string& externalId);
 
     void RegisterWaiter(const type_info& info, const string& id, IWaiter* pWaiter);
-    void ReleaseWaiter(const type_info& info, const string& id);    
+    void ReleaseWaiter(const type_info& info, const string& id);
 
     virtual void VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion, bool twofactor);
     virtual void VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorReason reason, const std::string& text, const CDateTime& expire);
     virtual void VLogout(const CFxEventInfo& eventInfo, const FxLogoutReason reason, const string& description);
     virtual void VBusinessReject(const CFxEventInfo& eventInfo);
+    virtual void VSubscribed(const CFxEventInfo& eventInfo, const CFxQuote& snapshot);
+    virtual void VUnsubscribed(const CFxEventInfo& eventInfo, const string& symbol);
     virtual void VTick(const CFxEventInfo& eventInfo, const CFxQuote& quotes);
     virtual void VSessionInfo(const CFxEventInfo& eventInfo, CFxSessionInfo& sessionInfo);
     virtual void VTradeServerInfoReport(const CFxEventInfo& eventInfo, CFxTradeServerInfo& tradeServerInfo);
@@ -77,7 +79,7 @@ protected:
 
     bool CheckProtocolVersion(const CProtocolVersion& requiredVersion) const;
 
-    virtual void AfterLogon();    
+    virtual void AfterLogon();
 
     CDataCache& m_cache;
     string name_;

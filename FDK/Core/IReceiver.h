@@ -24,6 +24,8 @@ public:
     virtual void VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorReason reason, const string& text, const CDateTime& expire) = 0;
     virtual void VLogout(const CFxEventInfo& eventInfo, const FxLogoutReason reason, const string& description) = 0;
     virtual void VBusinessReject(const CFxEventInfo& eventInfo) = 0;
+    virtual void VSubscribed(const CFxEventInfo& eventInfo, const CFxQuote& snapshot) = 0;
+    virtual void VUnsubscribed(const CFxEventInfo& eventInfo, const string& symbol) = 0;
     virtual void VTick(const CFxEventInfo& eventInfo, const CFxQuote& quotes) = 0;
     virtual void VSessionInfo(const CFxEventInfo& eventInfo, CFxSessionInfo& sessionInfo) = 0;
     virtual void VTradeServerInfoReport(const CFxEventInfo& eventInfo, CFxTradeServerInfo& serverInfo) = 0;

@@ -4,6 +4,7 @@ class CConverterImpl
 {
 public:
     vector<CFxCurrencyInfo> CurrenciesFromHandle(void* handle);
+    string SymbolFromHandle(void* handle);
     vector<CFxSymbolInfo> SymbolsFromHandle(void* handle);
     CFxTwoFactorAuth TwoFactorAuthFromHandle(void* handle);
     CFxSessionInfo SessionInfoFromHandle(void* handle);

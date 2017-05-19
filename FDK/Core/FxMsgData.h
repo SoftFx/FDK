@@ -28,6 +28,8 @@ public:
 #include "FxTradeTransactionReport.h"
 #include "FxPositionReport.h"
 
+typedef CFxMsgData<CFxQuote> CFxMsgSubscribed;
+typedef CFxMsgData<string> CFxMsgUnsubscribed;
 typedef CFxMsgData<CFxQuote> CFxMsgTick;
 typedef CFxMsgData<CFxAccountInfo> CFxMsgAccountInfo;
 typedef CFxMsgData<vector<CFxCurrencyInfo>> CFxMsgCurrencyInfo;

@@ -47,5 +47,7 @@ typedef void* FxIterator;
 #define FX_MSG_QUOTES_HISTORY_RESPONSE 12
 #define FX_MSG_CURRENCY_INFO 13
 #define FX_MSG_TWO_FACTOR_AUTH 14
+#define FX_MSG_SUBSCRIBED 15
+#define FX_MSG_UNSUBSCRIBED 16
 
 #endif

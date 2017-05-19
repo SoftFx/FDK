@@ -14,7 +14,7 @@
         }
 
         /// <summary>
-        /// Gets quotes.
+        /// Gets update tick.
         /// </summary>
         public Quote Tick { get; private set; }
 

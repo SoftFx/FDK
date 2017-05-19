@@ -75,6 +75,16 @@
         #region Events
 
         /// <summary>
+        /// Occurs when subscribed to a new symbol.
+        /// </summary>
+        public event SubscribedHandler Subscribed;
+
+        /// <summary>
+        /// Occurs when unsubscribed from the symbol.
+        /// </summary>
+        public event UnsubscribedHandler Unsubscribed;
+
+        /// <summary>
         /// Occurs when a new quote is received.
         /// </summary>
         public event TickHandler Tick;
@@ -152,6 +162,13 @@
                 return true;
             switch (message.Type)
             {
+                case Native.FX_MSG_SUBSCRIBED:
+                    this.RaiseSubscribed(message);
+                    this.RaiseTick(message);
+                    break;
+                case Native.FX_MSG_UNSUBSCRIBED:
+                    this.RaiseUnsubscribed(message);
+                    break;
                 case Native.FX_MSG_TICK:
                     this.RaiseTick(message);
                     break;
@@ -176,6 +193,26 @@
             }
 
             return true;
+        }
+
+        void RaiseSubscribed(FxMessage message)
+        {
+            var eh = this.Subscribed;
+            if (eh != null)
+            {
+                var e = new SubscribedEventArgs(message);
+                eh(this, e);
+            }
+        }
+
+        void RaiseUnsubscribed(FxMessage message)
+        {
+            var eh = this.Unsubscribed;
+            if (eh != null)
+            {
+                var e = new UnsubscribedEventArgs(message);
+                eh(this, e);
+            }
         }
 
         void RaiseTick(FxMessage message)

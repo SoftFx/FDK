@@ -98,6 +98,7 @@ void CFixConnection::InitializeMessageHandlers()
 
 CFixConnection::CFixConnection(const string& name, const string& connectionString) :
     name_(name),
+    m_sender(this),
 #ifdef LOG_PERFORMANCE
     loggerIn_(service_),
     loggerOut_(service_),
@@ -204,6 +205,32 @@ CFixConnection::~CFixConnection()
 {
     delete m_initiator;
     delete m_logFactory;
+}
+
+bool CFixConnection::IsSubscribed(const std::string& symbol)
+{
+    return m_subscriptions.find(symbol) != m_subscriptions.end();
+}
+
+bool CFixConnection::IsSnapshotSend(const std::string& symbol)
+{
+    return IsSubscribed(symbol) && m_subscriptions[symbol];
+}
+
+void CFixConnection::Subscribe(const std::string& symbol)
+{
+    m_subscriptions[symbol] = false;
+}
+
+void CFixConnection::Snapshot(const std::string& symbol)
+{
+    if (IsSubscribed(symbol))
+        m_subscriptions[symbol] = true;
+}
+
+void CFixConnection::Unsubscribe(const std::string& symbol)
+{
+    m_subscriptions.erase(symbol);
 }
 
 void CFixConnection::VReceiver(IReceiver* pReceiver)
@@ -668,7 +695,18 @@ void CFixConnection::OnTick(const FIX44::MarketDataSnapshotFullRefresh& message)
         }
     }
     quote.Sort();
-    m_receiver->VTick(eventInfo, quote);
+    
+    // Rise subscribed event
+    if (IsSubscribed(symbol))
+    {
+        if (!IsSnapshotSend(symbol))
+        {
+            m_receiver->VSubscribed(eventInfo, quote);
+            Snapshot(symbol);
+        }
+        else
+            m_receiver->VTick(eventInfo, quote);
+    }
 }
 
 void CFixConnection::OnClose(const FIX44::ClosePositionRequestAck& message)

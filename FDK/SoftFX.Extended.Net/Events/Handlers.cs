@@ -24,6 +24,20 @@
     public delegate void TwoFactorAuthHandler(object sender, TwoFactorAuthEventArgs e);
 
     /// <summary>
+    /// Represents the method that will handle symbol subscribed event.
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">Subscribed nformation.</param>
+    public delegate void SubscribedHandler(object sender, SubscribedEventArgs e);
+
+    /// <summary>
+    /// Represents the method that will handle symbol unsubscribed event.
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">Unsubscribed nformation.</param>
+    public delegate void UnsubscribedHandler(object sender, UnsubscribedEventArgs e);
+
+    /// <summary>
     /// Represents the method that will handle new tick event.
     /// </summary>
     /// <param name="sender">The source of the event.</param>
