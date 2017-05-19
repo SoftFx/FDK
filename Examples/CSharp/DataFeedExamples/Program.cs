@@ -6,15 +6,15 @@
     {
         static void Main()
         {
-            string address = "localhost";
-            string username = "6";
+            string address = "tp.dev.soft-fx.eu";
+            string username = "5";
             string password = "123qwe!";
             var useFixProtocol = true;
 
             //Library.WriteFullDumpOnError(@"D:\full.dmp");
 
-            var example = new SymbolInfoExample(address, username, password, useFixProtocol);
-            //var example = new TicksExample(address, username, password, useFixProtocol);
+            //var example = new SymbolInfoExample(address, username, password, useFixProtocol);
+            var example = new TicksExample(address, username, password, useFixProtocol);
             //var example = new BarsHistoryExample(address, username, password, useFixProtocol);
             //var example = new StorageTicksHistoryExample(address, username, password, useFixProtocol);
             //var example = new StorageTicksRangeIteratorHistoryExample(address, username, password);

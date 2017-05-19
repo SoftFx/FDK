@@ -33,6 +33,11 @@
             return Native.Converter.CurrenciesFromHandle(this.Data);
         }
 
+        public string Symbol()
+        {
+            return Native.Converter.SymbolFromHandle(this.Data);
+        }
+
         public SymbolInfo[] Symbols(FixProtocolVersion protocolVersion)
         {
             var symbols = Native.Converter.SymbolsFromHandle(this.Data);

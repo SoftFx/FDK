@@ -408,6 +408,10 @@
         <Param name="handle" type="lptr" direction="in" />
         <Return type="CurrencyInfoArray" />
       </Method>
+      <Method name="SymbolFromHandle">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="astring" />
+      </Method>
       <Method name="SymbolsFromHandle">
         <Param name="handle" type="lptr" direction="in" />
         <Return type="SymbolInfoArray" />

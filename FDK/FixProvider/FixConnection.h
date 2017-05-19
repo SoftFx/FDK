@@ -12,6 +12,7 @@ class CFixConnection : public IConnection, public FIX::NullApplication
 {
 public:
     virtual void VReceiver(IReceiver* pReceiver);
+    virtual IReceiver* VReceiver() { return m_receiver; }
     virtual ISender* VSender();
     virtual void VStart();
     virtual void VShutdown();
@@ -22,6 +23,12 @@ public:
     CFixConnection(const string& name, const string& connectionString);
     virtual ~CFixConnection();
     static void InitializeMessageHandlers();
+
+    bool IsSubscribed(const std::string& symbol);
+    bool IsSnapshotSend(const std::string& symbol);
+    void Subscribe(const std::string& symbol);
+    void Snapshot(const std::string& symbol);
+    void Unsubscribe(const std::string& symbol);
 
 public:
     virtual void toAdmin(FIX::Message& message, const FIX::SessionID& sessionID);
@@ -77,6 +84,8 @@ private:
     string m_appId;
     string m_appSessionId;
     string m_protocolVersion;
+
+    map<string, bool> m_subscriptions;
 
 #ifdef LOG_PERFORMANCE
     Performance::Service service_;

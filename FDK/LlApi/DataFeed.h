@@ -17,7 +17,7 @@ public:
     vector<CFxCurrencyInfo> GetCurrencies(uint32 timeoutInMilliseconds);
     vector<CFxSymbolInfo> GetSupportedSymbols(uint32 timeoutInMilliseconds);
     HRESULT SubscribeToQuotes(const vector<string>& symbols, int32 depth, uint32 timeoutInMilliseconds);
-    HRESULT UnsubscribeQuotes(const vector<string>& symbols, uint32 timeoutInMilliseconds);    
+    HRESULT UnsubscribeQuotes(const vector<string>& symbols, uint32 timeoutInMilliseconds);
     int GetQuotesHistoryVersion(const uint32 timeoutInMilliseconds);
     CDataHistoryInfo GetHistoryBars(const string& symbol, CDateTime time, int32 barsNumber, FxPriceType priceType, const string& period, const uint32 timeoutInMilliseconds);
     CDataHistoryInfo GetQuoteHistoryFiles(const string& symbol, bool includeLevel2, CDateTime time, const uint32 timeoutInMillisecond);
@@ -28,6 +28,8 @@ public:
     virtual void VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion, bool twofactor);
     virtual void VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorReason reason, const std::string& text, const CDateTime& expire);
     virtual void VLogout(const CFxEventInfo& eventInfo, const FxLogoutReason reason, const string& description);
+    virtual void VSubscribed(const CFxEventInfo& eventInfo, const CFxQuote& snapshot);
+    virtual void VUnsubscribed(const CFxEventInfo& eventInfo, const string& symbol);
     virtual void VTick(const CFxEventInfo& eventInfo, const CFxQuote& quote);
     virtual void VGetCurrencies(const CFxEventInfo& eventInfo, const vector<CFxCurrencyInfo>& currencies);
     virtual void VGetSupportedSymbols(const CFxEventInfo& eventInfo, const vector<CFxSymbolInfo>& symbols);
@@ -45,7 +47,7 @@ private:
 
     CDataFeed(const CDataFeed&);
     CDataFeed& operator = (const CDataFeed&);
-    
+
     HANDLE m_serverQuotesHistoryEvent;
     CCriticalSection m_synchronizer;
     CDataFeedCache m_cache;

@@ -13,7 +13,7 @@ namespace
     const string cUnsupportedFeature = "Feature is not supported by this protocol version.";
 }
 
-CDataFeed::CDataFeed(const string& name, const string& connectionString) : 
+CDataFeed::CDataFeed(const string& name, const string& connectionString) :
     CClient(m_cache, name, connectionString),
     m_cache(*this)
 {
@@ -246,6 +246,22 @@ void CDataFeed::VLogout(const CFxEventInfo& eventInfo, const FxLogoutReason reas
     __super::VLogout(eventInfo, reason, description);
 }
 
+void CDataFeed::VSubscribed(const CFxEventInfo& eventInfo, const CFxQuote& snapshot)
+{
+    m_cache.UpdateQuotes(snapshot);
+
+    CFxMessage message(FX_MSG_SUBSCRIBED, eventInfo);
+    message.Data = new CFxMsgSubscribed(snapshot);
+    ProcessMessage(snapshot.Symbol, message);
+}
+
+void CDataFeed::VUnsubscribed(const CFxEventInfo& eventInfo, const string& symbol)
+{
+    CFxMessage message(FX_MSG_UNSUBSCRIBED, eventInfo);
+    message.Data = new CFxMsgUnsubscribed(symbol);
+    ProcessMessage(symbol, message);
+}
+
 void CDataFeed::VTick(const CFxEventInfo& eventInfo, const CFxQuote& quote)
 {
     m_cache.UpdateQuotes(quote);
@@ -319,12 +335,12 @@ void CDataFeed::VSubscribeToQuotes(const CFxEventInfo& eventInfo, HRESULT status
 
 void CDataFeed::VDataHistoryResponse(const CFxEventInfo& eventInfo, CFxDataHistoryResponse& response)
 {
-    m_synchInvoker.Response(eventInfo, response);    
+    m_synchInvoker.Response(eventInfo, response);
 }
 
 void CDataFeed::VMetaInfoFile(const CFxEventInfo& eventInfo, string& file)
 {
-    m_synchInvoker.Response(eventInfo, file);    
+    m_synchInvoker.Response(eventInfo, file);
 }
 
 void CDataFeed::VNotify(const CFxEventInfo& eventInfo, const CNotification& notification)
@@ -349,4 +365,3 @@ void CDataFeed::VQuotesHistoryResponse(const CFxEventInfo& eventInfo, const int 
     m_cache.SetServerQuotesHistoryVersion(version);
     SetEvent(m_serverQuotesHistoryEvent);
 }
-

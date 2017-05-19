@@ -212,6 +212,14 @@ void CClient::VBusinessReject(const CFxEventInfo& eventInfo)
     m_synchInvoker.Response(eventInfo);
 }
 
+void CClient::VSubscribed(const CFxEventInfo& eventInfo, const CFxQuote& snapshot)
+{
+}
+
+void CClient::VUnsubscribed(const CFxEventInfo& eventInfo, const string& symbol)
+{
+}
+
 void CClient::VTick(const CFxEventInfo&, const CFxQuote&)
 {
 }
@@ -237,7 +245,7 @@ void CClient::VTradeServerInfoReport(const CFxEventInfo&, CFxTradeServerInfo&)
 }
 
 void CClient::VAccountInfo(const CFxEventInfo&, CFxAccountInfo&)
-{   
+{
 }
 
 void CClient::VGetCurrencies(const CFxEventInfo&, const vector<CFxCurrencyInfo>&)
@@ -253,7 +261,7 @@ void CClient::VSubscribeToQuotes(const CFxEventInfo&, HRESULT)
 }
 
 void CClient::VClosePositions(const CFxEventInfo&, CFxClosePositionsResponse&)
-{   
+{
 }
 
 void CClient::VExecution(const CFxEventInfo&, CFxExecutionReport&)
@@ -265,11 +273,11 @@ void CClient::VDataHistoryResponse(const CFxEventInfo&, CFxDataHistoryResponse&)
 }
 
 void CClient::VTradeHistoryResponse(const CFxEventInfo&, CFxTradeHistoryResponse&)
-{    
+{
 }
 
 void CClient::VTradeHistoryReport(const CFxEventInfo&, CFxTradeHistoryReport&)
-{    
+{
 }
 
 void CClient::VFileChunk(const CFxEventInfo& eventInfo, CFxFileChunk& chunk)

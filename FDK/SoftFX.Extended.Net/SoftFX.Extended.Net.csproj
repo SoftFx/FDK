@@ -107,6 +107,7 @@
     <Compile Include="Enums\CommissionType.cs" />
     <Compile Include="Enums\TwoFactorReason.cs" />
     <Compile Include="Events\CurrencyInfoEventArgs.cs" />
+    <Compile Include="Events\SubscribedEventArgs.cs" />
     <Compile Include="Events\TwoFactorAuthEventArgs.cs" />
     <Compile Include="Financial\Rounding\CurrencyPrecisionProvider.cs" />
     <Compile Include="Financial\Rounding\DefaultPrecision.cs" />

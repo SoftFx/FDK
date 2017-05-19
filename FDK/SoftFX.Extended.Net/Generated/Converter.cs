@@ -42,11 +42,31 @@ namespace SoftFX.Extended.Generated
 				return _result;
 			}
 		}
-		public bool Is_SymbolsFromHandle_Supported
+		public bool Is_SymbolFromHandle_Supported
 		{
 			get
 			{
 				return m_client.IsSupported(1, 1);
+			}
+		}
+		public string SymbolFromHandle(SoftFX.Lrp.LPtr handle)
+		{
+			using(MemoryBuffer buffer = m_client.Create())
+			{
+				buffer.WriteLocalPointer(handle);
+
+				int _status = m_client.Invoke(1, 1, buffer);
+				TypesSerializer.Throw(_status, buffer);
+
+				var _result = buffer.ReadAString();
+				return _result;
+			}
+		}
+		public bool Is_SymbolsFromHandle_Supported
+		{
+			get
+			{
+				return m_client.IsSupported(1, 2);
 			}
 		}
 		public SoftFX.Extended.SymbolInfo[] SymbolsFromHandle(SoftFX.Lrp.LPtr handle)
@@ -55,7 +75,7 @@ namespace SoftFX.Extended.Generated
 			{
 				buffer.WriteLocalPointer(handle);
 
-				int _status = m_client.Invoke(1, 1, buffer);
+				int _status = m_client.Invoke(1, 2, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 				var _result = buffer.ReadSymbolInfoArray();
@@ -66,7 +86,7 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(1, 2);
+				return m_client.IsSupported(1, 3);
 			}
 		}
 		public SoftFX.Extended.TwoFactorAuth TwoFactorAuthFromHandle(SoftFX.Lrp.LPtr handle)
@@ -75,7 +95,7 @@ namespace SoftFX.Extended.Generated
 			{
 				buffer.WriteLocalPointer(handle);
 
-				int _status = m_client.Invoke(1, 2, buffer);
+				int _status = m_client.Invoke(1, 3, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 				var _result = buffer.ReadTwoFactorAuth();
@@ -86,7 +106,7 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(1, 3);
+				return m_client.IsSupported(1, 4);
 			}
 		}
 		public SoftFX.Extended.SessionInfo SessionInfoFromHandle(SoftFX.Lrp.LPtr handle)
@@ -95,7 +115,7 @@ namespace SoftFX.Extended.Generated
 			{
 				buffer.WriteLocalPointer(handle);
 
-				int _status = m_client.Invoke(1, 3, buffer);
+				int _status = m_client.Invoke(1, 4, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 				var _result = buffer.ReadSessionInfo();
@@ -106,7 +126,7 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(1, 4);
+				return m_client.IsSupported(1, 5);
 			}
 		}
 		public SoftFX.Extended.Data.Notification NotificationFromHandle(SoftFX.Lrp.LPtr handle)
@@ -115,7 +135,7 @@ namespace SoftFX.Extended.Generated
 			{
 				buffer.WriteLocalPointer(handle);
 
-				int _status = m_client.Invoke(1, 4, buffer);
+				int _status = m_client.Invoke(1, 5, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 				var _result = buffer.ReadNotification();
@@ -126,7 +146,7 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(1, 5);
+				return m_client.IsSupported(1, 6);
 			}
 		}
 		public SoftFX.Extended.Quote QuoteFromHandle(SoftFX.Lrp.LPtr handle)
@@ -135,7 +155,7 @@ namespace SoftFX.Extended.Generated
 			{
 				buffer.WriteLocalPointer(handle);
 
-				int _status = m_client.Invoke(1, 5, buffer);
+				int _status = m_client.Invoke(1, 6, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 				var _result = buffer.ReadQuote();
@@ -146,7 +166,7 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(1, 6);
+				return m_client.IsSupported(1, 7);
 			}
 		}
 		public string ProtocolVersionFromHandle(SoftFX.Lrp.LPtr handle)
@@ -155,7 +175,7 @@ namespace SoftFX.Extended.Generated
 			{
 				buffer.WriteLocalPointer(handle);
 
-				int _status = m_client.Invoke(1, 6, buffer);
+				int _status = m_client.Invoke(1, 7, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 				var _result = buffer.ReadAString();
@@ -166,7 +186,7 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(1, 7);
+				return m_client.IsSupported(1, 8);
 			}
 		}
 		public SoftFX.Extended.AccountInfo AccountInfoFromHandle(SoftFX.Lrp.LPtr handle)
@@ -175,7 +195,7 @@ namespace SoftFX.Extended.Generated
 			{
 				buffer.WriteLocalPointer(handle);
 
-				int _status = m_client.Invoke(1, 7, buffer);
+				int _status = m_client.Invoke(1, 8, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 				var _result = buffer.ReadAccountInfo();
@@ -186,7 +206,7 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(1, 8);
+				return m_client.IsSupported(1, 9);
 			}
 		}
 		public SoftFX.Extended.Position PositionFromHandle(SoftFX.Lrp.LPtr handle)
@@ -195,7 +215,7 @@ namespace SoftFX.Extended.Generated
 			{
 				buffer.WriteLocalPointer(handle);
 
-				int _status = m_client.Invoke(1, 8, buffer);
+				int _status = m_client.Invoke(1, 9, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 				var _result = buffer.ReadPosition();
@@ -206,7 +226,7 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(1, 9);
+				return m_client.IsSupported(1, 10);
 			}
 		}
 		public SoftFX.Extended.Reports.TradeTransactionReport TradeTransactionReportFromHandle(SoftFX.Lrp.LPtr handle)
@@ -215,7 +235,7 @@ namespace SoftFX.Extended.Generated
 			{
 				buffer.WriteLocalPointer(handle);
 
-				int _status = m_client.Invoke(1, 9, buffer);
+				int _status = m_client.Invoke(1, 10, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 				var _result = buffer.ReadTradeTransactionReport();
@@ -226,7 +246,7 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(1, 10);
+				return m_client.IsSupported(1, 11);
 			}
 		}
 		public SoftFX.Extended.ExecutionReport ExecutionReportFromHandle(SoftFX.Lrp.LPtr handle)
@@ -235,7 +255,7 @@ namespace SoftFX.Extended.Generated
 			{
 				buffer.WriteLocalPointer(handle);
 
-				int _status = m_client.Invoke(1, 10, buffer);
+				int _status = m_client.Invoke(1, 11, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 				var _result = buffer.ReadExecutionReport();
@@ -246,7 +266,7 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(1, 11);
+				return m_client.IsSupported(1, 12);
 			}
 		}
 		public void GetLogoutInfoFromHandle(SoftFX.Lrp.LPtr handle, out string text, out SoftFX.Extended.LogoutReason reason, out int code)
@@ -255,7 +275,7 @@ namespace SoftFX.Extended.Generated
 			{
 				buffer.WriteLocalPointer(handle);
 
-				int _status = m_client.Invoke(1, 11, buffer);
+				int _status = m_client.Invoke(1, 12, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 				text = buffer.ReadAString();

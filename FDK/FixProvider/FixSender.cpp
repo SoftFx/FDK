@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "FixSender.h"
+#include "FixConnection.h"
 
 namespace
 {
@@ -58,7 +59,7 @@ namespace
     }
 }
 
-CFixSender::CFixSender()
+CFixSender::CFixSender(CFixConnection* connection) : m_connection(connection)
 {
 }
 
@@ -161,7 +162,11 @@ void CFixSender::VSendSubscribeToQuotes(const string& id, const vector<string>& 
 
     FillSymbols(symbols, message);
 
-    return SendMessage(message);
+    SendMessage(message);
+
+    // Subscribe to symbols
+    for (auto& symbol : symbols)
+        m_connection->Subscribe(symbol);
 }
 
 void CFixSender::VSendUnsubscribeQuotes(const string& id, const vector<string>& symbols)
@@ -174,7 +179,16 @@ void CFixSender::VSendUnsubscribeQuotes(const string& id, const vector<string>& 
 
     FillSymbols(symbols, message);
 
-    return SendMessage(message);
+    SendMessage(message);
+
+    // Unsubscribe from symbols
+    for (auto& symbol : symbols)
+    {
+        m_connection->Unsubscribe(symbol);
+        
+        CFxEventInfo eventInfo;
+        m_connection->VReceiver()->VUnsubscribed(eventInfo, symbol);
+    }
 }
 
 void CFixSender::VSendDeleteOrder(const string& id, const string& orderID, const string& clientID, int32 side)
