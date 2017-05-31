@@ -6,6 +6,7 @@ CFxExecutionReport::CFxExecutionReport()
     ExecutedVolume = numeric_limits<double>::quiet_NaN();
     InitialVolume = numeric_limits<double>::quiet_NaN();
     LeavesVolume = numeric_limits<double>::quiet_NaN();
+    MaxVisibleVolume = numeric_limits<double>::quiet_NaN();
     TradeAmount = numeric_limits<double>::quiet_NaN();
     AveragePrice = numeric_limits<double>::quiet_NaN();
     Price = numeric_limits<double>::quiet_NaN();
@@ -214,6 +215,7 @@ void CFxExecutionReport::CopyCommonFieldsToRecord(CFxOrder& order) const
 {
     order.Side = this->OrderSide;
     order.Volume = this->LeavesVolume;
+    order.MaxVisibleVolume = this->MaxVisibleVolume;
     order.StopLoss = this->StopLoss;
     order.TakeProfit = this->TakeProfit;
     order.OrderId = this->OrderId;
