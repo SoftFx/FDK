@@ -29,6 +29,10 @@ public:
     FxCommissionChargeMethod CommissionChargeMethod;
     double Commission;
     double LimitsCommission;
+    double MinCommission;
+    wstring MinCommissionCurrency;
+    SwapType SwapType;
+    int32 TripleSwapDay;
     Nullable<double> SwapSizeShort;
     Nullable<double> SwapSizeLong;
     Nullable<double> DefaultSlippage;
@@ -51,7 +55,7 @@ inline CFxSymbolInfo::CFxSymbolInfo()
 }
 
 inline CFxSymbolInfo::CFxSymbolInfo(const string& name, const string& currency, const string& settlementCurrency)
-    : Name(name), Currency(currency), SettlementCurrency(settlementCurrency)
+    : Name(name), Currency(currency), SettlementCurrency(settlementCurrency), MinCommission(0.0), SwapType(FxSwapType_Points), TripleSwapDay(0)
 {
 }
 

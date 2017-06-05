@@ -580,6 +580,22 @@ void CFixConnection::OnSymbolsInfo(const FIX44::SecurityList& message)
         if (group.TryGetCommChargeMethod(commChargeType))
             info.CommissionChargeMethod = (FxCommissionChargeMethod)commChargeMethod;
 
+        double minCommission = 0.0;
+        if (group.TryGetMinCommission(minCommission))
+            info.MinCommission = minCommission;
+
+        string minCommissionCurrency;
+        if (group.TryGetMinCommissionCurrency(minCommissionCurrency))
+            Utf8ToStd(info.MinCommissionCurrency, minCommissionCurrency);
+
+        auto swapType = 0;
+        if (group.TryGetSwapType(swapType))
+            info.SwapType = (::SwapType)swapType;
+
+        int tripleSwapDay = 0;
+        if (group.TryGetTripleSwapDay(tripleSwapDay))
+            info.TripleSwapDay = tripleSwapDay;
+
         double swapSizeShort;
         if (group.TryGetSwapSizeShort(swapSizeShort))
             info.SwapSizeShort = swapSizeShort;
@@ -695,7 +711,7 @@ void CFixConnection::OnTick(const FIX44::MarketDataSnapshotFullRefresh& message)
         }
     }
     quote.Sort();
-    
+
     // Rise subscribed event
     if (IsSubscribed(symbol))
     {

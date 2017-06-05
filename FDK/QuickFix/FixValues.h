@@ -4128,6 +4128,8 @@ namespace FIX
   const char CommOpenReducedFlag_YES = 'Y';
   const char CommCloseReducedFlag_NO = 'N';
   const char CommCloseReducedFlag_YES = 'Y';
+  const int SwapType_Points = 0;
+  const int SwapType_PercentPerYear = 1;
   const int StrategyParameterType_INT = 1;
   const int StrategyParameterType_LENGTH = 2;
   const int StrategyParameterType_NUMINGROUP = 3;

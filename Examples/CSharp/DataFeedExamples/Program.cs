@@ -13,8 +13,8 @@
 
             //Library.WriteFullDumpOnError(@"D:\full.dmp");
 
-            //var example = new SymbolInfoExample(address, username, password, useFixProtocol);
-            var example = new TicksExample(address, username, password, useFixProtocol);
+            var example = new SymbolInfoExample(address, username, password, useFixProtocol);
+            //var example = new TicksExample(address, username, password, useFixProtocol);
             //var example = new BarsHistoryExample(address, username, password, useFixProtocol);
             //var example = new StorageTicksHistoryExample(address, username, password, useFixProtocol);
             //var example = new StorageTicksRangeIteratorHistoryExample(address, username, password);

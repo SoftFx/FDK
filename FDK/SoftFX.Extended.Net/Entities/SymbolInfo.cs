@@ -371,6 +371,76 @@
         }
 
         /// <summary>
+        /// Gets min commission value.
+        /// </summary>
+        /// <exception cref="SoftFX.Extended.Errors.UnsupportedFeatureException">If the feature is not supported by used protocol version.</exception>
+        public double MinCommission
+        {
+            get
+            {
+                this.ThrowIfPropertyNotSupported(() => this.MinCommission);
+                return this.minCommission;
+            }
+            internal set
+            {
+                this.minCommission = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets min commission currency value.
+        /// </summary>
+        /// <exception cref="SoftFX.Extended.Errors.UnsupportedFeatureException">If the feature is not supported by used protocol version.</exception>
+        public string MinCommissionCurrency
+        {
+            get
+            {
+                this.ThrowIfPropertyNotSupported(() => this.MinCommissionCurrency);
+                return this.minCommissionCurrency;
+            }
+            internal set
+            {
+                this.minCommissionCurrency = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets swap type.
+        /// </summary>
+        /// <exception cref="SoftFX.Extended.Errors.UnsupportedFeatureException">If the feature is not supported by used protocol version.</exception>
+        public SwapType SwapType
+        {
+            get
+            {
+                this.ThrowIfPropertyNotSupported(() => this.SwapType);
+                return this.swapType;
+            }
+            internal set
+            {
+                this.swapType = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets triple swap day.
+        /// 0 - 3-days swap is disabled;
+        /// 1,2,3,4,5 - days of week from Monday to Friday;
+        /// </summary>
+        /// <exception cref="SoftFX.Extended.Errors.UnsupportedFeatureException">If the feature is not supported by used protocol version.</exception>
+        public int TripleSwapDay
+        {
+            get
+            {
+                this.ThrowIfPropertyNotSupported(() => this.TripleSwapDay);
+                return this.tripleSwapDay;
+            }
+            internal set
+            {
+                this.tripleSwapDay = value;
+            }
+        }
+
+        /// <summary>
         /// Gets swap size short.
         /// </summary>
         public double? SwapSizeShort
@@ -623,6 +693,10 @@
         CommissionType commType;
         CommissionChargeType commChargeType;
         CommissionChargeMethod commChargeMethod;
+        double minCommission;
+        string minCommissionCurrency;
+        SwapType swapType;
+        int tripleSwapDay;
         double? swapSizeShort;
         double? swapSizeLong;
         double? defaultSlippage;

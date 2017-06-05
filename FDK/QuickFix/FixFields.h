@@ -1192,6 +1192,10 @@ namespace FIX
   DEFINE_BOOLEAN(CommCloseReducedFlag);
   DEFINE_UTCTIMESTAMP(ModifyTime);
   DEFINE_FLOAT(HiddenLimitOrderMarginReduction);
+  DEFINE_AMT(MinCommission);
+  DEFINE_CURRENCY(MinCommissionCurrency);
+  DEFINE_INT(SwapType);
+  DEFINE_INT(TripleSwapDay);
   DEFINE_NUMINGROUP(NoStrategyParameters);
   DEFINE_STRING(StrategyParameterName);
   DEFINE_INT(StrategyParameterType);

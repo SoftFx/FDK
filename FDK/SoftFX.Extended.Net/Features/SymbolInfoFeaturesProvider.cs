@@ -240,6 +240,50 @@
         }
 
         /// <summary>
+        /// Returns true, if a protocol version of symbol info supports 'MinCommission' property, otherwise false.
+        /// </summary>
+        /// <exception cref="System.ArgumentNullException">If protocol version is null.</exception>
+        /// <exception cref="System.ArgumentException">If an input protocol version is unknown.</exception>
+        /// <returns>True, if the corresponding property or method is supported for a protocol version, otherwise false.</returns>
+        public bool IsMinCommissionSupported(FixProtocolVersion protocolVersion)
+        {
+            return protocolVersion >= FixProtocolVersion.Version57;
+        }
+
+        /// <summary>
+        /// Returns true, if a protocol version of symbol info supports 'MinCommissionCurrency' property, otherwise false.
+        /// </summary>
+        /// <exception cref="System.ArgumentNullException">If protocol version is null.</exception>
+        /// <exception cref="System.ArgumentException">If an input protocol version is unknown.</exception>
+        /// <returns>True, if the corresponding property or method is supported for a protocol version, otherwise false.</returns>
+        public bool IsMinCommissionCurrencySupported(FixProtocolVersion protocolVersion)
+        {
+            return protocolVersion >= FixProtocolVersion.Version57;
+        }
+
+        /// <summary>
+        /// Returns true, if a protocol version of symbol info supports 'SwapType' property, otherwise false.
+        /// </summary>
+        /// <exception cref="System.ArgumentNullException">If protocol version is null.</exception>
+        /// <exception cref="System.ArgumentException">If an input protocol version is unknown.</exception>
+        /// <returns>True, if the corresponding property or method is supported for a protocol version, otherwise false.</returns>
+        public bool IsSwapTypeSupported(FixProtocolVersion protocolVersion)
+        {
+            return protocolVersion >= FixProtocolVersion.Version57;
+        }
+
+        /// <summary>
+        /// Returns true, if a protocol version of symbol info supports 'TripleSwapDay' property, otherwise false.
+        /// </summary>
+        /// <exception cref="System.ArgumentNullException">If protocol version is null.</exception>
+        /// <exception cref="System.ArgumentException">If an input protocol version is unknown.</exception>
+        /// <returns>True, if the corresponding property or method is supported for a protocol version, otherwise false.</returns>
+        public bool IsTripleSwapDaySupported(FixProtocolVersion protocolVersion)
+        {
+            return protocolVersion >= FixProtocolVersion.Version57;
+        }
+
+        /// <summary>
         /// Returns true, if a protocol version of symbol info supports 'SwapSizeShort' and 'SwapSizeLong' properties, otherwise false.
         /// </summary>
         /// <exception cref="System.ArgumentNullException">If protocol version is null.</exception>

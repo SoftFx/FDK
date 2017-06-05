@@ -63,6 +63,7 @@
     <Compile Include="LrpCommissionType.cs" />
     <Compile Include="LrpCurrencyInfo.cs" />
     <Compile Include="LrpLibrary.cs" />
+    <Compile Include="LrpSwapType.cs" />
     <Compile Include="LocalCpp\Library.cs" />
     <Compile Include="LocalCpp\LocalServer.cs" />
     <Compile Include="LocalCpp\Signature.cs" />

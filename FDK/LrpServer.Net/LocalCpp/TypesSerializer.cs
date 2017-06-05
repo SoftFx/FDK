@@ -96,6 +96,15 @@ namespace LrpServer.Net.LocalCpp
 		{
 			buffer.WriteInt32((int)arg);
 		}
+		public static LrpServer.Net.LrpSwapType ReadSwapType(this MemoryBuffer buffer)
+		{
+			var result = (LrpServer.Net.LrpSwapType)buffer.ReadInt32();
+			return result;
+		}
+		public static void WriteSwapType(this MemoryBuffer buffer, LrpServer.Net.LrpSwapType arg)
+		{
+			buffer.WriteInt32((int)arg);
+		}
 		public static LrpServer.Net.LrpMarketHistoryRejectType ReadMarketHistoryRejectType(this MemoryBuffer buffer)
 		{
 			var result = (LrpServer.Net.LrpMarketHistoryRejectType)buffer.ReadInt32();
@@ -222,6 +231,10 @@ namespace LrpServer.Net.LocalCpp
 			result.CommissionChargeMethod = buffer.ReadCommissionChargeMethod();
 			result.LimitsCommission = buffer.ReadDouble();
 			result.Commission = buffer.ReadDouble();
+			result.MinCommission = buffer.ReadDouble();
+			result.MinCommissionCurrency = buffer.ReadWString();
+			result.SwapType = buffer.ReadSwapType();
+			result.TripleSwapDay = buffer.ReadInt32();
 			result.SwapSizeShort = buffer.ReadNullDouble();
 			result.SwapSizeLong = buffer.ReadNullDouble();
 			result.DefaultSlippage = buffer.ReadNullDouble();
@@ -260,6 +273,10 @@ namespace LrpServer.Net.LocalCpp
 			buffer.WriteCommissionChargeMethod(arg.CommissionChargeMethod);
 			buffer.WriteDouble(arg.LimitsCommission);
 			buffer.WriteDouble(arg.Commission);
+			buffer.WriteDouble(arg.MinCommission);
+			buffer.WriteWString(arg.MinCommissionCurrency);
+			buffer.WriteSwapType(arg.SwapType);
+			buffer.WriteInt32(arg.TripleSwapDay);
 			buffer.WriteNullDouble(arg.SwapSizeShort);
 			buffer.WriteNullDouble(arg.SwapSizeLong);
 			buffer.WriteNullDouble(arg.DefaultSlippage);

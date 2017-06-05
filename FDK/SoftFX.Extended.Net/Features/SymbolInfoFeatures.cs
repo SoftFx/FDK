@@ -251,6 +251,50 @@
         }
 
         /// <summary>
+        /// Returns true, if a corresponding symbol info supports 'MinCommission' property, otherwise false.
+        /// </summary>
+        public bool IsMinCommissionSupported
+        {
+            get
+            {
+                return this.provider.IsMinCommissionSupported(this.protocolVersion);
+            }
+        }
+
+        /// <summary>
+        /// Returns true, if a corresponding symbol info supports 'MinCommissionCurrency' property, otherwise false.
+        /// </summary>
+        public bool IsMinCommissionCurrencySupported
+        {
+            get
+            {
+                return this.provider.IsMinCommissionCurrencySupported(this.protocolVersion);
+            }
+        }
+
+        /// <summary>
+        /// Returns true, if a corresponding symbol info supports 'SwapType' property, otherwise false.
+        /// </summary>
+        public bool IsSwapTypeSupported
+        {
+            get
+            {
+                return this.provider.IsSwapTypeSupported(this.protocolVersion);
+            }
+        }
+
+        /// <summary>
+        /// Returns true, if a corresponding symbol info supports 'TripleSwapDay' property, otherwise false.
+        /// </summary>
+        public bool IsTripleSwapDaySupported
+        {
+            get
+            {
+                return this.provider.IsTripleSwapDaySupported(this.protocolVersion);
+            }
+        }
+
+        /// <summary>
         /// Returns true, if a corresponding symbol info supports 'LimitsCommission' property, otherwise false.
         /// </summary>
         public bool IsSwapSizeShortSupported
