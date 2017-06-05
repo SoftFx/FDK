@@ -297,6 +297,11 @@ enum SessionStatus
     SessionStatus_Last   = FX_MAX_ENUM
 };
 
+enum SwapType
+{
+    FxSwapType_Points           = 0,
+    FxSwapType_PercentPerYear   = 1
+};
 
 typedef void* FxHandle;
 typedef void* FxString;

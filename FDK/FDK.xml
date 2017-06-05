@@ -36,6 +36,7 @@
     <Type name="CommissionType" CSharpFullName="SoftFX.Extended.CommissionType" CppFullName="FxCommissionType" kind="enum32" />
     <Type name="CommissionChargeType" CSharpFullName="SoftFX.Extended.CommissionChargeType" CppFullName="FxCommissionChargeType" kind="enum32" />
     <Type name="CommissionChargeMethod" CSharpFullName="SoftFX.Extended.CommissionChargeMethod" CppFullName="FxCommissionChargeMethod" kind="enum32" />
+    <Type name="SwapType" CSharpFullName="SoftFX.Extended.SwapType" CppFullName="SwapType" kind="enum32" />
     <Type name="Notification" CSharpFullName="SoftFX.Extended.Data.Notification" CppFullName="CNotification" kind="class">
       <Member name="Severity" type="Severity" />
       <Member name="Type" type="NotificationType" />
@@ -75,6 +76,10 @@
       <Member name="CommissionChargeMethod" type="CommissionChargeMethod" />
       <Member name="LimitsCommission" type="double" />
       <Member name="Commission" type="double" />
+      <Member name="MinCommission" type="double" />
+      <Member name="MinCommissionCurrency" type="wstring" />
+      <Member name="SwapType" type="SwapType" />
+      <Member name="TripleSwapDay" type="int32" />
       <Member name="SwapSizeShort" type="double?" />
       <Member name="SwapSizeLong" type="double?" />
       <Member name="DefaultSlippage" type="double?" />

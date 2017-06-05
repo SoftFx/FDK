@@ -60,6 +60,8 @@ namespace
 	FxCommissionChargeType ReadCommissionChargeType(MemoryBuffer& buffer);
 	void WriteCommissionChargeMethod(const FxCommissionChargeMethod& arg, MemoryBuffer& buffer);
 	FxCommissionChargeMethod ReadCommissionChargeMethod(MemoryBuffer& buffer);
+	void WriteSwapType(const SwapType& arg, MemoryBuffer& buffer);
+	SwapType ReadSwapType(MemoryBuffer& buffer);
 	void WriteNotification(const CNotification& arg, MemoryBuffer& buffer);
 	CNotification ReadNotification(MemoryBuffer& buffer);
 	void WriteDataHistoryInfo(const CDataHistoryInfo& arg, MemoryBuffer& buffer);
@@ -408,6 +410,15 @@ namespace
 		auto result = (FxCommissionChargeMethod)ReadInt32(buffer);
 		return result;
 	}
+	void WriteSwapType(const SwapType& arg, MemoryBuffer& buffer)
+	{
+		WriteInt32((__int32)arg, buffer);
+	}
+	SwapType ReadSwapType(MemoryBuffer& buffer)
+	{
+		auto result = (SwapType)ReadInt32(buffer);
+		return result;
+	}
 	void WriteNotification(const CNotification& arg, MemoryBuffer& buffer)
 	{
 		WriteSeverity(arg.Severity, buffer);
@@ -473,6 +484,10 @@ namespace
 		WriteCommissionChargeMethod(arg.CommissionChargeMethod, buffer);
 		WriteDouble(arg.LimitsCommission, buffer);
 		WriteDouble(arg.Commission, buffer);
+		WriteDouble(arg.MinCommission, buffer);
+		WriteWString(arg.MinCommissionCurrency, buffer);
+		WriteSwapType(arg.SwapType, buffer);
+		WriteInt32(arg.TripleSwapDay, buffer);
 		WriteNullDouble(arg.SwapSizeShort, buffer);
 		WriteNullDouble(arg.SwapSizeLong, buffer);
 		WriteNullDouble(arg.DefaultSlippage, buffer);
@@ -513,6 +528,10 @@ namespace
 		result.CommissionChargeMethod = ReadCommissionChargeMethod(buffer);
 		result.LimitsCommission = ReadDouble(buffer);
 		result.Commission = ReadDouble(buffer);
+		result.MinCommission = ReadDouble(buffer);
+		result.MinCommissionCurrency = ReadWString(buffer);
+		result.SwapType = ReadSwapType(buffer);
+		result.TripleSwapDay = ReadInt32(buffer);
 		result.SwapSizeShort = ReadNullDouble(buffer);
 		result.SwapSizeLong = ReadNullDouble(buffer);
 		result.DefaultSlippage = ReadNullDouble(buffer);

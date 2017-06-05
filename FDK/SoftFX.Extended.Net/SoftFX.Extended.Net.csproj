@@ -105,6 +105,7 @@
     <Compile Include="Enums\CommissionChargeMethod.cs" />
     <Compile Include="Enums\CommissionChargeType.cs" />
     <Compile Include="Enums\CommissionType.cs" />
+    <Compile Include="Enums\SwapType.cs" />
     <Compile Include="Enums\TwoFactorReason.cs" />
     <Compile Include="Events\CurrencyInfoEventArgs.cs" />
     <Compile Include="Events\SubscribedEventArgs.cs" />

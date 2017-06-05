@@ -23,6 +23,10 @@
         public LrpCommissionChargeMethod CommissionChargeMethod;
         public double LimitsCommission;
         public double Commission;
+        public double MinCommission;
+        public string MinCommissionCurrency;
+        public LrpSwapType SwapType;
+        public int TripleSwapDay;
         public double? SwapSizeShort;
         public double? SwapSizeLong;
         public double? DefaultSlippage;

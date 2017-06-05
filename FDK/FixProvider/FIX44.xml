@@ -2103,8 +2103,12 @@
     <field name='CommType' required='N' />
     <field name='CommChargeType' required='N' />
     <field name='CommChargeMethod' required='N' />
+    <field name='MinCommission' required='N' />
+    <field name='MinCommissionCurrency' required='N' />
+    <field name='SwapType' required='N' />
     <field name='SwapSizeShort' required='N' />
     <field name='SwapSizeLong' required='N' />
+    <field name='TripleSwapDay' required='N' />
     <field name='TradeEnabled' required='N' />
     <field name='DefaultSlippage' required='N' />
     <field name='SortOrder' required='N' />
@@ -7883,5 +7887,12 @@
   </field>
   <field number='10208' name='ModifyTime' type='UTCTIMESTAMP' />
   <field number='10209' name='HiddenLimitOrderMarginReduction' type='FLOAT' />
+  <field number='10210' name='MinCommission' type='AMT' />
+  <field number='10211' name='MinCommissionCurrency' type='CURRENCY' />
+  <field number='10212' name='SwapType' type='INT'>
+    <value enum='0' description='Points' />
+    <value enum='1' description='PercentPerYear' />
+  </field>
+  <field number='10213' name='TripleSwapDay' type='INT' />
 </fields>
 </fix>

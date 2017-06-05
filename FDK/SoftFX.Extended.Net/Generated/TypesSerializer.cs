@@ -244,6 +244,15 @@ namespace SoftFX.Extended.Generated
 		{
 			buffer.WriteInt32((int)arg);
 		}
+		public static SoftFX.Extended.SwapType ReadSwapType(this MemoryBuffer buffer)
+		{
+			var result = (SoftFX.Extended.SwapType)buffer.ReadInt32();
+			return result;
+		}
+		public static void WriteSwapType(this MemoryBuffer buffer, SoftFX.Extended.SwapType arg)
+		{
+			buffer.WriteInt32((int)arg);
+		}
 		public static SoftFX.Extended.Data.Notification ReadNotification(this MemoryBuffer buffer)
 		{
 			var result = new SoftFX.Extended.Data.Notification();
@@ -310,6 +319,10 @@ namespace SoftFX.Extended.Generated
 			result.CommissionChargeMethod = buffer.ReadCommissionChargeMethod();
 			result.LimitsCommission = buffer.ReadDouble();
 			result.Commission = buffer.ReadDouble();
+			result.MinCommission = buffer.ReadDouble();
+			result.MinCommissionCurrency = buffer.ReadWString();
+			result.SwapType = buffer.ReadSwapType();
+			result.TripleSwapDay = buffer.ReadInt32();
 			result.SwapSizeShort = buffer.ReadNullDouble();
 			result.SwapSizeLong = buffer.ReadNullDouble();
 			result.DefaultSlippage = buffer.ReadNullDouble();
@@ -350,6 +363,10 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteCommissionChargeMethod(arg.CommissionChargeMethod);
 			buffer.WriteDouble(arg.LimitsCommission);
 			buffer.WriteDouble(arg.Commission);
+			buffer.WriteDouble(arg.MinCommission);
+			buffer.WriteWString(arg.MinCommissionCurrency);
+			buffer.WriteSwapType(arg.SwapType);
+			buffer.WriteInt32(arg.TripleSwapDay);
 			buffer.WriteNullDouble(arg.SwapSizeShort);
 			buffer.WriteNullDouble(arg.SwapSizeLong);
 			buffer.WriteNullDouble(arg.DefaultSlippage);
