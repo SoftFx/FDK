@@ -394,7 +394,20 @@
         /// <returns>Can not be null.</returns>
         public bool CloseByEx(TradeRecord other, int timeoutInMilliseconds)
         {
-            return this.DataTrade.Server.CloseByPositionsEx(this.OrderId, other.OrderId, timeoutInMilliseconds);
+            return this.CloseByEx(null, other, timeoutInMilliseconds);
+        }
+
+        /// <summary>
+        /// Closes by two orders.
+        /// </summary>
+        /// <param name="operationId">Operation Id</param>
+        /// <param name="other">Another order; can not be null.</param>
+        /// <param name="timeoutInMilliseconds">Timeout of the operation in milliseconds.</param>
+        /// <returns>True, if the operation has been succeeded; otherwise false.</returns>
+        /// <returns>Can not be null.</returns>
+        public bool CloseByEx(string operationId, TradeRecord other, int timeoutInMilliseconds)
+        {
+            return this.DataTrade.Server.CloseByPositionsEx(operationId, this.OrderId, other.OrderId, timeoutInMilliseconds);
         }
 
         #endregion
@@ -415,7 +428,17 @@
         /// <param name="timeoutInMilliseconds">timeout of the operation in milliseconds</param>
         public void DeleteEx(int timeoutInMilliseconds)
         {
-            this.DataTrade.Server.DeletePendingOrderEx(this.OrderId, this.Side, timeoutInMilliseconds);
+            this.DeleteEx(null, timeoutInMilliseconds);
+        }
+
+        /// <summary>
+        /// Deletes pending order; not valid for market orders.
+        /// </summary>
+        /// <param name="operationId">Operation Id</param>
+        /// <param name="timeoutInMilliseconds">timeout of the operation in milliseconds</param>
+        public void DeleteEx(string operationId, int timeoutInMilliseconds)
+        {
+            this.DataTrade.Server.DeletePendingOrderEx(operationId, this.OrderId, this.Side, timeoutInMilliseconds);
         }
 
         #endregion
@@ -456,6 +479,26 @@
         public TradeRecord ModifyEx(double? newPrice, double? newStopPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpirationTime, string newComment, string newTag, int? newMagic, int timeoutInMilliseconds)
         {
             var result = this.DataTrade.Server.ModifyTradeRecordEx(this.OrderId, this.Symbol, this.Type, this.Side, this.Volume, null, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, newTag, newMagic, timeoutInMilliseconds);
+            return result;
+        }
+
+        /// <summary>
+        /// Modifies an existing order.
+        /// </summary>
+        /// <param name="operationId">Operation Id</param>
+        /// <param name="newPrice">A new pending order price.</param>
+        /// <param name="newStopPrice">A new pending order stop price.</param>
+        /// <param name="newStopLoss">A new pending order stop loss.</param>
+        /// <param name="newTakeProfit">A new pending order take profit.</param>
+        /// <param name="newExpirationTime">A new pending order expiration time.</param>
+        /// <param name="newComment">A new comment</param>
+        /// <param name="newTag">A new comment</param>
+        /// <param name="newMagic">A new comment</param>
+        /// <param name="timeoutInMilliseconds">Timeout of the operation in milliseconds.</param>
+        /// <returns>A modified trade record.</returns>
+        public TradeRecord ModifyEx(string operationId, double? newPrice, double? newStopPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpirationTime, string newComment, string newTag, int? newMagic, int timeoutInMilliseconds)
+        {
+            var result = this.DataTrade.Server.ModifyTradeRecordEx(operationId, this.OrderId, this.ClientOrderId, this.Symbol, this.Type, this.Side, this.Volume, null, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, newTag, newMagic, timeoutInMilliseconds);
             return result;
         }
 

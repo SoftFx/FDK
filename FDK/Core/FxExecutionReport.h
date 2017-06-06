@@ -35,6 +35,7 @@ public:
 public:
     string OrderId;
     string ClientOrderId;
+    string TradeRequestId;
     string Symbol;
     string Text;
     string ClosePositionRequestId;

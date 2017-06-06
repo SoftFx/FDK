@@ -22,6 +22,11 @@
         public string ClientOrderId { get; internal set; }
 
         /// <summary>
+        /// Gets TradeRequestID = 568 field.
+        /// </summary>
+        public string TradeRequestId { get; internal set; }
+
+        /// <summary>
         /// Gets OrdStatus = 39 field.
         /// </summary>
         public OrderStatus OrderStatus { get; internal set; }

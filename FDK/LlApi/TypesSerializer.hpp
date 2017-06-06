@@ -1263,6 +1263,7 @@ namespace
 	{
 		WriteAString(arg.OrderId, buffer);
 		WriteAString(arg.ClientOrderId, buffer);
+		WriteAString(arg.TradeRequestId, buffer);
 		WriteOrderStatus(arg.OrderStatus, buffer);
 		WriteExecutionType(arg.ExecutionType, buffer);
 		WriteAString(arg.Symbol, buffer);
@@ -1303,6 +1304,7 @@ namespace
 		CFxExecutionReport result = CFxExecutionReport();
 		result.OrderId = ReadAString(buffer);
 		result.ClientOrderId = ReadAString(buffer);
+		result.TradeRequestId = ReadAString(buffer);
 		result.OrderStatus = ReadOrderStatus(buffer);
 		result.ExecutionType = ReadExecutionType(buffer);
 		result.Symbol = ReadAString(buffer);

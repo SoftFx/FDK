@@ -106,7 +106,7 @@
             return Native.TradeServer.CloseOrder(this.handle, operationId, orderId, closingVolume, (uint)timeoutInMilliseconds);
         }
 
-        public bool CloseByOrders(string firstOrderId, string secondOrderId, int timeoutInMilliseconds)
+        public bool CloseByOrders(string operationId, string firstOrderId, string secondOrderId, int timeoutInMilliseconds)
         {
             this.VerifyInitialized();
 
@@ -115,14 +115,14 @@
             if (secondOrderId == null)
                 secondOrderId = string.Empty;
 
-            return Native.TradeServer.CloseByPositions(this.handle, firstOrderId, secondOrderId, (uint)timeoutInMilliseconds);
+            return Native.TradeServer.CloseByPositions(this.handle, operationId, firstOrderId, secondOrderId, (uint)timeoutInMilliseconds);
         }
 
-        public int CloseAllOrders(int timeoutInMilliseconds)
+        public int CloseAllOrders(string operationId, int timeoutInMilliseconds)
         {
             this.VerifyInitialized();
 
-            return (int)Native.TradeServer.CloseAllPositions(this.handle, (uint)timeoutInMilliseconds);
+            return (int)Native.TradeServer.CloseAllPositions(this.handle, operationId, (uint)timeoutInMilliseconds);
         }
 
         public TradeRecord[] GetOrders(DataTrade dataTrade, int timeoutInMilliseconds)

@@ -1088,6 +1088,7 @@ namespace SoftFX.Extended.Generated
 			var result = new SoftFX.Extended.ExecutionReport();
 			result.OrderId = buffer.ReadAString();
 			result.ClientOrderId = buffer.ReadAString();
+			result.TradeRequestId = buffer.ReadAString();
 			result.OrderStatus = buffer.ReadOrderStatus();
 			result.ExecutionType = buffer.ReadExecutionType();
 			result.Symbol = buffer.ReadAString();
@@ -1128,6 +1129,7 @@ namespace SoftFX.Extended.Generated
 		{
 			buffer.WriteAString(arg.OrderId);
 			buffer.WriteAString(arg.ClientOrderId);
+			buffer.WriteAString(arg.TradeRequestId);
 			buffer.WriteOrderStatus(arg.OrderStatus);
 			buffer.WriteExecutionType(arg.ExecutionType);
 			buffer.WriteAString(arg.Symbol);

@@ -12,8 +12,7 @@
 
         protected override void RunExample()
         {
-//            var record = this.Trade.Server.SendOrder("EUR/USD", TradeCommand.StopLimit, TradeRecordSide.Buy, 2.0, 100000, 3.0, null, null, null, null, null, null, null);
-            var record = this.Trade.Server.SendOrder("EUR/USD", TradeCommand.Limit, TradeRecordSide.Buy, 2.0, 100000, null, null, null, null, null, null, null, null);
+            var record = this.Trade.Server.SendOrderEx("Operation1", "EURUSD", TradeCommand.Limit, TradeRecordSide.Buy, 100000, null, 1.0, null, null, null, null, null, null, null);
             Console.WriteLine("Trade record: {0}", record);
             Console.ReadKey();
         }

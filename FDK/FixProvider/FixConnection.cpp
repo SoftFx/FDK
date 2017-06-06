@@ -785,6 +785,7 @@ void CFixConnection::OnExecution(const CFixExecutionReport& message)
 
     report.OrderId = message.GetFxOrderId();
     report.ClientOrderId = message.GetFxClientOrderId();
+    report.TradeRequestId = message.GetFxTradeRequestId();
     report.Symbol = message.GetFxSymbol();
     report.Text = message.GetFxText();
     report.ClosePositionRequestId = message.GetFxClosePositionRequestId();
@@ -817,9 +818,9 @@ void CFixConnection::OnExecution(const CFixExecutionReport& message)
     {
         string requestId = report.ClosePositionRequestId;
         if (requestId.empty())
-        {
+            requestId = report.TradeRequestId;
+        if (requestId.empty())
             requestId = report.ClientOrderId;
-        }
         eventInfo.ID = requestId;
     }
     m_receiver->VExecution(eventInfo, report);

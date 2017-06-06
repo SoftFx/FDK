@@ -352,6 +352,7 @@
     <Type name="ExecutionReport" CSharpFullName="SoftFX.Extended.ExecutionReport" CppFullName="CFxExecutionReport" kind="class">
       <Member name="OrderId" type="astring" />
       <Member name="ClientOrderId" type="astring" />
+      <Member name="TradeRequestId" type="astring" />
       <Member name="OrderStatus" type="OrderStatus" />
       <Member name="ExecutionType" type="ExecutionType" />
       <Member name="Symbol" type="astring" />
@@ -735,11 +736,13 @@
       </Method>
       <Method name="CloseAllPositions">
         <Param name="handle" type="lptr" direction="in" />
+        <Param name="operationId" type="astring" direction="in" />
         <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
         <Return type="uint64" />
       </Method>
       <Method name="CloseByPositions">
         <Param name="handle" type="lptr" direction="in" />
+        <Param name="operationId" type="astring" direction="in" />
         <Param name="first" type="astring" direction="in" />
         <Param name="second" type="astring" direction="in" />
         <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
