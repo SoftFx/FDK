@@ -108,18 +108,23 @@
 
         public bool CloseByOrders(string operationId, string firstOrderId, string secondOrderId, int timeoutInMilliseconds)
         {
-            this.VerifyInitialized();
-
+            if (operationId == null)
+                operationId = string.Empty;
             if (firstOrderId == null)
                 firstOrderId = string.Empty;
             if (secondOrderId == null)
                 secondOrderId = string.Empty;
+
+            this.VerifyInitialized();
 
             return Native.TradeServer.CloseByPositions(this.handle, operationId, firstOrderId, secondOrderId, (uint)timeoutInMilliseconds);
         }
 
         public int CloseAllOrders(string operationId, int timeoutInMilliseconds)
         {
+            if (operationId == null)
+                operationId = string.Empty;
+
             this.VerifyInitialized();
 
             return (int)Native.TradeServer.CloseAllPositions(this.handle, operationId, (uint)timeoutInMilliseconds);
