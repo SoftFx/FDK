@@ -161,6 +161,12 @@ std::string CFixExecutionReport::GetFxClientOrderId()const
     TryGetClOrdID(result);
     return result;
 }
+std::string CFixExecutionReport::GetFxTradeRequestId()const
+{
+    string result;
+    TryGetTradeRequestID(result);
+    return result;
+}
 std::string CFixExecutionReport::GetFxSymbol()const
 {
     string result = this->GetSymbol();

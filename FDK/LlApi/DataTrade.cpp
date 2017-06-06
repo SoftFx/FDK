@@ -144,24 +144,25 @@ CFxOrder CDataTrade::ModifyOrder(const string& operationId, const CFxOrder& orde
     }
 }
 
-void CDataTrade::DeleteOrder(const string& /*operationId*/, const string& orderId, const string& clientId, FxTradeRecordSide side, size_t timeoutInMilliseconds)
+void CDataTrade::DeleteOrder(const string& operationId, const string& orderId, const string& clientId, FxTradeRecordSide side, size_t timeoutInMilliseconds)
 {
-    Waiter<CFxExecutionReport> waiter(static_cast<uint32>(timeoutInMilliseconds), cExternalSynchCall, *this);
+    const string id = NextIdIfEmpty(cExternalSynchCall, operationId);
+    Waiter<CFxExecutionReport> waiter(static_cast<uint32>(timeoutInMilliseconds), string(), id, *this);
     m_sender->VSendDeleteOrder(waiter.Id(), orderId, clientId, side);
 
     CFxEventInfo info;
-	// Wait for pending cancel execution report
+    // Wait for pending cancel execution report
     CFxExecutionReport report = waiter.WaitForResponse(info);
-	if (report.IsReject())
-	{
-		throw CRejectException(report.Text, report.RejectReason);
-	}
-	// Wait for cancel result execution report
-	report = waiter.WaitForResponse(info);
-	if (report.IsReject())
-	{
-		throw CRejectException(report.Text, report.RejectReason);
-	}
+    if (report.IsReject())
+    {
+        throw CRejectException(report.Text, report.RejectReason);
+    }
+    // Wait for cancel result execution report
+    report = waiter.WaitForResponse(info);
+    if (report.IsReject())
+    {
+        throw CRejectException(report.Text, report.RejectReason);
+    }
 }
 
 CFxClosePositionResult CDataTrade::CloseOrder(const string& operationId, const string& orderId, Nullable<double> closingVolume, const size_t timeoutInMilliseconds)
@@ -195,18 +196,20 @@ CFxClosePositionResult CDataTrade::CloseOrder(const string& operationId, const s
     return result;
 }
 
-bool CDataTrade::CloseByOrders(const string& firstOrderId, const string& secondOrderId, const size_t timeoutInMilliseconds)
+bool CDataTrade::CloseByOrders(const string& operationId, const string& firstOrderId, const string& secondOrderId, const size_t timeoutInMilliseconds)
 {
-    Waiter<CFxClosePositionsResponse> waiter(static_cast<uint32>(timeoutInMilliseconds), cExternalSynchCall, *this);
+    string id = NextIdIfEmpty(cExternalSynchCall, operationId);
+    Waiter<CFxClosePositionsResponse> waiter(static_cast<uint32>(timeoutInMilliseconds), string(), id, *this);
     m_sender->VSendCloseByOrders(waiter.Id(), firstOrderId, secondOrderId);
     CFxClosePositionsResponse response = waiter.WaitForResponse();
     const bool result = SUCCEEDED(response.Status);
     return result;
 }
 
-size_t CDataTrade::CloseAllOrders(const uint32 timeoutInMilliseconds)
+size_t CDataTrade::CloseAllOrders(const string& operationId, const uint32 timeoutInMilliseconds)
 {
-    Waiter<CFxClosePositionsResponse> waiter(timeoutInMilliseconds, cExternalSynchCall, *this);
+    string id = NextIdIfEmpty(cExternalSynchCall, operationId);
+    Waiter<CFxClosePositionsResponse> waiter(timeoutInMilliseconds, string(), id, *this);
     m_sender->VSendCloseAllOrders(waiter.Id());
 
     CFxClosePositionsResponse response = waiter.WaitForResponse();

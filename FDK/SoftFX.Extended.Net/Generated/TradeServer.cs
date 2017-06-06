@@ -184,11 +184,12 @@ namespace SoftFX.Extended.Generated
 				return m_client.IsSupported(7, 7);
 			}
 		}
-		public ulong CloseAllPositions(SoftFX.Lrp.LPtr handle, uint timeoutInMilliseconds)
+		public ulong CloseAllPositions(SoftFX.Lrp.LPtr handle, string operationId, uint timeoutInMilliseconds)
 		{
 			using(MemoryBuffer buffer = m_client.Create())
 			{
 				buffer.WriteLocalPointer(handle);
+				buffer.WriteAString(operationId);
 				buffer.WriteUInt32(timeoutInMilliseconds);
 
 				int _status = m_client.Invoke(7, 7, buffer);
@@ -205,11 +206,12 @@ namespace SoftFX.Extended.Generated
 				return m_client.IsSupported(7, 8);
 			}
 		}
-		public bool CloseByPositions(SoftFX.Lrp.LPtr handle, string first, string second, uint timeoutInMilliseconds)
+		public bool CloseByPositions(SoftFX.Lrp.LPtr handle, string operationId, string first, string second, uint timeoutInMilliseconds)
 		{
 			using(MemoryBuffer buffer = m_client.Create())
 			{
 				buffer.WriteLocalPointer(handle);
+				buffer.WriteAString(operationId);
 				buffer.WriteAString(first);
 				buffer.WriteAString(second);
 				buffer.WriteUInt32(timeoutInMilliseconds);

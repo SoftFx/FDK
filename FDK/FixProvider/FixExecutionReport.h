@@ -26,6 +26,7 @@ public:
 public:
     std::string GetFxOrderId() const;
     std::string GetFxClientOrderId() const;
+    std::string GetFxTradeRequestId() const;
     std::string GetFxSymbol() const;
     std::string GetFxText() const;
     std::string GetFxClosePositionRequestId() const;

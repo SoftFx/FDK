@@ -189,6 +189,18 @@
         /// The method deletes an existing pending order.
         /// </summary>
         /// <param name="operationId">
+        /// <param name="orderId">An existing pending order ID.</param>
+        /// <param name="side">Order side: buy or sell.</param>
+        /// <param name="timeoutInMilliseconds">Timeout of the synchronous operation.</param>
+        public void DeletePendingOrderEx(string operationId, string orderId, TradeRecordSide side, int timeoutInMilliseconds)
+        {
+            this.DeletePendingOrderEx(operationId, orderId, "Client-" + orderId, side, timeoutInMilliseconds);
+        }
+
+        /// <summary>
+        /// The method deletes an existing pending order.
+        /// </summary>
+        /// <param name="operationId">
         /// Can be null, in this case FDK generates a new unique operation ID automatically.
         /// Otherwise, please use GenerateOperationId method of DataClient object.
         /// </param>
@@ -196,7 +208,7 @@
         /// <param name="side">Order side: buy or sell.</param>
         public void DeletePendingOrderEx(string operationId, string orderId, TradeRecordSide side)
         {
-            this.DeletePendingOrderEx(null, orderId, "Client-" + orderId, side, this.Client.SynchOperationTimeout);
+            this.DeletePendingOrderEx(operationId, orderId, "Client-" + orderId, side, this.Client.SynchOperationTimeout);
         }
 
         /// <summary>
@@ -318,7 +330,7 @@
         /// <param name="newMagic">A new magic.</param>
         /// <param name="timeoutInMilliseconds">Timeout of the synchronous operation.</param>
         /// <returns>A modified trade record.</returns>
-        TradeRecord ModifyTradeRecordEx(string operationId, string orderId, string clientId, string symbol, TradeRecordType type, TradeRecordSide side,
+        public TradeRecord ModifyTradeRecordEx(string operationId, string orderId, string clientId, string symbol, TradeRecordType type, TradeRecordSide side,
                                         double? newVolume, double? newMaxVisibleVolume, double? newPrice, double? newStopPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpiration, string newComment, string newTag, int? newMagic, int timeoutInMilliseconds)
         {
             var order = this.Client.DataTradeHandle.ModifyOrder(operationId, orderId, clientId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, timeoutInMilliseconds);
@@ -472,7 +484,21 @@
         /// <returns>True, if the operation has been succeeded; otherwise false.</returns>
         public bool CloseByPositionsEx(string firstOrderId, string secondOrderId, int timeoutInMilliseconds)
         {
-            return this.Client.DataTradeHandle.CloseByOrders(firstOrderId, secondOrderId, timeoutInMilliseconds);
+            return CloseByPositionsEx(null, firstOrderId, secondOrderId, timeoutInMilliseconds);
+        }
+
+        /// <summary>
+        /// The method closes by two orders.
+        /// The method is supported by Gross account only.
+        /// </summary>
+        /// <param name="operationId">Operation Id</param>
+        /// <param name="firstOrderId">The first order ID; can not be null.</param>
+        /// <param name="secondOrderId">The second order ID; can not be null.</param>
+        /// <param name="timeoutInMilliseconds">Timeout of the operation in milliseconds.</param>
+        /// <returns>True, if the operation has been succeeded; otherwise false.</returns>
+        public bool CloseByPositionsEx(string operationId, string firstOrderId, string secondOrderId, int timeoutInMilliseconds)
+        {
+            return this.Client.DataTradeHandle.CloseByOrders(operationId, firstOrderId, secondOrderId, timeoutInMilliseconds);
         }
 
         /// <summary>
@@ -493,7 +519,19 @@
         /// <returns>Number of affected orders.</returns>
         public int CloseAllPositionsEx(int timeoutInMilliseconds)
         {
-            return this.Client.DataTradeHandle.CloseAllOrders(timeoutInMilliseconds);
+            return CloseAllPositionsEx(null, timeoutInMilliseconds);
+        }
+
+        /// <summary>
+        /// The method closes all opened market orders.
+        /// The method is supported by Gross account only.
+        /// </summary>
+        /// <param name="operationId">Operation Id</param>
+        /// <param name="timeoutInMilliseconds">Timeout of the operation in milliseconds.</param>
+        /// <returns>Number of affected orders.</returns>
+        public int CloseAllPositionsEx(string operationId, int timeoutInMilliseconds)
+        {
+            return this.Client.DataTradeHandle.CloseAllOrders(operationId, timeoutInMilliseconds);
         }
 
         /// <summary>

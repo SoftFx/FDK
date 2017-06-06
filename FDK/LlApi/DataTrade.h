@@ -17,11 +17,11 @@ public:
     CFxAccountInfo GetAccountInfo(const uint32 timeoutInMilliseconds);
     vector<CFxOrder> GetOrders(const size_t timeoutInMilliseconds);
     CFxOrder OpenNewOrder(const string& operationId, const CFxOrder& order, const size_t timeoutInMilliseconds);
-    CFxOrder ModifyOrder(const string& operationId, const CFxOrder& order, const size_t timeoutInMilliseconds);    
+    CFxOrder ModifyOrder(const string& operationId, const CFxOrder& order, const size_t timeoutInMilliseconds);
     void DeleteOrder(const string& operationId, const string& orderId, const string& clientId, FxTradeRecordSide side, size_t timeoutInMilliseconds);
     CFxClosePositionResult CloseOrder(const string& operationId, const string& orderId, Nullable<double> closingVolume, const size_t timeoutInMilliseconds);
-    bool CloseByOrders(const string& firstOrderId, const string& secondOrderId, const size_t timeoutInMilliseconds);
-    size_t CloseAllOrders(const uint32 timeoutInMilliseconds);
+    bool CloseByOrders(const string& operationId, const string& firstOrderId, const string& secondOrderId, const size_t timeoutInMilliseconds);
+    size_t CloseAllOrders(const string& operationId, const uint32 timeoutInMilliseconds);
     FxIterator GetTradeTransactionReportsAndSubscribeToNotifications(FxTimeDirection direction, bool subscribe, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, uint32 bufferSize, const Nullable<bool>& skipCancel, uint32 timeoutInMilliseconds);
     void UnsubscribeTradeTransactionReports(size_t timeoutInMilliseconds);
 
@@ -36,7 +36,7 @@ public:
     virtual void VTradeHistoryReport(const CFxEventInfo& eventInfo, CFxTradeHistoryReport& report);
     virtual void VGetTradeTransactionReportsAndSubscribeToNotifications(const CFxEventInfo& info, const int32 curReportsNumber, const int32 totReportsNumber, const bool endOfStream);
     virtual void VTradeTransactionReport(const CFxEventInfo& info, CFxTradeTransactionReport& report);
-    virtual void VUnsubscribeTradeTransactionReportsNotifications(const CFxEventInfo& info);    
+    virtual void VUnsubscribeTradeTransactionReportsNotifications(const CFxEventInfo& info);
     virtual void VPositionReport(const CFxEventInfo& info, CFxPositionReport& positionReport);
     virtual void VNotify(const CFxEventInfo& eventInfo, const CNotification& notification);
 
@@ -44,7 +44,7 @@ protected:
 
     virtual void AfterLogon();
 
-private:    
+private:
 
     friend class CFxTradeTransactionReportIterator;
 
