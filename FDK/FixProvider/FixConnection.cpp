@@ -834,6 +834,7 @@ void CFixConnection::OnCancel(const FIX44::OrderCancelReject& message)
     CFxExecutionReport executionReport;
 
     message.TryGetOrderID(executionReport.OrderId);
+    message.TryGetClOrdID(executionReport.TradeRequestId);
     message.TryGetText(executionReport.Text);
     executionReport.OrderStatus = FxOrderStatus_Rejected;
     m_receiver->VExecution(eventInfo, executionReport);
