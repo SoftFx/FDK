@@ -201,9 +201,13 @@ bool CDataTrade::CloseByOrders(const string& operationId, const string& firstOrd
     string id = NextIdIfEmpty(cExternalSynchCall, operationId);
     Waiter<CFxClosePositionsResponse> waiter(static_cast<uint32>(timeoutInMilliseconds), string(), id, *this);
     m_sender->VSendCloseByOrders(waiter.Id(), firstOrderId, secondOrderId);
+
     CFxClosePositionsResponse response = waiter.WaitForResponse();
-    const bool result = SUCCEEDED(response.Status);
-    return result;
+    if (FAILED(response.Status))
+    {
+        throw std::runtime_error(response.Description);
+    }
+    return true;
 }
 
 size_t CDataTrade::CloseAllOrders(const string& operationId, const uint32 timeoutInMilliseconds)
