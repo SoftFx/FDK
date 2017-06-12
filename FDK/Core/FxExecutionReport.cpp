@@ -42,6 +42,10 @@ bool CFxExecutionReport::TryGetTradeRecord(CFxOrder& order) const
     {
         return true;
     }
+    if (TryGetFilledMarketOrder(order))
+    {
+        return true;
+    }
     if (TryGetLimitOrder(order))
     {
         return true;
@@ -134,6 +138,35 @@ bool CFxExecutionReport::TryGetIOCOrder(CFxOrder& order) const
     order.Volume = this->ExecutedVolume;
     order.Price = this->TradePrice;
     order.ImmediateOrCancel = true;
+
+    return true;
+}
+
+bool CFxExecutionReport::TryGetFilledMarketOrder(CFxOrder& order)const
+{
+    if (FxOrderType_Limit != OrderType)
+    {
+        return false;
+    }
+    if (!MarketWithSlippage)
+    {
+        return false;
+    }
+    if (FxOrderStatus_Filled != OrderStatus)
+    {
+        return false;
+    }
+    if (FxExecutionType_Trade != ExecutionType)
+    {
+        return false;
+    }
+
+    CopyCommonFieldsToRecord(order);
+
+    order.Type = FxTradeRecordType_Limit;
+    order.Volume = this->ExecutedVolume;
+    order.Price = this->TradePrice;
+    order.MarketWithSlippage = true;
 
     return true;
 }

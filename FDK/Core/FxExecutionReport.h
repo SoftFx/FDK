@@ -61,6 +61,7 @@ private:
     bool TryGetPositionFromMarket(CFxOrder& order)const;
     bool TryGetPositionFromPosition(CFxOrder& order)const;
     bool TryGetIOCOrder(CFxOrder& order)const;
+    bool TryGetFilledMarketOrder(CFxOrder& order)const;
     bool TryGetLimitOrder(CFxOrder& order)const;
     bool TryGetStopOrder(CFxOrder& order)const;
     bool TryGetStopLimitOrder(CFxOrder& order)const;
