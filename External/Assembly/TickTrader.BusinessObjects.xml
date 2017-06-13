@@ -1488,6 +1488,17 @@
             Margin reduction for Stop orders
             </summary>
         </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.SwapType">
+            <summary>
+            Gets or sets swap type
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.SymbolInfo.TripleSwapDay">
+            <summary>
+            Gets or sets a day of week (from Monday to Friday) when 3-days swaps are charged.
+            If value is 0 3-days swaps are disabled.
+            </summary>
+        </member>
         <member name="M:TickTrader.BusinessObjects.SymbolInfo.Clone">
             <summary>
             
@@ -1555,6 +1566,16 @@
             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.GroupSymbolInfo.SecurityName">
+            <summary>
+            Gets or sets the TODO
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.GroupSymbolInfo.MinCommission">
+            <summary>
+            Gets or sets the TODO
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.GroupSymbolInfo.MinCommissionCurrency">
             <summary>
             Gets or sets the TODO
             </summary>

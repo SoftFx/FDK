@@ -77,7 +77,7 @@ CFxOrder CDataTrade::OpenNewOrder(const string& operationId, const CFxOrder& ord
         {
             count = 2;
         }
-        if (FxAccountType_Cash == type)
+        else if (FxAccountType_Cash == type)
         {
             count = 3;
         }
