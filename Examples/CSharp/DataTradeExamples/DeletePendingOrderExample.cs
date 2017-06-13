@@ -8,6 +8,12 @@
         public DeletePendingOrderExample(string address, string username, string password)
             : base(address, username, password)
         {
+            Trade.ExecutionReport += Trade_ExecutionReport;
+        }
+
+        private void Trade_ExecutionReport(object sender, SoftFX.Extended.Events.ExecutionReportEventArgs e)
+        {
+            Console.WriteLine(e.Report.TradeRequestId);
         }
 
         protected override void RunExample()
