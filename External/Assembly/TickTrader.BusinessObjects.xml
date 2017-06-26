@@ -2336,7 +2336,7 @@
             <param name="id"></param>
             <param name="level2"></param>
         </member>
-        <member name="M:TickTrader.Common.Business.FeedTick.ConstructFormPreparedData(System.String,TickTrader.BusinessObjects.FeedTickId,System.Collections.Generic.IEnumerable{TickTrader.Common.Business.FeedLevel2Record},System.Nullable{TickTrader.Common.Business.FeedLevel2Record},System.Nullable{TickTrader.Common.Business.FeedLevel2Record},System.Boolean)">
+        <member name="M:TickTrader.Common.Business.FeedTick.ConstructFormPreparedData(System.String,TickTrader.BusinessObjects.FeedTickId,TickTrader.Common.Business.FeedLevel2Record[],System.Nullable{TickTrader.Common.Business.FeedLevel2Record},System.Nullable{TickTrader.Common.Business.FeedLevel2Record},System.Boolean)">
             <summary>
             
             </summary>
@@ -2347,7 +2347,7 @@
             <param name="bestAsk"></param>
             <returns></returns>
         </member>
-        <member name="M:TickTrader.Common.Business.FeedTick.ConstructFormPreparedData(System.String,TickTrader.BusinessObjects.FeedTickId,System.Collections.Generic.IEnumerable{TickTrader.Common.Business.FeedLevel2Record},System.Boolean,System.Nullable{TickTrader.Common.Business.FeedLevel2Record},System.Boolean,System.Nullable{TickTrader.Common.Business.FeedLevel2Record},System.Boolean)">
+        <member name="M:TickTrader.Common.Business.FeedTick.ConstructFormPreparedData(System.String,TickTrader.BusinessObjects.FeedTickId,TickTrader.Common.Business.FeedLevel2Record[],System.Boolean,System.Nullable{TickTrader.Common.Business.FeedLevel2Record},System.Boolean,System.Nullable{TickTrader.Common.Business.FeedLevel2Record},System.Boolean)">
             <summary>
             
             </summary>
