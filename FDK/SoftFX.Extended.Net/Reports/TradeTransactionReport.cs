@@ -360,5 +360,13 @@
         /// <summary>
         /// </summary>
         public double? UsdToDstAssetConversionRate { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public string MinCommissionCurrency { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public double? MinCommissionConversionRate { get; internal set; }
     }
 }

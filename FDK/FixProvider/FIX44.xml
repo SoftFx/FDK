@@ -4014,6 +4014,8 @@
     <field name='UsdToDstAssetConversionRate' required='N' />
     <field name='CommOpenReducedFlag' required='N' />
     <field name='CommCloseReducedFlag' required='N' />
+    <field name='MinCommissionCurrency' required='N' />
+    <field name='MinCommissionConversionRate' required='N' />
   </message>
   <message name='ComponentsInfoRequest' msgcat='app' msgtype='U1018'>
     <field name='CompReqID' required='N' />
@@ -7895,5 +7897,6 @@
     <value enum='1' description='PercentPerYear' />
   </field>
   <field number='10213' name='TripleSwapDay' type='INT' />
+  <field number='10214' name='MinCommissionConversionRate' type='FLOAT' />
 </fields>
 </fix>

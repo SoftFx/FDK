@@ -1194,6 +1194,7 @@ namespace FIX
     const int MinCommissionCurrency = 10211;
     const int SwapType = 10212;
     const int TripleSwapDay = 10213;
+    const int MinCommissionConversionRate = 10214;
     const int NoStrategyParameters = 957;
     const int StrategyParameterName = 958;
     const int StrategyParameterType = 959;
