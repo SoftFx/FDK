@@ -343,6 +343,8 @@
       <Member name="UsdToSrcAssetConversionRate" type="double?" />
       <Member name="DstAssetToUsdConversionRate" type="double?" />
       <Member name="UsdToDstAssetConversionRate" type="double?" />
+      <Member name="MinCommissionCurrency" type="astring" />
+      <Member name="MinCommissionConversionRate" type="double?" />
     </Type>
     <Type name="ClosePositionResult" CSharpFullName="SoftFX.Extended.ClosePositionResult" CppFullName="CFxClosePositionResult" kind="class">
       <Member name="ExecutedVolume" type="double" />

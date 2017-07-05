@@ -8,6 +8,12 @@
         public SendLimitOrderExample(string address, string username, string password)
             : base(address, username, password)
         {
+            Trade.ExecutionReport += Trade_ExecutionReport;
+        }
+
+        private void Trade_ExecutionReport(object sender, SoftFX.Extended.Events.ExecutionReportEventArgs e)
+        {
+            Console.WriteLine($"ExecutionReport: {e.Report.ExecutionType} {e.Report.OrderStatus}");
         }
 
         protected override void RunExample()

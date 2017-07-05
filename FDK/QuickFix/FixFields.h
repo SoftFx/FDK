@@ -1196,6 +1196,7 @@ namespace FIX
   DEFINE_CURRENCY(MinCommissionCurrency);
   DEFINE_INT(SwapType);
   DEFINE_INT(TripleSwapDay);
+  DEFINE_FLOAT(MinCommissionConversionRate);
   DEFINE_NUMINGROUP(NoStrategyParameters);
   DEFINE_STRING(StrategyParameterName);
   DEFINE_INT(StrategyParameterType);

@@ -91,6 +91,8 @@ public:
     Nullable<double> UsdToSrcAssetConversionRate;
     Nullable<double> DstAssetToUsdConversionRate;
     Nullable<double> UsdToDstAssetConversionRate;
+    std::string MinCommissionCurrency;
+    Nullable<double> MinCommissionConversionRate;
 };
 
 #pragma warning (pop)

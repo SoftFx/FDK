@@ -1167,6 +1167,8 @@ namespace
 		WriteNullDouble(arg.UsdToSrcAssetConversionRate, buffer);
 		WriteNullDouble(arg.DstAssetToUsdConversionRate, buffer);
 		WriteNullDouble(arg.UsdToDstAssetConversionRate, buffer);
+		WriteAString(arg.MinCommissionCurrency, buffer);
+		WriteNullDouble(arg.MinCommissionConversionRate, buffer);
 	}
 	CFxTradeTransactionReport ReadTradeTransactionReport(MemoryBuffer& buffer)
 	{
@@ -1243,6 +1245,8 @@ namespace
 		result.UsdToSrcAssetConversionRate = ReadNullDouble(buffer);
 		result.DstAssetToUsdConversionRate = ReadNullDouble(buffer);
 		result.UsdToDstAssetConversionRate = ReadNullDouble(buffer);
+		result.MinCommissionCurrency = ReadAString(buffer);
+		result.MinCommissionConversionRate = ReadNullDouble(buffer);
 		return result;
 	}
 	void WriteClosePositionResult(const CFxClosePositionResult& arg, MemoryBuffer& buffer)

@@ -1477,6 +1477,10 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
     double usdToDstAssetConversionRate;
     if (message.TryGetUsdToDstAssetConversionRate(usdToDstAssetConversionRate))
         report.UsdToDstAssetConversionRate = usdToDstAssetConversionRate;
+    message.TryGetMinCommissionCurrency(report.MinCommissionCurrency);
+    double minCommissionConversionRate;
+    if (message.TryGetMinCommissionConversionRate(minCommissionConversionRate))
+        report.MinCommissionConversionRate = minCommissionConversionRate;
 
     m_receiver->VTradeTransactionReport(info, report);
 }

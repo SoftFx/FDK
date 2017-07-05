@@ -2240,6 +2240,16 @@
             Null in case of Balance and Credit transactions.
             </summary>
         </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.MinCommissionCurrency">
+            <summary>
+            Minimal Commission Currency
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.MinCommissionConversionRate">
+            <summary>
+            Minimal Commission Conversion Rate
+            </summary>
+        </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.IsIoC">
             <summary>
             Is IoC flag

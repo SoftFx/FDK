@@ -992,6 +992,8 @@ namespace SoftFX.Extended.Generated
 			result.UsdToSrcAssetConversionRate = buffer.ReadNullDouble();
 			result.DstAssetToUsdConversionRate = buffer.ReadNullDouble();
 			result.UsdToDstAssetConversionRate = buffer.ReadNullDouble();
+			result.MinCommissionCurrency = buffer.ReadAString();
+			result.MinCommissionConversionRate = buffer.ReadNullDouble();
 			return result;
 		}
 		public static void WriteTradeTransactionReport(this MemoryBuffer buffer, SoftFX.Extended.Reports.TradeTransactionReport arg)
@@ -1068,6 +1070,8 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteNullDouble(arg.UsdToSrcAssetConversionRate);
 			buffer.WriteNullDouble(arg.DstAssetToUsdConversionRate);
 			buffer.WriteNullDouble(arg.UsdToDstAssetConversionRate);
+			buffer.WriteAString(arg.MinCommissionCurrency);
+			buffer.WriteNullDouble(arg.MinCommissionConversionRate);
 		}
 		public static SoftFX.Extended.ClosePositionResult ReadClosePositionResult(this MemoryBuffer buffer)
 		{

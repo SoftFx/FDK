@@ -190,6 +190,10 @@ namespace FIX44
     FIELD_SET_EX(bool, CommOpenReducedFlag);
     FIELD_SET(*this, FIX::CommCloseReducedFlag);
     FIELD_SET_EX(bool, CommCloseReducedFlag);
+    FIELD_SET(*this, FIX::MinCommissionCurrency);
+    FIELD_SET_EX(std::string, MinCommissionCurrency);
+    FIELD_SET(*this, FIX::MinCommissionConversionRate);
+    FIELD_SET_EX(double, MinCommissionConversionRate);
   };
 
 }

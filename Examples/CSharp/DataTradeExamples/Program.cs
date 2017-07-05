@@ -4,14 +4,14 @@
     {
         static void Main()
         {
-            string address = "tp.dev.soft-fx.eu";
-            string username = "5";
+            string address = "localhost";
+            string username = "9";
             string password = "123qwe!";
 
             //var example = new TradeServerInfoExample(address, username, password);
             //var example = new AccountInfoExample(address, username, password);
-            //var example = new SendLimitOrderExample(address, username, password);
-            var example = new SendMarketOrderExample(address, username, password);
+            var example = new SendLimitOrderExample(address, username, password);
+            //var example = new SendMarketOrderExample(address, username, password);
             //var example = new SendStopOrderExample(address, username, password);
             //var example = new CloseAllPositionsExample(address, username, password);
             //var example = new ClosePositionExample(address, username, password);
