@@ -39,6 +39,14 @@
             return Native.Client.WaitForLogon(this.handle, (uint)timeoutInMilliseconds);
         }
 
+        public bool Dispose()
+        {
+            this.VerifyInitialized();
+
+            var status = Native.Client.Dispose(this.handle);
+            return status == HResults.S_OK;
+        }
+
         public bool Shutdown()
         {
             this.VerifyInitialized();

@@ -511,6 +511,10 @@
         <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
         <Return type="bool" />
       </Method>
+      <Method name="Dispose">
+        <Param name="instance" type="lptr" direction="in"/>
+        <Return type="int32" />
+      </Method>
       <Method name="Shutdown">
         <Param name="instance" type="lptr" direction="in"/>
         <Return type="int32" />

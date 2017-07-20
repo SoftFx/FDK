@@ -335,16 +335,17 @@ namespace
 	const unsigned short LrpComponent_ClientServer_Id = 3;
 	const unsigned short LrpMethod_ClientServer_Start_Id = 0;
 	const unsigned short LrpMethod_ClientServer_WaitForLogon_Id = 1;
-	const unsigned short LrpMethod_ClientServer_Shutdown_Id = 2;
-	const unsigned short LrpMethod_ClientServer_Stop_Id = 3;
-	const unsigned short LrpMethod_ClientServer_NextId_Id = 4;
-	const unsigned short LrpMethod_ClientServer_GetProtocolVersion_Id = 5;
-	const unsigned short LrpMethod_ClientServer_GetNextMessage_Id = 6;
-	const unsigned short LrpMethod_ClientServer_DispatchMessage_Id = 7;
-	const unsigned short LrpMethod_ClientServer_GetNetworkActivity_Id = 8;
-	const unsigned short LrpMethod_ClientServer_SendTwoFactorResponse_Id = 9;
-	const unsigned short LrpMethod_ClientServer_GetSessionInfo_Id = 10;
-	const unsigned short LrpMethod_ClientServer_GetFileChunk_Id = 11;
+	const unsigned short LrpMethod_ClientServer_Dispose_Id = 2;
+	const unsigned short LrpMethod_ClientServer_Shutdown_Id = 3;
+	const unsigned short LrpMethod_ClientServer_Stop_Id = 4;
+	const unsigned short LrpMethod_ClientServer_NextId_Id = 5;
+	const unsigned short LrpMethod_ClientServer_GetProtocolVersion_Id = 6;
+	const unsigned short LrpMethod_ClientServer_GetNextMessage_Id = 7;
+	const unsigned short LrpMethod_ClientServer_DispatchMessage_Id = 8;
+	const unsigned short LrpMethod_ClientServer_GetNetworkActivity_Id = 9;
+	const unsigned short LrpMethod_ClientServer_SendTwoFactorResponse_Id = 10;
+	const unsigned short LrpMethod_ClientServer_GetSessionInfo_Id = 11;
+	const unsigned short LrpMethod_ClientServer_GetFileChunk_Id = 12;
 
 	typedef void (*LrpInvoke_ClientServer_Method_Handler)(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel);
 	void LrpInvoke_ClientServer_Start(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
@@ -367,6 +368,16 @@ namespace
 		auto result = component.WaitForLogon(arg0, arg1);
 		buffer.Reset(offset);
 		WriteBoolean(result, buffer);
+	}
+	void LrpInvoke_ClientServer_Dispose(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	{
+		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
+		auto& component = pChannel->GetClientServer();
+		component; // if all methods of component are static then the next line generates warning #4189
+		auto arg0 = ReadLocalPointer(buffer);
+		auto result = component.Dispose(arg0);
+		buffer.Reset(offset);
+		WriteInt32(result, buffer);
 	}
 	void LrpInvoke_ClientServer_Shutdown(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
@@ -487,6 +498,7 @@ namespace
 	{
 		LrpInvoke_ClientServer_Start,
 		LrpInvoke_ClientServer_WaitForLogon,
+		LrpInvoke_ClientServer_Dispose,
 		LrpInvoke_ClientServer_Shutdown,
 		LrpInvoke_ClientServer_Stop,
 		LrpInvoke_ClientServer_NextId,
@@ -501,7 +513,7 @@ namespace
 
 	HRESULT LrpInvoke_ClientServer(size_t offset, size_t methodId, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
-		if(methodId >= 12)
+		if(methodId >= 13)
 		{
 			return LRP_INVALID_METHOD_ID;
 		}
@@ -1423,6 +1435,7 @@ extern "C" const char* __stdcall LrpSignature()
 	"$ClientServer;"
 		"Start@D6D8EA3E5548AA39324649E62568D973;"
 		"WaitForLogon@66A89EC21889604B2016EDFA6EAC691A;"
+		"Dispose@7189470EB16C52D4B54C79280AC338C0;"
 		"Shutdown@515DE9A60D3AE51097A9C8B5D33C776D;"
 		"Stop@B9A940F484C4A3F91B7251CAE563D7A5;"
 		"NextId@33F915FA304E2F5151757D7DE561DF0D;"
