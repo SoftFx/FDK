@@ -27,6 +27,12 @@ bool CClientImpl::Start(void* handle)
     return result;
 }
 
+HRESULT CClientImpl::Dispose(void* handle)
+{
+    FxRef<CClient> client = ClientFromHandle(handle);
+    const HRESULT result = client->Dispose();
+    return result;
+}
 HRESULT CClientImpl::Shutdown(void* handle)
 {
     FxRef<CClient> client = ClientFromHandle(handle);

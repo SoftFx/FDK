@@ -22,6 +22,7 @@ public:
 
     bool Start();
 
+    HRESULT Dispose();
     HRESULT Shutdown();
     HRESULT Stop();
 

@@ -7,6 +7,7 @@ class CClientImpl
 public:
     bool Start(void* handle);
     bool WaitForLogon(void* handle, size_t timeoutInMilliseconds);
+    HRESULT Dispose(void* handle);
     HRESULT Shutdown(void* handle);
     HRESULT Stop(void* handle);
     string NextId(void* handle);

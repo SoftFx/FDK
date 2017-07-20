@@ -400,6 +400,7 @@
                     service_.Dispose();
 #endif
             }
+            this.handle.Dispose();
         }
 
 #if LOG_PERFORMANCE

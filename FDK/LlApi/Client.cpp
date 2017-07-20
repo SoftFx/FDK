@@ -60,6 +60,12 @@ bool CClient::Start()
     }
 }
 
+HRESULT CClient::Dispose()
+{
+    Release();
+    return S_OK;
+}
+
 HRESULT CClient::Shutdown()
 {
     CLock lock(m_stateSynchronizer);
