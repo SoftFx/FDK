@@ -70,8 +70,12 @@
                 clientId = string.Empty;
             if (newComment == null)
                 newComment = string.Empty;
+            if (newComment == string.Empty)
+                newComment = "<empty>";
             if (newTag == null)
                 newTag = string.Empty;
+            if (newTag == string.Empty)
+                newTag = "<empty>";
 
             this.VerifyInitialized();
 
