@@ -76,7 +76,7 @@ private:
 
 private:
     FIX::SessionSettings m_settings;
-    FIX::MemoryStoreFactory m_messageStorefactory;
+    FIX::NullStoreFactory m_messageStorefactory;
     FIX::SessionID m_sessionID;
     string m_username;
     string m_password;

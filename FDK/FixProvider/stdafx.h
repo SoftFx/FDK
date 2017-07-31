@@ -62,7 +62,7 @@ using namespace std;
 #include "../QuickFix/SocketInitiator.h"
 #include "../QuickFix/FileLog.h"
 #include "../QuickFix/DictionariesManager.h"
-
+#include "../QuickFix/NullStore.h"
 
 #include "../QuickFix/fix44/Logon.h"
 #include "../QuickFix/FileStore.h"
