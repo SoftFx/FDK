@@ -311,6 +311,7 @@
     <ClInclude Include="MessageStore.h" />
     <ClInclude Include="MSXML_DOMDocument.h" />
     <ClInclude Include="Mutex.h" />
+    <ClInclude Include="NullStore.h" />    
     <ClInclude Include="Parser.h" />
     <ClInclude Include="Responder.h" />
     <ClInclude Include="Session.h" />
@@ -354,6 +355,7 @@
     <ClCompile Include="MessageSorters.cpp" />
     <ClCompile Include="MessageStore.cpp" />
     <ClCompile Include="MSXML_DOMDocument.cpp" />
+    <ClCompile Include="NullStore.cpp" />
     <ClCompile Include="Parser.cpp" />
     <ClCompile Include="Session.cpp" />
     <ClCompile Include="SessionFactory.cpp" />
