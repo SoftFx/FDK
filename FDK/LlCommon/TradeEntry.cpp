@@ -13,6 +13,7 @@ namespace FDK
         m_type = TradeType_None;
         m_side = TradeSide_None;
         m_volume = 0;
+        m_maxVisibleVolume = nullptr;
         m_price = nullptr;
         m_stopPrice = nullptr;
         m_commission = 0;
@@ -28,6 +29,7 @@ namespace FDK
         , m_side(entry.m_side)
         , m_symbol(entry.m_symbol)
         , m_volume(entry.m_volume)
+        , m_maxVisibleVolume(entry.m_maxVisibleVolume)
         , m_price(entry.m_price)
         , m_stopPrice(entry.m_stopPrice)
         , m_commission(entry.m_commission)
@@ -50,6 +52,7 @@ namespace FDK
             m_side = entry.m_side;
             m_symbol = entry.m_symbol;
             m_volume = entry.m_volume;
+            m_maxVisibleVolume = entry.m_maxVisibleVolume;
             m_price = entry.m_price;
             m_stopPrice = entry.m_stopPrice;
             m_staticMarginRate = entry.m_staticMarginRate;
@@ -71,12 +74,13 @@ namespace FDK
     #define FX_RESTORE_NEW
 #endif
 
-    void CTradeEntry::Construct(TradeType type, TradeSide side, const char* symbol, double volume, Nullable<double> price, Nullable<double> stopPrice, double commission, double agentCommission, double swap, Nullable<double> staticMarginRate)
+    void CTradeEntry::Construct(TradeType type, TradeSide side, const char* symbol, double volume, Nullable<double> maxVisibleVolume, Nullable<double> price, Nullable<double> stopPrice, double commission, double agentCommission, double swap, Nullable<double> staticMarginRate)
     {
         m_type = type;
         m_side = side;
         new (&m_symbol) std::string(symbol);
         m_volume = volume;
+        m_maxVisibleVolume = maxVisibleVolume;
         m_price = price;
         m_stopPrice = stopPrice;
         m_commission = commission;
@@ -129,6 +133,18 @@ namespace FDK
     void CTradeEntry::SetVolume(const double newVolume)
     {
         m_volume = ValidatePositiveOrZeroValue(__FUNCTION__, "newVolume", newVolume);
+    }
+
+    void CTradeEntry::SetMaxVisibleVolume(const Nullable<double> newMaxVisibleVolume)
+    {
+        if (newMaxVisibleVolume.HasValue())
+        {
+            m_maxVisibleVolume = ValidatePositiveOrZeroValue(__FUNCTION__, "newMaxVisibleVolume", newMaxVisibleVolume.Value());
+        }
+        else
+        {
+            m_maxVisibleVolume.Reset();
+        }
     }
 
     void CTradeEntry::SetPrice(const Nullable<double> newPrice)
@@ -287,6 +303,7 @@ namespace FDK
         Process("Symbol", entry.m_symbol, stream);
         Process("Price", entry.m_price, stream);
         Process("Volume", entry.m_volume, stream);
+        Process("MaxVisibleVolume", entry.m_maxVisibleVolume, stream);
         Process("Commission", entry.m_commission, stream);
         Process("AgentCommission", entry.m_agentCommission, stream);
         Process("Swap", entry.m_swap, stream);
@@ -307,6 +324,7 @@ namespace FDK
         Process("Symbol", entry.m_symbol, stream);
         Process("Price", entry.m_price, stream);
         Process("Volume", entry.m_volume, stream);
+        Process("MaxVisibleVolume", entry.m_maxVisibleVolume, stream);
         Process("Commission", entry.m_commission, stream);
         Process("AgentCommission", entry.m_agentCommission, stream);
         Process("Swap", entry.m_swap, stream);

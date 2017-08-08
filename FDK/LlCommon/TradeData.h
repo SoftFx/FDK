@@ -15,6 +15,7 @@ namespace FDK
         TradeSide Side;
         string Symbol;
         double Volume;
+        Nullable<double> MaxVisibleVolume;
         Nullable<double> Price;
         Nullable<double> StopPrice;
         double Commission;

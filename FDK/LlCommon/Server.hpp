@@ -189,8 +189,8 @@ extern "C" const char* __stdcall LrpSignature()
 	return 
 	"$Exceptions;"
 	"$Serializer;"
-		"Serialize@D438B340F4B0DCE07C0727A816BDB261;"
-		"Deserialize@913ED7230CFE1990501B4248E11143A0;"
+		"Serialize@DE88522E384D78A2A6942A4379468514;"
+		"Deserialize@46E7349F3E5054A6EC4DDF9E36F04899;"
 	"$FinCalc;"
 		"Constructor@9891140067A7206F09C78A3E4B47A617;"
 		"Destructor@578A3F61986EADEE8A91305955BD65E4;"

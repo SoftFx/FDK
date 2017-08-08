@@ -38,6 +38,7 @@
 			<Member name="Side" type="TradeSide" />
 			<Member name="Symbol" type="astring" />
 			<Member name="Volume" type="double" />
+			<Member name="MaxVisibleVolume" type="double?" />
 			<Member name="Price" type="double?" />
 			<Member name="StopPrice" type="double?" />
       <Member name="Commission" type="double" />

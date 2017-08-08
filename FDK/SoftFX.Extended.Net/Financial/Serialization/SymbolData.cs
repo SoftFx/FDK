@@ -30,6 +30,8 @@
             this.MarginFactorOfPositions = entry.MarginFactorOfPositions;
             this.MarginFactorOfLimitOrders = entry.MarginFactorOfLimitOrders;
             this.MarginFactorOfStopOrders = entry.MarginFactorOfStopOrders;
+            this.StopOrderMarginReduction = entry.StopOrderMarginReduction;
+            this.HiddenLimitOrderMarginReduction = entry.HiddenLimitOrderMarginReduction;
         }
 
         internal SymbolEntry CreateEntry(FinancialCalculator owner)
@@ -41,7 +43,9 @@
                 Hedging = this.Hedging,
                 MarginFactorOfPositions = this.MarginFactorOfPositions,
                 MarginFactorOfLimitOrders = this.MarginFactorOfLimitOrders,
-                MarginFactorOfStopOrders = this.MarginFactorOfStopOrders
+                MarginFactorOfStopOrders = this.MarginFactorOfStopOrders,
+                StopOrderMarginReduction = this.StopOrderMarginReduction,
+                HiddenLimitOrderMarginReduction = this.HiddenLimitOrderMarginReduction
             };
 
             return result;
@@ -100,5 +104,17 @@
         /// </summary>
         [XmlAttribute("MarginFactorOfStopOrders")]
         public double MarginFactorOfStopOrders { get; set; }
+
+        /// <summary>
+        /// For internal usage only
+        /// </summary>
+        [XmlAttribute("StopOrderMarginReduction")]
+        public double? StopOrderMarginReduction { get; set; }
+
+        /// <summary>
+        /// For internal usage only
+        /// </summary>
+        [XmlAttribute("HiddenLimitOrderMarginReduction")]
+        public double? HiddenLimitOrderMarginReduction { get; set; }
     }
 }

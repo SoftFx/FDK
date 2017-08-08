@@ -7,6 +7,7 @@ namespace FDK
         : Type(TradeType_None)
         , Side(TradeSide_None)
         , Volume()
+        , MaxVisibleVolume()
         , Price()
         , StopPrice()
         , Commission()
@@ -28,6 +29,7 @@ namespace FDK
         Side = entry.GetSide();
         Symbol = entry.GetSymbol();
         Volume = entry.GetVolume();
+        MaxVisibleVolume = entry.GetMaxVisibleVolume();
         Price = entry.GetPrice();
         StopPrice = entry.GetStopPrice();
         Commission = entry.GetCommission();
@@ -42,7 +44,7 @@ namespace FDK
 
     CTradeEntry CTradeData::ToTradeEntry() const
     {
-        CTradeEntry result(Type, Side, Symbol, Volume, Price, StopPrice, Rate);
+        CTradeEntry result(Type, Side, Symbol, Volume, MaxVisibleVolume, Price, StopPrice, Rate);
         result.Tag = Tag;
         result.m_commission = Commission;
         result.m_agentCommission = AgentCommission;

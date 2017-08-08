@@ -30,16 +30,18 @@
         /// <param name="side"></param>
         /// <param name="symbol"></param>
         /// <param name="volume"></param>
+        /// <param name="maxVisibleVolume"></param>
         /// <param name="price"></param>
         /// <param name="stopPrice"></param>
         /// <param name="staticMarginRate"></param>
-        public TradeEntry(AccountEntry owner, TradeRecordType type, TradeRecordSide side, string symbol, double volume, double? price, double? stopPrice, double? staticMarginRate = null)
+        public TradeEntry(AccountEntry owner, TradeRecordType type, TradeRecordSide side, string symbol, double volume, double? maxVisibleVolume, double? price, double? stopPrice, double? staticMarginRate = null)
             : base(owner)
         {
             this.Type = type;
             this.Side = side;
             this.Symbol = symbol;
             this.Volume = volume;
+            this.MaxVisibleVolume = maxVisibleVolume;
             this.Price = price;
             this.StopPrice = stopPrice;
             //this.StaticMarginRate = staticMarginRate;
@@ -89,6 +91,12 @@
         /// </summary>
         [Category("Parameters")]
         public double Volume { get; set; }
+
+        /// <summary>
+        /// Gets and sets trade max visible volume.
+        /// </summary>
+        [Category("Parameters")]
+        public double? MaxVisibleVolume { get; set; }
 
         /// <summary>
         /// Gets and sets trade price.
