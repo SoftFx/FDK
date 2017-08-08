@@ -93,7 +93,7 @@
         /// <param name="assetCurrency">Asset currency.</param>
         /// <param name="currency">Deposit currency.</param>
         /// <returns>Rate or null if rate cannot be calculated.</returns>
-        
+
         public static double? CalculateAssetRate(FinancialCalculator calculator, double asset, string assetCurrency, string currency)
         {
             if (calculator == null)
@@ -124,14 +124,14 @@
 
             var count = this.Owner.Symbols.CurrenciesCount;
             var assets = Enumerable.Range(0, count).Select(o => new Asset(this)).ToArray();
-                
+
             var status = AccountEntryStatus.Calculated;
 
             foreach (var element in this.Trades)
             {
                 if (element.Type != TradeRecordType.Position)
                     continue;
-                
+
                 var symbol = element.SymbolEntry;
                 if (symbol == null)
                 {
@@ -376,7 +376,7 @@
         /// <summary>
         /// Gets total commission.
         /// </summary>
-        [Category("Calculated")]        
+        [Category("Calculated")]
         public double Commission
         {
             get
@@ -434,7 +434,7 @@
         {
             get
             {
-                return this.roundingService ?? (this.roundingService = this.CreateDefaultRoundingService()); 
+                return this.roundingService ?? (this.roundingService = this.CreateDefaultRoundingService());
             }
             set
             {
@@ -444,7 +444,7 @@
 
         IAccountRoundingService CreateDefaultRoundingService()
         {
-            return new AccountRoundingService(FinancialRounding.Instance, DefaultPrecision.Instance, this.Currency);
+            return new AccountRoundingService(FinancialRounding.Instance, Owner, this.Currency);
         }
 
         #endregion

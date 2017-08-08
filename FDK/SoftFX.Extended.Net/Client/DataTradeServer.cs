@@ -189,6 +189,9 @@
         /// The method deletes an existing pending order.
         /// </summary>
         /// <param name="operationId">
+        /// Can be null, in this case FDK generates a new unique operation ID automatically.
+        /// Otherwise, please use GenerateOperationId method of DataClient object.
+        /// </param>
         /// <param name="orderId">An existing pending order ID.</param>
         /// <param name="side">Order side: buy or sell.</param>
         /// <param name="timeoutInMilliseconds">Timeout of the synchronous operation.</param>

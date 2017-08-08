@@ -197,9 +197,7 @@
 
             if (currencyUpdate != null)
             {
-                var provider = new SymbolInfoFeaturesProvider();
-                var features = provider.GetInfo(new FixProtocolVersion(this.feed.UsedProtocolVersion));
-                var currencies = features.IsCurrencySortOrderSupported ? currencyUpdate.OrderBy(o => o.SortOrder).Select(o => o.Name) : MajorCurrencies;
+                var currencies = currencyUpdate.OrderBy(o => o.SortOrder).Select(c => new CurrencyEntry(this.calculator, c.Name, c.Precision, c.SortOrder));
 
                 this.calculator.Currencies.Clear();
 

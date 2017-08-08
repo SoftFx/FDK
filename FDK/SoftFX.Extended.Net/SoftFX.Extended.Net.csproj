@@ -110,6 +110,7 @@
     <Compile Include="Events\CurrencyInfoEventArgs.cs" />
     <Compile Include="Events\SubscribedEventArgs.cs" />
     <Compile Include="Events\TwoFactorAuthEventArgs.cs" />
+    <Compile Include="Financial\Entries\CurrencyEntry.cs" />
     <Compile Include="Financial\Rounding\CurrencyPrecisionProvider.cs" />
     <Compile Include="Financial\Rounding\DefaultPrecision.cs" />
     <Compile Include="Financial\Rounding\FinancialRounding.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Financial\Rounding\IRounding.cs" />
     <Compile Include="Financial\Rounding\IRoundingService.cs" />
     <Compile Include="Financial\Rounding\AccountRoundingService.cs" />
+    <Compile Include="Financial\Serialization\CurrencyData.cs" />
     <Compile Include="Financial\State\Processor.cs" />
     <Compile Include="Financial\State\UpdateHandler.cs" />
     <Compile Include="Library\DeviceIdGenerator.cs" />

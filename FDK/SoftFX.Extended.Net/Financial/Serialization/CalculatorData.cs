@@ -36,7 +36,7 @@
 
             this.Accounts.AddRange(calculator.Accounts.Select(o => new AccountData(o)));
 
-            this.Currencies.AddRange(calculator.Currencies);
+            this.Currencies.AddRange(calculator.Currencies.Select(o => o.Name));
         }
 
         internal FinancialCalculator CreateCalculator()
@@ -65,7 +65,8 @@
 
             foreach (var element in this.Currencies)
             {
-                result.Currencies.Add(element);
+                var entry = new CurrencyEntry(result, element, 2, 0);
+                result.Currencies.Add(entry);
             }
 
             return result;
