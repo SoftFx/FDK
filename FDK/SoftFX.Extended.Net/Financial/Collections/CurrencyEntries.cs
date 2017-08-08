@@ -1,58 +1,110 @@
 ﻿namespace SoftFX.Extended.Financial
 {
     using System;
-    using System.Collections.ObjectModel;
+    using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
-    /// Represents list of the most quoted currencies.
+    /// Provides access to currency entries collection.
     /// </summary>
-    public class CurrencyEntries : Collection<string>
+    public class CurrencyEntries : FinancialEntries<CurrencyEntry>
     {
-        #region Overrides 
+        #region Construction
 
         /// <summary>
-        /// Inserts a currency at the specified index.
+        /// Creates a new instance of currency entires.
         /// </summary>
-        /// <param name="index">The zero-based index at which currency should be inserted.</param>
-        /// <param name="currency">The currency to insert. The value cannot be null.</param>
-        protected override void InsertItem(int index, string currency)
+        /// <param name="owner">a valid instance of financial calculator</param>
+        public CurrencyEntries(FinancialCalculator owner)
+            : base(owner)
         {
-            if (currency == null)
-                throw new ArgumentNullException(nameof(currency));
-
-            this.VerifyAlredyExists(currency);
-
-            base.InsertItem(index, currency);
-        }
-
-        /// <summary>
-        /// Replaces the currency at the specified index.
-        /// </summary>
-        /// <param name="index">The zero-based index of the element to replace.</param>
-        /// <param name="currency">The new value for the currency at the specified index. The value cannot be null.</param>
-        protected override void SetItem(int index, string currency)
-        {
-            if (currency == null)
-                throw new ArgumentNullException(nameof(currency));
-
-            if (this[index] == currency)
-                return;
-
-            this.VerifyAlredyExists(currency);
-
-            base.SetItem(index, currency);
-        }
-
-        void VerifyAlredyExists(string currency)
-        {
-            if (this.Contains(currency))
-            {
-                var message = string.Format("The container is already contains currency = {0}.", currency);
-                throw new ArgumentException(message, nameof(currency));
-            }
+            this.currencies = new Dictionary<string, CurrencyEntry>();
+            this.HasBeenChanged = true;
         }
 
         #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Adds a new currency entry to the container.
+        /// </summary>
+        /// <param name="currency">a valid currency entry</param>
+        public override void Add(CurrencyEntry currency)
+        {
+            if (this.Any(o => o.Name == currency.Name))
+            {
+                var message = string.Format("Duplicate currency = {0}", currency.Name);
+                throw new ArgumentException(message, nameof(currency));
+            }
+
+            base.Add(currency);
+            currencies.Add(currency.Name, currency);
+            this.HasBeenChanged = true;
+        }
+
+        /// <summary>
+        /// Adds a new currency entry to the container.
+        /// </summary>
+        /// <param name="currency">currency name</param>
+        public void Add(string currency)
+        {
+            Add(new CurrencyEntry(null, currency, 2, 0));
+        }
+
+        /// <summary>
+        /// Removes an existing currency entry from the container.
+        /// </summary>
+        /// <param name="currency">a valid currency entry</param>
+        public override bool Remove(CurrencyEntry currency)
+        {
+            this.HasBeenChanged = true;
+            currencies.Remove(currency.Name);
+            return base.Remove(currency);
+        }
+
+        /// <summary>
+        /// Removes an existing currency entry from the container.
+        /// </summary>
+        /// <param name="currency">currency name</param>
+        public bool Remove(string currency)
+        {
+            var entry = TryGetCurrencyEntry(currency);
+            if (entry != null)
+            {
+                this.HasBeenChanged = true;
+                return base.Remove(entry);
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="currency"></param>
+        /// <returns></returns>
+        public bool Contains(string currency)
+        {
+            return TryGetCurrencyEntry(currency) != null;
+        }
+
+        /// <summary>
+        /// Removes all existing entries.
+        /// </summary>
+        public override void Clear()
+        {
+            base.Clear();
+            this.HasBeenChanged = true;
+        }
+
+        #endregion
+
+        internal CurrencyEntry TryGetCurrencyEntry(string currency)
+        {
+            CurrencyEntry result;
+            this.currencies.TryGetValue(currency, out result);
+            return result;
+        }
 
         /// <summary>
         /// Exchanges two currencies.
@@ -61,9 +113,18 @@
         /// <param name="second">A zero based index of a currency</param>
         public void Exchange(int first, int second)
         {
-            var firstItem = this.Items[first];
-            this.Items[first] = this.Items[second];
-            this.Items[second] = firstItem;
         }
+
+        #region Internal Properties
+
+        internal bool HasBeenChanged { get; private set; }
+
+        #endregion
+
+        #region Fields
+
+        readonly IDictionary<string, CurrencyEntry> currencies;
+
+        #endregion
     }
 }

@@ -8,12 +8,13 @@
 
     static class CalculatorConvert
     {
-        public static CurrencyInfo ToCurrencyInfo(string currency, int priority)
+        public static CurrencyInfo ToCurrencyInfo(CurrencyEntry currency, int priority)
         {
             return new CurrencyInfo
             {
-                Name = currency,
-                SortOrder = priority,
+                Name = currency.Name,
+                Precision = currency.Precision,
+                SortOrder = currency.SortOrder,
                 Id = (short)currency.GetHashCode()
             };
         }
