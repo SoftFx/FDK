@@ -273,6 +273,32 @@
             <param name="config">Server common configuration</param>        
             <returns>Set server time request</returns>
         </member>
+        <member name="M:TickTrader.BusinessObjects.Requests.ValidateMarginRequest.Create(System.Int64,TickTrader.BusinessObjects.OrderTypes,TickTrader.BusinessObjects.OrderSides,System.String,System.Decimal,System.Nullable{System.Decimal},System.Nullable{System.Decimal})">
+            <summary>
+            Create validate margin request with required parameters.
+            </summary>
+            <param name="login">Account login of the target account</param>
+            <param name="OrderType">Order type (market, limit, stop)</param>
+            <param name="OrderSide">Order side (buy, sell)</param>
+            <param name="Symbol">Symbol name</param>
+            <param name="Amount">Amount</param>
+            <param name="StopPrice"> Stop price</param>
+            <param name="Price">Price</param>
+            <returns>Validate margin request</returns>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.Requests.ValidateMarginRequest.CreateClient(System.Int64,TickTrader.BusinessObjects.OrderTypes,TickTrader.BusinessObjects.OrderSides,System.String,System.Decimal,System.Nullable{System.Decimal},System.Nullable{System.Decimal})">
+            <summary>
+            Create validate margin request with required parameters (client emulation).
+            </summary>
+            <param name="login">Account login of the target account</param>
+            <param name="OrderType">Order type (market, limit, stop)</param>
+            <param name="OrderSide">Order side (buy, sell)</param>
+            <param name="Symbol">Symbol name</param>
+            <param name="Amount">Amount</param>
+            <param name="StopPrice">Stop price</param>
+            <param name="Price">Price</param>
+            <returns>Validate margin request</returns>
+        </member>
         <member name="M:TickTrader.BusinessObjects.Requests.WebApiTokenModifyRequest.Create(System.String,TickTrader.BusinessObjects.WebApiAuthenticationType,System.Nullable{TickTrader.BusinessObjects.WebApiRights})">
             <summary>
             Create modify Web API token request with required parameters.

@@ -25,16 +25,16 @@ namespace FDK
         LLCOMMON_API CTradeEntry& operator = (const CTradeEntry& entry);
         LLCOMMON_API ~CTradeEntry();
     public:
-        inline CTradeEntry(TradeType type, TradeSide side, const char* symbol, double volume, Nullable<double> price, Nullable<double> stopPrice, Nullable<double> staticMarginRate = nullptr)
+        inline CTradeEntry(TradeType type, TradeSide side, const char* symbol, double volume, Nullable<double> maxVisibleVolume, Nullable<double> price, Nullable<double> stopPrice, Nullable<double> staticMarginRate = nullptr)
         {
-            Construct(type, side, symbol, volume, price, stopPrice, 0, 0, 0, staticMarginRate);
+            Construct(type, side, symbol, volume, maxVisibleVolume, price, stopPrice, 0, 0, 0, staticMarginRate);
         }
-        inline CTradeEntry(TradeType type, TradeSide side, const std::string& symbol, double volume, Nullable<double> price, Nullable<double> stopPrice, Nullable<double> staticMarginRate = nullptr)
+        inline CTradeEntry(TradeType type, TradeSide side, const std::string& symbol, double volume, Nullable<double> maxVisibleVolume, Nullable<double> price, Nullable<double> stopPrice, Nullable<double> staticMarginRate = nullptr)
         {
-            Construct(type, side, symbol.c_str(), volume, price, stopPrice, 0, 0, 0, staticMarginRate);
+            Construct(type, side, symbol.c_str(), volume, maxVisibleVolume, price, stopPrice, 0, 0, 0, staticMarginRate);
         }
     private:
-        LLCOMMON_API void Construct(TradeType type, TradeSide side, const char* symbol, double volume, Nullable<double> price, Nullable<double> stopPrice, double commission, double agentCommission, double swap, Nullable<double> staticMarginRate);
+        LLCOMMON_API void Construct(TradeType type, TradeSide side, const char* symbol, double volume, Nullable<double> maxVisibleVolume, Nullable<double> price, Nullable<double> stopPrice, double commission, double agentCommission, double swap, Nullable<double> staticMarginRate);
     public:
         LLCOMMON_API void Clear();
     public: // gets and sets of type
@@ -52,6 +52,9 @@ namespace FDK
     public: // gets and sets of volume
         inline double GetVolume() const { return m_volume; }
         LLCOMMON_API void SetVolume(const double newVolume);
+    public: // gets and sets of max visible volume
+        inline Nullable<double> GetMaxVisibleVolume() const { return m_maxVisibleVolume; }
+        LLCOMMON_API void SetMaxVisibleVolume(const Nullable<double> newMaxVisibleVolume);
     public: // gets and sets of price
         inline Nullable<double> GetPrice() const { return m_price; }
         LLCOMMON_API void SetPrice(const Nullable<double> newPrice);
@@ -94,6 +97,7 @@ namespace FDK
         TradeSide m_side;
         LrpString m_symbol;
         double m_volume;
+        Nullable<double> m_maxVisibleVolume;
         Nullable<double> m_price;
         Nullable<double> m_stopPrice;
         double m_commission;

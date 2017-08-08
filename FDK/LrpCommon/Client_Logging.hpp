@@ -971,6 +971,10 @@ namespace
 		_stream << ';';
 		LrpWriteWString("SecurityDescription", arg.SecurityDescription, _stream);
 		_stream << ';';
+		LrpWriteNullDouble("StopOrderMarginReduction", arg.StopOrderMarginReduction, _stream);
+		_stream << ';';
+		LrpWriteNullDouble("HiddenLimitOrderMarginReduction", arg.HiddenLimitOrderMarginReduction, _stream);
+		_stream << ';';
 		_stream<<"}";
 	}
 	void LrpWriteAStringArray(const char* name, const std::vector<std::string>& arg, std::ostream& _stream)

@@ -196,6 +196,7 @@ namespace
 		WriteTradeSide(arg.Side, buffer);
 		WriteAString(arg.Symbol, buffer);
 		WriteDouble(arg.Volume, buffer);
+		WriteNullDouble(arg.MaxVisibleVolume, buffer);
 		WriteNullDouble(arg.Price, buffer);
 		WriteNullDouble(arg.StopPrice, buffer);
 		WriteDouble(arg.Commission, buffer);
@@ -215,6 +216,7 @@ namespace
 		result.Side = ReadTradeSide(buffer);
 		result.Symbol = ReadAString(buffer);
 		result.Volume = ReadDouble(buffer);
+		result.MaxVisibleVolume = ReadNullDouble(buffer);
 		result.Price = ReadNullDouble(buffer);
 		result.StopPrice = ReadNullDouble(buffer);
 		result.Commission = ReadDouble(buffer);

@@ -650,6 +650,8 @@ namespace
 		WriteAString(arg.StatusGroupId, buffer);
 		WriteAString(arg.SecurityName, buffer);
 		WriteWString(arg.SecurityDescription, buffer);
+		WriteNullDouble(arg.StopOrderMarginReduction, buffer);
+		WriteNullDouble(arg.HiddenLimitOrderMarginReduction, buffer);
 	}
 	CFxSymbolInfo ReadSymbolInfo7(MemoryBuffer& buffer)
 	{
@@ -688,6 +690,8 @@ namespace
 		result.StatusGroupId = ReadAString(buffer);
 		result.SecurityName = ReadAString(buffer);
 		result.SecurityDescription = ReadWString(buffer);
+		result.StopOrderMarginReduction = ReadNullDouble(buffer);
+		result.HiddenLimitOrderMarginReduction = ReadNullDouble(buffer);
 		return result;
 	}
 	void WriteAStringArray(const std::vector<std::string>& arg, MemoryBuffer& buffer)

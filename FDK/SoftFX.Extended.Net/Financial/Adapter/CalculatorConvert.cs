@@ -31,7 +31,9 @@
                 MarginFactorFractional = symbol.MarginFactor,
                 MarginHedged = symbol.Hedging,
                 SortOrder = symbol.SortOrder,
-                MarginMode = ToMarginCalculationModes(symbol.MarginCalcMode)
+                MarginMode = ToMarginCalculationModes(symbol.MarginCalcMode),
+                StopOrderMarginReduction = symbol.StopOrderMarginReduction ?? 1,
+                HiddenLimitOrderMarginReduction = symbol.HiddenLimitOrderMarginReduction ?? 1
             };
         }
 

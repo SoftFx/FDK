@@ -42,7 +42,7 @@
 
         public decimal? MaxVisibleAmount
         {
-            get { return null; }
+            get { return this.entry.MaxVisibleVolume.HasValue ? (decimal?)this.entry.MaxVisibleVolume.Value : null; }
             set { }
         }
 
