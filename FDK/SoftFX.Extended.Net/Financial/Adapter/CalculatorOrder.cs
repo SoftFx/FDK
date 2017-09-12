@@ -104,6 +104,18 @@
             get { return this.entry.Symbol; }
         }
 
+        public string MarginCurrency
+        {
+            get { return null; }
+            set { }
+        }
+
+        public string ProfitCurrency
+        {
+            get { return null; }
+            set { }
+        }
+
         public OrderTypes Type
         {
             get { return CalculatorConvert.ToOrderTypes( this.entry.Type); }
