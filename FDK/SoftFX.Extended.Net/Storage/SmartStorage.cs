@@ -121,6 +121,85 @@
             ticks.Reverse();
         }
 
+        public Quote[] GetQuotes(string symbol, DateTime startTime, int quotesNumber, int depth)
+        {
+            try
+            {
+                if (depth == 0)
+                    depth = int.MaxValue;
+
+                if (this.source != null)
+                    return this.GetOnlineQuotes(symbol, startTime, quotesNumber, depth);
+                else
+                    return this.GetOfflineQuotes(symbol, startTime, quotesNumber, depth);
+            }
+            catch (StorageHistoryNotFoundException ex)
+            {
+                throw new HistoryNotFoundException("GetQuotes", ex);
+            }
+        }
+
+        Quote[] GetOnlineQuotes(string symbol, DateTime startTime, int quotesNumber, int depth)
+        {
+            var includeLevel2 = depth != 1;
+
+            var manager = this.storage.GetOrCreateHistoryManager(symbol);
+
+            var ticks = new List<TickValue>();
+            if (quotesNumber > 0)
+                ForwardFillTicks(manager, symbol, includeLevel2, startTime, quotesNumber, ticks);
+            else if (quotesNumber < 0)
+                BackwardFillTicks(manager, symbol, includeLevel2, startTime, -quotesNumber, ticks);
+
+            var converter = new StorageConvert();
+            var result = ticks.Select(o => converter.ToQuote(symbol, o, depth)).ToArray();
+
+            return result;
+        }
+
+        Quote[] GetOfflineQuotes(string symbol, DateTime startTime, int quotesNumber, int depth)
+        {
+            var includeLevel2 = depth != 1;
+
+            var manager = this.storage.GetOrCreateHistoryManager(symbol);
+            var report = manager.QueryTickHistory(startTime, -quotesNumber, symbol, includeLevel2);
+
+            var items = report.Items;
+
+            var converter = new StorageConvert();
+            if (quotesNumber > 0)
+                return items.Select(o => converter.ToQuote(symbol, o, depth)).ToArray();
+            else if (quotesNumber < 0)
+                return items.Select(o => converter.ToQuote(symbol, o, depth)).Reverse().ToArray();
+
+            return Enumerable.Empty<Quote>().ToArray();
+        }
+
+        static void ForwardFillTicks(IHistoryManager cache, string symbol, bool includeLevel2, DateTime startTime, int quotesNumber, ICollection<TickValue> ticks)
+        {
+            try
+            {
+                var report = cache.QueryTickHistory(startTime, -quotesNumber, symbol, includeLevel2);
+                var items = report.Items;
+                var count = items.Count - 1;
+
+                for (var index = 0; index < count; ++index)
+                {
+                    var value = items[index];
+                    ticks.Add(value);
+                }
+            }
+            catch (StorageHistoryNotFoundException)
+            {
+            }
+        }
+
+        static void BackwardFillTicks(IHistoryManager cache, string symbol, bool includeLevel2, DateTime startTime, int quotesNumber, List<TickValue> ticks)
+        {
+            ForwardFillTicks(cache, symbol, includeLevel2, startTime, quotesNumber, ticks);
+            ticks.Reverse();
+        }
+
         #endregion
 
         #region GetBars Method
@@ -159,7 +238,7 @@
         {
             try
             {
-                for (var current = startTime; current < endTime; )
+                for (var current = startTime; current < endTime;)
                 {
                     var report = cache.QueryBarHistory(current, -RequestedBarsNumber, symbol, periodicity.ToString(), priceType);
                     var items = report.Items;
@@ -190,10 +269,6 @@
             ForwardFillBars(cache, symbol, periodicity, priceType, endTime, startTime, bars);
             bars.Reverse();
         }
-
-        #endregion
-
-        #region GetBars Method
 
         public Bar[] GetBars(string symbol, PriceType priceType, BarPeriod period, DateTime startTime, int barsNumber)
         {
