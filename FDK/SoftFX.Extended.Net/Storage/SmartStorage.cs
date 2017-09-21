@@ -128,6 +128,17 @@
                 if (depth == 0)
                     depth = int.MaxValue;
 
+                var includeLevel2 = depth != 1;
+                var manager = this.storage.GetOrCreateHistoryManager(symbol);
+                var endTime = startTime.AddHours((quotesNumber > 0) ? 1 : -1);
+
+                if (this.source != null)
+                {
+                    // online mode
+                    if (!manager.TicksAreSynchronized(this.source, symbol, includeLevel2, startTime, endTime, false))
+                        manager.SynchronizeTicks(this.source, symbol, includeLevel2, startTime, endTime, false, NullCallback);
+                }
+
                 if (this.source != null)
                     return this.GetOnlineQuotes(symbol, startTime, quotesNumber, depth);
                 else
