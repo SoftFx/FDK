@@ -132,6 +132,9 @@
                 var manager = this.storage.GetOrCreateHistoryManager(symbol);
                 var endTime = startTime.AddHours((quotesNumber > 0) ? 1 : -1);
 
+                if (symbol.EndsWith("_L"))
+                    endTime = startTime.AddMonths((quotesNumber > 0) ? 1 : -1);
+
                 if (this.source != null)
                 {
                     // online mode
@@ -207,7 +210,7 @@
 
         static void BackwardFillTicks(IHistoryManager cache, string symbol, bool includeLevel2, DateTime startTime, int quotesNumber, List<TickValue> ticks)
         {
-            ForwardFillTicks(cache, symbol, includeLevel2, startTime, quotesNumber, ticks);
+            ForwardFillTicks(cache, symbol, includeLevel2, startTime, -quotesNumber, ticks);
             ticks.Reverse();
         }
 
