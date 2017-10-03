@@ -106,13 +106,13 @@
 
         public string MarginCurrency
         {
-            get { return null; }
+            get { return this.entry.SymbolEntry.MarginCurrency; }
             set { }
         }
 
         public string ProfitCurrency
         {
-            get { return null; }
+            get { return this.entry.SymbolEntry.ProfitCurrency; }
             set { }
         }
 
