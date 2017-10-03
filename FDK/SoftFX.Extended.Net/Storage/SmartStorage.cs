@@ -195,7 +195,7 @@
             {
                 var report = cache.QueryTickHistory(startTime, -quotesNumber, symbol, includeLevel2);
                 var items = report.Items;
-                var count = items.Count - 1;
+                var count = items.Count;
 
                 for (var index = 0; index < count; ++index)
                 {
