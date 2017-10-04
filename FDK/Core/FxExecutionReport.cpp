@@ -42,10 +42,6 @@ bool CFxExecutionReport::TryGetTradeRecord(CFxOrder& order) const
     {
         return true;
     }
-    if (TryGetFilledMarketOrder(order))
-    {
-        return true;
-    }
     if (TryGetLimitOrder(order))
     {
         return true;
