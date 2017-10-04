@@ -31,6 +31,8 @@
 
             var cashAccount = new CashAccountInfo(account, this.assets.Values);
 
+            var orders = cashAccount.Orders.ToList();
+
             using (var calculator = new CashAccountCalculator(cashAccount, state))
             {
             }
