@@ -131,9 +131,12 @@
             }
         }
 
-        public MarketHistoryFileReport QueryTickHistoryFile(DateTime to, string symbol, bool includeLevel2)
+        public MarketHistoryFileReport QueryTickHistoryFile(DateTime from, DateTime to, string symbol, bool includeLevel2)
         {
-            return this.Attempt(this.DoQueryTicksHistoryFile, to, symbol, includeLevel2);
+            if (to != from)
+                throw new Exception("Range tick history queries are unsupported");
+
+            return this.Attempt(this.DoQueryTicksHistoryFile, from, symbol, includeLevel2);
         }
 
         MarketHistoryFileReport DoQueryTicksHistoryFile(DateTime to, string symbol, bool includeLevel2)
@@ -180,10 +183,13 @@
             return result;
         }
 
-        public MarketBarHistoryFileReport QueryBarHistoryFile(DateTime to, string symbol, string periodicity, FxPriceType priceType)
+        public MarketBarHistoryFileReport QueryBarHistoryFile(DateTime from, DateTime to, string symbol, string periodicity, FxPriceType priceType)
         {
+            if (to != from)
+                throw new Exception("Range bar history queries are unsupported");
+
             var type = StorageConvert.ToPriceType(priceType);
-            return this.Attempt(this.DoQueryBarHistoryFile, to, symbol, periodicity, type);
+            return this.Attempt(this.DoQueryBarHistoryFile, from, symbol, periodicity, type);
         }
 
         MarketBarHistoryFileReport DoQueryBarHistoryFile(DateTime to, string symbol, string periodicity, PriceType type)
