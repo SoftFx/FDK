@@ -14,6 +14,14 @@
             Dealer Ip Address is automatically filled by TradeHost
             </summary>
         </member>
+        <member name="M:TickTrader.BusinessObjects.ManagerRightsDomain.Clone">
+            <summary>
+            Creates a new object that is a copy of the current instance.
+            </summary>
+            <returns>
+            A new object that is a copy of this instance.
+            </returns>
+        </member>
         <member name="T:TickTrader.BusinessObjects.SystemPerformanceCounterTypes">
             <summary>
             Contains enums used in Monitoring as System Performance Counters
@@ -195,6 +203,26 @@
             <param name="description">Desired description</param>
             <param name="address">Desired address</param>
             <returns>New machine request</returns>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.Requests.ManagerDomainsModifyRequest.Create(System.Int32,System.String,System.String,TickTrader.BusinessObjects.ManagerRightsDomain)">
+            <summary>
+            Create modify manager domains request with required parameters.
+            </summary>
+            <param name="ConfigVersion">Configuration version</param>
+            <param name="ManagerDomainsId">Manager domains Id</param>
+            <param name="Domains">Manager domains pattern (null if you want to keep previous value)</param>
+            <param name="Rights">Manager domains rights (null if you want to keep previous value)</param>
+            <returns>New manager domains request</returns>
+        </member>
+        <member name="M:TickTrader.BusinessObjects.Requests.ManagerDomainsNewRequest.Create(System.Int32,System.Int16,System.String,TickTrader.BusinessObjects.ManagerRightsDomain)">
+            <summary>
+            Create new manager domains request with required parameters.
+            </summary>
+            <param name="ConfigVersion">Configuration version</param>
+            <param name="ManagerId">Manager Id</param>
+            <param name="Domains">Manager domains pattern</param>
+            <param name="Rights">Manager groups rights</param>
+            <returns>New manager domains request</returns>
         </member>
         <member name="M:TickTrader.BusinessObjects.Requests.ModuleModifyRequest.Create(System.String,System.String,System.String,System.String,System.Nullable{System.Boolean},System.String,System.String,System.String,System.String,System.Int32,TickTrader.BusinessObjects.Configuration.ServerModuleConfig)">
             <summary>
@@ -597,6 +625,14 @@
             <param name="targets">Drop session targets</param>
             <returns>New drop sessions request</returns>
         </member>
+        <member name="M:TickTrader.BusinessObjects.Requests.DropSessionsRequest.CreateForLogin(System.String,TickTrader.BusinessObjects.Requests.DropSessionsTargets)">
+            <summary>
+            Create drop sessions request for the given login.
+            </summary>
+            <param name="login">Desired login</param>
+            <param name="targets">Drop session targets</param>
+            <returns>New drop sessions request</returns>
+        </member>
         <member name="M:TickTrader.BusinessObjects.Requests.DropSessionsRequest.CreateForGroup(System.Int16,TickTrader.BusinessObjects.Requests.DropSessionsTargets)">
             <summary>
             Create drop sessions request for the given group.
@@ -887,7 +923,7 @@
             <param name="bids">bids list</param>
             <param name="asks">asks list</param>
         </member>
-        <member name="M:TickTrader.BusinessObjects.Level2Collection.#ctor(System.Collections.Generic.List{TickTrader.BusinessObjects.Level2Value},System.Int32,System.Byte,System.Byte)">
+        <member name="M:TickTrader.BusinessObjects.Level2Collection.#ctor(System.Collections.Generic.List{TickTrader.BusinessObjects.Level2Value},System.Int32,System.Int32,System.Int32)">
             <summary>
             Warning should be sorted in collection and proper offset set
             </summary>
@@ -1213,6 +1249,11 @@
              </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.Order.CurrentPrice">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.Order.TransferringCoefficient">
              <summary>
             
              </summary>
@@ -2289,6 +2330,12 @@
         <member name="P:TickTrader.BusinessObjects.TradeReport.MinCommissionConversionRate">
             <summary>
             Minimal Commission Conversion Rate
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessObjects.TradeReport.TransferringCoefficient">
+            <summary>
+            Transfering Coefficient
+            Null in all other cases.
             </summary>
         </member>
         <member name="P:TickTrader.BusinessObjects.TradeReport.IsIoC">
