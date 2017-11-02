@@ -54,6 +54,17 @@
             }
         }
 
+        /// <summary>
+        /// Returns financial calculator owner.
+        /// </summary>
+        public object Owner
+        {
+            get
+            {
+                return this.owner;
+            }
+        }
+
         #endregion
 
         #region Public Methods
