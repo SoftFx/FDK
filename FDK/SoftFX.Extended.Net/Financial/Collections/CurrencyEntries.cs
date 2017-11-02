@@ -49,7 +49,7 @@
         /// <param name="currency">currency name</param>
         public void Add(string currency)
         {
-            Add(new CurrencyEntry(null, currency, 2, 0));
+            Add(new CurrencyEntry(this.Owner as FinancialCalculator, currency, 2, 0));
         }
 
         /// <summary>
