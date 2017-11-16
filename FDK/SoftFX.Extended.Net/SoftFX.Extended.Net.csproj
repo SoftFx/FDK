@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SoftFX.Extended</RootNamespace>
     <AssemblyName>SoftFX.Extended.Net</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <!-- <SccProjectName>Svn</SccProjectName>
     <SccLocalPath>Svn</SccLocalPath>

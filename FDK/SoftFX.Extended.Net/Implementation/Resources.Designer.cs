@@ -66,7 +66,7 @@ namespace SoftFX.Extended.Implementation {
         ///  &lt;!-- current version of API--&gt;
         ///  &lt;?define FDK_ID = &quot;{C5E0CA48-93DD-47D6-BCEA-FD41A724496B}&quot;?&gt;
         ///  &lt;?define FDK_UPGRADE_ID = &quot;{9B40F93E-5D50-4D0A-ABFC-A23EB1A5A30B}&quot;?&gt; &lt;!--DO NOT CHANGE IT!--&gt;
-        ///  &lt;?define Version = &apos;1.17.0&apos;?&gt;
+        ///  &lt;?define Version = &apos;1.18.0&apos;?&gt;
         ///  &lt;?define FullVersion = $(var.Version)?&gt;
         ///  &lt;?define FriendlyName=FDK $(var.Version) version?&gt;
         ///  &lt;?define EnableNet = &apos;yes&apos;?&gt;
