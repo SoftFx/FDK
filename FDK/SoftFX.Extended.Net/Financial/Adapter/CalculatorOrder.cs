@@ -80,6 +80,7 @@
         public decimal? StopPrice
         {
             get { return (decimal)this.entry.StopPrice; }
+            set { }
         }
 
         public decimal RemainingAmount
