@@ -73,13 +73,13 @@
 
         public decimal? Price
         {
-            get { return (decimal)this.entry.Price; }
+            get { return (decimal?)this.entry.Price; }
             set { }
         }
 
         public decimal? StopPrice
         {
-            get { return (decimal)this.entry.StopPrice; }
+            get { return (decimal?)this.entry.StopPrice; }
             set { }
         }
 
