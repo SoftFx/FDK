@@ -15,6 +15,7 @@
             {
                 Currency = o.Currency,
                 Volume = o.Balance,
+                LockedVolume = o.LockedAmount,
                 DepositCurrency = o.Balance,
                 Rate = 1
             });
