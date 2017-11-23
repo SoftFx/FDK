@@ -233,9 +233,10 @@ bool CFxExecutionReport::TryGetStopLimitOrder(CFxOrder& order) const
 
     CopyCommonFieldsToRecord(order);
 
-    order.Type = FxTradeRecordType_StopLimit;
+    order.Type = ImmediateOrCancel ? FxTradeRecordType_StopLimit_IoC : FxTradeRecordType_StopLimit;
     order.Price = Price.Value();
     order.StopPrice = StopPrice;
+    order.ImmediateOrCancel = ImmediateOrCancel;
 
     return true;
 }

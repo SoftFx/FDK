@@ -104,6 +104,8 @@
                     return OrderTypes.Limit;
                 case TradeRecordType.StopLimit:
                     return OrderTypes.StopLimit;
+                case TradeRecordType.StopLimit_IoC:
+                    return OrderTypes.StopLimit;
             }
 
             throw new ArgumentException("type");
