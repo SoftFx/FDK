@@ -32,8 +32,13 @@
         MarketWithSlippage = 5,
 
         /// <summary>
-        /// Stop limti order.
+        /// Stop limit order.
         /// </summary>
-        StopLimit = 6
+        StopLimit = 6,
+
+        /// <summary>
+        /// Stop limit IoC order.
+        /// </summary>
+        StopLimit_IoC = 7
     }
 }

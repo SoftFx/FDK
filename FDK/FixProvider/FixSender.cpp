@@ -185,7 +185,7 @@ void CFixSender::VSendUnsubscribeQuotes(const string& id, const vector<string>& 
     for (auto& symbol : symbols)
     {
         m_connection->Unsubscribe(symbol);
-        
+
         CFxEventInfo eventInfo;
         m_connection->VReceiver()->VUnsubscribed(eventInfo, symbol);
     }
@@ -319,7 +319,7 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
         if (required.StopPrice.HasValue())
             message.SetStopPx(required.StopPrice.Value());
     }
-    else if (FxTradeRecordType_StopLimit == required.Type)
+    else if ((FxTradeRecordType_StopLimit == required.Type) || (FxTradeRecordType_StopLimit_IoC == required.Type))
     {
         message.SetOrdType(FIX::OrdType_STOP_LIMIT);
         if (required.Price.HasValue())
@@ -372,7 +372,7 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
     }
     else
     {
-        if (FxTradeRecordType_IoC == required.Type)
+        if ((FxTradeRecordType_IoC == required.Type) || (FxTradeRecordType_StopLimit_IoC == required.Type))
             message.SetTimeInForce(FIX::TimeInForce_IMMEDIATE_OR_CANCEL);
         else
             message.SetTimeInForce(FIX::TimeInForce_GOOD_TILL_CANCEL);
@@ -406,7 +406,7 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
 
     if (m_version.SupportsMarketWithSlippage())
     {
-        if (FxTradeRecordType_IoC == required.Type)
+        if ((FxTradeRecordType_IoC == required.Type) || (FxTradeRecordType_StopLimit_IoC == required.Type))
             message.SetImmediateOrCancelFlag(FIX::ImmediateOrCancelFlag_YES);
 
         if (FxTradeRecordType_MarketWithSlippage == required.Type)

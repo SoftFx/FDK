@@ -37,6 +37,10 @@
 
         /// <summary>
         /// </summary>
-        StopLimit = 6
+        StopLimit = 6,
+
+        /// <summary>
+        /// </summary>
+        StopLimit_IoC = 7
     }
 }
