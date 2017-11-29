@@ -48,10 +48,10 @@ Session::Session( Application& application,
   m_targetDefaultApplVerID(ApplVerID_FIX50),
   m_sendRedundantResendRequests( false ),
   m_checkCompId( true ),
-  m_checkLatency( false ), 
+  m_checkLatency( false ),
   m_maxLatency( 120 ),
   m_resetOnLogon( false ),
-  m_resetOnLogout( false ), 
+  m_resetOnLogout( false ),
   m_resetOnDisconnect( false ),
   m_refreshOnLogon( false ),
   m_millisecondsInTimeStamp( true ),
@@ -96,7 +96,7 @@ void Session::insertSendingTime( Header& header )
 
   header.setField( SendingTime(now, showMilliseconds && m_millisecondsInTimeStamp) );
 
-  
+
 }
 
 void Session::insertOrigSendingTime( Header& header, const UtcTimeStamp& when )
@@ -110,7 +110,7 @@ void Session::insertOrigSendingTime( Header& header, const UtcTimeStamp& when )
 
   header.setField( OrigSendingTime(when, showMilliseconds && m_millisecondsInTimeStamp) );
 
-  
+
 }
 
 void Session::fill( Header& header )
@@ -124,7 +124,7 @@ void Session::fill( Header& header )
   header.setField( MsgSeqNum( getExpectedSenderNum() ) );
   insertSendingTime( header );
 
-  
+
 }
 
 void Session::next()
@@ -204,7 +204,7 @@ void Session::next( const UtcTimeStamp& timeStamp )
     disconnect();
   }
 
-  
+
 }
 
 void Session::nextLogon( const Message& logon, const UtcTimeStamp& timeStamp )
@@ -250,7 +250,7 @@ void Session::nextLogon( const Message& logon, const UtcTimeStamp& timeStamp )
     return;
   m_state.receivedLogon( true );
 
-  if ( !m_state.initiate() 
+  if ( !m_state.initiate()
        || (m_state.receivedReset() && !m_state.sentReset()) )
   {
     if( logon.isSetField(m_state.heartBtInt()) )
@@ -280,7 +280,7 @@ void Session::nextLogon( const Message& logon, const UtcTimeStamp& timeStamp )
   if ( isLoggedOn() )
     m_application.onLogon(logon, m_sessionID );
 
-  
+
 }
 
 void Session::nextHeartbeat( const Message& heartbeat, const UtcTimeStamp& timeStamp )
@@ -290,7 +290,7 @@ void Session::nextHeartbeat( const Message& heartbeat, const UtcTimeStamp& timeS
   m_state.incrNextTargetMsgSeqNum();
   nextQueued( timeStamp );
 
-  
+
 }
 
 void Session::nextTestRequest( const Message& testRequest, const UtcTimeStamp& timeStamp )
@@ -301,7 +301,7 @@ void Session::nextTestRequest( const Message& testRequest, const UtcTimeStamp& t
   m_state.incrNextTargetMsgSeqNum();
   nextQueued( timeStamp );
 
-  
+
 }
 
 void Session::nextLogout( const Message& logout, const UtcTimeStamp& timeStamp )
@@ -321,7 +321,7 @@ void Session::nextLogout( const Message& logout, const UtcTimeStamp& timeStamp )
   if ( m_resetOnLogout ) m_state.reset();
   disconnect(&logout);
 
-  
+
 }
 
 void Session::nextReject( const Message& reject, const UtcTimeStamp& timeStamp )
@@ -331,7 +331,7 @@ void Session::nextReject( const Message& reject, const UtcTimeStamp& timeStamp )
   m_state.incrNextTargetMsgSeqNum();
   nextQueued( timeStamp );
 
-  
+
 }
 
 void Session::nextSequenceReset( const Message& sequenceReset, const UtcTimeStamp& timeStamp )
@@ -362,7 +362,7 @@ void Session::nextSequenceReset( const Message& sequenceReset, const UtcTimeStam
       generateReject( sequenceReset, SessionRejectReason_VALUE_IS_INCORRECT );
   }
 
-  
+
 }
 
 void Session::nextResendRequest( const Message& resendRequest, const UtcTimeStamp& timeStamp )
@@ -410,7 +410,7 @@ void Session::nextResendRequest( const Message& resendRequest, const UtcTimeStam
 
   for ( i = messages.begin(); i != messages.end(); ++i )
   {
-    const DataDictionary& sessionDD = 
+    const DataDictionary& sessionDD =
       m_dataDictionaryProvider.getSessionDataDictionary(m_sessionID.getBeginString());
 
     if( m_sessionID.isFIXT() )
@@ -475,7 +475,7 @@ void Session::nextResendRequest( const Message& resendRequest, const UtcTimeStam
   if( !isTargetTooHigh(msgSeqNum) && !isTargetTooLow(msgSeqNum) )
     m_state.incrNextTargetMsgSeqNum();
 
-  
+
 }
 
 bool Session::send( Message& message )
@@ -485,7 +485,7 @@ bool Session::send( Message& message )
   message.getHeader().removeField( FIELD::OrigSendingTime );
   return sendRaw( message );
 
-  
+
 }
 
 bool Session::sendRaw( Message& message, int num )
@@ -565,7 +565,7 @@ bool Session::sendRaw( Message& message, int num )
     return false;
   }
 
-  
+
 }
 
 bool Session::send( const std::string& string )
@@ -575,92 +575,92 @@ bool Session::send( const std::string& string )
   m_state.onOutgoing( string );
   return m_pResponder->send( string );
 
-  
+
 }
 
 void Session::disconnect(const Message* pMessage /* = nullptr */)
 {
-	
-	FIX::Message message;
-	if (nullptr == pMessage)
-	{
-		#ifdef _MSC_VER
-		char buffer[4096] = "";
-		const uint32 code = GetLastError();
-		if (S_OK == code)
-		{
-			message.setField(FIX::FIELD::Text, "Unknown logout event reason.");
-			FIX::LogoutReason reason(FIX::LogoutReason_OTHER);
-			message.setField(reason);
-		}
-		else if (FX_CODE_ERROR_TIMEOUT == code)
-		{
-			message.setField(FIX::FIELD::Text, "FIX protocol timeout has been reached.");
-			FIX::LogoutReason reason(FIX::LogoutReason_TIMEOUT);
-			message.setField(reason);
-		}
-		else
-		{
-			const uint32 status = FormatMessageA(FORMAT_MESSAGE_FROM_SYSTEM, nullptr, code, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buffer, sizeof(buffer), nullptr);
-			std::string text = buffer;
-			const size_t length = text.length();
-			if ((length > 2) && ('\n' == text[length - 1]) && ('\r' == text[length - 2]))
-			{
-				text.erase(text.end() - 2, text.end());
-			}
-			message.setField(FIX::FIELD::Text, text);
-			FIX::LogoutReason reason(FIX::LogoutReason_NETWORK_ERROR);
-			message.setField(reason);
-		}
-		#endif
-	}
-	Locker l(m_mutex);
 
-	if ( m_pResponder )
-	{
-		m_state.onEvent( "Disconnecting" );
+    FIX::Message message;
+    if (nullptr == pMessage)
+    {
+        #ifdef _MSC_VER
+        char buffer[4096] = "";
+        const uint32 code = GetLastError();
+        if (S_OK == code)
+        {
+            message.setField(FIX::FIELD::Text, "Disconnected by server!");
+            FIX::LogoutReason reason(FIX::LogoutReason_OTHER);
+            message.setField(reason);
+        }
+        else if (FX_CODE_ERROR_TIMEOUT == code)
+        {
+            message.setField(FIX::FIELD::Text, "FIX protocol timeout has been reached.");
+            FIX::LogoutReason reason(FIX::LogoutReason_TIMEOUT);
+            message.setField(reason);
+        }
+        else
+        {
+            const uint32 status = FormatMessageA(FORMAT_MESSAGE_FROM_SYSTEM, nullptr, code, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buffer, sizeof(buffer), nullptr);
+            std::string text = buffer;
+            const size_t length = text.length();
+            if ((length > 2) && ('\n' == text[length - 1]) && ('\r' == text[length - 2]))
+            {
+                text.erase(text.end() - 2, text.end());
+            }
+            message.setField(FIX::FIELD::Text, text);
+            FIX::LogoutReason reason(FIX::LogoutReason_NETWORK_ERROR);
+            message.setField(reason);
+        }
+        #endif
+    }
+    Locker l(m_mutex);
 
-		m_pResponder->disconnect();
-		m_pResponder = 0;
-	}
+    if ( m_pResponder )
+    {
+        m_state.onEvent( "Disconnecting" );
 
-	if ( m_state.receivedLogon() || m_state.sentLogon() )
-	{
-		m_state.receivedLogon( false );
-		m_state.sentLogon( false );
-		if(nullptr == pMessage)
-		{
-			m_application.onLogout( message, m_sessionID );
-		}
-		else
-		{
-			m_application.onLogout( *pMessage, m_sessionID );
-		}
-		m_state.reset();
-	}
-	else
-	{
-		if(nullptr == pMessage)
-		{
-			m_application.onLogout( message, m_sessionID );
-		}
-		else
-		{
-			m_application.onLogout( *pMessage, m_sessionID );
-		}
-	}
+        m_pResponder->disconnect();
+        m_pResponder = 0;
+    }
 
-	m_state.sentLogout( false );
-	m_state.receivedReset( false );
-	m_state.sentReset( false );
-	m_state.clearQueue();
-	m_state.logoutReason();
-	if ( m_resetOnDisconnect )
-		m_state.reset();
+    if ( m_state.receivedLogon() || m_state.sentLogon() )
+    {
+        m_state.receivedLogon( false );
+        m_state.sentLogon( false );
+        if(nullptr == pMessage)
+        {
+            m_application.onLogout( message, m_sessionID );
+        }
+        else
+        {
+            m_application.onLogout( *pMessage, m_sessionID );
+        }
+        m_state.reset();
+    }
+    else
+    {
+        if(nullptr == pMessage)
+        {
+            m_application.onLogout( message, m_sessionID );
+        }
+        else
+        {
+            m_application.onLogout( *pMessage, m_sessionID );
+        }
+    }
 
-	m_state.resendRange( 0, 0 );
+    m_state.sentLogout( false );
+    m_state.receivedReset( false );
+    m_state.sentReset( false );
+    m_state.clearQueue();
+    m_state.logoutReason();
+    if ( m_resetOnDisconnect )
+        m_state.reset();
 
-	
+    m_state.resendRange( 0, 0 );
+
+
 }
 
 bool Session::resend( Message& message )
@@ -683,10 +683,10 @@ bool Session::resend( Message& message )
   catch ( DoNotSend& )
   { return false; }
 
-  
+
 }
 
-void Session::persist( const Message& message,  const std::string& messageString ) 
+void Session::persist( const Message& message,  const std::string& messageString )
 throw ( IOException )
 {
   MsgSeqNum msgSeqNum;
@@ -704,7 +704,7 @@ void Session::generateLogon()
   logon.setField( EncryptMethod( 0 ) );
   logon.setField( m_state.heartBtInt() );
   if( m_sessionID.isFIXT() )
-    logon.setField( DefaultApplVerID(m_senderDefaultApplVerID) );  
+    logon.setField( DefaultApplVerID(m_senderDefaultApplVerID) );
   if( m_refreshOnLogon )
     refresh();
   if( m_resetOnLogon )
@@ -719,7 +719,7 @@ void Session::generateLogon()
   m_state.sentLogon( true );
   sendRaw( logon );
 
-  
+
 }
 
 void Session::generateLogon( const Message& aLogon )
@@ -730,7 +730,7 @@ void Session::generateLogon( const Message& aLogon )
   HeartBtInt heartBtInt;
   logon.setField( EncryptMethod( 0 ) );
   if( m_sessionID.isFIXT() )
-    logon.setField( DefaultApplVerID(m_senderDefaultApplVerID) );  
+    logon.setField( DefaultApplVerID(m_senderDefaultApplVerID) );
   if( m_state.receivedReset() )
     logon.setField( ResetSeqNumFlag(true) );
   aLogon.getField( heartBtInt );
@@ -740,7 +740,7 @@ void Session::generateLogon( const Message& aLogon )
   sendRaw( logon );
   m_state.sentLogon( true );
 
-  
+
 }
 
 void Session::generateResendRequest( const BeginString& beginString, const MsgSeqNum& msgSeqNum )
@@ -765,7 +765,7 @@ void Session::generateResendRequest( const BeginString& beginString, const MsgSe
 
   m_state.resendRange( beginSeqNo, msgSeqNum - 1 );
 
-  
+
 }
 
 void Session::generateSequenceReset
@@ -788,7 +788,7 @@ void Session::generateSequenceReset
   m_state.onEvent( "Sent SequenceReset TO: "
                    + IntConvertor::convert( newSeqNo ) );
 
-  
+
 }
 
 void Session::generateHeartbeat()
@@ -799,7 +799,7 @@ void Session::generateHeartbeat()
   fill( heartbeat.getHeader() );
   sendRaw( heartbeat );
 
-  
+
 }
 
 void Session::generateHeartbeat( const Message& testRequest )
@@ -818,7 +818,7 @@ void Session::generateHeartbeat( const Message& testRequest )
 
   sendRaw( heartbeat );
 
-  
+
 }
 
 void Session::generateTestRequest( const std::string& id )
@@ -832,7 +832,7 @@ void Session::generateTestRequest( const std::string& id )
 
   sendRaw( testRequest );
 
-  
+
 }
 
 void Session::generateReject( const Message& message, int err, int field )
@@ -931,7 +931,7 @@ void Session::generateReject( const Message& message, int err, int field )
 
   sendRaw( reject );
 
-  
+
 }
 
 void Session::generateReject( const Message& message, const std::string& str )
@@ -961,7 +961,7 @@ void Session::generateReject( const Message& message, const std::string& str )
   m_state.onEvent( "Message " + msgSeqNum.getString()
                    + " Rejected: " + str );
 
-  
+
 }
 
 void Session::generateBusinessReject( const Message& message, int err, int field )
@@ -1025,7 +1025,7 @@ void Session::generateBusinessReject( const Message& message, int err, int field
 
   sendRaw( reject );
 
-  
+
 }
 
 void Session::generateLogout( const std::string& text )
@@ -1039,7 +1039,7 @@ void Session::generateLogout( const std::string& text )
   sendRaw( logout );
   m_state.sentLogout( true );
 
-  
+
 }
 
 void Session::populateRejectReason( Message& reject, int field,
@@ -1049,7 +1049,7 @@ void Session::populateRejectReason( Message& reject, int field,
   MsgType msgType;
    reject.getHeader().getField( msgType );
 
-  if ( msgType == MsgType_Reject 
+  if ( msgType == MsgType_Reject
        && m_sessionID.getBeginString() >= FIX::BeginString_FIX42 )
   {
     reject.setField( RefTagID( field ) );
@@ -1062,13 +1062,13 @@ void Session::populateRejectReason( Message& reject, int field,
     reject.setField( Text( stream.str() ) );
   }
 
-  
+
 }
 
 void Session::populateRejectReason( Message& reject, const std::string& text )
 {
   reject.setField( Text( text ) );
-  
+
 }
 
 bool Session::verify( const Message& msg, bool checkTooHigh,
@@ -1118,7 +1118,7 @@ bool Session::verify( const Message& msg, bool checkTooHigh,
     if ( (checkTooHigh || checkTooLow) && m_state.resendRequested() )
     {
       SessionState::ResendRange range = m_state.resendRange();
- 
+
       if ( *pMsgSeqNum >= range.second )
       {
         m_state.onEvent ("ResendRequest for messages FROM: " +
@@ -1143,7 +1143,7 @@ bool Session::verify( const Message& msg, bool checkTooHigh,
   fromCallback( pMsgType ? *pMsgType : MsgType(), msg, m_sessionID );
   return true;
 
-  
+
 }
 
 bool Session::shouldSendReset()
@@ -1151,19 +1151,19 @@ bool Session::shouldSendReset()
 
   std::string beginString = m_sessionID.getBeginString();
   return beginString >= FIX::BeginString_FIX41
-    && ( m_resetOnLogon || 
-         m_resetOnLogout || 
+    && ( m_resetOnLogon ||
+         m_resetOnLogout ||
          m_resetOnDisconnect )
     && ( getExpectedSenderNum() == 1 )
     && ( getExpectedTargetNum() == 1 );
 
-  
+
 }
 
 bool Session::validLogonState( const MsgType& msgType )
 {
 
-  if ( (msgType == MsgType_Logon && m_state.sentReset()) 
+  if ( (msgType == MsgType_Logon && m_state.sentReset())
        || (m_state.receivedReset()) )
     return true;
   if ( (msgType == MsgType_Logon && !m_state.receivedLogon())
@@ -1173,14 +1173,14 @@ bool Session::validLogonState( const MsgType& msgType )
     return true;
   if ( msgType != MsgType_Logout && m_state.sentLogout() )
     return true;
-  if ( msgType == MsgType_SequenceReset ) 
+  if ( msgType == MsgType_SequenceReset )
     return true;
   if ( msgType == MsgType_Reject )
     return true;
 
   return false;
 
-  
+
 }
 
 void Session::fromCallback( const MsgType& msgType, const Message& msg,
@@ -1192,7 +1192,7 @@ void Session::fromCallback( const MsgType& msgType, const Message& msg,
   else
     m_application.fromApp( msg, m_sessionID );
 
-  
+
 }
 
 void Session::doBadTime( const Message& msg )
@@ -1201,7 +1201,7 @@ void Session::doBadTime( const Message& msg )
   generateReject( msg, SessionRejectReason_SENDINGTIME_ACCURACY_PROBLEM );
   generateLogout();
 
-  
+
 }
 
 void Session::doBadCompID( const Message& msg )
@@ -1210,7 +1210,7 @@ void Session::doBadCompID( const Message& msg )
   generateReject( msg, SessionRejectReason_COMPID_PROBLEM );
   generateLogout();
 
-  
+
 }
 
 bool Session::doPossDup( const Message& msg )
@@ -1242,7 +1242,7 @@ bool Session::doPossDup( const Message& msg )
   }
   return true;
 
-  
+
 }
 
 bool Session::doTargetTooLow( const Message& msg )
@@ -1266,7 +1266,7 @@ bool Session::doTargetTooLow( const Message& msg )
 
   return doPossDup( msg );
 
-  
+
 }
 
 void Session::doTargetTooHigh( const Message& msg )
@@ -1301,13 +1301,13 @@ void Session::doTargetTooHigh( const Message& msg )
 
   generateResendRequest( beginString, msgSeqNum );
 
-  
+
 }
 
 void Session::nextQueued( const UtcTimeStamp& timeStamp )
 {
   while ( nextQueued( getExpectedTargetNum(), timeStamp ) ) {}
-  
+
 }
 
 bool Session::nextQueued( int num, const UtcTimeStamp& timeStamp )
@@ -1334,7 +1334,7 @@ bool Session::nextQueued( int num, const UtcTimeStamp& timeStamp )
   }
   return false;
 
-  
+
 }
 
 void Session::next( const std::string& msg, const UtcTimeStamp& timeStamp, bool queued )
@@ -1343,7 +1343,7 @@ void Session::next( const std::string& msg, const UtcTimeStamp& timeStamp, bool 
   try
   {
     m_state.onIncoming( msg );
-    const DataDictionary& sessionDD = 
+    const DataDictionary& sessionDD =
       m_dataDictionaryProvider.getSessionDataDictionary(m_sessionID.getBeginString());
     if( m_sessionID.isFIXT() )
     {
@@ -1371,7 +1371,7 @@ void Session::next( const std::string& msg, const UtcTimeStamp& timeStamp, bool 
     throw e;
   }
 
-  
+
 }
 
 void Session::next( const Message& message, const UtcTimeStamp& timeStamp, bool queued )
@@ -1405,7 +1405,7 @@ void Session::next( const Message& message, const UtcTimeStamp& timeStamp, bool 
       }
     }
 
-    const DataDictionary& sessionDataDictionary = 
+    const DataDictionary& sessionDataDictionary =
         m_dataDictionaryProvider.getSessionDataDictionary(m_sessionID.getBeginString());
 
     if( m_sessionID.isFIXT() && message.isApp() )
@@ -1413,7 +1413,7 @@ void Session::next( const Message& message, const UtcTimeStamp& timeStamp, bool 
       ApplVerID applVerID = m_targetDefaultApplVerID;
       if( header.isSetField(FIELD::ApplVerID) )
         header.getField(applVerID);
-      const DataDictionary& applicationDataDictionary = 
+      const DataDictionary& applicationDataDictionary =
         m_dataDictionaryProvider.getApplicationDataDictionary(applVerID);
       DataDictionary::validate( message, &sessionDataDictionary, &applicationDataDictionary );
     }
@@ -1517,7 +1517,7 @@ void Session::next( const Message& message, const UtcTimeStamp& timeStamp, bool 
   if( isLoggedOn() )
     next();
 
-  
+
 }
 
 bool Session::sendToTarget( Message& message, const std::string& qualifier )
@@ -1531,7 +1531,7 @@ throw( SessionNotFound )
   }
   catch ( FieldNotFound& ) { throw SessionNotFound(); }
 
-  
+
 }
 
 bool Session::sendToTarget( Message& message, const SessionID& sessionID )
@@ -1543,7 +1543,7 @@ throw( SessionNotFound )
   if ( !pSession ) throw SessionNotFound();
   return pSession->send( message );
 
-  
+
 }
 
 bool Session::sendToTarget
@@ -1558,7 +1558,7 @@ throw( SessionNotFound )
   message.getHeader().setField( targetCompID );
   return sendToTarget( message, qualifier );
 
-  
+
 }
 
 bool Session::sendToTarget
@@ -1570,7 +1570,7 @@ throw( SessionNotFound )
   return sendToTarget( message, SenderCompID( sender ),
                        TargetCompID( target ), qualifier );
 
-  
+
 }
 
 std::set<SessionID> Session::getSessions()
@@ -1584,7 +1584,7 @@ bool Session::doesSessionExist( const SessionID& sessionID )
   Locker locker( s_mutex );
   return s_sessions.end() != s_sessions.find( sessionID );
 
-  
+
 }
 
 Session* Session::lookupSession( const SessionID& sessionID )
@@ -1597,7 +1597,7 @@ Session* Session::lookupSession( const SessionID& sessionID )
   else
     return 0;
 
-  
+
 }
 
 Session* Session::lookupSession( const std::string& string, bool reverse )
@@ -1625,7 +1625,7 @@ Session* Session::lookupSession( const std::string& string, bool reverse )
   }
   catch ( FieldNotFound& ) { return 0; }
 
-  
+
 }
 
 bool Session::isSessionRegistered( const SessionID& sessionID )
@@ -1634,7 +1634,7 @@ bool Session::isSessionRegistered( const SessionID& sessionID )
   Locker locker( s_mutex );
   return s_registered.end() != s_registered.find( sessionID );
 
-  
+
 }
 
 Session* Session::registerSession( const SessionID& sessionID )
@@ -1647,21 +1647,21 @@ Session* Session::registerSession( const SessionID& sessionID )
   s_registered[ sessionID ] = pSession;
   return pSession;
 
-  
+
 }
 
 void Session::unregisterSession( const SessionID& sessionID )
 {
   Locker locker( s_mutex );
   s_registered.erase( sessionID );
-  
+
 }
 
 int Session::numSessions()
 {
   Locker locker( s_mutex );
   return static_cast<int>(s_sessions.size());
-  
+
 }
 
 bool Session::addSession( Session& s )
@@ -1678,7 +1678,7 @@ bool Session::addSession( Session& s )
   else
     return false;
 
-  
+
 }
 
 void Session::removeSession( Session& s )
@@ -1689,6 +1689,6 @@ void Session::removeSession( Session& s )
   s_sessionIDs.erase( s.m_sessionID );
   s_registered.erase( s.m_sessionID );
 
-  
+
 }
 }
