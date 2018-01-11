@@ -449,7 +449,24 @@ bool CFixExecutionReport::GetMarketWithSlippageFlag() const
     }
     return false;
 }
-
+Nullable<double> CFixExecutionReport::GetFxReqOpenPrice()const
+{
+    double result = 0;
+    if (TryGetReqOpenPrice(result))
+    {
+        return result;
+    }
+    return Nullable<double>();
+}
+Nullable<double> CFixExecutionReport::GetFxReqOpenVolume()const
+{
+    double result = 0;
+    if (TryGetReqOpenQty(result))
+    {
+        return result;
+    }
+    return Nullable<double>();
+}
 void CFixExecutionReport::GetAssets(vector<CAssetInfo>& assets) const
 {
     assets.clear();

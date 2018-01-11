@@ -1127,6 +1127,8 @@ namespace SoftFX.Extended.Generated
 			result.IsReducedCloseCommission = buffer.ReadBoolean();
 			result.ImmediateOrCancel = buffer.ReadBoolean();
 			result.MarketWithSlippage = buffer.ReadBoolean();
+			result.ReqOpenPrice = buffer.ReadNullDouble();
+			result.ReqOpenVolume = buffer.ReadNullDouble();
 			return result;
 		}
 		public static void WriteExecutionReport(this MemoryBuffer buffer, SoftFX.Extended.ExecutionReport arg)
@@ -1168,6 +1170,8 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteBoolean(arg.IsReducedCloseCommission);
 			buffer.WriteBoolean(arg.ImmediateOrCancel);
 			buffer.WriteBoolean(arg.MarketWithSlippage);
+			buffer.WriteNullDouble(arg.ReqOpenPrice);
+			buffer.WriteNullDouble(arg.ReqOpenVolume);
 		}
 		public static SoftFX.Extended.CurrencyInfo ReadCurrencyInfo(this MemoryBuffer buffer)
 		{

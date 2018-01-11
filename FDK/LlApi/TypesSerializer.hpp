@@ -1302,6 +1302,8 @@ namespace
 		WriteBoolean(arg.IsReducedCloseCommission, buffer);
 		WriteBoolean(arg.ImmediateOrCancel, buffer);
 		WriteBoolean(arg.MarketWithSlippage, buffer);
+		WriteNullDouble(arg.ReqOpenPrice, buffer);
+		WriteNullDouble(arg.ReqOpenVolume, buffer);
 	}
 	CFxExecutionReport ReadExecutionReport(MemoryBuffer& buffer)
 	{
@@ -1343,6 +1345,8 @@ namespace
 		result.IsReducedCloseCommission = ReadBoolean(buffer);
 		result.ImmediateOrCancel = ReadBoolean(buffer);
 		result.MarketWithSlippage = ReadBoolean(buffer);
+		result.ReqOpenPrice = ReadNullDouble(buffer);
+		result.ReqOpenVolume = ReadNullDouble(buffer);
 		return result;
 	}
 	void WriteCurrencyInfo(const CFxCurrencyInfo& arg, MemoryBuffer& buffer)

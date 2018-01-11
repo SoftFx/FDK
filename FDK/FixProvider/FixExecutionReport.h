@@ -37,6 +37,8 @@ public:
     bool GetReducedCloseCommissionFlag() const;
     bool GetImmediateOrCancelFlag() const;
     bool GetMarketWithSlippageFlag() const;
+    Nullable<double> GetFxReqOpenPrice() const;
+    Nullable<double> GetFxReqOpenVolume() const;
 public:
     void GetAssets(vector<CAssetInfo>& assets) const;
 public:
