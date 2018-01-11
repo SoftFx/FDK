@@ -182,6 +182,16 @@
         public bool MarketWithSlippage { get; internal set; }
 
         /// <summary>
+        /// Gets ReqOpenPrice field.
+        /// </summary>
+        public double? ReqOpenPrice { get; internal set; }
+
+        /// <summary>
+        /// Gets ReqOpenVolume field.
+        /// </summary>
+        public double? ReqOpenVolume { get; internal set; }
+
+        /// <summary>
         /// Gets ClosePositionRequestId = 10045 field.
         /// </summary>
         public string ClosePositionRequestId { get; internal set; }

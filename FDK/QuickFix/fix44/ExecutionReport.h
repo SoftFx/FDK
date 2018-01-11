@@ -571,6 +571,10 @@ namespace FIX44
     FIELD_SET_EX(bool, CommCloseReducedFlag);
     FIELD_SET(*this, FIX::TradeRequestID);
     FIELD_SET_EX(std::string, TradeRequestID);
+    FIELD_SET(*this, FIX::ReqOpenPrice);
+    FIELD_SET_EX(double, ReqOpenPrice);
+    FIELD_SET(*this, FIX::ReqOpenQty);
+    FIELD_SET_EX(double, ReqOpenQty);
     FIELD_SET(*this, FIX::NoContraBrokers);
     FIELD_SET_EX(int, NoContraBrokers);
     class NoContraBrokers: public FIX::Group

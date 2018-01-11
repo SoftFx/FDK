@@ -811,6 +811,8 @@ void CFixConnection::OnExecution(const CFixExecutionReport& message)
     report.ImmediateOrCancel = message.GetImmediateOrCancelFlag();
     report.MarketWithSlippage = message.GetMarketWithSlippageFlag();
     report.Swap = message.GetFxSwap();
+    report.ReqOpenPrice = message.GetFxReqOpenPrice();
+    report.ReqOpenVolume = message.GetFxReqOpenVolume();
 
     message.GetAssets(report.Assets);
 

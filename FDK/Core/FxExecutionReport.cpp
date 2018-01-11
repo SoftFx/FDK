@@ -30,6 +30,9 @@ CFxExecutionReport::CFxExecutionReport()
 
     ImmediateOrCancel = false;
     MarketWithSlippage = false;
+
+    ReqOpenPrice = numeric_limits<double>::quiet_NaN();
+    ReqOpenVolume = numeric_limits<double>::quiet_NaN();
 }
 
 bool CFxExecutionReport::TryGetTradeRecord(CFxOrder& order) const

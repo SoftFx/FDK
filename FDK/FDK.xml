@@ -389,6 +389,8 @@
       <Member name="IsReducedCloseCommission" type="bool" />
       <Member name="ImmediateOrCancel" type="bool" />
       <Member name="MarketWithSlippage" type="bool" />
+      <Member name="ReqOpenPrice" type="double?" />
+      <Member name="ReqOpenVolume" type="double?" />
     </Type>
     <Type name="CurrencyInfo" CSharpFullName="SoftFX.Extended.CurrencyInfo" CppFullName="CFxCurrencyInfo" kind="class">
       <Member name="Name" type="astring" />

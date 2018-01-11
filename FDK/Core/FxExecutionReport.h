@@ -32,6 +32,8 @@ public:
     bool IsReducedCloseCommission;
     bool ImmediateOrCancel;
     bool MarketWithSlippage;
+    Nullable<double> ReqOpenPrice;
+    Nullable<double> ReqOpenVolume;
 public:
     string OrderId;
     string ClientOrderId;
