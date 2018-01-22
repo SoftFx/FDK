@@ -111,6 +111,8 @@
       <arg value="${SourcesDir}\${BuildDir}\SoftFX.FDK.${Build}.nupkg" />
       <arg value="-ApiKey" />
       <arg value="834d16fb-4069-41f6-83ae-c90572576442" />
+      <arg value="-Source" />
+      <arg value="https://www.nuget.org/api/v2/package" />
     </exec>
   </target>
 
