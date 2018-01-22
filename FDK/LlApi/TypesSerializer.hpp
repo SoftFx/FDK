@@ -842,6 +842,7 @@ namespace
 		WriteDouble(arg.AgentCommission, buffer);
 		WriteDouble(arg.Swap, buffer);
 		WriteNullDouble(arg.Profit, buffer);
+		WriteFxOrderType(arg.InitialType, buffer);
 		WriteFxOrderType(arg.Type, buffer);
 		WriteTradeRecordSide(arg.Side, buffer);
 		WriteNullTime(arg.Expiration, buffer);
@@ -854,6 +855,8 @@ namespace
 		WriteBoolean(arg.IsReducedCloseCommission, buffer);
 		WriteBoolean(arg.ImmediateOrCancel, buffer);
 		WriteBoolean(arg.MarketWithSlippage, buffer);
+		WriteNullBoolean(arg.IOCOverride, buffer);
+		WriteNullBoolean(arg.IFMOverride, buffer);
 	}
 	CFxOrder ReadFxOrder(MemoryBuffer& buffer)
 	{
@@ -872,6 +875,7 @@ namespace
 		result.AgentCommission = ReadDouble(buffer);
 		result.Swap = ReadDouble(buffer);
 		result.Profit = ReadNullDouble(buffer);
+		result.InitialType = ReadFxOrderType(buffer);
 		result.Type = ReadFxOrderType(buffer);
 		result.Side = ReadTradeRecordSide(buffer);
 		result.Expiration = ReadNullTime(buffer);
@@ -884,6 +888,8 @@ namespace
 		result.IsReducedCloseCommission = ReadBoolean(buffer);
 		result.ImmediateOrCancel = ReadBoolean(buffer);
 		result.MarketWithSlippage = ReadBoolean(buffer);
+		result.IOCOverride = ReadNullBoolean(buffer);
+		result.IFMOverride = ReadNullBoolean(buffer);
 		return result;
 	}
 	void WriteFxOrderArray(const std::vector<CFxOrder>& arg, MemoryBuffer& buffer)
@@ -1107,6 +1113,7 @@ namespace
 		WriteDouble(arg.LeavesQuantity, buffer);
 		WriteDouble(arg.Price, buffer);
 		WriteDouble(arg.StopPrice, buffer);
+		WriteTradeRecordType(arg.InitialTradeRecordType, buffer);
 		WriteTradeRecordType(arg.TradeRecordType, buffer);
 		WriteTradeRecordSide(arg.TradeRecordSide, buffer);
 		WriteAString(arg.Symbol, buffer);
@@ -1185,6 +1192,7 @@ namespace
 		result.LeavesQuantity = ReadDouble(buffer);
 		result.Price = ReadDouble(buffer);
 		result.StopPrice = ReadDouble(buffer);
+		result.InitialTradeRecordType = ReadTradeRecordType(buffer);
 		result.TradeRecordType = ReadTradeRecordType(buffer);
 		result.TradeRecordSide = ReadTradeRecordSide(buffer);
 		result.Symbol = ReadAString(buffer);
@@ -1279,6 +1287,7 @@ namespace
 		WriteDouble(arg.Commission, buffer);
 		WriteDouble(arg.AgentCommission, buffer);
 		WriteDouble(arg.Swap, buffer);
+		WriteTradeRecordType(arg.InitialOrderType, buffer);
 		WriteTradeRecordType(arg.OrderType, buffer);
 		WriteTradeRecordSide(arg.OrderSide, buffer);
 		WriteNullDouble(arg.AveragePrice, buffer);
@@ -1322,6 +1331,7 @@ namespace
 		result.Commission = ReadDouble(buffer);
 		result.AgentCommission = ReadDouble(buffer);
 		result.Swap = ReadDouble(buffer);
+		result.InitialOrderType = ReadTradeRecordType(buffer);
 		result.OrderType = ReadTradeRecordType(buffer);
 		result.OrderSide = ReadTradeRecordSide(buffer);
 		result.AveragePrice = ReadNullDouble(buffer);

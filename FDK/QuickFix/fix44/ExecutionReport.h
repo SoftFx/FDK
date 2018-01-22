@@ -575,6 +575,8 @@ namespace FIX44
     FIELD_SET_EX(double, ReqOpenPrice);
     FIELD_SET(*this, FIX::ReqOpenQty);
     FIELD_SET_EX(double, ReqOpenQty);
+    FIELD_SET(*this, FIX::ParentOrderType);
+    FIELD_SET_EX(char, ParentOrderType);
     FIELD_SET(*this, FIX::NoContraBrokers);
     FIELD_SET_EX(int, NoContraBrokers);
     class NoContraBrokers: public FIX::Group

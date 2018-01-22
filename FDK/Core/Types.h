@@ -57,6 +57,7 @@ enum FxOrderType
     FxOrderType_IoC                 = 4,
     FxOrderType_MarketWithSlippage  = 5,
     FxOrderType_StopLimit           = 6,
+	FxOrderType_StopLimit_IoC       = 7,
     FxOrderType_Last                = FX_MAX_ENUM
 };
 

@@ -251,10 +251,17 @@
         /// <param name="newTag">A new tag.</param>
         /// <param name="newMagic">A new magic.</param>
         /// <returns>A modified trade record.</returns>
-        public TradeRecord ModifyTradeRecord(string orderId, string symbol, TradeRecordType type, TradeRecordSide side,
-                                            double? newVolume, double? newMaxVisibleVolume, double? newPrice, double? newStopPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpiration, string newComment, string newTag, int? newMagic)
+        public TradeRecord ModifyTradeRecord(
+            string orderId, string symbol, TradeRecordType type, TradeRecordSide side,
+            double? newVolume, double? newMaxVisibleVolume,
+            double? newPrice, double? newStopPrice,
+            double? newStopLoss, double? newTakeProfit,
+            DateTime? newExpiration,
+            string newComment,
+            string newTag,
+            int? newMagic)
         {
-            return this.ModifyTradeRecordEx(orderId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, this.Client.SynchOperationTimeout);
+            return this.ModifyTradeRecordEx(orderId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, null, null, this.Client.SynchOperationTimeout);
         }
 
         /// <summary>
@@ -274,12 +281,24 @@
         /// <param name="newComment">A new comment.</param>
         /// <param name="newTag">A new tag.</param>
         /// <param name="newMagic">A new magic.</param>
+        /// <param name="IOCOverride">'Immediate-Or-Cancel' flag override.</param>
+        /// <param name="IFMOverride">'In-Flight-Mitigation' flag override.</param>
         /// <param name="timeoutInMilliseconds">Timeout of the synchronous operation.</param>
         /// <returns>A modified trade record.</returns>
-        public TradeRecord ModifyTradeRecordEx(string orderId, string symbol, TradeRecordType type, TradeRecordSide side,
-                                        double? newVolume, double? newMaxVisibleVolume, double? newPrice, double? newStopPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpiration, string newComment, string newTag, int? newMagic, int timeoutInMilliseconds)
+        public TradeRecord ModifyTradeRecordEx(
+            string orderId, string symbol, TradeRecordType type, TradeRecordSide side,
+            double? newVolume, double? newMaxVisibleVolume,
+            double? newPrice, double? newStopPrice,
+            double? newStopLoss, double? newTakeProfit,
+            DateTime? newExpiration,
+            string newComment,
+            string newTag,
+            int? newMagic,
+            bool? IOCOverride,
+            bool? IFMOverride,
+            int timeoutInMilliseconds)
         {
-            return this.ModifyTradeRecordEx(null, orderId, "Client-" + orderId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, timeoutInMilliseconds);
+            return this.ModifyTradeRecordEx(null, orderId, "Client-" + orderId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, IOCOverride, IFMOverride, timeoutInMilliseconds);
         }
 
         /// <summary>
@@ -303,11 +322,22 @@
         /// <param name="newComment">A new comment.</param>
         /// <param name="newTag">A new tag.</param>
         /// <param name="newMagic">A new magic.</param>
+        /// <param name="IOCOverride">'Immediate-Or-Cancel' flag override.</param>
+        /// <param name="IFMOverride">'In-Flight-Mitigation' flag override.</param>
         /// <returns>A modified trade record.</returns>
-        public TradeRecord ModifyTradeRecordEx(string operationId, string orderId, string symbol, TradeRecordType type, TradeRecordSide side,
-                                        double? newVolume, double? newMaxVisibleVolume, double? newPrice, double? newStopPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpiration, string newComment, string newTag, int? newMagic)
+        public TradeRecord ModifyTradeRecordEx(
+            string operationId, string orderId, string symbol, TradeRecordType type, TradeRecordSide side,
+            double? newVolume, double? newMaxVisibleVolume,
+            double? newPrice, double? newStopPrice,
+            double? newStopLoss, double? newTakeProfit,
+            DateTime? newExpiration,
+            string newComment,
+            string newTag,
+            int? newMagic,
+            bool? IOCOverride,
+            bool? IFMOverride)
         {
-            return this.ModifyTradeRecordEx(operationId, orderId, "Client-" + orderId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, this.Client.SynchOperationTimeout);
+            return this.ModifyTradeRecordEx(operationId, orderId, "Client-" + orderId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, IOCOverride, IFMOverride, this.Client.SynchOperationTimeout);
         }
 
         /// <summary>
@@ -331,12 +361,24 @@
         /// <param name="newComment">A new comment.</param>
         /// <param name="newTag">A new tag.</param>
         /// <param name="newMagic">A new magic.</param>
+        /// <param name="IOCOverride">'Immediate-Or-Cancel' flag override.</param>
+        /// <param name="IFMOverride">'In-Flight-Mitigation' flag override.</param>
         /// <param name="timeoutInMilliseconds">Timeout of the synchronous operation.</param>
         /// <returns>A modified trade record.</returns>
-        public TradeRecord ModifyTradeRecordEx(string operationId, string orderId, string clientId, string symbol, TradeRecordType type, TradeRecordSide side,
-                                        double? newVolume, double? newMaxVisibleVolume, double? newPrice, double? newStopPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpiration, string newComment, string newTag, int? newMagic, int timeoutInMilliseconds)
+        public TradeRecord ModifyTradeRecordEx(
+            string operationId, string orderId, string clientId, string symbol, TradeRecordType type, TradeRecordSide side,
+            double? newVolume, double? newMaxVisibleVolume,
+            double? newPrice, double? newStopPrice,
+            double? newStopLoss, double? newTakeProfit,
+            DateTime? newExpiration,
+            string newComment,
+            string newTag,
+            int? newMagic,
+            bool? IOCOverride,
+            bool? IFMOverride,
+            int timeoutInMilliseconds)
         {
-            var order = this.Client.DataTradeHandle.ModifyOrder(operationId, orderId, clientId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, timeoutInMilliseconds);
+            var order = this.Client.DataTradeHandle.ModifyOrder(operationId, orderId, clientId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, IOCOverride, IFMOverride, timeoutInMilliseconds);
             return new TradeRecord(this.Client, order);
         }
 

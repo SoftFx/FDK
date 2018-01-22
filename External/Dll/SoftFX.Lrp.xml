@@ -672,6 +672,13 @@
             <param name="arg">any value.</param>
             <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
         </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.WriteNullBoolean(System.Nullable{System.Boolean})">
+            <summary>
+            Writes an input value to memory buffer.
+            </summary>
+            <param name="arg">any value.</param>
+            <exception cref="T:System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        </member>
         <member name="M:SoftFX.Lrp.MemoryBuffer.WriteSingle(System.Single)">
             <summary>
             Writes an input value to memory buffer.
@@ -825,6 +832,13 @@
             <returns>A read value.</returns>
         </member>
         <member name="M:SoftFX.Lrp.MemoryBuffer.ReadBoolean">
+            <summary>
+            Reads a value from memory buffer.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+            <returns>A read value.</returns>
+        </member>
+        <member name="M:SoftFX.Lrp.MemoryBuffer.ReadNullBoolean">
             <summary>
             Reads a value from memory buffer.
             </summary>

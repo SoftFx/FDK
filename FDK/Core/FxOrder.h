@@ -12,6 +12,7 @@ public:
     string OrderId;
     string ClientOrderId;
     string Symbol;
+    FxTradeRecordType InitialType;
     FxTradeRecordType Type;
     FxTradeRecordSide Side;
     double InitialVolume;
@@ -35,6 +36,8 @@ public:
     bool IsReducedCloseCommission;
     bool ImmediateOrCancel;
     bool MarketWithSlippage;
+    Nullable<bool> IOCOverride;
+    Nullable<bool> IFMOverride;
 };
 
 

@@ -54,13 +54,23 @@
 
             this.VerifyInitialized();
 
-            var order = new FxOrder(symbol, (int)command, side, volume, maxVisibleVolume, price, stopPrice, stopLoss, takeProfit, expiration, comment, tag, magic);
+            var order = new FxOrder(symbol, (int)command, side, volume, maxVisibleVolume, price, stopPrice, stopLoss, takeProfit, expiration, comment, tag, magic, null, null);
 
             return Native.TradeServer.OpenNewOrder(this.handle, operationId, order, (uint)timeoutInMilliseconds);
         }
 
-        public FxOrder ModifyOrder(string operationId, string orderId, string clientId, string symbol, TradeRecordType type, TradeRecordSide side,
-                                        double? newVolume, double? newMaxVisibleVolume, double? newPrice, double? newStopPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpiration, string newComment, string newTag, int? newMagic, int timeoutInMilliseconds)
+        public FxOrder ModifyOrder(string operationId, string orderId, string clientId,
+            string symbol, TradeRecordType type, TradeRecordSide side,
+            double? newVolume, double? newMaxVisibleVolume,
+            double? newPrice, double? newStopPrice,
+            double? newStopLoss, double? newTakeProfit,
+            DateTime? newExpiration,
+            string newComment,
+            string newTag,
+            int? newMagic,
+            bool? IOCOverride,
+            bool? IFMOverride,
+            int timeoutInMilliseconds)
         {
             if (operationId == null)
                 operationId = string.Empty;
@@ -79,7 +89,7 @@
 
             this.VerifyInitialized();
 
-            var order = new FxOrder(orderId, clientId, symbol, (int)type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic);
+            var order = new FxOrder(orderId, clientId, symbol, (int)type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, IOCOverride, IFMOverride);
 
             return Native.TradeServer.ModifyOrder(this.handle, operationId, order, (uint)timeoutInMilliseconds);
         }

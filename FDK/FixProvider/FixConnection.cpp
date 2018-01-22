@@ -798,6 +798,7 @@ void CFixConnection::OnExecution(const CFixExecutionReport& message)
 
     report.ExecutionType = message.GetFxExecutionType();
     report.OrderStatus = message.GetFxOrderStatus();
+	report.InitialOrderType = message.GetFxInitialOrderType();
     report.OrderType = message.GetFxOrderType();
     report.ReportsNumber = message.GetFxReportsNumber();
     report.RejectReason = message.GetFxRejectReason();
@@ -1276,6 +1277,29 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
     message.TryGetOrderLeavesQty(report.LeavesQuantity);
     message.TryGetOrderPrice(report.Price);
     message.TryGetOrderStopPx(report.StopPrice);
+
+    char initialOrderType = 0;
+    message.TryGetParentOrderType(initialOrderType);
+    if (FIX::OrdType_MARKET == initialOrderType)
+    {
+        report.InitialTradeRecordType = FxOrderType_Market;
+    }
+    else if (FIX::OrdType_LIMIT == initialOrderType)
+    {
+        report.InitialTradeRecordType = FxOrderType_Limit;
+    }
+    else if (FIX::OrdType_STOP == initialOrderType)
+    {
+        report.InitialTradeRecordType = FxOrderType_Stop;
+    }
+    else if (FIX::OrdType_POSITION == initialOrderType)
+    {
+        report.InitialTradeRecordType = FxOrderType_Position;
+    }
+    else if (FIX::OrdType_STOPLIMIT == initialOrderType)
+    {
+        report.InitialTradeRecordType = FxOrderType_StopLimit;
+    }
 
     char orderType = 0;
     message.TryGetOrdType(orderType);

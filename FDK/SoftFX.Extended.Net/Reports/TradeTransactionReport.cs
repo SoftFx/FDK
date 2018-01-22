@@ -74,6 +74,11 @@
         /// <summary>
         ///
         /// </summary>
+        public TradeRecordType InitialTradeRecordType { get; internal set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         public TradeRecordType TradeRecordType { get; internal set; }
 
         /// <summary>

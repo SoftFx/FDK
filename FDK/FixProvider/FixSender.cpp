@@ -630,6 +630,18 @@ void CFixSender::VSendModifyOrder(const string& id, const CFxOrder& request)
             message.SetClAppID(m_appId);
     }
 
+    if (m_version.SupportsModifyIOCandIFM())
+    {
+        if (request.IOCOverride.HasValue())
+        {
+            message.SetImmediateOrCancelFlag(*request.IOCOverride);
+        }
+        if (request.IFMOverride.HasValue())
+        {
+            message.SetInFlightMitigationFlag(*request.IFMOverride);
+        }
+    }
+
     return SendMessage(message);
 }
 

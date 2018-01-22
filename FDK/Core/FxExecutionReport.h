@@ -48,6 +48,7 @@ public:
 public:
     FxExecutionType ExecutionType;
     FxOrderStatus OrderStatus;
+    FxOrderType InitialOrderType;
     FxOrderType OrderType;
 public:
     FxRejectReason RejectReason;

@@ -21,6 +21,7 @@ public:
     double LeavesQuantity;
     double Price;
     double StopPrice;
+    FxOrderType InitialTradeRecordType;
     FxOrderType TradeRecordType;
     FxTradeRecordSide TradeRecordSide;
     std::string Symbol;

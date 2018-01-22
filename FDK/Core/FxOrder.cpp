@@ -2,7 +2,8 @@
 #include "FxOrder.h"
 
 CFxOrder::CFxOrder()
-    : Type(FxTradeRecordType_None)
+    : InitialType(FxTradeRecordType_None)
+    , Type(FxTradeRecordType_None)
     , Side(FxTradeRecordSide_None)
     , InitialVolume()
     , Volume()
@@ -20,5 +21,7 @@ CFxOrder::CFxOrder()
     , IsReducedCloseCommission(false)
     , ImmediateOrCancel(false)
     , MarketWithSlippage(false)
+    , IOCOverride()
+    , IFMOverride()
 {
 }

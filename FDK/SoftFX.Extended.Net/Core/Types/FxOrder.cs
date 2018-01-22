@@ -7,6 +7,7 @@
         public string OrderId { get; set; }
         public string ClientOrderId { get; set; }
         public string Symbol { get; set; }
+        public int InitialType { get; set; }
         public int Type { get; set; }
         public TradeRecordSide Side { get; set; }
         public double InitialVolume { get; set; }
@@ -30,6 +31,8 @@
         public bool IsReducedCloseCommission { get; set; }
         public bool ImmediateOrCancel { get; set; }
         public bool MarketWithSlippage { get; set; }
+        public bool? IOCOverride { get; set; }
+        public bool? IFMOverride { get; set; }
 
         public FxOrder()
         {
@@ -40,7 +43,7 @@
             this.Tag = string.Empty;
         }
 
-        public FxOrder(string symbol, int type, TradeRecordSide side, double volume, double? maxVisibleVolume, double? price, double? stopPrice, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic)
+        public FxOrder(string symbol, int type, TradeRecordSide side, double volume, double? maxVisibleVolume, double? price, double? stopPrice, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic, bool? IOCOverride, bool? IFMOverride)
             : this()
         {
             this.Symbol = symbol;
@@ -56,15 +59,16 @@
             this.Comment = comment;
             this.Tag = tag;
             this.Magic = magic;
+            this.IOCOverride = IOCOverride;
+            this.IFMOverride = IFMOverride;
         }
 
-        public FxOrder(string id, string clientId, string symbol, int type, TradeRecordSide side, double? newVolume, double? newMaxVisibleVolume, double? newPrice, double? newStopPrice, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic)
+        public FxOrder(string id, string clientId, string symbol, int type, TradeRecordSide side, double? newVolume, double? newMaxVisibleVolume, double? newPrice, double? newStopPrice, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic, bool? IOCOverride, bool? IFMOverride)
             : this()
         {
             this.OrderId = id;
             this.ClientOrderId = clientId;
             this.Symbol = symbol;
-
             this.Type = type;
             this.Side = side;
             this.Volume = newVolume;
@@ -77,6 +81,8 @@
             this.Comment = comment;
             this.Tag = tag;
             this.Magic = magic;
+            this.IOCOverride = IOCOverride;
+            this.IFMOverride = IFMOverride;
         }
     }
 }
