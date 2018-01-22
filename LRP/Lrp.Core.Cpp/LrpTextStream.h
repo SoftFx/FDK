@@ -158,6 +158,37 @@ inline void LrpWriteAChar(const char ch, std::ostream& stream)
         stream<<ch;
     }
 }
+inline void LrpWriteWChar(const wchar_t ch, std::ostream& stream)
+{
+    if (L'\n' == ch)
+    {
+        stream<<L"\\n";
+    }
+    else if (L'\t' == ch)
+    {
+        stream<<L"\\t";
+    }
+    else if (L'\r' == ch)
+    {
+        stream<<L"\\r";
+    }
+    else if (L'"' == ch)
+    {
+        stream<<L"\\\"";
+    }
+    else if (L'\0' == ch)
+    {
+        stream<<L"\0";
+    }
+    else if (L'\\' == ch)
+    {
+        stream<<L"\\\\";
+    }
+    else
+    {
+        stream<<ch;
+    }
+}
 inline void LrpWriteAString(const char* name, const std::string& value, std::ostream& stream)
 {
     if (nullptr != name)
@@ -185,6 +216,36 @@ template<size_t count> void WirteAString(const char* name, const char (&value)[c
             break;
         }
         LrpWriteAChar(element, stream);
+    }
+    stream<<'"';
+}
+inline void LrpWriteWString(const char* name, const std::wstring& value, std::ostream& stream)
+{
+    if (nullptr != name)
+    {
+        stream<<name<<" = ";
+    }
+    stream<<"\"";
+    for each (auto element in value)
+    {
+        LrpWriteWChar(element, stream);
+    }
+    stream<<'"';
+}
+template<size_t count> void WirteWString(const char* name, const wchar_t (&value)[count], std::ostream& stream)
+{
+    if (nullptr != name)
+    {
+        stream<<name<<" = ";
+    }
+    stream<<"\"";
+    for each (auto element in value)
+    {
+        if (0 == element)
+        {
+            break;
+        }
+        LrpWriteWChar(element, stream);
     }
     stream<<'"';
 }
