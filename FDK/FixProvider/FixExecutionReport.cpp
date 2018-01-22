@@ -253,6 +253,36 @@ FxRejectReason CFixExecutionReport::GetFxRejectReason() const
     return FxRejectReason_Unknown;
 }
 
+FxOrderType CFixExecutionReport::GetFxInitialOrderType() const
+{
+    char initialOrderType = 0;
+    if (!this->TryGetParentOrderType(initialOrderType))
+    {
+        return FxOrderType_None;
+    }
+    if (FIX::OrdType_MARKET == initialOrderType)
+    {
+        return FxOrderType_Market;
+    }
+    else if (FIX::OrdType_LIMIT == initialOrderType)
+    {
+        return FxOrderType_Limit;
+    }
+    else if (FIX::OrdType_STOP == initialOrderType)
+    {
+        return FxOrderType_Stop;
+    }
+    else if(FIX::OrdType_POSITION == initialOrderType)
+    {
+        return FxOrderType_Position;
+    }
+    else if (FIX::OrdType_STOPLIMIT == initialOrderType)
+    {
+        return FxOrderType_StopLimit;
+    }
+    throw CRuntimeError("CFixExecutionReport::GetFxInitialOrderType(); invalid fix initial order type = ") + initialOrderType;
+}
+
 FxOrderType CFixExecutionReport::GetFxOrderType() const
 {
     char orderType = 0;

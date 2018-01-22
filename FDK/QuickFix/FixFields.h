@@ -1197,6 +1197,7 @@ namespace FIX
   DEFINE_INT(SwapType);
   DEFINE_INT(TripleSwapDay);
   DEFINE_FLOAT(MinCommissionConversionRate);
+  DEFINE_BOOLEAN(InFlightMitigationFlag);
   DEFINE_NUMINGROUP(NoStrategyParameters);
   DEFINE_STRING(StrategyParameterName);
   DEFINE_INT(StrategyParameterType);

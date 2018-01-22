@@ -319,6 +319,7 @@
    <field name='TradeRequestID' required='N' />
    <field name='ReqOpenPrice' required='N' />
    <field name='ReqOpenQty' required='N' />
+   <field name='ParentOrderType' required='N' />
   </message>
   <message name='OrderCancelReject' msgcat='app' msgtype='9'>
    <field name='OrderID' required='Y' />
@@ -750,6 +751,8 @@
    <component name='Comment' required='N' />
    <component name='Tag' required='N' />
    <field name='Magic' required='N' />
+   <field name='ImmediateOrCancelFlag' required='N' />
+   <field name='InFlightMitigationFlag' required='N' />
   </message>
   <message name='OrderStatusRequest' msgcat='app' msgtype='H'>
    <field name='OrderID' required='N' />
@@ -7900,5 +7903,9 @@
   </field>
   <field number='10213' name='TripleSwapDay' type='INT' />
   <field number='10214' name='MinCommissionConversionRate' type='FLOAT' />
+  <field number='10215' name='InFlightMitigationFlag' type='BOOLEAN'>
+    <value enum='N' description='NO' />
+    <value enum='Y' description='YES' />
+  </field>
 </fields>
 </fix>

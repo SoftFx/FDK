@@ -5,6 +5,7 @@ CFxTradeTransactionReport::CFxTradeTransactionReport()
 {
     this->TradeTransactionReportType = FxTradeTransactionReportType_None;
     this->TradeTransactionReason = FxTradeTransactionReason_None;
+    this->InitialTradeRecordType = FxOrderType_None;
     this->TradeRecordType = FxOrderType_None;
     this->TradeRecordSide = FxTradeRecordSide_None;
 

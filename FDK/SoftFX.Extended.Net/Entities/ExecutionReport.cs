@@ -82,6 +82,11 @@
         public double Swap { get; internal set; }
 
         /// <summary>
+        /// Gets InitialOrdType = 10149 field.
+        /// </summary>
+        public TradeRecordType InitialOrderType { get; internal set; }
+
+        /// <summary>
         /// Gets OrdType = 40 field.
         /// </summary>
         public TradeRecordType OrderType { get; internal set; }

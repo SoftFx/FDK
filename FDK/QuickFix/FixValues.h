@@ -4130,6 +4130,8 @@ namespace FIX
   const char CommCloseReducedFlag_YES = 'Y';
   const int SwapType_Points = 0;
   const int SwapType_PercentPerYear = 1;
+  const char InFlightMitigationFlag_NO = 'N';
+  const char InFlightMitigationFlag_YES = 'Y';
   const int StrategyParameterType_INT = 1;
   const int StrategyParameterType_LENGTH = 2;
   const int StrategyParameterType_NUMINGROUP = 3;

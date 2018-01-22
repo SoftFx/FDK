@@ -37,6 +37,10 @@ bool CFixVersion::SupportsTradeRequestType()
 {
     return *this >= CFixVersion(1, 50);
 }
+bool CFixVersion::SupportsModifyIOCandIFM()
+{
+    return *this >= CFixVersion(1, 62);
+}
 bool operator < (const CFixVersion& first, const CFixVersion& second)
 {
     if (first.Major == second.Major)

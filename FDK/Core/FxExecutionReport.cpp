@@ -22,6 +22,7 @@ CFxExecutionReport::CFxExecutionReport()
 
     ExecutionType = FxExecutionType_None;
     OrderStatus = FxOrderStatus_None;
+    InitialOrderType = FxOrderType_None;
     OrderType = FxOrderType_None;
 
     ReportsNumber = 0;
@@ -246,6 +247,7 @@ bool CFxExecutionReport::TryGetStopLimitOrder(CFxOrder& order) const
 
 void CFxExecutionReport::CopyCommonFieldsToRecord(CFxOrder& order) const
 {
+    order.InitialType = (FxTradeRecordType)this->InitialOrderType;
     order.Side = this->OrderSide;
     order.Volume = this->LeavesVolume;
     order.MaxVisibleVolume = this->MaxVisibleVolume;

@@ -672,6 +672,7 @@ namespace SoftFX.Extended.Generated
 			result.AgentCommission = buffer.ReadDouble();
 			result.Swap = buffer.ReadDouble();
 			result.Profit = buffer.ReadNullDouble();
+			result.InitialType = buffer.ReadFxOrderType();
 			result.Type = buffer.ReadFxOrderType();
 			result.Side = buffer.ReadTradeRecordSide();
 			result.Expiration = buffer.ReadNullTime();
@@ -684,6 +685,8 @@ namespace SoftFX.Extended.Generated
 			result.IsReducedCloseCommission = buffer.ReadBoolean();
 			result.ImmediateOrCancel = buffer.ReadBoolean();
 			result.MarketWithSlippage = buffer.ReadBoolean();
+			result.IOCOverride = buffer.ReadNullBoolean();
+			result.IFMOverride = buffer.ReadNullBoolean();
 			return result;
 		}
 		public static void WriteFxOrder(this MemoryBuffer buffer, SoftFX.Extended.Data.FxOrder arg)
@@ -702,6 +705,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteDouble(arg.AgentCommission);
 			buffer.WriteDouble(arg.Swap);
 			buffer.WriteNullDouble(arg.Profit);
+			buffer.WriteFxOrderType(arg.InitialType);
 			buffer.WriteFxOrderType(arg.Type);
 			buffer.WriteTradeRecordSide(arg.Side);
 			buffer.WriteNullTime(arg.Expiration);
@@ -714,6 +718,8 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteBoolean(arg.IsReducedCloseCommission);
 			buffer.WriteBoolean(arg.ImmediateOrCancel);
 			buffer.WriteBoolean(arg.MarketWithSlippage);
+			buffer.WriteNullBoolean(arg.IOCOverride);
+			buffer.WriteNullBoolean(arg.IFMOverride);
 		}
 		public static SoftFX.Extended.Data.FxOrder[] ReadFxOrderArray(this MemoryBuffer buffer)
 		{
@@ -932,6 +938,7 @@ namespace SoftFX.Extended.Generated
 			result.LeavesQuantity = buffer.ReadDouble();
 			result.Price = buffer.ReadDouble();
 			result.StopPrice = buffer.ReadDouble();
+			result.InitialTradeRecordType = buffer.ReadTradeRecordType();
 			result.TradeRecordType = buffer.ReadTradeRecordType();
 			result.TradeRecordSide = buffer.ReadTradeRecordSide();
 			result.Symbol = buffer.ReadAString();
@@ -1010,6 +1017,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteDouble(arg.LeavesQuantity);
 			buffer.WriteDouble(arg.Price);
 			buffer.WriteDouble(arg.StopPrice);
+			buffer.WriteTradeRecordType(arg.InitialTradeRecordType);
 			buffer.WriteTradeRecordType(arg.TradeRecordType);
 			buffer.WriteTradeRecordSide(arg.TradeRecordSide);
 			buffer.WriteAString(arg.Symbol);
@@ -1104,6 +1112,7 @@ namespace SoftFX.Extended.Generated
 			result.Commission = buffer.ReadDouble();
 			result.AgentCommission = buffer.ReadDouble();
 			result.Swap = buffer.ReadDouble();
+			result.InitialOrderType = buffer.ReadTradeRecordType();
 			result.OrderType = buffer.ReadTradeRecordType();
 			result.OrderSide = buffer.ReadTradeRecordSide();
 			result.AveragePrice = buffer.ReadNullDouble();
@@ -1147,6 +1156,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteDouble(arg.Commission);
 			buffer.WriteDouble(arg.AgentCommission);
 			buffer.WriteDouble(arg.Swap);
+			buffer.WriteTradeRecordType(arg.InitialOrderType);
 			buffer.WriteTradeRecordType(arg.OrderType);
 			buffer.WriteTradeRecordSide(arg.OrderSide);
 			buffer.WriteNullDouble(arg.AveragePrice);

@@ -45,6 +45,7 @@ public:
     FxExecutionType GetFxExecutionType() const;
     FxOrderStatus GetFxOrderStatus() const;
     FxTradeRecordSide GetFxSide() const;
+    FxOrderType GetFxInitialOrderType() const;
     FxOrderType GetFxOrderType() const;
     FxRejectReason GetFxRejectReason() const;
 public:

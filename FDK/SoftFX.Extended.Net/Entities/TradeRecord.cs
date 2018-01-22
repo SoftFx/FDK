@@ -459,7 +459,7 @@
         /// <returns>A modified trade record.</returns>
         public TradeRecord Modify(double? newPrice, double? newStopPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpirationTime, string newComment, string newTag, int? newMagic)
         {
-            var result = this.ModifyEx(newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, newTag, newMagic, this.DataTrade.SynchOperationTimeout);
+            var result = this.ModifyEx(newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, newTag, newMagic, null, null, this.DataTrade.SynchOperationTimeout);
             return result;
         }
 
@@ -474,11 +474,13 @@
         /// <param name="newComment">A new comment</param>
         /// <param name="newTag">A new comment</param>
         /// <param name="newMagic">A new comment</param>
+        /// <param name="IOCOverride">'Immediate-Or-Cancel' flag override.</param>
+        /// <param name="IFMOverride">'In-Flight-Mitigation' flag override.</param>         
         /// <param name="timeoutInMilliseconds">Timeout of the operation in milliseconds.</param>
         /// <returns>A modified trade record.</returns>
-        public TradeRecord ModifyEx(double? newPrice, double? newStopPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpirationTime, string newComment, string newTag, int? newMagic, int timeoutInMilliseconds)
+        public TradeRecord ModifyEx(double? newPrice, double? newStopPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpirationTime, string newComment, string newTag, int? newMagic, bool? IOCOverride, bool? IFMOverride, int timeoutInMilliseconds)
         {
-            var result = this.DataTrade.Server.ModifyTradeRecordEx(this.OrderId, this.Symbol, this.Type, this.Side, this.Volume, null, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, newTag, newMagic, timeoutInMilliseconds);
+            var result = this.DataTrade.Server.ModifyTradeRecordEx(this.OrderId, this.Symbol, this.Type, this.Side, this.Volume, null, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, newTag, newMagic, IOCOverride, IFMOverride, timeoutInMilliseconds);
             return result;
         }
 
@@ -494,11 +496,13 @@
         /// <param name="newComment">A new comment</param>
         /// <param name="newTag">A new comment</param>
         /// <param name="newMagic">A new comment</param>
+        /// <param name="IOCOverride">'Immediate-Or-Cancel' flag override.</param>
+        /// <param name="IFMOverride">'In-Flight-Mitigation' flag override.</param>                  
         /// <param name="timeoutInMilliseconds">Timeout of the operation in milliseconds.</param>
         /// <returns>A modified trade record.</returns>
-        public TradeRecord ModifyEx(string operationId, double? newPrice, double? newStopPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpirationTime, string newComment, string newTag, int? newMagic, int timeoutInMilliseconds)
+        public TradeRecord ModifyEx(string operationId, double? newPrice, double? newStopPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpirationTime, string newComment, string newTag, int? newMagic, bool? IOCOverride, bool? IFMOverride, int timeoutInMilliseconds)
         {
-            var result = this.DataTrade.Server.ModifyTradeRecordEx(operationId, this.OrderId, this.ClientOrderId, this.Symbol, this.Type, this.Side, this.Volume, null, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, newTag, newMagic, timeoutInMilliseconds);
+            var result = this.DataTrade.Server.ModifyTradeRecordEx(operationId, this.OrderId, this.ClientOrderId, this.Symbol, this.Type, this.Side, this.Volume, null, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpirationTime, newComment, newTag, newMagic, IOCOverride, IFMOverride, timeoutInMilliseconds);
             return result;
         }
 

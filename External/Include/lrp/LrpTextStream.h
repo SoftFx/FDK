@@ -119,6 +119,14 @@ inline void LrpWriteBoolean(const char* name, const bool& value, std::ostream& s
     }
     stream<<(value? "true" : "false");
 }
+inline void LrpWriteNullBoolean(const char* name, const Nullable<bool>& value, std::ostream& stream)
+{
+    if (!value.HasValue())
+        return;
+
+    LrpWriteImpl(name, value.Value(), stream);
+    LrpWriteBinaryData(&value.Value(), sizeof(bool), stream);
+}
 inline void LrpWriteAChar(const char ch, std::ostream& stream)
 {
     if ('\n' == ch)
@@ -162,26 +170,6 @@ inline void LrpWriteAString(const char* name, const std::string& value, std::ost
         LrpWriteAChar(element, stream);
     }
     stream<<'"';
-}
-inline void LrpWriteWString(const char* name, const std::wstring& value, std::ostream& stream)
-{      
-    if (nullptr != name)
-    {
-        stream << name << " = ";
-    }
-    stream << "\"";
-        
-    int result = WideCharToMultiByte(CP_UTF8, 0, value.data(), (int) value.length(), 0, 0, NULL, NULL);
-    
-    string encodedValue;
-    encodedValue.resize(result);
-    WideCharToMultiByte(CP_UTF8, 0, value.data(), (int) value.length(), const_cast<char*>(encodedValue.data()), (int) encodedValue.length(), NULL, NULL);
-
-    for each (auto element in encodedValue)
-    {        
-        LrpWriteAChar(element, stream);
-    }
-    stream << '"';
 }
 template<size_t count> void WirteAString(const char* name, const char (&value)[count], std::ostream& stream)
 {

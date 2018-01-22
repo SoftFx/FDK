@@ -203,6 +203,7 @@
       <Member name="AgentCommission" type="double" />
       <Member name="Swap" type="double" />
       <Member name="Profit" type="double?" />
+      <Member name="InitialType" type="FxOrderType" />
       <Member name="Type" type="FxOrderType" />
       <Member name="Side" type="TradeRecordSide" />
       <Member name="Expiration" type="time?" />
@@ -215,6 +216,8 @@
       <Member name="IsReducedCloseCommission" type="bool" />
       <Member name="ImmediateOrCancel" type="bool" />
       <Member name="MarketWithSlippage" type="bool" />
+      <Member name="IOCOverride" type="bool?" />
+      <Member name="IFMOverride" type="bool?" />
     </Type>
     <Type name="FxOrderArray" kind="array">
       <Value name="FxOrder" />
@@ -283,6 +286,7 @@
       <Member name="LeavesQuantity" type="double" />
       <Member name="Price" type="double" />
       <Member name="StopPrice" type="double" />
+      <Member name="InitialTradeRecordType" type="TradeRecordType" />
       <Member name="TradeRecordType" type="TradeRecordType" />
       <Member name="TradeRecordSide" type="TradeRecordSide" />
       <Member name="Symbol" type="astring" />
@@ -366,6 +370,7 @@
       <Member name="Commission" type="double" />
       <Member name="AgentCommission" type="double" />
       <Member name="Swap" type="double" />
+      <Member name="InitialOrderType" type="TradeRecordType" />
       <Member name="OrderType" type="TradeRecordType" />
       <Member name="OrderSide" type="TradeRecordSide" />
       <Member name="AveragePrice" type="double?" />
