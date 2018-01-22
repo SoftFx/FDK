@@ -119,6 +119,14 @@ inline void LrpWriteBoolean(const char* name, const bool& value, std::ostream& s
     }
     stream<<(value? "true" : "false");
 }
+inline void LrpWriteNullBoolean(const char* name, const Nullable<bool>& value, std::ostream& stream)
+{
+    if (!value.HasValue())
+        return;
+
+    LrpWriteImpl(name, value.Value(), stream);
+    LrpWriteBinaryData(&value.Value(), sizeof(bool), stream);
+}
 inline void LrpWriteAChar(const char ch, std::ostream& stream)
 {
     if ('\n' == ch)
