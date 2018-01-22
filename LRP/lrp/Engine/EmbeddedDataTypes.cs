@@ -19,7 +19,7 @@
         public static readonly DataType NullTime = new DataType("time?", "System.DateTime?", "NUllable<CDateTime>", "NullTime");
 
         public static readonly DataType Boolean = new DataType("bool", "bool", "bool", "Boolean");
-        public static readonly DataType NullBoolean = new DataType("bool?", "bool?", "bool?", "Boolean?");
+        public static readonly DataType NullBoolean = new DataType("bool?", "bool?", "NUllable<bool>", "NullBoolean");
         public static readonly DataType Single = new DataType("float", "float", "float", "Single");
         public static readonly DataType Double = new DataType("double", "double", "double", "Double");
         public static readonly DataType NullDouble = new DataType("double?", "double?", "NUllable<double>", "NullDouble");
