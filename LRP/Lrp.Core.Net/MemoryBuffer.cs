@@ -445,6 +445,23 @@ namespace SoftFX.Lrp
         /// </summary>
         /// <param name="arg">any value.</param>
         /// <exception cref="System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
+        public void WriteNullBoolean(bool? arg)
+        {
+            if (arg.HasValue)
+            {
+                WriteBoolean(true);
+                WriteBoolean(arg.Value);
+            }
+            else
+            {
+                WriteBoolean(false);
+            }
+        }
+        /// <summary>
+        /// Writes an input value to memory buffer.
+        /// </summary>
+        /// <param name="arg">any value.</param>
+        /// <exception cref="System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
         public void WriteSingle(float arg)
         {
             int newPosition = m_position + sizeof(float);
@@ -810,6 +827,23 @@ namespace SoftFX.Lrp
             var result = *(bool*)(m_data + m_position);
             m_position = newPosition;
             return result;
+        }
+        /// <summary>
+        /// Reads a value from memory buffer.
+        /// </summary>
+        /// <exception cref="System.IndexOutOfRangeException">if end of the buffer has been reached.</exception>
+        /// <returns>A read value.</returns>
+        public bool? ReadNullBoolean()
+        {
+            bool hasValue = ReadBoolean();
+            if (hasValue)
+            {
+                return ReadBoolean();
+            }
+            else
+            {
+                return null;
+            }
         }
         /// <summary>
         /// Reads a value from memory buffer.
