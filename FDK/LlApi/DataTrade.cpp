@@ -136,6 +136,10 @@ CFxOrder CDataTrade::ModifyOrder(const string& operationId, const CFxOrder& orde
     {
         CFxEventInfo info;
         CFxExecutionReport report = waiter.WaitForResponse(info);
+        if (FxOrderStatus_Canceled == report.OrderStatus)
+        {
+            return result;
+        }
         if (FxOrderStatus_Calculated == report.OrderStatus)
         {
             report.TryGetTradeRecord(result);
