@@ -23,5 +23,6 @@ CFxOrder::CFxOrder()
     , MarketWithSlippage(false)
     , IOCOverride()
     , IFMOverride()
+    , PrevVolume()
 {
 }

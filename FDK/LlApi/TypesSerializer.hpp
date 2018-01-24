@@ -857,6 +857,7 @@ namespace
 		WriteBoolean(arg.MarketWithSlippage, buffer);
 		WriteNullBoolean(arg.IOCOverride, buffer);
 		WriteNullBoolean(arg.IFMOverride, buffer);
+		WriteNullDouble(arg.PrevVolume, buffer);
 	}
 	CFxOrder ReadFxOrder(MemoryBuffer& buffer)
 	{
@@ -890,6 +891,7 @@ namespace
 		result.MarketWithSlippage = ReadBoolean(buffer);
 		result.IOCOverride = ReadNullBoolean(buffer);
 		result.IFMOverride = ReadNullBoolean(buffer);
+		result.PrevVolume = ReadNullDouble(buffer);
 		return result;
 	}
 	void WriteFxOrderArray(const std::vector<CFxOrder>& arg, MemoryBuffer& buffer)

@@ -218,6 +218,7 @@
       <Member name="MarketWithSlippage" type="bool" />
       <Member name="IOCOverride" type="bool?" />
       <Member name="IFMOverride" type="bool?" />
+      <Member name="PrevVolume" type="double?" />
     </Type>
     <Type name="FxOrderArray" kind="array">
       <Value name="FxOrder" />
