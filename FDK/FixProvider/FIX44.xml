@@ -707,6 +707,7 @@
    <field name='TransactTime' required='Y' />
    <field name='QtyType' required='N' />
    <component name='OrderQtyData' required='Y' />
+   <field name='LeavesQty' required='N' />
    <field name='OrdType' required='Y' />
    <field name='PriceType' required='N' />
    <field name='Price' required='N' />

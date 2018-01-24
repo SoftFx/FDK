@@ -261,7 +261,7 @@
             string newTag,
             int? newMagic)
         {
-            return this.ModifyTradeRecordEx(orderId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, null, null, this.Client.SynchOperationTimeout);
+            return this.ModifyTradeRecordEx(orderId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, null, null, null, this.Client.SynchOperationTimeout);
         }
 
         /// <summary>
@@ -281,6 +281,8 @@
         /// <param name="newComment">A new comment.</param>
         /// <param name="newTag">A new tag.</param>
         /// <param name="newMagic">A new magic.</param>
+        /// <param name="prevVoume">Previous amount to check on server if threre was no amount modification during request.
+        /// If PrevAmount is provided and server Amount is different modify operation will rejected</param>
         /// <param name="IOCOverride">'Immediate-Or-Cancel' flag override.</param>
         /// <param name="IFMOverride">'In-Flight-Mitigation' flag override.</param>
         /// <param name="timeoutInMilliseconds">Timeout of the synchronous operation.</param>
@@ -294,11 +296,12 @@
             string newComment,
             string newTag,
             int? newMagic,
+            double? prevVolume,
             bool? IOCOverride,
             bool? IFMOverride,
             int timeoutInMilliseconds)
         {
-            return this.ModifyTradeRecordEx(null, orderId, "Client-" + orderId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, IOCOverride, IFMOverride, timeoutInMilliseconds);
+            return this.ModifyTradeRecordEx(null, orderId, "Client-" + orderId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, prevVolume, IOCOverride, IFMOverride, timeoutInMilliseconds);
         }
 
         /// <summary>
@@ -322,6 +325,8 @@
         /// <param name="newComment">A new comment.</param>
         /// <param name="newTag">A new tag.</param>
         /// <param name="newMagic">A new magic.</param>
+        /// <param name="prevVoume">Previous amount to check on server if threre was no amount modification during request.
+        /// If PrevAmount is provided and server Amount is different modify operation will rejected</param>
         /// <param name="IOCOverride">'Immediate-Or-Cancel' flag override.</param>
         /// <param name="IFMOverride">'In-Flight-Mitigation' flag override.</param>
         /// <returns>A modified trade record.</returns>
@@ -334,10 +339,11 @@
             string newComment,
             string newTag,
             int? newMagic,
+            double? prevVolume,
             bool? IOCOverride,
             bool? IFMOverride)
         {
-            return this.ModifyTradeRecordEx(operationId, orderId, "Client-" + orderId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, IOCOverride, IFMOverride, this.Client.SynchOperationTimeout);
+            return this.ModifyTradeRecordEx(operationId, orderId, "Client-" + orderId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, prevVolume, IOCOverride, IFMOverride, this.Client.SynchOperationTimeout);
         }
 
         /// <summary>
@@ -361,6 +367,8 @@
         /// <param name="newComment">A new comment.</param>
         /// <param name="newTag">A new tag.</param>
         /// <param name="newMagic">A new magic.</param>
+        /// <param name="prevVoume">Previous amount to check on server if threre was no amount modification during request.
+        /// If PrevAmount is provided and server Amount is different modify operation will rejected</param>
         /// <param name="IOCOverride">'Immediate-Or-Cancel' flag override.</param>
         /// <param name="IFMOverride">'In-Flight-Mitigation' flag override.</param>
         /// <param name="timeoutInMilliseconds">Timeout of the synchronous operation.</param>
@@ -374,11 +382,12 @@
             string newComment,
             string newTag,
             int? newMagic,
+            double? prevVolume,
             bool? IOCOverride,
             bool? IFMOverride,
             int timeoutInMilliseconds)
         {
-            var order = this.Client.DataTradeHandle.ModifyOrder(operationId, orderId, clientId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, IOCOverride, IFMOverride, timeoutInMilliseconds);
+            var order = this.Client.DataTradeHandle.ModifyOrder(operationId, orderId, clientId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, prevVolume, IOCOverride, IFMOverride, timeoutInMilliseconds);
             return new TradeRecord(this.Client, order);
         }
 

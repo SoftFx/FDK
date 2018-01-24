@@ -244,6 +244,8 @@ namespace FIX44
     FIELD_SET_EX(char, RoundingDirection);
     FIELD_SET(*this, FIX::RoundingModulus);
     FIELD_SET_EX(double, RoundingModulus);
+    FIELD_SET(*this, FIX::LeavesQty);
+    FIELD_SET_EX(double, LeavesQty);
     FIELD_SET(*this, FIX::OrdType);
     FIELD_SET_EX(char, OrdType);
     FIELD_SET(*this, FIX::PriceType);

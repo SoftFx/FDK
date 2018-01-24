@@ -640,6 +640,10 @@ void CFixSender::VSendModifyOrder(const string& id, const CFxOrder& request)
         {
             message.SetInFlightMitigationFlag(*request.IFMOverride);
         }
+        if (request.PrevVolume.HasValue())
+        {
+            message.SetLeavesQty(*request.PrevVolume);
+        }
     }
 
     return SendMessage(message);

@@ -687,6 +687,7 @@ namespace SoftFX.Extended.Generated
 			result.MarketWithSlippage = buffer.ReadBoolean();
 			result.IOCOverride = buffer.ReadNullBoolean();
 			result.IFMOverride = buffer.ReadNullBoolean();
+			result.PrevVolume = buffer.ReadNullDouble();
 			return result;
 		}
 		public static void WriteFxOrder(this MemoryBuffer buffer, SoftFX.Extended.Data.FxOrder arg)
@@ -720,6 +721,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteBoolean(arg.MarketWithSlippage);
 			buffer.WriteNullBoolean(arg.IOCOverride);
 			buffer.WriteNullBoolean(arg.IFMOverride);
+			buffer.WriteNullDouble(arg.PrevVolume);
 		}
 		public static SoftFX.Extended.Data.FxOrder[] ReadFxOrderArray(this MemoryBuffer buffer)
 		{

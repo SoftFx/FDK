@@ -54,7 +54,7 @@
 
             this.VerifyInitialized();
 
-            var order = new FxOrder(symbol, (int)command, side, volume, maxVisibleVolume, price, stopPrice, stopLoss, takeProfit, expiration, comment, tag, magic, null, null);
+            var order = new FxOrder(symbol, (int)command, side, volume, maxVisibleVolume, price, stopPrice, stopLoss, takeProfit, expiration, comment, tag, magic);
 
             return Native.TradeServer.OpenNewOrder(this.handle, operationId, order, (uint)timeoutInMilliseconds);
         }
@@ -68,6 +68,7 @@
             string newComment,
             string newTag,
             int? newMagic,
+            double? prevVolume,
             bool? IOCOverride,
             bool? IFMOverride,
             int timeoutInMilliseconds)
@@ -89,7 +90,7 @@
 
             this.VerifyInitialized();
 
-            var order = new FxOrder(orderId, clientId, symbol, (int)type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, IOCOverride, IFMOverride);
+            var order = new FxOrder(orderId, clientId, symbol, (int)type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, prevVolume, IOCOverride, IFMOverride);
 
             return Native.TradeServer.ModifyOrder(this.handle, operationId, order, (uint)timeoutInMilliseconds);
         }

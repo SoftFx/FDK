@@ -38,6 +38,7 @@ public:
     bool MarketWithSlippage;
     Nullable<bool> IOCOverride;
     Nullable<bool> IFMOverride;
+    Nullable<double> PrevVolume;
 };
 
 
