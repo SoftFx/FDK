@@ -227,7 +227,7 @@
 
         void Validate(double value)
         {
-            if ((value < (double)Decimal.MinValue) || (value < (double)Decimal.MaxValue))
+            if ((value < (double)Decimal.MinValue) || (value > (double)Decimal.MaxValue))
                 throw new ArgumentOutOfRangeException($"Value {value} out of range [{Decimal.MinValue}, {Decimal.MaxValue}]");
         }
 
