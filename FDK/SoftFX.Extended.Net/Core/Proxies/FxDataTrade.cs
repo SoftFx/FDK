@@ -54,6 +54,13 @@
 
             this.VerifyInitialized();
 
+            this.Validate(volume);
+            this.Validate(maxVisibleVolume);
+            this.Validate(price);
+            this.Validate(stopPrice);
+            this.Validate(stopLoss);
+            this.Validate(takeProfit);
+
             var order = new FxOrder(symbol, (int)command, side, volume, maxVisibleVolume, price, stopPrice, stopLoss, takeProfit, expiration, comment, tag, magic);
 
             return Native.TradeServer.OpenNewOrder(this.handle, operationId, order, (uint)timeoutInMilliseconds);
@@ -90,6 +97,14 @@
 
             this.VerifyInitialized();
 
+            this.Validate(newVolume);
+            this.Validate(newMaxVisibleVolume);
+            this.Validate(newPrice);
+            this.Validate(newStopPrice);
+            this.Validate(newStopLoss);
+            this.Validate(newTakeProfit);
+            this.Validate(prevVolume);
+
             var order = new FxOrder(orderId, clientId, symbol, (int)type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, prevVolume, IOCOverride, IFMOverride);
 
             return Native.TradeServer.ModifyOrder(this.handle, operationId, order, (uint)timeoutInMilliseconds);
@@ -117,6 +132,8 @@
                 orderId = string.Empty;
 
             this.VerifyInitialized();
+
+            this.Validate(closingVolume);
 
             return Native.TradeServer.CloseOrder(this.handle, operationId, orderId, closingVolume, (uint)timeoutInMilliseconds);
         }
@@ -206,6 +223,18 @@
         {
             if (this.handle.IsZero)
                 throw new InvalidOperationException(string.Format("Cannot use not initialized {0} object.", this.GetType().Name));
+        }
+
+        void Validate(double value)
+        {
+            if ((value < (double)Decimal.MinValue) || (value < (double)Decimal.MaxValue))
+                throw new ArgumentOutOfRangeException($"Value {value} out of range [{Decimal.MinValue}, {Decimal.MaxValue}]");
+        }
+
+        void Validate(double? value)
+        {
+            if (value.HasValue)
+                Validate(value.Value);
         }
 
         #region Members

@@ -25,11 +25,11 @@
 #include "FieldTypes.h"
 #include "Exceptions.h"
 #include "Utility.h"
-
-
-
-
-
+#include <string>
+#include <sstream>
+#include <iomanip>
+#include <cstdio>
+#include <limits>
 
 namespace FIX
 {
