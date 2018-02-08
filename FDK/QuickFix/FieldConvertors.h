@@ -202,64 +202,35 @@ struct DoubleConvertor
 {
   static std::string convert( double value, int padding = 0 )
   {
-    char result[32];
-    char *end = 0;
+    std::ostringstream stream;
+    stream << std::fixed << std::setprecision(15) << value;
+    std::string result = stream.str();
 
-    int size;
-    if( value == 0 || value > 0.0001 || value <= -0.0001 )
+    // Calculate trim size for unneccessary float zero digits.
+    int trimcount = 0;
+    int floatcount = 0;
+    bool trimrequired = false;
+    for (std::string::reverse_iterator rit = result.rbegin(); rit < result.rend(); rit++)
     {
-      size = STRING_SPRINTF( result, "%.15g", value );
-
-      if( padding > 0 )
+      if ((*rit == '0') && (floatcount == 0))
+        trimcount++;
+      else if (floatcount > 0)
+        floatcount++;
+      else
+        floatcount = trimcount + ((*rit == '.') ? 0 : 1);
+      if ((*rit == '.') && (trimcount > 0))
       {
-        char* point = result;
-        end = result + size - 1;
-        while( *point != '.' && *point != 0 )
-          point++;
-
-        if( *point == 0 )
-        {
-          end = point;
-          *point = '.';
-          size++;
-        }
-        int needed = padding - (int)(end - point);
-
-        while( needed-- > 0 )
-        {
-          *(++end) = '0';
-          size++;
-        }
-        *(end+1) = 0;
+        trimrequired = true;
+        trimcount = (floatcount > trimcount) ? trimcount : (trimcount - 1);
+        break;
       }
     }
-    else
-    {
-      size = STRING_SPRINTF( result, "%.15f", value );
-      // strip trailing 0's
-      end = result + size - 1;
 
-      if( padding > 0 )
-      {
-        int discard = 15 - padding;
+    // Perform trim for unneccessary float zero digits.
+    if (trimrequired && (trimcount > 0))
+      result.erase(result.size() - trimcount, trimcount);
 
-        while( (*end == '0') && (discard-- > 0) )
-        {
-          *(end--) = 0;
-          size--;
-        }
-     }
-     else
-     {
-       while( *end == '0' )
-       {
-         *(end--) = 0;
-         size--;
-       }
-     }
-   }
-
-   return std::string( result, size );
+    return result;
 }
 
 static bool convert( const std::string& value, double& result )
