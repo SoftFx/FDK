@@ -54,12 +54,12 @@
 
             this.VerifyInitialized();
 
-            this.Validate(volume);
-            this.Validate(maxVisibleVolume);
-            this.Validate(price);
-            this.Validate(stopPrice);
-            this.Validate(stopLoss);
-            this.Validate(takeProfit);
+            this.Validate(nameof(volume), volume);
+            this.Validate(nameof(maxVisibleVolume), maxVisibleVolume);
+            this.Validate(nameof(price), price);
+            this.Validate(nameof(stopPrice), stopPrice);
+            this.Validate(nameof(stopLoss), stopLoss);
+            this.Validate(nameof(takeProfit), takeProfit);
 
             var order = new FxOrder(symbol, (int)command, side, volume, maxVisibleVolume, price, stopPrice, stopLoss, takeProfit, expiration, comment, tag, magic);
 
@@ -97,13 +97,13 @@
 
             this.VerifyInitialized();
 
-            this.Validate(newVolume);
-            this.Validate(newMaxVisibleVolume);
-            this.Validate(newPrice);
-            this.Validate(newStopPrice);
-            this.Validate(newStopLoss);
-            this.Validate(newTakeProfit);
-            this.Validate(prevVolume);
+            this.Validate(nameof(newVolume), newVolume);
+            this.Validate(nameof(newMaxVisibleVolume), newMaxVisibleVolume);
+            this.Validate(nameof(newPrice), newPrice);
+            this.Validate(nameof(newStopPrice), newStopPrice);
+            this.Validate(nameof(newStopLoss), newStopLoss);
+            this.Validate(nameof(newTakeProfit), newTakeProfit);
+            this.Validate(nameof(prevVolume), prevVolume);
 
             var order = new FxOrder(orderId, clientId, symbol, (int)type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, prevVolume, IOCOverride, IFMOverride);
 
@@ -133,7 +133,7 @@
 
             this.VerifyInitialized();
 
-            this.Validate(closingVolume);
+            this.Validate(nameof(closingVolume), closingVolume);
 
             return Native.TradeServer.CloseOrder(this.handle, operationId, orderId, closingVolume, (uint)timeoutInMilliseconds);
         }
@@ -225,16 +225,16 @@
                 throw new InvalidOperationException(string.Format("Cannot use not initialized {0} object.", this.GetType().Name));
         }
 
-        void Validate(double value)
+        void Validate(string name, double value)
         {
             if ((value < (double)Decimal.MinValue) || (value > (double)Decimal.MaxValue))
-                throw new ArgumentOutOfRangeException($"Value {value} out of range [{Decimal.MinValue}, {Decimal.MaxValue}]");
+                throw new ArgumentOutOfRangeException(name, $"'{name}' value {value} out of range [{Decimal.MinValue}, {Decimal.MaxValue}]");
         }
 
-        void Validate(double? value)
+        void Validate(string name, double? value)
         {
             if (value.HasValue)
-                Validate(value.Value);
+                Validate(name, value.Value);
         }
 
         #region Members
