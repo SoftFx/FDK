@@ -130,6 +130,11 @@
         public double? Margin { get; internal set; }
 
         /// <summary>
+        /// Gets initial type of the order.
+        /// </summary>
+        public TradeRecordType InitialType { get; internal set; }
+
+        /// <summary>
         /// Gets type of the order.
         /// </summary>
         public TradeRecordType Type { get; internal set; }
@@ -219,6 +224,17 @@
             get
             {
                 return this.Type == TradeRecordType.Position;
+            }
+        }
+
+        /// <summary>
+        /// Returns true, if the trade record is market order.
+        /// </summary>
+        public bool IsMarketOrder
+        {
+            get
+            {
+                return this.InitialType == TradeRecordType.Market;
             }
         }
 
@@ -520,7 +536,7 @@
         /// <returns>can not be null</returns>
         public override string ToString()
         {
-            return string.Format("Id = {0}; {1} {2} {3}; Price = {4}; Volume = {5}; SP = {8}; SL = {6}; TP = {7}", this.OrderId, this.Symbol, this.Type, this.Side, this.Price, this.Volume, this.StopLoss, this.TakeProfit, this.StopPrice);
+            return string.Format("Id = {0}; {1} {2} {3} {4}; Price = {5}; SP = {6}; Volume = {7}; SL = {8}; TP = {9}", this.OrderId, this.Symbol, this.InitialType, this.Type, this.Side, this.Price, this.StopPrice, this.Volume, this.StopLoss, this.TakeProfit);
         }
     }
 }
