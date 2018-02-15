@@ -101,6 +101,10 @@ CFxOrder CDataTrade::OpenNewOrder(const string& operationId, const CFxOrder& ord
         {
             return result;
         }
+		else if (report.TryGetFilledMarketOrder(result))
+		{
+			return result;
+		}
         else
         {
             throw runtime_error("Internal error");
