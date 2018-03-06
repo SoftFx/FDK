@@ -12,8 +12,7 @@
 
         protected override void RunExample()
         {
-            var trade = this.Trade.Server.ModifyTradeRecordEx("2086006", "EURUSD", TradeRecordType.Limit, TradeRecordSide.Buy,
-                10e+54, null, null, null, null, null, null, null, null, null, 80000, null, null, 10000);
+            var trade = this.Trade.Server.SendOrderEx("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 100000, null, null, null, null, null, null, null, null, null, 10000);
             /*
             var position0 = this.Trade.Server.SendOrder("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 0, 1000000, null, null, null, null, null, null, null, null);
             var position1 = position0.Modify(null, null, null, 2, null, null, null, null);
