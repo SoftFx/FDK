@@ -28,6 +28,7 @@
             this.Commission = fxOrder.Commission;
             this.Swap = fxOrder.Swap;
             this.Profit = fxOrder.Profit;
+            this.InitialType = (TradeRecordType)fxOrder.InitialType;
             this.Type = (TradeRecordType)fxOrder.Type;
             this.Side = fxOrder.Side;
             this.Comment = fxOrder.Comment;
@@ -491,9 +492,9 @@
         /// <param name="newTag">A new comment</param>
         /// <param name="newMagic">A new comment</param>
         /// <param name="prevVoume">Previous amount to check on server if threre was no amount modification during request.
-        /// If PrevAmount is provided and server Amount is different modify operation will rejected</param>        
+        /// If PrevAmount is provided and server Amount is different modify operation will rejected</param>
         /// <param name="IOCOverride">'Immediate-Or-Cancel' flag override.</param>
-        /// <param name="IFMOverride">'In-Flight-Mitigation' flag override.</param>         
+        /// <param name="IFMOverride">'In-Flight-Mitigation' flag override.</param>
         /// <param name="timeoutInMilliseconds">Timeout of the operation in milliseconds.</param>
         /// <returns>A modified trade record.</returns>
         public TradeRecord ModifyEx(double? newPrice, double? newStopPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpirationTime, string newComment, string newTag, int? newMagic, double? prevVolume, bool? IOCOverride, bool? IFMOverride, int timeoutInMilliseconds)
@@ -515,9 +516,9 @@
         /// <param name="newTag">A new comment</param>
         /// <param name="newMagic">A new comment</param>
         /// <param name="prevVoume">Previous amount to check on server if threre was no amount modification during request.
-        /// If PrevAmount is provided and server Amount is different modify operation will rejected</param>                
+        /// If PrevAmount is provided and server Amount is different modify operation will rejected</param>
         /// <param name="IOCOverride">'Immediate-Or-Cancel' flag override.</param>
-        /// <param name="IFMOverride">'In-Flight-Mitigation' flag override.</param>                  
+        /// <param name="IFMOverride">'In-Flight-Mitigation' flag override.</param>
         /// <param name="timeoutInMilliseconds">Timeout of the operation in milliseconds.</param>
         /// <returns>A modified trade record.</returns>
         public TradeRecord ModifyEx(string operationId, double? newPrice, double? newStopPrice, double? newStopLoss, double? newTakeProfit, DateTime? newExpirationTime, string newComment, string newTag, int? newMagic, double? prevVolume, bool? IOCOverride, bool? IFMOverride, int timeoutInMilliseconds)
