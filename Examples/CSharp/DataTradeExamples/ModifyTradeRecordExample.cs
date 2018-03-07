@@ -12,8 +12,6 @@
 
         protected override void RunExample()
         {
-            var trade = this.Trade.Server.SendOrderEx("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 100000, null, null, null, null, null, null, null, null, null, 10000);
-            /*
             var position0 = this.Trade.Server.SendOrder("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 0, 1000000, null, null, null, null, null, null, null, null);
             var position1 = position0.Modify(null, null, null, 2, null, null, null, null);
             Console.WriteLine("Opened position = {0}", position0);
@@ -28,7 +26,6 @@
             var stop1 = stop0.Modify(null, null, null, 2, null, null, null, null);
             Console.WriteLine("Opened stop order = {0}", stop0);
             Console.WriteLine("Modified stop order = {0}", stop1);
-            */
         }
     }
 }

@@ -18,9 +18,17 @@
 
         protected override void RunExample()
         {
-            var record = this.Trade.Server.SendOrderEx("Operation1", "EURUSD", TradeCommand.Limit, TradeRecordSide.Buy, 100000, null, 1.0, null, null, null, null, null, null, null);
-            Console.WriteLine("Trade record: {0}", record);
-            Console.ReadKey();
+            try
+            {
+                var record = this.Trade.Server.SendOrderEx("Operation1", "EURUSD", TradeCommand.Market, TradeRecordSide.Sell, 4000, null, 1.24068, null, null, null, null, "Open Market Bot 2018-03-07 14:13:09", "{\"Key\":\"T Open Market Script 1\",\"Tag\":null}", 0);
+                Console.WriteLine("Trade record: {0}", record);
+                Console.ReadKey();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }
