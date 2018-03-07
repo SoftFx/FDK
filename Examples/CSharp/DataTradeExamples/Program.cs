@@ -4,13 +4,13 @@
     {
         static void Main()
         {
-            string address = "localhost";
-            string username = "11";
-            string password = "123qwe!";
+            string address = "tp.dev.soft-fx.eu";
+            string username = "1002";
+            string password = "123";
 
             //var example = new TradeServerInfoExample(address, username, password);
             //var example = new AccountInfoExample(address, username, password);
-            //var example = new SendLimitOrderExample(address, username, password);
+            var example = new SendLimitOrderExample(address, username, password);
             //var example = new SendMarketOrderExample(address, username, password);
             //var example = new SendStopOrderExample(address, username, password);
             //var example = new CloseAllPositionsExample(address, username, password);
@@ -19,7 +19,7 @@
             //var example = new DeletePendingOrderExample(address, username, password);
             //var example = new GetOrdersExample(address, username, password);
             //var example = new GetTradeTransactionReportsExample(address, username, password);
-            var example = new ModifyTradeRecordExample(address, username, password);
+            //var example = new ModifyTradeRecordExample(address, username, password);
             //var example = new CloseByExample(address, username, password);
 
             using (example)

@@ -22,6 +22,11 @@
             A new object that is a copy of this instance.
             </returns>
         </member>
+        <member name="T:TickTrader.BusinessObjects.SessionTypes">
+            <summary>
+            Session types
+            </summary>
+        </member>
         <member name="T:TickTrader.BusinessObjects.SystemPerformanceCounterTypes">
             <summary>
             Contains enums used in Monitoring as System Performance Counters
