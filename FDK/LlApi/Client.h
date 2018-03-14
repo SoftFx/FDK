@@ -75,6 +75,8 @@ public:
     virtual void VPositionReport(const CFxEventInfo& info, CFxPositionReport& positionReport);
     virtual void VNotify(const CFxEventInfo& eventInfo, const CNotification& notification);
     virtual void VQuotesHistoryResponse(const CFxEventInfo& eventInfo, const int version);
+    virtual void VGetDailyAccountSnapshotReports(const CFxEventInfo& info, const int32 curReportsNumber, const int32 totReportsNumber, const bool endOfStream);
+    virtual void VDailyAccountSnapshotReport(const CFxEventInfo& eventInfo, CFxDailyAccountSnapshotReport& report);
 
 protected:
 

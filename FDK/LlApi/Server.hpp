@@ -1138,50 +1138,50 @@ namespace
 }
 
 
-// handlers of Iterator component
+// handlers of TradeHistoryIterator component
 namespace
 {
-	const unsigned short LrpComponent_Iterator_Id = 9;
-	const unsigned short LrpMethod_Iterator_TotalItems_Id = 0;
-	const unsigned short LrpMethod_Iterator_EndOfStream_Id = 1;
-	const unsigned short LrpMethod_Iterator_Next_Id = 2;
-	const unsigned short LrpMethod_Iterator_GetTradeTransactionReport_Id = 3;
+	const unsigned short LrpComponent_TradeHistoryIterator_Id = 9;
+	const unsigned short LrpMethod_TradeHistoryIterator_TotalItems_Id = 0;
+	const unsigned short LrpMethod_TradeHistoryIterator_EndOfStream_Id = 1;
+	const unsigned short LrpMethod_TradeHistoryIterator_Next_Id = 2;
+	const unsigned short LrpMethod_TradeHistoryIterator_GetTradeTransactionReport_Id = 3;
 
-	typedef void (*LrpInvoke_Iterator_Method_Handler)(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel);
-	void LrpInvoke_Iterator_TotalItems(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	typedef void (*LrpInvoke_TradeHistoryIterator_Method_Handler)(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel);
+	void LrpInvoke_TradeHistoryIterator_TotalItems(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
 		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
-		auto& component = pChannel->GetIterator();
+		auto& component = pChannel->GetTradeHistoryIterator();
 		component; // if all methods of component are static then the next line generates warning #4189
 		auto arg0 = ReadLocalPointer(buffer);
 		auto result = component.TotalItems(arg0);
 		buffer.Reset(offset);
 		WriteInt32(result, buffer);
 	}
-	void LrpInvoke_Iterator_EndOfStream(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	void LrpInvoke_TradeHistoryIterator_EndOfStream(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
 		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
-		auto& component = pChannel->GetIterator();
+		auto& component = pChannel->GetTradeHistoryIterator();
 		component; // if all methods of component are static then the next line generates warning #4189
 		auto arg0 = ReadLocalPointer(buffer);
 		auto result = component.EndOfStream(arg0);
 		buffer.Reset(offset);
 		WriteBoolean(result, buffer);
 	}
-	void LrpInvoke_Iterator_Next(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	void LrpInvoke_TradeHistoryIterator_Next(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
 		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
-		auto& component = pChannel->GetIterator();
+		auto& component = pChannel->GetTradeHistoryIterator();
 		component; // if all methods of component are static then the next line generates warning #4189
 		auto arg0 = ReadLocalPointer(buffer);
 		auto arg1 = ReadUInt32(buffer);
 		component.Next(arg0, arg1);
 		buffer.Reset(offset);
 	}
-	void LrpInvoke_Iterator_GetTradeTransactionReport(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	void LrpInvoke_TradeHistoryIterator_GetTradeTransactionReport(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
 		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
-		auto& component = pChannel->GetIterator();
+		auto& component = pChannel->GetTradeHistoryIterator();
 		component; // if all methods of component are static then the next line generates warning #4189
 		auto arg0 = ReadLocalPointer(buffer);
 		auto result = component.GetTradeTransactionReport(arg0);
@@ -1189,21 +1189,92 @@ namespace
 		WriteTradeTransactionReport(result, buffer);
 	}
 
-	LrpInvoke_Iterator_Method_Handler gIteratorHandlers[] = 
+	LrpInvoke_TradeHistoryIterator_Method_Handler gTradeHistoryIteratorHandlers[] = 
 	{
-		LrpInvoke_Iterator_TotalItems,
-		LrpInvoke_Iterator_EndOfStream,
-		LrpInvoke_Iterator_Next,
-		LrpInvoke_Iterator_GetTradeTransactionReport,
+		LrpInvoke_TradeHistoryIterator_TotalItems,
+		LrpInvoke_TradeHistoryIterator_EndOfStream,
+		LrpInvoke_TradeHistoryIterator_Next,
+		LrpInvoke_TradeHistoryIterator_GetTradeTransactionReport,
 	};
 
-	HRESULT LrpInvoke_Iterator(size_t offset, size_t methodId, MemoryBuffer& buffer, LrpChannel* pChannel)
+	HRESULT LrpInvoke_TradeHistoryIterator(size_t offset, size_t methodId, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
 		if(methodId >= 4)
 		{
 			return LRP_INVALID_METHOD_ID;
 		}
-		gIteratorHandlers[methodId](offset, buffer, pChannel); 
+		gTradeHistoryIteratorHandlers[methodId](offset, buffer, pChannel); 
+		return S_OK;
+	}
+}
+
+
+// handlers of DailySnapshotsIterator component
+namespace
+{
+	const unsigned short LrpComponent_DailySnapshotsIterator_Id = 10;
+	const unsigned short LrpMethod_DailySnapshotsIterator_TotalItems_Id = 0;
+	const unsigned short LrpMethod_DailySnapshotsIterator_EndOfStream_Id = 1;
+	const unsigned short LrpMethod_DailySnapshotsIterator_Next_Id = 2;
+	const unsigned short LrpMethod_DailySnapshotsIterator_GetDailyAccountSnapshotReport_Id = 3;
+
+	typedef void (*LrpInvoke_DailySnapshotsIterator_Method_Handler)(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel);
+	void LrpInvoke_DailySnapshotsIterator_TotalItems(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	{
+		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
+		auto& component = pChannel->GetDailySnapshotsIterator();
+		component; // if all methods of component are static then the next line generates warning #4189
+		auto arg0 = ReadLocalPointer(buffer);
+		auto result = component.TotalItems(arg0);
+		buffer.Reset(offset);
+		WriteInt32(result, buffer);
+	}
+	void LrpInvoke_DailySnapshotsIterator_EndOfStream(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	{
+		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
+		auto& component = pChannel->GetDailySnapshotsIterator();
+		component; // if all methods of component are static then the next line generates warning #4189
+		auto arg0 = ReadLocalPointer(buffer);
+		auto result = component.EndOfStream(arg0);
+		buffer.Reset(offset);
+		WriteBoolean(result, buffer);
+	}
+	void LrpInvoke_DailySnapshotsIterator_Next(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	{
+		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
+		auto& component = pChannel->GetDailySnapshotsIterator();
+		component; // if all methods of component are static then the next line generates warning #4189
+		auto arg0 = ReadLocalPointer(buffer);
+		auto arg1 = ReadUInt32(buffer);
+		component.Next(arg0, arg1);
+		buffer.Reset(offset);
+	}
+	void LrpInvoke_DailySnapshotsIterator_GetDailyAccountSnapshotReport(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	{
+		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
+		auto& component = pChannel->GetDailySnapshotsIterator();
+		component; // if all methods of component are static then the next line generates warning #4189
+		auto arg0 = ReadLocalPointer(buffer);
+		auto result = component.GetDailyAccountSnapshotReport(arg0);
+		buffer.Reset(offset);
+		WriteDailyAccountSnapshotReport(result, buffer);
+	}
+
+	LrpInvoke_DailySnapshotsIterator_Method_Handler gDailySnapshotsIteratorHandlers[] = 
+	{
+		LrpInvoke_DailySnapshotsIterator_TotalItems,
+		LrpInvoke_DailySnapshotsIterator_EndOfStream,
+		LrpInvoke_DailySnapshotsIterator_Next,
+		LrpInvoke_DailySnapshotsIterator_GetDailyAccountSnapshotReport,
+	};
+
+	HRESULT LrpInvoke_DailySnapshotsIterator(size_t offset, size_t methodId, MemoryBuffer& buffer, LrpChannel* pChannel)
+	{
+		if(methodId >= 4)
+		{
+			return LRP_INVALID_METHOD_ID;
+		}
+		gDailySnapshotsIteratorHandlers[methodId](offset, buffer, pChannel); 
 		return S_OK;
 	}
 }
@@ -1212,7 +1283,7 @@ namespace
 // handlers of Library component
 namespace
 {
-	const unsigned short LrpComponent_Library_Id = 10;
+	const unsigned short LrpComponent_Library_Id = 11;
 	const unsigned short LrpMethod_Library_WriteNormalDumpOnError_Id = 0;
 	const unsigned short LrpMethod_Library_WriteFullDumpOnError_Id = 1;
 	const unsigned short LrpMethod_Library_WriteNormalDump_Id = 2;
@@ -1291,7 +1362,8 @@ namespace
 		LrpInvoke_FeedCache,
 		LrpInvoke_TradeServer,
 		LrpInvoke_TradeCache,
-		LrpInvoke_Iterator,
+		LrpInvoke_TradeHistoryIterator,
+		LrpInvoke_DailySnapshotsIterator,
 		LrpInvoke_Library,
 	};
 }
@@ -1300,7 +1372,7 @@ namespace
 {
 	HRESULT LrpInvokeEx(size_t offset, size_t componentId, size_t methodId, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
-		if(componentId >= 11)
+		if(componentId >= 12)
 		{
 			return LRP_INVALID_COMPONENT_ID;
 		}
@@ -1486,11 +1558,16 @@ extern "C" const char* __stdcall LrpSignature()
 		"GetAccountInfo@446EF938D132F905C2149D7E29252571;"
 		"GetRecords@3AEE8D77B680849D7049629BE81F5F03;"
 		"GetPositions@66EEB769D2FA814DE7C674BB9336063B;"
-	"$Iterator;"
+	"$TradeHistoryIterator;"
 		"TotalItems@2D823D88E5F1A41CD2E0D38B83A2FF81;"
 		"EndOfStream@2603242C4BD05C699776EDE9A3BE7095;"
 		"Next@B11EB7E43C20423C945B2C435640CBB7;"
 		"GetTradeTransactionReport@CD7F098DB444A50152ECABCCA865F6FA;"
+	"$DailySnapshotsIterator;"
+		"TotalItems@2D823D88E5F1A41CD2E0D38B83A2FF81;"
+		"EndOfStream@2603242C4BD05C699776EDE9A3BE7095;"
+		"Next@B11EB7E43C20423C945B2C435640CBB7;"
+		"GetDailyAccountSnapshotReport@21B93921B88BC70340D6B3E6B1FD56FF;"
 	"$Library;"
 		"WriteNormalDumpOnError@0B96772D78BDDF0BED91111591B97E95;"
 		"WriteFullDumpOnError@B174D794F550A48C009BEC31D8DF5256;"

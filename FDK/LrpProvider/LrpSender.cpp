@@ -154,6 +154,11 @@ void CLrpSender::VSendQuotesHistoryRequest(const string& id)
     server.OnComponentsInfoRequest(id, cClientQuoteHistoryVersion);
 }
 
+void CLrpSender::VSendGetDailyAccountSnapshotReports(const string& id, FxTimeDirection direction, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, uint32 bufferSize, const string& position)
+{
+    throw std::exception("CLrpSender::VSendGetDailyAccountSnapshotReports() method is not implemented.");
+}
+
 void CLrpSender::SendHeartBeatResponse()
 {
     Server server(*this);

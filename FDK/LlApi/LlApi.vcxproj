@@ -251,9 +251,11 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
     <ClInclude Include="Client.h" />
     <ClInclude Include="FxQueue.h" />
     <ClInclude Include="FxTradeTransactionReportIterator.h" />
+    <ClInclude Include="FxDailyAccountSnapshotReportIterator.h" />
     <ClInclude Include="HandleImpl.h" />
     <ClInclude Include="IdGenerator.h" />
-    <ClInclude Include="IteratorImpl.h" />
+    <ClInclude Include="TradeHistoryIteratorImpl.h" />
+    <ClInclude Include="DailySnapshotsIteratorImpl.h" />
     <ClInclude Include="IWaiter.h" />
     <ClInclude Include="ParamsImpl.h" />
     <ClInclude Include="LimitedQueue.h" />
@@ -289,9 +291,11 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
     <ClCompile Include="LlApi.cpp" />
     <ClCompile Include="FxQueue.cpp" />
     <ClCompile Include="FxTradeTransactionReportIterator.cpp" />
+    <ClCompile Include="FxDailyAccountSnapshotReportIterator.cpp" />
     <ClCompile Include="HandleImpl.cpp" />
     <ClCompile Include="IdGenerator.cpp" />
-    <ClCompile Include="IteratorImpl.cpp" />
+    <ClCompile Include="TradeHistoryIteratorImpl.cpp" />
+    <ClCompile Include="DailySnapshotsIteratorImpl.cpp" />
     <ClCompile Include="LocalServer.cpp" />
     <ClCompile Include="ParamsImpl.cpp" />
     <ClCompile Include="ProtocolVersion.cpp" />

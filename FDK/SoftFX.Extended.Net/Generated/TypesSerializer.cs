@@ -1083,6 +1083,56 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteAString(arg.MinCommissionCurrency);
 			buffer.WriteNullDouble(arg.MinCommissionConversionRate);
 		}
+		public static SoftFX.Extended.Reports.DailyAccountSnapshotReport ReadDailyAccountSnapshotReport(this MemoryBuffer buffer)
+		{
+			var result = new SoftFX.Extended.Reports.DailyAccountSnapshotReport();
+			result.Timestamp = buffer.ReadTime();
+			result.AccountId = buffer.ReadAString();
+			result.Type = buffer.ReadAccountType();
+			result.BalanceCurrency = buffer.ReadAString();
+			result.Leverage = buffer.ReadInt32();
+			result.Balance = buffer.ReadDouble();
+			result.Margin = buffer.ReadDouble();
+			result.MarginLevel = buffer.ReadDouble();
+			result.Equity = buffer.ReadDouble();
+			result.Swap = buffer.ReadDouble();
+			result.Profit = buffer.ReadDouble();
+			result.Commission = buffer.ReadDouble();
+			result.AgentCommission = buffer.ReadDouble();
+			result.IsValid = buffer.ReadBoolean();
+			result.IsReadOnly = buffer.ReadBoolean();
+			result.IsBlocked = buffer.ReadBoolean();
+			result.BalanceCurrencyToUsdConversionRate = buffer.ReadNullDouble();
+			result.UsdToBalanceCurrencyConversionRate = buffer.ReadNullDouble();
+			result.ProfitCurrencyToUsdConversionRate = buffer.ReadNullDouble();
+			result.UsdToProfitCurrencyConversionRate = buffer.ReadNullDouble();
+			result.Assets = buffer.ReadAssetInfoArray();
+			return result;
+		}
+		public static void WriteDailyAccountSnapshotReport(this MemoryBuffer buffer, SoftFX.Extended.Reports.DailyAccountSnapshotReport arg)
+		{
+			buffer.WriteTime(arg.Timestamp);
+			buffer.WriteAString(arg.AccountId);
+			buffer.WriteAccountType(arg.Type);
+			buffer.WriteAString(arg.BalanceCurrency);
+			buffer.WriteInt32(arg.Leverage);
+			buffer.WriteDouble(arg.Balance);
+			buffer.WriteDouble(arg.Margin);
+			buffer.WriteDouble(arg.MarginLevel);
+			buffer.WriteDouble(arg.Equity);
+			buffer.WriteDouble(arg.Swap);
+			buffer.WriteDouble(arg.Profit);
+			buffer.WriteDouble(arg.Commission);
+			buffer.WriteDouble(arg.AgentCommission);
+			buffer.WriteBoolean(arg.IsValid);
+			buffer.WriteBoolean(arg.IsReadOnly);
+			buffer.WriteBoolean(arg.IsBlocked);
+			buffer.WriteNullDouble(arg.BalanceCurrencyToUsdConversionRate);
+			buffer.WriteNullDouble(arg.UsdToBalanceCurrencyConversionRate);
+			buffer.WriteNullDouble(arg.ProfitCurrencyToUsdConversionRate);
+			buffer.WriteNullDouble(arg.UsdToProfitCurrencyConversionRate);
+			buffer.WriteAssetInfoArray(arg.Assets);
+		}
 		public static SoftFX.Extended.ClosePositionResult ReadClosePositionResult(this MemoryBuffer buffer)
 		{
 			var result = new SoftFX.Extended.ClosePositionResult();

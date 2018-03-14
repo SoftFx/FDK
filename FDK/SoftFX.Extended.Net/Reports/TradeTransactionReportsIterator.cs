@@ -12,7 +12,7 @@
 
         internal override TradeTransactionReport ItemFromPointer(LPtr handle)
         {
-            return Native.Iterator.GetTradeTransactionReport(handle);
+            return Native.TradeHistoryIterator.GetTradeTransactionReport(handle);
         }
     }
 }

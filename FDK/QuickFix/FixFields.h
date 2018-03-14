@@ -1198,6 +1198,14 @@ namespace FIX
   DEFINE_INT(TripleSwapDay);
   DEFINE_FLOAT(MinCommissionConversionRate);
   DEFINE_BOOLEAN(InFlightMitigationFlag);
+  DEFINE_STRING(SnapshotRequestID);
+  DEFINE_INT(SnapshotRequestResult);
+  DEFINE_BOOLEAN(AccountReadonlyFlag);
+  DEFINE_FLOAT(BalanceCurrencyToUsdConversionRate);
+  DEFINE_FLOAT(UsdToBalanceCurrencyConversionRate);
+  DEFINE_FLOAT(MarginLevel);
+  DEFINE_UTCTIMESTAMP(Timestamp);
+  DEFINE_AMT(Profit);
   DEFINE_NUMINGROUP(NoStrategyParameters);
   DEFINE_STRING(StrategyParameterName);
   DEFINE_INT(StrategyParameterType);

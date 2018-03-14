@@ -37,6 +37,7 @@ public:
     virtual void VSendUnsubscribeTradeTransactionReports(const string& id);
     virtual void VSendPositionReportRequest(const string& id, const string& account);
     virtual void VSendQuotesHistoryRequest(const string& id);
+    virtual void VSendGetDailyAccountSnapshotReports(const string& id, FxTimeDirection direction, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, uint32 bufferSize, const string& position);
 public:
     void SendHeartBeatResponse();
 private:

@@ -14,6 +14,7 @@ public:
     CFxAccountInfo AccountInfoFromHandle(void* handle);
     CFxPositionReport PositionFromHandle(void* handle);
     CFxTradeTransactionReport TradeTransactionReportFromHandle(void* handle);
+    CFxDailyAccountSnapshotReport DailyAccountSnapshotReportFromHandle(void* handle);
     CFxExecutionReport ExecutionReportFromHandle(void* handle);
     void GetLogoutInfoFromHandle(void* handle, string& text, FxLogoutReason& reason, int32& code);
 };

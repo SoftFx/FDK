@@ -19,14 +19,14 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(10);
+				return m_client.IsSupported(11);
 			}
 		}
 		public bool Is_WriteNormalDumpOnError_Supported
 		{
 			get
 			{
-				return m_client.IsSupported(10, 0);
+				return m_client.IsSupported(11, 0);
 			}
 		}
 		public void WriteNormalDumpOnError(string path)
@@ -35,7 +35,7 @@ namespace SoftFX.Extended.Generated
 			{
 				buffer.WriteWString(path);
 
-				int _status = m_client.Invoke(10, 0, buffer);
+				int _status = m_client.Invoke(11, 0, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 			}
@@ -44,7 +44,7 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(10, 1);
+				return m_client.IsSupported(11, 1);
 			}
 		}
 		public void WriteFullDumpOnError(string path)
@@ -53,7 +53,7 @@ namespace SoftFX.Extended.Generated
 			{
 				buffer.WriteWString(path);
 
-				int _status = m_client.Invoke(10, 1, buffer);
+				int _status = m_client.Invoke(11, 1, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 			}
@@ -62,7 +62,7 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(10, 2);
+				return m_client.IsSupported(11, 2);
 			}
 		}
 		public void WriteNormalDump(string path)
@@ -71,7 +71,7 @@ namespace SoftFX.Extended.Generated
 			{
 				buffer.WriteWString(path);
 
-				int _status = m_client.Invoke(10, 2, buffer);
+				int _status = m_client.Invoke(11, 2, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 			}
@@ -80,7 +80,7 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(10, 3);
+				return m_client.IsSupported(11, 3);
 			}
 		}
 		public void WriteFullDump(string path)
@@ -89,7 +89,7 @@ namespace SoftFX.Extended.Generated
 			{
 				buffer.WriteWString(path);
 
-				int _status = m_client.Invoke(10, 3, buffer);
+				int _status = m_client.Invoke(11, 3, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 			}

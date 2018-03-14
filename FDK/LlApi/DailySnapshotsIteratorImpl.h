@@ -1,10 +1,10 @@
 #pragma once
 
-class CIteratorImpl
+class CDailySnapshotsIteratorImpl
 {
 public:
     int TotalItems(void* handle);
     bool EndOfStream(void* handle);
     void Next(void* handle, size_t timeoutInMilliseconds);
-    CFxTradeTransactionReport GetTradeTransactionReport(void* handle);
+    CFxDailyAccountSnapshotReport GetDailyAccountSnapshotReport(void* handle);
 };

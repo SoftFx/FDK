@@ -189,6 +189,13 @@
             Native.TradeServer.UnsubscribeTradeTransactionReports(this.handle, (uint)timeoutInMilliseconds);
         }
 
+        public LPtr GetDailyAccountSnapshots(TimeDirection direction, DateTime? from, DateTime? to, int preferedBufferSize, int timeoutInMilliseconds)
+        {
+            this.VerifyInitialized();
+
+            return Native.TradeServer.GetDailyAccountSnapshots(this.handle, (int)direction, from, to, (UInt32)preferedBufferSize, (UInt32)timeoutInMilliseconds);
+        }
+
         #endregion
 
         #region Local Methods

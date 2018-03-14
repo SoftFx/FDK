@@ -26,6 +26,7 @@ public:
 #include "FxAccountInfo.h"
 #include "FxSessionInfo.h"
 #include "FxTradeTransactionReport.h"
+#include "FxDailyAccountSnapshotReport.h"
 #include "FxPositionReport.h"
 
 typedef CFxMsgData<CFxQuote> CFxMsgSubscribed;
@@ -38,6 +39,7 @@ typedef CFxMsgData<CFxTwoFactorAuth> CFxMsgTwoFactorAuth;
 typedef CFxMsgData<CFxSessionInfo> CFxMsgSessionInfo;
 typedef CFxMsgData<CFxExecutionReport> CFxMsgExecutionReport;
 typedef CFxMsgData<CFxTradeTransactionReport> CFxMsgTradeTransactionReport;
+typedef CFxMsgData<CFxDailyAccountSnapshotReport> CFxMsgDailyAccountSnapshotReport;
 typedef CFxMsgData<CFxPositionReport> CFxMsgPositionReport;
 typedef CFxMsgData<CNotification> CFxMsgNotification;
 typedef CFxMsgData<string> CFxMsgLogon;

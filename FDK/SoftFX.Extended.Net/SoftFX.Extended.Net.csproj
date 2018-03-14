@@ -122,6 +122,8 @@
     <Compile Include="Financial\Serialization\CurrencyData.cs" />
     <Compile Include="Financial\State\Processor.cs" />
     <Compile Include="Financial\State\UpdateHandler.cs" />
+    <Compile Include="Generated\DailySnapshotsIterator.cs" />
+    <Compile Include="Generated\TradeHistoryIterator.cs" />
     <Compile Include="Library\DeviceIdGenerator.cs" />
     <Compile Include="Core\PerformanceLogger.cs" />
     <Compile Include="Resources\EmbeddedModules.Designer.cs">
@@ -200,7 +202,6 @@
     <Compile Include="Generated\FeedCache.cs" />
     <Compile Include="Generated\FeedServer.cs" />
     <Compile Include="Generated\Handle.cs" />
-    <Compile Include="Generated\Iterator.cs" />
     <Compile Include="Generated\Params.cs" />
     <Compile Include="Generated\Signature.cs" />
     <Compile Include="Generated\TradeCache.cs" />
@@ -287,6 +288,8 @@
     <Compile Include="Enums\MarginCalcMode.cs" />
     <Compile Include="Reports\TradeTransactionReportsIterator.cs" />
     <Compile Include="Reports\TradeTransactionReport.cs" />
+    <Compile Include="Reports\DailyAccountSnapshotReport.cs" />
+    <Compile Include="Reports\DailyAccountSnapshotReportsIterator.cs" />
     <Compile Include="Enums\TradeCommand.cs" />
     <Compile Include="Entities\TradeRecord.cs" />
     <Compile Include="Enums\TradeRecordSide.cs" />

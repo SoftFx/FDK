@@ -75,6 +75,11 @@ CFxTradeTransactionReport CConverterImpl::TradeTransactionReportFromHandle(void*
     return DataFromHandle<CFxTradeTransactionReport>(handle);
 }
 
+CFxDailyAccountSnapshotReport CConverterImpl::DailyAccountSnapshotReportFromHandle(void* handle)
+{
+    return DataFromHandle<CFxDailyAccountSnapshotReport>(handle);
+}
+
 CFxExecutionReport CConverterImpl::ExecutionReportFromHandle(void* handle)
 {
     return DataFromHandle<CFxExecutionReport>(handle);

@@ -81,6 +81,7 @@
     <Compile Include="ClosePositionExample.cs" />
     <Compile Include="DeletePendingOrderExample.cs" />
     <Compile Include="Example.cs" />
+    <Compile Include="GetDailyAccountSnapshotsExample.cs" />
     <Compile Include="GetOrdersExample.cs" />
     <Compile Include="GetTradeTransactionReportsExample.cs" />
     <Compile Include="ModifyTradeRecordExample.cs" />

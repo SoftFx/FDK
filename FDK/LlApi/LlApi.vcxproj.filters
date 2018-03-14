@@ -221,7 +221,10 @@
     <ClCompile Include="ConverterImpl.cpp">
       <Filter>LRP\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="IteratorImpl.cpp">
+    <ClCompile Include="TradeHistoryIteratorImpl.cpp">
+      <Filter>LRP\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DailySnapshotsIteratorImpl.cpp">
       <Filter>LRP\Sources</Filter>
     </ClCompile>
     <ClCompile Include="ConnectionBuilder.cpp">
