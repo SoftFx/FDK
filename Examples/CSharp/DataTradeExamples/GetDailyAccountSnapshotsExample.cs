@@ -18,7 +18,7 @@
             var from = to.AddDays(-10);
 
             var reportsNumber = 0;
-            var it = this.Trade.Server.GetDailyAccountSnapshots(TimeDirection.Forward, new DateTime(2017, 2, 1), new DateTime(2017, 2, 28), 10);
+            var it = this.Trade.Server.GetDailyAccountSnapshots(TimeDirection.Forward, from, to, 10);
             for (; !it.EndOfStream; it.Next())
             {
                 var s = it.Item;

@@ -94,6 +94,8 @@ void CFixConnection::InitializeMessageHandlers()
     gMessageTypeToHandler[FIX::MsgType_RequestForPositionsAck] = reinterpret_cast<MessageHandler>(&CFixConnection::OnEmpty);
     gMessageTypeToHandler[FIX::MsgType_Notification] = reinterpret_cast<MessageHandler>(&CFixConnection::OnNotification);
     gMessageTypeToHandler[FIX::MsgType_ComponentsInfoReport] = reinterpret_cast<MessageHandler>(&CFixConnection::OnComponentsInfoReport);
+    gMessageTypeToHandler[FIX::MsgType_DailyAccountSnapshotRequestAck] = reinterpret_cast<MessageHandler>(&CFixConnection::OnDailyAccountSnapshotRequestAck);
+    gMessageTypeToHandler[FIX::MsgType_DailyAccountSnapshotReport] = reinterpret_cast<MessageHandler>(&CFixConnection::OnDailyAccountSnapshotReport);
 }
 
 CFixConnection::CFixConnection(const string& name, const string& connectionString) :

@@ -6,7 +6,7 @@
     class TradeTransactionReportsIterator : StreamIterator<TradeTransactionReport>
     {
         public TradeTransactionReportsIterator(DataClient dataClient, LPtr handleIterator)
-            : base(dataClient, handleIterator)
+            : base(StreamIteratorType.TradeHistory, dataClient, handleIterator)
         {
         }
 

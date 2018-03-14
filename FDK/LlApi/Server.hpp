@@ -874,7 +874,7 @@ namespace
 	const unsigned short LrpMethod_TradeServer_GetTradeTransactionReportsAndSubscribe_Id = 1;
 	const unsigned short LrpMethod_TradeServer_GetTradeCaptureReports_Id = 2;
 	const unsigned short LrpMethod_TradeServer_UnsubscribeTradeTransactionReports_Id = 3;
-	const unsigned short LrpMethod_TradeServer_GetDailyAccountSnapshotReports_Id = 4;
+	const unsigned short LrpMethod_TradeServer_GetDailyAccountSnapshots_Id = 4;
 	const unsigned short LrpMethod_TradeServer_GetTradeServerInfo_Id = 5;
 	const unsigned short LrpMethod_TradeServer_GetAccountInfo_Id = 6;
 	const unsigned short LrpMethod_TradeServer_DeleteOrder_Id = 7;
@@ -937,7 +937,7 @@ namespace
 		component.UnsubscribeTradeTransactionReports(arg0, arg1);
 		buffer.Reset(offset);
 	}
-	void LrpInvoke_TradeServer_GetDailyAccountSnapshotReports(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
+	void LrpInvoke_TradeServer_GetDailyAccountSnapshots(size_t offset, MemoryBuffer& buffer, LrpChannel* pChannel)
 	{
 		pChannel;// if all methods of LrpChannel are static then the next line generates warning #4100
 		auto& component = pChannel->GetTradeServer();
@@ -948,7 +948,7 @@ namespace
 		auto arg3 = ReadNullTime(buffer);
 		auto arg4 = ReadUInt32(buffer);
 		auto arg5 = ReadUInt32(buffer);
-		auto result = component.GetDailyAccountSnapshotReports(arg0, arg1, arg2, arg3, arg4, arg5);
+		auto result = component.GetDailyAccountSnapshots(arg0, arg1, arg2, arg3, arg4, arg5);
 		buffer.Reset(offset);
 		WriteLocalPointer(result, buffer);
 	}
@@ -1072,7 +1072,7 @@ namespace
 		LrpInvoke_TradeServer_GetTradeTransactionReportsAndSubscribe,
 		LrpInvoke_TradeServer_GetTradeCaptureReports,
 		LrpInvoke_TradeServer_UnsubscribeTradeTransactionReports,
-		LrpInvoke_TradeServer_GetDailyAccountSnapshotReports,
+		LrpInvoke_TradeServer_GetDailyAccountSnapshots,
 		LrpInvoke_TradeServer_GetTradeServerInfo,
 		LrpInvoke_TradeServer_GetAccountInfo,
 		LrpInvoke_TradeServer_DeleteOrder,
@@ -1562,7 +1562,7 @@ extern "C" const char* __stdcall LrpSignature()
 		"GetTradeTransactionReportsAndSubscribe@DD8DB0FB21C7F331B2C86C95B0BC9905;"
 		"GetTradeCaptureReports@874C22E243BFC4DED82F08A53E84EF80;"
 		"UnsubscribeTradeTransactionReports@42E7909824399BBE11FEC757FAB1BBD7;"
-		"GetDailyAccountSnapshotReports@1A60A99874B7B0FB035275EFC1A585BA;"
+		"GetDailyAccountSnapshots@DD6527DA5670D988235E983C9D07CE2D;"
 		"GetTradeServerInfo@A34A6F98C30D420EA60766CCA907ADD3;"
 		"GetAccountInfo@3DD7B947BC728B9BBF8C79BABC986BE1;"
 		"DeleteOrder@DE7E6163B4AE4C044E27D27E5F8318A7;"

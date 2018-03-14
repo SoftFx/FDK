@@ -5,16 +5,23 @@
     using SoftFX.Extended.Core;
     using SoftFX.Lrp;
 
+    enum StreamIteratorType
+    {
+        TradeHistory,
+        DailyAccountSnapshots
+    }
+
     /// <summary>
     /// Contains common part of all streams.
     /// </summary>
     public abstract class StreamIterator<T> : IDisposable
     {
-        internal StreamIterator(DataClient dataClient, LPtr handleIterator)
+        internal StreamIterator(StreamIteratorType type, DataClient dataClient, LPtr handleIterator)
         {
             if (dataClient == null)
                 throw new ArgumentNullException(nameof(dataClient), "Data client can not be null.");
 
+            this.type = type;
             this.dataClient = dataClient;
             this.handleIterator = handleIterator;
         }
@@ -28,7 +35,15 @@
         {
             get
             {
-                return Native.TradeHistoryIterator.TotalItems(this.handleIterator);
+                switch (type)
+                {
+                    case StreamIteratorType.TradeHistory:
+                        return Native.TradeHistoryIterator.TotalItems(this.handleIterator);
+                    case StreamIteratorType.DailyAccountSnapshots:
+                        return Native.DailySnapshotsIterator.TotalItems(this.handleIterator);
+                    default:
+                        return 0;
+                }
             }
         }
 
@@ -39,7 +54,15 @@
         {
             get
             {
-                return Native.TradeHistoryIterator.EndOfStream(this.handleIterator);
+                switch (type)
+                {
+                    case StreamIteratorType.TradeHistory:
+                        return Native.TradeHistoryIterator.EndOfStream(this.handleIterator);
+                    case StreamIteratorType.DailyAccountSnapshots:
+                        return Native.DailySnapshotsIterator.EndOfStream(this.handleIterator);
+                    default:
+                        return true;
+                }
             }
         }
 
@@ -58,7 +81,19 @@
         /// <param name="timeoutInMilliseconds">Timeout of the operation in milliseconds.</param>
         public void NextEx(int timeoutInMilliseconds)
         {
-            Native.TradeHistoryIterator.Next(this.handleIterator, (uint)timeoutInMilliseconds);
+            switch (type)
+            {
+                case StreamIteratorType.TradeHistory:
+                {
+                    Native.TradeHistoryIterator.Next(this.handleIterator, (uint) timeoutInMilliseconds);
+                    break;
+                }
+                case StreamIteratorType.DailyAccountSnapshots:
+                {
+                    Native.DailySnapshotsIterator.Next(this.handleIterator, (uint)timeoutInMilliseconds);
+                    break;
+                }
+            }
         }
 
         /// <summary>
@@ -118,6 +153,7 @@
 
         #region Members
 
+        readonly StreamIteratorType type;
         readonly DataClient dataClient;
         LPtr handleIterator;
 

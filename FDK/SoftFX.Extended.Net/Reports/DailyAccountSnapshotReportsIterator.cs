@@ -6,7 +6,7 @@
     class DailyAccountSnapshotReportsIterator : StreamIterator<DailyAccountSnapshotReport>
     {
         public DailyAccountSnapshotReportsIterator(DataClient dataClient, LPtr handleIterator)
-            : base(dataClient, handleIterator)
+            : base(StreamIteratorType.DailyAccountSnapshots, dataClient, handleIterator)
         {
         }
 
