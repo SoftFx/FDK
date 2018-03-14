@@ -752,7 +752,7 @@
         <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
         <Return type="void" />
       </Method>
-      <Method name="GetDailyAccountSnapshots">
+      <Method name="GetDailyAccountSnapshotReports">
         <Param name="handle" type="lptr" direction="in" />
         <Param name="direction" type="int32" direction="in" />
         <Param name="from" type="time?" direction="in" />
