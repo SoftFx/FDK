@@ -4061,6 +4061,48 @@
     <field name='ServerWebSocketTradePort' required='N' />
     <field name='ServerRestPort' required='N' />
   </message>
+  <message name='DailyAccountSnapshotRequest' msgcat='app' msgtype='U1025'>
+    <field name='SnapshotRequestID' required='Y' />
+    <field name='StrmngDirection' required='N' />
+    <field name='StrmngBufSize' required='N' />
+    <field name='StrmngPosID' required='N' />
+    <field name='HstFrom' required='N' />
+    <field name='HstTo' required='N' />
+  </message>
+  <message name='DailyAccountSnapshotRequestAck' msgcat='app' msgtype='U1026'>
+    <field name='SnapshotRequestID' required='Y' />
+    <field name='TotNumTradeReports' required='N' />
+    <field name='CurNumTradeReports' required='N' />
+    <field name='EndOfStrm' required='N' />
+    <field name='SnapshotRequestResult' required='Y' />
+    <field name='Text' required='N' />
+    <field name='EncodedTextLen' required='N' />
+    <field name='EncodedText' required='N' />
+  </message>
+  <message name='DailyAccountSnapshotReport' msgcat='app' msgtype='U1027'>
+    <field name='SnapshotRequestID' required='Y' />
+    <field name='Leverage' required='N' />
+    <field name='Balance' required='N' />
+    <field name='Margin' required='N' />
+    <field name='MarginLevel' required='N' />
+    <field name='Equity' required='N' />
+    <field name='Swap' required='N' />
+    <field name='Profit' required='N' />
+    <field name='Commission' required='N' />
+    <field name='AgentCommission' required='N' />
+    <field name='Currency' required='N' />
+    <field name='Timestamp' required='N' />
+    <field name='Account' required='N' />
+    <field name='AccountingType' required='N' />
+    <field name='AccountValidFlag' required='N' />
+    <field name='AccountBlockedFlag' required='N' />
+    <field name='AccountReadonlyFlag' required='N' />
+    <field name='BalanceCurrencyToUsdConversionRate' required='N' />
+    <field name='UsdToBalanceCurrencyConversionRate' required='N' />
+    <field name='ProfitCurrencyToUsdConversionRate' required='N' />
+    <field name='UsdToProfitCurrencyConversionRate' required='N' />
+    <component name='Assets' required='N' />
+  </message>
  </messages>
  <trailer>
   <field name='SignatureLength' required='N' />
@@ -7908,5 +7950,19 @@
     <value enum='N' description='NO' />
     <value enum='Y' description='YES' />
   </field>
+  <field number='10216' name='SnapshotRequestID' type='STRING' />
+  <field number='10217' name='SnapshotRequestResult' type='INT'>
+    <value enum='0' description='SUCCESS' />
+    <value enum='99' description='UNKNOWN_ERROR' />
+  </field>
+  <field number='10218' name='AccountReadonlyFlag' type='BOOLEAN'>
+   <value enum='N' description='NO' />
+   <value enum='Y' description='YES' />
+  </field>
+  <field number='10219' name='BalanceCurrencyToUsdConversionRate' type='FLOAT' />
+  <field number='10220' name='UsdToBalanceCurrencyConversionRate' type='FLOAT' />
+  <field number='10221' name='MarginLevel' type='FLOAT' />
+  <field number='10222' name='Timestamp' type='UTCTIMESTAMP' />
+  <field number='10223' name='Profit' type='AMT' />
 </fields>
 </fix>

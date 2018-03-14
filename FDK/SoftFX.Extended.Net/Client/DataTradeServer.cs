@@ -700,5 +700,48 @@
         {
             this.Client.DataTradeHandle.UnsubscribeTradeTransactionReports(timeoutInMilliseconds);
         }
+
+        /// <summary>
+        /// The method gets daily account snapshots.
+        /// </summary>
+        /// <param name="direction">Time direction of reports snapshot</param>>
+        /// <param name="from">
+        /// Optional parameter, which specifies the start date and time for trade transaction reports.
+        /// You should specify the parameter, if you specified "to" parameter.
+        /// The parameter is supported since 1.6 FIX version.
+        /// </param>
+        /// <param name="to">
+        /// Optional parameter, which specifies the finish date and time for trade transaction reports.
+        /// You should specify the parameter, if you specified "from" parameter.
+        /// The parameter is supported since 1.6 FIX version.
+        /// </param>
+        /// <param name="preferedBufferSize"> Specifies number of reports requested at once. Server has itself limitation and if you specify out of range value it will be ignored.</param>
+        /// <returns>Can not be null.</returns>
+        public StreamIterator<DailyAccountSnapshotReport> GetDailyAccountSnapshots(TimeDirection direction, DateTime? from, DateTime? to, int preferedBufferSize)
+        {
+            return this.GetDailyAccountSnapshotsEx(direction, from, to, preferedBufferSize, this.Client.SynchOperationTimeout);
+        }
+
+        /// <summary>
+        /// The method gets daily account snapshots.
+        /// </summary>
+        /// <param name="direction">Time direction of reports snapshot</param>>
+        /// <param name="from">
+        /// Optional parameter, which specifies the start date and time for trade transaction reports.
+        /// You should specify the parameter, if you specified "to" parameter.
+        /// The parameter is supported since 1.6 FIX version.
+        /// </param>
+        /// <param name="to">
+        /// Optional parameter, which specifies the finish date and time for trade transaction reports.
+        /// You should specify the parameter, if you specified "from" parameter.
+        /// The parameter is supported since 1.6 FIX version.
+        /// </param>
+        /// <param name="preferedBufferSize"> Specifies number of reports requested at once. Server has itself limitation and if you specify out of range value it will be ignored.</param>
+        /// <returns>Can not be null.</returns>
+        public StreamIterator<DailyAccountSnapshotReport> GetDailyAccountSnapshotsEx(TimeDirection direction, DateTime? from, DateTime? to, int preferedBufferSize, int timeoutInMilliseconds)
+        {
+            var data = this.Client.DataTradeHandle.GetDailyAccountSnapshots(direction, from, to, preferedBufferSize, timeoutInMilliseconds);
+            return new DailyAccountSnapshotReportsIterator(this.Client, data);
+        }
     }
 }

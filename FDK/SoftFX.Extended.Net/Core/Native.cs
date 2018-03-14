@@ -106,7 +106,8 @@ namespace SoftFX.Extended.Core
             TradeServer = new TradeServer(LrpClient);
             TradeCache = new TradeCache(LrpClient);
             Converter = new Converter(LrpClient);
-            Iterator = new Iterator(LrpClient);
+            TradeHistoryIterator = new TradeHistoryIterator(LrpClient);
+            DailySnapshotsIterator = new DailySnapshotsIterator(LrpClient);
             Library = new Library(LrpClient);
         }
 
@@ -140,7 +141,8 @@ namespace SoftFX.Extended.Core
         public static TradeServer TradeServer { get; private set; }
         public static TradeCache TradeCache { get; private set; }
         public static Converter Converter { get; private set; }
-        public static Iterator Iterator { get; private set; }
+        public static TradeHistoryIterator TradeHistoryIterator { get; private set; }
+        public static DailySnapshotsIterator DailySnapshotsIterator { get; private set; }
         public static Library Library { get; private set; }
 
         #endregion

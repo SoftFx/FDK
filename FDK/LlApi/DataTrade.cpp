@@ -2,6 +2,7 @@
 #include "DataTrade.h"
 #include "Waiter.h"
 #include "FxTradeTransactionReportIterator.h"
+#include "FxDailyAccountSnapshotReportIterator.h"
 #ifdef _MSC_VER
 #pragma warning (disable : 4355)
 #else
@@ -101,10 +102,10 @@ CFxOrder CDataTrade::OpenNewOrder(const string& operationId, const CFxOrder& ord
         {
             return result;
         }
-		else if (report.TryGetFilledMarketOrder(result))
-		{
-			return result;
-		}
+        else if (report.TryGetFilledMarketOrder(result))
+        {
+            return result;
+        }
         else
         {
             throw runtime_error("Internal error");
@@ -255,6 +256,18 @@ void CDataTrade::UnsubscribeTradeTransactionReports(size_t timeoutInMilliseconds
     Waiter<HRESULT> waiter(static_cast<uint32>(timeoutInMilliseconds), cExternalSynchCall, *this);
     m_sender->VSendUnsubscribeTradeTransactionReports(waiter.Id());
     waiter.WaitForResponse();
+}
+
+FxIterator CDataTrade::GetDailyAccountSnapshotReports(FxTimeDirection direction, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, uint32 bufferSize, uint32 timeoutInMilliseconds)
+{
+    auto_ptr<CFxDailyAccountSnapshotReportIterator> it(new CFxDailyAccountSnapshotReportIterator(direction, from, to, bufferSize, *this));
+    const HRESULT status = it->Construct(timeoutInMilliseconds);
+    if (FAILED(status))
+    {
+        return nullptr;
+    }
+    FxIterator result = it.release();
+    return result;
 }
 
 void CDataTrade::VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion, bool twofactor)
@@ -414,6 +427,17 @@ void CDataTrade::VNotify(const CFxEventInfo& eventInfo, const CNotification& not
             m_cache.UpdateAssets(notification.TransactionCurrency, notification.Balance);
         }
     }
+}
+
+void CDataTrade::VGetDailyAccountSnapshotReports(const CFxEventInfo& info, const int32 curReportsNumber, const int32 totReportsNumber, const bool endOfStream)
+{
+    tuple<int32, int32, bool> response(curReportsNumber, totReportsNumber, endOfStream);
+    m_synchInvoker.Response(info, response);
+}
+
+void CDataTrade::VDailyAccountSnapshotReport(const CFxEventInfo& info, CFxDailyAccountSnapshotReport& report)
+{
+    m_synchInvoker.Response(info, report);
 }
 
 void CDataTrade::UpdateAccountInfo(FxAccountType accountType, const string& account)

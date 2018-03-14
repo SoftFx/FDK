@@ -276,6 +276,7 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
     <ClInclude Include="FxBar.h" />
     <ClInclude Include="FxClosePositionResult.h" />
     <ClInclude Include="DataHistoryInfo.h" />
+    <ClInclude Include="FxDailyAccountSnapshotReport.h" />
     <ClInclude Include="FxDataHistoryResponse.h" />
     <ClInclude Include="FxClosePositionsResponse.h" />
     <ClInclude Include="FxEventInfo.h" />
@@ -329,6 +330,7 @@ copy /Y "$(OutDir)$(TargetName).pdb" ..\..\FRE\
     <ClCompile Include="FxAccountInfo.cpp" />
     <ClCompile Include="FxBar.cpp" />
     <ClCompile Include="FxCurrencyInfo.cpp" />
+    <ClCompile Include="FxDailyAccountSnapshotReport.cpp" />
     <ClCompile Include="FxDataHistoryResponse.cpp" />
     <ClCompile Include="FxClosePositionsResponse.cpp" />
     <ClCompile Include="FxEventInfo.cpp" />

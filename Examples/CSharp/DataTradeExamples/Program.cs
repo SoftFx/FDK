@@ -21,6 +21,7 @@
             //var example = new GetTradeTransactionReportsExample(address, username, password);
             //var example = new ModifyTradeRecordExample(address, username, password);
             //var example = new CloseByExample(address, username, password);
+            //var example = new GetDailyAccountSnapshotsExample(address, username, password);
 
             using (example)
             {

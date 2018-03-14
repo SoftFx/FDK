@@ -1196,6 +1196,14 @@ namespace FIX
     const int TripleSwapDay = 10213;
     const int MinCommissionConversionRate = 10214;
     const int InFlightMitigationFlag = 10215;
+    const int SnapshotRequestID = 10216;
+    const int SnapshotRequestResult = 10217;
+    const int AccountReadonlyFlag = 10218;
+    const int BalanceCurrencyToUsdConversionRate = 10219;
+    const int UsdToBalanceCurrencyConversionRate = 10220;
+    const int MarginLevel = 10221;
+    const int Timestamp = 10222;
+    const int Profit = 10223;
     const int NoStrategyParameters = 957;
     const int StrategyParameterName = 958;
     const int StrategyParameterType = 959;

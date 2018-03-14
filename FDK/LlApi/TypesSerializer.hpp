@@ -120,6 +120,8 @@ namespace
 	FxTradeTransactionReason ReadTradeTransactionReason(MemoryBuffer& buffer);
 	void WriteTradeTransactionReport(const CFxTradeTransactionReport& arg, MemoryBuffer& buffer);
 	CFxTradeTransactionReport ReadTradeTransactionReport(MemoryBuffer& buffer);
+	void WriteDailyAccountSnapshotReport(const CFxDailyAccountSnapshotReport& arg, MemoryBuffer& buffer);
+	CFxDailyAccountSnapshotReport ReadDailyAccountSnapshotReport(MemoryBuffer& buffer);
 	void WriteClosePositionResult(const CFxClosePositionResult& arg, MemoryBuffer& buffer);
 	CFxClosePositionResult ReadClosePositionResult(MemoryBuffer& buffer);
 	void WriteExecutionReport(const CFxExecutionReport& arg, MemoryBuffer& buffer);
@@ -1257,6 +1259,56 @@ namespace
 		result.UsdToDstAssetConversionRate = ReadNullDouble(buffer);
 		result.MinCommissionCurrency = ReadAString(buffer);
 		result.MinCommissionConversionRate = ReadNullDouble(buffer);
+		return result;
+	}
+	void WriteDailyAccountSnapshotReport(const CFxDailyAccountSnapshotReport& arg, MemoryBuffer& buffer)
+	{
+		WriteTime(arg.Timestamp, buffer);
+		WriteAString(arg.AccountId, buffer);
+		WriteAccountType(arg.Type, buffer);
+		WriteAString(arg.BalanceCurrency, buffer);
+		WriteInt32(arg.Leverage, buffer);
+		WriteDouble(arg.Balance, buffer);
+		WriteDouble(arg.Margin, buffer);
+		WriteDouble(arg.MarginLevel, buffer);
+		WriteDouble(arg.Equity, buffer);
+		WriteDouble(arg.Swap, buffer);
+		WriteDouble(arg.Profit, buffer);
+		WriteDouble(arg.Commission, buffer);
+		WriteDouble(arg.AgentCommission, buffer);
+		WriteBoolean(arg.IsValid, buffer);
+		WriteBoolean(arg.IsReadOnly, buffer);
+		WriteBoolean(arg.IsBlocked, buffer);
+		WriteNullDouble(arg.BalanceCurrencyToUsdConversionRate, buffer);
+		WriteNullDouble(arg.UsdToBalanceCurrencyConversionRate, buffer);
+		WriteNullDouble(arg.ProfitCurrencyToUsdConversionRate, buffer);
+		WriteNullDouble(arg.UsdToProfitCurrencyConversionRate, buffer);
+		WriteAssetInfoArray(arg.Assets, buffer);
+	}
+	CFxDailyAccountSnapshotReport ReadDailyAccountSnapshotReport(MemoryBuffer& buffer)
+	{
+		CFxDailyAccountSnapshotReport result = CFxDailyAccountSnapshotReport();
+		result.Timestamp = ReadTime(buffer);
+		result.AccountId = ReadAString(buffer);
+		result.Type = ReadAccountType(buffer);
+		result.BalanceCurrency = ReadAString(buffer);
+		result.Leverage = ReadInt32(buffer);
+		result.Balance = ReadDouble(buffer);
+		result.Margin = ReadDouble(buffer);
+		result.MarginLevel = ReadDouble(buffer);
+		result.Equity = ReadDouble(buffer);
+		result.Swap = ReadDouble(buffer);
+		result.Profit = ReadDouble(buffer);
+		result.Commission = ReadDouble(buffer);
+		result.AgentCommission = ReadDouble(buffer);
+		result.IsValid = ReadBoolean(buffer);
+		result.IsReadOnly = ReadBoolean(buffer);
+		result.IsBlocked = ReadBoolean(buffer);
+		result.BalanceCurrencyToUsdConversionRate = ReadNullDouble(buffer);
+		result.UsdToBalanceCurrencyConversionRate = ReadNullDouble(buffer);
+		result.ProfitCurrencyToUsdConversionRate = ReadNullDouble(buffer);
+		result.UsdToProfitCurrencyConversionRate = ReadNullDouble(buffer);
+		result.Assets = ReadAssetInfoArray(buffer);
 		return result;
 	}
 	void WriteClosePositionResult(const CFxClosePositionResult& arg, MemoryBuffer& buffer)

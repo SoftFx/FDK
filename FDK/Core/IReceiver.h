@@ -12,6 +12,7 @@
 #include "FxTradeHistoryResponse.h"
 #include "FxFileChunk.h"
 #include "FxTradeTransactionReport.h"
+#include "FxDailyAccountSnapshotReport.h"
 #include "FxPositionReport.h"
 #include "Notification.h"
 #include "FxSymbolInfo.h"
@@ -46,6 +47,8 @@ public:
     virtual void VPositionReport(const CFxEventInfo& eventInfo, CFxPositionReport& positionReport) = 0;
     virtual void VNotify(const CFxEventInfo& eventInfo, const CNotification& notification) = 0;
     virtual void VQuotesHistoryResponse(const CFxEventInfo& eventInfo, const int version) = 0;
+    virtual void VGetDailyAccountSnapshotReports(const CFxEventInfo& info, const int32 curReportsNumber, const int32 totReportsNumber, const bool endOfStream) = 0;
+    virtual void VDailyAccountSnapshotReport(const CFxEventInfo& eventInfo, CFxDailyAccountSnapshotReport& report) = 0;
     virtual ~IReceiver(){};
 };
 #endif

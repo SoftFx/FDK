@@ -24,6 +24,7 @@ public:
     size_t CloseAllOrders(const string& operationId, const uint32 timeoutInMilliseconds);
     FxIterator GetTradeTransactionReportsAndSubscribeToNotifications(FxTimeDirection direction, bool subscribe, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, uint32 bufferSize, const Nullable<bool>& skipCancel, uint32 timeoutInMilliseconds);
     void UnsubscribeTradeTransactionReports(size_t timeoutInMilliseconds);
+    FxIterator GetDailyAccountSnapshotReports(FxTimeDirection direction, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, uint32 bufferSize, uint32 timeoutInMilliseconds);
 
     virtual void VLogon(const CFxEventInfo& eventInfo, const string& protocolVersion, bool twofactor);
     virtual void VTwoFactorAuth(const CFxEventInfo& eventInfo, const FxTwoFactorReason reason, const std::string& text, const CDateTime& expire);
@@ -39,6 +40,8 @@ public:
     virtual void VUnsubscribeTradeTransactionReportsNotifications(const CFxEventInfo& info);
     virtual void VPositionReport(const CFxEventInfo& info, CFxPositionReport& positionReport);
     virtual void VNotify(const CFxEventInfo& eventInfo, const CNotification& notification);
+    virtual void VGetDailyAccountSnapshotReports(const CFxEventInfo& info, const int32 curReportsNumber, const int32 totReportsNumber, const bool endOfStream);
+    virtual void VDailyAccountSnapshotReport(const CFxEventInfo& eventInfo, CFxDailyAccountSnapshotReport& report);
 
 protected:
 
@@ -47,6 +50,7 @@ protected:
 private:
 
     friend class CFxTradeTransactionReportIterator;
+    friend class CFxDailyAccountSnapshotReportIterator;
 
     CDataTrade(const CDataTrade&);
     CDataTrade& operator = (const CDataTrade&);

@@ -28,7 +28,7 @@
         {
             get
             {
-                return Native.Iterator.TotalItems(this.handleIterator);
+                return Native.TradeHistoryIterator.TotalItems(this.handleIterator);
             }
         }
 
@@ -39,7 +39,7 @@
         {
             get
             {
-                return Native.Iterator.EndOfStream(this.handleIterator);
+                return Native.TradeHistoryIterator.EndOfStream(this.handleIterator);
             }
         }
 
@@ -58,7 +58,7 @@
         /// <param name="timeoutInMilliseconds">Timeout of the operation in milliseconds.</param>
         public void NextEx(int timeoutInMilliseconds)
         {
-            Native.Iterator.Next(this.handleIterator, (uint)timeoutInMilliseconds);
+            Native.TradeHistoryIterator.Next(this.handleIterator, (uint)timeoutInMilliseconds);
         }
 
         /// <summary>

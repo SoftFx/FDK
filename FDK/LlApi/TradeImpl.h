@@ -14,6 +14,7 @@ public:
     size_t CloseAllPositions(void* handle, const string& operationId, size_t timeoutInMilliseconds);
     bool CloseByPositions(void* handle, const string& operationId, const string& first, const string& second, size_t timeoutInMilliseconds);
     vector<CFxOrder> GetRecords(void* handle, size_t timeoutInMilliseconds);
+    void* GetDailyAccountSnapshotReports(void* handle, int direction, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, size_t preferdBufferSize, const size_t timeoutInMilliseconds);
 public:
     void DeleteOrder(void* handle, const string& operationId, const string& orderId, const string& clientOrderId, FxTradeRecordSide side, size_t timeoutInMilliseconds);
     CFxOrder OpenNewOrder(void* handle, const string& operationId, const CFxOrder& order, size_t timeoutInMilliseconds);

@@ -4,10 +4,10 @@ using SoftFX.Lrp;
 
 namespace SoftFX.Extended.Generated
 {
-	internal class Iterator
+	internal class DailySnapshotsIterator
 	{
 		private readonly IClient m_client;
-		public Iterator(IClient client)
+		public DailySnapshotsIterator(IClient client)
 		{
 			if(null == client)
 			{
@@ -19,14 +19,14 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(9);
+				return m_client.IsSupported(10);
 			}
 		}
 		public bool Is_TotalItems_Supported
 		{
 			get
 			{
-				return m_client.IsSupported(9, 0);
+				return m_client.IsSupported(10, 0);
 			}
 		}
 		public int TotalItems(SoftFX.Lrp.LPtr handle)
@@ -35,7 +35,7 @@ namespace SoftFX.Extended.Generated
 			{
 				buffer.WriteLocalPointer(handle);
 
-				int _status = m_client.Invoke(9, 0, buffer);
+				int _status = m_client.Invoke(10, 0, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 				var _result = buffer.ReadInt32();
@@ -46,7 +46,7 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(9, 1);
+				return m_client.IsSupported(10, 1);
 			}
 		}
 		public bool EndOfStream(SoftFX.Lrp.LPtr handle)
@@ -55,7 +55,7 @@ namespace SoftFX.Extended.Generated
 			{
 				buffer.WriteLocalPointer(handle);
 
-				int _status = m_client.Invoke(9, 1, buffer);
+				int _status = m_client.Invoke(10, 1, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 				var _result = buffer.ReadBoolean();
@@ -66,7 +66,7 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(9, 2);
+				return m_client.IsSupported(10, 2);
 			}
 		}
 		public void Next(SoftFX.Lrp.LPtr handle, uint timeoutInMilliseconds)
@@ -76,28 +76,28 @@ namespace SoftFX.Extended.Generated
 				buffer.WriteLocalPointer(handle);
 				buffer.WriteUInt32(timeoutInMilliseconds);
 
-				int _status = m_client.Invoke(9, 2, buffer);
+				int _status = m_client.Invoke(10, 2, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 			}
 		}
-		public bool Is_GetTradeTransactionReport_Supported
+		public bool Is_GetDailyAccountSnapshotReport_Supported
 		{
 			get
 			{
-				return m_client.IsSupported(9, 3);
+				return m_client.IsSupported(10, 3);
 			}
 		}
-		public SoftFX.Extended.Reports.TradeTransactionReport GetTradeTransactionReport(SoftFX.Lrp.LPtr handle)
+		public SoftFX.Extended.Reports.DailyAccountSnapshotReport GetDailyAccountSnapshotReport(SoftFX.Lrp.LPtr handle)
 		{
 			using(MemoryBuffer buffer = m_client.Create())
 			{
 				buffer.WriteLocalPointer(handle);
 
-				int _status = m_client.Invoke(9, 3, buffer);
+				int _status = m_client.Invoke(10, 3, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
-				var _result = buffer.ReadTradeTransactionReport();
+				var _result = buffer.ReadDailyAccountSnapshotReport();
 				return _result;
 			}
 		}

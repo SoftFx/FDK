@@ -1,9 +1,6 @@
 #include "stdafx.h"
-#include "IteratorImpl.h"
+#include "TradeHistoryIteratorImpl.h"
 #include "FxTradeTransactionReportIterator.h"
-
-
-
 
 namespace
 {
@@ -21,19 +18,19 @@ namespace
         return result;
     }
 }
-int CIteratorImpl::TotalItems(void* handle)
+int CTradeHistoryIteratorImpl::TotalItems(void* handle)
 {
     FxRef<CFxTradeTransactionReportIterator> iterator = IteratorFromHandle(handle);
     return iterator->VTotalItems();
 }
-bool CIteratorImpl::EndOfStream(void* handle)
+bool CTradeHistoryIteratorImpl::EndOfStream(void* handle)
 {
     FxRef<CFxTradeTransactionReportIterator> iterator = IteratorFromHandle(handle);
     const HRESULT status = iterator->VEndOfStream();
     const bool result = (S_OK == status);
     return result;
 }
-void CIteratorImpl::Next(void* handle, size_t timeoutInMilliseconds)
+void CTradeHistoryIteratorImpl::Next(void* handle, size_t timeoutInMilliseconds)
 {
     FxRef<CFxTradeTransactionReportIterator> iterator = IteratorFromHandle(handle);
     const HRESULT status = iterator->VNext(static_cast<uint32>(timeoutInMilliseconds));
@@ -42,7 +39,7 @@ void CIteratorImpl::Next(void* handle, size_t timeoutInMilliseconds)
         throw runtime_error("Couldn't mote the iterator to the next element");
     }
 }
-CFxTradeTransactionReport CIteratorImpl::GetTradeTransactionReport(void* handle)
+CFxTradeTransactionReport CTradeHistoryIteratorImpl::GetTradeTransactionReport(void* handle)
 {
     FxRef<CFxTradeTransactionReportIterator> iterator = IteratorFromHandle(handle);
     void* item = iterator->VItem();

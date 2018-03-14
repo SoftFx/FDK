@@ -63,6 +63,8 @@ private:
     void OnPositionReport(const FIX44::PositionReport& message);
     void OnNotification(const FIX44::Notification& message);
     void OnComponentsInfoReport(const FIX44::ComponentsInfoReport& message);
+    void OnDailyAccountSnapshotRequestAck(const FIX44::DailyAccountSnapshotRequestAck& message);
+    void OnDailyAccountSnapshotReport(const FIX44::DailyAccountSnapshotReport& message);
 
 private:
     string name_;

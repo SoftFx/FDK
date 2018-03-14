@@ -4,61 +4,65 @@
 
 namespace
 {
-	CHandleImpl gHandleImpl;
-	CParamsImpl gParmsImpl;
-	CClientImpl gClientImpl;
-	CClientCacheImpl gClientCacheImpl;
-	CFeedImpl gFeedImpl;
-	CFeedCacheImpl gFeedCacheImpl;
-	CTradeImpl gTradeImpl;
-	CTradeCacheImpl gTradeCacheImpl;
-	CConverterImpl gConverterImpl;
-	CIteratorImpl gIteratorImpl;
-	CLibraryImpl gLibraryImpl;
+    CHandleImpl gHandleImpl;
+    CParamsImpl gParmsImpl;
+    CClientImpl gClientImpl;
+    CClientCacheImpl gClientCacheImpl;
+    CFeedImpl gFeedImpl;
+    CFeedCacheImpl gFeedCacheImpl;
+    CTradeImpl gTradeImpl;
+    CTradeCacheImpl gTradeCacheImpl;
+    CConverterImpl gConverterImpl;
+    CTradeHistoryIteratorImpl gTradeHistoryIteratorImpl;
+    CDailySnapshotsIteratorImpl gDailySnapshotsIteratorImpl;
+    CLibraryImpl gLibraryImpl;
 }
 
 CHandleImpl& Channel::GetHandle()
 {
-	return gHandleImpl;
+    return gHandleImpl;
 }
 CParamsImpl& Channel::GetParams()
 {
-	return gParmsImpl;
+    return gParmsImpl;
 }
 CClientImpl& Channel::GetClientServer()
 {
-	return gClientImpl;
+    return gClientImpl;
 }
 CClientCacheImpl& Channel::GetClientCache()
 {
-	return gClientCacheImpl;
+    return gClientCacheImpl;
 }
 CTradeImpl& Channel::GetTradeServer()
 {
-	return gTradeImpl;
+    return gTradeImpl;
 }
 CTradeCacheImpl& Channel::GetTradeCache()
 {
-	return gTradeCacheImpl;
+    return gTradeCacheImpl;
 }
 CFeedImpl& Channel::GetFeedServer()
 {
-	return gFeedImpl;
+    return gFeedImpl;
 }
 CFeedCacheImpl& Channel::GetFeedCache()
 {
-	return gFeedCacheImpl;
+    return gFeedCacheImpl;
 }
 CConverterImpl& Channel::GetConverter()
 {
-	return gConverterImpl;
+    return gConverterImpl;
 }
-CIteratorImpl& Channel::GetIterator()
+CTradeHistoryIteratorImpl& Channel::GetTradeHistoryIterator()
 {
-	return gIteratorImpl;
+    return gTradeHistoryIteratorImpl;
+}
+CDailySnapshotsIteratorImpl& Channel::GetDailySnapshotsIterator()
+{
+    return gDailySnapshotsIteratorImpl;
 }
 CLibraryImpl& Channel::GetLibrary()
 {
-	return gLibraryImpl;
+    return gLibraryImpl;
 }
-

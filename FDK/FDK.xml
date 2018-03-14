@@ -351,6 +351,29 @@
       <Member name="MinCommissionCurrency" type="astring" />
       <Member name="MinCommissionConversionRate" type="double?" />
     </Type>
+    <Type name="DailyAccountSnapshotReport" CSharpFullName="SoftFX.Extended.Reports.DailyAccountSnapshotReport" CppFullName="CFxDailyAccountSnapshotReport" kind="class">
+      <Member name="Timestamp" type="time" />
+      <Member name="AccountId" type="astring" />
+      <Member name="Type" type="AccountType" />
+      <Member name="BalanceCurrency" type="astring" />
+      <Member name="Leverage" type="int32" />
+      <Member name="Balance" type="double" />
+      <Member name="Margin" type="double" />
+      <Member name="MarginLevel" type="double" />
+      <Member name="Equity" type="double" />
+      <Member name="Swap" type="double" />
+      <Member name="Profit" type="double" />
+      <Member name="Commission" type="double" />
+      <Member name="AgentCommission" type="double" />
+      <Member name="IsValid" type="bool" />
+      <Member name="IsReadOnly" type="bool" />
+      <Member name="IsBlocked" type="bool" />
+      <Member name="BalanceCurrencyToUsdConversionRate" type="double?" />
+      <Member name="UsdToBalanceCurrencyConversionRate" type="double?" />
+      <Member name="ProfitCurrencyToUsdConversionRate" type="double?" />
+      <Member name="UsdToProfitCurrencyConversionRate" type="double?" />
+      <Member name="Assets" type="AssetInfoArray" />
+    </Type>
     <Type name="ClosePositionResult" CSharpFullName="SoftFX.Extended.ClosePositionResult" CppFullName="CFxClosePositionResult" kind="class">
       <Member name="ExecutedVolume" type="double" />
       <Member name="ExecutedPrice" type="double" />
@@ -729,6 +752,15 @@
         <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
         <Return type="void" />
       </Method>
+      <Method name="GetDailyAccountSnapshots">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="direction" type="int32" direction="in" />
+        <Param name="from" type="time?" direction="in" />
+        <Param name="to" type="time?" direction="in" />
+        <Param name="preferedBufferSize" type="uint32" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="lptr" />
+      </Method>
       <Method name="GetTradeServerInfo">
         <Param name="handle" type="lptr" direction="in" />
         <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
@@ -804,7 +836,7 @@
         <Return type="PositionArray" />
       </Method>
     </Component>
-    <Component name="Iterator">
+    <Component name="TradeHistoryIterator">
       <Method name="TotalItems">
         <Param name="handle" type="lptr" direction="in" />
         <Return type="int32" />
@@ -821,6 +853,25 @@
       <Method name="GetTradeTransactionReport">
         <Param name="handle" type="lptr" direction="in" />
         <Return type="TradeTransactionReport" />
+      </Method>
+    </Component>
+    <Component name="DailySnapshotsIterator">
+      <Method name="TotalItems">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="int32" />
+      </Method>
+      <Method name="EndOfStream">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="bool" />
+      </Method>
+      <Method name="Next">
+        <Param name="handle" type="lptr" direction="in" />
+        <Param name="timeoutInMilliseconds" type="uint32" direction="in" />
+        <Return type="void" />
+      </Method>
+      <Method name="GetDailyAccountSnapshotReport">
+        <Param name="handle" type="lptr" direction="in" />
+        <Return type="DailyAccountSnapshotReport" />
       </Method>
     </Component>
     <Component name="Library">

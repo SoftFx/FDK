@@ -112,11 +112,36 @@ namespace SoftFX.Extended.Generated
 
 			}
 		}
-		public bool Is_GetTradeServerInfo_Supported
+		public bool Is_GetDailyAccountSnapshots_Supported
 		{
 			get
 			{
 				return m_client.IsSupported(7, 4);
+			}
+		}
+		public SoftFX.Lrp.LPtr GetDailyAccountSnapshots(SoftFX.Lrp.LPtr handle, int direction, System.DateTime? from, System.DateTime? to, uint preferedBufferSize, uint timeoutInMilliseconds)
+		{
+			using(MemoryBuffer buffer = m_client.Create())
+			{
+				buffer.WriteLocalPointer(handle);
+				buffer.WriteInt32(direction);
+				buffer.WriteNullTime(from);
+				buffer.WriteNullTime(to);
+				buffer.WriteUInt32(preferedBufferSize);
+				buffer.WriteUInt32(timeoutInMilliseconds);
+
+				int _status = m_client.Invoke(7, 4, buffer);
+				TypesSerializer.Throw(_status, buffer);
+
+				var _result = buffer.ReadLocalPointer();
+				return _result;
+			}
+		}
+		public bool Is_GetTradeServerInfo_Supported
+		{
+			get
+			{
+				return m_client.IsSupported(7, 5);
 			}
 		}
 		public SoftFX.Extended.TradeServerInfo GetTradeServerInfo(SoftFX.Lrp.LPtr handle, uint timeoutInMilliseconds)
@@ -126,7 +151,7 @@ namespace SoftFX.Extended.Generated
 				buffer.WriteLocalPointer(handle);
 				buffer.WriteUInt32(timeoutInMilliseconds);
 
-				int _status = m_client.Invoke(7, 4, buffer);
+				int _status = m_client.Invoke(7, 5, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 				var _result = buffer.ReadTradeServerInfo();
@@ -137,7 +162,7 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(7, 5);
+				return m_client.IsSupported(7, 6);
 			}
 		}
 		public SoftFX.Extended.AccountInfo GetAccountInfo(SoftFX.Lrp.LPtr handle, uint timeoutInMilliseconds)
@@ -147,7 +172,7 @@ namespace SoftFX.Extended.Generated
 				buffer.WriteLocalPointer(handle);
 				buffer.WriteUInt32(timeoutInMilliseconds);
 
-				int _status = m_client.Invoke(7, 5, buffer);
+				int _status = m_client.Invoke(7, 6, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 				var _result = buffer.ReadAccountInfo();
@@ -158,7 +183,7 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(7, 6);
+				return m_client.IsSupported(7, 7);
 			}
 		}
 		public void DeleteOrder(SoftFX.Lrp.LPtr handle, string operationId, string orderId, string clientOrderId, SoftFX.Extended.TradeRecordSide side, uint timeoutInMilliseconds)
@@ -172,7 +197,7 @@ namespace SoftFX.Extended.Generated
 				buffer.WriteSide(side);
 				buffer.WriteUInt32(timeoutInMilliseconds);
 
-				int _status = m_client.Invoke(7, 6, buffer);
+				int _status = m_client.Invoke(7, 7, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 			}
@@ -181,7 +206,7 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(7, 7);
+				return m_client.IsSupported(7, 8);
 			}
 		}
 		public ulong CloseAllPositions(SoftFX.Lrp.LPtr handle, string operationId, uint timeoutInMilliseconds)
@@ -192,7 +217,7 @@ namespace SoftFX.Extended.Generated
 				buffer.WriteAString(operationId);
 				buffer.WriteUInt32(timeoutInMilliseconds);
 
-				int _status = m_client.Invoke(7, 7, buffer);
+				int _status = m_client.Invoke(7, 8, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 				var _result = buffer.ReadUInt64();
@@ -203,7 +228,7 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(7, 8);
+				return m_client.IsSupported(7, 9);
 			}
 		}
 		public bool CloseByPositions(SoftFX.Lrp.LPtr handle, string operationId, string first, string second, uint timeoutInMilliseconds)
@@ -216,7 +241,7 @@ namespace SoftFX.Extended.Generated
 				buffer.WriteAString(second);
 				buffer.WriteUInt32(timeoutInMilliseconds);
 
-				int _status = m_client.Invoke(7, 8, buffer);
+				int _status = m_client.Invoke(7, 9, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 				var _result = buffer.ReadBoolean();
@@ -227,7 +252,7 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(7, 9);
+				return m_client.IsSupported(7, 10);
 			}
 		}
 		public SoftFX.Extended.Data.FxOrder[] GetRecords(SoftFX.Lrp.LPtr handle, uint timeoutInMilliseconds)
@@ -237,7 +262,7 @@ namespace SoftFX.Extended.Generated
 				buffer.WriteLocalPointer(handle);
 				buffer.WriteUInt32(timeoutInMilliseconds);
 
-				int _status = m_client.Invoke(7, 9, buffer);
+				int _status = m_client.Invoke(7, 10, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 				var _result = buffer.ReadFxOrderArray();
@@ -248,33 +273,10 @@ namespace SoftFX.Extended.Generated
 		{
 			get
 			{
-				return m_client.IsSupported(7, 10);
-			}
-		}
-		public SoftFX.Extended.Data.FxOrder OpenNewOrder(SoftFX.Lrp.LPtr handle, string operationId, SoftFX.Extended.Data.FxOrder order, uint timeoutInMilliseconds)
-		{
-			using(MemoryBuffer buffer = m_client.Create())
-			{
-				buffer.WriteLocalPointer(handle);
-				buffer.WriteAString(operationId);
-				buffer.WriteFxOrder(order);
-				buffer.WriteUInt32(timeoutInMilliseconds);
-
-				int _status = m_client.Invoke(7, 10, buffer);
-				TypesSerializer.Throw(_status, buffer);
-
-				var _result = buffer.ReadFxOrder();
-				return _result;
-			}
-		}
-		public bool Is_ModifyOrder_Supported
-		{
-			get
-			{
 				return m_client.IsSupported(7, 11);
 			}
 		}
-		public SoftFX.Extended.Data.FxOrder ModifyOrder(SoftFX.Lrp.LPtr handle, string operationId, SoftFX.Extended.Data.FxOrder order, uint timeoutInMilliseconds)
+		public SoftFX.Extended.Data.FxOrder OpenNewOrder(SoftFX.Lrp.LPtr handle, string operationId, SoftFX.Extended.Data.FxOrder order, uint timeoutInMilliseconds)
 		{
 			using(MemoryBuffer buffer = m_client.Create())
 			{
@@ -290,11 +292,34 @@ namespace SoftFX.Extended.Generated
 				return _result;
 			}
 		}
-		public bool Is_CloseOrder_Supported
+		public bool Is_ModifyOrder_Supported
 		{
 			get
 			{
 				return m_client.IsSupported(7, 12);
+			}
+		}
+		public SoftFX.Extended.Data.FxOrder ModifyOrder(SoftFX.Lrp.LPtr handle, string operationId, SoftFX.Extended.Data.FxOrder order, uint timeoutInMilliseconds)
+		{
+			using(MemoryBuffer buffer = m_client.Create())
+			{
+				buffer.WriteLocalPointer(handle);
+				buffer.WriteAString(operationId);
+				buffer.WriteFxOrder(order);
+				buffer.WriteUInt32(timeoutInMilliseconds);
+
+				int _status = m_client.Invoke(7, 12, buffer);
+				TypesSerializer.Throw(_status, buffer);
+
+				var _result = buffer.ReadFxOrder();
+				return _result;
+			}
+		}
+		public bool Is_CloseOrder_Supported
+		{
+			get
+			{
+				return m_client.IsSupported(7, 13);
 			}
 		}
 		public SoftFX.Extended.ClosePositionResult CloseOrder(SoftFX.Lrp.LPtr handle, string operationId, string orderId, double? closingVolume, uint timeoutInMilliseconds)
@@ -307,7 +332,7 @@ namespace SoftFX.Extended.Generated
 				buffer.WriteNullDouble(closingVolume);
 				buffer.WriteUInt32(timeoutInMilliseconds);
 
-				int _status = m_client.Invoke(7, 12, buffer);
+				int _status = m_client.Invoke(7, 13, buffer);
 				TypesSerializer.Throw(_status, buffer);
 
 				var _result = buffer.ReadClosePositionResult();

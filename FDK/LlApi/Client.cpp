@@ -323,6 +323,14 @@ void CClient::VQuotesHistoryResponse(const CFxEventInfo& /*eventInfo*/, const in
 {
 }
 
+void CClient::VGetDailyAccountSnapshotReports(const CFxEventInfo&, const int32, const int32, const bool)
+{
+}
+
+void CClient::VDailyAccountSnapshotReport(const CFxEventInfo&, CFxDailyAccountSnapshotReport&)
+{
+}
+
 void CClient::AfterLogon()
 {
     CLock lock(m_dataSynchronizer);

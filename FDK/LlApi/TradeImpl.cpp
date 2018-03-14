@@ -103,3 +103,10 @@ CFxClosePositionResult CTradeImpl::CloseOrder(void* handle, const string& operat
     FxRef<CDataTrade> trade = DataTradeFromHandle(handle);
     return trade->CloseOrder(operationId, orderId, closingVolume, timeoutInMilliseconds);
 }
+
+void* CTradeImpl::GetDailyAccountSnapshotReports(void* handle, int direction, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, size_t preferdBufferSize, const size_t timeoutInMilliseconds)
+{
+    FxRef<CDataTrade> trade = DataTradeFromHandle(handle);
+    void* result = trade->GetDailyAccountSnapshotReports((FxTimeDirection)direction, from, to, (uint32)preferdBufferSize, (uint32)timeoutInMilliseconds);
+    return result;
+}

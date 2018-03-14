@@ -770,3 +770,39 @@ void CFixSender::VSendQuotesHistoryRequest(const string& id)
     request.SetClientQuoteHistoryVersion(cClientQuoteHistoryVersion);
     return SendMessage(request);
 }
+
+void CFixSender::VSendGetDailyAccountSnapshotReports(const string& id, FxTimeDirection direction, const Nullable<CDateTime>& from, const Nullable<CDateTime>& to, uint32 bufferSize, const string& position)
+{
+    FIX44::DailyAccountSnapshotRequest message;
+    if ((!from.HasValue()) ^ (!to.HasValue()))
+    {
+        throw CArgumentException("From and to parameters should be specified simultaneously.");
+    }
+    message.SetSnapshotRequestID(id);
+    if (FxTimeDirection_Forward == direction)
+    {
+        message.SetStrmngDirection(FIX::StrmngDirection_FORWARD);
+    }
+    else if (FxTimeDirection_Backward == direction)
+    {
+        message.SetStrmngDirection(FIX::StrmngDirection_BACKWARD);
+    }
+    else
+    {
+        throw CArgumentException("Incorrect time direction; possible values: forward and backward.");
+    }
+    message.SetStrmngBufSize(bufferSize);
+    if (!position.empty())
+    {
+        message.SetStrmngPosID(position);
+    }
+    if (from.HasValue())
+    {
+        message.SetHstFrom(*from);
+    }
+    if (to.HasValue())
+    {
+        message.SetHstTo(*to);
+    }
+    return SendMessage(message);
+}

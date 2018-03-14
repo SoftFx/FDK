@@ -798,7 +798,7 @@ void CFixConnection::OnExecution(const CFixExecutionReport& message)
 
     report.ExecutionType = message.GetFxExecutionType();
     report.OrderStatus = message.GetFxOrderStatus();
-	report.InitialOrderType = message.GetFxInitialOrderType();
+    report.InitialOrderType = message.GetFxInitialOrderType();
     report.OrderType = message.GetFxOrderType();
     report.ReportsNumber = message.GetFxReportsNumber();
     report.RejectReason = message.GetFxRejectReason();
@@ -1610,4 +1610,105 @@ void CFixConnection::OnComponentsInfoReport(const FIX44::ComponentsInfoReport& m
     message.TryGetCompReqID(info.ID);
     const int version = message.GetServerQuoteHistoryVersion();
     m_receiver->VQuotesHistoryResponse(info, version);
+}
+
+void CFixConnection::OnDailyAccountSnapshotRequestAck(const FIX44::DailyAccountSnapshotRequestAck& message)
+{
+    CFxEventInfo info;
+    info.ID = message.GetSnapshotRequestID();
+    const int status = message.GetSnapshotRequestResult();
+
+    if (FIX::SnapshotRequestResult_SUCCESS != status)
+    {
+        info.Status = E_FAIL;
+        message.TryGetText(info.Message);
+    }
+
+    int32 curNumTradeReports = message.GetCurNumTradeReports();
+    int32 totNumTradeReports = message.GetTotNumTradeReports();
+    bool endOfStrm = message.GetEndOfStrm();
+    m_receiver->VGetDailyAccountSnapshotReports(info, curNumTradeReports, totNumTradeReports, endOfStrm);
+}
+
+void CFixConnection::OnDailyAccountSnapshotReport(const FIX44::DailyAccountSnapshotReport& message)
+{
+    CFxEventInfo info;
+    message.TryGetSnapshotRequestID(info.ID);
+
+    CFxDailyAccountSnapshotReport report;
+
+    FIX::UtcTimeStamp timestamp(time_t(0));
+    if (message.TryGetTimestamp(timestamp))
+        report.Timestamp = timestamp.toFileTime();
+
+    report.AccountId = message.GetAccount();
+
+    const FIX::AccountingType accountingType = message.GetAccountingType();
+    if (FIX::AccountingType_GROSS == accountingType)
+    {
+        report.Type = FxAccountType_Gross;
+    }
+    else if (FIX::AccountingType_NET == accountingType)
+    {
+        report.Type = FxAccountType_Net;
+    }
+    else if (FIX::AccountingType_CASH == accountingType)
+    {
+        report.Type = FxAccountType_Cash;
+    }
+    else
+    {
+        return;
+    }
+
+    report.BalanceCurrency = message.GetCurrency();
+    report.Leverage = message.GetLeverage();
+    report.Balance = message.GetBalance();
+    report.Margin = message.GetMargin();
+    report.MarginLevel = message.GetMarginLevel();
+    report.Equity = message.GetEquity();
+    report.Swap = message.GetSwap();
+    report.Profit = message.GetProfit();
+    report.Commission = message.GetCommission();
+    report.AgentCommission = message.GetAgentCommission();
+
+    auto count = 0;
+    if (message.TryGetNoAssets(count))
+    {
+        report.Assets.reserve(static_cast<size_t>(count));
+        for (int index = 1; index <= count; ++index)
+        {
+            FIX44::AccountInfo::NoAssets group;
+            message.getGroup(index, group);
+
+            CAssetInfo asset;
+            asset.Currency = group.GetAssetCurrency();
+            asset.Balance = group.GetAssetBalance();
+            group.TryGetAssetLockedAmt(asset.LockedAmount);
+            group.TryGetAssetTradeAmt(asset.TradeAmount);
+
+            if (asset.Balance == 0.0)
+                continue;
+
+            report.Assets.push_back(asset);
+        }
+    }
+
+    message.TryGetBalance(report.Balance);
+    message.TryGetSnapshotRequestID(report.NextStreamPositionId);
+
+    double balanceCurrencyToUsdConversionRate;
+    if (message.TryGetBalanceCurrencyToUsdConversionRate(balanceCurrencyToUsdConversionRate))
+        report.BalanceCurrencyToUsdConversionRate = balanceCurrencyToUsdConversionRate;
+    double usdToBalanceCurrencyConversionRate;
+    if (message.TryGetUsdToBalanceCurrencyConversionRate(usdToBalanceCurrencyConversionRate))
+        report.UsdToBalanceCurrencyConversionRate = usdToBalanceCurrencyConversionRate;
+    double profitCurrencyToUsdConversionRate;
+    if (message.TryGetProfitCurrencyToUsdConversionRate(profitCurrencyToUsdConversionRate))
+        report.ProfitCurrencyToUsdConversionRate = profitCurrencyToUsdConversionRate;
+    double usdToProfitCurrencyConversionRate;
+    if (message.TryGetUsdToProfitCurrencyConversionRate(usdToProfitCurrencyConversionRate))
+        report.UsdToProfitCurrencyConversionRate = usdToProfitCurrencyConversionRate;
+
+    m_receiver->VDailyAccountSnapshotReport(info, report);
 }
