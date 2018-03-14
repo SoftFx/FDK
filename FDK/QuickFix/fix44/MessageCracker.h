@@ -1,7 +1,7 @@
 /* -*- C++ -*- */
  
 /****************************************************************************
-** Copyright (c) quickfixengine.org  All rights reserved.
+** Copyright (c) 2001-2014
 **
 ** This file is part of the QuickFIX FIX Engine
 **
@@ -22,8 +22,10 @@
 #ifndef FIX44_MESSAGECRACKER_H
 #define FIX44_MESSAGECRACKER_H
 
+
 #include "../SessionID.h"
 #include "../Exceptions.h"
+
 #include "../fix44/Message.h"
 
 namespace FIX44
@@ -83,6 +85,8 @@ namespace FIX44
   class CrossOrderCancelRequest; 
   class SecurityTypeRequest; 
   class SecurityTypes; 
+  class CurrencyListRequest; 
+  class CurrencyList; 
   class SecurityListRequest; 
   class SecurityList; 
   class DerivativeSecurityListRequest; 
@@ -120,6 +124,10 @@ namespace FIX44
   class UserResponse; 
   class CollateralInquiryAck; 
   class ConfirmationRequest; 
+  class ApplicationPing; 
+  class ApplicationPingReply; 
+  class OrderTimeoutCurrenex; 
+  class Initialize; 
   class MarketDataHistoryRequest; 
   class MarketDataHistoryRequestReject; 
   class MarketDataHistory; 
@@ -136,7 +144,15 @@ namespace FIX44
   class MarketDataHistoryMetadataReport; 
   class TradeTransactionReportRequest; 
   class TradeTransactionReportRequestAck; 
-  class TradeTransactionReport;
+  class TradeTransactionReport; 
+  class ComponentsInfoRequest; 
+  class ComponentsInfoReport; 
+  class TwoFactorLogon; 
+  class TradeServerInfoRequest; 
+  class TradeServerInfoReport; 
+  class DailyAccountSnapshotRequest; 
+  class DailyAccountSnapshotRequestAck; 
+  class DailyAccountSnapshotReport;
 
   class MessageCracker
   {
@@ -256,6 +272,10 @@ namespace FIX44
     { throw FIX::UnsupportedMessageType(); }
   virtual void onMessage( const SecurityTypes&, const FIX::SessionID& ) 
     { throw FIX::UnsupportedMessageType(); }
+  virtual void onMessage( const CurrencyListRequest&, const FIX::SessionID& ) 
+    { throw FIX::UnsupportedMessageType(); }
+  virtual void onMessage( const CurrencyList&, const FIX::SessionID& ) 
+    { throw FIX::UnsupportedMessageType(); }
   virtual void onMessage( const SecurityListRequest&, const FIX::SessionID& ) 
     { throw FIX::UnsupportedMessageType(); }
   virtual void onMessage( const SecurityList&, const FIX::SessionID& ) 
@@ -330,6 +350,14 @@ namespace FIX44
     { throw FIX::UnsupportedMessageType(); }
   virtual void onMessage( const ConfirmationRequest&, const FIX::SessionID& ) 
     { throw FIX::UnsupportedMessageType(); }
+  virtual void onMessage( const ApplicationPing&, const FIX::SessionID& ) 
+    { throw FIX::UnsupportedMessageType(); }
+  virtual void onMessage( const ApplicationPingReply&, const FIX::SessionID& ) 
+    { throw FIX::UnsupportedMessageType(); }
+  virtual void onMessage( const OrderTimeoutCurrenex&, const FIX::SessionID& ) 
+    { throw FIX::UnsupportedMessageType(); }
+  virtual void onMessage( const Initialize&, const FIX::SessionID& ) 
+    { throw FIX::UnsupportedMessageType(); }
   virtual void onMessage( const MarketDataHistoryRequest&, const FIX::SessionID& ) 
     { throw FIX::UnsupportedMessageType(); }
   virtual void onMessage( const MarketDataHistoryRequestReject&, const FIX::SessionID& ) 
@@ -363,6 +391,22 @@ namespace FIX44
   virtual void onMessage( const TradeTransactionReportRequestAck&, const FIX::SessionID& ) 
     { throw FIX::UnsupportedMessageType(); }
   virtual void onMessage( const TradeTransactionReport&, const FIX::SessionID& ) 
+    { throw FIX::UnsupportedMessageType(); }
+  virtual void onMessage( const ComponentsInfoRequest&, const FIX::SessionID& ) 
+    { throw FIX::UnsupportedMessageType(); }
+  virtual void onMessage( const ComponentsInfoReport&, const FIX::SessionID& ) 
+    { throw FIX::UnsupportedMessageType(); }
+  virtual void onMessage( const TwoFactorLogon&, const FIX::SessionID& ) 
+    { throw FIX::UnsupportedMessageType(); }
+  virtual void onMessage( const TradeServerInfoRequest&, const FIX::SessionID& ) 
+    { throw FIX::UnsupportedMessageType(); }
+  virtual void onMessage( const TradeServerInfoReport&, const FIX::SessionID& ) 
+    { throw FIX::UnsupportedMessageType(); }
+  virtual void onMessage( const DailyAccountSnapshotRequest&, const FIX::SessionID& ) 
+    { throw FIX::UnsupportedMessageType(); }
+  virtual void onMessage( const DailyAccountSnapshotRequestAck&, const FIX::SessionID& ) 
+    { throw FIX::UnsupportedMessageType(); }
+  virtual void onMessage( const DailyAccountSnapshotReport&, const FIX::SessionID& ) 
     { throw FIX::UnsupportedMessageType(); }
   virtual void onMessage( Heartbeat&, const FIX::SessionID& ) {} 
  virtual void onMessage( TestRequest&, const FIX::SessionID& ) {} 
@@ -419,6 +463,8 @@ namespace FIX44
  virtual void onMessage( CrossOrderCancelRequest&, const FIX::SessionID& ) {} 
  virtual void onMessage( SecurityTypeRequest&, const FIX::SessionID& ) {} 
  virtual void onMessage( SecurityTypes&, const FIX::SessionID& ) {} 
+ virtual void onMessage( CurrencyListRequest&, const FIX::SessionID& ) {} 
+ virtual void onMessage( CurrencyList&, const FIX::SessionID& ) {} 
  virtual void onMessage( SecurityListRequest&, const FIX::SessionID& ) {} 
  virtual void onMessage( SecurityList&, const FIX::SessionID& ) {} 
  virtual void onMessage( DerivativeSecurityListRequest&, const FIX::SessionID& ) {} 
@@ -456,6 +502,10 @@ namespace FIX44
  virtual void onMessage( UserResponse&, const FIX::SessionID& ) {} 
  virtual void onMessage( CollateralInquiryAck&, const FIX::SessionID& ) {} 
  virtual void onMessage( ConfirmationRequest&, const FIX::SessionID& ) {} 
+ virtual void onMessage( ApplicationPing&, const FIX::SessionID& ) {} 
+ virtual void onMessage( ApplicationPingReply&, const FIX::SessionID& ) {} 
+ virtual void onMessage( OrderTimeoutCurrenex&, const FIX::SessionID& ) {} 
+ virtual void onMessage( Initialize&, const FIX::SessionID& ) {} 
  virtual void onMessage( MarketDataHistoryRequest&, const FIX::SessionID& ) {} 
  virtual void onMessage( MarketDataHistoryRequestReject&, const FIX::SessionID& ) {} 
  virtual void onMessage( MarketDataHistory&, const FIX::SessionID& ) {} 
@@ -473,6 +523,14 @@ namespace FIX44
  virtual void onMessage( TradeTransactionReportRequest&, const FIX::SessionID& ) {} 
  virtual void onMessage( TradeTransactionReportRequestAck&, const FIX::SessionID& ) {} 
  virtual void onMessage( TradeTransactionReport&, const FIX::SessionID& ) {} 
+ virtual void onMessage( ComponentsInfoRequest&, const FIX::SessionID& ) {} 
+ virtual void onMessage( ComponentsInfoReport&, const FIX::SessionID& ) {} 
+ virtual void onMessage( TwoFactorLogon&, const FIX::SessionID& ) {} 
+ virtual void onMessage( TradeServerInfoRequest&, const FIX::SessionID& ) {} 
+ virtual void onMessage( TradeServerInfoReport&, const FIX::SessionID& ) {} 
+ virtual void onMessage( DailyAccountSnapshotRequest&, const FIX::SessionID& ) {} 
+ virtual void onMessage( DailyAccountSnapshotRequestAck&, const FIX::SessionID& ) {} 
+ virtual void onMessage( DailyAccountSnapshotReport&, const FIX::SessionID& ) {} 
 
 public:
   void crack( const Message& message, 
@@ -646,6 +704,12 @@ public:
     if( msgTypeValue == "w" )
       onMessage( (const SecurityTypes&)message, sessionID );
     else
+    if( msgTypeValue == "U1020" )
+      onMessage( (const CurrencyListRequest&)message, sessionID );
+    else
+    if( msgTypeValue == "U1021" )
+      onMessage( (const CurrencyList&)message, sessionID );
+    else
     if( msgTypeValue == "x" )
       onMessage( (const SecurityListRequest&)message, sessionID );
     else
@@ -757,6 +821,18 @@ public:
     if( msgTypeValue == "BH" )
       onMessage( (const ConfirmationRequest&)message, sessionID );
     else
+    if( msgTypeValue == "U1" )
+      onMessage( (const ApplicationPing&)message, sessionID );
+    else
+    if( msgTypeValue == "U2" )
+      onMessage( (const ApplicationPingReply&)message, sessionID );
+    else
+    if( msgTypeValue == "U3" )
+      onMessage( (const OrderTimeoutCurrenex&)message, sessionID );
+    else
+    if( msgTypeValue == "U4" )
+      onMessage( (const Initialize&)message, sessionID );
+    else
     if( msgTypeValue == "U1000" )
       onMessage( (const MarketDataHistoryRequest&)message, sessionID );
     else
@@ -807,6 +883,30 @@ public:
     else
     if( msgTypeValue == "U1017" )
       onMessage( (const TradeTransactionReport&)message, sessionID );
+    else
+    if( msgTypeValue == "U1018" )
+      onMessage( (const ComponentsInfoRequest&)message, sessionID );
+    else
+    if( msgTypeValue == "U1019" )
+      onMessage( (const ComponentsInfoReport&)message, sessionID );
+    else
+    if( msgTypeValue == "U1022" )
+      onMessage( (const TwoFactorLogon&)message, sessionID );
+    else
+    if( msgTypeValue == "U1023" )
+      onMessage( (const TradeServerInfoRequest&)message, sessionID );
+    else
+    if( msgTypeValue == "U1024" )
+      onMessage( (const TradeServerInfoReport&)message, sessionID );
+    else
+    if( msgTypeValue == "U1025" )
+      onMessage( (const DailyAccountSnapshotRequest&)message, sessionID );
+    else
+    if( msgTypeValue == "U1026" )
+      onMessage( (const DailyAccountSnapshotRequestAck&)message, sessionID );
+    else
+    if( msgTypeValue == "U1027" )
+      onMessage( (const DailyAccountSnapshotReport&)message, sessionID );
     else onMessage( message, sessionID );
   }
   
@@ -982,6 +1082,12 @@ void crack( Message& message,
     if( msgTypeValue == "w" )
       onMessage( (SecurityTypes&)message, sessionID );
     else
+    if( msgTypeValue == "U1020" )
+      onMessage( (CurrencyListRequest&)message, sessionID );
+    else
+    if( msgTypeValue == "U1021" )
+      onMessage( (CurrencyList&)message, sessionID );
+    else
     if( msgTypeValue == "x" )
       onMessage( (SecurityListRequest&)message, sessionID );
     else
@@ -1093,6 +1199,18 @@ void crack( Message& message,
     if( msgTypeValue == "BH" )
       onMessage( (ConfirmationRequest&)message, sessionID );
     else
+    if( msgTypeValue == "U1" )
+      onMessage( (ApplicationPing&)message, sessionID );
+    else
+    if( msgTypeValue == "U2" )
+      onMessage( (ApplicationPingReply&)message, sessionID );
+    else
+    if( msgTypeValue == "U3" )
+      onMessage( (OrderTimeoutCurrenex&)message, sessionID );
+    else
+    if( msgTypeValue == "U4" )
+      onMessage( (Initialize&)message, sessionID );
+    else
     if( msgTypeValue == "U1000" )
       onMessage( (MarketDataHistoryRequest&)message, sessionID );
     else
@@ -1143,10 +1261,34 @@ void crack( Message& message,
     else
     if( msgTypeValue == "U1017" )
       onMessage( (TradeTransactionReport&)message, sessionID );
+    else
+    if( msgTypeValue == "U1018" )
+      onMessage( (ComponentsInfoRequest&)message, sessionID );
+    else
+    if( msgTypeValue == "U1019" )
+      onMessage( (ComponentsInfoReport&)message, sessionID );
+    else
+    if( msgTypeValue == "U1022" )
+      onMessage( (TwoFactorLogon&)message, sessionID );
+    else
+    if( msgTypeValue == "U1023" )
+      onMessage( (TradeServerInfoRequest&)message, sessionID );
+    else
+    if( msgTypeValue == "U1024" )
+      onMessage( (TradeServerInfoReport&)message, sessionID );
+    else
+    if( msgTypeValue == "U1025" )
+      onMessage( (DailyAccountSnapshotRequest&)message, sessionID );
+    else
+    if( msgTypeValue == "U1026" )
+      onMessage( (DailyAccountSnapshotRequestAck&)message, sessionID );
+    else
+    if( msgTypeValue == "U1027" )
+      onMessage( (DailyAccountSnapshotReport&)message, sessionID );
     else onMessage( message, sessionID );
   }
 
   };
 }
 
-#endif //FIX44_MESSAGECRACKER_H
+#endif
