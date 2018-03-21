@@ -24,6 +24,8 @@ namespace TradeFeedExamples
 
             Console.ReadKey();
 
+            var state = this.Calculator.GetState();
+
             CloseAll();
 
             this.Calculator.StateInfoChanged -= StateInfoChanged;
