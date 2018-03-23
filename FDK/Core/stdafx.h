@@ -30,24 +30,11 @@
 #include <list>
 #include <memory>
 
-
 #include "../Sal/Sal.h"
 #include "../Sal/Threading.h"
 #include "../../External/Include/lrp/Nullable.h"
 
-
-
-namespace std
-{
-	using namespace std::tr1;
-}
-
-
 using namespace std;
-
-
-
-
 
 #ifdef _MSC_VER
 #ifdef _DEBUG

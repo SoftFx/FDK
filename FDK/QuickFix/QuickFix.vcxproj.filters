@@ -521,6 +521,9 @@
     <ClInclude Include="resource.h">
       <Filter>_Headers</Filter>
     </ClInclude>
+    <ClInclude Include="NullStore.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -612,6 +615,9 @@
     </ClCompile>
     <ClCompile Include="LIBXML_DOMDocument.cpp">
       <Filter>Dictionary\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="NullStore.cpp">
+      <Filter>_Sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

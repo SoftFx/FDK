@@ -209,6 +209,9 @@
     <ClInclude Include="FxTradeServerInfo.h">
       <Filter>Types\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="FxDailyAccountSnapshotReport.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -326,6 +329,9 @@
       <Filter>Types\Sources</Filter>
     </ClCompile>
     <ClCompile Include="PerformanceLogger.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxDailyAccountSnapshotReport.cpp">
       <Filter>_Sources</Filter>
     </ClCompile>
   </ItemGroup>
