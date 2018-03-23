@@ -425,7 +425,7 @@
             Create activate order request with required parameters.
             </summary>
             <param name="OrderId">Order Id to activate</param>
-            <param name="Activation">Order activation type</param>         
+            <param name="Activation">Order activation type</param>
             <returns>Activate order request</returns>
         </member>
         <member name="M:TickTrader.BusinessObjects.Requests.ActivateOrderRequest.Create(System.Int64,TickTrader.BusinessObjects.ActivationTypes,System.Nullable{System.Decimal},System.Nullable{System.Decimal})">
@@ -433,7 +433,7 @@
             Create activate order request with required parameters.
             </summary>
             <param name="OrderId">Order Id to activate</param>
-            <param name="Activation">Order activation type</param>         
+            <param name="Activation">Order activation type</param>
             <param name="Price">Order activation price (can be null)</param>
             <param name="Amount">Order activation amount (can be null)</param>
             <returns>Activate order request</returns>
@@ -745,7 +745,7 @@
             <param name="UserComment">User Comment</param>
             <param name="ManagerComment">Manager Comment</param>
             <param name="UserTag">User Tag</param>
-            <param name="ManagerTag">Manager Tag</param>/// 
+            <param name="ManagerTag">Manager Tag</param>///
             <param name="Magic">Magic number (default is 0)</param>
             <param name="Expiration">Expiration date/time (default is null)</param>
             <returns>Open order request</returns>
@@ -766,7 +766,7 @@
             <param name="UserComment">User Comment</param>
             <param name="ManagerComment">Manager Comment</param>
             <param name="UserTag">User Tag</param>
-            <param name="ManagerTag">Manager Tag</param>/// 
+            <param name="ManagerTag">Manager Tag</param>///
             <param name="Magic">Magic number (default is 0)</param>
             <param name="Expiration">Expiration date/time (default is null)</param>
             <returns>Open order request</returns>

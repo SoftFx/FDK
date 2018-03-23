@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>SoftFX.FDK</id>
-        <version>1.17.0</version>
+        <version>1.33.1</version>
         <authors>SoftFX</authors>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>This package offers access to FDK's</description>
