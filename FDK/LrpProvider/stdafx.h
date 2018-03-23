@@ -37,12 +37,6 @@
 #include <regex>
 #include <iomanip>
 
-namespace std
-{
-	using namespace std::tr1;
-}
-
-
 using namespace std;
 
 #define FX_OVERRIDE_WINSOCKS

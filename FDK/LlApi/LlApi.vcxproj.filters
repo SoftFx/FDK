@@ -114,9 +114,6 @@
     <ClInclude Include="ConverterImpl.h">
       <Filter>LRP\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="IteratorImpl.h">
-      <Filter>LRP\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="Server.hpp">
       <Filter>LRP\Generated</Filter>
     </ClInclude>
@@ -145,6 +142,15 @@
       <Filter>_Headers</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FxDailyAccountSnapshotReportIterator.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TradeHistoryIteratorImpl.h">
+      <Filter>_Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DailySnapshotsIteratorImpl.h">
       <Filter>_Headers</Filter>
     </ClInclude>
   </ItemGroup>
@@ -243,6 +249,9 @@
       <Filter>_Sources</Filter>
     </ClCompile>
     <ClCompile Include="ProtocolVersion.cpp">
+      <Filter>_Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FxDailyAccountSnapshotReportIterator.cpp">
       <Filter>_Sources</Filter>
     </ClCompile>
   </ItemGroup>

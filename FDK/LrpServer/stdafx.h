@@ -39,29 +39,15 @@
 #include <memory>
 #include <list>
 
-
-
-namespace std
-{
-	using namespace std::tr1;
-}
-
-
-
 #ifdef max
 #undef max
 #endif
-
 
 #ifdef min
 #undef min
 #endif
 
-
-
 using namespace std;
-
-
 
 typedef unsigned __int16 uint16;
 typedef unsigned __int32 uint32;
