@@ -147,7 +147,7 @@
   <target name="CopyFDKBuild" >
     <call target="GetVersion" />
     <mkdir dir="${ArtifactsDir}\FDK ${Build}" />
-    <copy file="${SourcesDir}\Release\FDK.msi" tofile="${ArtifactsDir}\FDK ${Build}\${SetupFileBaseName}.msi" />
+    <!--<copy file="${SourcesDir}\Release\FDK.msi" tofile="${ArtifactsDir}\FDK ${Build}\${SetupFileBaseName}.msi" />-->
     <mkdir dir="${ArtifactsDir}\FDK ${Build}\fdk" />
     <delete>
       <fileset>
