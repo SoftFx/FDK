@@ -143,6 +143,9 @@
     <ClInclude Include="BitWriter.h">
       <Filter>Public\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Public\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -242,5 +245,11 @@
     <MASM Include="decimal.asm">
       <Filter>Public\Sources</Filter>
     </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico" />
   </ItemGroup>
 </Project>
