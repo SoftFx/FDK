@@ -138,8 +138,8 @@ if exist "$(TargetDir)$(TargetName).xml" (xcopy /Y "$(TargetDir)$(TargetName).xm
 if exist "$(TargetDir)$(TargetName).pdb" (xcopy /Y "$(TargetDir)$(TargetName).pdb" ..\dll\)</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>if not exist "$(SolutionDir)bin\LrpHost.x86.exe"  (copy NUL "$(SolutionDir)bin\LrpHost.x86.exe")
-if not exist "$(SolutionDir)bin\LrpHost.x64.exe"  (copy NUL "$(SolutionDir)bin\LrpHost.x64.exe")</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

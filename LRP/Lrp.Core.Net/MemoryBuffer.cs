@@ -513,20 +513,18 @@ namespace SoftFX.Lrp
         /// <exception cref="System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
         public void WriteAString(string arg)
         {
-            int newPosition = m_position + arg.Length + sizeof(int);
+            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(arg);
+
+            int newPosition = m_position + bytes.Length + sizeof(int);
             if (newPosition > m_capacity)
             {
                 ReAlloc(newPosition);
             }
-            WriteInt32(arg.Length);
-            fixed (char* source = arg)
+            WriteInt32(bytes.Length);
+            byte* dest = (byte*)(m_data + m_position);
+            for (int current = 0; current < bytes.Length; ++current, ++dest)
             {
-                char* end = source + arg.Length;
-                byte* dest = (byte*)(m_data + m_position);
-                for (char* current = source; current < end; ++current, ++dest)
-                {
-                    *dest = (byte)(*current);
-                }
+                *dest = bytes[current];
             }
             m_position = newPosition;
         }

@@ -2,6 +2,7 @@
 #include "StChannelImpl.h"
 #include "Acceptor.h"
 #include "Logger.h"
+#include <memory>
 
 class CLrpStServer;
 class CStServerImpl
@@ -42,6 +43,6 @@ private:
 	set<CStChannelImpl*> m_channels;
 private:
 	CriticalSection m_loggerSynchronizer;
-	auto_ptr<ofstream> m_logStream;
+	shared_ptr<ofstream> m_logStream;
 	CLogger m_logger;
 };

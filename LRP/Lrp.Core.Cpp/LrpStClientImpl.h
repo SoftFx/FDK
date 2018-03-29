@@ -1,6 +1,7 @@
 #pragma once
 #include "LrpClientImpl.h"
 #include "Logger.h"
+#include <memory>
 
 
 class CLrpStClientImpl : public CLrpClientImpl
@@ -25,6 +26,6 @@ private:
 	string m_password;
 	const uint32 m_operationTimeoutInMs;
 private:
-	auto_ptr<ofstream> m_logStream;
+	shared_ptr<ofstream> m_logStream;
 	CLogger m_logger;
 };
