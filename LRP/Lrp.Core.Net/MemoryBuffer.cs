@@ -912,9 +912,11 @@ namespace SoftFX.Lrp
             }
 
             var data = (SByte*)(m_data + m_position);
-            var result = new string(data, 0, length);
+            var result = new byte[length];
+            Buffer.BlockCopy(data, 0, result, 0, length);
             m_position = newPosition;
-            return result;
+
+            return System.Text.Encoding.UTF8.GetString(result);
         }
             /// <summary>
         /// Reads a value from memory buffer.
