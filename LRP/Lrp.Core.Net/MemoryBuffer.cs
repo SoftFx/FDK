@@ -513,7 +513,7 @@ namespace SoftFX.Lrp
         /// <exception cref="System.OutOfMemoryException">if not enough memory for the buffer reallocation.</exception>
         public void WriteAString(string arg)
         {
-            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(arg);
+            byte[] bytes = Encoding.UTF8.GetBytes(arg);
 
             int newPosition = m_position + bytes.Length + sizeof(int);
             if (newPosition > m_capacity)
@@ -913,10 +913,11 @@ namespace SoftFX.Lrp
 
             var data = (SByte*)(m_data + m_position);
             var result = new byte[length];
-            Buffer.BlockCopy(data, 0, result, 0, length);
+            for (int i = 0; i < length; i++)
+                result[i] = (byte)data[i];
             m_position = newPosition;
 
-            return System.Text.Encoding.UTF8.GetString(result);
+            return Encoding.UTF8.GetString(result);
         }
             /// <summary>
         /// Reads a value from memory buffer.
