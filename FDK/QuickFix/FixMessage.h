@@ -3,7 +3,7 @@
 class CFixMessage
 {
 public:
-	CFixMessage(const std::string& text);
+	explicit CFixMessage(const std::string& text);
 private:
 	CFixMessage& operator = (const CFixMessage&);
 public:
@@ -15,6 +15,7 @@ private:
 	const std::string& m_text;
 private:
 	friend std::ostream& operator << (std::ostream& stream, const CFixMessage& message);
+	friend std::wostream& operator << (std::wostream& stream, const CFixMessage& message);
 };
 
 

@@ -22,34 +22,36 @@
 
 #include "FileLog.h"
 
+#include "StringUtilities.h"
+
 
 namespace FIX
 {
 
-	std::string generatePrefix( const SessionID& s )
+	std::wstring generatePrefix( const SessionID& s )
 	{
-		const std::string& begin =
-			s.getBeginString().getString();
-		const std::string& sender =
-			s.getSenderCompID().getString();
-		const std::string& target =
-			s.getTargetCompID().getString();
-		const std::string& qualifier =
-			s.getSessionQualifier();
+		const std::wstring& begin =
+			StringToWString(s.getBeginString().getString());
+		const std::wstring& sender =
+			StringToWString(s.getSenderCompID().getString());
+		const std::wstring& target =
+			StringToWString(s.getTargetCompID().getString());
+		const std::wstring& qualifier =
+			StringToWString(s.getSessionQualifier());
 
-		std::string prefix = begin + "-" + sender + "-" + target;
+		std::wstring prefix = begin + L"-" + sender + L"-" + target;
 		if( qualifier.size() )
-			prefix += "-" + qualifier;
+			prefix += L"-" + qualifier;
 
 		return prefix;
 	}
-	std::string CombinePath(const std::string& directory, const std::string& path)
+	std::wstring CombinePath(const std::wstring& directory, const std::wstring& path)
 	{
-		char buffer[MAX_PATH] = "";
-		const char* result = PathCombineA(buffer, directory.c_str(), path.c_str());
+		wchar_t buffer[MAX_PATH] = L"";
+		const wchar_t* result = PathCombineW(buffer, directory.c_str(), path.c_str());
 		if (nullptr == result)
 		{
-			std::string message = std::string("Couldn't combine path: directory = ") + directory + "; path = " + path;
+			std::string message = std::string("Couldn't combine path!");
 			throw std::runtime_error(message);
 		}
 		return result;
@@ -68,21 +70,21 @@ namespace FIX
 
 	Log* FileLogFactory::create( const SessionID& s )
 	{
-		std::string eventsPath;
-		std::string messagesPath;
+		std::wstring eventsPath;
+		std::wstring messagesPath;
 
-		std::string eventsFileName = m_eventsFileName;
-		std::string messagesFileName = m_messagesFileName;
+		std::wstring eventsFileName = m_eventsFileName;
+		std::wstring messagesFileName = m_messagesFileName;
 
 		if (!m_path.empty())
 		{
 			if (eventsFileName.empty())
 			{
-				eventsFileName = generatePrefix(s) + ".events.log";
+				eventsFileName = generatePrefix(s) + L".events.log";
 			}
 			if (messagesFileName.empty())
 			{
-				messagesFileName = generatePrefix(s) + ".messages.log";
+				messagesFileName = generatePrefix(s) + L".messages.log";
 			}
 		}
 		if (!eventsFileName.empty())
@@ -103,7 +105,7 @@ namespace FIX
 	LogEntry::LogEntry(const LogEntryType type, const std::string& value) : Type(type), Value(value)
 	{
 	}
-	FileLog::FileLog( const std::string& eventsPath, const std::string& messagesPath, const std::string& excludeMessagesFromLogs, bool decodeFixMessages )
+	FileLog::FileLog( const std::wstring& eventsPath, const std::wstring& messagesPath, const std::string& excludeMessagesFromLogs, bool decodeFixMessages )
 		: m_eventsEnabled()
         , m_messagesEnabled()
         , m_decodeFixMessages(decodeFixMessages)
@@ -119,7 +121,7 @@ namespace FIX
 			m_event.open( eventsPath.c_str(), std::ios::out | std::ios::app );
 			if (!m_event.is_open())
 			{
-				throw ConfigError( "Could not open event file: " + eventsPath);
+				throw ConfigError( "Could not open event file!" );
 			}
 		}
 		if (!messagesPath.empty())
@@ -127,7 +129,7 @@ namespace FIX
 			m_messages.open( messagesPath.c_str(), std::ios::out | std::ios::app );
 			if (!m_messages.is_open())
 			{
-				throw ConfigError( "Could not open messages file: " + messagesPath );
+				throw ConfigError( "Could not open messages file!" );
 			}
 		}
 
@@ -190,34 +192,34 @@ namespace FIX
 		{
 			if (LogEntryType_Incomming == element.Type)
 			{
-				m_messages << UtcTimeStampConvertor::convert( element.TimeStamp, true ) << " : incoming> ";
+				m_messages << UtcTimeStampConvertor::convert( element.TimeStamp, true ).c_str() << " : incoming> ";
 				if(m_decodeFixMessages)
 				{
 					m_messages<< CFixMessage(element.Value);
 				}
 				else
 				{
-					m_messages<<element.Value;
+					m_messages<<element.Value.c_str();
 				}
 				m_messages<< std::endl<<std::endl;
 			}
 			else if (LogEntryType_Outgoing == element.Type)
 			{
-				m_messages << UtcTimeStampConvertor::convert( element.TimeStamp, true ) << " : outgoing> ";
+				m_messages << UtcTimeStampConvertor::convert( element.TimeStamp, true ).c_str() << " : outgoing> ";
 				if (m_decodeFixMessages)
 				{
 					m_messages<<CFixMessage(element.Value);
 				}
 				else
 				{
-					m_messages<<element.Value;
+					m_messages<<element.Value.c_str();
 				}
 				m_messages << std::endl<<std::endl;
 			}
 			else
 			{
 				assert(LogEntryType_Event == element.Type);
-				m_event << UtcTimeStampConvertor::convert( element.TimeStamp, true )<< " : event> " << element.Value << std::endl;
+				m_event << UtcTimeStampConvertor::convert( element.TimeStamp, true ).c_str() << " : event> " << element.Value.c_str() << std::endl;
 			}
 		}
 		m_second.clear();

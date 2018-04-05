@@ -224,3 +224,17 @@ std::ostream& operator<<(std::ostream& stream, const CFixMessage& message)
 	}
 	return stream;
 }
+std::wostream& operator<<(std::wostream& stream, const CFixMessage& message)
+{
+	stringstream temp;
+	if (message.Format(temp))
+	{
+		const string st = temp.str();
+		stream << st.c_str();
+	}
+	else
+	{
+		stream << message.Text().c_str();
+	}
+	return stream;
+}
