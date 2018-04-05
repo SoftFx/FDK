@@ -40,7 +40,7 @@ namespace FIX
 	class FileLogFactory : public LogFactory
 	{
 	public:
-		FileLogFactory( const std::string& path, const std::string& eventsFileName, const std::string& messagesFileName, const std::string& excludeMessagesFromLogs ,const bool decodeFixMessages )
+		FileLogFactory( const std::wstring& path, const std::wstring& eventsFileName, const std::wstring& messagesFileName, const std::string& excludeMessagesFromLogs ,const bool decodeFixMessages )
 			: m_path( path ), m_eventsFileName(eventsFileName), m_messagesFileName(messagesFileName),
 			m_excludeMessagesFromLogs(excludeMessagesFromLogs), m_decodeFixMessages(decodeFixMessages) {};
 	public:
@@ -48,9 +48,9 @@ namespace FIX
 		Log* create( const SessionID& );
 		void destroy( Log* log );
 	private:
-		const std::string m_path;
-		const std::string m_eventsFileName;
-		const std::string m_messagesFileName;
+		const std::wstring m_path;
+		const std::wstring m_eventsFileName;
+		const std::wstring m_messagesFileName;
 		const std::string m_excludeMessagesFromLogs;
 		const bool m_decodeFixMessages;
 	};
@@ -85,7 +85,7 @@ namespace FIX
 	class FileLog : public Log
 	{
 	public:
-		FileLog( const std::string& eventsPath, const std::string& messagesPath, const std::string& excludeMessagesFromLogs, bool decodeFixMessages );
+		FileLog( const std::wstring& eventsPath, const std::wstring& messagesPath, const std::string& excludeMessagesFromLogs, bool decodeFixMessages );
 		virtual ~FileLog();
 	private:
 		void Construct();
@@ -108,8 +108,8 @@ namespace FIX
 	private:
 		bool m_eventsEnabled;
 		bool m_messagesEnabled;
-		std::ofstream m_messages;
-		std::ofstream m_event;
+		std::wofstream m_messages;
+		std::wofstream m_event;
 		bool m_decodeFixMessages;
 		std::regex* m_pattern;
 	private:

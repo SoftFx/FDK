@@ -36,7 +36,7 @@
                 ProxyUserName = "User",
                 ProxyPassword = "Password",
 */
-                FixLogDirectory = LogPath,
+                FixLogDirectory = @"C:\Привет\",
                 FixEventsFileName = string.Format("{0}.trade.events.log", username),
                 FixMessagesFileName = string.Format("{0}.trade.messages.log", username)
             };

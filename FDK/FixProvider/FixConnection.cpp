@@ -15,28 +15,36 @@ namespace
     const FIX::UtcTimeStamp cZeroTime(time_t(0));
     map<string, MessageHandler> gMessageTypeToHandler;
 
-    wstring& Utf8ToStd(wstring& dest, const string& src)
-    {
-        if (! src.length())
-        {
-            dest = L"";
-            return dest;
-        }
+	std::wstring& Utf8ToStd(std::wstring& dest, const std::string& src)
+	{
+		if (!src.length())
+		{
+			dest = L"";
+			return dest;
+		}
 
-        int result = MultiByteToWideChar(CP_UTF8, 0, src.data(), src.length(), 0, 0);
+		int result = MultiByteToWideChar(CP_UTF8, 0, src.data(), src.length(), 0, 0);
 
-        if (! result)
-            throw logic_error("Invalid string to convert from UTF-8");
+		if (!result)
+			throw std::logic_error("Invalid string to convert from UTF-8");
 
-        dest.resize(result);
+		dest.resize(result);
 
-        result = MultiByteToWideChar(CP_UTF8, 0, src.data(), src.length(), const_cast<wchar_t*>(dest.data()), dest.length());
+		result = MultiByteToWideChar(CP_UTF8, 0, src.data(), src.length(), const_cast<wchar_t*>(dest.data()), dest.length());
 
-        if (! result)
-            throw logic_error("Invalid string to convert from UTF-8");
+		if (!result)
+			throw std::logic_error("Invalid string to convert from UTF-8");
 
-        return dest;
-    }
+		return dest;
+	}
+
+	std::wstring StringToWString(const std::string& s)
+	{
+		std::wstring utf8String;
+		std::wstring result = Utf8ToStd(utf8String, s);
+
+		return result;
+	}
 }
 
 namespace
@@ -180,12 +188,12 @@ CFixConnection::CFixConnection(const string& name, const string& connectionStrin
     // create default settings
     m_settings.set(FIX::Dictionary());
 
-    const string fixLogDirectory = parameters.GetString(cFixLogDirectory);
+    const wstring fixLogDirectory = StringToWString(parameters.GetString(cFixLogDirectory));
 
     if (fixLogDirectory.length())
     {
-        const string fixEventsFileName = parameters.GetString(cFixEventsFileName);
-        const string fixMessagesFileName = parameters.GetString(cFixMessagesFileName);
+        const wstring fixEventsFileName = StringToWString(parameters.GetString(cFixEventsFileName));
+        const wstring fixMessagesFileName = StringToWString(parameters.GetString(cFixMessagesFileName));
         const string excludeMessagesFromLogs = parameters.GetString(cExcludeMessagesFromLogs);
 
         m_logFactory = new FIX::FileLogFactory(fixLogDirectory, fixEventsFileName, fixMessagesFileName, excludeMessagesFromLogs, decodeLogFixMessages);
