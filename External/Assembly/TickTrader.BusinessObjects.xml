@@ -491,7 +491,7 @@
             <param name="closeByType">Close by type</param>
             <returns>Close position request</returns>
         </member>
-        <member name="M:TickTrader.BusinessObjects.Requests.ClosePositionRequest.CreateCloseAllPositionsForAccount(System.Int32,System.Boolean)">
+        <member name="M:TickTrader.BusinessObjects.Requests.ClosePositionRequest.CreateCloseAllPositionsForAccount(System.Int64,System.Boolean)">
             <summary>
             Create close position request for 'Close all positions for account with the given Account Login' operation.
             </summary>
@@ -499,7 +499,7 @@
             <param name="StopoutFlag">Stop out flag</param>
             <returns>Close position request</returns>
         </member>
-        <member name="M:TickTrader.BusinessObjects.Requests.ClosePositionRequest.CreateClientCloseAllPositionsForAccount(System.Int32)">
+        <member name="M:TickTrader.BusinessObjects.Requests.ClosePositionRequest.CreateClientCloseAllPositionsForAccount(System.Int64)">
             <summary>
             Create close position request for 'Close all positions for account with the given Account Login' operation (client emulation).
             </summary>
