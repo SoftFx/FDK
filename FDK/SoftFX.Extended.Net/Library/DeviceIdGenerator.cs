@@ -21,9 +21,25 @@ namespace SoftFX.Extended
         {
             if (string.IsNullOrEmpty(deviceId))
             {
-                deviceId = GetHash($"CPU >> {CpuId()}\nBIOS >> {BiosId()}\nBASE >> {BaseId()}"
-                    //+ $"\nDISK >> {diskId()}\nVIDEO >> {videoId()}\nMAC >> {macId()}"
-                    );
+                try
+                {
+                    deviceId = GetHash($"Platform >> {PlatformId()}\nBIOS >> {BiosId()}\nBASE >> {BaseId()}");
+                }
+                catch (Exception) {}
+
+                if (deviceId != string.Empty)
+                    return deviceId;
+
+                try
+                {
+                    deviceId = GetHash($"Platform >> {PlatformId()}");
+                }
+                catch (Exception) {}
+
+                if (deviceId != string.Empty)
+                    return deviceId;
+
+                deviceId = Guid.NewGuid().ToString("D");
             }
             return deviceId;
         }
