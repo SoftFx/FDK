@@ -82,8 +82,7 @@ namespace SoftFX.Extended
         private static string Identifier(string wmiClass, string wmiProperty, string wmiMustBeTrue)
         {
             string result = "";
-            System.Management.ManagementClass mc =
-        new System.Management.ManagementClass(wmiClass);
+            System.Management.ManagementClass mc = new System.Management.ManagementClass(wmiClass);
             System.Management.ManagementObjectCollection moc = mc.GetInstances();
             foreach (System.Management.ManagementObject mo in moc)
             {
@@ -195,6 +194,38 @@ namespace SoftFX.Extended
             return Identifier("Win32_NetworkAdapterConfiguration",
                 "MACAddress", "IPEnabled");
         }
+
+        public static string GetProductId()
+        {
+            try
+            {
+                RegistryKey localMachine = RegistryKey.OpenBaseKey(Microsoft.Win32.RegistryHive.LocalMachine, RegistryView.Registry32);
+                RegistryKey windowsNtKey = localMachine.OpenSubKey(@"Software\Microsoft\Windows NT\CurrentVersion");
+                Object value = windowsNtKey?.GetValue("ProductId");
+                if (value != null)
+                    return value as string;
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+
+            try
+            {
+                RegistryKey localMachine = RegistryKey.OpenBaseKey(Microsoft.Win32.RegistryHive.LocalMachine, RegistryView.Registry64);
+                RegistryKey windowsNtKey = localMachine.OpenSubKey(@"Software\Microsoft\Windows NT\CurrentVersion");
+                Object value = windowsNtKey?.GetValue("ProductId");
+                if (value != null)
+                    return value as string;
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+
+            return "";
+        }
+
         #endregion
     }
 }
