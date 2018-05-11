@@ -24,7 +24,7 @@ namespace SoftFX.Extended
             {
                 try
                 {
-                    deviceId = GetHash($"Platform >> {PlatformId()}\nBIOS >> {BiosId()}\nBASE >> {BaseId()}");
+                    deviceId = GetHash($"Product >> {ProductId()}\nBIOS >> {BiosId()}\nBASE >> {BaseId()}");
                 }
                 catch (Exception) {}
 
@@ -33,7 +33,7 @@ namespace SoftFX.Extended
 
                 try
                 {
-                    deviceId = GetHash($"Platform >> {PlatformId()}");
+                    deviceId = GetHash($"Product >> {ProductId()}");
                 }
                 catch (Exception) {}
 
@@ -195,7 +195,7 @@ namespace SoftFX.Extended
                 "MACAddress", "IPEnabled");
         }
 
-        public static string GetProductId()
+        public static string ProductId()
         {
             try
             {
