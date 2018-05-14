@@ -697,12 +697,6 @@ namespace FIX
   const int OrdRejReason_BROKER = 0;
   const int OrdRejReason_BROKEROPT = 0;
   const int OrdRejReason_UNKNOWNSYM = 1;
-  const int OrdRejReason_INVINVID = 10;
-  const int OrdRejReason_UNSUPPORDERCHAR = 11;
-  const int OrdRejReason_SURVEILLENCE = 12;
-  const int OrdRejReason_INCORRECTQUANTITY = 13;
-  const int OrdRejReason_INCORRECTALLOCATEDQUANTITY = 14;
-  const int OrdRejReason_UNKNOWNACCOUNTS = 15;
   const int OrdRejReason_EXCHCLOSED = 2;
   const int OrdRejReason_EXCEEDSLIM = 3;
   const int OrdRejReason_TOOLATE = 4;
@@ -711,6 +705,13 @@ namespace FIX
   const int OrdRejReason_DUPLICATEVERBAL = 7;
   const int OrdRejReason_STALE = 8;
   const int OrdRejReason_TRADEALONGREQ = 9;
+  const int OrdRejReason_INVINVID = 10;
+  const int OrdRejReason_UNSUPPORDERCHAR = 11;
+  const int OrdRejReason_SURVEILLENCE = 12;
+  const int OrdRejReason_INCORRECTQUANTITY = 13;
+  const int OrdRejReason_INCORRECTALLOCATEDQUANTITY = 14;
+  const int OrdRejReason_UNKNOWNACCOUNTS = 15;
+  const int OrdRejReason_THROTTLING = 16;
   const int OrdRejReason_OTHER = 99;
   const int OrdRejReason_INCORRECT_QUANTITY = 13;
   const int OrdRejReason_INCORRECT_ALLOCATED_QUANTITY = 14;
@@ -1395,6 +1396,7 @@ namespace FIX
   const char MDReqRejReason_UNSUPPSCOPE = 'A';
   const char MDReqRejReason_UNSUPPPOSITIONEFFECTSETTLEFLAG = 'B';
   const char MDReqRejReason_UNSUPPMDIMPLICITDELETE = 'C';
+  const char MDReqRejReason_THROTTLING = 'D';
   const char MDReqRejReason_INSUFFICIENT_CREDIT = 'D';
   const char DeleteReason_CANCELATION = '0';
   const char DeleteReason_ERROR = '1';
@@ -3979,6 +3981,7 @@ namespace FIX
   const char MHstRejReason_UNSUP_SYM = '1';
   const char MHstRejReason_UNSUP_PERIOD = '2';
   const char MHstRejReason_UNSUP_RP_TYPE = '3';
+  const char MHstRejReason_THROTTLING = '4';
   const char AccountingType_NET = 'N';
   const char AccountingType_GROSS = 'G';
   const char AccountingType_MIXED = 'M';
@@ -3992,6 +3995,7 @@ namespace FIX
   const int ClosePosReqResult_SUCCESSFUL = 0;
   const int ClosePosReqResult_INVALID_OR_UNKNOWN_POSITION = 1;
   const int ClosePosReqResult_REJECTED = 2;
+  const int ClosePosReqResult_THROTTLING = 3;
   const int ClosePosReqResult_OTHER = 99;
   const int NotifCode_NONE = 0;
   const int NotifCode_MARGIN_CALL = 1;
@@ -4023,6 +4027,7 @@ namespace FIX
   const int MDHstMetaReqResult_SUCCESS = 0;
   const int MDHstMetaReqResult_INVALID_SYMBOL = 1;
   const int MDHstMetaReqResult_INVALID_PERIODICITY = 2;
+  const int MDHstMetaReqResult_THROTTLING = 3;
   const int MDHstMetaReqResult_UNKNOWN_ERROR = 99;
   const int TradeTransRepRequestResult_SUCCESS = 0;
   const int TradeTransRepRequestResult_UNKNOWN_ERROR = 99;
@@ -4121,6 +4126,7 @@ namespace FIX
   const char TwoFactorReason_SERVER_ERROR = '3';
   const char TwoFactorReason_CLIENT_RESPONSE = '4';
   const char TwoFactorReason_CLIENT_RESUME = '5';
+  const char TwoFactorReason_THROTTLING = '6';
   const char TwoFactorAuthFlag_NO = 'N';
   const char TwoFactorAuthFlag_YES = 'Y';
   const char ImmediateOrCancelFlag_NO = 'N';
@@ -4136,6 +4142,7 @@ namespace FIX
   const char InFlightMitigationFlag_NO = 'N';
   const char InFlightMitigationFlag_YES = 'Y';
   const int SnapshotRequestResult_SUCCESS = 0;
+  const int SnapshotRequestResult_THROTTLING = 1;
   const int SnapshotRequestResult_UNKNOWN_ERROR = 99;
   const char AccountReadonlyFlag_NO = 'N';
   const char AccountReadonlyFlag_YES = 'Y';
