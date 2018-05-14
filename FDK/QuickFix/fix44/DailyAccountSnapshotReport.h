@@ -79,6 +79,29 @@ namespace FIX44
       FIELD_SET(*this, FIX::AssetCurrency);
       FIELD_SET_EX(std::string, AssetCurrency);
     };
+    FIELD_SET(*this, FIX::NoPositions);
+    FIELD_SET_EX(int, NoPositions);
+    class NoPositions: public FIX::Group
+    {
+    public:
+    NoPositions() : FIX::Group(702,55,FIX::message_order(55,54,730,151,12,10096,10085,10036,0)) {}
+      FIELD_SET(*this, FIX::Symbol);
+      FIELD_SET_EX(std::string, Symbol);
+      FIELD_SET(*this, FIX::Side);
+      FIELD_SET_EX(char, Side);
+      FIELD_SET(*this, FIX::SettlPrice);
+      FIELD_SET_EX(double, SettlPrice);
+      FIELD_SET(*this, FIX::LeavesQty);
+      FIELD_SET_EX(double, LeavesQty);
+      FIELD_SET(*this, FIX::Commission);
+      FIELD_SET_EX(double, Commission);
+      FIELD_SET(*this, FIX::Swap);
+      FIELD_SET_EX(double, Swap);
+      FIELD_SET(*this, FIX::PosModified);
+      FIELD_SET_EX(FIX::UtcTimeStamp, PosModified);
+      FIELD_SET(*this, FIX::PosID);
+      FIELD_SET_EX(std::string, PosID);
+    };
   };
 
 }

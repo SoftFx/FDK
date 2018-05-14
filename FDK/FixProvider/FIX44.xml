@@ -4102,6 +4102,7 @@
     <field name='ProfitCurrencyToUsdConversionRate' required='N' />
     <field name='UsdToProfitCurrencyConversionRate' required='N' />
     <component name='Assets' required='N' />
+    <component name='Positions' required='N' />
   </message>
  </messages>
  <trailer>
@@ -4471,6 +4472,18 @@
        <field name='AssetLockedAmt' required='N' />
        <field name='AssetTradeAmt' required='N' />
        <field name='AssetCurrency' required='N' />
+     </group>
+   </component>
+   <component name='Positions'>
+     <group name='NoPositions' required='N'>
+       <field required="Y" name="Symbol"/>
+       <field required="Y" name="Side"/>
+       <field required="Y" name="SettlPrice"/>
+       <field required="Y" name="LeavesQty"/>
+       <field required="N" name="Commission"/>
+       <field required="N" name="Swap"/>
+       <field required="N" name="PosModified"/>
+       <field required='N' name='PosID' />
      </group>
    </component>
  </components>
@@ -4981,12 +4994,6 @@
   <field number='103' name='OrdRejReason' type='INT'>
    <value enum='0' description='BROKEROPT' />
    <value enum='1' description='UNKNOWNSYM' />
-   <value enum='10' description='INVINVID' />
-   <value enum='11' description='UNSUPPORDERCHAR' />
-   <value enum='12' description='SURVEILLENCE' />
-   <value enum='13' description='INCORRECTQUANTITY' />
-   <value enum='14' description='INCORRECTALLOCATEDQUANTITY' />
-   <value enum='15' description='UNKNOWNACCOUNTS' />
    <value enum='2' description='EXCHCLOSED' />
    <value enum='3' description='EXCEEDSLIM' />
    <value enum='4' description='TOOLATE' />
@@ -4995,6 +5002,13 @@
    <value enum='7' description='DUPLICATEVERBAL' />
    <value enum='8' description='STALE' />
    <value enum='9' description='TRADEALONGREQ' />
+   <value enum='10' description='INVINVID' />
+   <value enum='11' description='UNSUPPORDERCHAR' />
+   <value enum='12' description='SURVEILLENCE' />
+   <value enum='13' description='INCORRECTQUANTITY' />
+   <value enum='14' description='INCORRECTALLOCATEDQUANTITY' />
+   <value enum='15' description='UNKNOWNACCOUNTS' />
+   <value enum='16' description='THROTTLING' />
    <value enum='99' description='OTHER' />
   </field>
   <field number='104' name='IOIQualifier' type='CHAR'>
@@ -5600,6 +5614,7 @@
    <value enum='A' description='UNSUPPSCOPE' />
    <value enum='B' description='UNSUPPPOSITIONEFFECTSETTLEFLAG' />
    <value enum='C' description='UNSUPPMDIMPLICITDELETE' />
+   <value enum='D' description='THROTTLING' />
   </field>
   <field number='282' name='MDEntryOriginator' type='STRING' />
   <field number='283' name='LocationID' type='STRING' />
@@ -7576,6 +7591,7 @@
     <value enum='1' description='UNSUP_SYM' />
     <value enum='2' description='UNSUP_PERIOD' />
     <value enum='3' description='UNSUP_RP_TYPE' />
+    <value enum='4' description='THROTTLING' />
   </field>
   <field number='10023' name='ChunkId' type='INT' />
   <field number='10024' name='ChunksNo' type='INT' />
@@ -7612,6 +7628,7 @@
     <value enum='0' description='SUCCESSFUL' />
     <value enum='1' description='INVALID_OR_UNKNOWN_POSITION' />
     <value enum='2' description='REJECTED' />
+    <value enum='3' description='THROTTLING' />
     <value enum='99' description='OTHER' />
   </field>
   <field number='10047' name='NotifCode' type='INT'>
@@ -7673,6 +7690,7 @@
     <value enum='0' description='SUCCESS' />
     <value enum='1' description='INVALID_SYMBOL' />
     <value enum='2' description='INVALID_PERIODICITY' />
+    <value enum='3' description='THROTTLING' />
     <value enum='99' description='UNKNOWN_ERROR' />
   </field>
   <field number='10072' name='AccBalance' type='AMT' />
@@ -7867,6 +7885,7 @@
     <value enum='3' description='SERVER_ERROR' />
     <value enum='4' description='CLIENT_RESPONSE' />
     <value enum='5' description='CLIENT_RESUME' />
+    <value enum='6' description='THROTTLING' />
   </field>
   <field number='10152' name='OneTimePassword' type='STRING'/>
   <field number='10153' name='TwoFactorAuthFlag' type='BOOLEAN'>
@@ -7956,6 +7975,7 @@
   <field number='10216' name='SnapshotRequestID' type='STRING' />
   <field number='10217' name='SnapshotRequestResult' type='INT'>
     <value enum='0' description='SUCCESS' />
+    <value enum='1' description='THROTTLING' />
     <value enum='99' description='UNKNOWN_ERROR' />
   </field>
   <field number='10218' name='AccountReadonlyFlag' type='BOOLEAN'>
