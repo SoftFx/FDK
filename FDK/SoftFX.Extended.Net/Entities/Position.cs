@@ -1,4 +1,7 @@
-﻿namespace SoftFX.Extended
+﻿using System;
+using System.Text;
+
+namespace SoftFX.Extended
 {
     /// <summary>
     /// Contains position information for a symbol.
@@ -65,12 +68,30 @@
         public double? SellPrice { get; internal set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public DateTime? PosModified { get; internal set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string PosID { get; internal set; }
+
+        /// <summary>
         /// Returns formatted string for the class instance.
         /// </summary>
         /// <returns>Can not be null.</returns>
         public override string ToString()
         {
-            return string.Format("Symbol = {0}; Settlement Price = {1}; Buy Amount = {2}; Sell Amount = {3}", this.Symbol, this.SettlementPrice, this.BuyAmount, this.SellAmount);
+            StringBuilder builder = new StringBuilder();
+            if (!String.IsNullOrEmpty(this.PosID))
+                builder.Append(string.Format("ID = {0}; ", this.PosID));
+            builder.Append(string.Format("Symbol = {0}; Settlement Price = {1}; Buy Amount = {2}; Sell Amount = {3}; Commission = {4}", this.Symbol, this.SettlementPrice, this.BuyAmount, this.SellAmount, this.Commission));
+            if (this.Swap != 0)
+                builder.Append(string.Format("; Swap = {0}", this.Swap));
+            if (this.PosModified != null)
+                builder.Append(string.Format("; Modification Time = {0}", this.PosModified));
+            return builder.ToString();
         }
     }
 }

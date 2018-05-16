@@ -874,6 +874,8 @@ namespace SoftFX.Extended.Generated
 			result.Profit = buffer.ReadNullDouble();
 			result.BuyPrice = buffer.ReadNullDouble();
 			result.SellPrice = buffer.ReadNullDouble();
+			result.PosModified = buffer.ReadNullTime();
+			result.PosID = buffer.ReadAString();
 			return result;
 		}
 		public static void WritePosition(this MemoryBuffer buffer, SoftFX.Extended.Position arg)
@@ -888,6 +890,8 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteNullDouble(arg.Profit);
 			buffer.WriteNullDouble(arg.BuyPrice);
 			buffer.WriteNullDouble(arg.SellPrice);
+			buffer.WriteNullTime(arg.PosModified);
+			buffer.WriteAString(arg.PosID);
 		}
 		public static SoftFX.Extended.Position[] ReadPositionArray(this MemoryBuffer buffer)
 		{
@@ -1107,6 +1111,7 @@ namespace SoftFX.Extended.Generated
 			result.ProfitCurrencyToUsdConversionRate = buffer.ReadNullDouble();
 			result.UsdToProfitCurrencyConversionRate = buffer.ReadNullDouble();
 			result.Assets = buffer.ReadAssetInfoArray();
+			result.Positions = buffer.ReadPositionArray();
 			return result;
 		}
 		public static void WriteDailyAccountSnapshotReport(this MemoryBuffer buffer, SoftFX.Extended.Reports.DailyAccountSnapshotReport arg)
@@ -1132,6 +1137,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteNullDouble(arg.ProfitCurrencyToUsdConversionRate);
 			buffer.WriteNullDouble(arg.UsdToProfitCurrencyConversionRate);
 			buffer.WriteAssetInfoArray(arg.Assets);
+			buffer.WritePositionArray(arg.Positions);
 		}
 		public static SoftFX.Extended.ClosePositionResult ReadClosePositionResult(this MemoryBuffer buffer)
 		{

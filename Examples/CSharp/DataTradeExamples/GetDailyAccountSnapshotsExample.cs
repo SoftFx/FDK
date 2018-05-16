@@ -21,10 +21,12 @@
             var it = this.Trade.Server.GetDailyAccountSnapshots(TimeDirection.Forward, from, to, 10);
             for (; !it.EndOfStream; it.Next())
             {
+
                 var s = it.Item;
                 Console.WriteLine(s);
                 reportsNumber++;
             }
+            Console.ReadKey();
             it.Dispose();
         }
     }

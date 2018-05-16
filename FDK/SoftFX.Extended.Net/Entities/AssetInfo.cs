@@ -55,7 +55,7 @@
         /// <returns></returns>
         public override string ToString()
         {
-            var result = string.Format("{0} = {1}/{2}/{3}", this.Currency, this.TradeAmount.ToString(CultureInfo.InvariantCulture), this.LockedAmount.ToString(CultureInfo.InvariantCulture), this.Balance.ToString(CultureInfo.InvariantCulture));
+            var result = string.Format("Currency = {0}; Trade Amount = {1}; Locked Amount = {2}; Balance = {3}", this.Currency, this.TradeAmount.ToString(CultureInfo.InvariantCulture), this.LockedAmount.ToString(CultureInfo.InvariantCulture), this.Balance.ToString(CultureInfo.InvariantCulture));
             return result;
         }
     }
