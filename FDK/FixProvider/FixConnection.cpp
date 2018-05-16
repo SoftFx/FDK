@@ -1688,7 +1688,7 @@ void CFixConnection::OnDailyAccountSnapshotReport(const FIX44::DailyAccountSnaps
         report.Assets.reserve(static_cast<size_t>(count));
         for (int index = 1; index <= count; ++index)
         {
-            FIX44::AccountInfo::NoAssets group;
+            FIX44::AccountInfo::NoAssets group; //?
             message.getGroup(index, group);
 
             CAssetInfo asset;
@@ -1703,6 +1703,43 @@ void CFixConnection::OnDailyAccountSnapshotReport(const FIX44::DailyAccountSnaps
             report.Assets.push_back(asset);
         }
     }
+
+	count = 0;
+	if (message.TryGetNoPositions(count))
+	{
+		report.Positions.reserve(static_cast<size_t>(count));
+		for (int index = 1; index <= count; ++index)
+		{
+			FIX44::DailyAccountSnapshotReport::NoPositions group;
+			message.getGroup(index, group);
+
+			CFxPositionReport position;
+			position.Symbol = group.GetSymbol();
+			position.SettlementPrice = group.GetSettlPrice();
+			position.AgentCommission = 0;
+			position.Commission = 0;
+			group.TryGetCommission(position.Commission);
+			position.Swap = 0;
+			group.TryGetSwap(position.Swap);
+			if (group.GetSide() == '1') 
+			{
+				position.BuyAmount = group.GetLeavesQty();
+				position.SellAmount = 0;
+			}
+			else if (group.GetSide() == '2')
+			{
+				position.BuyAmount = 0;
+				position.SellAmount = group.GetLeavesQty();
+			}
+			FIX::UtcTimeStamp posmodified(time_t(0));
+			if (group.TryGetPosModified(posmodified))
+				position.PosModified = posmodified.toFileTime();
+			group.TryGetPosID(position.PosID);
+
+
+			report.Positions.push_back(position);
+		}
+	}
 
     message.TryGetBalance(report.Balance);
     message.TryGetSnapshotRequestID(report.NextStreamPositionId);

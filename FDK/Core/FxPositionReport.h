@@ -22,6 +22,8 @@ public:
 	Nullable<double> Balance;
 	Nullable<double> BuyPrice;
 	Nullable<double> SellPrice;
+	Nullable<CDateTime> PosModified;
+	string PosID;
 	string Symbol;
 };
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "AssetInfo.h"
+#include "FxPositionReport.h"
 
 #pragma warning (push)
 #pragma warning (disable : 4275)
@@ -34,6 +35,7 @@ public:
     Nullable<double> UsdToProfitCurrencyConversionRate;
 
     vector<CAssetInfo> Assets;
+	vector<CFxPositionReport> Positions;
 
     std::string NextStreamPositionId;
 };

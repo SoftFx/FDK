@@ -1050,6 +1050,8 @@ namespace
 		WriteNullDouble(arg.Profit, buffer);
 		WriteNullDouble(arg.BuyPrice, buffer);
 		WriteNullDouble(arg.SellPrice, buffer);
+		WriteNullTime(arg.PosModified, buffer);
+		WriteAString(arg.PosID, buffer);
 	}
 	CFxPositionReport ReadPosition(MemoryBuffer& buffer)
 	{
@@ -1064,6 +1066,8 @@ namespace
 		result.Profit = ReadNullDouble(buffer);
 		result.BuyPrice = ReadNullDouble(buffer);
 		result.SellPrice = ReadNullDouble(buffer);
+		result.PosModified = ReadNullTime(buffer);
+		result.PosID = ReadAString(buffer);
 		return result;
 	}
 	void WritePositionArray(const std::vector<CFxPositionReport>& arg, MemoryBuffer& buffer)
@@ -1284,6 +1288,7 @@ namespace
 		WriteNullDouble(arg.ProfitCurrencyToUsdConversionRate, buffer);
 		WriteNullDouble(arg.UsdToProfitCurrencyConversionRate, buffer);
 		WriteAssetInfoArray(arg.Assets, buffer);
+		WritePositionArray(arg.Positions, buffer);
 	}
 	CFxDailyAccountSnapshotReport ReadDailyAccountSnapshotReport(MemoryBuffer& buffer)
 	{
@@ -1309,6 +1314,7 @@ namespace
 		result.ProfitCurrencyToUsdConversionRate = ReadNullDouble(buffer);
 		result.UsdToProfitCurrencyConversionRate = ReadNullDouble(buffer);
 		result.Assets = ReadAssetInfoArray(buffer);
+		result.Positions = ReadPositionArray(buffer);
 		return result;
 	}
 	void WriteClosePositionResult(const CFxClosePositionResult& arg, MemoryBuffer& buffer)

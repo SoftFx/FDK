@@ -268,6 +268,8 @@
       <Member name="Profit" type="double?" />
       <Member name="BuyPrice" type="double?" />
       <Member name="SellPrice" type="double?" />
+      <Member name="PosModified" type="time?" />
+      <Member name="PosID" type="astring" />
     </Type>
     <Type name="PositionArray" kind="array">
       <Value name="Position" />
@@ -373,6 +375,7 @@
       <Member name="ProfitCurrencyToUsdConversionRate" type="double?" />
       <Member name="UsdToProfitCurrencyConversionRate" type="double?" />
       <Member name="Assets" type="AssetInfoArray" />
+      <Member name="Positions" type="PositionArray" />
     </Type>
     <Type name="ClosePositionResult" CSharpFullName="SoftFX.Extended.ClosePositionResult" CppFullName="CFxClosePositionResult" kind="class">
       <Member name="ExecutedVolume" type="double" />
