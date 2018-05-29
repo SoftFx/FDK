@@ -876,6 +876,9 @@ namespace SoftFX.Extended.Generated
 			result.SellPrice = buffer.ReadNullDouble();
 			result.PosModified = buffer.ReadNullTime();
 			result.PosID = buffer.ReadAString();
+			result.Margin = buffer.ReadNullDouble();
+			result.CurrentBestAsk = buffer.ReadNullDouble();
+			result.CurrentBestBid = buffer.ReadNullDouble();
 			return result;
 		}
 		public static void WritePosition(this MemoryBuffer buffer, SoftFX.Extended.Position arg)
@@ -892,6 +895,9 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteNullDouble(arg.SellPrice);
 			buffer.WriteNullTime(arg.PosModified);
 			buffer.WriteAString(arg.PosID);
+			buffer.WriteNullDouble(arg.Margin);
+			buffer.WriteNullDouble(arg.CurrentBestAsk);
+			buffer.WriteNullDouble(arg.CurrentBestBid);
 		}
 		public static SoftFX.Extended.Position[] ReadPositionArray(this MemoryBuffer buffer)
 		{

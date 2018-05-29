@@ -1735,6 +1735,10 @@ void CFixConnection::OnDailyAccountSnapshotReport(const FIX44::DailyAccountSnaps
 			if (group.TryGetPosModified(posmodified))
 				position.PosModified = posmodified.toFileTime();
 			group.TryGetPosID(position.PosID);
+			position.Margin = group.GetMargin();
+			position.Profit = group.GetProfit();
+			position.CurrentBestAsk = group.GetCurrentBestAsk();
+			position.CurrentBestBid = group.GetCurrentBestBid();
 
 
 			report.Positions.push_back(position);

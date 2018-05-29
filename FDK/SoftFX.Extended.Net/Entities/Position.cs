@@ -78,6 +78,16 @@ namespace SoftFX.Extended
         public string PosID { get; internal set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public double? CurrentBestAsk { get; internal set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public double? CurrentBestBid { get; internal set; }
+
+        /// <summary>
         /// Returns formatted string for the class instance.
         /// </summary>
         /// <returns>Can not be null.</returns>
@@ -87,10 +97,18 @@ namespace SoftFX.Extended
             if (!String.IsNullOrEmpty(this.PosID))
                 builder.Append(string.Format("ID = {0}; ", this.PosID));
             builder.Append(string.Format("Symbol = {0}; Settlement Price = {1}; Buy Amount = {2}; Sell Amount = {3}; Commission = {4}", this.Symbol, this.SettlementPrice, this.BuyAmount, this.SellAmount, this.Commission));
+            if (this.Margin != null)
+                builder.Append(string.Format("; Margin  = {0}", this.Margin));
+            if (this.Profit != null)
+                builder.Append(string.Format("; Profit  = {0}", this.Profit));
             if (this.Swap != 0)
                 builder.Append(string.Format("; Swap = {0}", this.Swap));
             if (this.PosModified != null)
                 builder.Append(string.Format("; Modification Time = {0}", this.PosModified));
+            if (this.CurrentBestAsk != null)
+                 builder.Append(string.Format("; Current Best Ask  = {0}", this.CurrentBestAsk));
+            if (this.CurrentBestBid != null)
+                builder.Append(string.Format("; Current Best Bid  = {0}", this.CurrentBestBid));
             return builder.ToString();
         }
     }

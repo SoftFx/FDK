@@ -270,6 +270,9 @@
       <Member name="SellPrice" type="double?" />
       <Member name="PosModified" type="time?" />
       <Member name="PosID" type="astring" />
+      <Member name="Margin" type="double?" />
+      <Member name="CurrentBestAsk" type="double?" />
+      <Member name="CurrentBestBid" type="double?" />
     </Type>
     <Type name="PositionArray" kind="array">
       <Value name="Position" />

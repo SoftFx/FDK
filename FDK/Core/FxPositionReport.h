@@ -18,10 +18,13 @@ public:
 	double Commission;
 	double AgentCommission;
     double Swap;
+	Nullable<double> Margin;
 	Nullable<double> Profit;
 	Nullable<double> Balance;
 	Nullable<double> BuyPrice;
 	Nullable<double> SellPrice;
+	Nullable<double> CurrentBestAsk;
+	Nullable<double> CurrentBestBid;
 	Nullable<CDateTime> PosModified;
 	string PosID;
 	string Symbol;
