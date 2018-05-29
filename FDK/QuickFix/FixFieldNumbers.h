@@ -1204,6 +1204,8 @@ namespace FIX
     const int MarginLevel = 10221;
     const int Timestamp = 10222;
     const int Profit = 10223;
+    const int CurrentBestAsk = 10224;
+    const int CurrentBestBid = 10225;
     const int NoStrategyParameters = 957;
     const int StrategyParameterName = 958;
     const int StrategyParameterType = 959;

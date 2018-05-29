@@ -4484,6 +4484,10 @@
        <field required="N" name="Swap"/>
        <field required="N" name="PosModified"/>
        <field required='N' name='PosID' />
+       <field required='N' name='Margin'/>
+       <field required='N' name='Profit'/>
+       <field required='N' name='CurrentBestAsk'/>
+       <field required='N' name='CurrentBestBid'/>
      </group>
    </component>
  </components>
@@ -7987,5 +7991,7 @@
   <field number='10221' name='MarginLevel' type='FLOAT' />
   <field number='10222' name='Timestamp' type='UTCTIMESTAMP' />
   <field number='10223' name='Profit' type='AMT' />
+  <field number='10224' name='CurrentBestAsk' type='PRICE' />
+  <field number='10225' name='CurrentBestBid' type='PRICE' />
 </fields>
 </fix>

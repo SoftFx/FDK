@@ -1052,6 +1052,9 @@ namespace
 		WriteNullDouble(arg.SellPrice, buffer);
 		WriteNullTime(arg.PosModified, buffer);
 		WriteAString(arg.PosID, buffer);
+		WriteNullDouble(arg.Margin, buffer);
+		WriteNullDouble(arg.CurrentBestAsk, buffer);
+		WriteNullDouble(arg.CurrentBestBid, buffer);
 	}
 	CFxPositionReport ReadPosition(MemoryBuffer& buffer)
 	{
@@ -1068,6 +1071,9 @@ namespace
 		result.SellPrice = ReadNullDouble(buffer);
 		result.PosModified = ReadNullTime(buffer);
 		result.PosID = ReadAString(buffer);
+		result.Margin = ReadNullDouble(buffer);
+		result.CurrentBestAsk = ReadNullDouble(buffer);
+		result.CurrentBestBid = ReadNullDouble(buffer);
 		return result;
 	}
 	void WritePositionArray(const std::vector<CFxPositionReport>& arg, MemoryBuffer& buffer)

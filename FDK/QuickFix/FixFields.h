@@ -1206,6 +1206,8 @@ namespace FIX
   DEFINE_FLOAT(MarginLevel);
   DEFINE_UTCTIMESTAMP(Timestamp);
   DEFINE_AMT(Profit);
+  DEFINE_PRICE(CurrentBestAsk);
+  DEFINE_PRICE(CurrentBestBid);
   DEFINE_NUMINGROUP(NoStrategyParameters);
   DEFINE_STRING(StrategyParameterName);
   DEFINE_INT(StrategyParameterType);

@@ -84,7 +84,7 @@ namespace FIX44
     class NoPositions: public FIX::Group
     {
     public:
-    NoPositions() : FIX::Group(702,55,FIX::message_order(55,54,730,151,12,10096,10085,10036,0)) {}
+    NoPositions() : FIX::Group(702,55,FIX::message_order(55,54,730,151,12,10096,10085,10036,10030,10223,10224,10225,0)) {}
       FIELD_SET(*this, FIX::Symbol);
       FIELD_SET_EX(std::string, Symbol);
       FIELD_SET(*this, FIX::Side);
@@ -101,6 +101,14 @@ namespace FIX44
       FIELD_SET_EX(FIX::UtcTimeStamp, PosModified);
       FIELD_SET(*this, FIX::PosID);
       FIELD_SET_EX(std::string, PosID);
+      FIELD_SET(*this, FIX::Margin);
+      FIELD_SET_EX(double, Margin);
+      FIELD_SET(*this, FIX::Profit);
+      FIELD_SET_EX(double, Profit);
+      FIELD_SET(*this, FIX::CurrentBestAsk);
+      FIELD_SET_EX(double, CurrentBestAsk);
+      FIELD_SET(*this, FIX::CurrentBestBid);
+      FIELD_SET_EX(double, CurrentBestBid);
     };
   };
 
