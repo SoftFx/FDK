@@ -15,36 +15,36 @@ namespace
     const FIX::UtcTimeStamp cZeroTime(time_t(0));
     map<string, MessageHandler> gMessageTypeToHandler;
 
-	std::wstring& Utf8ToStd(std::wstring& dest, const std::string& src)
-	{
-		if (!src.length())
-		{
-			dest = L"";
-			return dest;
-		}
+    std::wstring& Utf8ToStd(std::wstring& dest, const std::string& src)
+    {
+        if (!src.length())
+        {
+            dest = L"";
+            return dest;
+        }
 
-		int result = MultiByteToWideChar(CP_UTF8, 0, src.data(), src.length(), 0, 0);
+        int result = MultiByteToWideChar(CP_UTF8, 0, src.data(), src.length(), 0, 0);
 
-		if (!result)
-			throw std::logic_error("Invalid string to convert from UTF-8");
+        if (!result)
+            throw std::logic_error("Invalid string to convert from UTF-8");
 
-		dest.resize(result);
+        dest.resize(result);
 
-		result = MultiByteToWideChar(CP_UTF8, 0, src.data(), src.length(), const_cast<wchar_t*>(dest.data()), dest.length());
+        result = MultiByteToWideChar(CP_UTF8, 0, src.data(), src.length(), const_cast<wchar_t*>(dest.data()), dest.length());
 
-		if (!result)
-			throw std::logic_error("Invalid string to convert from UTF-8");
+        if (!result)
+            throw std::logic_error("Invalid string to convert from UTF-8");
 
-		return dest;
-	}
+        return dest;
+    }
 
-	std::wstring StringToWString(const std::string& s)
-	{
-		std::wstring utf8String;
-		std::wstring result = Utf8ToStd(utf8String, s);
+    std::wstring StringToWString(const std::string& s)
+    {
+        std::wstring utf8String;
+        std::wstring result = Utf8ToStd(utf8String, s);
 
-		return result;
-	}
+        return result;
+    }
 }
 
 namespace
@@ -1704,46 +1704,44 @@ void CFixConnection::OnDailyAccountSnapshotReport(const FIX44::DailyAccountSnaps
         }
     }
 
-	count = 0;
-	if (message.TryGetNoPositions(count))
-	{
-		report.Positions.reserve(static_cast<size_t>(count));
-		for (int index = 1; index <= count; ++index)
-		{
-			FIX44::DailyAccountSnapshotReport::NoPositions group;
-			message.getGroup(index, group);
+    count = 0;
+    if (message.TryGetNoPositions(count))
+    {
+        report.Positions.reserve(static_cast<size_t>(count));
+        for (int index = 1; index <= count; ++index)
+        {
+            FIX44::DailyAccountSnapshotReport::NoPositions group;
+            message.getGroup(index, group);
 
-			CFxPositionReport position;
-			position.Symbol = group.GetSymbol();
-			position.SettlementPrice = group.GetSettlPrice();
-			position.AgentCommission = 0;
-			position.Commission = 0;
-			group.TryGetCommission(position.Commission);
-			position.Swap = 0;
-			group.TryGetSwap(position.Swap);
-			if (group.GetSide() == '1') 
-			{
-				position.BuyAmount = group.GetLeavesQty();
-				position.SellAmount = 0;
-			}
-			else if (group.GetSide() == '2')
-			{
-				position.BuyAmount = 0;
-				position.SellAmount = group.GetLeavesQty();
-			}
-			FIX::UtcTimeStamp posmodified(time_t(0));
-			if (group.TryGetPosModified(posmodified))
-				position.PosModified = posmodified.toFileTime();
-			group.TryGetPosID(position.PosID);
-			position.Margin = group.GetMargin();
-			position.Profit = group.GetProfit();
-			position.CurrentBestAsk = group.GetCurrentBestAsk();
-			position.CurrentBestBid = group.GetCurrentBestBid();
-
-
-			report.Positions.push_back(position);
-		}
-	}
+            CFxPositionReport position;
+            position.Symbol = group.GetSymbol();
+            position.SettlementPrice = group.GetSettlPrice();
+            position.AgentCommission = 0;
+            position.Commission = 0;
+            group.TryGetCommission(position.Commission);
+            position.Swap = 0;
+            group.TryGetSwap(position.Swap);
+            if (group.GetSide() == '1')
+            {
+                position.BuyAmount = group.GetLeavesQty();
+                position.SellAmount = 0;
+            }
+            else if (group.GetSide() == '2')
+            {
+                position.BuyAmount = 0;
+                position.SellAmount = group.GetLeavesQty();
+            }
+            FIX::UtcTimeStamp posmodified(time_t(0));
+            if (group.TryGetPosModified(posmodified))
+                position.PosModified = posmodified.toFileTime();
+            group.TryGetPosID(position.PosID);
+            group.TryGetMargin(position.Margin);
+            group.TryGetProfit(position.Profit);
+            group.TryGetCurrentBestAsk(position.CurrentBestAsk);
+            group.TryGetCurrentBestBid(position.CurrentBestBid);
+            report.Positions.push_back(position);
+        }
+    }
 
     message.TryGetBalance(report.Balance);
     message.TryGetSnapshotRequestID(report.NextStreamPositionId);
