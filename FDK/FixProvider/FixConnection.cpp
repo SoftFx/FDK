@@ -1735,10 +1735,18 @@ void CFixConnection::OnDailyAccountSnapshotReport(const FIX44::DailyAccountSnaps
             if (group.TryGetPosModified(posmodified))
                 position.PosModified = posmodified.toFileTime();
             group.TryGetPosID(position.PosID);
-            group.TryGetMargin(position.Margin);
-            group.TryGetProfit(position.Profit);
-            group.TryGetCurrentBestAsk(position.CurrentBestAsk);
-            group.TryGetCurrentBestBid(position.CurrentBestBid);
+			double margin;
+			if (group.TryGetMargin(margin))
+				position.Margin = margin;
+			double profit;
+			if (group.TryGetProfit(profit))
+				position.Profit = profit;
+			double currentBestAsk;
+			if (group.TryGetCurrentBestAsk(currentBestAsk))
+				position.CurrentBestAsk = currentBestAsk;
+			double currentBestBid;
+			if (group.TryGetCurrentBestBid(currentBestBid))
+				position.CurrentBestBid = currentBestBid;
             report.Positions.push_back(position);
         }
     }
