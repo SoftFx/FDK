@@ -1725,11 +1725,13 @@ void CFixConnection::OnDailyAccountSnapshotReport(const FIX44::DailyAccountSnaps
             {
                 position.BuyAmount = group.GetLeavesQty();
                 position.SellAmount = 0;
+			    position.BuyPrice = group.GetSettlPrice();
             }
             else if (group.GetSide() == '2')
             {
                 position.BuyAmount = 0;
                 position.SellAmount = group.GetLeavesQty();
+			    position.SellPrice = group.GetSettlPrice();
             }
             FIX::UtcTimeStamp posmodified(time_t(0));
             if (group.TryGetPosModified(posmodified))
