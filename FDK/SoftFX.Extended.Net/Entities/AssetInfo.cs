@@ -21,12 +21,16 @@
         /// <param name="balance"></param>
         /// <param name="lockedAmount"></param>
         /// <param name="tradeAmount"></param>
-        public AssetInfo(string currency, double balance, double lockedAmount, double tradeAmount)
+        /// <param name="srcAssetToUsdConversionRate"></param>
+        /// <param name="usdToSrcAssetConversionRate"></param>
+        public AssetInfo(string currency, double balance, double lockedAmount, double tradeAmount, double srcAssetToUsdConversionRate, double usdToSrcAssetConversionRate)
         {
             this.Currency = currency;
             this.Balance = balance;
             this.LockedAmount = lockedAmount;
             this.TradeAmount = tradeAmount;
+            this.SrcAssetToUsdConversionRate = srcAssetToUsdConversionRate;
+            this.UsdToSrcAssetConversionRate = usdToSrcAssetConversionRate;
         }
 
         /// <summary>
@@ -50,12 +54,22 @@
         public double TradeAmount { get; internal set; }
 
         /// <summary>
+        /// Asset to USD conversion rate.
+        /// </summary>
+        public double? SrcAssetToUsdConversionRate { get; internal set; }
+
+        /// <summary>
+        /// USD to Asset conversion rate.
+        /// </summary>
+        public double? UsdToSrcAssetConversionRate { get; internal set; }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override string ToString()
         {
-            var result = string.Format("Currency = {0}; Trade Amount = {1}; Locked Amount = {2}; Balance = {3}", this.Currency, this.TradeAmount.ToString(CultureInfo.InvariantCulture), this.LockedAmount.ToString(CultureInfo.InvariantCulture), this.Balance.ToString(CultureInfo.InvariantCulture));
+            var result = string.Format("Currency = {0}; Trade Amount = {1}; Locked Amount = {2}; Balance = {3}; SrcAssetToUsdConversionRate = {4}; UsdToSrcAssetConversionRate = {5}", this.Currency, this.TradeAmount.ToString(CultureInfo.InvariantCulture), this.LockedAmount.ToString(CultureInfo.InvariantCulture), this.Balance.ToString(CultureInfo.InvariantCulture), this.SrcAssetToUsdConversionRate, this.UsdToSrcAssetConversionRate);
             return result;
         }
     }

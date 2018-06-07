@@ -524,6 +524,8 @@ namespace SoftFX.Extended.Generated
 			result.Balance = buffer.ReadDouble();
 			result.LockedAmount = buffer.ReadDouble();
 			result.TradeAmount = buffer.ReadDouble();
+			result.SrcAssetToUsdConversionRate = buffer.ReadNullDouble();
+			result.UsdToSrcAssetConversionRate = buffer.ReadNullDouble();
 			return result;
 		}
 		public static void WriteAssetInfo(this MemoryBuffer buffer, SoftFX.Extended.AssetInfo arg)
@@ -532,6 +534,8 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteDouble(arg.Balance);
 			buffer.WriteDouble(arg.LockedAmount);
 			buffer.WriteDouble(arg.TradeAmount);
+			buffer.WriteNullDouble(arg.SrcAssetToUsdConversionRate);
+			buffer.WriteNullDouble(arg.UsdToSrcAssetConversionRate);
 		}
 		public static SoftFX.Extended.AssetInfo[] ReadAssetInfoArray(this MemoryBuffer buffer)
 		{

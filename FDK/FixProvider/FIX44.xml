@@ -4472,6 +4472,8 @@
        <field name='AssetLockedAmt' required='N' />
        <field name='AssetTradeAmt' required='N' />
        <field name='AssetCurrency' required='N' />
+       <field name='SrcAssetToUsdConversionRate' required='N' />
+       <field name='UsdToSrcAssetConversionRate' required='N' />
      </group>
    </component>
    <component name='Positions'>

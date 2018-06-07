@@ -77,7 +77,7 @@ namespace FIX44
     class NoAssets: public FIX::Group
     {
     public:
-    NoAssets() : FIX::Group(10117,10118,FIX::message_order(10118,10154,10119,10120,0)) {}
+    NoAssets() : FIX::Group(10117,10118,FIX::message_order(10118,10154,10119,10120,10201,10202,0)) {}
       FIELD_SET(*this, FIX::AssetBalance);
       FIELD_SET_EX(double, AssetBalance);
       FIELD_SET(*this, FIX::AssetLockedAmt);
@@ -86,6 +86,10 @@ namespace FIX44
       FIELD_SET_EX(double, AssetTradeAmt);
       FIELD_SET(*this, FIX::AssetCurrency);
       FIELD_SET_EX(std::string, AssetCurrency);
+      FIELD_SET(*this, FIX::SrcAssetToUsdConversionRate);
+      FIELD_SET_EX(double, SrcAssetToUsdConversionRate);
+      FIELD_SET(*this, FIX::UsdToSrcAssetConversionRate);
+      FIELD_SET_EX(double, UsdToSrcAssetConversionRate);
     };
   };
 
