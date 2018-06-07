@@ -21,16 +21,16 @@
         /// <param name="balance"></param>
         /// <param name="lockedAmount"></param>
         /// <param name="tradeAmount"></param>
-        /// <param name="srcAssetToUsdConversionRate"></param>
-        /// <param name="usdToSrcAssetConversionRate"></param>
-        public AssetInfo(string currency, double balance, double lockedAmount, double tradeAmount, double srcAssetToUsdConversionRate, double usdToSrcAssetConversionRate)
+        /// <param name="currencyToUsdConversionRate"></param>
+        /// <param name="usdToCurrencyConversionRate"></param>
+        public AssetInfo(string currency, double balance, double lockedAmount, double tradeAmount, double currencyToUsdConversionRate, double usdToCurrencyConversionRate)
         {
             this.Currency = currency;
             this.Balance = balance;
             this.LockedAmount = lockedAmount;
             this.TradeAmount = tradeAmount;
-            this.SrcAssetToUsdConversionRate = srcAssetToUsdConversionRate;
-            this.UsdToSrcAssetConversionRate = usdToSrcAssetConversionRate;
+            this.CurrencyToUsdConversionRate = currencyToUsdConversionRate;
+            this.UsdToCurrencyConversionRate = usdToCurrencyConversionRate;
         }
 
         /// <summary>
@@ -56,12 +56,12 @@
         /// <summary>
         /// Asset to USD conversion rate.
         /// </summary>
-        public double? SrcAssetToUsdConversionRate { get; internal set; }
+        public double? CurrencyToUsdConversionRate { get; internal set; }
 
         /// <summary>
         /// USD to Asset conversion rate.
         /// </summary>
-        public double? UsdToSrcAssetConversionRate { get; internal set; }
+        public double? UsdToCurrencyConversionRate { get; internal set; }
 
         /// <summary>
         /// 
@@ -69,7 +69,7 @@
         /// <returns></returns>
         public override string ToString()
         {
-            var result = string.Format("Currency = {0}; Trade Amount = {1}; Locked Amount = {2}; Balance = {3}; SrcAssetToUsdConversionRate = {4}; UsdToSrcAssetConversionRate = {5}", this.Currency, this.TradeAmount.ToString(CultureInfo.InvariantCulture), this.LockedAmount.ToString(CultureInfo.InvariantCulture), this.Balance.ToString(CultureInfo.InvariantCulture), this.SrcAssetToUsdConversionRate, this.UsdToSrcAssetConversionRate);
+            var result = string.Format("Currency = {0}; Trade Amount = {1}; Locked Amount = {2}; Balance = {3}; CurrencyToUsdConversionRate = {4}; UsdToCurrencyConversionRate = {5}", this.Currency, this.TradeAmount.ToString(CultureInfo.InvariantCulture), this.LockedAmount.ToString(CultureInfo.InvariantCulture), this.Balance.ToString(CultureInfo.InvariantCulture), this.CurrencyToUsdConversionRate, this.UsdToCurrencyConversionRate);
             return result;
         }
     }

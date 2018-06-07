@@ -1696,12 +1696,12 @@ void CFixConnection::OnDailyAccountSnapshotReport(const FIX44::DailyAccountSnaps
             asset.Balance = group.GetAssetBalance();
             group.TryGetAssetLockedAmt(asset.LockedAmount);
             group.TryGetAssetTradeAmt(asset.TradeAmount);
-            double srcAssetToUsdConversionRate;
-            if (group.TryGetSrcAssetToUsdConversionRate(srcAssetToUsdConversionRate))
-                asset.SrcAssetToUsdConversionRate = srcAssetToUsdConversionRate;
-            double usdToSrcAssetConversionRate;
-            if (group.TryGetUsdToSrcAssetConversionRate(usdToSrcAssetConversionRate))
-                asset.UsdToSrcAssetConversionRate = usdToSrcAssetConversionRate;
+            double currencyToUsdConversionRate;
+            if (group.TryGetSrcAssetToUsdConversionRate(currencyToUsdConversionRate))
+                asset.CurrencyToUsdConversionRate = currencyToUsdConversionRate;
+            double usdToCurrencyConversionRate;
+            if (group.TryGetUsdToSrcAssetConversionRate(usdToCurrencyConversionRate))
+                asset.UsdToCurrencyConversionRate = usdToCurrencyConversionRate;
 
             if (asset.Balance == 0.0)
                 continue;
