@@ -1688,7 +1688,7 @@ void CFixConnection::OnDailyAccountSnapshotReport(const FIX44::DailyAccountSnaps
         report.Assets.reserve(static_cast<size_t>(count));
         for (int index = 1; index <= count; ++index)
         {
-            FIX44::AccountInfo::NoAssets group; //?
+            FIX44::AccountInfo::NoAssets group; 
             message.getGroup(index, group);
 
             CAssetInfo asset;
@@ -1696,6 +1696,12 @@ void CFixConnection::OnDailyAccountSnapshotReport(const FIX44::DailyAccountSnaps
             asset.Balance = group.GetAssetBalance();
             group.TryGetAssetLockedAmt(asset.LockedAmount);
             group.TryGetAssetTradeAmt(asset.TradeAmount);
+            double currencyToUsdConversionRate;
+            if (group.TryGetSrcAssetToUsdConversionRate(currencyToUsdConversionRate))
+                asset.CurrencyToUsdConversionRate = currencyToUsdConversionRate;
+            double usdToCurrencyConversionRate;
+            if (group.TryGetUsdToSrcAssetConversionRate(usdToCurrencyConversionRate))
+                asset.UsdToCurrencyConversionRate = usdToCurrencyConversionRate;
 
             if (asset.Balance == 0.0)
                 continue;

@@ -695,6 +695,8 @@ namespace
 		WriteDouble(arg.Balance, buffer);
 		WriteDouble(arg.LockedAmount, buffer);
 		WriteDouble(arg.TradeAmount, buffer);
+		WriteNullDouble(arg.CurrencyToUsdConversionRate, buffer);
+		WriteNullDouble(arg.UsdToCurrencyConversionRate, buffer);
 	}
 	CAssetInfo ReadAssetInfo(MemoryBuffer& buffer)
 	{
@@ -703,6 +705,8 @@ namespace
 		result.Balance = ReadDouble(buffer);
 		result.LockedAmount = ReadDouble(buffer);
 		result.TradeAmount = ReadDouble(buffer);
+		result.CurrencyToUsdConversionRate = ReadNullDouble(buffer);
+		result.UsdToCurrencyConversionRate = ReadNullDouble(buffer);
 		return result;
 	}
 	void WriteAssetInfoArray(const std::vector<CAssetInfo>& arg, MemoryBuffer& buffer)
