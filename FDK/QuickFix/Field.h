@@ -334,9 +334,9 @@ public:
 class UtcTimeStampField : public FieldBase
 {
 public:
-  explicit UtcTimeStampField( int field, const UtcTimeStamp& data, bool showMilliseconds = false )
+  explicit UtcTimeStampField( int field, const UtcTimeStamp& data, bool showMilliseconds = true)
 : FieldBase( field, UtcTimeStampConvertor::convert( data, showMilliseconds ) ) {}
-  UtcTimeStampField( int field, bool showMilliseconds = false )
+  UtcTimeStampField( int field, bool showMilliseconds = true)
 : FieldBase( field, UtcTimeStampConvertor::convert( UtcTimeStamp(), showMilliseconds ) ) {}
 
   void setValue(const UtcTimeStamp& value )
@@ -388,9 +388,9 @@ public:
 class UtcTimeOnlyField : public FieldBase
 {
 public:
-  explicit UtcTimeOnlyField( int field, const UtcTimeOnly& data, bool showMilliseconds = false )
+  explicit UtcTimeOnlyField( int field, const UtcTimeOnly& data, bool showMilliseconds = true)
 : FieldBase( field, UtcTimeOnlyConvertor::convert( data, showMilliseconds ) ) {}
-  UtcTimeOnlyField( int field, bool showMilliseconds = false )
+  UtcTimeOnlyField( int field, bool showMilliseconds = true)
 : FieldBase( field, UtcTimeOnlyConvertor::convert( UtcTimeOnly(), showMilliseconds ) ) {}
 
   void setValue(const UtcTimeOnly& value )

@@ -336,7 +336,7 @@ struct BoolConvertor
 struct UtcTimeStampConvertor
 {
   static std::string convert( const UtcTimeStamp& value,
-                              bool showMilliseconds = false )
+                              bool showMilliseconds = true)
   throw( FieldConvertError )
   {
     char result[ 18+4 ];
@@ -459,7 +459,7 @@ struct UtcTimeStampConvertor
 struct UtcTimeOnlyConvertor
 {
   static std::string convert( const UtcTimeOnly& value,
-                              bool showMilliseconds = false)
+                              bool showMilliseconds = true)
   throw( FieldConvertError )
   {
     char result[ 9+4 ];
