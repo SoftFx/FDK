@@ -138,6 +138,8 @@
       <Member name="Balance" type="double" />
       <Member name="LockedAmount" type="double" />
       <Member name="TradeAmount" type="double" />
+      <Member name="CurrencyToUsdConversionRate" type="double?" />
+      <Member name="UsdToCurrencyConversionRate" type="double?" />
     </Type>
     <Type name="AssetInfoArray" kind="array">
       <Value name="AssetInfo" />

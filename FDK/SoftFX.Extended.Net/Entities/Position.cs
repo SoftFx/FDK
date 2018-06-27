@@ -97,6 +97,10 @@ namespace SoftFX.Extended
             if (!String.IsNullOrEmpty(this.PosID))
                 builder.Append(string.Format("ID = {0}; ", this.PosID));
             builder.Append(string.Format("Symbol = {0}; Settlement Price = {1}; Buy Amount = {2}; Sell Amount = {3}; Commission = {4}", this.Symbol, this.SettlementPrice, this.BuyAmount, this.SellAmount, this.Commission));
+            if (this.SellPrice != null)
+                builder.Append(string.Format("; Sell Price = {0}", this.SellPrice));
+            if (this.BuyPrice != null)
+                builder.Append(string.Format("; Buy Price = {0}", this.BuyPrice));
             if (this.Margin != null)
                 builder.Append(string.Format("; Margin  = {0}", this.Margin));
             if (this.Profit != null)

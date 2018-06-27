@@ -1688,7 +1688,7 @@ void CFixConnection::OnDailyAccountSnapshotReport(const FIX44::DailyAccountSnaps
         report.Assets.reserve(static_cast<size_t>(count));
         for (int index = 1; index <= count; ++index)
         {
-            FIX44::AccountInfo::NoAssets group; //?
+            FIX44::AccountInfo::NoAssets group; 
             message.getGroup(index, group);
 
             CAssetInfo asset;
@@ -1696,6 +1696,12 @@ void CFixConnection::OnDailyAccountSnapshotReport(const FIX44::DailyAccountSnaps
             asset.Balance = group.GetAssetBalance();
             group.TryGetAssetLockedAmt(asset.LockedAmount);
             group.TryGetAssetTradeAmt(asset.TradeAmount);
+            double currencyToUsdConversionRate;
+            if (group.TryGetSrcAssetToUsdConversionRate(currencyToUsdConversionRate))
+                asset.CurrencyToUsdConversionRate = currencyToUsdConversionRate;
+            double usdToCurrencyConversionRate;
+            if (group.TryGetUsdToSrcAssetConversionRate(usdToCurrencyConversionRate))
+                asset.UsdToCurrencyConversionRate = usdToCurrencyConversionRate;
 
             if (asset.Balance == 0.0)
                 continue;
@@ -1725,11 +1731,13 @@ void CFixConnection::OnDailyAccountSnapshotReport(const FIX44::DailyAccountSnaps
             {
                 position.BuyAmount = group.GetLeavesQty();
                 position.SellAmount = 0;
+                position.BuyPrice = group.GetSettlPrice();
             }
             else if (group.GetSide() == '2')
             {
                 position.BuyAmount = 0;
                 position.SellAmount = group.GetLeavesQty();
+                position.SellPrice = group.GetSettlPrice();
             }
             FIX::UtcTimeStamp posmodified(time_t(0));
             if (group.TryGetPosModified(posmodified))
