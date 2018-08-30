@@ -1,0 +1,237 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TickTrader.BusinessLogic</name>
+    </assembly>
+    <members>
+        <member name="T:TickTrader.BusinessLogic.IOrderModel">
+            <summary>
+            Defines methods and properties for order which is subject of market summary calculations.
+            </summary>
+        </member>
+        <member name="T:TickTrader.BusinessLogic.OrderError">
+            <summary>
+            Represents order calculation error.
+            </summary>
+        </member>
+        <member name="M:TickTrader.BusinessLogic.OrderError.#ctor(TickTrader.BusinessLogic.OrderErrorCode,System.String)">
+            <summary>
+            Creates new instance of order calculation error.
+            </summary>
+            <param name="code">Error code.</param>
+            <param name="description">Error descriptio.</param>
+        </member>
+        <member name="P:TickTrader.BusinessLogic.OrderError.Description">
+            <summary>
+            Gets order calculatiion error description.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessLogic.OrderError.Code">
+            <summary>
+            Gets order calculation error code.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessLogic.OrderError.Exception">
+            <summary>
+            Gets order calculation exception
+            </summary>
+        </member>
+        <member name="M:TickTrader.BusinessLogic.OrderError.GetWorst(TickTrader.BusinessLogic.OrderErrorCode[])">
+            <summary>
+            
+            </summary>
+            <param name="codes"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TickTrader.BusinessLogic.OrderErrorCode">
+            <summary>
+            Defines codes for possible calculation errors.
+            Codes go in order of severity.
+            </summary>
+        </member>
+        <member name="F:TickTrader.BusinessLogic.OrderErrorCode.None">
+            <summary>
+            No error.
+            </summary>
+        </member>
+        <member name="F:TickTrader.BusinessLogic.OrderErrorCode.OffQuotes">
+            <summary>
+            Quote is missing.
+            </summary>
+        </member>
+        <member name="F:TickTrader.BusinessLogic.OrderErrorCode.Misconfiguration">
+            <summary>
+            Configuration is incorrect.
+            </summary>
+        </member>
+        <member name="T:TickTrader.BusinessLogic.IAccountInfo">
+            <summary>
+            Defines methods and properties for account.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessLogic.IAccountInfo.Id">
+            <summary>
+            Account Id.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessLogic.IAccountInfo.AccountingType">
+            <summary>
+            Account type.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessLogic.IAccountInfo.Orders">
+            <summary>
+            Account orders.
+            </summary>
+        </member>
+        <member name="E:TickTrader.BusinessLogic.IAccountInfo.OrderAdded">
+            <summary>
+            Fired when single order was added.
+            </summary>
+        </member>
+        <member name="E:TickTrader.BusinessLogic.IAccountInfo.OrdersAdded">
+            <summary>
+            Fired when multiple orders were added.
+            </summary>
+        </member>
+        <member name="E:TickTrader.BusinessLogic.IAccountInfo.OrderRemoved">
+            <summary>
+            Fired when order was removed.
+            </summary>
+        </member>
+        <member name="E:TickTrader.BusinessLogic.IAccountInfo.OrderReplaced">
+            <summary>
+            Fired when order was replaced.
+            </summary>
+        </member>
+        <member name="M:TickTrader.BusinessLogic.IAccountInfo.LogInfo(System.String)">
+            <summary>
+            Log info message from the account info.
+            </summary>
+        </member>
+        <member name="M:TickTrader.BusinessLogic.IAccountInfo.LogWarn(System.String)">
+            <summary>
+            Log warning message from the account info.
+            </summary>
+        </member>
+        <member name="M:TickTrader.BusinessLogic.IAccountInfo.LogError(System.String)">
+            <summary>
+            Log error message from the account info.
+            </summary>
+        </member>
+        <member name="T:TickTrader.BusinessLogic.IMarginAccountInfo">
+            <summary>
+            Defines methods and properties for marginal account.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessLogic.IMarginAccountInfo.Balance">
+            <summary>
+            Account balance.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessLogic.IMarginAccountInfo.Leverage">
+            <summary>
+            Account leverage.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessLogic.IMarginAccountInfo.BalanceCurrency">
+            <summary>
+            Account currency.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessLogic.IMarginAccountInfo.Positions">
+            <summary>
+            Account positions.
+            </summary>
+        </member>
+        <member name="E:TickTrader.BusinessLogic.IMarginAccountInfo.PositionChanged">
+            <summary>
+            Fired when position changed.
+            </summary>
+        </member>
+        <member name="T:TickTrader.BusinessLogic.ICashAccountInfo">
+            <summary>
+            Defines methods and properties for cash account.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessLogic.ICashAccountInfo.Assets">
+            <summary>
+            Cash account assets.
+            </summary>
+        </member>
+        <member name="E:TickTrader.BusinessLogic.ICashAccountInfo.AssetsChanged">
+            <summary>
+            Fired when underlying assests list was changed.
+            </summary>
+        </member>
+        <member name="T:TickTrader.BusinessLogic.ICalculable">
+            <summary>
+            Defines methods and properties for calculable item.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessLogic.ICalculable.IsCalculated">
+            <summary>
+            Returns whether item has been calculated.
+            </summary>
+        </member>
+        <member name="T:TickTrader.BusinessLogic.IReportErrors">
+            <summary>
+            Defines methods and properties for error reporting.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessLogic.IReportErrors.InvalidOrdersCount">
+            <summary>
+            Amount of invalid orders.
+            </summary>
+        </member>
+        <member name="P:TickTrader.BusinessLogic.IReportErrors.WorstError">
+            <summary>
+            Returs a code of worse error among all invalid orders
+            Returns CalculationErrorCodes.None if there are no invalid orders
+            </summary>
+        </member>
+        <member name="T:TickTrader.BusinessLogic.MarketManager">
+            <summary>
+            Manages state (configuration and rates) within all accounts. Creates and keeps updated MarketState object for each account group.
+            </summary>
+        </member>
+        <member name="T:TickTrader.BusinessLogic.MarketState">
+            <summary>
+            Manages state (configuration and rates) within accounts with the same configuration (group).
+            Can be used as a child object of MarketManager or as stand-alone market state.
+            </summary>
+        </member>
+        <member name="M:TickTrader.BusinessLogic.MarketState.Update(TickTrader.Common.Business.ISymbolRate)">
+            <summary>
+            Updates rate for the symbol.
+            </summary>
+            <param name="rate">Current symbol rate.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TickTrader.BusinessLogic.MarketState.Set(System.Collections.Generic.IEnumerable{TickTrader.BusinessObjects.ISymbolInfo})">
+            <summary>
+            Initialize or reinitialize symbols configuration.
+            Note: Supplied symbol list should be already sorted according priority rules.
+            </summary>
+            <param name="symbolList">New symbols configuration to use.</param>
+        </member>
+        <member name="M:TickTrader.BusinessLogic.MarketState.Set(System.Collections.Generic.IEnumerable{TickTrader.BusinessObjects.ICurrencyInfo})">
+            <summary>
+            Initialize or reinitialize currencies configuration.
+            Note: Supplied currency list should be already sorted according priority rules.
+            </summary>
+            <param name="currencyList">New currecnies configuration to use.</param>
+        </member>
+        <member name="T:TickTrader.BusinessLogic.NettingCalculationTypes">
+            <summary>
+            Netting calculation types.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:TickTrader.BusinessLogic.NettingCalculationTypes.OneByOne" -->
+        <member name="F:TickTrader.BusinessLogic.NettingCalculationTypes.Optimized">
+            <summary>
+            Calculate netted margin/profit. Orders are not updated.
+            </summary>
+        </member>
+    </members>
+</doc>
