@@ -145,7 +145,7 @@
             this.MarketState = new MarketState(NettingCalculationTypes.OneByOne);
 
             this.MarketState.Set(this.Currencies.Select(CalculatorConvert.ToCurrencyInfo));
-            this.MarketState.Set(this.Symbols.OrderBy(o => o.GroupSortOrder).ThenBy(o => o.SortOrder).Select(CalculatorConvert.ToSymbolInfo));
+            this.MarketState.Set(this.Symbols.OrderBy(o => o.GroupSortOrder).ThenBy(o => o.SortOrder).ThenBy(o => o.Symbol).Select(CalculatorConvert.ToSymbolInfo));
             foreach (var rate in this.Prices.Select(CalculatorConvert.ToSymbolRate))
                 this.MarketState.Update(rate);
 
