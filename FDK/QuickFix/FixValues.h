@@ -1679,6 +1679,7 @@ namespace FIX
   const int BusinessRejectReason_CONDFLDMISS = 5;
   const int BusinessRejectReason_NOTAUTH = 6;
   const int BusinessRejectReason_NODELIVTOFIRM = 7;
+  const int BusinessRejectReason_THROTTLING = 8;
   const int BusinessRejectReason_UNKNOWN_ID = 1;
   const int BusinessRejectReason_UNKNOWN_MESSAGE_TYPE = 3;
   const int BusinessRejectReason_INVALID_PRICE_INCREMENT = 18;
