@@ -5910,6 +5910,7 @@
    <value enum='5' description='CONDFLDMISS' />
    <value enum='6' description='NOTAUTH' />
    <value enum='7' description='NODELIVTOFIRM' />
+   <value enum='8' description='THROTTLING' />
   </field>
   <field number='381' name='GrossTradeAmt' type='AMT' />
   <field number='382' name='NoContraBrokers' type='NUMINGROUP' />
