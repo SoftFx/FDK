@@ -4061,6 +4061,7 @@ namespace FIX
   const int LogoutReason_TIMEOUT_LOGIN = 6;
   const int LogoutReason_DELETED_LOGIN = 7;
   const int LogoutReason_SERVER_LOGOUT = 8;
+  const int LogoutReason_THROTTLING = 9;
   const int LogoutReason_OTHER = 99;
   const int PlatformTimezoneOffset_UTCm12 = -12;
   const int PlatformTimezoneOffset_UTCm11 = -11;
