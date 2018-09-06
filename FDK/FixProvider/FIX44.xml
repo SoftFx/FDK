@@ -4995,6 +4995,7 @@
    <value enum='4' description='UNABLETOPROCESS' />
    <value enum='5' description='ORIGORDMODTIMEMISMATCH' />
    <value enum='6' description='DUPCLORDID' />
+   <value enum='7' description='THROTTLING' />
    <value enum='99' description='OTHER' />
   </field>
   <field number='103' name='OrdRejReason' type='INT'>
