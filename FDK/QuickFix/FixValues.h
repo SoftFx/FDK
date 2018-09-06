@@ -675,6 +675,7 @@ namespace FIX
   const int CxlRejReason_UNABLETOPROCESS = 4;
   const int CxlRejReason_ORIGORDMODTIMEMISMATCH = 5;
   const int CxlRejReason_DUPCLORDID = 6;
+  const int CxlRejReason_THROTTLING = 7;
   const int CxlRejReason_OTHER = 99;
   const int CxlRejReason_ORIGORDMODTIME = 5;
   const int CxlRejReason_DUPLICATE_CLORDID = 6;
