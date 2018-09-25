@@ -117,7 +117,7 @@ void CDataTradeCache::DoUpdateAssets(const string& currency, const double balanc
         break;
     }
 
-    if (!updated && (abs(balance) < DBL_EPSILON))
+    if (!updated && (abs(balance) >= DBL_EPSILON))
     {
         CAssetInfo assetInfo;
         assetInfo.Currency = currency;
