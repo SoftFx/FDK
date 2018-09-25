@@ -515,7 +515,8 @@ void CFixExecutionReport::GetAssets(vector<CAssetInfo>& assets) const
             group.TryGetAssetLockedAmt(asset.LockedAmount);
             group.TryGetAssetTradeAmt(asset.TradeAmount);
 
-            assets.push_back(asset);
+            if (asset.Balance != 0)
+                assets.push_back(asset);
         }
     }
 }
