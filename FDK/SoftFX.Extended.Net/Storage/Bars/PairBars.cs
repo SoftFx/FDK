@@ -99,6 +99,7 @@
             this.bids = new Bars(datafeed, symbol, PriceType.Bid, period, startTime, barsNumber);
             this.asks = new Bars(datafeed, symbol, PriceType.Ask, period, startTime, barsNumber);
             this.positive = (barsNumber >= 0);
+            this.count = Math.Abs(barsNumber);
         }
 
         /// <summary>
@@ -119,6 +120,7 @@
             this.bids = new Bars(storage, symbol, PriceType.Bid, period, startTime, barsNumber);
             this.asks = new Bars(storage, symbol, PriceType.Ask, period, startTime, barsNumber);
             this.positive = (barsNumber >= 0);
+            this.count = Math.Abs(barsNumber);
         }
 
         /// <summary>
@@ -141,6 +143,7 @@
             this.bids = new Bars(datafeed, symbol, PriceType.Bid, period, startTime, barsNumber, preferredBufferSize);
             this.asks = new Bars(datafeed, symbol, PriceType.Ask, period, startTime, barsNumber, preferredBufferSize);
             this.positive = (barsNumber >= 0);
+            this.count = Math.Abs(barsNumber);
         }
 
         #endregion
@@ -151,7 +154,7 @@
         /// <returns>Can not be null.</returns>
         public IEnumerator<PairBar> GetEnumerator()
         {
-            var result = new PairBarsEnumerator(this.bids, this.asks, this.positive);
+            var result = new PairBarsEnumerator(this.bids, this.asks, this.positive, this.count);
             return result;
         }
 
@@ -161,7 +164,7 @@
         /// <returns>Can not be null.</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
-            var result = new PairBarsEnumerator(this.bids, this.asks, this.positive);
+            var result = new PairBarsEnumerator(this.bids, this.asks, this.positive, this.count);
             return result;
         }
 
@@ -170,6 +173,7 @@
         readonly IEnumerable<Bar> bids;
         readonly IEnumerable<Bar> asks;
         readonly bool positive;
+        readonly int count;
 
         #endregion
     }
