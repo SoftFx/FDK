@@ -6,11 +6,12 @@
 
     class PairBarsEnumerator : IEnumerator<PairBar>
     {
-        public PairBarsEnumerator(IEnumerable<Bar> bids, IEnumerable<Bar> asks, bool positive)
+        public PairBarsEnumerator(IEnumerable<Bar> bids, IEnumerable<Bar> asks, bool positive, int count)
         {
             this.bids = bids;
             this.asks = asks;
             this.positive = positive;
+            this.count = count;
             this.Reset();
         }
 
@@ -49,6 +50,7 @@
             this.bidEnumerator = bidEnumerator;
             this.askEnumerator = askEnumerator;
             this.current = new PairBar();
+            this.currentCount = 0;
         }
 
         void ResetCurrent()
@@ -114,11 +116,18 @@
             {
                 return false;
             }
+
+            if ((this.count > 0) && (this.currentCount < this.count))
+                this.currentCount++;
+            else
+                return false;
+
             return true;
         }
 
         #region Members
 
+        readonly int count;
         readonly bool positive;
         readonly IEnumerable<Bar> bids;
         readonly IEnumerable<Bar> asks;
@@ -127,6 +136,7 @@
         Bar bid;
         Bar ask;
         PairBar current;
+        int currentCount;
 
         #endregion
     }
