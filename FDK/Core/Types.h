@@ -57,7 +57,7 @@ enum FxOrderType
     FxOrderType_IoC                 = 4,
     FxOrderType_MarketWithSlippage  = 5,
     FxOrderType_StopLimit           = 6,
-	FxOrderType_StopLimit_IoC       = 7,
+    FxOrderType_StopLimit_IoC       = 7,
     FxOrderType_Last                = FX_MAX_ENUM
 };
 
@@ -73,6 +73,10 @@ enum FxRejectReason
     FxRejectReason_DuplicateClientOrderId       = 6,
     FxRejectReason_InvalidTradeRecordParameters = 11,
     FxRejectReason_IncorrectQuantity            = 13,
+    FxRejectReason_IncorrectAllocatedQuantity   = 14,
+    FxRejectReason_UnknownAccounts              = 15,
+    FxRejectReason_Throttling                   = 16,
+    FxRejectReason_Timeout                      = 17,
     FxRejectReason_Unknown                      = 99,
     FxRejectReason_Last                         = FX_MAX_ENUM
 };

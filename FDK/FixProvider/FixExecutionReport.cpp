@@ -250,6 +250,22 @@ FxRejectReason CFixExecutionReport::GetFxRejectReason() const
     {
         return FxRejectReason_IncorrectQuantity;
     }
+    if (FIX::OrdRejReason_INCORRECTALLOCATEDQUANTITY == fixOrdRejReason)
+    {
+        return FxRejectReason_IncorrectAllocatedQuantity;
+    }
+    if (FIX::OrdRejReason_UNKNOWNACCOUNTS == fixOrdRejReason)
+    {
+        return FxRejectReason_UnknownAccounts;
+    }
+    if (FIX::OrdRejReason_THROTTLING == fixOrdRejReason)
+    {
+        return FxRejectReason_Throttling;
+    }
+    if (FIX::OrdRejReason_TIMEOUT == fixOrdRejReason)
+    {
+        return FxRejectReason_Timeout;
+    }
     return FxRejectReason_Unknown;
 }
 

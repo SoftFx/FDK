@@ -6,7 +6,7 @@
     public enum RejectReason
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         None = -1,
 
@@ -56,9 +56,24 @@
         IncorrectQuantity = 13,
 
         /// <summary>
-        /// Trade Not Allowed.
+        /// Incorrect Allocated Quantity.
         /// </summary>
-        TradeNotAllowed = 14,
+        IncorrectAllocatedQuantity = 14,
+
+        /// <summary>
+        /// Unknown Accounts.
+        /// </summary>
+        UnknownAccounts = 15,
+
+        /// <summary>
+        /// Throttling.
+        /// </summary>
+        Throttling = 16,
+
+        /// <summary>
+        /// Timeout.
+        /// </summary>
+        Timeout = 17,
 
         /// <summary>
         /// Unknown error.
