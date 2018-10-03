@@ -2,6 +2,7 @@
 {
     using System;
     using SoftFX.Extended.Storage;
+    using TickTrader.BusinessObjects;
 
     abstract class DirectionalBarsEnumerator : BarsEnumeratorBase
     {
@@ -28,7 +29,7 @@
         {
             base.ResetImplementation();
 
-            this.NextTime = this.StartTime;
+            this.NextTime = GetBarPeriodicity(this.StartTime, this.Period);
             this.Bars = null;
             this.Index = -1;
             this.Count = 0;
@@ -76,7 +77,7 @@
                 this.Bar = this.Bars[this.Index++];
 
             if (!this.IsFinished)
-                this.NextTime = this.Bar.To;
+                this.NextTime = GetBarPeriodicity(this.Bar.To, this.Period);
 
             this.Count++;
         }
@@ -121,7 +122,7 @@
                 this.Bar = this.Bars[this.Index++];
 
             if (!this.IsFinished)
-                this.NextTime = this.Bar.From;
+                this.NextTime = GetBarPeriodicity(this.Bar.From, this.Period);
 
             this.Count--;
         }
@@ -135,6 +136,18 @@
                 var info = this.DataFeed.Server.GetHistoryBars(this.Symbol, this.NextTime - this.Period, -this.PreferredBufferSize, this.PriceType, this.Period);
                 this.Bars = info.Bars;
             }
+        }
+
+        private DateTime GetBarPeriodicity(DateTime timestamp, BarPeriod barPeriod)
+        {
+            Periodicity periodicity = new Periodicity();
+            Periodicity.TryParse(barPeriod.ToString(), out periodicity);
+            if (this.GetDirection() == Direction.Forward)
+                return periodicity.GetPeriodStartTime(timestamp);
+            else if (this.GetDirection() == Direction.Backward)
+                return periodicity.GetPeriodStartTime(periodicity.Shift(timestamp, 1));
+            else
+                return timestamp;
         }
 
         protected Bar[] Bars { get; private set; }
