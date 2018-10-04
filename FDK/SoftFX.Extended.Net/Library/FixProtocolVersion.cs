@@ -8,7 +8,7 @@
     /// </summary>
     public class FixProtocolVersion : IComparable<FixProtocolVersion>
     {
-        static readonly FixProtocolVersion CurrentVersion = new FixProtocolVersion("ext", 1, 65);
+        static readonly FixProtocolVersion CurrentVersion = new FixProtocolVersion("ext", 1, 66);
 
         #region Predefined known protocol versions
 
@@ -64,6 +64,7 @@
         internal static readonly FixProtocolVersion Version63 = new FixProtocolVersion(ExtendedType, 1, 63);
         internal static readonly FixProtocolVersion Version64 = new FixProtocolVersion(ExtendedType, 1, 64);
         internal static readonly FixProtocolVersion Version65 = new FixProtocolVersion(ExtendedType, 1, 65);
+        internal static readonly FixProtocolVersion Version65 = new FixProtocolVersion(ExtendedType, 1, 66);
 
         #endregion
 
