@@ -1208,6 +1208,10 @@ namespace FIX
   DEFINE_AMT(Profit);
   DEFINE_PRICE(CurrentBestAsk);
   DEFINE_PRICE(CurrentBestBid);
+  DEFINE_INT(SessionsPerAccount);
+  DEFINE_INT(RequestsPerSecond);
+  DEFINE_INT(ThrottlingMethod);
+  DEFINE_NUMINGROUP(ThrottlingMethodsInfo);
   DEFINE_NUMINGROUP(NoStrategyParameters);
   DEFINE_STRING(StrategyParameterName);
   DEFINE_INT(StrategyParameterType);

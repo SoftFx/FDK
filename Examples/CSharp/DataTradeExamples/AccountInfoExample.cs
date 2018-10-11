@@ -14,6 +14,7 @@
         {
             var info = Trade.Server.GetAccountInfo();
             Console.WriteLine(info);
+            Console.ReadKey();
 /*
             while (true)
             {

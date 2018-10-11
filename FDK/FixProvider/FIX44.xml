@@ -3869,6 +3869,8 @@
     <field name='ModifyTime' required='N' />
     <component name='Comment' required='N' />
     <component name='Assets' required='N' />
+    <component name='ThrottlingInfo' required='N' />
+    <component name='ThrottlingMethods' required='N' />
   </message>
   <message name='ClosePositionRequest' msgcat='app' msgtype='U1008'>
     <field name='ClosePosReqID' required='Y' />
@@ -4490,6 +4492,16 @@
        <field required='N' name='Profit'/>
        <field required='N' name='CurrentBestAsk'/>
        <field required='N' name='CurrentBestBid'/>
+     </group>
+   </component>
+   <component name='ThrottlingInfo'>
+     <field required="Y" name="SessionsPerAccount"/>
+     <field required="Y" name="RequestsPerSecond"/>
+   </component>
+   <component name='ThrottlingMethods'>
+     <group name='ThrottlingMethodsInfo' required='N'>
+       <field required="Y" name="ThrottlingMethod"/>
+       <field required="Y" name="RequestsPerSecond"/>
      </group>
    </component>
  </components>
@@ -7999,5 +8011,33 @@
   <field number='10223' name='Profit' type='AMT' />
   <field number='10224' name='CurrentBestAsk' type='PRICE' />
   <field number='10225' name='CurrentBestBid' type='PRICE' />
+  <field number='10226' name='SessionsPerAccount' type='INT' />
+  <field number='10227' name='RequestsPerSecond' type='INT' />
+  <field number='10228' name='ThrottlingMethod' type='INT'>
+   <value enum='0' description='Login' />
+   <value enum='1' description='TwoFactor' />
+   <value enum='2' description='SessionInfo' />
+   <value enum='3' description='Currencies' />
+   <value enum='4' description='Symbols' />
+   <value enum='5' description='Ticks' />
+   <value enum='6' description='Level2' />
+   <value enum='7' description='Tickers' />
+   <value enum='8' description='FeedSubscribe' />
+   <value enum='9' description='QuoteHistory' />
+   <value enum='10' description='QuoteHistoryCache' />
+   <value enum='11' description='TradeSessionInfo' />
+   <value enum='12' description='TradeServerInfo' />
+   <value enum='13' description='Account' />
+   <value enum='14' description='Assets' />
+   <value enum='15' description='Positions' />
+   <value enum='16' description='Trades' />
+   <value enum='17' description='TradeCreate' />
+   <value enum='18' description='TradeModify' />
+   <value enum='19' description='TradeDelete' />
+   <value enum='20' description='TradeHistory' />
+   <value enum='21' description='DailyAccountSnapshots' />
+   <value enum='999' description='UnknownMethod' />
+  </field>
+  <field number='10229' name='ThrottlingMethodsInfo' type='NUMINGROUP' />
 </fields>
 </fix>

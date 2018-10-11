@@ -130,6 +130,12 @@ namespace
 	CFxCurrencyInfo ReadCurrencyInfo(MemoryBuffer& buffer);
 	void WriteCurrencyInfoArray(const std::vector<CFxCurrencyInfo>& arg, MemoryBuffer& buffer);
 	std::vector<CFxCurrencyInfo> ReadCurrencyInfoArray(MemoryBuffer& buffer);
+	void WriteFxThrottlingMethod(const FxThrottlingMethod& arg, MemoryBuffer& buffer);
+	FxThrottlingMethod ReadFxThrottlingMethod(MemoryBuffer& buffer);
+	void WriteThrottlingMethodInfo(const CThrottlingMethodInfo& arg, MemoryBuffer& buffer);
+	CThrottlingMethodInfo ReadThrottlingMethodInfo(MemoryBuffer& buffer);
+	void WriteThrottlingMethodInfoArray(const std::vector<CThrottlingMethodInfo>& arg, MemoryBuffer& buffer);
+	std::vector<CThrottlingMethodInfo> ReadThrottlingMethodInfoArray(MemoryBuffer& buffer);
 }
 
 namespace
@@ -788,6 +794,9 @@ namespace
 		WriteBoolean(arg.IsReadOnly, buffer);
 		WriteBoolean(arg.IsBlocked, buffer);
 		WriteAssetInfoArray(arg.Assets, buffer);
+		WriteInt32(arg.SessionsPerAccount, buffer);
+		WriteInt32(arg.RequestsPerSecond, buffer);
+		WriteThrottlingMethodInfoArray(arg.ThrottlingMethods, buffer);
 	}
 	CFxAccountInfo ReadAccountInfo(MemoryBuffer& buffer)
 	{
@@ -810,6 +819,9 @@ namespace
 		result.IsReadOnly = ReadBoolean(buffer);
 		result.IsBlocked = ReadBoolean(buffer);
 		result.Assets = ReadAssetInfoArray(buffer);
+		result.SessionsPerAccount = ReadInt32(buffer);
+		result.RequestsPerSecond = ReadInt32(buffer);
+		result.ThrottlingMethods = ReadThrottlingMethodInfoArray(buffer);
 		return result;
 	}
 	void WriteFileChunk(const CFxFileChunk& arg, MemoryBuffer& buffer)
@@ -1461,6 +1473,46 @@ namespace
 		for(size_t index = 0; index < count; ++index)
 		{
 			result.push_back(ReadCurrencyInfo(buffer));
+		}
+		return result;
+	}
+	void WriteFxThrottlingMethod(const FxThrottlingMethod& arg, MemoryBuffer& buffer)
+	{
+		WriteInt32((__int32)arg, buffer);
+	}
+	FxThrottlingMethod ReadFxThrottlingMethod(MemoryBuffer& buffer)
+	{
+		auto result = (FxThrottlingMethod)ReadInt32(buffer);
+		return result;
+	}
+	void WriteThrottlingMethodInfo(const CThrottlingMethodInfo& arg, MemoryBuffer& buffer)
+	{
+		WriteFxThrottlingMethod(arg.Method, buffer);
+		WriteInt32(arg.RequestsPerSecond, buffer);
+	}
+	CThrottlingMethodInfo ReadThrottlingMethodInfo(MemoryBuffer& buffer)
+	{
+		CThrottlingMethodInfo result = CThrottlingMethodInfo();
+		result.Method = ReadFxThrottlingMethod(buffer);
+		result.RequestsPerSecond = ReadInt32(buffer);
+		return result;
+	}
+	void WriteThrottlingMethodInfoArray(const std::vector<CThrottlingMethodInfo>& arg, MemoryBuffer& buffer)
+	{
+		WriteUInt32((unsigned __int32)arg.size(), buffer);
+		for each(const auto element in arg)
+		{
+			WriteThrottlingMethodInfo(element, buffer);
+		}
+	}
+	std::vector<CThrottlingMethodInfo> ReadThrottlingMethodInfoArray(MemoryBuffer& buffer)
+	{
+		const size_t count = buffer.ReadCount();
+		std::vector<CThrottlingMethodInfo> result;
+		result.reserve(count);
+		for(size_t index = 0; index < count; ++index)
+		{
+			result.push_back(ReadThrottlingMethodInfo(buffer));
 		}
 		return result;
 	}

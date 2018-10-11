@@ -91,6 +91,21 @@ namespace FIX44
       FIELD_SET(*this, FIX::UsdToSrcAssetConversionRate);
       FIELD_SET_EX(double, UsdToSrcAssetConversionRate);
     };
+    FIELD_SET(*this, FIX::SessionsPerAccount);
+    FIELD_SET_EX(int, SessionsPerAccount);
+    FIELD_SET(*this, FIX::RequestsPerSecond);
+    FIELD_SET_EX(int, RequestsPerSecond);
+    FIELD_SET(*this, FIX::ThrottlingMethodsInfo);
+    FIELD_SET_EX(int, ThrottlingMethodsInfo);
+    class ThrottlingMethodsInfo: public FIX::Group
+    {
+    public:
+    ThrottlingMethodsInfo() : FIX::Group(10229,10228,FIX::message_order(10228,10227,0)) {}
+      FIELD_SET(*this, FIX::ThrottlingMethod);
+      FIELD_SET_EX(int, ThrottlingMethod);
+      FIELD_SET(*this, FIX::RequestsPerSecond);
+      FIELD_SET_EX(int, RequestsPerSecond);
+    };
   };
 
 }

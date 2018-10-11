@@ -104,6 +104,21 @@
         public AssetInfo[] Assets { get; internal set; }
 
         /// <summary>
+        /// Gets the allowed amount of sessions for the particular account.
+        /// </summary>
+        public int SessionsPerAccount { get; internal set; }
+
+        /// <summary>
+        /// Gets the allowed amount of requests per second for the particular account.
+        /// </summary>
+        public int RequestsPerSecond { get; internal set; }
+
+        /// <summary>
+        /// Contains the information about throttling limits for methods.
+        /// </summary>
+        public ThrottlingMethodInfo[] ThrottlingMethods { get; internal set; }
+
+        /// <summary>
         /// Returns formatted string for the class instance.
         /// </summary>
         /// <returns>can not be null</returns>

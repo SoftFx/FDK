@@ -181,6 +181,9 @@
       <Member name="IsReadOnly" type="bool" />
       <Member name="IsBlocked" type="bool" />
       <Member name="Assets" type="AssetInfoArray" />
+      <Member name="SessionsPerAccount" type="int32" />
+      <Member name="RequestsPerSecond" type="int32" />
+      <Member name="ThrottlingMethods" type="ThrottlingMethodInfoArray" />
     </Type>
     <Type name="FileChunk" CSharpFullName="SoftFX.Extended.FxFileChunk" CppFullName="CFxFileChunk" kind="class">
       <Member name="FileId" type="astring" />
@@ -437,6 +440,14 @@
     </Type>
     <Type name="CurrencyInfoArray" kind="array">
       <Value name="CurrencyInfo" />
+    </Type>
+    <Type name="FxThrottlingMethod" CSharpFullName="SoftFX.Extended.ThrottlingMethod" CppFullName="FxThrottlingMethod" kind="enum32" />
+    <Type name="ThrottlingMethodInfo" CSharpFullName="SoftFX.Extended.ThrottlingMethodInfo" CppFullName="CThrottlingMethodInfo" kind="class">
+      <Member name="Method" type="FxThrottlingMethod" />
+      <Member name="RequestsPerSecond" type="int32" />
+    </Type>
+    <Type name="ThrottlingMethodInfoArray" kind="array">
+      <Value name="ThrottlingMethodInfo" />
     </Type>
   </Types>
   <Components>
