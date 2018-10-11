@@ -960,6 +960,119 @@ void CFixConnection::OnAccountInfo(const FIX44::AccountInfo& message)
             accountInfo.Assets.push_back(asset);
         }
     }
+
+    message.TryGetSessionsPerAccount(accountInfo.SessionsPerAccount);
+    message.TryGetRequestsPerSecond(accountInfo.RequestsPerSecond);
+    count = 0;
+    if (message.TryGetThrottlingMethodsInfo(count))
+    {
+        accountInfo.ThrottlingMethods.reserve(static_cast<size_t>(count));
+        for (int index = 1; index <= count; ++index)
+        {
+            FIX44::AccountInfo::ThrottlingMethodsInfo group;
+            message.getGroup(index, group);
+
+            CThrottlingMethodInfo method;
+            FIX::ThrottlingMethod throttlingMethod = group.GetThrottlingMethod();
+            switch (throttlingMethod)
+            {
+            case FIX::ThrottlingMethod_Account:
+                method.Method = FxThrottlingMethod_Account;
+                break;
+
+            case FIX::ThrottlingMethod_Assets:
+                method.Method = FxThrottlingMethod_Assets;
+                break;
+
+            case FIX::ThrottlingMethod_Currencies:
+                method.Method = FxThrottlingMethod_Currencies;
+                break;
+
+            case FIX::ThrottlingMethod_DailyAccountSnapshots:
+                method.Method = FxThrottlingMethod_DailyAccountSnapshots;
+                break;
+
+            case FIX::ThrottlingMethod_FeedSubscribe:
+                method.Method = FxThrottlingMethod_FeedSubscribe;
+                break;
+
+            case FIX::ThrottlingMethod_Level2:
+                method.Method = FxThrottlingMethod_Level2;
+                break;
+
+            case FIX::ThrottlingMethod_Login:
+                method.Method = FxThrottlingMethod_Login;
+                break;
+
+            case FIX::ThrottlingMethod_Positions:
+                method.Method = FxThrottlingMethod_Positions;
+                break;
+
+            case FIX::ThrottlingMethod_QuoteHistory:
+                method.Method = FxThrottlingMethod_QuoteHistory;
+                break;
+
+            case FIX::ThrottlingMethod_QuoteHistoryCache:
+                method.Method = FxThrottlingMethod_QuoteHistoryCache;
+                break;
+
+            case FIX::ThrottlingMethod_SessionInfo:
+                method.Method = FxThrottlingMethod_SessionInfo;
+                break;
+
+            case FIX::ThrottlingMethod_Symbols:
+                method.Method = FxThrottlingMethod_Symbols;
+                break;
+
+            case FIX::ThrottlingMethod_Tickers:
+                method.Method = FxThrottlingMethod_Tickers;
+                break;
+
+            case FIX::ThrottlingMethod_Ticks:
+                method.Method = FxThrottlingMethod_Ticks;
+                break;
+
+            case FIX::ThrottlingMethod_TradeCreate:
+                method.Method = FxThrottlingMethod_TradeCreate;
+                break;
+
+            case FIX::ThrottlingMethod_TradeDelete:
+                method.Method = FxThrottlingMethod_TradeDelete;
+                break;
+
+            case FIX::ThrottlingMethod_TradeHistory:
+                method.Method = FxThrottlingMethod_TradeHistory;
+                break;
+
+            case FIX::ThrottlingMethod_TradeModify:
+                method.Method = FxThrottlingMethod_TradeModify;
+                break;
+
+            case FIX::ThrottlingMethod_TradeServerInfo:
+                method.Method = FxThrottlingMethod_TradeServerInfo;
+                break;
+
+            case FIX::ThrottlingMethod_TradeSessionInfo:
+                method.Method = FxThrottlingMethod_TradeSessionInfo;
+                break;
+
+            case FIX::ThrottlingMethod_Trades:
+                method.Method = FxThrottlingMethod_Trades;
+                break;
+
+            case FIX::ThrottlingMethod_TwoFactor:
+                method.Method = FxThrottlingMethod_TwoFactor;
+                break;
+
+            case FIX::ThrottlingMethod_UnknownMethod:
+                method.Method = FxThrottlingMethod_UnknownMethod;
+            }
+
+            group.TryGetRequestsPerSecond(method.RequestsPerSecond);
+
+            accountInfo.ThrottlingMethods.push_back(method);
+        }
+    }
     m_receiver->VAccountInfo(eventInfo, accountInfo);
 }
 

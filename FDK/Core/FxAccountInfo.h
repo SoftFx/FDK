@@ -5,6 +5,7 @@
 #pragma warning (disable : 4251)
 
 #include "AssetInfo.h"
+#include "ThrottlingMethodInfo.h"
 
 class CORE_API CFxAccountInfo
 {
@@ -28,8 +29,11 @@ public:
     bool IsValid;
     bool IsReadOnly;
     bool IsBlocked;
+    int32 SessionsPerAccount;
+    int32 RequestsPerSecond;
 public:
     vector<CAssetInfo> Assets;
+    vector<CThrottlingMethodInfo> ThrottlingMethods;
 };
 
 #pragma warning (pop)

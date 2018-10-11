@@ -309,6 +309,33 @@ enum SwapType
     FxSwapType_PercentPerYear   = 1
 };
 
+enum FxThrottlingMethod
+{
+    FxThrottlingMethod_Login = 0,
+    FxThrottlingMethod_TwoFactor = 1,
+    FxThrottlingMethod_SessionInfo = 2,
+    FxThrottlingMethod_Currencies = 3,
+    FxThrottlingMethod_Symbols = 4,
+    FxThrottlingMethod_Ticks = 5,
+    FxThrottlingMethod_Level2 = 6,
+    FxThrottlingMethod_Tickers = 7,
+    FxThrottlingMethod_FeedSubscribe = 8,
+    FxThrottlingMethod_QuoteHistory = 9,
+    FxThrottlingMethod_QuoteHistoryCache = 10,
+    FxThrottlingMethod_TradeSessionInfo = 11,
+    FxThrottlingMethod_TradeServerInfo = 12,
+    FxThrottlingMethod_Account = 13,
+    FxThrottlingMethod_Assets = 14,
+    FxThrottlingMethod_Positions = 15,
+    FxThrottlingMethod_Trades = 16,
+    FxThrottlingMethod_TradeCreate = 17,
+    FxThrottlingMethod_TradeModify = 18,
+    FxThrottlingMethod_TradeDelete = 19,
+    FxThrottlingMethod_TradeHistory = 20,
+    FxThrottlingMethod_DailyAccountSnapshots = 21,
+    FxThrottlingMethod_UnknownMethod = 999
+};
+
 typedef void* FxHandle;
 typedef void* FxString;
 typedef void* FxParams;

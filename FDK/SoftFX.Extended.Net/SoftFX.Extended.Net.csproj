@@ -100,12 +100,14 @@
     <Compile Include="Entities\CurrencyInfo.cs" />
     <Compile Include="Entities\FileChunk.cs" />
     <Compile Include="Entities\StatusGroupInfo.cs" />
+    <Compile Include="Entities\ThrottlingInfo.cs" />
     <Compile Include="Entities\TradeServerInfo.cs" />
     <Compile Include="Entities\TwoFactorAuth.cs" />
     <Compile Include="Enums\CommissionChargeMethod.cs" />
     <Compile Include="Enums\CommissionChargeType.cs" />
     <Compile Include="Enums\CommissionType.cs" />
     <Compile Include="Enums\SwapType.cs" />
+    <Compile Include="Enums\ThrottlingMethod.cs" />
     <Compile Include="Enums\TwoFactorReason.cs" />
     <Compile Include="Events\CurrencyInfoEventArgs.cs" />
     <Compile Include="Events\SubscribedEventArgs.cs" />

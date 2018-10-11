@@ -616,6 +616,9 @@ namespace SoftFX.Extended.Generated
 			result.IsReadOnly = buffer.ReadBoolean();
 			result.IsBlocked = buffer.ReadBoolean();
 			result.Assets = buffer.ReadAssetInfoArray();
+			result.SessionsPerAccount = buffer.ReadInt32();
+			result.RequestsPerSecond = buffer.ReadInt32();
+			result.ThrottlingMethods = buffer.ReadThrottlingMethodInfoArray();
 			return result;
 		}
 		public static void WriteAccountInfo(this MemoryBuffer buffer, SoftFX.Extended.AccountInfo arg)
@@ -638,6 +641,9 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteBoolean(arg.IsReadOnly);
 			buffer.WriteBoolean(arg.IsBlocked);
 			buffer.WriteAssetInfoArray(arg.Assets);
+			buffer.WriteInt32(arg.SessionsPerAccount);
+			buffer.WriteInt32(arg.RequestsPerSecond);
+			buffer.WriteThrottlingMethodInfoArray(arg.ThrottlingMethods);
 		}
 		public static SoftFX.Extended.FxFileChunk ReadFileChunk(this MemoryBuffer buffer)
 		{
@@ -1283,6 +1289,45 @@ namespace SoftFX.Extended.Generated
 			foreach(var element in arg)
 			{
 				buffer.WriteCurrencyInfo(element);
+			}
+		}
+		public static SoftFX.Extended.ThrottlingMethod ReadFxThrottlingMethod(this MemoryBuffer buffer)
+		{
+			var result = (SoftFX.Extended.ThrottlingMethod)buffer.ReadInt32();
+			return result;
+		}
+		public static void WriteFxThrottlingMethod(this MemoryBuffer buffer, SoftFX.Extended.ThrottlingMethod arg)
+		{
+			buffer.WriteInt32((int)arg);
+		}
+		public static SoftFX.Extended.ThrottlingMethodInfo ReadThrottlingMethodInfo(this MemoryBuffer buffer)
+		{
+			var result = new SoftFX.Extended.ThrottlingMethodInfo();
+			result.Method = buffer.ReadFxThrottlingMethod();
+			result.RequestsPerSecond = buffer.ReadInt32();
+			return result;
+		}
+		public static void WriteThrottlingMethodInfo(this MemoryBuffer buffer, SoftFX.Extended.ThrottlingMethodInfo arg)
+		{
+			buffer.WriteFxThrottlingMethod(arg.Method);
+			buffer.WriteInt32(arg.RequestsPerSecond);
+		}
+		public static SoftFX.Extended.ThrottlingMethodInfo[] ReadThrottlingMethodInfoArray(this MemoryBuffer buffer)
+		{
+			int length = buffer.ReadCount();
+			var result = new SoftFX.Extended.ThrottlingMethodInfo[length];
+			for(int index = 0; index < length; ++index)
+			{
+				result[index] = buffer.ReadThrottlingMethodInfo();
+			}
+			return result;
+		}
+		public static void WriteThrottlingMethodInfoArray(this MemoryBuffer buffer, SoftFX.Extended.ThrottlingMethodInfo[] arg)
+		{
+			buffer.WriteInt32(arg.Length);
+			foreach(var element in arg)
+			{
+				buffer.WriteThrottlingMethodInfo(element);
 			}
 		}
 		public static void Throw(System.Int32 status, MemoryBuffer buffer)

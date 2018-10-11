@@ -1206,6 +1206,10 @@ namespace FIX
     const int Profit = 10223;
     const int CurrentBestAsk = 10224;
     const int CurrentBestBid = 10225;
+    const int SessionsPerAccount = 10226;
+    const int RequestsPerSecond = 10227;
+    const int ThrottlingMethod = 10228;
+    const int ThrottlingMethodsInfo = 10229;
     const int NoStrategyParameters = 957;
     const int StrategyParameterName = 958;
     const int StrategyParameterType = 959;
