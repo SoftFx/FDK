@@ -1662,6 +1662,40 @@ void CFixConnection::OnPositionReport(const FIX44::PositionReport& message)
     message.TryGetCommission(positionReport.Commission);
     message.TryGetAgentCommission(positionReport.AgentCommission);
     message.TryGetSwap(positionReport.Swap);
+    FIX::PosReportType ptype = message.GetPosReportType();
+    switch (ptype)
+    {
+        case FIX::PosReportType_Login:
+            positionReport.PosReportType = FxPosReportType_Login;
+            break;
+
+        case FIX::PosReportType_Response:
+            positionReport.PosReportType = FxPosReportType_Response;
+            break;
+
+        case FIX::PosReportType_Rollover:
+            positionReport.PosReportType = FxPosReportType_Rollover;
+            break;
+
+        case FIX::PosReportType_CreatePosition:
+            positionReport.PosReportType = FxPosReportType_CreatePosition;
+            break;
+
+        case FIX::PosReportType_ModifyPosition:
+            positionReport.PosReportType = FxPosReportType_ModifyPosition;
+            break;
+
+        case FIX::PosReportType_CancelPosition:
+            positionReport.PosReportType = FxPosReportType_CancelPosition;
+            break;
+
+        case FIX::PosReportType_ClosePosition:
+            positionReport.PosReportType = FxPosReportType_ClosePosition;
+            break;
+
+        default:
+            positionReport.PosReportType = FxPosReportType_UNKNOWN;
+    }
 
     m_receiver->VPositionReport(info, positionReport);
     UNREFERENCED_PARAMETER(message);
@@ -1868,6 +1902,7 @@ void CFixConnection::OnDailyAccountSnapshotReport(const FIX44::DailyAccountSnaps
 			double currentBestBid;
 			if (group.TryGetCurrentBestBid(currentBestBid))
 				position.CurrentBestBid = currentBestBid;
+			position.PosReportType = FxPosReportType_Response;
             report.Positions.push_back(position);
         }
     }

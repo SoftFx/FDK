@@ -110,6 +110,8 @@ namespace
 	std::vector<CFxBar> ReadBarArray(MemoryBuffer& buffer);
 	void WriteMessage(const CFxMessage& arg, MemoryBuffer& buffer);
 	CFxMessage ReadMessage(MemoryBuffer& buffer);
+	void WritePositionReportType(const FxPosReportType& arg, MemoryBuffer& buffer);
+	FxPosReportType ReadPositionReportType(MemoryBuffer& buffer);
 	void WritePosition(const CFxPositionReport& arg, MemoryBuffer& buffer);
 	CFxPositionReport ReadPosition(MemoryBuffer& buffer);
 	void WritePositionArray(const std::vector<CFxPositionReport>& arg, MemoryBuffer& buffer);
@@ -1054,6 +1056,15 @@ namespace
 		result.Data = ReadLocalPointer(buffer);
 		return result;
 	}
+	void WritePositionReportType(const FxPosReportType& arg, MemoryBuffer& buffer)
+	{
+		WriteInt32((__int32)arg, buffer);
+	}
+	FxPosReportType ReadPositionReportType(MemoryBuffer& buffer)
+	{
+		auto result = (FxPosReportType)ReadInt32(buffer);
+		return result;
+	}
 	void WritePosition(const CFxPositionReport& arg, MemoryBuffer& buffer)
 	{
 		WriteAString(arg.Symbol, buffer);
@@ -1071,6 +1082,7 @@ namespace
 		WriteNullDouble(arg.Margin, buffer);
 		WriteNullDouble(arg.CurrentBestAsk, buffer);
 		WriteNullDouble(arg.CurrentBestBid, buffer);
+		WritePositionReportType(arg.PosReportType, buffer);
 	}
 	CFxPositionReport ReadPosition(MemoryBuffer& buffer)
 	{
@@ -1090,6 +1102,7 @@ namespace
 		result.Margin = ReadNullDouble(buffer);
 		result.CurrentBestAsk = ReadNullDouble(buffer);
 		result.CurrentBestBid = ReadNullDouble(buffer);
+		result.PosReportType = ReadPositionReportType(buffer);
 		return result;
 	}
 	void WritePositionArray(const std::vector<CFxPositionReport>& arg, MemoryBuffer& buffer)

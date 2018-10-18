@@ -9,6 +9,7 @@ CFxPositionReport::CFxPositionReport()
     , Commission()
     , AgentCommission()
     , Swap()
+	, PosReportType()
 {
 }
 
@@ -20,6 +21,7 @@ CFxPositionReport::CFxPositionReport(const string& symbol)
     , AgentCommission()
     , Swap()
     , Symbol(symbol)
+	, PosReportType()
 {
 }
 

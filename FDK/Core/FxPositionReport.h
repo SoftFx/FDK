@@ -28,6 +28,7 @@ public:
 	Nullable<CDateTime> PosModified;
 	string PosID;
 	string Symbol;
+    FxPosReportType PosReportType;
 };
 
 #pragma warning (pop)

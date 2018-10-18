@@ -88,6 +88,11 @@ namespace SoftFX.Extended
         public double? CurrentBestBid { get; internal set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public PosReportType PosReportType { get; internal set; }
+
+        /// <summary>
         /// Returns formatted string for the class instance.
         /// </summary>
         /// <returns>Can not be null.</returns>
