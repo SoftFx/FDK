@@ -1902,6 +1902,7 @@ void CFixConnection::OnDailyAccountSnapshotReport(const FIX44::DailyAccountSnaps
 			double currentBestBid;
 			if (group.TryGetCurrentBestBid(currentBestBid))
 				position.CurrentBestBid = currentBestBid;
+			position.PosReportType = FxPosReportType_Response;
             report.Positions.push_back(position);
         }
     }
