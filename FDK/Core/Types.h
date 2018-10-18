@@ -336,6 +336,18 @@ enum FxThrottlingMethod
     FxThrottlingMethod_UnknownMethod = 999
 };
 
+enum FxPosReportType
+{
+    FxPosReportType_Login = 0,
+    FxPosReportType_Response = 1,
+    FxPosReportType_Rollover = 2,
+    FxPosReportType_CreatePosition = 3,
+    FxPosReportType_ModifyPosition = 4,
+    FxPosReportType_CancelPosition = 5,
+    FxPosReportType_ClosePosition = 6,
+    FxPosReportType_UNKNOWN = 999
+};
+
 typedef void* FxHandle;
 typedef void* FxString;
 typedef void* FxParams;

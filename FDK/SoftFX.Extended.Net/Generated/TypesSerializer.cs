@@ -871,6 +871,15 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteNullTime(arg.ReceivingTime);
 			buffer.WriteLocalPointer(arg.Data);
 		}
+		public static SoftFX.Extended.PosReportType ReadPositionReportType(this MemoryBuffer buffer)
+		{
+			var result = (SoftFX.Extended.PosReportType)buffer.ReadInt32();
+			return result;
+		}
+		public static void WritePositionReportType(this MemoryBuffer buffer, SoftFX.Extended.PosReportType arg)
+		{
+			buffer.WriteInt32((int)arg);
+		}
 		public static SoftFX.Extended.Position ReadPosition(this MemoryBuffer buffer)
 		{
 			var result = new SoftFX.Extended.Position();
@@ -889,6 +898,7 @@ namespace SoftFX.Extended.Generated
 			result.Margin = buffer.ReadNullDouble();
 			result.CurrentBestAsk = buffer.ReadNullDouble();
 			result.CurrentBestBid = buffer.ReadNullDouble();
+			result.PosReportType = buffer.ReadPositionReportType();
 			return result;
 		}
 		public static void WritePosition(this MemoryBuffer buffer, SoftFX.Extended.Position arg)
@@ -908,6 +918,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteNullDouble(arg.Margin);
 			buffer.WriteNullDouble(arg.CurrentBestAsk);
 			buffer.WriteNullDouble(arg.CurrentBestBid);
+			buffer.WritePositionReportType(arg.PosReportType);
 		}
 		public static SoftFX.Extended.Position[] ReadPositionArray(this MemoryBuffer buffer)
 		{

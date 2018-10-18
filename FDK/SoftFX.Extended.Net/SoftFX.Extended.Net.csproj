@@ -106,6 +106,7 @@
     <Compile Include="Enums\CommissionChargeMethod.cs" />
     <Compile Include="Enums\CommissionChargeType.cs" />
     <Compile Include="Enums\CommissionType.cs" />
+    <Compile Include="Enums\PosReportType.cs" />
     <Compile Include="Enums\SwapType.cs" />
     <Compile Include="Enums\ThrottlingMethod.cs" />
     <Compile Include="Enums\TwoFactorReason.cs" />
