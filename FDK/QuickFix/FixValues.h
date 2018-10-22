@@ -4052,6 +4052,7 @@ namespace FIX
   const int TradeTransReason_Rollover = 6;
   const int TradeTransReason_DeleteAccount = 7;
   const int TradeTransReason_Expired = 8;
+  const int TradeTransReason_TransferMoney = 9;
   const int LogoutReason_TIMEOUT = -2;
   const int LogoutReason_NETWORK_ERROR = -1;
   const int LogoutReason_CLIENT_LOGOUT = 0;

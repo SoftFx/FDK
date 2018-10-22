@@ -7744,6 +7744,7 @@
     <value enum='6' description='Rollover' />
     <value enum='7' description='DeleteAccount' />
     <value enum='8' description='Expired' />
+    <value enum='9' description='TransferMoney' />
   </field>
   <field number='10080' name='OrderLeavesQty' type='QTY' />
   <field number='10081' name='OrderPrice' type='PRICE' />
