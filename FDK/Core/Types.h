@@ -274,6 +274,7 @@ enum FxTradeTransactionReason
     FxTradeTransactionReason_Rollover           = 6,
     FxTradeTransactionReason_DeleteAccount      = 7,
     FxTradeTransactionReason_Expired            = 8,
+    FxTradeTransactionReason_TransferMoney      = 9,
     FxTradeTransactionReason_Last           = FX_MAX_ENUM
 };
 

@@ -1388,6 +1388,10 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
     {
         report.TradeTransactionReason = FxTradeTransactionReason_Expired;
     }
+    else if (FIX::TradeTransReason_TransferMoney == reason)
+    {
+        report.TradeTransactionReason = FxTradeTransactionReason_TransferMoney;
+    }
 
     message.TryGetAccBalance(report.AccountBalance);
     message.TryGetAccTrAmount(report.TransactionAmount);
@@ -1835,7 +1839,7 @@ void CFixConnection::OnDailyAccountSnapshotReport(const FIX44::DailyAccountSnaps
         report.Assets.reserve(static_cast<size_t>(count));
         for (int index = 1; index <= count; ++index)
         {
-            FIX44::AccountInfo::NoAssets group; 
+            FIX44::AccountInfo::NoAssets group;
             message.getGroup(index, group);
 
             CAssetInfo asset;
@@ -1890,19 +1894,19 @@ void CFixConnection::OnDailyAccountSnapshotReport(const FIX44::DailyAccountSnaps
             if (group.TryGetPosModified(posmodified))
                 position.PosModified = posmodified.toFileTime();
             group.TryGetPosID(position.PosID);
-			double margin;
-			if (group.TryGetMargin(margin))
-				position.Margin = margin;
-			double profit;
-			if (group.TryGetProfit(profit))
-				position.Profit = profit;
-			double currentBestAsk;
-			if (group.TryGetCurrentBestAsk(currentBestAsk))
-				position.CurrentBestAsk = currentBestAsk;
-			double currentBestBid;
-			if (group.TryGetCurrentBestBid(currentBestBid))
-				position.CurrentBestBid = currentBestBid;
-			position.PosReportType = FxPosReportType_Response;
+            double margin;
+            if (group.TryGetMargin(margin))
+                position.Margin = margin;
+            double profit;
+            if (group.TryGetProfit(profit))
+                position.Profit = profit;
+            double currentBestAsk;
+            if (group.TryGetCurrentBestAsk(currentBestAsk))
+                position.CurrentBestAsk = currentBestAsk;
+            double currentBestBid;
+            if (group.TryGetCurrentBestBid(currentBestBid))
+                position.CurrentBestBid = currentBestBid;
+            position.PosReportType = FxPosReportType_Response;
             report.Positions.push_back(position);
         }
     }
