@@ -1241,6 +1241,7 @@
    </group>
    <field name='ApplQueueDepth' required='N' />
    <field name='ApplQueueResolution' required='N' />
+   <field name='IndicativeTick' required='N' />
   </message>
   <message name='MarketDataIncrementalRefresh' msgcat='app' msgtype='X'>
    <field name='MDReqID' required='N' />
@@ -4106,6 +4107,20 @@
     <component name='Assets' required='N' />
     <component name='Positions' required='N' />
   </message>
+  <message name='MarketDataHistoryInfoRequest' msgcat='app' msgtype='U1028'>
+    <field name='MarketHistReqID' required='Y' />
+    <field name='Symbol' required='Y' />
+    <field name='HstGraphType' required='Y' />
+    <field name='HstGraphPeriodID' required='N' />
+    <field name='ForexPriceType' required='N' />
+  </message>
+  <message name='MarketDataHistoryInfoReport' msgcat='app' msgtype='U1029'>
+    <field name='MarketHistReqID' required='Y' />
+    <field name='Symbol' required='Y' />
+    <field name='AllHstFrom' required='Y' />
+    <field name='AllHstTo' required='Y' />
+    <field name='LastTickId' required='N' />
+  </message>
  </messages>
  <trailer>
   <field name='SignatureLength' required='N' />
@@ -4764,6 +4779,8 @@
    <value enum='U1025' description='DAILYACCOUNTSNAPSHOTREQUEST' />
    <value enum='U1026' description='DAILYACCOUNTSNAPSHOTREQUESTACK' />
    <value enum='U1027' description='DAILYACCOUNTSNAPSHOTREPORT' />
+   <value enum='U1028' description='MARKETDATAHISTORYINFOREQUEST' />
+   <value enum='U1029' description='MARKETDATAHISTORYINFOREPORT' />
   </field>
   <field number='36' name='NewSeqNo' type='SEQNUM' />
   <field number='37' name='OrderID' type='STRING' />
@@ -8040,5 +8057,9 @@
    <value enum='999' description='UnknownMethod' />
   </field>
   <field number='10229' name='ThrottlingMethodsInfo' type='NUMINGROUP' />
+  <field number='10230' name='IndicativeTick' type='BOOLEAN'>
+   <value enum='N' description='NO' />
+   <value enum='Y' description='YES' />
+  </field>
 </fields>
 </fix>

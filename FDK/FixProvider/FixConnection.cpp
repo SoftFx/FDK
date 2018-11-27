@@ -700,6 +700,7 @@ void CFixConnection::OnTick(const FIX44::MarketDataSnapshotFullRefresh& message)
 
     CFxQuote quote(symbol, creatingTickTime.toFileTime());
     message.TryGetTickId(quote.Id);
+    message.TryGetIndicativeTick(quote.IndicativeTick);
 
     const int32 count = message.GetNoMDEntries();
     for (int32 index = 1; index <= count; ++index)

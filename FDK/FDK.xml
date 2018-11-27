@@ -249,6 +249,7 @@
       <Member name="Bids" type="QuoteEntryArray" />
       <Member name="Asks" type="QuoteEntryArray" />
       <Member name="Id" type="astring" />
+      <Member name="IndicativeTick" type="bool" />
     </Type>
     <Type name="QuoteArray" kind="array">
       <Value name="Quote" />

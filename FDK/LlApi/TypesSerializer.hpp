@@ -991,6 +991,7 @@ namespace
 		WriteQuoteEntryArray(arg.Bids, buffer);
 		WriteQuoteEntryArray(arg.Asks, buffer);
 		WriteAString(arg.Id, buffer);
+		WriteBoolean(arg.IndicativeTick, buffer);
 	}
 	CFxQuote ReadQuote(MemoryBuffer& buffer)
 	{
@@ -1000,6 +1001,7 @@ namespace
 		result.Bids = ReadQuoteEntryArray(buffer);
 		result.Asks = ReadQuoteEntryArray(buffer);
 		result.Id = ReadAString(buffer);
+		result.IndicativeTick = ReadBoolean(buffer);
 		return result;
 	}
 	void WriteQuoteArray(const std::vector<CFxQuote>& arg, MemoryBuffer& buffer)
