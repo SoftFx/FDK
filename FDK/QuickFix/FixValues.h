@@ -134,6 +134,8 @@ namespace FIX
   const char MsgType_DailyAccountSnapshotRequest[] = "U1025";
   const char MsgType_DailyAccountSnapshotRequestAck[] = "U1026";
   const char MsgType_DailyAccountSnapshotReport[] = "U1027";
+  const char MsgType_MarketDataHistoryInfoRequest[] = "U1028";
+  const char MsgType_MarketDataHistoryInfoReport[] = "U1029";
   const char MsgType_ContraryIntentionReport[] = "BO";
   const char MsgType_SecurityDefinitionUpdateReport[] = "BP";
   const char MsgType_SecurityListUpdateReport[] = "BK";
@@ -4174,6 +4176,8 @@ namespace FIX
   const int ThrottlingMethod_TradeHistory = 20;
   const int ThrottlingMethod_DailyAccountSnapshots = 21;
   const int ThrottlingMethod_UnknownMethod = 999;
+  const char IndicativeTick_NO = 'N';
+  const char IndicativeTick_YES = 'Y';
   const int StrategyParameterType_INT = 1;
   const int StrategyParameterType_LENGTH = 2;
   const int StrategyParameterType_NUMINGROUP = 3;

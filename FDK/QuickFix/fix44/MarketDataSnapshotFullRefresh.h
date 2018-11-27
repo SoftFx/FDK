@@ -130,6 +130,8 @@ namespace FIX44
     FIELD_SET_EX(int, ApplQueueDepth);
     FIELD_SET(*this, FIX::ApplQueueResolution);
     FIELD_SET_EX(int, ApplQueueResolution);
+    FIELD_SET(*this, FIX::IndicativeTick);
+    FIELD_SET_EX(bool, IndicativeTick);
     FIELD_SET(*this, FIX::NoUnderlyings);
     FIELD_SET_EX(int, NoUnderlyings);
     class NoUnderlyings: public FIX::Group

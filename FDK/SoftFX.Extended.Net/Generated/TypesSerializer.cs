@@ -809,6 +809,7 @@ namespace SoftFX.Extended.Generated
 			result.Bids = buffer.ReadQuoteEntryArray();
 			result.Asks = buffer.ReadQuoteEntryArray();
 			result.Id = buffer.ReadAString();
+			result.IndicativeTick = buffer.ReadBoolean();
 			return result;
 		}
 		public static void WriteQuote(this MemoryBuffer buffer, SoftFX.Extended.Quote arg)
@@ -818,6 +819,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteQuoteEntryArray(arg.Bids);
 			buffer.WriteQuoteEntryArray(arg.Asks);
 			buffer.WriteAString(arg.Id);
+			buffer.WriteBoolean(arg.IndicativeTick);
 		}
 		public static SoftFX.Extended.Quote[] ReadQuoteArray(this MemoryBuffer buffer)
 		{

@@ -1212,6 +1212,7 @@ namespace FIX
   DEFINE_INT(RequestsPerSecond);
   DEFINE_INT(ThrottlingMethod);
   DEFINE_NUMINGROUP(ThrottlingMethodsInfo);
+  DEFINE_BOOLEAN(IndicativeTick);
   DEFINE_NUMINGROUP(NoStrategyParameters);
   DEFINE_STRING(StrategyParameterName);
   DEFINE_INT(StrategyParameterType);

@@ -10,40 +10,42 @@
 class CORE_API CFxQuote
 {
 public:
-	CFxQuote();
-	CFxQuote(const string& symbol, const CDateTime creatingTime);
-	CFxQuote(const CFxQuote& arg) = default;
-	CFxQuote(CFxQuote&& arg);
+    CFxQuote();
+    CFxQuote(const string& symbol, const CDateTime creatingTime);
+    CFxQuote(const CFxQuote& arg) = default;
+    CFxQuote(CFxQuote&& arg);
 public:
-	CFxQuote& operator=(const CFxQuote& arg) = default;
+    CFxQuote& operator=(const CFxQuote& arg) = default;
 public:
-	string Symbol;
-	CDateTime CreatingTime;
-	vector<CFxQuoteEntry> Bids;
-	vector<CFxQuoteEntry> Asks;
-	string Id;
+    string Symbol;
+    CDateTime CreatingTime;
+    vector<CFxQuoteEntry> Bids;
+    vector<CFxQuoteEntry> Asks;
+    string Id;
+    bool IndicativeTick;
 public:
-	bool TryGetBidAsk(double& bid, double& ask) const;
-	bool TryGetBid(double& price, double& volume, CDateTime& creationTime) const;
-	bool TryGetAsk(double& price, double& volume, CDateTime& creationTime) const;
+    bool TryGetBidAsk(double& bid, double& ask) const;
+    bool TryGetBid(double& price, double& volume, CDateTime& creationTime) const;
+    bool TryGetAsk(double& price, double& volume, CDateTime& creationTime) const;
 public:
-	void AddBid(const double price, const double volume);
-	void AddAsk(const double price, const double volume);
-	void Sort();
+    void AddBid(const double price, const double volume);
+    void AddAsk(const double price, const double volume);
+    void Sort();
 private:
-	CORE_API friend bool operator == (const CFxQuote& first, const CFxQuote& second);
-	CORE_API friend bool operator != (const CFxQuote& first, const CFxQuote& second);
+    CORE_API friend bool operator == (const CFxQuote& first, const CFxQuote& second);
+    CORE_API friend bool operator != (const CFxQuote& first, const CFxQuote& second);
 };
 
 namespace std
 {
-	inline void swap(CFxQuote& first, CFxQuote& second)
-	{
-		swap(first.Symbol, second.Symbol);
-		swap(first.CreatingTime, second.CreatingTime);
-		swap(first.Bids, second.Bids);
-		swap(first.Asks, second.Asks);
-	}
+    inline void swap(CFxQuote& first, CFxQuote& second)
+    {
+        swap(first.Symbol, second.Symbol);
+        swap(first.CreatingTime, second.CreatingTime);
+        swap(first.Bids, second.Bids);
+        swap(first.Asks, second.Asks);
+        swap(first.IndicativeTick, second.IndicativeTick);
+    }
 }
 
 #pragma warning (pop)

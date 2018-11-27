@@ -1210,6 +1210,7 @@ namespace FIX
     const int RequestsPerSecond = 10227;
     const int ThrottlingMethod = 10228;
     const int ThrottlingMethodsInfo = 10229;
+    const int IndicativeTick = 10230;
     const int NoStrategyParameters = 957;
     const int StrategyParameterName = 958;
     const int StrategyParameterType = 959;

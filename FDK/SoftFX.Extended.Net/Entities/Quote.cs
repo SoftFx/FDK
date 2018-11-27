@@ -149,6 +149,11 @@
         internal string Id { get; set; }
 
         /// <summary>
+        /// Gets indicative tick flag.
+        /// </summary>
+        public bool IndicativeTick { get; internal set; }
+
+        /// <summary>
         /// Compares to quotes for equality.
         /// </summary>
         /// <param name="first">the first quote to compare.</param>
@@ -169,6 +174,9 @@
                 return false;
 
             if (first.CreatingTime != second.CreatingTime)
+                return false;
+
+            if (first.IndicativeTick != second.IndicativeTick)
                 return false;
 
             if (!Equals(first.Bids, second.Bids))
