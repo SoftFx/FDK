@@ -27,7 +27,7 @@ CFixVersion::CFixVersion(const std::string& st) : Major(), Minor()
 }
 bool CFixVersion::SupportsMarketWithSlippage()
 {
-    return ((Major > 1) || ((Major == 1) && (Minor == 42)));
+    return *this >= CFixVersion(1, 42);
 }
 bool CFixVersion::SupportsAppId()
 {
