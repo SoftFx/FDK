@@ -364,18 +364,16 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
         message.SetStopLoss(*required.StopLoss);
     }
 
+    if ((FxTradeRecordType_IoC == required.Type) || (FxTradeRecordType_StopLimit_IoC == required.Type))
+        message.SetTimeInForce(FIX::TimeInForce_IMMEDIATE_OR_CANCEL);
+    else
+        message.SetTimeInForce(FIX::TimeInForce_GOOD_TILL_CANCEL);
+
     if (required.Expiration.HasValue())
     {
         message.SetTimeInForce(FIX::TimeInForce_GOOD_TILL_DATE);
         FIX::UtcTimeStamp utc(*required.Expiration);
         message.SetExpireTime(utc);
-    }
-    else
-    {
-        if ((FxTradeRecordType_IoC == required.Type) || (FxTradeRecordType_StopLimit_IoC == required.Type))
-            message.SetTimeInForce(FIX::TimeInForce_IMMEDIATE_OR_CANCEL);
-        else
-            message.SetTimeInForce(FIX::TimeInForce_GOOD_TILL_CANCEL);
     }
 
     FIX::UtcTimeStamp now;
