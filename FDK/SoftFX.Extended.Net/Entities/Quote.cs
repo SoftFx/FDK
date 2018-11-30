@@ -223,7 +223,7 @@
             var bid = HasBid ? Bid.ToString() : "None";
             var ask = HasAsk ? Ask.ToString() : "None";
 
-            return string.Format("Symbol = {0}; Bid = {1}; Ask = {2}", this.Symbol, bid, ask);
+            return string.Format("Symbol = {0}; Bid = {1}; Ask = {2}; Indicative = {3}", this.Symbol, bid, ask, IndicativeTick);
         }
     }
 }
