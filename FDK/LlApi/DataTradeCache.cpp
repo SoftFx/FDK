@@ -243,6 +243,11 @@ void CDataTradeCache::DoUpdatePosition(const CFxPositionReport& position)
     {
         m_accountInfo.Balance = position.Balance.Value();
     }
+
+    if (position.BuyAmount == 0 && position.SellAmount == 0)
+    {
+        m_positions.erase(position.Symbol);
+    }
 }
 
 void CDataTradeCache::RaiseChanged()
