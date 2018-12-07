@@ -156,12 +156,14 @@
         <include name="${ArtifactsDir}\FDK ${Build}\fdk\*.*" />
       </fileset>
     </delete>
+    <!--
     <copy todir="${ArtifactsDir}\FDK ${Build}\fdk" >
       <fileset basedir="${SourcesDir}\SandCastle\Help\" >
         <exclude name="FDK Documentation.chm" />
         <include name="**\*" />
       </fileset>
     </copy>
+    -->
     <zip zipfile="${ArtifactsDir}\FDK ${Build}\FDK.zip">
       <fileset basedir="${SourcesDir}\Release\">
         <include name="SoftFX.Extended.Net.dll" />
@@ -173,6 +175,7 @@
         <include name="**\*" />
       </fileset>
     </zip>
+    <!--
     <zip zipfile="${ArtifactsDir}\FDK ${Build}\Help.zip">
       <fileset basedir="${SourcesDir}\SandCastle\Help\">
         <exclude name="FDK Documentation.chm" />
@@ -180,6 +183,7 @@
       </fileset>
     </zip>
     <copy file="${SourcesDir}\SandCastle\Help\FDK Documentation.chm" tofile="${ArtifactsDir}\FDK ${Build}\FDK Documentation.chm" />
+    -->
   </target>
 
   <target name="GetVersion">
@@ -213,12 +217,14 @@
     <property name="FTP.SourceFile" value="${ArtifactsDir}\FDK ${Build}\${SetupFileBaseName}.msi" />
     <property name="FTP.File"       value="${SetupFileBaseName}.msi" />
     <call target="CopyFileToFTP" />
+    <!--
     <property name="FTP.SourceFile" value="${ArtifactsDir}\FDK ${Build}\FDK Documentation.chm" />
     <property name="FTP.File" 		  value="FDK Documentation.chm" />
     <call target="CopyFileToFTP" />
     <property name="FTP.SourceFile" value="${ArtifactsDir}\FDK ${Build}\Help.zip" />
     <property name="FTP.File" 		  value="Help.zip" />
     <call target="CopyFileToFTP" />
+    -->
   </target>
   
   <target name="CopyFileToFTP">
