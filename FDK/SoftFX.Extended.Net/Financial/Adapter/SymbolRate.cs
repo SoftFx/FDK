@@ -37,5 +37,10 @@
         {
             get { return this.symbol; }
         }
+
+        public bool IndicativeTick
+        {
+            get { return false; }
+        }
     }
 }
