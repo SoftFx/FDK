@@ -32,10 +32,12 @@
     <copy file="${SourcesDirExamples}\Release\AccountInfo.exe"              tofile="..\FRE\AccountInfo.exe" />
     <copy file="${SourcesDirExamples}\Release\FinancialExample.exe"         tofile="..\FRE\FinancialExample.exe" />
 
+    <!--
     <echo message="BuildSolution for FDK_Documetation.bat (SandCastle) started at: ${datetime::now()}" />
     <exec program="${SourcesDir}\SandCastle\FDK_Documetation.bat" >
       <arg line="${SourcesDir}\SandCastle\FDK_Documetation.shfbproj" />
     </exec>
+    -->
   </target>
 
   <target name="BuildTools" >
