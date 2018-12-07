@@ -228,11 +228,11 @@
         [Browsable(false)]
         public CurrencyEntries Currencies { get; private set; }
 
-        #endregion
-
-        #region Internal Properties
-
-        internal MarketState MarketState { get; private set; }
+        /// <summary>
+        /// Gets market state
+        /// </summary>
+        [Browsable(false)]
+        public MarketState MarketState { get; private set; }
 
         #endregion
 
