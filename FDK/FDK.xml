@@ -120,8 +120,8 @@
       <Member name="OpenTime" type="time" />
       <Member name="CloseTime" type="time" />
       <Member name="EndTime" type="time" />
-      <Member name="PlatformName" type="astring" />
-      <Member name="PlatformCompany" type="astring" />
+      <Member name="PlatformName" type="wstring" />
+      <Member name="PlatformCompany" type="wstring" />
       <Member name="StatusGroups" type="StatusGroupInfoArray" />
     </Type>
     <Type name="SymbolInfoArray" kind="array">
@@ -145,15 +145,15 @@
       <Value name="AssetInfo" />
     </Type>
     <Type name="TradeServerInfo" CSharpFullName="SoftFX.Extended.TradeServerInfo" CppFullName="CFxTradeServerInfo" kind="class">
-      <Member name="CompanyName" type="astring" />
-      <Member name="CompanyFullName" type="astring" />
+      <Member name="CompanyName" type="wstring" />
+      <Member name="CompanyFullName" type="wstring" />
       <Member name="CompanyDescription" type="wstring" />
-      <Member name="CompanyAddress" type="astring" />
+      <Member name="CompanyAddress" type="wstring" />
       <Member name="CompanyEmail" type="astring" />
       <Member name="CompanyPhone" type="astring" />
       <Member name="CompanyWebSite" type="astring" />
-      <Member name="ServerName" type="astring" />
-      <Member name="ServerFullName" type="astring" />
+      <Member name="ServerName" type="wstring" />
+      <Member name="ServerFullName" type="wstring" />
       <Member name="ServerDescription" type="wstring" />
       <Member name="ServerAddress" type="astring" />
       <Member name="ServerFixFeedSslPort" type="int32?" />
@@ -165,7 +165,7 @@
     <Type name="AccountInfo" CSharpFullName="SoftFX.Extended.AccountInfo" CppFullName="CFxAccountInfo" kind="class">
       <Member name="AccountId" type="astring" />
       <Member name="Type" type="AccountType" />
-      <Member name="Name" type="astring" />
+      <Member name="Name" type="wstring" />
       <Member name="Email" type="astring" />
       <Member name="Comment" type="wstring" />
       <Member name="Currency" type="astring" />

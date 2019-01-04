@@ -621,8 +621,8 @@ namespace
 		WriteTime(arg.OpenTime, buffer);
 		WriteTime(arg.CloseTime, buffer);
 		WriteTime(arg.EndTime, buffer);
-		WriteAString(arg.PlatformName, buffer);
-		WriteAString(arg.PlatformCompany, buffer);
+		WriteWString(arg.PlatformName, buffer);
+		WriteWString(arg.PlatformCompany, buffer);
 		WriteStatusGroupInfoArray(arg.StatusGroups, buffer);
 	}
 	CFxSessionInfo ReadSessionInfo(MemoryBuffer& buffer)
@@ -635,8 +635,8 @@ namespace
 		result.OpenTime = ReadTime(buffer);
 		result.CloseTime = ReadTime(buffer);
 		result.EndTime = ReadTime(buffer);
-		result.PlatformName = ReadAString(buffer);
-		result.PlatformCompany = ReadAString(buffer);
+		result.PlatformName = ReadWString(buffer);
+		result.PlatformCompany = ReadWString(buffer);
 		result.StatusGroups = ReadStatusGroupInfoArray(buffer);
 		return result;
 	}
@@ -738,15 +738,15 @@ namespace
 	}
 	void WriteTradeServerInfo(const CFxTradeServerInfo& arg, MemoryBuffer& buffer)
 	{
-		WriteAString(arg.CompanyName, buffer);
-		WriteAString(arg.CompanyFullName, buffer);
+		WriteWString(arg.CompanyName, buffer);
+		WriteWString(arg.CompanyFullName, buffer);
 		WriteWString(arg.CompanyDescription, buffer);
-		WriteAString(arg.CompanyAddress, buffer);
+		WriteWString(arg.CompanyAddress, buffer);
 		WriteAString(arg.CompanyEmail, buffer);
 		WriteAString(arg.CompanyPhone, buffer);
 		WriteAString(arg.CompanyWebSite, buffer);
-		WriteAString(arg.ServerName, buffer);
-		WriteAString(arg.ServerFullName, buffer);
+		WriteWString(arg.ServerName, buffer);
+		WriteWString(arg.ServerFullName, buffer);
 		WriteWString(arg.ServerDescription, buffer);
 		WriteAString(arg.ServerAddress, buffer);
 		WriteNullInt32(arg.ServerFixFeedSslPort, buffer);
@@ -758,15 +758,15 @@ namespace
 	CFxTradeServerInfo ReadTradeServerInfo(MemoryBuffer& buffer)
 	{
 		CFxTradeServerInfo result = CFxTradeServerInfo();
-		result.CompanyName = ReadAString(buffer);
-		result.CompanyFullName = ReadAString(buffer);
+		result.CompanyName = ReadWString(buffer);
+		result.CompanyFullName = ReadWString(buffer);
 		result.CompanyDescription = ReadWString(buffer);
-		result.CompanyAddress = ReadAString(buffer);
+		result.CompanyAddress = ReadWString(buffer);
 		result.CompanyEmail = ReadAString(buffer);
 		result.CompanyPhone = ReadAString(buffer);
 		result.CompanyWebSite = ReadAString(buffer);
-		result.ServerName = ReadAString(buffer);
-		result.ServerFullName = ReadAString(buffer);
+		result.ServerName = ReadWString(buffer);
+		result.ServerFullName = ReadWString(buffer);
 		result.ServerDescription = ReadWString(buffer);
 		result.ServerAddress = ReadAString(buffer);
 		result.ServerFixFeedSslPort = ReadNullInt32(buffer);
@@ -780,7 +780,7 @@ namespace
 	{
 		WriteAString(arg.AccountId, buffer);
 		WriteAccountType(arg.Type, buffer);
-		WriteAString(arg.Name, buffer);
+		WriteWString(arg.Name, buffer);
 		WriteAString(arg.Email, buffer);
 		WriteWString(arg.Comment, buffer);
 		WriteAString(arg.Currency, buffer);
@@ -805,7 +805,7 @@ namespace
 		CFxAccountInfo result = CFxAccountInfo();
 		result.AccountId = ReadAString(buffer);
 		result.Type = ReadAccountType(buffer);
-		result.Name = ReadAString(buffer);
+		result.Name = ReadWString(buffer);
 		result.Email = ReadAString(buffer);
 		result.Comment = ReadWString(buffer);
 		result.Currency = ReadAString(buffer);
