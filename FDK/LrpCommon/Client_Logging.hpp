@@ -537,9 +537,9 @@ namespace
 		_stream << ';';
 		LrpWriteInt32("ServerTimeZoneOffset", arg.ServerTimeZoneOffset, _stream);
 		_stream << ';';
-		LrpWriteAString("PlatformName", arg.PlatformName, _stream);
+		LrpWriteWString("PlatformName", arg.PlatformName, _stream);
 		_stream << ';';
-		LrpWriteAString("PlatformCompany", arg.PlatformCompany, _stream);
+		LrpWriteWString("PlatformCompany", arg.PlatformCompany, _stream);
 		_stream << ';';
 		LrpWriteTime("StartTime", arg.StartTime, _stream);
 		_stream << ';';

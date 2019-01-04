@@ -255,8 +255,8 @@ namespace
 		WriteAString(arg.TradingSessionId, buffer);
 		WriteSessionStatus(arg.Status, buffer);
 		WriteInt32(arg.ServerTimeZoneOffset, buffer);
-		WriteAString(arg.PlatformName, buffer);
-		WriteAString(arg.PlatformCompany, buffer);
+		WriteWString(arg.PlatformName, buffer);
+		WriteWString(arg.PlatformCompany, buffer);
 		WriteTime(arg.StartTime, buffer);
 		WriteTime(arg.OpenTime, buffer);
 		WriteTime(arg.CloseTime, buffer);
@@ -269,8 +269,8 @@ namespace
 		result.TradingSessionId = ReadAString(buffer);
 		result.Status = ReadSessionStatus(buffer);
 		result.ServerTimeZoneOffset = ReadInt32(buffer);
-		result.PlatformName = ReadAString(buffer);
-		result.PlatformCompany = ReadAString(buffer);
+		result.PlatformName = ReadWString(buffer);
+		result.PlatformCompany = ReadWString(buffer);
 		result.StartTime = ReadTime(buffer);
 		result.OpenTime = ReadTime(buffer);
 		result.CloseTime = ReadTime(buffer);

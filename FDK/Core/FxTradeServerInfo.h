@@ -4,15 +4,15 @@ class CORE_API CFxTradeServerInfo
 {
 public:
 
-    string CompanyName;
-    string CompanyFullName;
+    wstring CompanyName;
+    wstring CompanyFullName;
     wstring CompanyDescription;
-    string CompanyAddress;
+    wstring CompanyAddress;
     string CompanyEmail;
     string CompanyPhone;
     string CompanyWebSite;
-    string ServerName;
-    string ServerFullName;
+    wstring ServerName;
+    wstring ServerFullName;
     wstring ServerDescription;
     string ServerAddress;
     Nullable<int32_t> ServerFixFeedSslPort;

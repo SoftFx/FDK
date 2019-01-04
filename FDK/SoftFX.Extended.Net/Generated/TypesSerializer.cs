@@ -600,7 +600,7 @@ namespace SoftFX.Extended.Generated
 			var result = new SoftFX.Extended.AccountInfo();
 			result.AccountId = buffer.ReadAString();
 			result.Type = buffer.ReadAccountType();
-			result.Name = buffer.ReadAString();
+			result.Name = buffer.ReadWString();
 			result.Email = buffer.ReadAString();
 			result.Comment = buffer.ReadWString();
 			result.Currency = buffer.ReadAString();
@@ -625,7 +625,7 @@ namespace SoftFX.Extended.Generated
 		{
 			buffer.WriteAString(arg.AccountId);
 			buffer.WriteAccountType(arg.Type);
-			buffer.WriteAString(arg.Name);
+			buffer.WriteWString(arg.Name);
 			buffer.WriteAString(arg.Email);
 			buffer.WriteWString(arg.Comment);
 			buffer.WriteAString(arg.Currency);

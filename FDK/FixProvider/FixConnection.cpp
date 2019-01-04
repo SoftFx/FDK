@@ -421,8 +421,14 @@ void CFixConnection::OnSessionInfo(const FIX44::TradingSessionStatus& message)
     sessionInfo.EndTime = message.GetTradSesEndTime().toFileTime();
     sessionInfo.Status = (::SessionStatus)message.GetTradSesStatus();
     message.TryGetPlatformTimezoneOffset(sessionInfo.ServerTimeZoneOffset);
-    message.TryGetPlatformCompany(sessionInfo.PlatformCompany);
-    message.TryGetPlatformName(sessionInfo.PlatformName);
+
+    string encodedPlatformCompany;
+    if (message.TryGetPlatformCompany(encodedPlatformCompany))
+        Utf8ToStd(sessionInfo.PlatformCompany, encodedPlatformCompany);
+
+    string encodedPlatformName;
+    if (message.TryGetPlatformName(encodedPlatformName))
+        Utf8ToStd(sessionInfo.PlatformName, encodedPlatformName);
 
     int32 count;
     if (message.TryGetNoStatusGroups(count))
@@ -860,18 +866,28 @@ void CFixConnection::OnTradeServerInfoReport(const FIX44::TradeServerInfoReport&
     eventInfo.ID = message.GetTrdSrvReqID();
 
     CFxTradeServerInfo tradeServerInfo;
-    message.TryGetCompanyName(tradeServerInfo.CompanyName);
-    message.TryGetCompanyFullName(tradeServerInfo.CompanyFullName);
+
+    string encodedCompanyName;
+    if (message.TryGetCompanyName(encodedCompanyName))
+        Utf8ToStd(tradeServerInfo.CompanyName, encodedCompanyName);
+    string encodedCompanyFullName;
+    if (message.TryGetCompanyFullName(encodedCompanyFullName))
+        Utf8ToStd(tradeServerInfo.CompanyFullName, encodedCompanyFullName);
     string encodedCompanyDescription;
     if (message.TryGetEncodedCompanyDescription(encodedCompanyDescription))
         Utf8ToStd(tradeServerInfo.CompanyDescription, encodedCompanyDescription);
-    message.TryGetCompanyAddress(tradeServerInfo.CompanyAddress);
+    string encodedCompanyAddress;
+    if (message.TryGetCompanyAddress(encodedCompanyAddress))
+        Utf8ToStd(tradeServerInfo.CompanyAddress, encodedCompanyAddress);
     message.TryGetCompanyEmail(tradeServerInfo.CompanyEmail);
     message.TryGetCompanyPhone(tradeServerInfo.CompanyPhone);
     message.TryGetCompanyWebSite(tradeServerInfo.CompanyWebSite);
-    message.TryGetServerName(tradeServerInfo.ServerName);
-    message.TryGetServerFullName(tradeServerInfo.ServerFullName);
-    message.TryGetServerFullName(tradeServerInfo.ServerFullName);
+    string encodedServerName;
+    if (message.TryGetServerName(encodedServerName))
+        Utf8ToStd(tradeServerInfo.ServerName, encodedServerName);
+    string encodedServerFullName;
+    if (message.TryGetServerFullName(encodedServerFullName))
+        Utf8ToStd(tradeServerInfo.ServerFullName, encodedServerFullName);
     string encodedServerDescription;
     if (message.TryGetEncodedServerDescription(encodedServerDescription))
         Utf8ToStd(tradeServerInfo.ServerDescription, encodedServerDescription);
@@ -923,11 +939,14 @@ void CFixConnection::OnAccountInfo(const FIX44::AccountInfo& message)
     accountInfo.AccountId = message.GetAccount();
     message.TryGetAccMarginCallLevel(accountInfo.MarginCallLevel);
     message.TryGetAccStopOutLevel(accountInfo.StopOutLevel);
-    message.TryGetAccountName(accountInfo.Name);
     message.TryGetAccountValidFlag(accountInfo.IsValid);
     message.TryGetInvestorLoginFlag(accountInfo.IsReadOnly);
     message.TryGetAccountBlockedFlag(accountInfo.IsBlocked);
     message.TryGetRegistEmail(accountInfo.Email);
+
+    string accountName;
+    if (message.TryGetAccountName(accountName))
+        Utf8ToStd(accountInfo.Name, accountName);
 
     string encodedComment;
     if (message.TryGetEncodedComment(encodedComment))

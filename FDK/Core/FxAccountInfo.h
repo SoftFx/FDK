@@ -14,7 +14,7 @@ public:
 public:
     string AccountId;
     FxAccountType Type;
-    string Name;
+    wstring Name;
     string Email;
     wstring Comment;
     string Currency;

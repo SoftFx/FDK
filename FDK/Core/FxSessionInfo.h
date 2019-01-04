@@ -15,8 +15,8 @@ public:
 	CDateTime EndTime;
 	std::string TradingSessionId;
 	int32 ServerTimeZoneOffset;
-	std::string PlatformName;
-	std::string PlatformCompany;
+	std::wstring PlatformName;
+	std::wstring PlatformCompany;
 	SessionStatus Status;
 	std::vector<CFxStatusGroupInfo> StatusGroups;
 };
