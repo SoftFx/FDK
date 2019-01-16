@@ -23,6 +23,7 @@
             this.bids = bids;
             this.asks = asks;
             this.positive = positive;
+            this.count = int.MaxValue;
         }
 
         /// <summary>
@@ -41,6 +42,7 @@
             this.bids = new Bars(datafeed, symbol, PriceType.Bid, period, startTime, endTime);
             this.asks = new Bars(datafeed, symbol, PriceType.Ask, period, startTime, endTime);
             this.positive = DateTime.Compare(startTime, endTime) >= 0;
+            this.count = int.MaxValue;
         }
 
         /// <summary>
@@ -59,6 +61,7 @@
             this.bids = new Bars(storage, symbol, PriceType.Bid, period, startTime, endTime);
             this.asks = new Bars(storage, symbol, PriceType.Ask, period, startTime, endTime);
             this.positive = DateTime.Compare(startTime, endTime) >= 0;
+            this.count = int.MaxValue;
         }
 
         /// <summary>
@@ -79,6 +82,7 @@
             this.bids = new Bars(datafeed, symbol, PriceType.Bid, period, startTime, endTime, preferredBufferSize);
             this.asks = new Bars(datafeed, symbol, PriceType.Ask, period, startTime, endTime, preferredBufferSize);
             this.positive = DateTime.Compare(startTime, endTime) >= 0;
+            this.count = int.MaxValue;
         }
 
         /// <summary>
