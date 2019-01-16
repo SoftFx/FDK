@@ -19,7 +19,7 @@
             var from = to.AddDays(-1);
 
             var reportsNumber = 0;
-            var it = this.Trade.Server.GetTradeTransactionReports(TimeDirection.Forward, false, new DateTime(2017, 2, 1), new DateTime(2017, 2, 28), false);
+            var it = this.Trade.Server.GetTradeTransactionReports(TimeDirection.Forward, false, new DateTime(2018, 2, 1), new DateTime(2019, 2, 28), false);
             for (; !it.EndOfStream; it.Next())
             {
                 var s = it.Item;
@@ -28,7 +28,7 @@
             }
             it.Dispose();
             Console.WriteLine("Reports number = {0}", reportsNumber);
-            var position = this.Trade.Server.SendOrder("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 0, 1000000, null, null, null, null, null, null, null, null);
+            var position = this.Trade.Server.SendOrder("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 0, 1000000, null, null, null, null, null, null, null, null, null);
             var result = position.Close();
             Thread.Sleep(1000);
         }

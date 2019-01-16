@@ -39,6 +39,7 @@ public:
     Nullable<bool> IOCOverride;
     Nullable<bool> IFMOverride;
     Nullable<double> PrevVolume;
+    Nullable<double> Slippage;
 };
 
 

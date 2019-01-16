@@ -34,6 +34,7 @@
         public bool? IOCOverride { get; set; }
         public bool? IFMOverride { get; set; }
         public double? PrevVolume { get; set; }
+        public double? Slippage { get; set; }
 
         public FxOrder()
         {
@@ -44,7 +45,7 @@
             this.Tag = string.Empty;
         }
 
-        public FxOrder(string symbol, int type, TradeRecordSide side, double volume, double? maxVisibleVolume, double? price, double? stopPrice, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic)
+        public FxOrder(string symbol, int type, TradeRecordSide side, double volume, double? maxVisibleVolume, double? price, double? stopPrice, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic, double? slippage)
             : this()
         {
             this.Symbol = symbol;
@@ -60,9 +61,10 @@
             this.Comment = comment;
             this.Tag = tag;
             this.Magic = magic;
+            this.Slippage = slippage;
         }
 
-        public FxOrder(string id, string clientId, string symbol, int type, TradeRecordSide side, double? newVolume, double? newMaxVisibleVolume, double? newPrice, double? newStopPrice, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic, double? prevVolume, bool? IOCOverride, bool? IFMOverride)
+        public FxOrder(string id, string clientId, string symbol, int type, TradeRecordSide side, double? newVolume, double? newMaxVisibleVolume, double? newPrice, double? newStopPrice, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic, double? prevVolume, bool? IOCOverride, bool? IFMOverride, double? slippage)
             : this()
         {
             this.OrderId = id;
@@ -83,6 +85,7 @@
             this.IOCOverride = IOCOverride;
             this.IFMOverride = IFMOverride;
             this.PrevVolume = prevVolume;
+            this.Slippage = slippage;
         }
     }
 }

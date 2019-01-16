@@ -47,7 +47,7 @@
             return Native.TradeServer.GetTradeServerInfo(handle, (uint)timeoutInMilliseconds);
         }
 
-        public FxOrder OpenNewOrder(string operationId, string symbol, TradeCommand command, TradeRecordSide side, double volume, double? maxVisibleVolume, double? price, double? stopPrice, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic, int timeoutInMilliseconds)
+        public FxOrder OpenNewOrder(string operationId, string symbol, TradeCommand command, TradeRecordSide side, double volume, double? maxVisibleVolume, double? price, double? stopPrice, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic, int timeoutInMilliseconds, double? slippage)
         {
             if (operationId == null)
                 operationId = string.Empty;
@@ -60,8 +60,9 @@
             this.Validate(nameof(stopPrice), stopPrice);
             this.Validate(nameof(stopLoss), stopLoss);
             this.Validate(nameof(takeProfit), takeProfit);
+            this.Validate(nameof(slippage), slippage);
 
-            var order = new FxOrder(symbol, (int)command, side, volume, maxVisibleVolume, price, stopPrice, stopLoss, takeProfit, expiration, comment, tag, magic);
+            var order = new FxOrder(symbol, (int)command, side, volume, maxVisibleVolume, price, stopPrice, stopLoss, takeProfit, expiration, comment, tag, magic, slippage);
 
             return Native.TradeServer.OpenNewOrder(this.handle, operationId, order, (uint)timeoutInMilliseconds);
         }
@@ -78,7 +79,8 @@
             double? prevVolume,
             bool? IOCOverride,
             bool? IFMOverride,
-            int timeoutInMilliseconds)
+            int timeoutInMilliseconds,
+            double? slippage)
         {
             if (operationId == null)
                 operationId = string.Empty;
@@ -104,8 +106,9 @@
             this.Validate(nameof(newStopLoss), newStopLoss);
             this.Validate(nameof(newTakeProfit), newTakeProfit);
             this.Validate(nameof(prevVolume), prevVolume);
+            this.Validate(nameof(slippage), slippage);
 
-            var order = new FxOrder(orderId, clientId, symbol, (int)type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, prevVolume, IOCOverride, IFMOverride);
+            var order = new FxOrder(orderId, clientId, symbol, (int)type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, prevVolume, IOCOverride, IFMOverride, slippage);
 
             return Native.TradeServer.ModifyOrder(this.handle, operationId, order, (uint)timeoutInMilliseconds);
         }

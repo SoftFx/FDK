@@ -320,6 +320,7 @@
    <field name='ReqOpenPrice' required='N' />
    <field name='ReqOpenQty' required='N' />
    <field name='ParentOrderType' required='N' />
+   <field name='Slippage' required='N' />
   </message>
   <message name='OrderCancelReject' msgcat='app' msgtype='9'>
    <field name='OrderID' required='Y' />
@@ -520,6 +521,7 @@
    <field name='Magic' required='N' />
    <field name='ImmediateOrCancelFlag' required='N' />
    <field name='MarketWithSlippageFlag' required='N' />
+   <field name='Slippage' required='N' />
   </message>
   <message name='NewOrderList' msgcat='app' msgtype='E'>
    <field name='ListID' required='Y' />
@@ -754,6 +756,7 @@
    <field name='Magic' required='N' />
    <field name='ImmediateOrCancelFlag' required='N' />
    <field name='InFlightMitigationFlag' required='N' />
+   <field name='Slippage' required='N' />
   </message>
   <message name='OrderStatusRequest' msgcat='app' msgtype='H'>
    <field name='OrderID' required='N' />
@@ -4025,6 +4028,7 @@
     <field name='CommCloseReducedFlag' required='N' />
     <field name='MinCommissionCurrency' required='N' />
     <field name='MinCommissionConversionRate' required='N' />
+    <field name='Slippage' required='N' />
   </message>
   <message name='ComponentsInfoRequest' msgcat='app' msgtype='U1018'>
     <field name='CompReqID' required='N' />
@@ -8061,5 +8065,6 @@
    <value enum='N' description='NO' />
    <value enum='Y' description='YES' />
   </field>
+  <field number='10231' name='Slippage' type='FLOAT' />
 </fields>
 </fix>

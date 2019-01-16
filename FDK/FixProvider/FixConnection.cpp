@@ -831,6 +831,7 @@ void CFixConnection::OnExecution(const CFixExecutionReport& message)
     report.Swap = message.GetFxSwap();
     report.ReqOpenPrice = message.GetFxReqOpenPrice();
     report.ReqOpenVolume = message.GetFxReqOpenVolume();
+    report.Slippage = message.GetFxSlippage();
 
     message.GetAssets(report.Assets);
 
@@ -1654,6 +1655,10 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
     double minCommissionConversionRate;
     if (message.TryGetMinCommissionConversionRate(minCommissionConversionRate))
         report.MinCommissionConversionRate = minCommissionConversionRate;
+
+    double slippage;
+    if (message.TryGetSlippage(slippage))
+        report.Slippage = slippage;
 
     m_receiver->VTradeTransactionReport(info, report);
 }

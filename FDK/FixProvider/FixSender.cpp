@@ -417,6 +417,12 @@ void CFixSender::VSendOpenNewOrder(const string& id, const CFxOrder& required)
             message.SetClAppID(m_appId);
     }
 
+    if (m_version.SupportsSlippage())
+    {
+        if (required.Slippage.HasValue())
+            message.SetSlippage(*required.Slippage);
+    }
+
 #ifdef LOG_PERFORMANCE
     uint64_t timestamp = logger_->getTimestamp();
     logger_->logTimestamp(id.c_str(), timestamp, "NewOrder");
@@ -545,7 +551,7 @@ void CFixSender::VSendModifyOrder(const string& id, const CFxOrder& request)
     {
         message.SetOrdType(FIX::OrdType_POSITION);
     }
-    else if (FxTradeRecordType_StopLimit == request.Type)
+    else if (FxTradeRecordType_StopLimit == request.Type || FxTradeRecordType_StopLimit_IoC == request.Type)
     {
         message.SetOrdType(FIX::OrdType_STOP_LIMIT);
         if (request.Price.HasValue())
@@ -642,6 +648,12 @@ void CFixSender::VSendModifyOrder(const string& id, const CFxOrder& request)
         {
             message.SetLeavesQty(*request.PrevVolume);
         }
+    }
+
+    if (m_version.SupportsSlippage())
+    {
+        if (request.Slippage.HasValue())
+            message.SetSlippage(*request.Slippage);
     }
 
     return SendMessage(message);

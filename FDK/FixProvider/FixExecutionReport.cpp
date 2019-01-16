@@ -513,6 +513,15 @@ Nullable<double> CFixExecutionReport::GetFxReqOpenVolume()const
     }
     return Nullable<double>();
 }
+Nullable<double> CFixExecutionReport::GetFxSlippage()const
+{
+    double result = 0;
+    if (TryGetSlippage(result))
+    {
+        return result;
+    }
+    return Nullable<double>();
+}
 void CFixExecutionReport::GetAssets(vector<CAssetInfo>& assets) const
 {
     assets.clear();

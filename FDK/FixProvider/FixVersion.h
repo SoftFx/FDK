@@ -15,6 +15,7 @@ public:
     bool SupportsAppId();
     bool SupportsTradeRequestType();
     bool SupportsModifyIOCandIFM();
+    bool SupportsSlippage();
 private:
     friend bool operator < (const CFixVersion& first, const CFixVersion& second);
     friend bool operator > (const CFixVersion& first, const CFixVersion& second);

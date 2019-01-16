@@ -185,8 +185,8 @@ namespace LrpServer.Net.LocalCpp
 			result.TradingSessionId = buffer.ReadAString();
 			result.Status = buffer.ReadSessionStatus();
 			result.ServerTimeZoneOffset = buffer.ReadInt32();
-			result.PlatformName = buffer.ReadAString();
-			result.PlatformCompany = buffer.ReadAString();
+			result.PlatformName = buffer.ReadWString();
+			result.PlatformCompany = buffer.ReadWString();
 			result.StartTime = buffer.ReadTime();
 			result.OpenTime = buffer.ReadTime();
 			result.CloseTime = buffer.ReadTime();
@@ -199,8 +199,8 @@ namespace LrpServer.Net.LocalCpp
 			buffer.WriteAString(arg.TradingSessionId);
 			buffer.WriteSessionStatus(arg.Status);
 			buffer.WriteInt32(arg.ServerTimeZoneOffset);
-			buffer.WriteAString(arg.PlatformName);
-			buffer.WriteAString(arg.PlatformCompany);
+			buffer.WriteWString(arg.PlatformName);
+			buffer.WriteWString(arg.PlatformCompany);
 			buffer.WriteTime(arg.StartTime);
 			buffer.WriteTime(arg.OpenTime);
 			buffer.WriteTime(arg.CloseTime);

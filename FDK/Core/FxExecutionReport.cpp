@@ -34,6 +34,7 @@ CFxExecutionReport::CFxExecutionReport()
 
     ReqOpenPrice = numeric_limits<double>::quiet_NaN();
     ReqOpenVolume = numeric_limits<double>::quiet_NaN();
+    Slippage = numeric_limits<double>::quiet_NaN();
 }
 
 bool CFxExecutionReport::TryGetTradeRecord(CFxOrder& order) const
@@ -273,6 +274,7 @@ void CFxExecutionReport::CopyCommonFieldsToRecord(CFxOrder& order) const
     }
     order.Created = this->Created;
     order.Modified = this->Modified;
+    order.Slippage = this->Slippage;
 }
 
 bool CFxExecutionReport::IsReject() const

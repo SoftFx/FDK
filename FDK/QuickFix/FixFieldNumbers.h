@@ -1211,6 +1211,7 @@ namespace FIX
     const int ThrottlingMethod = 10228;
     const int ThrottlingMethodsInfo = 10229;
     const int IndicativeTick = 10230;
+    const int Slippage = 10231;
     const int NoStrategyParameters = 957;
     const int StrategyParameterName = 958;
     const int StrategyParameterType = 959;

@@ -20,7 +20,7 @@
         {
             try
             {
-                var order = this.Trade.Server.SendOrder("EURUSD", TradeCommand.Limit, TradeRecordSide.Buy, 1000000, null, 1.0, null, null, null, null, null, null, null);
+                var order = this.Trade.Server.SendOrder("EURUSD", TradeCommand.Limit, TradeRecordSide.Buy, 1000000, null, 1.0, null, null, null, null, null, null, null, null);
                 order.Delete();
                 Console.WriteLine("Limit order has been deleted");
             }

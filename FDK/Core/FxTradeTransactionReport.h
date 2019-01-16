@@ -94,6 +94,7 @@ public:
     Nullable<double> UsdToDstAssetConversionRate;
     std::string MinCommissionCurrency;
     Nullable<double> MinCommissionConversionRate;
+    Nullable<double> Slippage;
 };
 
 #pragma warning (pop)

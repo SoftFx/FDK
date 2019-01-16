@@ -41,6 +41,10 @@ bool CFixVersion::SupportsModifyIOCandIFM()
 {
     return *this >= CFixVersion(1, 62);
 }
+bool CFixVersion::SupportsSlippage()
+{
+    return *this >= CFixVersion(1, 70);
+}
 bool operator < (const CFixVersion& first, const CFixVersion& second)
 {
     if (first.Major == second.Major)
