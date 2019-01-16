@@ -14,7 +14,8 @@
         {
             //this.Trade.Server.SendOrder("EUR/USD", TradeCommand.Limit, TradeRecordSide.Buy, 1.1, 1000000, null, null, null, null, null, null);
             //this.Trade.Server.SendOrder("EUR/USD", TradeCommand.Stop, TradeRecordSide.Buy, 2.1, 1000000, null, null, null, null, null, null);
-            this.Trade.Server.SendOrder("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 0, 1000000, null, null, null, null, null, null, null, null);
+            this.Trade.Server.SendOrder("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 1000000, 1000000, 1.14796, 1.14796, null, null, null, null, null, null, null);
+            this.Trade.Server.SendOrder("EURUSD", TradeCommand.Stop, TradeRecordSide.Buy, 1000000, 1000000, 1.14796, 1.14796, null, null, null, null, null, null, 0.01);
             //this.Trade.SynchOperationTimeout = 600000;
             var records = this.Trade.Server.GetTradeRecords();
             Console.WriteLine("Records number = {0}", records.Length);

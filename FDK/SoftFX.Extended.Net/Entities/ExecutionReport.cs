@@ -210,5 +210,10 @@
         /// Account balance or Double.Nan.
         /// </summary>
         public double Balance { get; internal set; }
+
+        /// <summary>
+        /// Gets Slippage field.
+        /// </summary>
+        public double? Slippage { get; internal set; }
     }
 }

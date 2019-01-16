@@ -41,7 +41,7 @@
             try
             {
                 this.Trade.SynchOperationTimeout = 30000;
-                var position = this.Trade.Server.SendOrder("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 0, 1000000, null, null, null, null, null, null, null, null);
+                var position = this.Trade.Server.SendOrder("EURUSD", TradeCommand.Market, TradeRecordSide.Buy, 0, 1000000, null, null, null, null, null, null, null, null, null);
                 Console.WriteLine("Opened position = {0}", position);
 
                 //var position2 = position.Modify(null, null, 2.0, null);

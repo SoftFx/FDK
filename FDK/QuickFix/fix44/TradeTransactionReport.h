@@ -194,6 +194,8 @@ namespace FIX44
     FIELD_SET_EX(std::string, MinCommissionCurrency);
     FIELD_SET(*this, FIX::MinCommissionConversionRate);
     FIELD_SET_EX(double, MinCommissionConversionRate);
+    FIELD_SET(*this, FIX::Slippage);
+    FIELD_SET_EX(double, Slippage);
   };
 
 }

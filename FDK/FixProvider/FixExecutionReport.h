@@ -39,6 +39,7 @@ public:
     bool GetMarketWithSlippageFlag() const;
     Nullable<double> GetFxReqOpenPrice() const;
     Nullable<double> GetFxReqOpenVolume() const;
+    Nullable<double> GetFxSlippage() const;
 public:
     void GetAssets(vector<CAssetInfo>& assets) const;
 public:

@@ -69,10 +69,11 @@
         /// <param name="comment">User defined comment for a new opening order. Null is interpreded as empty string.</param>
         /// <param name="tag">User defined tag for a new opening order. Null is interpreded as empty string.</param>
         /// <param name="magic">User defined magic number for a new opening order. Null is not defined.</param>
+        /// <param name="slippage">Slippage.</param>
         /// <returns>A new order; can not be null.</returns>
-        public TradeRecord SendOrder(string symbol, TradeCommand command, TradeRecordSide side, double volume, double? maxVisibleVolume, double? price, double? stopPrice, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic)
+        public TradeRecord SendOrder(string symbol, TradeCommand command, TradeRecordSide side, double volume, double? maxVisibleVolume, double? price, double? stopPrice, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic, double? slippage)
         {
-            return this.SendOrderEx(null, symbol, command, side, volume, maxVisibleVolume, price, stopPrice, stopLoss, takeProfit, expiration, comment, tag, magic, this.Client.SynchOperationTimeout);
+            return this.SendOrderEx(symbol, command, side, volume, maxVisibleVolume, price, stopPrice, stopLoss, takeProfit, expiration, comment, tag, magic, this.Client.SynchOperationTimeout, slippage);
         }
 
         /// <summary>
@@ -92,10 +93,11 @@
         /// <param name="tag">User defined tag for a new opening order. Null is interpreded as empty string.</param>
         /// <param name="magic">User defined magic number for a new opening order. Null is not defined.</param>
         /// <param name="timeoutInMilliseconds">Timeout of the synchronous operation.</param>
+        /// <param name="slippage">Slippage.</param>
         /// <returns>A new trade record; can not be null.</returns>
-        public TradeRecord SendOrderEx(string symbol, TradeCommand command, TradeRecordSide side, double volume, double? maxVisibleVolume, double? price, double? stopPrice, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic, int timeoutInMilliseconds)
+        public TradeRecord SendOrderEx(string symbol, TradeCommand command, TradeRecordSide side, double volume, double? maxVisibleVolume, double? price, double? stopPrice, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic, int timeoutInMilliseconds, double? slippage)
         {
-            return this.SendOrderEx(null, symbol, command, side, volume, maxVisibleVolume, price, stopPrice, stopLoss, takeProfit, expiration, comment, tag, magic, timeoutInMilliseconds);
+            return this.SendOrderEx(null, symbol, command, side, volume, maxVisibleVolume, price, stopPrice, stopLoss, takeProfit, expiration, comment, tag, magic, timeoutInMilliseconds, slippage);
         }
 
         /// <summary>
@@ -118,10 +120,11 @@
         /// <param name="comment">User defined comment for a new opening order. Null is interpreded as empty string.</param>
         /// <param name="tag">User defined tag for a new opening order. Null is interpreded as empty string.</param>
         /// <param name="magic">User defined magic number for a new opening order. Null is not defined.</param>
+        /// <param name="slippage">Slippage.</param>
         /// <returns>A new trade record; can not be null.</returns>
-        public TradeRecord SendOrderEx(string operationId, string symbol, TradeCommand command, TradeRecordSide side, double volume, double? maxVisibleVolume, double? price, double? stopPrice, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic)
+        public TradeRecord SendOrderEx(string operationId, string symbol, TradeCommand command, TradeRecordSide side, double volume, double? maxVisibleVolume, double? price, double? stopPrice, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic, double? slippage)
         {
-            return this.SendOrderEx(operationId, symbol, command, side, volume, maxVisibleVolume, price, stopPrice, stopLoss, takeProfit, expiration, comment, tag, magic, this.Client.SynchOperationTimeout);
+            return this.SendOrderEx(operationId, symbol, command, side, volume, maxVisibleVolume, price, stopPrice, stopLoss, takeProfit, expiration, comment, tag, magic, this.Client.SynchOperationTimeout, slippage);
         }
 
         /// <summary>
@@ -145,13 +148,14 @@
         /// <param name="tag">User defined tag for a new opening order. Null is interpreded as empty string.</param>
         /// <param name="magic">User defined magic number for a new opening order. Null is not defined.</param>
         /// <param name="timeoutInMilliseconds">Timeout of the synchronous operation.</param>
+        /// <param name="slippage">Slippage.</param>
         /// <returns>A new trade record; can not be null.</returns>
-        TradeRecord SendOrderEx(string operationId, string symbol, TradeCommand command, TradeRecordSide side, double volume, double? maxVisibleVolume, double? price, double? stopPrice, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic, int timeoutInMilliseconds)
+        TradeRecord SendOrderEx(string operationId, string symbol, TradeCommand command, TradeRecordSide side, double volume, double? maxVisibleVolume, double? price, double? stopPrice, double? stopLoss, double? takeProfit, DateTime? expiration, string comment, string tag, int? magic, int timeoutInMilliseconds, double? slippage)
         {
 #if LOG_PERFORMANCE
             ulong timestamp = Client.loggerIn_.GetTimestamp();
 #endif
-            var order = this.Client.DataTradeHandle.OpenNewOrder(operationId, symbol, command, side, volume, maxVisibleVolume, price, stopPrice, stopLoss, takeProfit, expiration, comment ?? string.Empty, tag ?? string.Empty, magic, timeoutInMilliseconds);
+            var order = this.Client.DataTradeHandle.OpenNewOrder(operationId, symbol, command, side, volume, maxVisibleVolume, price, stopPrice, stopLoss, takeProfit, expiration, comment ?? string.Empty, tag ?? string.Empty, magic, timeoutInMilliseconds, slippage);
             TradeRecord tradeRecord = new TradeRecord(this.Client, order);
 
 #if LOG_PERFORMANCE
@@ -229,9 +233,9 @@
             this.Client.DataTradeHandle.DeleteOrder(operationId, orderId, clientId, side, timeoutInMilliseconds);
         }
 
-#endregion
+        #endregion
 
-#region Modify
+        #region Modify
 
         /// <summary>
         /// The method modifies an existing trade record.
@@ -250,6 +254,7 @@
         /// <param name="newComment">A new comment.</param>
         /// <param name="newTag">A new tag.</param>
         /// <param name="newMagic">A new magic.</param>
+        /// <param name="slippage">Slippage.</param>
         /// <returns>A modified trade record.</returns>
         public TradeRecord ModifyTradeRecord(
             string orderId, string symbol, TradeRecordType type, TradeRecordSide side,
@@ -259,9 +264,10 @@
             DateTime? newExpiration,
             string newComment,
             string newTag,
-            int? newMagic)
+            int? newMagic,
+            double? slippage)
         {
-            return this.ModifyTradeRecordEx(orderId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, null, null, null, this.Client.SynchOperationTimeout);
+            return this.ModifyTradeRecordEx(orderId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, null, null, null, this.Client.SynchOperationTimeout, slippage);
         }
 
         /// <summary>
@@ -286,6 +292,7 @@
         /// <param name="IOCOverride">'Immediate-Or-Cancel' flag override.</param>
         /// <param name="IFMOverride">'In-Flight-Mitigation' flag override.</param>
         /// <param name="timeoutInMilliseconds">Timeout of the synchronous operation.</param>
+        /// <param name="slippage">Slippage.</param>
         /// <returns>A modified trade record.</returns>
         public TradeRecord ModifyTradeRecordEx(
             string orderId, string symbol, TradeRecordType type, TradeRecordSide side,
@@ -299,9 +306,10 @@
             double? prevVolume,
             bool? IOCOverride,
             bool? IFMOverride,
-            int timeoutInMilliseconds)
+            int timeoutInMilliseconds,
+            double? slippage)
         {
-            return this.ModifyTradeRecordEx(null, orderId, "Client-" + orderId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, prevVolume, IOCOverride, IFMOverride, timeoutInMilliseconds);
+            return this.ModifyTradeRecordEx(null, orderId, "Client-" + orderId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, prevVolume, IOCOverride, IFMOverride, timeoutInMilliseconds, slippage);
         }
 
         /// <summary>
@@ -329,6 +337,7 @@
         /// If PrevAmount is provided and server Amount is different modify operation will rejected</param>
         /// <param name="IOCOverride">'Immediate-Or-Cancel' flag override.</param>
         /// <param name="IFMOverride">'In-Flight-Mitigation' flag override.</param>
+        /// <param name="slippage">Slippage.</param>
         /// <returns>A modified trade record.</returns>
         public TradeRecord ModifyTradeRecordEx(
             string operationId, string orderId, string symbol, TradeRecordType type, TradeRecordSide side,
@@ -341,9 +350,10 @@
             int? newMagic,
             double? prevVolume,
             bool? IOCOverride,
-            bool? IFMOverride)
+            bool? IFMOverride,
+            double? slippage)
         {
-            return this.ModifyTradeRecordEx(operationId, orderId, "Client-" + orderId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, prevVolume, IOCOverride, IFMOverride, this.Client.SynchOperationTimeout);
+            return this.ModifyTradeRecordEx(operationId, orderId, "Client-" + orderId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, prevVolume, IOCOverride, IFMOverride, this.Client.SynchOperationTimeout, slippage);
         }
 
         /// <summary>
@@ -372,6 +382,7 @@
         /// <param name="IOCOverride">'Immediate-Or-Cancel' flag override.</param>
         /// <param name="IFMOverride">'In-Flight-Mitigation' flag override.</param>
         /// <param name="timeoutInMilliseconds">Timeout of the synchronous operation.</param>
+        /// <param name="slippage">Slippage.</param>
         /// <returns>A modified trade record.</returns>
         public TradeRecord ModifyTradeRecordEx(
             string operationId, string orderId, string clientId, string symbol, TradeRecordType type, TradeRecordSide side,
@@ -385,9 +396,10 @@
             double? prevVolume,
             bool? IOCOverride,
             bool? IFMOverride,
-            int timeoutInMilliseconds)
+            int timeoutInMilliseconds,
+            double? slippage)
         {
-            var order = this.Client.DataTradeHandle.ModifyOrder(operationId, orderId, clientId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, prevVolume, IOCOverride, IFMOverride, timeoutInMilliseconds);
+            var order = this.Client.DataTradeHandle.ModifyOrder(operationId, orderId, clientId, symbol, type, side, newVolume, newMaxVisibleVolume, newPrice, newStopPrice, newStopLoss, newTakeProfit, newExpiration, newComment, newTag, newMagic, prevVolume, IOCOverride, IFMOverride, timeoutInMilliseconds, slippage);
             return new TradeRecord(this.Client, order);
         }
 

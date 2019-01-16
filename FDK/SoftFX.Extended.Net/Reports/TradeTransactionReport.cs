@@ -373,5 +373,9 @@
         /// <summary>
         /// </summary>
         public double? MinCommissionConversionRate { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public double? Slippage { get; internal set; }
     }
 }

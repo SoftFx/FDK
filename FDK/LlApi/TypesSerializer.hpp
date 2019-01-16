@@ -878,6 +878,7 @@ namespace
 		WriteNullBoolean(arg.IOCOverride, buffer);
 		WriteNullBoolean(arg.IFMOverride, buffer);
 		WriteNullDouble(arg.PrevVolume, buffer);
+		WriteNullDouble(arg.Slippage, buffer);
 	}
 	CFxOrder ReadFxOrder(MemoryBuffer& buffer)
 	{
@@ -912,6 +913,7 @@ namespace
 		result.IOCOverride = ReadNullBoolean(buffer);
 		result.IFMOverride = ReadNullBoolean(buffer);
 		result.PrevVolume = ReadNullDouble(buffer);
+		result.Slippage = ReadNullDouble(buffer);
 		return result;
 	}
 	void WriteFxOrderArray(const std::vector<CFxOrder>& arg, MemoryBuffer& buffer)
@@ -1221,6 +1223,7 @@ namespace
 		WriteNullDouble(arg.UsdToDstAssetConversionRate, buffer);
 		WriteAString(arg.MinCommissionCurrency, buffer);
 		WriteNullDouble(arg.MinCommissionConversionRate, buffer);
+		WriteNullDouble(arg.Slippage, buffer);
 	}
 	CFxTradeTransactionReport ReadTradeTransactionReport(MemoryBuffer& buffer)
 	{
@@ -1300,6 +1303,7 @@ namespace
 		result.UsdToDstAssetConversionRate = ReadNullDouble(buffer);
 		result.MinCommissionCurrency = ReadAString(buffer);
 		result.MinCommissionConversionRate = ReadNullDouble(buffer);
+		result.Slippage = ReadNullDouble(buffer);
 		return result;
 	}
 	void WriteDailyAccountSnapshotReport(const CFxDailyAccountSnapshotReport& arg, MemoryBuffer& buffer)
@@ -1410,6 +1414,7 @@ namespace
 		WriteBoolean(arg.MarketWithSlippage, buffer);
 		WriteNullDouble(arg.ReqOpenPrice, buffer);
 		WriteNullDouble(arg.ReqOpenVolume, buffer);
+		WriteNullDouble(arg.Slippage, buffer);
 	}
 	CFxExecutionReport ReadExecutionReport(MemoryBuffer& buffer)
 	{
@@ -1454,6 +1459,7 @@ namespace
 		result.MarketWithSlippage = ReadBoolean(buffer);
 		result.ReqOpenPrice = ReadNullDouble(buffer);
 		result.ReqOpenVolume = ReadNullDouble(buffer);
+		result.Slippage = ReadNullDouble(buffer);
 		return result;
 	}
 	void WriteCurrencyInfo(const CFxCurrencyInfo& arg, MemoryBuffer& buffer)

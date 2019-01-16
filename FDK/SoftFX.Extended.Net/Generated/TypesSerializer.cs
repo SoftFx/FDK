@@ -445,8 +445,8 @@ namespace SoftFX.Extended.Generated
 			result.OpenTime = buffer.ReadTime();
 			result.CloseTime = buffer.ReadTime();
 			result.EndTime = buffer.ReadTime();
-			result.PlatformName = buffer.ReadAString();
-			result.PlatformCompany = buffer.ReadAString();
+			result.PlatformName = buffer.ReadWString();
+			result.PlatformCompany = buffer.ReadWString();
 			result.StatusGroups = buffer.ReadStatusGroupInfoArray();
 			return result;
 		}
@@ -459,8 +459,8 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteTime(arg.OpenTime);
 			buffer.WriteTime(arg.CloseTime);
 			buffer.WriteTime(arg.EndTime);
-			buffer.WriteAString(arg.PlatformName);
-			buffer.WriteAString(arg.PlatformCompany);
+			buffer.WriteWString(arg.PlatformName);
+			buffer.WriteWString(arg.PlatformCompany);
 			buffer.WriteStatusGroupInfoArray(arg.StatusGroups);
 		}
 		public static SoftFX.Extended.SymbolInfo[] ReadSymbolInfoArray(this MemoryBuffer buffer)
@@ -558,15 +558,15 @@ namespace SoftFX.Extended.Generated
 		public static SoftFX.Extended.TradeServerInfo ReadTradeServerInfo(this MemoryBuffer buffer)
 		{
 			var result = new SoftFX.Extended.TradeServerInfo();
-			result.CompanyName = buffer.ReadAString();
-			result.CompanyFullName = buffer.ReadAString();
+			result.CompanyName = buffer.ReadWString();
+			result.CompanyFullName = buffer.ReadWString();
 			result.CompanyDescription = buffer.ReadWString();
-			result.CompanyAddress = buffer.ReadAString();
+			result.CompanyAddress = buffer.ReadWString();
 			result.CompanyEmail = buffer.ReadAString();
 			result.CompanyPhone = buffer.ReadAString();
 			result.CompanyWebSite = buffer.ReadAString();
-			result.ServerName = buffer.ReadAString();
-			result.ServerFullName = buffer.ReadAString();
+			result.ServerName = buffer.ReadWString();
+			result.ServerFullName = buffer.ReadWString();
 			result.ServerDescription = buffer.ReadWString();
 			result.ServerAddress = buffer.ReadAString();
 			result.ServerFixFeedSslPort = buffer.ReadNullInt32();
@@ -578,15 +578,15 @@ namespace SoftFX.Extended.Generated
 		}
 		public static void WriteTradeServerInfo(this MemoryBuffer buffer, SoftFX.Extended.TradeServerInfo arg)
 		{
-			buffer.WriteAString(arg.CompanyName);
-			buffer.WriteAString(arg.CompanyFullName);
+			buffer.WriteWString(arg.CompanyName);
+			buffer.WriteWString(arg.CompanyFullName);
 			buffer.WriteWString(arg.CompanyDescription);
-			buffer.WriteAString(arg.CompanyAddress);
+			buffer.WriteWString(arg.CompanyAddress);
 			buffer.WriteAString(arg.CompanyEmail);
 			buffer.WriteAString(arg.CompanyPhone);
 			buffer.WriteAString(arg.CompanyWebSite);
-			buffer.WriteAString(arg.ServerName);
-			buffer.WriteAString(arg.ServerFullName);
+			buffer.WriteWString(arg.ServerName);
+			buffer.WriteWString(arg.ServerFullName);
 			buffer.WriteWString(arg.ServerDescription);
 			buffer.WriteAString(arg.ServerAddress);
 			buffer.WriteNullInt32(arg.ServerFixFeedSslPort);
@@ -698,6 +698,7 @@ namespace SoftFX.Extended.Generated
 			result.IOCOverride = buffer.ReadNullBoolean();
 			result.IFMOverride = buffer.ReadNullBoolean();
 			result.PrevVolume = buffer.ReadNullDouble();
+			result.Slippage = buffer.ReadNullDouble();
 			return result;
 		}
 		public static void WriteFxOrder(this MemoryBuffer buffer, SoftFX.Extended.Data.FxOrder arg)
@@ -732,6 +733,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteNullBoolean(arg.IOCOverride);
 			buffer.WriteNullBoolean(arg.IFMOverride);
 			buffer.WriteNullDouble(arg.PrevVolume);
+			buffer.WriteNullDouble(arg.Slippage);
 		}
 		public static SoftFX.Extended.Data.FxOrder[] ReadFxOrderArray(this MemoryBuffer buffer)
 		{
@@ -1036,6 +1038,7 @@ namespace SoftFX.Extended.Generated
 			result.UsdToDstAssetConversionRate = buffer.ReadNullDouble();
 			result.MinCommissionCurrency = buffer.ReadAString();
 			result.MinCommissionConversionRate = buffer.ReadNullDouble();
+			result.Slippage = buffer.ReadNullDouble();
 			return result;
 		}
 		public static void WriteTradeTransactionReport(this MemoryBuffer buffer, SoftFX.Extended.Reports.TradeTransactionReport arg)
@@ -1115,6 +1118,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteNullDouble(arg.UsdToDstAssetConversionRate);
 			buffer.WriteAString(arg.MinCommissionCurrency);
 			buffer.WriteNullDouble(arg.MinCommissionConversionRate);
+			buffer.WriteNullDouble(arg.Slippage);
 		}
 		public static SoftFX.Extended.Reports.DailyAccountSnapshotReport ReadDailyAccountSnapshotReport(this MemoryBuffer buffer)
 		{
@@ -1225,6 +1229,7 @@ namespace SoftFX.Extended.Generated
 			result.MarketWithSlippage = buffer.ReadBoolean();
 			result.ReqOpenPrice = buffer.ReadNullDouble();
 			result.ReqOpenVolume = buffer.ReadNullDouble();
+			result.Slippage = buffer.ReadNullDouble();
 			return result;
 		}
 		public static void WriteExecutionReport(this MemoryBuffer buffer, SoftFX.Extended.ExecutionReport arg)
@@ -1269,6 +1274,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteBoolean(arg.MarketWithSlippage);
 			buffer.WriteNullDouble(arg.ReqOpenPrice);
 			buffer.WriteNullDouble(arg.ReqOpenVolume);
+			buffer.WriteNullDouble(arg.Slippage);
 		}
 		public static SoftFX.Extended.CurrencyInfo ReadCurrencyInfo(this MemoryBuffer buffer)
 		{

@@ -34,6 +34,7 @@ public:
     bool MarketWithSlippage;
     Nullable<double> ReqOpenPrice;
     Nullable<double> ReqOpenVolume;
+    Nullable<double> Slippage;
 public:
     string OrderId;
     string ClientOrderId;

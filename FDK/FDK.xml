@@ -224,6 +224,7 @@
       <Member name="IOCOverride" type="bool?" />
       <Member name="IFMOverride" type="bool?" />
       <Member name="PrevVolume" type="double?" />
+      <Member name="Slippage" type="double?" />
     </Type>
     <Type name="FxOrderArray" kind="array">
       <Value name="FxOrder" />
@@ -363,6 +364,7 @@
       <Member name="UsdToDstAssetConversionRate" type="double?" />
       <Member name="MinCommissionCurrency" type="astring" />
       <Member name="MinCommissionConversionRate" type="double?" />
+      <Member name="Slippage" type="double?" />
     </Type>
     <Type name="DailyAccountSnapshotReport" CSharpFullName="SoftFX.Extended.Reports.DailyAccountSnapshotReport" CppFullName="CFxDailyAccountSnapshotReport" kind="class">
       <Member name="Timestamp" type="time" />
@@ -434,6 +436,7 @@
       <Member name="MarketWithSlippage" type="bool" />
       <Member name="ReqOpenPrice" type="double?" />
       <Member name="ReqOpenVolume" type="double?" />
+      <Member name="Slippage" type="double?" />
     </Type>
     <Type name="CurrencyInfo" CSharpFullName="SoftFX.Extended.CurrencyInfo" CppFullName="CFxCurrencyInfo" kind="class">
       <Member name="Name" type="astring" />
