@@ -69,5 +69,10 @@
         /// Session dropped by a server.
         /// </summary>
         ServerLogout = 11,
+
+        /// <summary>
+        /// Account must change password.
+        /// </summary>
+        MustChangePassword = 12,
     }
 }

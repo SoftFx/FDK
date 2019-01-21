@@ -223,6 +223,7 @@ enum FxLogoutReason
     FxLogoutReason_LoginTimeout     = 9,
     FxLogoutReason_LoginDeleted     = 10,
     FxLogoutReason_ServerLogout     = 11,
+    FxLogoutReason_MustChangePassword = 12,
     FxLogoutReason_Last         = FX_MAX_ENUM
 };
 
