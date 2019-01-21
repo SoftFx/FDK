@@ -384,6 +384,10 @@ void CFixConnection::onLogout(const Message& message, const SessionID& /*session
         {
             reason = FxLogoutReason_ServerLogout;
         }
+        else if (LogoutReason_MUST_CHANGE_PASSWORD == fixReason)
+        {
+            reason = FxLogoutReason_MustChangePassword;
+        }
         else
         {
             reason = FxLogoutReason_Unknown;

@@ -3221,6 +3221,11 @@
     <value enum='3' description='SLOW_CONNECTION' />
     <value enum='4' description='INVALID_SESSION_ID' />
     <value enum='5' description='INTERNAL_SERVER_ERROR' />
+    <value enum='6' description='TIMEOUT_LOGIN' />
+    <value enum='7' description='DELETED_LOGIN' />
+    <value enum='8' description='SERVER_LOGOUT' />
+    <value enum='9' description='THROTTLING' />
+    <value enum='10' description='MUST_CHANGE_PASSWORD' />
     <value enum='99' description='OTHER' />
   </field>
   <field number='10093' name='PlatformTimezoneOffset' type='INT'>
