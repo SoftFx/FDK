@@ -526,6 +526,8 @@ namespace SoftFX.Extended.Generated
 			result.TradeAmount = buffer.ReadDouble();
 			result.CurrencyToUsdConversionRate = buffer.ReadNullDouble();
 			result.UsdToCurrencyConversionRate = buffer.ReadNullDouble();
+			result.CurrencyToReportConversionRate = buffer.ReadNullDouble();
+			result.ReportToCurrencyConversionRate = buffer.ReadNullDouble();
 			return result;
 		}
 		public static void WriteAssetInfo(this MemoryBuffer buffer, SoftFX.Extended.AssetInfo arg)
@@ -536,6 +538,8 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteDouble(arg.TradeAmount);
 			buffer.WriteNullDouble(arg.CurrencyToUsdConversionRate);
 			buffer.WriteNullDouble(arg.UsdToCurrencyConversionRate);
+			buffer.WriteNullDouble(arg.CurrencyToReportConversionRate);
+			buffer.WriteNullDouble(arg.ReportToCurrencyConversionRate);
 		}
 		public static SoftFX.Extended.AssetInfo[] ReadAssetInfoArray(this MemoryBuffer buffer)
 		{
@@ -1039,6 +1043,14 @@ namespace SoftFX.Extended.Generated
 			result.MinCommissionCurrency = buffer.ReadAString();
 			result.MinCommissionConversionRate = buffer.ReadNullDouble();
 			result.Slippage = buffer.ReadNullDouble();
+			result.MarginCurrencyToReportConversionRate = buffer.ReadNullDouble();
+			result.ReportToMarginCurrencyConversionRate = buffer.ReadNullDouble();
+			result.ProfitCurrencyToReportConversionRate = buffer.ReadNullDouble();
+			result.ReportToProfitCurrencyConversionRate = buffer.ReadNullDouble();
+			result.SrcAssetToReportConversionRate = buffer.ReadNullDouble();
+			result.ReportToSrcAssetConversionRate = buffer.ReadNullDouble();
+			result.DstAssetToReportConversionRate = buffer.ReadNullDouble();
+			result.ReportToDstAssetConversionRate = buffer.ReadNullDouble();
 			return result;
 		}
 		public static void WriteTradeTransactionReport(this MemoryBuffer buffer, SoftFX.Extended.Reports.TradeTransactionReport arg)
@@ -1119,6 +1131,14 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteAString(arg.MinCommissionCurrency);
 			buffer.WriteNullDouble(arg.MinCommissionConversionRate);
 			buffer.WriteNullDouble(arg.Slippage);
+			buffer.WriteNullDouble(arg.MarginCurrencyToReportConversionRate);
+			buffer.WriteNullDouble(arg.ReportToMarginCurrencyConversionRate);
+			buffer.WriteNullDouble(arg.ProfitCurrencyToReportConversionRate);
+			buffer.WriteNullDouble(arg.ReportToProfitCurrencyConversionRate);
+			buffer.WriteNullDouble(arg.SrcAssetToReportConversionRate);
+			buffer.WriteNullDouble(arg.ReportToSrcAssetConversionRate);
+			buffer.WriteNullDouble(arg.DstAssetToReportConversionRate);
+			buffer.WriteNullDouble(arg.ReportToDstAssetConversionRate);
 		}
 		public static SoftFX.Extended.Reports.DailyAccountSnapshotReport ReadDailyAccountSnapshotReport(this MemoryBuffer buffer)
 		{
@@ -1143,6 +1163,10 @@ namespace SoftFX.Extended.Generated
 			result.UsdToBalanceCurrencyConversionRate = buffer.ReadNullDouble();
 			result.ProfitCurrencyToUsdConversionRate = buffer.ReadNullDouble();
 			result.UsdToProfitCurrencyConversionRate = buffer.ReadNullDouble();
+			result.BalanceCurrencyToReportConversionRate = buffer.ReadNullDouble();
+			result.ReportToBalanceCurrencyConversionRate = buffer.ReadNullDouble();
+			result.ProfitCurrencyToReportConversionRate = buffer.ReadNullDouble();
+			result.ReportToProfitCurrencyConversionRate = buffer.ReadNullDouble();
 			result.Assets = buffer.ReadAssetInfoArray();
 			result.Positions = buffer.ReadPositionArray();
 			return result;
@@ -1169,6 +1193,10 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteNullDouble(arg.UsdToBalanceCurrencyConversionRate);
 			buffer.WriteNullDouble(arg.ProfitCurrencyToUsdConversionRate);
 			buffer.WriteNullDouble(arg.UsdToProfitCurrencyConversionRate);
+			buffer.WriteNullDouble(arg.BalanceCurrencyToReportConversionRate);
+			buffer.WriteNullDouble(arg.ReportToBalanceCurrencyConversionRate);
+			buffer.WriteNullDouble(arg.ProfitCurrencyToReportConversionRate);
+			buffer.WriteNullDouble(arg.ReportToProfitCurrencyConversionRate);
 			buffer.WriteAssetInfoArray(arg.Assets);
 			buffer.WritePositionArray(arg.Positions);
 		}

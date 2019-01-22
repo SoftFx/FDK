@@ -705,6 +705,8 @@ namespace
 		WriteDouble(arg.TradeAmount, buffer);
 		WriteNullDouble(arg.CurrencyToUsdConversionRate, buffer);
 		WriteNullDouble(arg.UsdToCurrencyConversionRate, buffer);
+		WriteNullDouble(arg.CurrencyToReportConversionRate, buffer);
+		WriteNullDouble(arg.ReportToCurrencyConversionRate, buffer);
 	}
 	CAssetInfo ReadAssetInfo(MemoryBuffer& buffer)
 	{
@@ -715,6 +717,8 @@ namespace
 		result.TradeAmount = ReadDouble(buffer);
 		result.CurrencyToUsdConversionRate = ReadNullDouble(buffer);
 		result.UsdToCurrencyConversionRate = ReadNullDouble(buffer);
+		result.CurrencyToReportConversionRate = ReadNullDouble(buffer);
+		result.ReportToCurrencyConversionRate = ReadNullDouble(buffer);
 		return result;
 	}
 	void WriteAssetInfoArray(const std::vector<CAssetInfo>& arg, MemoryBuffer& buffer)
@@ -1224,6 +1228,14 @@ namespace
 		WriteAString(arg.MinCommissionCurrency, buffer);
 		WriteNullDouble(arg.MinCommissionConversionRate, buffer);
 		WriteNullDouble(arg.Slippage, buffer);
+		WriteNullDouble(arg.MarginCurrencyToReportConversionRate, buffer);
+		WriteNullDouble(arg.ReportToMarginCurrencyConversionRate, buffer);
+		WriteNullDouble(arg.ProfitCurrencyToReportConversionRate, buffer);
+		WriteNullDouble(arg.ReportToProfitCurrencyConversionRate, buffer);
+		WriteNullDouble(arg.SrcAssetToReportConversionRate, buffer);
+		WriteNullDouble(arg.ReportToSrcAssetConversionRate, buffer);
+		WriteNullDouble(arg.DstAssetToReportConversionRate, buffer);
+		WriteNullDouble(arg.ReportToDstAssetConversionRate, buffer);
 	}
 	CFxTradeTransactionReport ReadTradeTransactionReport(MemoryBuffer& buffer)
 	{
@@ -1304,6 +1316,14 @@ namespace
 		result.MinCommissionCurrency = ReadAString(buffer);
 		result.MinCommissionConversionRate = ReadNullDouble(buffer);
 		result.Slippage = ReadNullDouble(buffer);
+		result.MarginCurrencyToReportConversionRate = ReadNullDouble(buffer);
+		result.ReportToMarginCurrencyConversionRate = ReadNullDouble(buffer);
+		result.ProfitCurrencyToReportConversionRate = ReadNullDouble(buffer);
+		result.ReportToProfitCurrencyConversionRate = ReadNullDouble(buffer);
+		result.SrcAssetToReportConversionRate = ReadNullDouble(buffer);
+		result.ReportToSrcAssetConversionRate = ReadNullDouble(buffer);
+		result.DstAssetToReportConversionRate = ReadNullDouble(buffer);
+		result.ReportToDstAssetConversionRate = ReadNullDouble(buffer);
 		return result;
 	}
 	void WriteDailyAccountSnapshotReport(const CFxDailyAccountSnapshotReport& arg, MemoryBuffer& buffer)
@@ -1328,6 +1348,10 @@ namespace
 		WriteNullDouble(arg.UsdToBalanceCurrencyConversionRate, buffer);
 		WriteNullDouble(arg.ProfitCurrencyToUsdConversionRate, buffer);
 		WriteNullDouble(arg.UsdToProfitCurrencyConversionRate, buffer);
+		WriteNullDouble(arg.BalanceCurrencyToReportConversionRate, buffer);
+		WriteNullDouble(arg.ReportToBalanceCurrencyConversionRate, buffer);
+		WriteNullDouble(arg.ProfitCurrencyToReportConversionRate, buffer);
+		WriteNullDouble(arg.ReportToProfitCurrencyConversionRate, buffer);
 		WriteAssetInfoArray(arg.Assets, buffer);
 		WritePositionArray(arg.Positions, buffer);
 	}
@@ -1354,6 +1378,10 @@ namespace
 		result.UsdToBalanceCurrencyConversionRate = ReadNullDouble(buffer);
 		result.ProfitCurrencyToUsdConversionRate = ReadNullDouble(buffer);
 		result.UsdToProfitCurrencyConversionRate = ReadNullDouble(buffer);
+		result.BalanceCurrencyToReportConversionRate = ReadNullDouble(buffer);
+		result.ReportToBalanceCurrencyConversionRate = ReadNullDouble(buffer);
+		result.ProfitCurrencyToReportConversionRate = ReadNullDouble(buffer);
+		result.ReportToProfitCurrencyConversionRate = ReadNullDouble(buffer);
 		result.Assets = ReadAssetInfoArray(buffer);
 		result.Positions = ReadPositionArray(buffer);
 		return result;

@@ -377,5 +377,37 @@
         /// <summary>
         /// </summary>
         public double? Slippage { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public double? MarginCurrencyToReportConversionRate { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public double? ReportToMarginCurrencyConversionRate { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public double? ProfitCurrencyToReportConversionRate { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public double? ReportToProfitCurrencyConversionRate { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public double? SrcAssetToReportConversionRate { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public double? ReportToSrcAssetConversionRate { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public double? DstAssetToReportConversionRate { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public double? ReportToDstAssetConversionRate { get; internal set; }
     }
 }

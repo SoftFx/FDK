@@ -129,6 +129,26 @@ namespace SoftFX.Extended.Reports
         /// <summary>
         /// 
         /// </summary>
+        public double? BalanceCurrencyToReportConversionRate { get; internal set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public double? ReportToBalanceCurrencyConversionRate { get; internal set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public double? ProfitCurrencyToReportConversionRate { get; internal set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public double? ReportToProfitCurrencyConversionRate { get; internal set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public AssetInfo[] Assets { get; internal set; }
 
         /// <summary>

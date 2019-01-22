@@ -64,12 +64,22 @@
         public double? UsdToCurrencyConversionRate { get; internal set; }
 
         /// <summary>
+        /// Asset to report currency conversion rate.
+        /// </summary>
+        public double? CurrencyToReportConversionRate { get; internal set; }
+
+        /// <summary>
+        /// Report currency to Asset conversion rate.
+        /// </summary>
+        public double? ReportToCurrencyConversionRate { get; internal set; }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override string ToString()
         {
-            var result = string.Format("Currency = {0}; Trade Amount = {1}; Locked Amount = {2}; Balance = {3}; CurrencyToUsdConversionRate = {4}; UsdToCurrencyConversionRate = {5}", this.Currency, this.TradeAmount.ToString(CultureInfo.InvariantCulture), this.LockedAmount.ToString(CultureInfo.InvariantCulture), this.Balance.ToString(CultureInfo.InvariantCulture), this.CurrencyToUsdConversionRate, this.UsdToCurrencyConversionRate);
+            var result = string.Format("Currency = {0}; Trade Amount = {1}; Locked Amount = {2}; Balance = {3}; CurrencyToUsdConversionRate = {4}; UsdToCurrencyConversionRate = {5}; CurrencyToReportConversionRate = {6}; ReportToCurrencyConversionRate = {7}", this.Currency, this.TradeAmount.ToString(CultureInfo.InvariantCulture), this.LockedAmount.ToString(CultureInfo.InvariantCulture), this.Balance.ToString(CultureInfo.InvariantCulture), this.CurrencyToUsdConversionRate, this.UsdToCurrencyConversionRate, this.CurrencyToReportConversionRate, this.ReportToCurrencyConversionRate);
             return result;
         }
     }

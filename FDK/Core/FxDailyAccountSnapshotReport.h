@@ -34,6 +34,11 @@ public:
     Nullable<double> ProfitCurrencyToUsdConversionRate;
     Nullable<double> UsdToProfitCurrencyConversionRate;
 
+    Nullable<double> BalanceCurrencyToReportConversionRate;
+    Nullable<double> ReportToBalanceCurrencyConversionRate;
+    Nullable<double> ProfitCurrencyToReportConversionRate;
+    Nullable<double> ReportToProfitCurrencyConversionRate;
+
     vector<CAssetInfo> Assets;
 	vector<CFxPositionReport> Positions;
 
