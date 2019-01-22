@@ -64,12 +64,20 @@ namespace FIX44
     FIELD_SET_EX(double, ProfitCurrencyToUsdConversionRate);
     FIELD_SET(*this, FIX::UsdToProfitCurrencyConversionRate);
     FIELD_SET_EX(double, UsdToProfitCurrencyConversionRate);
+    FIELD_SET(*this, FIX::BalanceCurrencyToReportConversionRate);
+    FIELD_SET_EX(double, BalanceCurrencyToReportConversionRate);
+    FIELD_SET(*this, FIX::ReportToBalanceCurrencyConversionRate);
+    FIELD_SET_EX(double, ReportToBalanceCurrencyConversionRate);
+    FIELD_SET(*this, FIX::ProfitCurrencyToReportConversionRate);
+    FIELD_SET_EX(double, ProfitCurrencyToReportConversionRate);
+    FIELD_SET(*this, FIX::ReportToProfitCurrencyConversionRate);
+    FIELD_SET_EX(double, ReportToProfitCurrencyConversionRate);
     FIELD_SET(*this, FIX::NoAssets);
     FIELD_SET_EX(int, NoAssets);
     class NoAssets: public FIX::Group
     {
     public:
-    NoAssets() : FIX::Group(10117,10118,FIX::message_order(10118,10154,10119,10120,10201,10202,0)) {}
+    NoAssets() : FIX::Group(10117,10118,FIX::message_order(10118,10154,10119,10120,10201,10202,10236,10237,0)) {}
       FIELD_SET(*this, FIX::AssetBalance);
       FIELD_SET_EX(double, AssetBalance);
       FIELD_SET(*this, FIX::AssetLockedAmt);
@@ -82,6 +90,10 @@ namespace FIX44
       FIELD_SET_EX(double, SrcAssetToUsdConversionRate);
       FIELD_SET(*this, FIX::UsdToSrcAssetConversionRate);
       FIELD_SET_EX(double, UsdToSrcAssetConversionRate);
+      FIELD_SET(*this, FIX::SrcAssetToReportConversionRate);
+      FIELD_SET_EX(double, SrcAssetToReportConversionRate);
+      FIELD_SET(*this, FIX::ReportToSrcAssetConversionRate);
+      FIELD_SET_EX(double, ReportToSrcAssetConversionRate);
     };
     FIELD_SET(*this, FIX::NoPositions);
     FIELD_SET_EX(int, NoPositions);

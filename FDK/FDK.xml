@@ -140,6 +140,8 @@
       <Member name="TradeAmount" type="double" />
       <Member name="CurrencyToUsdConversionRate" type="double?" />
       <Member name="UsdToCurrencyConversionRate" type="double?" />
+      <Member name="CurrencyToReportConversionRate" type="double?" />
+      <Member name="ReportToCurrencyConversionRate" type="double?" />
     </Type>
     <Type name="AssetInfoArray" kind="array">
       <Value name="AssetInfo" />
@@ -365,6 +367,14 @@
       <Member name="MinCommissionCurrency" type="astring" />
       <Member name="MinCommissionConversionRate" type="double?" />
       <Member name="Slippage" type="double?" />
+      <Member name="MarginCurrencyToReportConversionRate" type="double?" />
+      <Member name="ReportToMarginCurrencyConversionRate" type="double?" />
+      <Member name="ProfitCurrencyToReportConversionRate" type="double?" />
+      <Member name="ReportToProfitCurrencyConversionRate" type="double?" />
+      <Member name="SrcAssetToReportConversionRate" type="double?" />
+      <Member name="ReportToSrcAssetConversionRate" type="double?" />
+      <Member name="DstAssetToReportConversionRate" type="double?" />
+      <Member name="ReportToDstAssetConversionRate" type="double?" />
     </Type>
     <Type name="DailyAccountSnapshotReport" CSharpFullName="SoftFX.Extended.Reports.DailyAccountSnapshotReport" CppFullName="CFxDailyAccountSnapshotReport" kind="class">
       <Member name="Timestamp" type="time" />
@@ -387,6 +397,10 @@
       <Member name="UsdToBalanceCurrencyConversionRate" type="double?" />
       <Member name="ProfitCurrencyToUsdConversionRate" type="double?" />
       <Member name="UsdToProfitCurrencyConversionRate" type="double?" />
+      <Member name="BalanceCurrencyToReportConversionRate" type="double?" />
+      <Member name="ReportToBalanceCurrencyConversionRate" type="double?" />
+      <Member name="ProfitCurrencyToReportConversionRate" type="double?" />
+      <Member name="ReportToProfitCurrencyConversionRate" type="double?" />
       <Member name="Assets" type="AssetInfoArray" />
       <Member name="Positions" type="PositionArray" />
     </Type>

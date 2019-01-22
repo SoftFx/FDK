@@ -4029,6 +4029,14 @@
     <field name='MinCommissionCurrency' required='N' />
     <field name='MinCommissionConversionRate' required='N' />
     <field name='Slippage' required='N' />
+    <field name='MarginCurrencyToReportConversionRate' required='N' />
+    <field name='ReportToMarginCurrencyConversionRate' required='N' />
+    <field name='ProfitCurrencyToReportConversionRate' required='N' />
+    <field name='ReportToProfitCurrencyConversionRate' required='N' />
+    <field name='SrcAssetToReportConversionRate' required='N' />
+    <field name='ReportToSrcAssetConversionRate' required='N' />
+    <field name='DstAssetToReportConversionRate' required='N' />
+    <field name='ReportToDstAssetConversionRate' required='N' />
   </message>
   <message name='ComponentsInfoRequest' msgcat='app' msgtype='U1018'>
     <field name='CompReqID' required='N' />
@@ -4108,6 +4116,10 @@
     <field name='UsdToBalanceCurrencyConversionRate' required='N' />
     <field name='ProfitCurrencyToUsdConversionRate' required='N' />
     <field name='UsdToProfitCurrencyConversionRate' required='N' />
+    <field name='BalanceCurrencyToReportConversionRate' required='N' />
+    <field name='ReportToBalanceCurrencyConversionRate' required='N' />
+    <field name='ProfitCurrencyToReportConversionRate' required='N' />
+    <field name='ReportToProfitCurrencyConversionRate' required='N' />
     <component name='Assets' required='N' />
     <component name='Positions' required='N' />
   </message>
@@ -4495,6 +4507,8 @@
        <field name='AssetCurrency' required='N' />
        <field name='SrcAssetToUsdConversionRate' required='N' />
        <field name='UsdToSrcAssetConversionRate' required='N' />
+       <field name='SrcAssetToReportConversionRate' required='N' />
+       <field name='ReportToSrcAssetConversionRate' required='N' />
      </group>
    </component>
    <component name='Positions'>
@@ -8067,5 +8081,15 @@
    <value enum='Y' description='YES' />
   </field>
   <field number='10231' name='Slippage' type='FLOAT' />
+  <field number='10232' name='MarginCurrencyToReportConversionRate' type='FLOAT' />
+  <field number='10233' name='ReportToMarginCurrencyConversionRate' type='FLOAT' />
+  <field number='10234' name='ProfitCurrencyToReportConversionRate' type='FLOAT' />
+  <field number='10235' name='ReportToProfitCurrencyConversionRate' type='FLOAT' />
+  <field number='10236' name='SrcAssetToReportConversionRate' type='FLOAT' />
+  <field number='10237' name='ReportToSrcAssetConversionRate' type='FLOAT' />
+  <field number='10238' name='DstAssetToReportConversionRate' type='FLOAT' />
+  <field number='10239' name='ReportToDstAssetConversionRate' type='FLOAT' />
+  <field number='10240' name='BalanceCurrencyToReportConversionRate' type='FLOAT' />
+  <field number='10241' name='ReportToBalanceCurrencyConversionRate' type='FLOAT' />
 </fields>
 </fix>

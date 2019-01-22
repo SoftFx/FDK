@@ -1214,6 +1214,16 @@ namespace FIX
   DEFINE_NUMINGROUP(ThrottlingMethodsInfo);
   DEFINE_BOOLEAN(IndicativeTick);
   DEFINE_FLOAT(Slippage);
+  DEFINE_FLOAT(MarginCurrencyToReportConversionRate);
+  DEFINE_FLOAT(ReportToMarginCurrencyConversionRate);
+  DEFINE_FLOAT(ProfitCurrencyToReportConversionRate);
+  DEFINE_FLOAT(ReportToProfitCurrencyConversionRate);
+  DEFINE_FLOAT(SrcAssetToReportConversionRate);
+  DEFINE_FLOAT(ReportToSrcAssetConversionRate);
+  DEFINE_FLOAT(DstAssetToReportConversionRate);
+  DEFINE_FLOAT(ReportToDstAssetConversionRate);
+  DEFINE_FLOAT(BalanceCurrencyToReportConversionRate);
+  DEFINE_FLOAT(ReportToBalanceCurrencyConversionRate);
   DEFINE_NUMINGROUP(NoStrategyParameters);
   DEFINE_STRING(StrategyParameterName);
   DEFINE_INT(StrategyParameterType);

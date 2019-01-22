@@ -1663,6 +1663,30 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
     double slippage;
     if (message.TryGetSlippage(slippage))
         report.Slippage = slippage;
+    double marginCurrencyToReportConversionRate;
+    if (message.TryGetMarginCurrencyToReportConversionRate(marginCurrencyToReportConversionRate))
+        report.MarginCurrencyToReportConversionRate = marginCurrencyToReportConversionRate;
+    double reportToMarginCurrencyConversionRate;
+    if (message.TryGetReportToMarginCurrencyConversionRate(reportToMarginCurrencyConversionRate))
+        report.ReportToMarginCurrencyConversionRate = reportToMarginCurrencyConversionRate;
+    double profitCurrencyToReportConversionRate;
+    if (message.TryGetProfitCurrencyToReportConversionRate(profitCurrencyToReportConversionRate))
+        report.ProfitCurrencyToReportConversionRate = profitCurrencyToReportConversionRate;
+    double reportToProfitCurrencyConversionRate;
+    if (message.TryGetReportToProfitCurrencyConversionRate(reportToProfitCurrencyConversionRate))
+        report.ReportToProfitCurrencyConversionRate = reportToProfitCurrencyConversionRate;
+    double srcAssetToReportConversionRate;
+    if (message.TryGetSrcAssetToReportConversionRate(srcAssetToReportConversionRate))
+        report.SrcAssetToReportConversionRate = srcAssetToReportConversionRate;
+    double reportToSrcAssetConversionRate;
+    if (message.TryGetReportToSrcAssetConversionRate(reportToSrcAssetConversionRate))
+        report.ReportToSrcAssetConversionRate = reportToSrcAssetConversionRate;
+    double dstAssetToReportConversionRate;
+    if (message.TryGetDstAssetToReportConversionRate(dstAssetToReportConversionRate))
+        report.DstAssetToReportConversionRate = dstAssetToReportConversionRate;
+    double reportToDstAssetConversionRate;
+    if (message.TryGetReportToDstAssetConversionRate(reportToDstAssetConversionRate))
+        report.ReportToDstAssetConversionRate = reportToDstAssetConversionRate;
 
     m_receiver->VTradeTransactionReport(info, report);
 }
@@ -1875,6 +1899,7 @@ void CFixConnection::OnDailyAccountSnapshotReport(const FIX44::DailyAccountSnaps
             asset.Currency = group.GetAssetCurrency();
             asset.Balance = group.GetAssetBalance();
             group.TryGetAssetLockedAmt(asset.LockedAmount);
+            group.TryGetAssetLockedAmt(asset.LockedAmount);
             group.TryGetAssetTradeAmt(asset.TradeAmount);
             double currencyToUsdConversionRate;
             if (group.TryGetSrcAssetToUsdConversionRate(currencyToUsdConversionRate))
@@ -1882,6 +1907,12 @@ void CFixConnection::OnDailyAccountSnapshotReport(const FIX44::DailyAccountSnaps
             double usdToCurrencyConversionRate;
             if (group.TryGetUsdToSrcAssetConversionRate(usdToCurrencyConversionRate))
                 asset.UsdToCurrencyConversionRate = usdToCurrencyConversionRate;
+            double currencyToReportConversionRate;
+            if (group.TryGetSrcAssetToReportConversionRate(currencyToReportConversionRate))
+                asset.CurrencyToReportConversionRate = currencyToReportConversionRate;
+            double reportToCurrencyConversionRate;
+            if (group.TryGetReportToSrcAssetConversionRate(reportToCurrencyConversionRate))
+                asset.ReportToCurrencyConversionRate = reportToCurrencyConversionRate;
 
             if (asset.Balance == 0.0)
                 continue;
@@ -1955,6 +1986,19 @@ void CFixConnection::OnDailyAccountSnapshotReport(const FIX44::DailyAccountSnaps
     double usdToProfitCurrencyConversionRate;
     if (message.TryGetUsdToProfitCurrencyConversionRate(usdToProfitCurrencyConversionRate))
         report.UsdToProfitCurrencyConversionRate = usdToProfitCurrencyConversionRate;
+
+    double balanceCurrencyToReportConversionRate;
+    if (message.TryGetBalanceCurrencyToReportConversionRate(balanceCurrencyToReportConversionRate))
+        report.BalanceCurrencyToReportConversionRate = balanceCurrencyToReportConversionRate;
+    double reportToBalanceCurrencyConversionRate;
+    if (message.TryGetReportToBalanceCurrencyConversionRate(reportToBalanceCurrencyConversionRate))
+        report.ReportToBalanceCurrencyConversionRate = reportToBalanceCurrencyConversionRate;
+    double profitCurrencyToReportConversionRate;
+    if (message.TryGetProfitCurrencyToReportConversionRate(profitCurrencyToReportConversionRate))
+        report.ProfitCurrencyToReportConversionRate = profitCurrencyToReportConversionRate;
+    double reportToProfitCurrencyConversionRate;
+    if (message.TryGetReportToProfitCurrencyConversionRate(reportToProfitCurrencyConversionRate))
+        report.ReportToProfitCurrencyConversionRate = reportToProfitCurrencyConversionRate;
 
     m_receiver->VDailyAccountSnapshotReport(info, report);
 }

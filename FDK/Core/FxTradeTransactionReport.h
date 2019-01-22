@@ -95,6 +95,14 @@ public:
     std::string MinCommissionCurrency;
     Nullable<double> MinCommissionConversionRate;
     Nullable<double> Slippage;
+    Nullable<double> MarginCurrencyToReportConversionRate;
+    Nullable<double> ReportToMarginCurrencyConversionRate;
+    Nullable<double> ProfitCurrencyToReportConversionRate;
+    Nullable<double> ReportToProfitCurrencyConversionRate;
+    Nullable<double> SrcAssetToReportConversionRate;
+    Nullable<double> ReportToSrcAssetConversionRate;
+    Nullable<double> DstAssetToReportConversionRate;
+    Nullable<double> ReportToDstAssetConversionRate;
 };
 
 #pragma warning (pop)

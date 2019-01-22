@@ -1212,6 +1212,16 @@ namespace FIX
     const int ThrottlingMethodsInfo = 10229;
     const int IndicativeTick = 10230;
     const int Slippage = 10231;
+    const int MarginCurrencyToReportConversionRate = 10232;
+    const int ReportToMarginCurrencyConversionRate = 10233;
+    const int ProfitCurrencyToReportConversionRate = 10234;
+    const int ReportToProfitCurrencyConversionRate = 10235;
+    const int SrcAssetToReportConversionRate = 10236;
+    const int ReportToSrcAssetConversionRate = 10237;
+    const int DstAssetToReportConversionRate = 10238;
+    const int ReportToDstAssetConversionRate = 10239;
+    const int BalanceCurrencyToReportConversionRate = 10240;
+    const int ReportToBalanceCurrencyConversionRate = 10241;
     const int NoStrategyParameters = 957;
     const int StrategyParameterName = 958;
     const int StrategyParameterType = 959;

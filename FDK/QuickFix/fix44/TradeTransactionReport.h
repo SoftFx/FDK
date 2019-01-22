@@ -196,6 +196,22 @@ namespace FIX44
     FIELD_SET_EX(double, MinCommissionConversionRate);
     FIELD_SET(*this, FIX::Slippage);
     FIELD_SET_EX(double, Slippage);
+    FIELD_SET(*this, FIX::MarginCurrencyToReportConversionRate);
+    FIELD_SET_EX(double, MarginCurrencyToReportConversionRate);
+    FIELD_SET(*this, FIX::ReportToMarginCurrencyConversionRate);
+    FIELD_SET_EX(double, ReportToMarginCurrencyConversionRate);
+    FIELD_SET(*this, FIX::ProfitCurrencyToReportConversionRate);
+    FIELD_SET_EX(double, ProfitCurrencyToReportConversionRate);
+    FIELD_SET(*this, FIX::ReportToProfitCurrencyConversionRate);
+    FIELD_SET_EX(double, ReportToProfitCurrencyConversionRate);
+    FIELD_SET(*this, FIX::SrcAssetToReportConversionRate);
+    FIELD_SET_EX(double, SrcAssetToReportConversionRate);
+    FIELD_SET(*this, FIX::ReportToSrcAssetConversionRate);
+    FIELD_SET_EX(double, ReportToSrcAssetConversionRate);
+    FIELD_SET(*this, FIX::DstAssetToReportConversionRate);
+    FIELD_SET_EX(double, DstAssetToReportConversionRate);
+    FIELD_SET(*this, FIX::ReportToDstAssetConversionRate);
+    FIELD_SET_EX(double, ReportToDstAssetConversionRate);
   };
 
 }
