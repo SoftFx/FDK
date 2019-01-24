@@ -1222,6 +1222,8 @@ namespace FIX
     const int ReportToDstAssetConversionRate = 10239;
     const int BalanceCurrencyToReportConversionRate = 10240;
     const int ReportToBalanceCurrencyConversionRate = 10241;
+    const int ReportCurrency = 10242;
+    const int CloseOnly = 10243;
     const int NoStrategyParameters = 957;
     const int StrategyParameterName = 958;
     const int StrategyParameterType = 959;

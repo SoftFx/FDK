@@ -43,6 +43,7 @@ public:
 	vector<CFxPositionReport> Positions;
 
     std::string NextStreamPositionId;
+    std::string ReportCurrency;
 };
 
 #pragma warning (pop)

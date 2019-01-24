@@ -513,6 +513,7 @@ namespace
 		WriteWString(arg.SecurityDescription, buffer);
 		WriteNullDouble(arg.StopOrderMarginReduction, buffer);
 		WriteNullDouble(arg.HiddenLimitOrderMarginReduction, buffer);
+		WriteBoolean(arg.IsCloseOnly, buffer);
 	}
 	CFxSymbolInfo ReadSymbolInfo(MemoryBuffer& buffer)
 	{
@@ -557,6 +558,7 @@ namespace
 		result.SecurityDescription = ReadWString(buffer);
 		result.StopOrderMarginReduction = ReadNullDouble(buffer);
 		result.HiddenLimitOrderMarginReduction = ReadNullDouble(buffer);
+		result.IsCloseOnly = ReadBoolean(buffer);
 		return result;
 	}
 	void WriteTwoFactorAuth(const CFxTwoFactorAuth& arg, MemoryBuffer& buffer)
@@ -803,6 +805,7 @@ namespace
 		WriteInt32(arg.SessionsPerAccount, buffer);
 		WriteInt32(arg.RequestsPerSecond, buffer);
 		WriteThrottlingMethodInfoArray(arg.ThrottlingMethods, buffer);
+		WriteAString(arg.ReportCurrency, buffer);
 	}
 	CFxAccountInfo ReadAccountInfo(MemoryBuffer& buffer)
 	{
@@ -828,6 +831,7 @@ namespace
 		result.SessionsPerAccount = ReadInt32(buffer);
 		result.RequestsPerSecond = ReadInt32(buffer);
 		result.ThrottlingMethods = ReadThrottlingMethodInfoArray(buffer);
+		result.ReportCurrency = ReadAString(buffer);
 		return result;
 	}
 	void WriteFileChunk(const CFxFileChunk& arg, MemoryBuffer& buffer)
@@ -1236,6 +1240,7 @@ namespace
 		WriteNullDouble(arg.ReportToSrcAssetConversionRate, buffer);
 		WriteNullDouble(arg.DstAssetToReportConversionRate, buffer);
 		WriteNullDouble(arg.ReportToDstAssetConversionRate, buffer);
+		WriteAString(arg.ReportCurrency, buffer);
 	}
 	CFxTradeTransactionReport ReadTradeTransactionReport(MemoryBuffer& buffer)
 	{
@@ -1324,6 +1329,7 @@ namespace
 		result.ReportToSrcAssetConversionRate = ReadNullDouble(buffer);
 		result.DstAssetToReportConversionRate = ReadNullDouble(buffer);
 		result.ReportToDstAssetConversionRate = ReadNullDouble(buffer);
+		result.ReportCurrency = ReadAString(buffer);
 		return result;
 	}
 	void WriteDailyAccountSnapshotReport(const CFxDailyAccountSnapshotReport& arg, MemoryBuffer& buffer)
@@ -1354,6 +1360,7 @@ namespace
 		WriteNullDouble(arg.ReportToProfitCurrencyConversionRate, buffer);
 		WriteAssetInfoArray(arg.Assets, buffer);
 		WritePositionArray(arg.Positions, buffer);
+		WriteAString(arg.ReportCurrency, buffer);
 	}
 	CFxDailyAccountSnapshotReport ReadDailyAccountSnapshotReport(MemoryBuffer& buffer)
 	{
@@ -1384,6 +1391,7 @@ namespace
 		result.ReportToProfitCurrencyConversionRate = ReadNullDouble(buffer);
 		result.Assets = ReadAssetInfoArray(buffer);
 		result.Positions = ReadPositionArray(buffer);
+		result.ReportCurrency = ReadAString(buffer);
 		return result;
 	}
 	void WriteClosePositionResult(const CFxClosePositionResult& arg, MemoryBuffer& buffer)

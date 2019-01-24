@@ -162,6 +162,11 @@ namespace SoftFX.Extended.Reports
         public string NextStreamPositionId { get; internal set; }
 
         /// <summary>
+        ///
+        /// </summary>
+        public string ReportCurrency { get; internal set; }
+
+        /// <summary>
         /// Returns formatted string for the class instance.
         /// </summary>
         /// <returns>can not be null</returns>

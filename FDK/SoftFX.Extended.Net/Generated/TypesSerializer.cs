@@ -338,6 +338,7 @@ namespace SoftFX.Extended.Generated
 			result.SecurityDescription = buffer.ReadWString();
 			result.StopOrderMarginReduction = buffer.ReadNullDouble();
 			result.HiddenLimitOrderMarginReduction = buffer.ReadNullDouble();
+			result.IsCloseOnly = buffer.ReadBoolean();
 			return result;
 		}
 		public static void WriteSymbolInfo(this MemoryBuffer buffer, SoftFX.Extended.SymbolInfo arg)
@@ -382,6 +383,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteWString(arg.SecurityDescription);
 			buffer.WriteNullDouble(arg.StopOrderMarginReduction);
 			buffer.WriteNullDouble(arg.HiddenLimitOrderMarginReduction);
+			buffer.WriteBoolean(arg.IsCloseOnly);
 		}
 		public static SoftFX.Extended.TwoFactorAuth ReadTwoFactorAuth(this MemoryBuffer buffer)
 		{
@@ -623,6 +625,7 @@ namespace SoftFX.Extended.Generated
 			result.SessionsPerAccount = buffer.ReadInt32();
 			result.RequestsPerSecond = buffer.ReadInt32();
 			result.ThrottlingMethods = buffer.ReadThrottlingMethodInfoArray();
+			result.ReportCurrency = buffer.ReadAString();
 			return result;
 		}
 		public static void WriteAccountInfo(this MemoryBuffer buffer, SoftFX.Extended.AccountInfo arg)
@@ -648,6 +651,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteInt32(arg.SessionsPerAccount);
 			buffer.WriteInt32(arg.RequestsPerSecond);
 			buffer.WriteThrottlingMethodInfoArray(arg.ThrottlingMethods);
+			buffer.WriteAString(arg.ReportCurrency);
 		}
 		public static SoftFX.Extended.FxFileChunk ReadFileChunk(this MemoryBuffer buffer)
 		{
@@ -1051,6 +1055,7 @@ namespace SoftFX.Extended.Generated
 			result.ReportToSrcAssetConversionRate = buffer.ReadNullDouble();
 			result.DstAssetToReportConversionRate = buffer.ReadNullDouble();
 			result.ReportToDstAssetConversionRate = buffer.ReadNullDouble();
+			result.ReportCurrency = buffer.ReadAString();
 			return result;
 		}
 		public static void WriteTradeTransactionReport(this MemoryBuffer buffer, SoftFX.Extended.Reports.TradeTransactionReport arg)
@@ -1139,6 +1144,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteNullDouble(arg.ReportToSrcAssetConversionRate);
 			buffer.WriteNullDouble(arg.DstAssetToReportConversionRate);
 			buffer.WriteNullDouble(arg.ReportToDstAssetConversionRate);
+			buffer.WriteAString(arg.ReportCurrency);
 		}
 		public static SoftFX.Extended.Reports.DailyAccountSnapshotReport ReadDailyAccountSnapshotReport(this MemoryBuffer buffer)
 		{
@@ -1169,6 +1175,7 @@ namespace SoftFX.Extended.Generated
 			result.ReportToProfitCurrencyConversionRate = buffer.ReadNullDouble();
 			result.Assets = buffer.ReadAssetInfoArray();
 			result.Positions = buffer.ReadPositionArray();
+			result.ReportCurrency = buffer.ReadAString();
 			return result;
 		}
 		public static void WriteDailyAccountSnapshotReport(this MemoryBuffer buffer, SoftFX.Extended.Reports.DailyAccountSnapshotReport arg)
@@ -1199,6 +1206,7 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteNullDouble(arg.ReportToProfitCurrencyConversionRate);
 			buffer.WriteAssetInfoArray(arg.Assets);
 			buffer.WritePositionArray(arg.Positions);
+			buffer.WriteAString(arg.ReportCurrency);
 		}
 		public static SoftFX.Extended.ClosePositionResult ReadClosePositionResult(this MemoryBuffer buffer)
 		{

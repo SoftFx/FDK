@@ -95,6 +95,7 @@
       <Member name="SecurityDescription" type="wstring" />
       <Member name="StopOrderMarginReduction" type="double?" />
       <Member name="HiddenLimitOrderMarginReduction" type="double?" />
+      <Member name="IsCloseOnly" type="bool" />
     </Type>
     <Type name="TwoFactorAuth" CSharpFullName="SoftFX.Extended.TwoFactorAuth" CppFullName="CFxTwoFactorAuth" kind="class">
       <Member name="Reason" type="TwoFactorReason" />
@@ -186,6 +187,7 @@
       <Member name="SessionsPerAccount" type="int32" />
       <Member name="RequestsPerSecond" type="int32" />
       <Member name="ThrottlingMethods" type="ThrottlingMethodInfoArray" />
+      <Member name="ReportCurrency" type="astring" />
     </Type>
     <Type name="FileChunk" CSharpFullName="SoftFX.Extended.FxFileChunk" CppFullName="CFxFileChunk" kind="class">
       <Member name="FileId" type="astring" />
@@ -375,6 +377,7 @@
       <Member name="ReportToSrcAssetConversionRate" type="double?" />
       <Member name="DstAssetToReportConversionRate" type="double?" />
       <Member name="ReportToDstAssetConversionRate" type="double?" />
+      <Member name="ReportCurrency" type="astring" />
     </Type>
     <Type name="DailyAccountSnapshotReport" CSharpFullName="SoftFX.Extended.Reports.DailyAccountSnapshotReport" CppFullName="CFxDailyAccountSnapshotReport" kind="class">
       <Member name="Timestamp" type="time" />
@@ -403,6 +406,7 @@
       <Member name="ReportToProfitCurrencyConversionRate" type="double?" />
       <Member name="Assets" type="AssetInfoArray" />
       <Member name="Positions" type="PositionArray" />
+      <Member name="ReportCurrency" type="astring" />
     </Type>
     <Type name="ClosePositionResult" CSharpFullName="SoftFX.Extended.ClosePositionResult" CppFullName="CFxClosePositionResult" kind="class">
       <Member name="ExecutedVolume" type="double" />

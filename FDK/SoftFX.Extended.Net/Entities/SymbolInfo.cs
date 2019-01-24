@@ -658,6 +658,20 @@
             }
         }
 
+        /// <summary>
+        /// </summary>
+        public bool IsCloseOnly
+        {
+            get
+            {
+                return this.isCloseOnly;
+            }
+            internal set
+            {
+                this.isCloseOnly = value;
+            }
+        }
+
         #endregion
 
         /// <summary>
@@ -712,6 +726,7 @@
         string securityDescription;
         double? stopOrderMarginReduction;
         double? hiddenLimitOrderMarginReduction;
+        bool isCloseOnly;
 
         #endregion
     }

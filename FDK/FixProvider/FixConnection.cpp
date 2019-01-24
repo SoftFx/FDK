@@ -649,6 +649,10 @@ void CFixConnection::OnSymbolsInfo(const FIX44::SecurityList& message)
         if (group.TryGetHiddenLimitOrderMarginReduction(hiddenLimitOrderMarginReduction))
             info.HiddenLimitOrderMarginReduction = hiddenLimitOrderMarginReduction;
 
+        bool isCloseOnly;
+        if (group.TryGetCloseOnly(isCloseOnly))
+            info.IsCloseOnly = isCloseOnly;
+
         symbols.push_back(info);
     }
 
@@ -1098,6 +1102,7 @@ void CFixConnection::OnAccountInfo(const FIX44::AccountInfo& message)
             accountInfo.ThrottlingMethods.push_back(method);
         }
     }
+    message.TryGetReportCurrency(accountInfo.ReportCurrency);
     m_receiver->VAccountInfo(eventInfo, accountInfo);
 }
 
@@ -1687,6 +1692,7 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
     double reportToDstAssetConversionRate;
     if (message.TryGetReportToDstAssetConversionRate(reportToDstAssetConversionRate))
         report.ReportToDstAssetConversionRate = reportToDstAssetConversionRate;
+    message.TryGetReportCurrency(report.ReportCurrency);
 
     m_receiver->VTradeTransactionReport(info, report);
 }
@@ -1999,6 +2005,7 @@ void CFixConnection::OnDailyAccountSnapshotReport(const FIX44::DailyAccountSnaps
     double reportToProfitCurrencyConversionRate;
     if (message.TryGetReportToProfitCurrencyConversionRate(reportToProfitCurrencyConversionRate))
         report.ReportToProfitCurrencyConversionRate = reportToProfitCurrencyConversionRate;
+    message.TryGetReportCurrency(report.ReportCurrency);
 
     m_receiver->VDailyAccountSnapshotReport(info, report);
 }

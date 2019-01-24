@@ -110,6 +110,8 @@ namespace FIX44
       FIELD_SET(*this, FIX::RequestsPerSecond);
       FIELD_SET_EX(int, RequestsPerSecond);
     };
+    FIELD_SET(*this, FIX::ReportCurrency);
+    FIELD_SET_EX(std::string, ReportCurrency);
   };
 
 }
