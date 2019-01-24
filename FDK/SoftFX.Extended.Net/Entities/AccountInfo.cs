@@ -119,6 +119,11 @@
         public ThrottlingMethodInfo[] ThrottlingMethods { get; internal set; }
 
         /// <summary>
+        /// Gets account report currency.
+        /// </summary>
+        public string ReportCurrency { get; internal set; }
+
+        /// <summary>
         /// Returns formatted string for the class instance.
         /// </summary>
         /// <returns>can not be null</returns>

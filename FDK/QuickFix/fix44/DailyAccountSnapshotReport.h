@@ -126,6 +126,8 @@ namespace FIX44
       FIELD_SET(*this, FIX::CurrentBestBid);
       FIELD_SET_EX(double, CurrentBestBid);
     };
+    FIELD_SET(*this, FIX::ReportCurrency);
+    FIELD_SET_EX(std::string, ReportCurrency);
   };
 
 }

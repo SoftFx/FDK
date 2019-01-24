@@ -2125,6 +2125,7 @@
     <field name='SortOrder' required='N' />
     <field name='GroupSortOrder' required='N' />
     <field name='StatusGroupID' required='N' />
+    <field name='CloseOnly' required='N' />
    </group>
   </message>
   <message name='DerivativeSecurityListRequest' msgcat='app' msgtype='z'>
@@ -3875,6 +3876,7 @@
     <component name='Assets' required='N' />
     <component name='ThrottlingInfo' required='N' />
     <component name='ThrottlingMethods' required='N' />
+    <field name='ReportCurrency' required='N' />
   </message>
   <message name='ClosePositionRequest' msgcat='app' msgtype='U1008'>
     <field name='ClosePosReqID' required='Y' />
@@ -4037,6 +4039,7 @@
     <field name='ReportToSrcAssetConversionRate' required='N' />
     <field name='DstAssetToReportConversionRate' required='N' />
     <field name='ReportToDstAssetConversionRate' required='N' />
+    <field name='ReportCurrency' required='N' />
   </message>
   <message name='ComponentsInfoRequest' msgcat='app' msgtype='U1018'>
     <field name='CompReqID' required='N' />
@@ -4122,6 +4125,7 @@
     <field name='ReportToProfitCurrencyConversionRate' required='N' />
     <component name='Assets' required='N' />
     <component name='Positions' required='N' />
+    <field name='ReportCurrency' required='N' />
   </message>
   <message name='MarketDataHistoryInfoRequest' msgcat='app' msgtype='U1028'>
     <field name='MarketHistReqID' required='Y' />
@@ -8091,5 +8095,7 @@
   <field number='10239' name='ReportToDstAssetConversionRate' type='FLOAT' />
   <field number='10240' name='BalanceCurrencyToReportConversionRate' type='FLOAT' />
   <field number='10241' name='ReportToBalanceCurrencyConversionRate' type='FLOAT' />
+  <field number='10242' name='ReportCurrency' type='STRING' />
+  <field number='10243' name='CloseOnly' type='BOOLEAN' />
 </fields>
 </fix>

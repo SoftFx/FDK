@@ -1224,6 +1224,8 @@ namespace FIX
   DEFINE_FLOAT(ReportToDstAssetConversionRate);
   DEFINE_FLOAT(BalanceCurrencyToReportConversionRate);
   DEFINE_FLOAT(ReportToBalanceCurrencyConversionRate);
+  DEFINE_STRING(ReportCurrency);
+  DEFINE_BOOLEAN(CloseOnly);
   DEFINE_NUMINGROUP(NoStrategyParameters);
   DEFINE_STRING(StrategyParameterName);
   DEFINE_INT(StrategyParameterType);

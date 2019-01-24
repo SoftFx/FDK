@@ -48,6 +48,7 @@ public:
     wstring SecurityDescription;
     Nullable<double> StopOrderMarginReduction;
     Nullable<double> HiddenLimitOrderMarginReduction;
+    bool IsCloseOnly;
 };
 
 inline CFxSymbolInfo::CFxSymbolInfo()

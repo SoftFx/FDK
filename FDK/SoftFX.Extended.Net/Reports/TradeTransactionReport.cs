@@ -409,5 +409,9 @@
         /// <summary>
         /// </summary>
         public double? ReportToDstAssetConversionRate { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public string ReportCurrency { get; internal set; }
     }
 }

@@ -103,6 +103,7 @@ public:
     Nullable<double> ReportToSrcAssetConversionRate;
     Nullable<double> DstAssetToReportConversionRate;
     Nullable<double> ReportToDstAssetConversionRate;
+    std::string ReportCurrency;
 };
 
 #pragma warning (pop)
