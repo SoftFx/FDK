@@ -167,6 +167,21 @@ namespace SoftFX.Extended.Reports
         public string ReportCurrency { get; internal set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public string TokenCommissionCurrency { get; internal set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public double? TokenCommissionCurrencyDiscount { get; internal set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsTokenCommissionEnabled { get; internal set; }
+
+        /// <summary>
         /// Returns formatted string for the class instance.
         /// </summary>
         /// <returns>can not be null</returns>

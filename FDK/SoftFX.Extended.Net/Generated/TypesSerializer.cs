@@ -626,6 +626,9 @@ namespace SoftFX.Extended.Generated
 			result.RequestsPerSecond = buffer.ReadInt32();
 			result.ThrottlingMethods = buffer.ReadThrottlingMethodInfoArray();
 			result.ReportCurrency = buffer.ReadAString();
+			result.TokenCommissionCurrency = buffer.ReadAString();
+			result.TokenCommissionCurrencyDiscount = buffer.ReadNullDouble();
+			result.IsTokenCommissionEnabled = buffer.ReadBoolean();
 			return result;
 		}
 		public static void WriteAccountInfo(this MemoryBuffer buffer, SoftFX.Extended.AccountInfo arg)
@@ -652,6 +655,9 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteInt32(arg.RequestsPerSecond);
 			buffer.WriteThrottlingMethodInfoArray(arg.ThrottlingMethods);
 			buffer.WriteAString(arg.ReportCurrency);
+			buffer.WriteAString(arg.TokenCommissionCurrency);
+			buffer.WriteNullDouble(arg.TokenCommissionCurrencyDiscount);
+			buffer.WriteBoolean(arg.IsTokenCommissionEnabled);
 		}
 		public static SoftFX.Extended.FxFileChunk ReadFileChunk(this MemoryBuffer buffer)
 		{
@@ -1056,6 +1062,9 @@ namespace SoftFX.Extended.Generated
 			result.DstAssetToReportConversionRate = buffer.ReadNullDouble();
 			result.ReportToDstAssetConversionRate = buffer.ReadNullDouble();
 			result.ReportCurrency = buffer.ReadAString();
+			result.TokenCommissionCurrency = buffer.ReadAString();
+			result.TokenCommissionCurrencyDiscount = buffer.ReadNullDouble();
+			result.TokenCommissionConversionRate = buffer.ReadNullDouble();
 			return result;
 		}
 		public static void WriteTradeTransactionReport(this MemoryBuffer buffer, SoftFX.Extended.Reports.TradeTransactionReport arg)
@@ -1145,6 +1154,9 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteNullDouble(arg.DstAssetToReportConversionRate);
 			buffer.WriteNullDouble(arg.ReportToDstAssetConversionRate);
 			buffer.WriteAString(arg.ReportCurrency);
+			buffer.WriteAString(arg.TokenCommissionCurrency);
+			buffer.WriteNullDouble(arg.TokenCommissionCurrencyDiscount);
+			buffer.WriteNullDouble(arg.TokenCommissionConversionRate);
 		}
 		public static SoftFX.Extended.Reports.DailyAccountSnapshotReport ReadDailyAccountSnapshotReport(this MemoryBuffer buffer)
 		{
@@ -1176,6 +1188,9 @@ namespace SoftFX.Extended.Generated
 			result.Assets = buffer.ReadAssetInfoArray();
 			result.Positions = buffer.ReadPositionArray();
 			result.ReportCurrency = buffer.ReadAString();
+			result.TokenCommissionCurrency = buffer.ReadAString();
+			result.TokenCommissionCurrencyDiscount = buffer.ReadNullDouble();
+			result.IsTokenCommissionEnabled = buffer.ReadBoolean();
 			return result;
 		}
 		public static void WriteDailyAccountSnapshotReport(this MemoryBuffer buffer, SoftFX.Extended.Reports.DailyAccountSnapshotReport arg)
@@ -1207,6 +1222,9 @@ namespace SoftFX.Extended.Generated
 			buffer.WriteAssetInfoArray(arg.Assets);
 			buffer.WritePositionArray(arg.Positions);
 			buffer.WriteAString(arg.ReportCurrency);
+			buffer.WriteAString(arg.TokenCommissionCurrency);
+			buffer.WriteNullDouble(arg.TokenCommissionCurrencyDiscount);
+			buffer.WriteBoolean(arg.IsTokenCommissionEnabled);
 		}
 		public static SoftFX.Extended.ClosePositionResult ReadClosePositionResult(this MemoryBuffer buffer)
 		{

@@ -1103,6 +1103,11 @@ void CFixConnection::OnAccountInfo(const FIX44::AccountInfo& message)
         }
     }
     message.TryGetReportCurrency(accountInfo.ReportCurrency);
+    message.TryGetTokenCommissionCurrency(accountInfo.TokenCommissionCurrency);
+    message.TryGetTokenCommissionEnabled(accountInfo.IsTokenCommissionEnabled);
+    double tokenCommissionCurrencyDiscount;
+    if (message.TryGetTokenCommissionCurrencyDiscount(tokenCommissionCurrencyDiscount))
+        accountInfo.TokenCommissionCurrencyDiscount = tokenCommissionCurrencyDiscount;
     m_receiver->VAccountInfo(eventInfo, accountInfo);
 }
 
@@ -1693,6 +1698,13 @@ void CFixConnection::OnTradeTransactionReport(const FIX44::TradeTransactionRepor
     if (message.TryGetReportToDstAssetConversionRate(reportToDstAssetConversionRate))
         report.ReportToDstAssetConversionRate = reportToDstAssetConversionRate;
     message.TryGetReportCurrency(report.ReportCurrency);
+    message.TryGetTokenCommissionCurrency(report.TokenCommissionCurrency);
+    double tokenCommissionCurrencyDiscount;
+    if (message.TryGetTokenCommissionCurrencyDiscount(tokenCommissionCurrencyDiscount))
+        report.TokenCommissionCurrencyDiscount = tokenCommissionCurrencyDiscount;
+    double tokenCommissionConversionRate;
+    if (message.TryGetTokenCommissionConversionRate(tokenCommissionConversionRate))
+        report.TokenCommissionConversionRate = tokenCommissionConversionRate;
 
     m_receiver->VTradeTransactionReport(info, report);
 }
@@ -2006,6 +2018,11 @@ void CFixConnection::OnDailyAccountSnapshotReport(const FIX44::DailyAccountSnaps
     if (message.TryGetReportToProfitCurrencyConversionRate(reportToProfitCurrencyConversionRate))
         report.ReportToProfitCurrencyConversionRate = reportToProfitCurrencyConversionRate;
     message.TryGetReportCurrency(report.ReportCurrency);
+    message.TryGetTokenCommissionCurrency(report.TokenCommissionCurrency);
+    message.TryGetTokenCommissionEnabled(report.IsTokenCommissionEnabled);
+    double tokenCommissionCurrencyDiscount;
+    if (message.TryGetTokenCommissionCurrencyDiscount(tokenCommissionCurrencyDiscount))
+        report.TokenCommissionCurrencyDiscount = tokenCommissionCurrencyDiscount;
 
     m_receiver->VDailyAccountSnapshotReport(info, report);
 }

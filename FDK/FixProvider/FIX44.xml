@@ -3877,6 +3877,9 @@
     <component name='ThrottlingInfo' required='N' />
     <component name='ThrottlingMethods' required='N' />
     <field name='ReportCurrency' required='N' />
+    <field name='TokenCommissionCurrency' required='N' />
+    <field name='TokenCommissionCurrencyDiscount' required='N' />
+    <field name='TokenCommissionEnabled' required='N' />
   </message>
   <message name='ClosePositionRequest' msgcat='app' msgtype='U1008'>
     <field name='ClosePosReqID' required='Y' />
@@ -4040,6 +4043,9 @@
     <field name='DstAssetToReportConversionRate' required='N' />
     <field name='ReportToDstAssetConversionRate' required='N' />
     <field name='ReportCurrency' required='N' />
+    <field name='TokenCommissionCurrency' required='N' />
+    <field name='TokenCommissionCurrencyDiscount' required='N' />
+    <field name='TokenCommissionConversionRate' required='N' />
   </message>
   <message name='ComponentsInfoRequest' msgcat='app' msgtype='U1018'>
     <field name='CompReqID' required='N' />
@@ -4126,6 +4132,9 @@
     <component name='Assets' required='N' />
     <component name='Positions' required='N' />
     <field name='ReportCurrency' required='N' />
+    <field name='TokenCommissionCurrency' required='N' />
+    <field name='TokenCommissionCurrencyDiscount' required='N' />
+    <field name='TokenCommissionEnabled' required='N' />
   </message>
   <message name='MarketDataHistoryInfoRequest' msgcat='app' msgtype='U1028'>
     <field name='MarketHistReqID' required='Y' />
@@ -8097,5 +8106,9 @@
   <field number='10241' name='ReportToBalanceCurrencyConversionRate' type='FLOAT' />
   <field number='10242' name='ReportCurrency' type='STRING' />
   <field number='10243' name='CloseOnly' type='BOOLEAN' />
+  <field number='10244' name='TokenCommissionCurrency' type='STRING' />
+  <field number='10245' name='TokenCommissionCurrencyDiscount' type='FLOAT' />
+  <field number='10246' name='TokenCommissionEnabled' type='BOOLEAN' />
+  <field number='10247' name='TokenCommissionConversionRate' type='FLOAT' />
 </fields>
 </fix>
