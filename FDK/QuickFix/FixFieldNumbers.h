@@ -1224,6 +1224,10 @@ namespace FIX
     const int ReportToBalanceCurrencyConversionRate = 10241;
     const int ReportCurrency = 10242;
     const int CloseOnly = 10243;
+    const int TokenCommissionCurrency = 10244;
+    const int TokenCommissionCurrencyDiscount = 10245;
+    const int TokenCommissionEnabled = 10246;
+    const int TokenCommissionConversionRate = 10247;
     const int NoStrategyParameters = 957;
     const int StrategyParameterName = 958;
     const int StrategyParameterType = 959;

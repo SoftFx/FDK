@@ -124,6 +124,21 @@
         public string ReportCurrency { get; internal set; }
 
         /// <summary>
+        /// Gets token commission currency.
+        /// </summary>
+        public string TokenCommissionCurrency { get; internal set; }
+
+        /// <summary>
+        /// Gets token commission currency discount.
+        /// </summary>
+        public double? TokenCommissionCurrencyDiscount { get; internal set; }
+
+        /// <summary>
+        /// Gets whether token commission is enabled or not.
+        /// </summary>
+        public bool IsTokenCommissionEnabled { get; internal set; }
+
+        /// <summary>
         /// Returns formatted string for the class instance.
         /// </summary>
         /// <returns>can not be null</returns>

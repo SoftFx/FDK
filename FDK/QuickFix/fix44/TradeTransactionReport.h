@@ -214,6 +214,12 @@ namespace FIX44
     FIELD_SET_EX(double, ReportToDstAssetConversionRate);
     FIELD_SET(*this, FIX::ReportCurrency);
     FIELD_SET_EX(std::string, ReportCurrency);
+    FIELD_SET(*this, FIX::TokenCommissionCurrency);
+    FIELD_SET_EX(std::string, TokenCommissionCurrency);
+    FIELD_SET(*this, FIX::TokenCommissionCurrencyDiscount);
+    FIELD_SET_EX(double, TokenCommissionCurrencyDiscount);
+    FIELD_SET(*this, FIX::TokenCommissionConversionRate);
+    FIELD_SET_EX(double, TokenCommissionConversionRate);
   };
 
 }

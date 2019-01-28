@@ -188,6 +188,9 @@
       <Member name="RequestsPerSecond" type="int32" />
       <Member name="ThrottlingMethods" type="ThrottlingMethodInfoArray" />
       <Member name="ReportCurrency" type="astring" />
+      <Member name="TokenCommissionCurrency" type="astring" />
+      <Member name="TokenCommissionCurrencyDiscount" type="double?" />
+      <Member name="IsTokenCommissionEnabled" type="bool" />
     </Type>
     <Type name="FileChunk" CSharpFullName="SoftFX.Extended.FxFileChunk" CppFullName="CFxFileChunk" kind="class">
       <Member name="FileId" type="astring" />
@@ -378,6 +381,9 @@
       <Member name="DstAssetToReportConversionRate" type="double?" />
       <Member name="ReportToDstAssetConversionRate" type="double?" />
       <Member name="ReportCurrency" type="astring" />
+      <Member name="TokenCommissionCurrency" type="astring" />
+      <Member name="TokenCommissionCurrencyDiscount" type="double?" />
+      <Member name="TokenCommissionConversionRate" type="double?" />
     </Type>
     <Type name="DailyAccountSnapshotReport" CSharpFullName="SoftFX.Extended.Reports.DailyAccountSnapshotReport" CppFullName="CFxDailyAccountSnapshotReport" kind="class">
       <Member name="Timestamp" type="time" />
@@ -407,6 +413,9 @@
       <Member name="Assets" type="AssetInfoArray" />
       <Member name="Positions" type="PositionArray" />
       <Member name="ReportCurrency" type="astring" />
+      <Member name="TokenCommissionCurrency" type="astring" />
+      <Member name="TokenCommissionCurrencyDiscount" type="double?" />
+      <Member name="IsTokenCommissionEnabled" type="bool" />
     </Type>
     <Type name="ClosePositionResult" CSharpFullName="SoftFX.Extended.ClosePositionResult" CppFullName="CFxClosePositionResult" kind="class">
       <Member name="ExecutedVolume" type="double" />

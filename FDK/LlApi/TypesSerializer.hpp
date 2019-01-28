@@ -806,6 +806,9 @@ namespace
 		WriteInt32(arg.RequestsPerSecond, buffer);
 		WriteThrottlingMethodInfoArray(arg.ThrottlingMethods, buffer);
 		WriteAString(arg.ReportCurrency, buffer);
+		WriteAString(arg.TokenCommissionCurrency, buffer);
+		WriteNullDouble(arg.TokenCommissionCurrencyDiscount, buffer);
+		WriteBoolean(arg.IsTokenCommissionEnabled, buffer);
 	}
 	CFxAccountInfo ReadAccountInfo(MemoryBuffer& buffer)
 	{
@@ -832,6 +835,9 @@ namespace
 		result.RequestsPerSecond = ReadInt32(buffer);
 		result.ThrottlingMethods = ReadThrottlingMethodInfoArray(buffer);
 		result.ReportCurrency = ReadAString(buffer);
+		result.TokenCommissionCurrency = ReadAString(buffer);
+		result.TokenCommissionCurrencyDiscount = ReadNullDouble(buffer);
+		result.IsTokenCommissionEnabled = ReadBoolean(buffer);
 		return result;
 	}
 	void WriteFileChunk(const CFxFileChunk& arg, MemoryBuffer& buffer)
@@ -1241,6 +1247,9 @@ namespace
 		WriteNullDouble(arg.DstAssetToReportConversionRate, buffer);
 		WriteNullDouble(arg.ReportToDstAssetConversionRate, buffer);
 		WriteAString(arg.ReportCurrency, buffer);
+		WriteAString(arg.TokenCommissionCurrency, buffer);
+		WriteNullDouble(arg.TokenCommissionCurrencyDiscount, buffer);
+		WriteNullDouble(arg.TokenCommissionConversionRate, buffer);
 	}
 	CFxTradeTransactionReport ReadTradeTransactionReport(MemoryBuffer& buffer)
 	{
@@ -1330,6 +1339,9 @@ namespace
 		result.DstAssetToReportConversionRate = ReadNullDouble(buffer);
 		result.ReportToDstAssetConversionRate = ReadNullDouble(buffer);
 		result.ReportCurrency = ReadAString(buffer);
+		result.TokenCommissionCurrency = ReadAString(buffer);
+		result.TokenCommissionCurrencyDiscount = ReadNullDouble(buffer);
+		result.TokenCommissionConversionRate = ReadNullDouble(buffer);
 		return result;
 	}
 	void WriteDailyAccountSnapshotReport(const CFxDailyAccountSnapshotReport& arg, MemoryBuffer& buffer)
@@ -1361,6 +1373,9 @@ namespace
 		WriteAssetInfoArray(arg.Assets, buffer);
 		WritePositionArray(arg.Positions, buffer);
 		WriteAString(arg.ReportCurrency, buffer);
+		WriteAString(arg.TokenCommissionCurrency, buffer);
+		WriteNullDouble(arg.TokenCommissionCurrencyDiscount, buffer);
+		WriteBoolean(arg.IsTokenCommissionEnabled, buffer);
 	}
 	CFxDailyAccountSnapshotReport ReadDailyAccountSnapshotReport(MemoryBuffer& buffer)
 	{
@@ -1392,6 +1407,9 @@ namespace
 		result.Assets = ReadAssetInfoArray(buffer);
 		result.Positions = ReadPositionArray(buffer);
 		result.ReportCurrency = ReadAString(buffer);
+		result.TokenCommissionCurrency = ReadAString(buffer);
+		result.TokenCommissionCurrencyDiscount = ReadNullDouble(buffer);
+		result.IsTokenCommissionEnabled = ReadBoolean(buffer);
 		return result;
 	}
 	void WriteClosePositionResult(const CFxClosePositionResult& arg, MemoryBuffer& buffer)

@@ -1226,6 +1226,10 @@ namespace FIX
   DEFINE_FLOAT(ReportToBalanceCurrencyConversionRate);
   DEFINE_STRING(ReportCurrency);
   DEFINE_BOOLEAN(CloseOnly);
+  DEFINE_STRING(TokenCommissionCurrency);
+  DEFINE_FLOAT(TokenCommissionCurrencyDiscount);
+  DEFINE_BOOLEAN(TokenCommissionEnabled);
+  DEFINE_FLOAT(TokenCommissionConversionRate);
   DEFINE_NUMINGROUP(NoStrategyParameters);
   DEFINE_STRING(StrategyParameterName);
   DEFINE_INT(StrategyParameterType);

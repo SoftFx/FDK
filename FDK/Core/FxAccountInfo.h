@@ -32,6 +32,9 @@ public:
     int32 SessionsPerAccount;
     int32 RequestsPerSecond;
     string ReportCurrency;
+    string TokenCommissionCurrency;
+    Nullable<double> TokenCommissionCurrencyDiscount;
+    bool IsTokenCommissionEnabled;
 public:
     vector<CAssetInfo> Assets;
     vector<CThrottlingMethodInfo> ThrottlingMethods;

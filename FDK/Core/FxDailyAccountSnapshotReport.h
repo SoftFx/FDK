@@ -44,6 +44,9 @@ public:
 
     std::string NextStreamPositionId;
     std::string ReportCurrency;
+    std::string TokenCommissionCurrency;
+    Nullable<double> TokenCommissionCurrencyDiscount;
+    bool IsTokenCommissionEnabled;
 };
 
 #pragma warning (pop)

@@ -413,5 +413,17 @@
         /// <summary>
         /// </summary>
         public string ReportCurrency { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public string TokenCommissionCurrency { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public double? TokenCommissionCurrencyDiscount { get; internal set; }
+
+        /// <summary>
+        /// </summary>
+        public double? TokenCommissionConversionRate { get; internal set; }
     }
 }
