@@ -325,6 +325,31 @@
             return result;
         }
 
+        public MarketHistoryItemsReport<TickValue> QueryVWAPTickHistory(DateTime to, int maxTicks, string symbol, short degree)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<TickValue> QueryVWAPTickHistoryCache(DateTime to, int maxTicks, string symbol, short degree)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TickTraderHistoryInfo GetVWAPTicksHistoryInfo(string symbol, short degree)
+        {
+            throw new NotImplementedException();
+        }
+
+        public MarketHistoryMetaFileReport QueryVWAPTickHistoryMetaFile(string symbol, short degree)
+        {
+            throw new NotImplementedException();
+        }
+
+        public MarketHistoryFileReport QueryVWAPTickHistoryFile(DateTime from, DateTime to, string symbol, short degree)
+        {
+            throw new NotImplementedException();
+        }
+
         #region Members
 
         readonly DataFeed dataFeed;
