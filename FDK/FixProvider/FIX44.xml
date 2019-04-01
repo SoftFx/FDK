@@ -5077,6 +5077,7 @@
    <value enum='15' description='UNKNOWNACCOUNTS' />
    <value enum='16' description='THROTTLING' />
    <value enum='17' description='TIMEOUT' />
+   <value enum='18' description='CLOSEONLY' />
    <value enum='99' description='OTHER' />
   </field>
   <field number='104' name='IOIQualifier' type='CHAR'>

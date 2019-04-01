@@ -266,6 +266,10 @@ FxRejectReason CFixExecutionReport::GetFxRejectReason() const
     {
         return FxRejectReason_Timeout;
     }
+    if (FIX::OrdRejReason_CLOSEONLY == fixOrdRejReason)
+    {
+      return FxRejectReason_CloseOnly;
+    }
     return FxRejectReason_Unknown;
 }
 

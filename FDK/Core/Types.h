@@ -77,6 +77,7 @@ enum FxRejectReason
     FxRejectReason_UnknownAccounts              = 15,
     FxRejectReason_Throttling                   = 16,
     FxRejectReason_Timeout                      = 17,
+    FxRejectReason_CloseOnly                    = 18,
     FxRejectReason_Unknown                      = 99,
     FxRejectReason_Last                         = FX_MAX_ENUM
 };

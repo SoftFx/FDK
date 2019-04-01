@@ -76,6 +76,11 @@
         Timeout = 17,
 
         /// <summary>
+        /// Timeout.
+        /// </summary>
+        CloseOnly = 18,
+
+        /// <summary>
         /// Unknown error.
         /// </summary>
         Other = 99
