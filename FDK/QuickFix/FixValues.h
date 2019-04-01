@@ -716,6 +716,7 @@ namespace FIX
   const int OrdRejReason_UNKNOWNACCOUNTS = 15;
   const int OrdRejReason_THROTTLING = 16;
   const int OrdRejReason_TIMEOUT = 17;
+  const int OrdRejReason_CLOSEONLY = 18;
   const int OrdRejReason_OTHER = 99;
   const int OrdRejReason_INCORRECT_QUANTITY = 13;
   const int OrdRejReason_INCORRECT_ALLOCATED_QUANTITY = 14;
